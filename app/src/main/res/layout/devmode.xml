@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dataset_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDataset name:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_shelltools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SHELL TOOLS" />
+
+        <Button
+            android:id="@+id/start_xbasic1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PHASE MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LIQUID PHASE MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID PHASE MAKER" />
+
+        <Button
+            android:id="@+id/start_refs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION REFERENCE" />
+
+        <Button
+            android:id="@+id/start_refg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS REFERENCE" />
+
+        <Button
+            android:id="@+id/start_refl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LIQUID REFERENCE" />
+
+        <Button
+            android:id="@+id/start_refc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID REFERENCE" />
+
+        <Button
+            android:id="@+id/start_comps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LIQUID PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_vdw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY VAN DER WAALS PARAMETERS" />
+
+        <Button
+            android:id="@+id/modify_mulliken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY CHEMSOL INPUT PREPARATOR (MULLIKEN)" />
+
+        <Button
+            android:id="@+id/modify_esp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY CHEMSOL INPUT PREPARATOR (ESP)" />
+
+        <Button
+            android:id="@+id/modify_solvation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY CHEMSOL OUTPUT FREE ENERGY SUMMATOR" />
+
+        <Button
+        android:id="@+id/modify_uniuni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MODIFY UNI-UNIMOLECULAR KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_unibi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY UNI-BIMOLECULAR KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_bibi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY BI-BIMOLECULAR KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_bitri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY BI-TRIMOLECULAR KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK" />
+
+    </LinearLayout>
+</ScrollView>

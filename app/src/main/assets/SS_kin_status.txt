@@ -1,0 +1,1 @@
+Solution species fragment SS_kin.txt does not exist.

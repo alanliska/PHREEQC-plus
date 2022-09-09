@@ -1,0 +1,505 @@
+# Database_water
+# Data used:
+### Bard
+# Bard, A. J., Parsons, R., Jordan, J. (editors), Standard potentials in aqueous solution, Marcel Dekker, New York 1985.
+### Chemsol
+# Florián, J., Warshel, A., ChemSol, version 2.1, University of Southern California, Los Angeles (1999).
+LLNL_AQUEOUS_MODEL_PARAMETERS
+-temperatures
+        -298.14   -200.00   -150.00  -100.000
+         0.0100   25.0000   60.0000  100.0000
+       150.0000  200.0000  250.0000  300.0000
+       500.0000 1000.0000 2500.0000 5000.0000 #debye huckel a (adh)
+-dh_a
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0 #debye huckel b (bdh)
+-dh_b
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+-bdot
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0 #cco2   (coefficients for the Drummond (1981) polynomial)
+-co2_coefs
+        0              0
+          0                0
+      0
+      #kdyztak pak zmenit
+SOLUTION_MASTER_SPECIES # Necessary block: E, Cat and O
+E	e-	0	0	0
+ # Inorganics
+H	H	0	H	1.00797
+H	H+		-1.     1.008           1.008
+H(0)	H2		0.0     1.008
+H(1)	H+		-1.     1.008 # H	H+		-1.     1.008           1.008 # H(0)	H2		0.0     1.008 # H(1)	H+		-1.     1.008
+D	D	0	D	2.014102
+T	T	0	T	3.016049
+
+He	He	0	He	4.0026
+Ne	Ne	0	Ne	20.183
+Ar	Ar	0	Ar	39.948
+Kr	Kr	0	Kr	83.8
+Xe	Xe	0	Xe	131.3
+Rn	Rn	0	Rn	222
+
+F	F	0	F	18.9984
+Cl	Cl	0	Cl	35.453
+Br	Br	0	Br	79.909
+I	I	0	I	126.904
+
+O	O	0	O	15.9994
+O	H2O		0.0     16.00           16.00
+O(-2)	H2O		0.0     18.016
+O(0)	O2		0.0     16.00 # O	H2O		0.0     16.00           16.00 # O(-2)	H2O		0.0     18.016 # O(0)	O2		0.0     16.00
+S	S	0	S	32.064
+Se	Se	0	Se	78.96
+Te	Te	0	Te	127.6
+Po	Po	0	Po	209
+
+N	N	0	N	14.0067
+P	P	0	P	30.9738
+As	As	0	As	74.922
+Sb	Sb	0	Sb	121.75
+Bi	Bi	0	Bi	208.98
+
+C	C	0	C	12.01111
+Si	Si	0	Si	28.068
+Ge	Ge	0	Ge	72.59
+Sn	Sn	0	Sn	118.69
+Pb	Pb	0	Pb	207.19
+
+B	B	0	B	10.811
+Al	Al	0	Al	26.9815
+Ga	Ga	0	Ga	69.72
+In	In	0	In	114.82
+Tl	Tl	0	Tl	204.37
+
+Be	Be	0	Be	9.0122
+Mg	Mg	0	Mg	24.312
+Ca	Ca	0	Ca	40.08
+Sr	Sr	0	Sr	87.32
+Ba	Ba	0	Ba	137.34
+Ra	Ra	0	Ra	226
+
+Li	Li	0	Li	6.939
+Na	Na	0	Na	22.9898
+K	K	0	K	39.102
+Rb	Rb	0	Rb	85.47
+Cs	Cs	0	Cs	132.905
+Fr	Fr	0	Fr	223
+
+Sc	Sc	0	Sc	44.956
+Ti	Ti	0	Ti	47.9
+V	V	0	V	50.942
+Cr	Cr	0	Cr	51.996
+Mn	Mn	0	Mn	54.938
+Fe	Fe	0	Fe	55.847
+Co	Co	0	Co	58.933
+Ni	Ni	0	Ni	58.71
+Cu	Cu	0	Cu	63.54
+Zn	Zn	0	Zn	65.37
+
+Y	Y	0	Y	88.905
+Zr	Zr	0	Zr	91.22
+Nb	Nb	0	Nb	92.906
+Mo	Mo	0	Mo	95.94
+Tc	Tc	0	Tc	98
+Ru	Ru	0	Ru	101.07
+Rh	Rh	0	Rh	102.905
+Pd	Pd	0	Pd	106.3
+Ag	Ag	0	Ag	107.87
+Cd	Cd	0	Cd	112.4
+
+La	La	0	La	138.91
+Hf	Hf	0	Hf	178.49
+Ta	Ta	0	Ta	180.948
+W	W	0	W	183.85
+Re	Re	0	Re	186.2
+Os	Os	0	Os	190.2
+Ir	Ir	0	Ir	192.2
+Pt	Pt	0	Pt	195.09
+Au	Au	0	Au	196.967
+Hg	Hg	0	Hg	200.59
+
+Ce	Ce	0	Ce	140.12
+Pr	Pr	0	Pr	140.907
+Nd	Nd	0	Nd	144.24
+Pm	Pm	0	Pm	144.24
+Sm	Sm	0	Sm	150.35
+Eu	Eu	0	Eu	151.96
+Gd	Gd	0	Gd	157.25
+Tb	Tb	0	Tb	158.924
+Dy	Dy	0	Dy	162.5
+Ho	Ho	0	Ho	164.93
+Er	Er	0	Er	167.26
+Tm	Tm	0	Tm	168.934
+Yb	Yb	0	Yb	173.04
+Lu	Lu	0	Lu	174.97
+
+Ac	Ac	0	Ac	232.038
+Th	Th	0	Th	232.038
+Pa	Pa	0	Pa	231
+U	U	0	U	238.03
+Np	Np	0	Np	237
+Pu	Pu	0	Pu	244
+Am	Am	0	Am	243
+Cm	Cm	0	Cm	247
+Bk	Bk	0	Bk	247
+ # dummy:
+M	M	0	M	1
+X	X	0	X	1
+
+SOLUTION_SPECIES # nutne rovnovahy
+2 H2O = O2 + 4 H+ + 4 e- 
+log_k -85.9081
+delta_h 559.5264
+2 H+ + 2 e- = H2
+log_k -3.1016
+delta_h -4.184
+
+M = M
+log_k 0
+X = X
+log_k 0
+
+M = M+ + e-
+log_k 100
+X + e- = X-
+log_k 100
+
+e- = e-
+log_k 0
+
+H+ = H+
+log_k 0
+
+H2O = H2O
+log_k 0
+
+H2O = OH- + H+
+log_k -13.9794
+delta_h 55.80623
+
+0.5 O2 = O
+log_k -39.7779
+delta_h	248.3862
+
+0.5 H2 = H
+log_k -33.6767
+delta_h	217.0557
+
+#H = H
+#log_k 0
+#O = O
+#log_k 0
+	
+D = D ; log_k	0.00
+
+T = T ; log_k	0.00
+
+
+
+He = He ; log_k	0.00
+Ne = Ne ; log_k	0.00
+Ar = Ar ; log_k	0.00
+Kr = Kr ; log_k	0.00
+Xe = Xe ; log_k	0.00
+Rn = Rn ; log_k	0.00
+F = F ; log_k	0.00
+Cl = Cl ; log_k	0.00
+Br = Br ; log_k	0.00
+I = I ; log_k	0.00
+S = S ; log_k	0.00
+Se = Se ; log_k	0.00
+Te = Te ; log_k	0.00
+Po = Po ; log_k	0.00
+N = N ; log_k	0.00
+P = P ; log_k	0.00
+As = As ; log_k	0.00
+Sb = Sb ; log_k	0.00
+Bi = Bi ; log_k	0.00
+C = C ; log_k	0.00
+Si = Si ; log_k	0.00
+Ge = Ge ; log_k	0.00
+Sn = Sn ; log_k	0.00
+Pb = Pb ; log_k	0.00
+B = B ; log_k	0.00
+Al = Al ; log_k	0.00
+Ga = Ga ; log_k	0.00
+In = In ; log_k	0.00
+Tl = Tl ; log_k	0.00
+Be = Be ; log_k	0.00
+Mg = Mg ; log_k	0.00
+Ca = Ca ; log_k	0.00
+Sr = Sr ; log_k	0.00
+Ba = Ba ; log_k	0.00
+Ra = Ra ; log_k	0.00
+Li = Li ; log_k	0.00
+Na = Na ; log_k	0.00
+K = K ; log_k	0.00
+Rb = Rb ; log_k	0.00
+Cs = Cs ; log_k	0.00
+Fr = Fr ; log_k	0.00
+Sc = Sc ; log_k	0.00
+Ti = Ti ; log_k	0.00
+V = V ; log_k	0.00
+Cr = Cr ; log_k	0.00
+Mn = Mn ; log_k	0.00
+Fe = Fe ; log_k	0.00
+Co = Co ; log_k	0.00
+Ni = Ni ; log_k	0.00
+Cu = Cu ; log_k	0.00
+Zn = Zn ; log_k	0.00
+Y = Y ; log_k	0.00
+Zr = Zr ; log_k	0.00
+Nb = Nb ; log_k	0.00
+Mo = Mo ; log_k	0.00
+Tc = Tc ; log_k	0.00
+Ru = Ru ; log_k	0.00
+Rh = Rh ; log_k	0.00
+Pd = Pd ; log_k	0.00
+Ag = Ag ; log_k	0.00
+Cd = Cd ; log_k	0.00
+La = La ; log_k	0.00
+Hf = Hf ; log_k	0.00
+Ta = Ta ; log_k	0.00
+W = W ; log_k	0.00
+Re = Re ; log_k	0.00
+Os = Os ; log_k	0.00
+Ir = Ir ; log_k	0.00
+Pt = Pt ; log_k	0.00
+Au = Au ; log_k	0.00
+Hg = Hg ; log_k	0.00
+Ce = Ce ; log_k	0.00
+Pr = Pr ; log_k	0.00
+Nd = Nd ; log_k	0.00
+Sm = Sm ; log_k	0.00
+Pm = Pm ; log_k	0.00
+Eu = Eu ; log_k	0.00
+Gd = Gd ; log_k	0.00
+Tb = Tb ; log_k	0.00
+Dy = Dy ; log_k	0.00
+Ho = Ho ; log_k	0.00
+Er = Er ; log_k	0.00
+Tm = Tm ; log_k	0.00
+Yb = Yb ; log_k	0.00
+Lu = Lu ; log_k	0.00
+Ac = Ac ; log_k	0.00
+Th = Th ; log_k	0.00
+Pa = Pa ; log_k	0.00
+U = U ; log_k	0.00
+Np = Np ; log_k	0.00
+Pu = Pu ; log_k	0.00
+Am = Am ; log_k	0.00
+Cm = Cm ; log_k	0.00
+Bk = Bk ; log_k	0.00
+ # # H2O ve stavu (aq) je jen formalismus - bere se jako (l) - kv�li v�po�t�m v re�imu constrained equilibria, kde je j� t�eba explicitn� definovat ve f�zi roztoku # 2 H + O = H2O ; log_k	  153.38 ; delta_h	   -970.93 ; #Gf�(l) =   -237.18 kJ.mol-1 (Bard-1985) #Hf�(l) =   -285.83 kJ.mol-1 (Bard-1985)  #H2O(aq) # # opravena chyba - *(-1) # H = H+ + e- ; log_k	     35.61 ; delta_h	   -217.97 #Gf�(aq) =      0.00 kJ.mol-1 (Bard-1985) #Hf�(aq) =      0.00 kJ.mol-1 (Bard-1985) #H+(aq) # D = D+ + e- ; log_k	     36.39 #Gf�(aq) =     -1.20 kJ.mol-1 (Bard-1985) #D+(aq)
+
+
+
+
+PHASES # names of elements have to match exactly the definitions, i.e. including the square brackets!!!
+H(g)
+H = H ; log_k	     0.34 ; delta_h	    -3.00 #Gf�(g) =    203.25 kJ.mol-1 (Bard) #Hf�(g) =    217.97 kJ.mol-1 (Bard)
+Li(g)
+Li = Li ; log_k	     0.15 ; delta_h	   -10.49 #Gf�(g) =    128.03 kJ.mol-1 (Bard) #Hf�(g) =    160.71 kJ.mol-1 (Bard)
+Na(g)
+Na = Na ; log_k	     0.08 ; delta_h	   -12.83 #Gf�(g) =     77.30 kJ.mol-1 (Bard) #Hf�(g) =    107.68 kJ.mol-1 (Bard)
+K(g)
+K = K ; log_k	    -0.01 ; delta_h	   -16.39 #Gf�(g) =     60.92 kJ.mol-1 (Bard) #Hf�(g) =     89.16 kJ.mol-1 (Bard)
+Rb(g)
+Rb = Rb ; log_k	    -0.04 ; delta_h	   -17.60 #Gf�(g) =     55.86 kJ.mol-1 (Bard) #Hf�(g) =     85.81 kJ.mol-1 (Bard)
+Cs(g)
+Cs = Cs ; log_k	    -0.11 ; delta_h	   -20.07 #Gf�(g) =     51.21 kJ.mol-1 (Bard) #Hf�(g) =     78.78 kJ.mol-1 (Bard)
+Fr(g)
+Fr = Fr ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =     46.65 kJ.mol-1 (Bard) #Hf�(g) =     72.80 kJ.mol-1 (Bard)
+Be(g)
+Be = Be ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    286.60 kJ.mol-1 (Bard) #Hf�(g) =    324.30 kJ.mol-1 (Bard)
+Mg(g)
+Mg = Mg ; log_k	     0.19 ; delta_h	    -8.73 #Gf�(g) =    113.08 kJ.mol-1 (Bard) #Hf�(g) =    147.10 kJ.mol-1 (Bard)
+Ca(g)
+Ca = Ca ; log_k	     0.11 ; delta_h	   -11.70 #Gf�(g) =    144.30 kJ.mol-1 (Bard) #Hf�(g) =    178.20 kJ.mol-1 (Bard)
+Sr(g)
+Sr = Sr ; log_k	     0.06 ; delta_h	   -13.71 #Gf�(g) =    131.00 kJ.mol-1 (Bard) #Hf�(g) =    164.40 kJ.mol-1 (Bard)
+Ba(g)
+Ba = Ba ; log_k	     0.02 ; delta_h	   -15.34 #Gf�(g) =    146.00 kJ.mol-1 (Bard) #Hf�(g) =    180.00 kJ.mol-1 (Bard)
+Ra(g)
+Ra = Ra ; log_k	    -0.08 ; delta_h	   -19.36 #Gf�(g) =    130.00 kJ.mol-1 (Bard) #Hf�(g) =    159.00 kJ.mol-1 (Bard)
+B(g)
+B = B ; log_k	     0.11 ; delta_h	   -11.79 #Gf�(g) =    518.80 kJ.mol-1 (Bard) #Hf�(g) =    562.70 kJ.mol-1 (Bard)
+Al(g)
+Al = Al ; log_k	     0.21 ; delta_h	    -8.11 #Gf�(g) =    285.80 kJ.mol-1 (Bard) #Hf�(g) =    329.70 kJ.mol-1 (Bard)
+Ga(g)
+Ga = Ga ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    239.00 kJ.mol-1 (Bard) #Hf�(g) =    277.00 kJ.mol-1 (Bard)
+In(g)
+In = In ; log_k	     0.11 ; delta_h	   -12.00 #Gf�(g) =    208.70 kJ.mol-1 (Bard) #Hf�(g) =    243.30 kJ.mol-1 (Bard)
+Tl(g)
+Tl = Tl ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    147.40 kJ.mol-1 (Bard) #Hf�(g) =    182.20 kJ.mol-1 (Bard)
+C(g)
+C = C ; log_k	     0.07 ; delta_h	   -13.29 #Gf�(g) =    672.98 kJ.mol-1 (Bard) #Hf�(g) =    718.38 kJ.mol-1 (Bard)
+Si(g)
+Si = Si ; log_k	    -0.01 ; delta_h	   -16.60 #Gf�(g) =    323.90 kJ.mol-1 (Bard) #Hf�(g) =    368.40 kJ.mol-1 (Bard)
+Ge(g)
+Ge = Ge ; log_k	     0.10 ; delta_h	   -12.29 #Gf�(g) =    209.80 kJ.mol-1 (Bard) #Hf�(g) =    328.19 kJ.mol-1 (Bard)
+Sn(g)
+Sn = Sn ; log_k	     0.11 ; delta_h	   -12.00 #Gf�(g) =    268.00 kJ.mol-1 (Bard) #Hf�(g) =    301.00 kJ.mol-1 (Bard)
+Pb(g)
+Pb = Pb ; log_k	     0.09 ; delta_h	   -12.62 #Gf�(g) =    161.00 kJ.mol-1 (Bard) #Hf�(g) =    193.90 kJ.mol-1 (Bard)
+N(g)
+N = N ; log_k	    -0.89 ; delta_h	    -7.81 #Gf�(g) =    455.56 kJ.mol-1 (Bard) #Hf�(g) =    472.70 kJ.mol-1 (Bard)
+P(g)
+P = P ; log_k	    -0.03 ; delta_h	   -17.35 #Gf�(g) =    278.84 kJ.mol-1 (Bard) #Hf�(g) =    314.25 kJ.mol-1 (Bard)
+As(g)
+As = As ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    261.00 kJ.mol-1 (Bard) #Hf�(g) =    302.50 kJ.mol-1 (Bard)
+Sb(g)
+Sb = Sb ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    222.20 kJ.mol-1 (Bard) #Hf�(g) =    262.30 kJ.mol-1 (Bard)
+Bi(g)
+Bi = Bi ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    168.20 kJ.mol-1 (Bard) #Hf�(g) =    207.10 kJ.mol-1 (Bard)
+O(g)
+O = O ; log_k	    -0.67 ; delta_h	    -6.85 #Gf�(g) =    231.75 kJ.mol-1 (Bard) #Hf�(g) =    249.17 kJ.mol-1 (Bard)
+S(g)
+S = S ; log_k	    -0.03 ; delta_h	   -17.35 #Gf�(g) =    238.28 kJ.mol-1 (Bard) #Hf�(g) =    278.81 kJ.mol-1 (Bard)
+Se(g)
+Se = Se ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    187.07 kJ.mol-1 (Bard) #Hf�(g) =    227.07 kJ.mol-1 (Bard)
+Te(g)
+Te = Te ; log_k	    -0.13 ; delta_h	   -21.08 #Gf�(g) =    157.11 kJ.mol-1 (Bard) #Hf�(g) =    196.73 kJ.mol-1 (Bard)
+Po(g)
+Po = Po ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    109.41 kJ.mol-1 (Bard) #Hf�(g) =    146.99 kJ.mol-1 (Bard)
+F(g)
+F = F ; log_k	     0.11 ; delta_h	   -12.04 #Gf�(g) =     61.83 kJ.mol-1 (Bard) #Hf�(g) =     78.91 kJ.mol-1 (Bard)
+Cl(g)
+Cl = Cl ; log_k	    -0.03 ; delta_h	   -17.02 #Gf�(g) =    105.70 kJ.mol-1 (Bard) #Hf�(g) =    121.68 kJ.mol-1 (Bard)
+Br(g)
+Br = Br ; log_k	    -0.07 ; delta_h	   -18.82 #Gf�(g) =     82.43 kJ.mol-1 (Bard) #Hf�(g) =    111.88 kJ.mol-1 (Bard)
+I(g)
+I = I ; log_k	    -0.15 ; delta_h	   -21.91 #Gf�(g) =     70.15 kJ.mol-1 (Bard) #Hf�(g) =    106.32 kJ.mol-1 (Bard)
+He(g)
+He = He ; log_k	     0.34 ; delta_h	    -3.00 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Ne(g)
+Ne = Ne ; log_k	     0.10 ; delta_h	   -12.29 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Ar(g)
+Ar = Ar ; log_k	     0.04 ; delta_h	   -14.47 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Kr(g)
+Kr = Kr ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Xe(g)
+Xe = Xe ; log_k	    -0.10 ; delta_h	   -19.74 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Rn(g)
+Rn = Rn ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =      0.00 kJ.mol-1 (Bard) #Hf�(g) =      0.00 kJ.mol-1 (Bard)
+Sc(g)
+Sc = Sc ; log_k	     0.23 ; delta_h	    -7.19 #Gf�(g) =    339.30 kJ.mol-1 (Bard) #Hf�(g) =    381.20 kJ.mol-1 (Bard)
+Y(g)
+Y = Y ; log_k	     0.20 ; delta_h	    -8.40 #Gf�(g) =    381.10 kJ.mol-1 (Bard) #Hf�(g) =    421.30 kJ.mol-1 (Bard)
+La(g)
+La = La ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    393.56 kJ.mol-1 (Bard) #Hf�(g) =    431.00 kJ.mol-1 (Bard)
+Ac(g)
+Ac = Ac ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    366.00 kJ.mol-1 (Bard) #Hf�(g) =    406.00 kJ.mol-1 (Bard)
+Ti(g)
+Ti = Ti ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =   -351.50 kJ.mol-1 (Bard) #Hf�(g) =    397.50 kJ.mol-1 (Bard)
+Zr(g)
+Zr = Zr ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    578.00 kJ.mol-1 (Bard) #Hf�(g) =    620.50 kJ.mol-1 (Bard)
+Hf(g)
+Hf = Hf ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    576.50 kJ.mol-1 (Bard) #Hf�(g) =    619.20 kJ.mol-1 (Bard)
+V(g)
+V = V ; log_k	     0.18 ; delta_h	    -9.28 #Gf�(g) =    469.80 kJ.mol-1 (Bard) #Hf�(g) =    515.50 kJ.mol-1 (Bard)
+Nb(g)
+Nb = Nb ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    681.10 kJ.mol-1 (Bard) #Hf�(g) =    725.90 kJ.mol-1 (Bard)
+Ta(g)
+Ta = Ta ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    739.30 kJ.mol-1 (Bard) #Hf�(g) =    782.00 kJ.mol-1 (Bard)
+Cr(g)
+Cr = Cr ; log_k	     0.18 ; delta_h	    -9.15 #Gf�(g) =    352.70 kJ.mol-1 (Bard) #Hf�(g) =    397.50 kJ.mol-1 (Bard)
+Mo(g)
+Mo = Mo ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    612.50 kJ.mol-1 (Bard) #Hf�(g) =    658.10 kJ.mol-1 (Bard)
+W(g)
+W = W ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    814.79 kJ.mol-1 (Bard) #Hf�(g) =    856.88 kJ.mol-1 (Bard)
+Mn(g)
+Mn = Mn ; log_k	     0.18 ; delta_h	    -9.40 #Gf�(g) =    238.50 kJ.mol-1 (Bard) #Hf�(g) =    280.70 kJ.mol-1 (Bard)
+Tc(g)
+Tc = Tc ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    656.26 kJ.mol-1 (Bard) #Hf�(g) =    681.10 kJ.mol-1 (Bard)
+Re(g)
+Re = Re ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    724.70 kJ.mol-1 (Bard) #Hf�(g) =    769.90 kJ.mol-1 (Bard)
+Fe(g)
+Fe = Fe ; log_k	     0.19 ; delta_h	    -8.86 #Gf�(g) =    370.70 kJ.mol-1 (Bard) #Hf�(g) =    416.30 kJ.mol-1 (Bard)
+Ru(g)
+Ru = Ru ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    595.80 kJ.mol-1 (Bard) #Hf�(g) =    642.70 kJ.mol-1 (Bard)
+Os(g)
+Os = Os ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    745.00 kJ.mol-1 (Bard) #Hf�(g) =    791.00 kJ.mol-1 (Bard)
+Co(g)
+Co = Co ; log_k	     0.22 ; delta_h	    -7.48 #Gf�(g) =    380.30 kJ.mol-1 (Bard) #Hf�(g) =    424.70 kJ.mol-1 (Bard)
+Rh(g)
+Rh = Rh ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    510.80 kJ.mol-1 (Bard) #Hf�(g) =    556.90 kJ.mol-1 (Bard)
+Ir(g)
+Ir = Ir ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    617.90 kJ.mol-1 (Bard) #Hf�(g) =    665.30 kJ.mol-1 (Bard)
+Ni(g)
+Ni = Ni ; log_k	     0.23 ; delta_h	    -7.19 #Gf�(g) =    379.80 kJ.mol-1 (Bard) #Hf�(g) =    425.14 kJ.mol-1 (Bard)
+Pd(g)
+Pd = Pd ; log_k	     0.17 ; delta_h	    -9.78 #Gf�(g) =    339.70 kJ.mol-1 (Bard) #Hf�(g) =    378.20 kJ.mol-1 (Bard)
+Pt(g)
+Pt = Pt ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    520.50 kJ.mol-1 (Bard) #Hf�(g) =    565.30 kJ.mol-1 (Bard)
+Cu(g)
+Cu = Cu ; log_k	     0.19 ; delta_h	    -9.07 #Gf�(g) =    298.30 kJ.mol-1 (Bard) #Hf�(g) =    338.00 kJ.mol-1 (Bard)
+Ag(g)
+Ag = Ag ; log_k	     0.14 ; delta_h	   -10.95 #Gf�(g) =    245.80 kJ.mol-1 (Bard) #Hf�(g) =    284.69 kJ.mol-1 (Bard)
+Au(g)
+Au = Au ; log_k	     0.20 ; delta_h	    -8.52 #Gf�(g) =    326.00 kJ.mol-1 (Bard) #Hf�(g) =    366.00 kJ.mol-1 (Bard)
+Zn(g)
+Zn = Zn ; log_k	     0.23 ; delta_h	    -7.35 #Gf�(g) =     95.18 kJ.mol-1 (Bard) #Hf�(g) =    130.73 kJ.mol-1 (Bard)
+Cd(g)
+Cd = Cd ; log_k	     0.17 ; delta_h	    -9.61 #Gf�(g) =     77.41 kJ.mol-1 (Bard) #Hf�(g) =    112.01 kJ.mol-1 (Bard)
+Hg(g)
+Hg = Hg ; log_k	     0.17 ; delta_h	    -9.44 #Gf�(g) =     31.85 kJ.mol-1 (Bard) #Hf�(g) =     61.32 kJ.mol-1 (Bard)
+Ce(g)
+Ce = Ce ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    385.00 kJ.mol-1 (Bard) #Hf�(g) =    423.00 kJ.mol-1 (Bard)
+Pr(g)
+Pr = Pr ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    320.90 kJ.mol-1 (Bard) #Hf�(g) =    355.60 kJ.mol-1 (Bard)
+Nd(g)
+Nd = Nd ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    292.40 kJ.mol-1 (Bard) #Hf�(g) =    327.60 kJ.mol-1 (Bard)
+Pm(g)
+Pm = Pm ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    318.00 kJ.mol-1 (Bard) #Hf�(g) =    318.00 kJ.mol-1 (Bard)
+Sm(g)
+Sm = Sm ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    172.80 kJ.mol-1 (Bard) #Hf�(g) =    206.70 kJ.mol-1 (Bard)
+Eu(g)
+Eu = Eu ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    142.20 kJ.mol-1 (Bard) #Hf�(g) =    175.30 kJ.mol-1 (Bard)
+Gd(g)
+Gd = Gd ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    359.80 kJ.mol-1 (Bard) #Hf�(g) =    397.50 kJ.mol-1 (Bard)
+Tb(g)
+Tb = Tb ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    349.70 kJ.mol-1 (Bard) #Hf�(g) =    388.70 kJ.mol-1 (Bard)
+Dy(g)
+Dy = Dy ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    254.40 kJ.mol-1 (Bard) #Hf�(g) =    290.40 kJ.mol-1 (Bard)
+Ho(g)
+Ho = Ho ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    264.80 kJ.mol-1 (Bard) #Hf�(g) =    300.80 kJ.mol-1 (Bard)
+Er(g)
+Er = Er ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    280.70 kJ.mol-1 (Bard) #Hf�(g) =    317.10 kJ.mol-1 (Bard)
+Tm(g)
+Tm = Tm ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    197.50 kJ.mol-1 (Bard) #Hf�(g) =    232.20 kJ.mol-1 (Bard)
+Yb(g)
+Yb = Yb ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    118.40 kJ.mol-1 (Bard) #Hf�(g) =    152.30 kJ.mol-1 (Bard)
+Lu(g)
+Lu = Lu ; log_k	     0.13 ; delta_h	   -11.24 #Gf�(g) =    387.80 kJ.mol-1 (Bard) #Hf�(g) =    427.60 kJ.mol-1 (Bard)
+Th(g)
+Th = Th ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    556.40 kJ.mol-1 (Bard) #Hf�(g) =    597.10 kJ.mol-1 (Bard)
+Pa(g)
+Pa = Pa ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    563.00 kJ.mol-1 (Bard) #Hf�(g) =    607.00 kJ.mol-1 (Bard)
+U(g)
+U = U ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    486.80 kJ.mol-1 (Bard) #Hf�(g) =    531.40 kJ.mol-1 (Bard)
+Np(g)
+Np = Np ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    420.90 kJ.mol-1 (Bard) #Hf�(g) =    464.80 kJ.mol-1 (Bard)
+Pu(g)
+Pu = Pu ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    309.10 kJ.mol-1 (Bard) #Hf�(g) =    345.20 kJ.mol-1 (Bard)
+Am(g)
+Am = Am ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    242.30 kJ.mol-1 (Bard) #Hf�(g) =    284.10 kJ.mol-1 (Bard)
+Cm(g)
+Cm = Cm ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    350.10 kJ.mol-1 (Bard) #Hf�(g) =    387.40 kJ.mol-1 (Bard)
+Bk(g)
+Bk = Bk ; log_k	     0.00 ; delta_h	   -15.97 #Gf�(g) =    310.00 kJ.mol-1 (Bard) #Hf�(g) =    310.00 kJ.mol-1 (Bard)
+
+
+
+# next phases:
+
+
+END

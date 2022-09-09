@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to PHREEQC calculation."
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/Label0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\n(A) Thermodynamics (equilibria)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+        <TextView
+            android:id="@+id/ModifyLabel2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="If you feel confused, please refer to button Help."
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <Button
+            android:id="@+id/AddSS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="(1) APPEND INDIVIDUAL MOPAC CALCULATED SOLUTION_SPECIES FILES" />
+
+        <Button
+            android:id="@+id/ResetSS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET (DELETE APPENDED SOLUTION_SPECIES)" />
+
+        <TextView
+            android:id="@+id/SSLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of solution species fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/SS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+        <TextView
+            android:id="@+id/ModifyLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nMOPAC calculated solution species desired to be present in the advanced model (full name according to the used database including the physical state, one name per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/ModifyEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <Button
+            android:id="@+id/modifybutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="(2) FILTER THE FILE CREATED IN STEP (1)" />
+        <TextView
+            android:id="@+id/ModifyLabel12"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nSolution species from already existing selected PHREEQC database desired to be present in the advanced model (full name according to the used database including the physical state, one name per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/ModifyEdit12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <Button
+            android:id="@+id/modifybutton12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7703A9F4"
+            android:text="(3) SEARCH IN SELECTED PHREEQC_MOD DATABASE, EXPORT AND APPEND TO THE FILE MODIFIED IN STEP (2)" />
+
+        <Button
+            android:id="@+id/AddP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="APPEND INDIVIDUAL MOPAC CALCULATED PHASES FILES" />
+        <Button
+            android:id="@+id/ResetP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET (DELETE APPENDED PHASES)" />
+        <TextView
+            android:id="@+id/PLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of phases fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/P"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/Label1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\n(B) Kinetics"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+        <Button
+            android:id="@+id/AddSMS_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD SOLUTION MASTER SPECIES BLOCK (APPEND)" />
+        <TextView
+            android:id="@+id/SMSLabel_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of SMS fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/SMS_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/AddSS_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD SOLUTION SPECIES BLOCK (APPEND)" />
+        <TextView
+            android:id="@+id/SSLabel_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of SS fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/SS_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/AddR_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD RATES BLOCK (APPEND)" />
+        <TextView
+            android:id="@+id/RLabel_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of R fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/R_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/AddK_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD KINETICS BLOCK (APPEND)" />
+        <TextView
+            android:id="@+id/KLabel_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Status of K fragment:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/K_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/ResetKin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET KINETICS (DELETE SMS, SS, R AND K)" />
+
+        <TextView
+            android:id="@+id/Label2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\n(C) PHREEQC calculation"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_blue_dark"/>
+
+        <Button
+            android:id="@+id/SelectDatabase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:text="SELECT DATABASE" />
+
+        <TextView
+            android:id="@+id/DataLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCurrently selected database:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/Data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/PhreeqcLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nPHREEQC input file:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/PhreeqcInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <Button
+            android:id="@+id/openInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INPUTFILE" />
+        <Button
+            android:id="@+id/saveInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE AS" />
+
+        <Button
+            android:id="@+id/RunPhreeqc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="RUN PHREEQC" />
+        <Button
+            android:id="@+id/saveOutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE AS" />
+
+        <Button
+            android:id="@+id/Highlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="Highlight the output" />
+        <Button
+            android:id="@+id/Help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HELP" />
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+        <TextView
+            android:id="@+id/textViewX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n Program output: \n "
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorLink="#F5F5F5"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/outputView"
+            android:textIsSelectable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="false"
+            android:textColor="@android:color/holo_red_dark"></TextView>
+
+        <EditText
+            android:id="@+id/outputView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"></EditText>
+    </LinearLayout>
+</ScrollView>

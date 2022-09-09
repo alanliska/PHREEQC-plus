@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cz.p">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION" />
+    <application
+        android:allowBackup="true"
+        android:label="PHREEQC plus"
+        android:icon="@drawable/icon"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:extractNativeLibs="true">
+        <activity   android:name="cz.p.MainActivity"
+                    android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="cz.p.OpenBabel" />
+        <activity android:name="cz.p.SelectDatabase" />
+        <activity android:name="cz.p.XBasic1" />
+        <activity android:name="cz.p.XBasic2" />
+        <activity android:name="cz.p.XBasic3" />
+        <activity android:name="cz.p.XBasic4" />
+        <activity android:name="cz.p.Phreeqc" />
+        <activity android:name="cz.p.Refg" />
+        <activity android:name="cz.p.Refl" />
+        <activity android:name="cz.p.Refc" />
+        <activity android:name="cz.p.Refs" />
+        <activity android:name="cz.p.Compg" />
+        <activity android:name="cz.p.Compl" />
+        <activity android:name="cz.p.Compc" />
+        <activity android:name="cz.p.Comps" />
+        <activity android:name="cz.p.ConvertS" />
+        <activity android:name="cz.p.ConvertG" />
+        <activity android:name="cz.p.ConvertL" />
+        <activity android:name="cz.p.ConvertC" />
+        <activity android:name="cz.p.Vdw" />
+        <activity android:name="cz.p.Mulliken" />
+        <activity android:name="cz.p.Esp" />
+        <activity android:name="cz.p.Solvation" />
+        <activity android:name="cz.p.DevMode" />
+        <activity android:name="cz.p.ConvertDialog" />
+        <activity android:name="cz.p.ShellTools" />
+        <activity android:name="cz.p.BulkConversion" />
+        <activity android:name="cz.p.Chemsol" />
+        <activity android:name="cz.p.Chemsol1" />
+        <activity android:name="cz.p.Chemsol2" />
+        <activity android:name="cz.p.Mopac" />
+        <activity android:name="cz.p.Obabel" />
+        <activity android:name="cz.p.UniUni" />
+        <activity android:name="cz.p.UniBi" />
+        <activity android:name="cz.p.BiBi" />
+        <activity android:name="cz.p.BiTri" />
+        <activity android:name="cz.p.KineticsUniUni" />
+        <activity android:name="cz.p.KineticsUniBi" />
+        <activity android:name="cz.p.KineticsBiBi" />
+        <activity android:name="cz.p.KineticsBiTri" />
+    </application>
+
+</manifest>

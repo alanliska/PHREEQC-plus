@@ -1,0 +1,17 @@
+TITLE
+SOLUTION_MASTER_SPECIES 1
+INCLUDE$ /data/data/cz.p/files/SMS_kin.txt
+SOLUTION_SPECIES 1
+INCLUDE$ /data/data/cz.p/files/SS_kin.txt
+RATES 1
+INCLUDE$ /data/data/cz.p/files/R_kin.txt
+KINETICS 1
+-steps 1 100 400 3600
+INCLUDE$ /data/data/cz.p/files/K_kin.txt
+SOLUTION 1
+units	mol/L
+temp 	25.0
+pH 	7.00	charge
+[CH3Cl]	0.1
+[Br-]	0.1
+END

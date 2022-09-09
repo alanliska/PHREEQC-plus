@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dataset_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="I. Prepare PHREEQC database from calculated data\n\nDataset name:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/dataset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/label0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(a) MOPAC calculation = geometry optimization in vacuum + solvent (model COSMO)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_openbabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+
+        <Button
+            android:id="@+id/start_bulk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#70FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM BULK INPUT FILES" />
+
+        <TextView
+            android:id="@+id/label1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(b) MOPAC calculation = geometry optimization in vacuum + CHEMSOL calculation based on Mulliken charges = single point in water (Langevin model)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_mopac_chemsol_mulliken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+
+        <TextView
+            android:id="@+id/label2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(c) MOPAC calculation (AM1 only) = geometry optimization in vacuum + CHEMSOL calculation based on ESP charges = single point in water (Langevin model)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_mopac_chemsol_esp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+
+        <TextView
+            android:id="@+id/label3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nII. Prepare PHREEQC database from organized thermodynamic data (experimental or calculated externally)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#70FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM DATA" />
+
+        <TextView
+            android:id="@+id/labelKin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nIII. Prepare PHREEQC rates and kinetics blocks"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/temperature_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Temperature (in K):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/temperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/start_kin11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1AF123"
+            android:text="MODEL UNI-UNIMOLECULAR REACTION" />
+
+        <Button
+            android:id="@+id/start_kin12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A45DED62"
+            android:text="MODEL UNI-BIMOLECULAR REACTION" />
+
+        <Button
+            android:id="@+id/start_kin22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#5B5CDD61"
+            android:text="MODEL BI-BIMOLECULAR REACTION" />
+
+        <Button
+            android:id="@+id/start_kin23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#225CCC61"
+            android:text="MODEL BI-TRIMOLECULAR REACTION" />
+
+        <TextView
+            android:id="@+id/label4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nIV. Standalone programs"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+
+        <Button
+            android:id="@+id/start_phreeqc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#3F51B5"
+            android:text="*** PHREEQC ***"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/start_mopac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="*** MOPAC ***" />
+
+        <Button
+            android:id="@+id/start_chemsol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00BCD4"
+            android:text="*** CHEMSOL ***"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/start_obabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:text="*** OPENBABEL ***" />
+
+        <Button
+            android:id="@+id/start_devmode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
+            android:text="DEVELOPER MODE"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/About"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ABOUT THE APP" />
+
+    </LinearLayout>
+</ScrollView>

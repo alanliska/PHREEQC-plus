@@ -1,0 +1,12 @@
+TITLE
+SOLUTION_SPECIES 1
+INCLUDE$ /data/data/cz.p/files/Solution.dat
+PHASES 1
+INCLUDE$ /data/data/cz.p/files/Gas.dat
+SOLUTION 1
+units	mol/L
+temp 	25.0
+pH 	7.00	charge
+Na 0.1
+Cl 0.1
+END
