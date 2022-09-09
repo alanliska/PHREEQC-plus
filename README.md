@@ -1,0 +1,2 @@
+# PHREEQC-plus
+PHREEQC + CHEMSOL + MOPAC and more
