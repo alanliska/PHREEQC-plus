@@ -1,2 +1,2 @@
 # PHREEQC-plus
-PHREEQC + CHEMSOL + MOPAC and more
+PHREEQC + MOPAC + CHEMSOL and more
