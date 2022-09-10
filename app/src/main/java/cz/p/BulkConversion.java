@@ -1,11 +1,14 @@
 package cz.p;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +21,15 @@ import android.widget.TextView;
 import android.os.Handler;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -43,7 +50,11 @@ public class BulkConversion extends MainActivity {
     public TextView keywords_label;
     public EditText keywords;
     public Button openbabel_exit;
+    public Button openbabel_select;
     public Button quit;
+    public EditText BulkView;
+    private static final int READ_FILE100 = 100;
+    private Uri documentUri100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,19 +67,86 @@ public class BulkConversion extends MainActivity {
         solvation = (EditText) findViewById(R.id.solvation);
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
+        openbabel_select = (Button) findViewById(R.id.openbabel_select);
+        openbabel_select.setOnClickListener(openbabel_select_click);
         openbabel_exit = (Button) findViewById(R.id.openbabel_exit);
         openbabel_exit.setOnClickListener(openbabel_exit_click);
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(quit_click);
+        BulkView = (EditText) findViewById(R.id.BulkView);
 
     }
 
     public void onStart()
     {
         super.onStart();
+
+        File filePath100 = new File(getFilesDir()+File.separator+"bulk_conversion");
+        if (!filePath100.exists()) {
+            filePath100.mkdirs();
+        }
+
         method_view(exec("cat "+getFilesDir()+"/method.txt"));
         solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
         keywords_view(exec("cat "+getFilesDir()+"/keywords.txt"));
+        output100(exec("ls -l "+getFilesDir()+"/bulk_conversion"));
+    }
+
+    private View.OnClickListener openbabel_select_click; {
+
+        openbabel_select_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                read100(getApplicationContext());
+                output100(exec("ls -l "+getFilesDir()+"/bulk_conversion"));
+            }
+        };
+    }
+
+    private void read100(Context context100) {
+        Intent intent100 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent100.addCategory(Intent.CATEGORY_OPENABLE);
+        intent100.setType("text/plain");
+        startActivityForResult(intent100, READ_FILE100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == READ_FILE100 && data != null) {
+            try {
+
+                documentUri100 = data.getData();
+                String myData = "";
+                ParcelFileDescriptor pfd100 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream = new FileInputStream(pfd100.getFileDescriptor());
+                DataInputStream inp = new DataInputStream(fileInputStream);
+                BufferedReader br = new BufferedReader(new InputStreamReader(inp));
+                String strLine;
+                while ((strLine = br.readLine()) != null) {
+                    myData = myData + strLine + "\n";
+                }
+                inp.close();
+
+                FileOutputStream fileout = openFileOutput("BulkConversion.tmp", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(myData);
+                outputWriter.close();
+                fileInputStream.close();
+                pfd100.close();
+
+                String Sed100 = exec("sed -n 6p "+getFilesDir()+"/BulkConversion.tmp");
+                String BulkConvName = Sed100.replace(" ","_");
+                exec("mv "+getFilesDir()+"/BulkConversion.tmp "+getFilesDir()+"/bulk_conversion/"+BulkConvName);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     private View.OnClickListener openbabel_continue_click; {
@@ -181,7 +259,8 @@ public class BulkConversion extends MainActivity {
 
 
 
-                        File[] inputfiles = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"bulk_conversion").listFiles();
+//                        File[] inputfiles = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"bulk_conversion").listFiles();
+                        File[] inputfiles = new File(getFilesDir()+File.separator+"bulk_conversion").listFiles();
                         for (File file : inputfiles) {
                             if (!file.isFile()) continue;
                         try {
@@ -191,7 +270,8 @@ public class BulkConversion extends MainActivity {
                             outputWriter200.write(InputfileName);
                             outputWriter200.close();
 
-                            exec("mv "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"bulk_conversion"+File.separator+InputfileName+" "+getFilesDir()+"/"+InputfileName+".orig");
+//                            exec("mv "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"bulk_conversion"+File.separator+InputfileName+" "+getFilesDir()+"/"+InputfileName+".orig");
+                            exec("mv "+getFilesDir()+File.separator+"bulk_conversion"+File.separator+InputfileName+" "+getFilesDir()+"/"+InputfileName+".orig");
 
                             String Formula0 = exec("sed -n 1p "+getFilesDir()+"/"+InputfileName+".orig");
                             FileOutputStream fileout1007 = openFileOutput(InputfileName+".formula0", MODE_PRIVATE);
@@ -611,6 +691,25 @@ public class BulkConversion extends MainActivity {
 
         Intent intent = new Intent(BulkConversion.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        method_view(exec("cat "+getFilesDir()+"/method.txt"));
+        solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
+        keywords_view(exec("cat "+getFilesDir()+"/keywords.txt"));
+        output100(exec("ls -l "+getFilesDir()+"/bulk_conversion"));
+    }
+
+    // for displaying the output in the second TextView there must be different output3 than output, including the str3/proc3 variables
+    public void output100(final String str100) {
+        Runnable proc100 = new Runnable() {
+            public void run() {
+                BulkView.setText(str100);
+            }
+        };
+        handler.post(proc100);
     }
 
 

@@ -3,9 +3,8 @@
     package="cz.p">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-    <uses-permission android:name="android.permission.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <application
         android:allowBackup="true"
         android:label="PHREEQC plus"
@@ -22,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="cz.p.EditExternalFile" />
         <activity android:name="cz.p.OpenBabel" />
         <activity android:name="cz.p.SelectDatabase" />
         <activity android:name="cz.p.XBasic1" />
@@ -63,5 +63,4 @@
         <activity android:name="cz.p.KineticsBiBi" />
         <activity android:name="cz.p.KineticsBiTri" />
     </application>
-
 </manifest>

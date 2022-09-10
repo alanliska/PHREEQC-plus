@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     // very important - each code must be different!!!
     private static final int MY_PERMISSION_REQUEST_STORAGE = 1;
-    private static final int MANAGE_ALL_FILES_ACCESS_PERMISSION = 2;
+//    private static final int MANAGE_ALL_FILES_ACCESS_PERMISSION = 2;
     private Uri documentUri1;
     private Uri documentUri2;
     private Uri documentUri3;
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
     TextView label2;
     TextView label3;
     TextView label4;
+    TextView label5;
     Button start_mopac_chemsol_mulliken;
     Button start_mopac_chemsol_esp;
     Button start_mopac;
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     Button start_kin12;
     Button start_kin22;
     Button start_kin23;
-
+    Button start_editor;
 
 
     /**
@@ -282,6 +283,8 @@ public class MainActivity extends AppCompatActivity {
         start_convert = (Button) findViewById(R.id.start_convert);
         start_devmode = (Button) findViewById(R.id.start_devmode);
 
+        start_editor = (Button) findViewById(R.id.start_editor);
+
         About = (Button) findViewById(R.id.About);
         About.setOnClickListener(onAboutClick);
 
@@ -290,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
         label2 = (TextView) findViewById(R.id.label2);
         label3 = (TextView) findViewById(R.id.label3);
         label4 = (TextView) findViewById(R.id.label4);
+        label5 = (TextView) findViewById(R.id.label5);
 
         labelKin = (TextView) findViewById(R.id.labelKin);
         temperature_label = (TextView) findViewById(R.id.temperature_label);
@@ -344,6 +348,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DevMode.class);
+                startActivity(intent);
+            }
+        });
+
+        start_editor = (Button) findViewById(R.id.start_editor);
+        start_editor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EditExternalFile.class);
                 startActivity(intent);
             }
         });
@@ -575,7 +588,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        copyAsset("About.txt");
+        copyAsset("About.txt");copyAsset("ExternalOutput.txt");
 
         copyAsset("UniUni.bas");copyAsset("UniBi.bas");copyAsset("BiBi.bas");copyAsset("BiTri.bas");
 
@@ -730,18 +743,18 @@ public class MainActivity extends AppCompatActivity {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST_STORAGE);
 
                 } else {
                     ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_REQUEST_STORAGE);
                 }
                 ;
             } else {
                 // do nothing
             }
-
-    }
+            ;
+        }
     }
 
     public void onStart()

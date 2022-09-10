@@ -186,6 +186,19 @@
             android:backgroundTint="#FF9800"
             android:text="*** OPENBABEL ***" />
 
+        <TextView
+            android:id="@+id/label5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nV. External file editor"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <Button
+            android:id="@+id/start_editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT EXTERNAL FILE"
+            />
+
         <Button
             android:id="@+id/start_devmode"
             android:layout_width="match_parent"

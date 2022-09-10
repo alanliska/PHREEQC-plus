@@ -70,6 +70,13 @@
             android:typeface="monospace" />
 
         <Button
+            android:id="@+id/openbabel_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="PICK FILES FOR CONVERSION FROM EXTERNAL STORAGE" />
+
+        <Button
             android:id="@+id/openbabel_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,6 +89,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="QUIT" />
+
+        <EditText
+            android:id="@+id/BulkView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"></EditText>
 
     </LinearLayout>
 </ScrollView>
