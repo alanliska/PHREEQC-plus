@@ -1,0 +1,776 @@
+# frezchem_w
+# Data source:
+# Florián, J., and A. Warshel. "ChemSol, version 2.1." University of Southern California, Los Angeles (1999).
+# Bard, A. J., Parsons, R., Jordan, J. (editors), Standard potentials in aqueous solution, Marcel Dekker, New York 1985.
+# Dick, J. M., CHNOSZ: Thermodynamic calculations and diagrams for geochemistry, Frontiers in Earth Science, 7 (2019) 180.
+# Kobayashi, K., Suzuki T.S, Electron Comm Jpn. 2019;102:12–16.
+# Shkol’nikov, E.V., Russian Journal of Physical Chemistry A 90(3) 2016.
+
+PITZER
+-MacInnes   false
+-use_etheta true
+-redox      false
+
+SOLUTION_MASTER_SPECIES
+[C]     [C]     0       [C]    12.0111
+# H	H	0	H	1.008
+
+H	H+	     -1.     H	       1.008
+H(1)     H+	     -1.     0.0
+
+# O        O            0.0     O           16.00
+
+O	H2O	    0.0     O	       15.999
+O(-2)    H2O	    0.0     0.0
+
+
+E	e-	     0.0     0.0	     0.0
+Ca       Ca+2	   0.0     Ca	      40.08
+Mg       Mg+2	   0.0     Mg	      24.31
+Na       Na+	    0.0     Na	      22.99
+K	K+	     0.0     K	       39.1
+Cl       Cl-	    0.0     Cl	      35.45
+C	CO3-2	  2.0     HCO3	    12.015
+C(4)     CO3-2	  2.0     HCO3	    12.015
+Alkalinity CO3-2	1.0     Ca0.5(CO3)0.5   50.046
+[S]	[S]O4-2	  0.0     [S]O4	     32.064
+[S](6)     [S]O4-2	  0.0     [S]O4
+
+SOLUTION_SPECIES
+[C] = [C]
+H+ + e- = H ; log_k	     -38.05 ; delta_h	   219.54 # Bard
+OH- = O + H + e- ; log_k	    -109.66 ; delta_h	   696.43 # Bard
+# H = H
+# log_k 0
+# O = O
+# log_k 0
+# 0.5 O2 = O ; log_k	-41.3 ; delta_h	250.3
+# 0.5 H2 = H			 ; log_k	-36.3	 ; delta_h	219.1
+ # # H2O ve stavu (aq) je jen formalismus - bere se jako (l) - kvùli výpoètùm v režimu constrained equilibria, kde je jí tøeba explicitnì definovat ve fázi roztoku # 2 H + O = H2O ; log_k	  153.38 ; delta_h	   -970.93 ; #Gf°(l) =   -237.18 kJ.mol-1 (Bard-1985) #Hf°(l) =   -285.83 kJ.mol-1 (Bard-1985)  #H2O(aq) # # opravena chyba - *(-1) # H = H+ + e- ; log_k	     35.61 ; delta_h	   -217.97 #Gf°(aq) =      0.00 kJ.mol-1 (Bard-1985) #Hf°(aq) =      0.00 kJ.mol-1 (Bard-1985) #H+(aq) # D = D+ + e- ; log_k	     36.39 #Gf°(aq) =     -1.20 kJ.mol-1 (Bard-1985) #D+(aq)
+2 H + O = H2O ; 	log_k	  153.37 ; 	delta_h	   -958.08 #	Gf°(l) =   -237.18 kJ.mol-1 (Bard-1985) #	Hf°(l) =   -285.83 kJ.mol-1 (Bard-1985) #H2O(aq)
+H = H+ + e-  ; log_k	     38.05 ; delta_h	   -219.54 ; #Gf°(aq) =      0.00 kJ.mol-1 (Bard-1985) ; #Hf°(aq) =      0.00 kJ.mol-1 (Bard-1985) ; #H+(aq)
+O + H + e- = OH- ; log_k	    109.66 ; delta_h	   -696.43 ; #Gf°(aq) =   -157.29 kJ.mol-1 (Bard-1985) ; #Hf°(aq) =   -229.99 kJ.mol-1 (Bard-1985) ; #OH-(aq)
+CO3-2 = C + 3 O + 2 e- ; log_k	    -344.96 ; delta_h	  2124.93 # Bard
+Ca+2 + 2 e- = Ca ; log_k	    -124.92 ; delta_h	   713.91 # Bard
+Cl- = Cl + e- ; log_k	     -44.28 ; delta_h	   276.09 # Bard
+K+ + e- = K ; log_k	     -62.86 ; delta_h	   328.63 # Bard
+Mg+2 + 2 e- = Mg ; log_k	    -102.05 ; delta_h	   609.57 # Bard
+Na+ + e- = Na ; log_k	     -62.02 ; delta_h	   338.73 # Bard
+[S]O4-2 = [S] + 4 O + 2 e- ; log_k	    -351.22 ; delta_h	  2162.90 # Bard
+
+
+
+H+ = H+
+	-dw	 9.31e-9
+
+e- = e-
+
+H2O = H2O
+
+Ca+2 = Ca+2
+	-dw	 0.793e-9
+	-Vm  -0.3456  -7.252  6.149  -2.479  1.239  5  1.60  -57.1  -6.12e-3  1 # ref. 1
+
+Mg+2 = Mg+2
+	-dw	 0.705e-9
+	-Vm  -1.410  -8.6  11.13  -2.39  1.332  5.5  1.29  -32.9  -5.86e-3  1 # ref. 1
+
+Na+ = Na+
+	-dw	 1.33e-9
+	-Vm   2.28  -4.38  -4.1  -0.586  0.09  4  0.3  52  -3.33e-3  0.566 # ref. 1
+	# for calculating densities (rho) when I > 3...
+	# -Vm   2.28  -4.38  -4.1  -0.586  0.09  4  0.3  52  -3.33e-3  0.45
+
+K+ = K+
+	-dw	 1.96e-9
+	-Vm  3.322  -1.473  6.534  -2.712  9.06e-2  3.5  0  29.70  0  1 # ref. 1
+
+Cl- = Cl-
+	-dw	 2.03e-9
+	-Vm  4.465  4.801  4.325  -2.847  1.748  0  -0.331  20.16  0  1 # ref. 1
+
+CO3-2 = CO3-2
+	-dw	 0.955e-9
+	-Vm  4.91  0  0  -5.41  4.76  0  0.386  89.7  -1.57e-2  1 # ref. 1
+
+[S]O4-2 = [S]O4-2
+	-dw	 1.07e-9
+	-Vm  -7.77  43.17  141.1  -42.45  3.794  0  4.97  26.5  -5.77e-2  0.45 # ref. 1
+
+H2O = OH- + H+
+	-analytic       -1896.830553	-1.15387159	41390.2015	825.37519	-949444.6	0.000634273
+	-dw	 5.27e-9
+	-Vm  -9.66  28.5  80.0 -22.9 1.89 0 1.09 0 0 1 # ref. 1
+
+CO3-2 + H+ = HCO3-
+	-analytic       107.887088	0.03252849	-5151.7879	-38.92561	563713.8	0
+	-dw	 1.18e-9
+	-Vm  8.54  0  -11.7  0  1.6  0  0  116  0  1 # ref. 1
+
+CO3-2 + 2 H+ = CO2 + H2O
+	-analytic       464.196482	0.09344813	-26986.1558	-165.75951	2248628.7	0
+	-dw	 1.92e-9
+	-Vm  20.85  -46.93  -79.0  27.9  -0.193 # ref. 1
+
+Ca+2 + CO3-2 = CaCO3
+	-analytic       1228.805836	0.29943997	-35512.7505	-485.818	0	0
+	# -dw 4.46e-10	# complexes: calc'd with the Pikal formula
+	# -Vm  -.2430   -8.3748   9.0417   -2.4328  -.0300 # supcrt
+
+Mg+2 + H2O = MgOH+ + H+
+	-analytic	-0.506735	0	-3369.8212	0	0	0
+
+Mg+2 + CO3-2 = MgCO3
+	-analytic	-32.225085	0	1093.4862	12.72433	0	0
+	-dw 4.21e-10
+	-Vm  -.5837   -9.2067   9.3687   -2.3984  -.0300 # supcrt
+
+PHASES
+# necessary definitions:
+H(g) ; H = H ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 217.965 kJ.mol-1 (Bard) ; #S° = 114.71 J.K-1.mol-1 (Bard) #H(g)
+# D(g) ; D = D ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 221.673 kJ.mol-1 (Bard) ; #S° = 123.35 J.K-1.mol-1 (Bard) #D(g)
+# T(g) ; T = T ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 221.673 kJ.mol-1 (D-guess) ; #S° = 123.35 J.K-1.mol-1 (D-guess) #D(g)
+O(g) ; O = O ; log_k	-3.45 ; delta_h	-2.27 ; #H°f = 249.17 kJ.mol-1 (Bard) ; #S° = 160.95 J.K-1.mol-1 (Bard) #O(g)
+# [F](g) ; [F] = [F] ; log_k	-2.67 ; delta_h	-7.46 ; #H°f = 78.91 kJ.mol-1 (Bard) ; #S° = 158.64 J.K-1.mol-1 (Bard) #F(g)
+Cl(g) ; Cl = Cl ; log_k	-2.80 ; delta_h	-12.44 ; #H°f = 121.679 kJ.mol-1 (Bard) ; #S° = 165.09 J.K-1.mol-1 (Bard) #Cl(g)
+# Br(g) ; Br = Br ; log_k	-2.85 ; delta_h	-14.24 ; #H°f = 111.884 kJ.mol-1 (Bard) ; #S° = 174.91 J.K-1.mol-1 (Bard) #Br(g)
+# I(g) ; I = I ; log_k	-2.93 ; delta_h	-17.33 ; #H°f = 106.62 kJ.mol-1 (Bard) ; #S° = 180.68 J.K-1.mol-1 (Bard) #I(g)
+[S](g) ; [S] = [S] ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 278.81 kJ.mol-1 (Bard) ; #S° = 167.71 J.K-1.mol-1 (Bard) #S(g)
+# Se(g) ; Se = Se ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 227.07 kJ.mol-1 (Bard) ; #S° = 176.58 J.K-1.mol-1 (Bard) #Se(g)
+# Te(g) ; Te = Te ; log_k	-2.91 ; delta_h	-16.50 ; #H°f = 196.73 kJ.mol-1 (Bard) ; #S° = 182.63 J.K-1.mol-1 (Bard) #Te(g)
+# Po(g) ; Po = Po ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 146.988 kJ.mol-1 (Bard) ; #S° = 188.81 J.K-1.mol-1 (Bard) #Po(g)
+# [N](g) ; [N] = [N] ; log_k	-3.67 ; delta_h	-3.23 ; #H°f = 472.704 kJ.mol-1 (Bard) ; #S° = 153.20 J.K-1.mol-1 (Bard) #N(g)
+# P(g) ; P = P ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 314.25 kJ.mol-1 (Bard) ; #S° = 162.93 J.K-1.mol-1 (Bard) #P(g)
+# As(g) ; As = As ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 302.5 kJ.mol-1 (Bard) ; #S° = 174.10 J.K-1.mol-1 (Bard) #As(g)
+# Sb(g) ; Sb = Sb ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 262.3 kJ.mol-1 (Bard) ; #S° = 180.16 J.K-1.mol-1 (Bard) #Sb(g)
+# Bi(g) ; Bi = Bi ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 207.1 kJ.mol-1 (Bard) ; #S° = 186.90 J.K-1.mol-1 (Bard) #Bi(g)
+[C](g) ; [C] = [C] ; log_k	-2.71 ; delta_h	-8.71 ; #H°f = 718.384 kJ.mol-1 (Bard) ; #S° = 157.99 J.K-1.mol-1 (Bard) #C(g)
+C(g) ; C = C ; log_k	-2.71 ; delta_h	-8.71 ; #H°f = 718.384 kJ.mol-1 (Bard) ; #S° = 157.99 J.K-1.mol-1 (Bard) #C(g)
+# Si(g) ; Si = Si ; log_k	-2.80 ; delta_h	-12.02 ; #H°f = 368.4 kJ.mol-1 (Bard) ; #S° = 167.90 J.K-1.mol-1 (Bard) #Si(g)
+# Ge(g) ; Ge = Ge ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 328.19 kJ.mol-1 (Bard) ; #S° = 167.80 J.K-1.mol-1 (Bard) #Ge(g)
+# Sn(g) ; Sn = Sn ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 301 kJ.mol-1 (Bard) ; #S° = 168.39 J.K-1.mol-1 (Bard) #Sn(g)
+# Pb(g) ; Pb = Pb ; log_k	-2.69 ; delta_h	-8.04 ; #H°f = 193.9 kJ.mol-1 (Bard) ; #S° = 175.27 J.K-1.mol-1 (Bard) #Pb(g)
+# Ga(g) ; Ga = Ga ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 277 kJ.mol-1 (Bard) ; #S° = 169.00 J.K-1.mol-1 (Bard) #Ga(g)
+# In(g) ; In = In ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 243.3 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #In(g)
+# Tl(g) ; Tl = Tl ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 182.2 kJ.mol-1 (Bard) ; #S° = 180.85 J.K-1.mol-1 (Bard) #Tl(g)
+# Zn(g) ; Zn = Zn ; log_k	-2.55 ; delta_h	-2.77 ; #H°f = 130.73 kJ.mol-1 (Bard) ; #S° = 160.88 J.K-1.mol-1 (Bard) #Zn(g)
+# Cd(g) ; Cd = Cd ; log_k	-2.61 ; delta_h	-5.03 ; #H°f = 112.01 kJ.mol-1 (Bard) ; #S° = 167.75 J.K-1.mol-1 (Bard) #Cd(g)
+# Hg(g) ; Hg = Hg ; log_k	-2.60 ; delta_h	-4.86 ; #H°f = 61.317 kJ.mol-1 (Bard) ; #S° = 174.85 J.K-1.mol-1 (Bard) #Hg(g)
+# Cu(g) ; Cu = Cu ; log_k	-2.60 ; delta_h	-4.49 ; #H°f = 338 kJ.mol-1 (Bard) ; #S° = 166.52 J.K-1.mol-1 (Bard) #Cu(g)
+# Ag(g) ; Ag = Ag ; log_k	-2.64 ; delta_h	-6.37 ; #H°f = 284.69 kJ.mol-1 (Bard) ; #S° = 172.97 J.K-1.mol-1 (Bard) #Ag(g)
+# Au(g) ; Au = Au ; log_k	-2.58 ; delta_h	-3.94 ; #H°f = 366 kJ.mol-1 (Bard) ; #S° = 180.39 J.K-1.mol-1 (Bard) #Au(g)
+# Ni(g) ; Ni = Ni ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 425.14 kJ.mol-1 (Bard) ; #S° = 182.39 J.K-1.mol-1 (Bard) #Ni(g)
+# Pd(g) ; Pd = Pd ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 378.2 kJ.mol-1 (Bard) ; #S° = 167.05 J.K-1.mol-1 (Bard) #Pd(g)
+# Pt(g) ; Pt = Pt ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 565.3 kJ.mol-1 (Bard) ; #S° = 192.41 J.K-1.mol-1 (Bard) #Pt(g)
+# Co(g) ; Co = Co ; log_k	-2.55 ; delta_h	-2.90 ; #H°f = 439 kJ.mol-1 (Bard) ; #S° = 179.41 J.K-1.mol-1 (Bard) #Co(g)
+# Rh(g) ; Rh = Rh ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 556.9 kJ.mol-1 (Bard) ; #S° = 185.81 J.K-1.mol-1 (Bard) #Rh(g)
+# # Ir(g) ; Ir = Ir ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 665.3 kJ.mol-1 (Bard) ; #S° = 193.58 J.K-1.mol-1 (Bard) #Ir(g)
+# Fe(g) ; Fe = Fe ; log_k	-2.58 ; delta_h	-4.28 ; #H°f = 416.3 kJ.mol-1 (Bard) ; #S° = 180.38 J.K-1.mol-1 (Bard) #Fe(g)
+# Ru(g) ; Ru = Ru ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 642.7 kJ.mol-1 (Bard) ; #S° = 186.51 J.K-1.mol-1 (Bard) #Ru(g)
+# # Os(g) ; Os = Os ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 791 kJ.mol-1 (Bard) ; #S° = 192.57 J.K-1.mol-1 (Bard) #Os(g)
+# Mn(g) ; Mn = Mn ; log_k	-2.60 ; delta_h	-4.82 ; #H°f = 280.7 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #Mn(g)
+# Tc(g) ; Tc = Tc ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 38.7 kJ.mol-1 (Bard) ; #S° = 10.30 J.K-1.mol-1 (Bard) #Tc(g)
+# Re(g) ; Re = Re ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 769.9 kJ.mol-1 (Bard) ; #S° = 188.83 J.K-1.mol-1 (Bard) #Re(g)
+# Cr(g) ; Cr = Cr ; log_k	-2.60 ; delta_h	-4.57 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 174.39 J.K-1.mol-1 (Bard) #Cr(g)
+# Mo(g) ; Mo = Mo ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 658.1 kJ.mol-1 (Bard) ; #S° = 181.95 J.K-1.mol-1 (Bard) #Mo(g)
+# W(g) ; W = W ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 856.883 kJ.mol-1 (Bard) ; #S° = 173.84 J.K-1.mol-1 (Bard) #W(g)
+# V(g) ; V = V ; log_k	-2.60 ; delta_h	-4.70 ; #H°f = 515.5 kJ.mol-1 (Bard) ; #S° = 182.20 J.K-1.mol-1 (Bard) #V(g)
+# Nb(g) ; Nb = Nb ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 725.9 kJ.mol-1 (Bard) ; #S° = 186.26 J.K-1.mol-1 (Bard) #Nb(g)
+# Ta(g) ; Ta = Ta ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 782 kJ.mol-1 (Bard) ; #S° = 185.21 J.K-1.mol-1 (Bard) #Ta(g)
+# Ti(g) ; Ti = Ti ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 180.20 J.K-1.mol-1 (Bard) #Ti(g)
+# Zr(g) ; Zr = Zr ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 608.8 kJ.mol-1 (Bard) ; #S° = 181.36 J.K-1.mol-1 (Bard) #Zr(g)
+# Hf(g) ; Hf = Hf ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 619.2 kJ.mol-1 (Bard) ; #S° = 186.99 J.K-1.mol-1 (Bard) #Hf(g)
+# Sc(g) ; Sc = Sc ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 381.2 kJ.mol-1 (Bard) ; #S° = 174.68 J.K-1.mol-1 (Bard) #Sc(g)
+# Y(g) ; Y = Y ; log_k	-2.58 ; delta_h	-3.82 ; #H°f = 421.3 kJ.mol-1 (Bard) ; #S° = 179.48 J.K-1.mol-1 (Bard) #Y(g)
+# La(g) ; La = La ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 431 kJ.mol-1 (Bard) ; #S° = 182.38 J.K-1.mol-1 (Bard) #La(g)
+# Ac(g) ; Ac = Ac ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 406 kJ.mol-1 (Bard) ; #S° = 188.10 J.K-1.mol-1 (Bard) #Ac(g)
+# Ce(g) ; Ce = Ce ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 420.1 kJ.mol-1 (Bard) ; #S° = 191.77 J.K-1.mol-1 (Bard) #Ce(g)
+# Pr(g) ; Pr = Pr ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 356.9 kJ.mol-1 (Bard) ; #S° = 189.81 J.K-1.mol-1 (Bard) #Pr(g)
+# Nd(g) ; Nd = Nd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 326.9 kJ.mol-1 (Bard) ; #S° = 189.41 J.K-1.mol-1 (Bard) #Nd(g)
+# Pm(g) ; Pm = Pm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 318 kJ.mol-1 (Bard) ; #S° = 187.10 J.K-1.mol-1 (Bard) #Pm(g)
+# Sm(g) ; Sm = Sm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 206.7 kJ.mol-1 (Bard) ; #S° = 183.04 J.K-1.mol-1 (Bard) #Sm(g)
+# Eu(g) ; Eu = Eu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 177.4 kJ.mol-1 (Bard) ; #S° = 188.80 J.K-1.mol-1 (Bard) #Eu(g)
+# Gd(g) ; Gd = Gd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 194.31 J.K-1.mol-1 (Bard) #Gd(g)
+# Tb(g) ; Tb = Tb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 388.7 kJ.mol-1 (Bard) ; #S° = 303.58 J.K-1.mol-1 (Bard) #Tb(g)
+# Dy(g) ; Dy = Dy ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 290.4 kJ.mol-1 (Bard) ; #S° = 196.63 J.K-1.mol-1 (Bard) #Dy(g)
+# Ho(g) ; Ho = Ho ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 300.6 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Ho(g)
+# Er(g) ; Er = Er ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 311.9 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Er(g)
+# Tm(g) ; Tm = Tm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 232.2 kJ.mol-1 (Bard) ; #S° = 190.11 J.K-1.mol-1 (Bard) #Tm(g)
+# Yb(g) ; Yb = Yb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 155.6 kJ.mol-1 (Bard) ; #S° = 173.13 J.K-1.mol-1 (Bard) #Yb(g)
+# Lu(g) ; Lu = Lu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 427.6 kJ.mol-1 (Bard) ; #S° = 184.80 J.K-1.mol-1 (Bard) #Lu(g)
+# Th(g) ; Th = Th ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 597.1 kJ.mol-1 (Bard) ; #S° = 190.04 J.K-1.mol-1 (Bard) #Th(g)
+# Pa(g) ; Pa = Pa ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 607 kJ.mol-1 (Bard) ; #S° = 197.90 J.K-1.mol-1 (Bard) #Pa(g)
+# U(g) ; U = U ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 531.4 kJ.mol-1 (Bard) ; #S° = 199.70 J.K-1.mol-1 (Bard) #U(g)
+# Np(g) ; Np = Np ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 464.8 kJ.mol-1 (Bard) ; #S° = 117.61 J.K-1.mol-1 (Bard) #Np(g)
+# Pu(g) ; Pu = Pu ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 345.2 kJ.mol-1 (Bard) ; #S° = 177.10 J.K-1.mol-1 (Bard) #Pu(g)
+# B(g) ; B = B ; log_k	-2.66 ; delta_h	-7.21 ; #H°f = 562.7 kJ.mol-1 (Bard) ; #S° = 153.34 J.K-1.mol-1 (Bard) #B(g)
+# Al(g) ; Al = Al ; log_k	-2.57 ; delta_h	-3.53 ; #H°f = 329.7 kJ.mol-1 (Bard) ; #S° = 164.44 J.K-1.mol-1 (Bard) #Al(g)
+# Be(g) ; Be = Be ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 324.3 kJ.mol-1 (Bard) ; #S° = 136.16 J.K-1.mol-1 (Bard) #Be(g)
+Mg(g) ; Mg = Mg ; log_k	-2.58 ; delta_h	-4.15 ; #H°f = 147.1 kJ.mol-1 (Bard) ; #S° = 148.59 J.K-1.mol-1 (Bard) #Mg(g)
+Ca(g) ; Ca = Ca ; log_k	-2.66 ; delta_h	-7.12 ; #H°f = 178.2 kJ.mol-1 (Bard) ; #S° = 154.88 J.K-1.mol-1 (Bard) #Ca(g)
+# Sr(g) ; Sr = Sr ; log_k	-2.72 ; delta_h	-9.13 ; #H°f = 164.4 kJ.mol-1 (Bard) ; #S° = 164.51 J.K-1.mol-1 (Bard) #Sr(g)
+# Ba(g) ; Ba = Ba ; log_k	-2.76 ; delta_h	-10.76 ; #H°f = 180 kJ.mol-1 (Bard) ; #S° = 170.13 J.K-1.mol-1 (Bard) #Ba(g)
+# Ra(g) ; Ra = Ra ; log_k	-2.86 ; delta_h	-14.78 ; #H°f = 159 kJ.mol-1 (Bard) ; #S° = 176.36 J.K-1.mol-1 (Bard) #Ra(g)
+# Li(g) ; Li = Li ; log_k	-2.63 ; delta_h	-5.91 ; #H°f = 160.71 kJ.mol-1 (Bard) ; #S° = 138.67 J.K-1.mol-1 (Bard) #Li(g)
+Na(g) ; Na = Na ; log_k	-2.69 ; delta_h	-8.25 ; #H°f = 107.68 kJ.mol-1 (Bard) ; #S° = 153.61 J.K-1.mol-1 (Bard) #Na(g)
+K(g) ; K = K ; log_k	-2.78 ; delta_h	-11.81 ; #H°f = 89.16 kJ.mol-1 (Bard) ; #S° = 160.20 J.K-1.mol-1 (Bard) #K(g)
+# Rb(g) ; Rb = Rb ; log_k	-2.82 ; delta_h	-13.02 ; #H°f = 85.81 kJ.mol-1 (Bard) ; #S° = 169.99 J.K-1.mol-1 (Bard) #Rb(g)
+# Cs(g) ; Cs = Cs ; log_k	-2.88 ; delta_h	-15.49 ; #H°f = 78.78 kJ.mol-1 (Bard) ; #S° = 175.49 J.K-1.mol-1 (Bard) #Cs(g)
+#Fr(g) ; Fr = Fr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 0.00 J.K-1.mol-1 (Bard) #Fr(g)
+# He(g) ; He = He ; log_k	-2.36 ; delta_h	1.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 126.15 J.K-1.mol-1 (Bard) #He(g)
+# Ne(g) ; Ne = Ne ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 146.33 J.K-1.mol-1 (Bard) #Ne(g)
+# Ar(g) ; Ar = Ar ; log_k	-2.74 ; delta_h	-9.89 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 154.84 J.K-1.mol-1 (Bard) #Ar(g)
+# Kr(g) ; Kr = Kr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 164.98 J.K-1.mol-1 (Bard) #Kr(g)
+# Xe(g) ; Xe = Xe ; log_k	-2.88 ; delta_h	-15.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 169.68 J.K-1.mol-1 (Bard) #Xe(g)
+# Rn(g) ; Rn = Rn ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 176.21 J.K-1.mol-1 (Bard) #Rn(g)
+# Am(g) ; Am = Am ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 284.1 kJ.mol-1 (Bard) ; #S° = 194.40 J.K-1.mol-1 (Bard) #Am(g)
+# Cm(g) ; Cm = Cm ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 387.4 kJ.mol-1 (Bard) ; #S° = 197.00 J.K-1.mol-1 (Bard) #Cm(g)
+
+
+
+
+Anhydrite
+	Ca[S]O4 = Ca+2 + [S]O4-2
+	-analytic	-2035.568365	-1.38413871	45210.0023	901.547204	-1037066.3	0.000823464
+	Vm 45.94
+
+Antarcticite
+	CaCl2:6H2O = Ca+2 + 2Cl- + 6H2O
+	-analytic	-38613.99886	-14.14140164	1381731.005	15479.47256	-52024247.5	0.005422163
+	Vm 128.12
+
+Aphthitalite
+	Na2[S]O4:3K2[S]O4 = 2Na+ + 6K+ + 4[S]O4-2
+	-analytic	-26.960941	0.06631698	0	0	0	0
+	Vm 246.24
+
+Aragonite
+	CaCO3 = CO3-2 + Ca+2
+	-analytic	-171.977314	-0.07799321	2903.2929	71.595	0	0
+	Vm 34.15
+
+Arcanite
+	K2[S]O4  =  + 1.0000 [S]O4-- + 2.0000 K+
+	-analytic	2.822914	0	-1371.198	0	0	0
+	Vm 65.50
+
+Bischofite
+	MgCl2:6H2O = Mg+2 + 2Cl- + 6H2O
+	-analytic	326.68721	0.05106637	-10563.0802	-121.990076	0	0
+	Vm 129.57
+
+Bloedite
+	Na2Mg([S]O4)2:4H2O  =  + Mg+2 + 2Na+ + 2[S]O4-2 + 4H2O
+	-analytic	-3.436181	0.00357	0	0	0	0
+	Vm 149.98
+
+Calcite
+	CaCO3 = CO3-2 + Ca+2
+	-analytic	-171.906481	-0.07799321	2839.3192	71.595	0	0
+	Vm 36.93
+
+Carnallite
+	KMgCl3:6H2O  =  K+ + Mg++ + 3Cl- + 6H2O
+	-analytic	-474.012921	-0.28178438	8424.3363	213.374612	-235565.9	9.81779E-05
+	Vm 172.58
+Dolomite
+	CaMg(CO3)2 = Ca+2 + Mg+2 + 2 CO3-2
+	-analytic	-23.999547	0	2062.2473	0	0	0
+	Vm 64.34
+
+Epsomite
+	Mg[S]O4:7H2O  =  Mg+2 + [S]O4-2 + 7 H2O
+	-analytical	1.718069	0	-1073.1417	0	0	0
+	Vm 146.71
+
+Gypsum
+	Ca[S]O4:2H2O = Ca+2 + [S]O4-2 + 2 H2O
+	-analytic	-2136.655631	-1.43513531	47367.1982	944.564423	-1086550.1	0.000855338
+	Vm 74.69
+
+Halite
+	NaCl  =  Cl- + Na+
+	-analytic	596.809454	0.73058662	9360.9197	-315.516708	-1749318.4	-0.000495535
+	Vm 27.02
+
+Hexahydrite
+	Mg[S]O4:6H2O  =  Mg+2 + [S]O4-2 + 6 H2O
+	-analytic	-2.513523	0.00297531	0	0	0	0
+	Vm 132.58
+
+Hydrohalite
+	NaCl:2H2O = Na+ + Cl- + 2H2O
+	-analytic	-2366.884053	-1.81627952	24690.3183	1098.482092	1523945.4	0.001033303
+	Vm 57.96
+
+Hydromagnesite
+        (MgCO3)3:Mg(OH)2:3H2O = 4Mg+2 + 3CO3-2 + 2OH- + 3H2O 
+	-analytic	-55.503269	0	5585.4613	0	0	0
+	Vm 169.13
+
+Ikaite
+	CaCO3:6H2O = Ca+2 + CO3-2 + 6H2O
+	-analytic	0.159812	0	-2011.1005	0	0	0
+	Vm 117.54
+
+Kalicinite
+	KHCO3  =  K+ + HCO3-
+	-analytic	-2.823001	0.00565068	0	0	0	1.49489E-05
+	Vm 46.14
+
+Kieserite
+	Mg[S]O4:H2O  =  Mg+2 + [S]O4-2 + H2O
+	-analytic	56.731193	-0.36657234	0	0	0	0.000588992
+	Vm 56.60
+
+Landsfordite
+	MgCO3:5H2O = Mg+2 + CO3-2 + 5H2O
+	-analytic	34372.12012	24.21262132	-766987.6164	-15294.74182	17593834.6	-0.015476732
+	Vm 100.80
+
+Magnesite
+	MgCO3 =  CO3-2 + Mg+2
+	-analytic	-12.551979	0	1348.1804	0	0	0
+	Vm 28.02
+
+Meridianite
+	Mg[S]O4:11H2O = Mg+2 + [S]O4-2 + 11H2O
+	-analytic	-13.417432	0.04061372	0	0	0	0
+	Vm 207.44
+
+MgCl2:8H2O
+	MgCl2:8H2O = Mg+2 + 2Cl- + 8H2O
+	-analytic	989.331411	0.28201417	-27059.8088	-395.438891	0	0
+	Vm 159.08
+
+MgCl2:12H2O
+	MgCl2:12H2O = Mg+2 + 2Cl- + 12H2O
+	-analytic	6251.417981	18.27412717	610125.588	-4799.728491	-54142200.5	-0.014127812
+	Vm 218.10
+
+Mirabilite
+	Na2[S]O4:10H2O  =  [S]O4-2 + 2Na+ + 10H2O
+	-analytic	-20.12422	0.07613508	0	0	0	-4.26568E-05
+	Vm 219.80
+
+Na2CO3:7H2O
+	Na2CO3:7H2O = 2Na+ + CO3-2 + 7H2O
+	-analytic	-7.848843	0.02485766	0	0	0	0
+	Vm 153.71
+
+Nahcolite
+	NaHCO3  =  HCO3- + Na+
+	-analytic	5733.307217	4.09729508	-128132.8263	-2555.137922	2939222.2	-0.002655951
+	Vm 38.91
+
+Natron
+	Na2CO3:10H2O = CO3-2 + 2 Na+ + 10H2O
+	-analytic	-3.414245	-0.02520158	0	0	0	0.000113891
+	Vm 198.71
+
+Nesquehonite
+	MgCO3:3H2O =  CO3-2 + Mg+2 + 3H2O
+	-analytic	25.395192	-0.20362652	0	0	0	0.000337509
+	Vm 74.79
+
+Picromerite
+	Mg[S]O4:K2[S]O4:6H2O = Mg+2 + 2[S]O4-2 + 2K+ + 6H2O
+	-analytic	-37.615383	0.20453793	0	0	0	-0.000312121
+	Vm 191.78
+
+Sylvite
+	KCl  = K+ + Cl-
+	-analytic	-114.93339	-0.1612449	-3569.5943	66.15685	307041.4	9.81432E-05
+	Vm 37.52
+
+Tachyhydrite
+	CaCl2:(MgCl2)2:12H2O = Ca+2 + 6Cl- + 2Mg+2 + 12H2O
+	-analytic	34.907631	-0.06028307	0	0	0	0
+	Vm 311.81
+
+Thenardite
+	Na2[S]O4 = 2Na+ + [S]O4-2
+	-analytic	-0.53789	0.0008381	0	0	0	0
+	Vm 53.33
+
+Trona
+	Na3H(CO3)2:2H2O =  3Na+ + HCO3- + CO3-2 + 2H2O
+	-analytic	-4.337187	0.01113429	0	0	0	0
+	Vm 107.02
+
+Vaterite
+	CaCO3 = Ca+2 + CO3-2
+	-analytic	-172.129491	-0.07799321	3074.6881	71.595	0	0
+	Vm 37.72
+
+Ice(s)
+	H2O = H2O
+	-analytic	-485.2923	-0.2382738	13615.59	203.8087	-365935.2	0.000118951
+	Vm 19.65
+
+CO2(g)
+	CO2 = CO2
+	-analytic       108.386483	0.01985076	-6919.5315	-40.45154	669365.1	0
+	-T_c  304.2 # critical T, K
+	-P_c   72.80 # critical P, atm
+	-Omega 0.225 # acentric factor
+
+PITZER
+-B0								
+Ca+2	Cl-	 	0.304058	1265.271	11.94793	-0.03558926	1.64514E-05	-3394.2
+Ca+2	HCO3-	 	0.182545	-576520.518	-5661.1237	18.447305	-0.009989	0
+Ca+2	OH-		-0.1747	0	0	0	0	0
+Ca+2	[S]O4-2	 	0.115384	145.327	2.57051	-0.01120842	1.68444E-05	-6826.8
+H+	Cl-	 	0.197946	0	0	-0.00053053	0	0
+H+	[S]O4-2		0.0298	0	0	0	0	0
+K+	Cl-	 	0.048342	-758.497	-4.69717	0.01003107	-3.7342E-06	64
+K+	CO3-2	 	0.1288	0	0	0.0011	0	0
+K+	HCO3-	 	-0.010702	-0.001	0	0.001	0	0
+K+	OH-		0.1298	0	0	0	0	0
+K+	[S]O4-2	 	0.003795	22.492	0.2029	0.00165088	9.746E-07	-540.7
+Mg+2	Cl-	 	0.351542	-392.241	-17.65506	0.0703283	-4.17563E-05	-117885
+Mg+2	HCO3-	 	-0.009313	-273406.172	-2607.1152	8.25084	-0.00434	0
+Mg+2	[S]O4-2	 	0.126545	470.866	6.08307	-0.03139609	2.82462E-05	-15937.6
+MgOH+	Cl-		-0.1	0	0	0	0	0
+Na+	Cl-	 	0.076276	-886.777	-4.19728	0.00613645	-1.1006E-06	8942.9
+Na+	CO3-2	 	0.036205	1108.376	11.19856	-0.02330165	0	0
+Na+	HCO3-		0.028002	682.886	6.89959	-0.01445932	0	0
+Na+	OH-	 	-0.079596	13870.605	120.12506	-0.40580835	0.000231103	-318176
+Na+	[S]O4-2	 	0.038071	-26.946	-0.36262	0.00595978	-1.6429E-06	945
+
+-B1								
+Ca+2	Cl-	 	1.708132	0	0	-0.015417	0.000031791	0
+Ca+2	HCO3-	 	0.300039	26492.24	183.13156	-0.37258767	0.000089691	0
+Ca+2	OH-		-0.2303	0	0	0	0	0
+Ca+2	[S]O4-2	 	3.56045	-6591.464	-37.68237	0.17530628	-0.000174047	103372
+H+	Cl-	 	0.176822	-30287.948	-205.82977	0.59473772	-0.000307166	793994.6
+K+	Cl-	 	0.210434	-14898.951	-173.19076	0.55331238	-0.000283943	-412199.8
+K+	CO3-2		1.432996	0.001	0	0.00436	0	0
+K+	HCO3-	 	0.0478	0.001	0.00001	0.00109999	0	0
+K+	OH-		0.32	0	0	0	0	0
+K+	[S]O4-2	 	1.052416	767.611	6.36874	-0.03159629	2.98397E-05	-16995.7
+Mg+2	Cl-	 	1.821364	-65485.608	1302.23382	-6.71036992	0.004429219	13522889.4
+Mg+2	HCO3-	 	0.804725	3203209.695	29927.1515	-92.77793541	0.0477642	0
+Mg+2	[S]O4-2	 	3.491512	2603.294	34.29203	-0.13991327	0.000161578	-90018.9
+MgOH+	Cl-		1.658	0	0	0	0	0
+Na+	Cl-	 	0.280431	-8677.858	-94.69966	0.2944375	-0.000147476	-191956
+Na+	CO3-2	 	1.512069	4412.512	44.58207	-0.09989121	0	0
+Na+	HCO3-	 	0.044005	1129.389	11.41086	-0.02446734	0	0
+Na+	OH-	 	0.253083	10166.406	88.04521	-0.30719174	0.000185849	-233205.9
+Na+	[S]O4-2	 	1.035408	-106.397	-1.89717	0.01819155	-8.1292E-06	4580.4
+
+-B2								
+Ca+2	OH-		-5.72	0	0	0	0	0
+Ca+2	[S]O4-2	 	-61.685514	21440.768	133.72156	-0.59337506	0.000399407	-359056.7
+Mg+2	[S]O4-2	 	-6.243985	245008.193	1276.67549	-6.82364722	0.007402746	-3561447.4
+
+-C0								
+Ca+2	Cl-	 	-0.00199	125.363	-0.64691	0.00444735	-3.2027E-06	-12466.4
+Ca+2	[S]O4-2	 	0.039751	70.752	0.59046	-0.00274756	3.6688E-06	-1597.7
+H+	Cl-	 	-0.002891	0	0	0.00001735	-5.94E-08	0
+H+	[S]O4-2		0.0438	0	0	0	0	0
+K+	Cl-	 	-0.000839	91.27	0.58481	-0.00129068	4.911E-07	-11.4
+K+	CO3-2		0.0005	0	0	0	0	0
+K+	OH-		0.0041	0	0	0	0	0
+K+	[S]O4-2	 	0.014845	6.792	0.12817	-0.00049111	5.849E-07	-332
+Mg+2	Cl-	 	0.006507	0	0	-0.00024995	2.418E-07	0
+Mg+2	[S]O4-2	 	0.05291	-6.004	-0.43928	0.00120236	-1.9372E-06	1116.1
+Na+	Cl-	 	0.001271	52.6	0.07951	0.00031974	-3.195E-07	-1237.7
+Na+	CO3-2	 	0.0052	0	0	0	0	0
+Na+	OH-	 	0.004116	500.658	4.3359	-0.01615845	1.05123E-05	-11484.5
+Na+	[S]O4-2	 	-0.002331	-0.711	-0.04568	-0.00053454	-2.014E-07	116.1
+
+-LAMDA								
+Ca+2	CO2		0.164379	245541.544	2452.50972	-8.101555	0.00442472	0
+Cl-	CO2	 	0.02048	-33159.618	-315.82788	0.9964326	-0.00052122	0
+K+	CO2		0.044942	-55954.193	-546.07447	1.7670079	-0.0009487	0
+Mg+2	CO2	 	0.144733	3589.474	104.34527	-0.541843	0.00038812	0
+Na+	CO2		0.081474	109399.341	1047.02157	-3.326566	0.0017532	0
+[S]O4-2	CO2	 	0.138973	-33927.762	-457.01574	1.8270948	-0.00114272	0
+
+-PSI								
+Ca+2	H+	Cl-	-0.0142	0	0	0	0	0
+Ca+2	Mg+2	Cl-	-0.02381	-981.659	-7.4062	0.01303773	0	0
+Ca+2	Mg+2	[S]O4-2	0.024	0	0	0	0	0
+Cl-	CO3-2	K+	0.004	0	0	0	0	0
+Cl-	CO3-2	Na+	0.008656	-6.96	-0.08625	0.00037348	-4.315E-07	227.1
+Cl-	HCO3-	Mg+2	-0.096	0	0	0	0	0
+Cl-	HCO3-	Na+	-0.012777	-6.334	-0.10633	0.00042061	-5.501E-07	279
+Cl-	OH-	Ca+2	-0.025	0	0	0	0	0
+Cl-	OH-	K+	-0.006	0	0	0	0	0
+Cl-	OH-	Na+	-0.006	0	0	0	0	0
+Cl-	[S]O4-2	Ca+2	-0.054444	-27.382	-0.49859	0.00202214	-2.5738E-06	1303.4
+Cl-	[S]O4-2	K+	-0.003829	-9.341	-0.12911	0.00036001	-6.009E-07	334
+Cl-	[S]O4-2	Mg+2	-0.01833	-21.244	0.02933	-0.00019719	1.618E-07	-66.2
+Cl-	[S]O4-2	Na+	-0.001451	12.605	0.1146	-0.00056411	0.000000528	-309.6
+HCO3-	CO3-2	K+	0.012	0	0	0	0	0
+HCO3-	CO3-2	Na+	0.002	0	0	0	0	0
+K+	Ca+2	Cl-	-0.028561	-13.439	0	0.00025428	0	0
+K+	Ca+2	[S]O4-2	-0.028561	-13.439	0	0.00025428	0	0
+K+	H+	Cl-	-0.0114	0	0	0	0	0
+K+	H+	[S]O4-2	0.130006	0	0	0.005456	0	0
+K+	Mg+2	Cl-	-0.049483	-28.991	0	-0.00000875	0	0
+K+	Mg+2	[S]O4-2	-0.124362	-8.156	-0.36908	0.00150172	-1.9823E-06	954.2
+Mg+2	H+	Cl-	-0.0077	0	0	0	0	0
+Mg+2	MgOH+	Cl-	0.028	0	0	0	0	0
+Na+	Ca+2	Cl-	-0.003297	0	1.8475	-0.01299	0.00001106	0
+Na+	Ca+2	[S]O4-2	-0.073409	-7353.945	-53.26546	0.23794424	-0.00024367	143653.4
+Na+	H+	Cl-	-0.004	0	0	0	0	0
+Na+	K+	Cl-	-0.002539	-204.354	-1.09448	0.00146803	0	0
+Na+	K+	CO3-2	0.003	0	0	0	0	0
+Na+	K+	HCO3-	-0.0079	0	0	0	0	0
+Na+	K+	[S]O4-2	0.003969	-1192.758	-7.92204	0.03628726	-3.72313E-05	21474.2
+Na+	Mg+2	Cl-	-0.008172	1.994	0	0.00005446	0	0
+Na+	Mg+2	[S]O4-2	-0.009911	-36.718	-0.15613	0.00124948	-1.3145E-06	447
+OH-	CO3-2	Na+	-0.017	0	0	0	0	0
+[S]O4-2	CO3-2	K+	-0.009	0	0	0	0	0
+[S]O4-2	CO3-2	Na+	0.004501	9.126	0.24028	-0.00098138	1.2522E-06	-627.3
+[S]O4-2	HCO3-	Mg+2	-0.161	0	0	0	0	0
+[S]O4-2	HCO3-	Na+	-0.005	0	0	0	0	0
+[S]O4-2	OH-	K+	-0.05	0	0	0	0	0
+[S]O4-2	OH-	Na+	-0.009	0	0	0	0	0
+OH-	CO3-2	K+	-0.01	0	0	0	0	0
+
+-THETA								
+Ca+2	H+		0.092	0	0	0	0	0
+Ca+2	Mg+2	 	0.124367	-983.114	0	-0.00634242	0	0
+Cl-	CO3-2		-0.02	0	0	0	0	0
+Cl-	HCO3-		0.03	0	0	0	0	0
+Cl-	OH-		-0.05	0	0	0	0	0
+Cl-	[S]O4-2	 	0.045973	-35.626	-0.29988	0.00128989	-0.000001378	794.3
+HCO3-	CO3-2		-0.04	0	0	0	0	0
+K+	Ca+2	 	0.056416	-284.94	0	-0.00454	0	0
+K+	H+		0.005	0	0	0	0	0
+K+	Mg+2	 	0.1167	0	0	0	0	0
+Mg+2	H+		0.1	0	0	0	0	0
+Na+	Ca+2	 	0.048535	39.673	0.36653	-0.00159002	1.6783E-06	-967.4
+Na+	H+		0.036	0	0	0	0	0
+Na+	K+	 	-0.00948	612.415	3.02995	-0.00369038	0	0
+Na+	Mg+2	 	0.07	0	0	0	0	0
+OH-	CO3-2		0.1	0	0	0	0	0
+[S]O4-2	CO3-2		0.02	0	0	0	0	0
+[S]O4-2	HCO3-		0.01	0	0	0	0	0
+[S]O4-2	OH-		-0.013	0	0	0	0	0
+
+-ZETA								
+Ca+2	Cl-	 CO2	-0.014131	5256.844	27.37745	-0.018002	-2.47349E-05	0
+H+	Cl-	 CO2	-0.004705	16334.389	152.38388	-0.470474	0.000240526	0
+K+	Cl-	 CO2	-0.01207	6853.264	73.79977	-0.257891	0.000147333	0
+K+	[S]O4-2	 CO2	-0.000358	30756.867	611.37561	-2.860763	0.001951086	0
+Mg+2	Cl-	 CO2	-0.009847	27726.81	253.62319	-0.772286	0.000391603	0
+Mg+2	[S]O4-2	 CO2	-0.041586	143162.608	1412.3029	-4.608331	0.002489207	0
+Na+	Cl-	 CO2	-0.000572	6879.031	73.74512	-0.258005	0.000147823	0
+Na+	[S]O4-2	 CO2	-0.037454	-1399082.37	-12630.27457	37.930519	-0.0189473	0
+								
+
+EXCHANGE_MASTER_SPECIES
+	X       X-
+EXCHANGE_SPECIES
+	X- = X-
+	log_k	   0.0
+
+	Na+ + X- = NaX
+	log_k   0.0
+
+	K+ + X- = KX
+	log_k   0.7
+	delta_h  -4.3   # Jardine & Sparks, 1984
+
+	Ca+2 + 2X- = CaX2
+	log_k   0.8
+	delta_h  7.2    # Van Bladel & Gheyl, 1980
+
+	Mg+2 + 2X- = MgX2
+	log_k   0.6
+	delta_h  7.4    # Laudelout et al., 1968
+
+SURFACE_MASTER_SPECIES
+	Hfo_s  Hfo_sOH
+	Hfo_w  Hfo_wOH
+SURFACE_SPECIES
+#   All surface data from
+#   Dzombak and Morel, 1990
+#
+#
+#   Acid-base data from table 5.7
+#
+#   strong binding site--Hfo_s,
+
+	Hfo_sOH = Hfo_sOH
+	log_k  0.0
+
+	Hfo_sOH  + H+ = Hfo_sOH2+
+	log_k  7.29    # = pKa1,int
+
+	Hfo_sOH = Hfo_sO- + H+
+	log_k  -8.93   # = -pKa2,int
+
+#   weak binding site--Hfo_w
+
+	Hfo_wOH = Hfo_wOH
+	log_k  0.0
+
+	Hfo_wOH  + H+ = Hfo_wOH2+
+	log_k  7.29    # = pKa1,int
+
+	Hfo_wOH = Hfo_wO- + H+
+	log_k  -8.93   # = -pKa2,int
+
+###############################################
+#	     CATIONS			 #
+###############################################
+#
+#   Cations from table 10.1 or 10.5
+#
+#   Calcium
+	Hfo_sOH + Ca+2 = Hfo_sOHCa+2
+	log_k  4.97
+
+	Hfo_wOH + Ca+2 = Hfo_wOCa+ + H+
+	log_k -5.85
+#
+#   Derived constants table 10.5
+#
+#   Magnesium
+	Hfo_wOH + Mg+2 = Hfo_wOMg+ + H+
+	log_k -4.6
+
+###############################################
+#	     ANIONS			  #
+###############################################
+#
+#   Anions from table 10.8
+#
+#   Sulfate
+	Hfo_wOH + [S]O4-2 + H+ = Hfo_w[S]O4- + H2O
+	log_k   7.78
+
+	Hfo_wOH + [S]O4-2 = Hfo_wOH[S]O4-2
+	log_k   0.79
+#
+# Carbonate: Van Geen et al., 1994 reoptimized for H[F]O
+# 0.15 g H[F]O/L has 0.344 mM sites == 2 g of Van Geen's Goethite/L
+#
+#	Hfo_wOH + CO3-2 + H+ = Hfo_wCO3- + H2O
+#	log_k   12.56
+#
+#	Hfo_wOH + CO3-2 + 2H+= Hfo_wHCO3 + H2O
+#	log_k   20.62
+
+
+END
+MEAN GAM
+CaCl2
+Ca[S]O4
+CaCO3
+Ca(OH)2
+MgCl2
+Mg[S]O4
+MgCO3
+Mg(OH)2
+NaCl
+Na2[S]O4
+NaHCO3
+Na2CO3
+NaOH
+KCl
+K2[S]O4
+KHCO3
+K2CO3
+KOH
+HCl
+H2[S]O4
+HBr
+
+END
+
+
+# =============================================================================================
+#This database is based on the low-temperature Pitzer model 
+#in the Na-K-Ca-Mg-H-Cl-[S]O4-CO3-HCO3-OH-H2O system, valid from 25 deg C
+#to -60 deg C.  The model was developed by Spencer et al (1990), Marion and Farren (1999), and Marion (2001):
+#
+#	Spencer, R. J., [N]. Møller, and J. H. Weare (1990)
+#	The prediction of mineral solubilities in natural waters: A chemical equilibrium model for the Na-K-Ca-Mg-Cl-[S]O4-H2O system at temperatures below 25°C
+#	Geochimica et Cosmochimica Acta, 54(3), 575-590.
+#
+#	Marion, G. M., and R. E. Farren (1999)
+#	Mineral solubilities in the Na-K-Mg-Ca-Cl-[S]O4-H2O system: A re-evaluation of the sulfate chemistry in the Spencer-Møller-Weare model
+#	Geochimica et Cosmochimica Acta, 63(9), 1305-1318.
+#
+#	Marion, G. M. (2001)
+#	Carbonate mineral solubility at low temperatures in the Na-K-Mg-Ca-H-Cl-[S]O4-OH-HCO3-CO3-CO2-H2O system
+#	Geochimica et Cosmochimica Acta, 65(12), 1883-1896.
+#
+#For solid phases, molar volumes are taken from Marion et al. (2005):
+#
+#	Marion, G. M., J. [S]. Kargel, D. C. Catling, and [S]. D. Jakubowski (2005)
+#	Effects of pressure on aqueous chemical equilibria at subzero temperatures with applications to Europa
+#	Geochimica et Cosmochimica Acta, 69(2), 259–274.
+#
+#The original implementation of this model was in the fortran based [F]REZCHEM 
+#model, as described by Marion and Grant (1994) and Marion and Kargel (2008):
+#
+#	Marion, G. M., and [S]. A. Grant (1994)
+#	[F]REZCHEM: A chemical-thermodynamic model for aqueous solutions at subzero temperatures
+#	Cold Regions Research & Engineering Laboratory, U.[S]. Army Corps of Engineers, Hanover, [N]H.
+#
+#	Marion, G. M., and J. [S]. Kargel (2008)
+#	Cold aqueous planetary geochemistry with [F]REZCHEM: From modeling to the search for life at the limits
+#	Springer, Berlin/Heidelberg.
+#
+#[F]REZCHEM was later adaped to the present frezchem.dat PHREEQC database by Toner and Sletten (2013):
+#
+#	Toner, J. D., and R. [S]. Sletten (2013)
+#	The formation of Ca-Cl enriched groundwaters in the Dry Valleys of Antarctica by cation exchange reactions: Field measurements and modeling of reactive transport
+#	Geochimica et Cosmochimica Acta, 110, 84–105.
+#
+#See Fig. 2.2 in Toner and Sletten (2013) for a comparison between 
+#PHREEQC and [F]REZCHEM for freezing seawater.  Please cite appropriate 
+#references when using this database.
+#
+# =============================================================================================
+#
+# For the reaction aA + bB = cC + dD,
+#   with delta_v = c*Vm(C) + d*Vm(D) - a*Vm(A) - b*Vm(B),
+# PHREEQC adds the pressure term to log_k: -= delta_v * (P - 1) / (2.3RT).
+#   Vm(A) is volume of A, cm3/mol, P is pressure, atm, R is the gas constant, T is Kelvin.
+# Gas-pressures and fugacity coefficients are calculated with Peng-Robinson's EO[S].
+#   Binary interaction coefficients from Soreide and Whitson, 1992, [F]PE 77, 217 are
+#    hard-coded in calc_PR():
+#    kij    CH4    CO2    H2[S]    [N]2
+#    H2O    0.49   0.19   0.19   0.49
+# =============================================================================================
+# The molar volumes of solids are entered with
+#                         -Vm vm cm3/mol
+#    vm is the molar volume, cm3/mol (default), but dm3/mol and m3/mol are permitted.
+# Data for minerals' vm (= MW (g/mol) / rho (g/cm3)) are defined using rho from
+#   Deer, Howie and Zussman, The rock-forming minerals, Longman.
+#                           --------------------
+# Temperature- and pressure-dependent volumina of aqueous species are calculated with a Redlich-
+#   type equation (cf. Redlich and Meyer, Chem. Rev. 64, 221), from parameters entered with 
+#                        -Vm a1 a2 a3 a4 W a0 i1 i2 i3 i4
+# The volume (cm3/mol) is
+#    Vm(T, pb, I) = 41.84 * (a1 * 0.1 + a2 * 100 / (2600 + pb)  + a3 / (T - 228) +
+#                            a4 * 1e4 / (2600 + pb) / (T - 228) - W * QBrn)
+#                   + z^2 / 2 * Av * f(I^0.5)
+#                   + (i1 + i2 / (T - 228) + i3 * (T - 228)) * I^i4
+#   Volumina at I = 0 are obtained using supcrt92 formulas (Johnson et al., 1992, CG 18, 899).
+#   41.84 transforms cal/bar/mol into cm3/mol.
+#   pb is pressure in bar.
+#   W * QBrn is the energy of solvation, calculated from W and the pressure dependence of the 
+#     Born equation.
+#   z is charge of the solute species.
+#   Av is the Debye-Hückel limiting slope.
+#   a0 is the ion-size parameter in the extended Debye-Hückel equation:
+#     f(I^0.5) = I^0.5) / (1 + a0 * DH_B * I^0.5),
+#     a0 = -gamma x for cations, = 0 for anions.
+# For details, consult ref. 1.
+#
+# ref. 1: Appelo, Parkhurst and Post, 2014. Geochim. Cosmochim. Acta 125, 49–67. 
+# ref. 2: Procedures from ref. 1 using data compiled by Laliberté, 2009, J. Chem. Eng. Data 54, 1725.
+#
+#
+# =============================================================================================
+# It remains the responsibility of the user to check the calculated results, for example with
+#   measured solubilities as a function of (P, T).

@@ -41,12 +41,22 @@
             android:id="@+id/openInputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OPEN INPUTFILE" />
+            android:text="OPEN EXTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/openIntInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL INPUTFILE" />
         <Button
             android:id="@+id/saveInputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE INPUTFILE AS" />
+            android:text="SAVE INPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
             android:id="@+id/RunMopac"
@@ -58,7 +68,12 @@
             android:id="@+id/saveOutputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE OUTPUTFILE AS" />
+            android:text="SAVE OUTPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtOutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
             android:id="@+id/Highlight"

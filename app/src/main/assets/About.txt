@@ -1,4 +1,5 @@
 Development of the Android app:
+PHREEQC PLUS (ver. 2.3)
 © J. Heyrovský Institute of Physical Chemistry (Prague, Czech Republic), 2019-2022
  Alan Liška
  Veronika Růžičková
@@ -16,6 +17,13 @@ Licenses and references to used third-party software:
  Ref.: Florián, J., and A. Warshel. "ChemSol, version 2.1." University of Southern California, Los Angeles (1999).
  Source code: https://github.com/jborden/ChemSol
  License: The Android binary distribution is published as freeware at Mobile Chemistry Portal and Google Play Store with kind permission of Jan Florián.
+
+ * FASTCHEM
+ Authors: Daniel Kitzmann, Joachim Stock
+ References: Stock, J. W., Kitzmann, D., Patzer, A. B. C., Sedlmayr, E.: FastChem: A computer program for efficient complex chemical equilibrium calculations in the neutral/ionized gas phase with applications to stellar and planetary atmospheres. Monthly Notices of the Royal Astronomical Society, 479(1) (2018) 865-874.
+             Stock, J. W., Kitzmann, D., & Patzer, A. B. C.: FastChem 2: An improved computer program to determine the gas-phase chemical equilibrium composition for arbitrary element distributions. Monthly Notices of the Royal Astronomical Society, 2022.
+ Source code: https://github.com/exoclime/FastChem
+ License: This project is Copyright (c) Daniel Kitzmann and Joachim Stock. FastChem is released under the GNU Public Licence (GPL) 3.0. That means, it can be freely copied, edited, and re-distributed. If the code is re-distributed it has to be released under at least a GPL 3.0 licence as well. The full licence of FastChem can be found in the repository licence.md file or under https://www.gnu.org/licenses/gpl-3.0.html. The user guide is released under the Creative Commons Licence (CC BY SA). Licensees may copy and distribute the work and make derivative works based on it only if they give the authors (Daniel Kitzmann & Joachim Stock) the credits by providing a reference to the original guide and this GitHub repository. Licensees may also distribute derivative works only under a license identical to ("not more restrictive than") the license that governs the original work.
 
  * GMP
  Contributors: please see the page https://gmplib.org/manual/Contributors
@@ -45,6 +53,11 @@ Licenses and references to used third-party software:
  Ref.: Parkhurst, D.L., and Appelo, C.A.J., 2013, Description of input and examples for PHREEQC version 3—A computer program for speciation, batch-reaction, one-dimensional transport, and inverse geochemical calculations: U.S. Geological Survey Techniques and Methods, book 6, chap. A43, 497 p.
  Source code: https://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/
  Usage: Public Domain
+
+* TRANSPOSE
+ Author: Dr. Alex Sheppard
+ Source code: https://sourceforge.net/projects/transpose/
+ License: This software is released under the GPL license (GNU General Public License version 2.0 (GPLv2)). 
 
  * X11-BASIC
  Author: Markus Hoffmann
@@ -102,8 +115,15 @@ Other references:
 
  * PHREEQC databases distributed within the official installers - please see https://water.usgs.gov/water-resources/software/PHREEQC/index.html. 
 
+ * PHREEQC derived ("_anhydr" and "_w") databases utilizing the elemental species for connection with MOPAC/CHEMSOL estimated equilibria
+ Florián, J., and A. Warshel. "ChemSol, version 2.1." University of Southern California, Los Angeles (1999).
+ Bard, A. J., Parsons, R., Jordan, J. (editors), Standard potentials in aqueous solution, Marcel Dekker, New York 1985.
+ Dick, J. M., CHNOSZ: Thermodynamic calculations and diagrams for geochemistry, Frontiers in Earth Science, 7 (2019) 180.
+ Kobayashi, K., Suzuki T.S, Electron Comm Jpn. 2019;102:12–16.
+ Shkol’nikov, E.V., Russian Journal of Physical Chemistry A 90(3) 2016.
+
  * pKa datasheet contains values taken from NIST database (Martell A.E., Smith R.M., Motekaitis R.J., NIST Critically Selected Stability Constants of Metal Complexes Database, 8.0. NIST: Gaithersburg, MD, 2004.).
 
  * Thermoddem database - downloaded from https://thermoddem.brgm.fr/databases/phreeqc. 
 
-Info on licenses: please see the manuals and examples located in Documents/phreeqc_plus folder
+Info on licenses: please see the full-text licenses under the button Info on licenses. 

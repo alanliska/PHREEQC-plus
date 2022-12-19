@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/config_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to FASTCHEM calculation.\n\nConfiguration file:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/atmospheric_profile_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nAtmospheric profile file:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/atmospheric_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openatmofile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL ATMOSPHERIC PROFILE FILE" />
+
+        <Button
+            android:id="@+id/openatmofile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL ATMOSPHERIC PROFILE FILE" />
+
+        <Button
+            android:id="@+id/saveatmofile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE ATMOSPHERIC PROFILE FILE AS (internal)" />
+
+        <Button
+            android:id="@+id/saveatmofile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE ATMOSPHERIC PROFILE FILE AS (external)" />
+
+        <TextView
+            android:id="@+id/abundance_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nElement abundances:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/abundance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openabundfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL ELEMENT ABUNDANCES FILE" />
+
+        <Button
+            android:id="@+id/openabundfile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL ELEMENT ABUNDANCES FILE" />
+
+        <Button
+            android:id="@+id/saveabundfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE ELEMENT ABUNDANCES FILE AS (internal)" />
+
+        <Button
+            android:id="@+id/saveabundfile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE ELEMENT ABUNDANCES FILE AS (external)" />
+
+        <Button
+            android:id="@+id/database1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E99963"
+            android:text="LOAD AND APPEND INTERNAL DATABASE" />
+
+        <Button
+            android:id="@+id/database2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E99963"
+            android:text="LOAD AND APPEND EXTERNAL DATABASE" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET (DELETE APPENDED DATABASES)" />
+
+        <Button
+            android:id="@+id/run"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="RUN FASTCHEM" />
+
+        <Button
+            android:id="@+id/saveoutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE AS (internal)" />
+
+        <Button
+            android:id="@+id/saveoutputfile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE AS (external)" />
+
+        <Button
+            android:id="@+id/transpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#AAEB3B"
+            android:text="Transpose the output" />
+
+        <Button
+            android:id="@+id/highlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="Highlight the output" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+        <TextView
+        android:id="@+id/DataLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="\nStatus of the database:"
+        android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/Data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/textViewX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n Program output: \n "
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorLink="#F5F5F5"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/outputView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="false"
+            android:textColor="@android:color/holo_red_dark"
+            android:textIsSelectable="true"></TextView>
+
+        <EditText
+            android:id="@+id/outputView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"></EditText>
+    </LinearLayout>
+</ScrollView>

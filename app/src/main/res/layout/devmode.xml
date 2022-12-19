@@ -50,6 +50,18 @@
             android:text="MODIFY SOLID PHASE MAKER" />
 
         <Button
+            android:id="@+id/start_xbasic5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 MAKER" />
+
+        <Button
             android:id="@+id/start_refs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,6 +86,18 @@
             android:text="MODIFY SOLID REFERENCE" />
 
         <Button
+            android:id="@+id/start_refss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION REFERENCE" />
+
+        <Button
+            android:id="@+id/start_refgcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 REFERENCE" />
+
+        <Button
             android:id="@+id/start_comps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,6 +120,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compgcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 PARAMETERS" />
 
         <Button
             android:id="@+id/start_vdw"

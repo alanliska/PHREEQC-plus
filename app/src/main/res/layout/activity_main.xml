@@ -16,7 +16,7 @@
             android:id="@+id/dataset_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="I. Prepare PHREEQC database from calculated data\n\nDataset name:"
+            android:text="I. Prepare PHREEQC (solution + gas) and FASTCHEM (for gaseous species only) databases from calculated data\n\nDataset name:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -56,7 +56,7 @@
             android:id="@+id/label1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\n(b) MOPAC calculation = geometry optimization in vacuum + CHEMSOL calculation based on Mulliken charges = single point in water (Langevin model)"
+            android:text="\n(b) MOPAC calculation = geometry optimization in solvent + CHEMSOL calculation based on Mulliken charges = single point in water (Langevin model)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button
@@ -70,7 +70,7 @@
             android:id="@+id/label2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\n(c) MOPAC calculation (AM1 only) = geometry optimization in vacuum + CHEMSOL calculation based on ESP charges = single point in water (Langevin model)"
+            android:text="\n(c) MOPAC calculation (AM1 only) = geometry optimization in solvent + CHEMSOL calculation based on ESP charges = single point in water (Langevin model)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button
@@ -79,6 +79,20 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+
+        <TextView
+            android:id="@+id/label21"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(d) empirical qualified estimation (water) = group contribution method (Jankowski)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
 
         <TextView
             android:id="@+id/label3"
@@ -165,6 +179,14 @@
             android:textColor="#FFFFFF" />
 
         <Button
+            android:id="@+id/start_fastchem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6F51B5"
+            android:text="*** FASTCHEM ***"
+            android:textColor="#FFFFFF" />
+
+        <Button
             android:id="@+id/start_mopac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -190,14 +212,41 @@
             android:id="@+id/label5"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nV. External file editor"
+            android:text="\nV. Scoped storage tools"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/custom_export"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EXPORT CUSTOM FILE \nTO DOCUMENTS/PHREEQC_PLUS"
+            />
+        <Button
+            android:id="@+id/custom_import"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMPORT CUSTOM FILE \nFROM EXTERNAL STORAGE"
+            />
+        <Button
+            android:id="@+id/delete_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE INTERNAL FILE OR FOLDER"
+            />
+
         <Button
             android:id="@+id/start_editor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="EDIT EXTERNAL FILE"
             />
+        <Button
+            android:id="@+id/start_editor_int"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EDIT INTERNAL FILE"
+            />
+
 
         <Button
             android:id="@+id/start_devmode"
@@ -212,6 +261,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ABOUT THE APP" />
+
+        <Button
+            android:id="@+id/Licenses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSES INFO" />
 
     </LinearLayout>
 </ScrollView>

@@ -47,6 +47,10 @@ public class Phreeqc extends MainActivity {
     private static final int READ_FILE6 = 6;
     private static final int READ_FILE7 = 7;
     private static final int READ_FILE8 = 8;
+    private static final int CREATE_FILE1250 = 1250;
+    private static final int CREATE_FILE1260 = 1260;
+    private Uri documentUri01;
+    private Uri documentUri02;
     private Uri documentUri1;
     private Uri documentUri2;
     private Uri documentUri3;
@@ -75,9 +79,12 @@ Button ResetP;
 private TextView PhreeqcLabel;
 private EditText PhreeqcInput;
 Button openInputfile;
+Button openIntInputfile;
 Button saveInputfile;
+Button saveExtInputfile;
 Button RunPhreeqc;
 Button saveOutputfile;
+Button saveExtOutputfile;
 Button Highlight;
 Button Quit;
 private TextView textViewX;
@@ -105,8 +112,18 @@ private TextView K_kin;
 private TextView Label0;
 private TextView Label1;
 private TextView Label2;
-private Button ResetKin;
+private Button ResetSMSKin;
+private Button ResetSSKin;
+private Button ResetRKin;
+private Button ResetKKin;
 Button Help;
+
+Button AddSSi;
+Button AddPi;
+Button AddSMS_kini;
+Button AddSS_kini;
+Button AddR_kini;
+Button AddK_kini;
 
 
 
@@ -290,18 +307,29 @@ Button Help;
         P = (TextView) findViewById(R.id.P);
         ResetP = (Button) findViewById(R.id.ResetP);
         ResetP.setOnClickListener(ResetPClick);
-        ResetKin = (Button) findViewById(R.id.ResetKin);
-        ResetKin.setOnClickListener(ResetKinClick);
+        ResetSMSKin = (Button) findViewById(R.id.ResetSMSKin);
+        ResetSMSKin.setOnClickListener(ResetSMSKinClick);
+        ResetSSKin = (Button) findViewById(R.id.ResetSSKin);
+        ResetSSKin.setOnClickListener(ResetSSKinClick);
+        ResetRKin = (Button) findViewById(R.id.ResetRKin);
+        ResetRKin.setOnClickListener(ResetRKinClick);
+        ResetKKin = (Button) findViewById(R.id.ResetKKin);
+        ResetKKin.setOnClickListener(ResetKKinClick);
         PhreeqcLabel = (TextView) findViewById(R.id.PhreeqcLabel);
         PhreeqcInput = (EditText) findViewById(R.id.PhreeqcInput);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
         saveInputfile = (Button) findViewById(R.id.saveInputfile);
         saveInputfile.setOnClickListener(saveInputfileClick);
+        saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
+        saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         RunPhreeqc = (Button) findViewById(R.id.RunPhreeqc);
         RunPhreeqc.setOnClickListener(RunPhreeqcClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
+        saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
+        saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -334,11 +362,31 @@ Button Help;
         Label1 = (TextView) findViewById(R.id.Label1);
         Label2 = (TextView) findViewById(R.id.Label2);
 
-        ResetKin = (Button) findViewById(R.id.ResetKin);
-
         Help = (Button) findViewById(R.id.Help);
         Help.setOnClickListener(onHelpClick);
 
+
+        AddSSi = (Button) findViewById(R.id.AddSSi);
+        AddSSi.setOnClickListener(AddSSiClick);
+        AddPi = (Button) findViewById(R.id.AddPi);
+        AddPi.setOnClickListener(AddPiClick);
+        AddSMS_kini = (Button) findViewById(R.id.AddSMS_kini);
+        AddSMS_kini.setOnClickListener(AddSMS_kiniClick);
+        AddSS_kini = (Button) findViewById(R.id.AddSS_kini);
+        AddSS_kini.setOnClickListener(AddSS_kiniClick);
+        AddR_kini = (Button) findViewById(R.id.AddR_kini);
+        AddR_kini.setOnClickListener(AddR_kiniClick);
+        AddK_kini = (Button) findViewById(R.id.AddK_kini);
+        AddK_kini.setOnClickListener(AddK_kiniClick);
+
+
+        openIntInputfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Phreeqc.this, PhreeqcWork.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -351,6 +399,12 @@ Button Help;
 
         exec("rm "+getFilesDir()+"/Database_s2.dat");
         exec("rm "+getFilesDir()+"/Database_s1.dat");
+
+        exec("rm "+getFilesDir()+"/Database_solid_sol2.dat");
+        exec("rm "+getFilesDir()+"/Database_solid_sol1.dat");
+
+        // not optimal here:
+//        exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
 
         File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
@@ -535,6 +589,8 @@ Button Help;
         };
     }
 
+
+
     private View.OnClickListener SelectDatabaseClick; {
 
         SelectDatabaseClick = new View.OnClickListener() {
@@ -645,6 +701,44 @@ Button Help;
         };
     }
 
+    private View.OnClickListener saveExtInputfileClick; {
+
+        saveExtInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write1(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtOutputfileClick; {
+
+        saveExtOutputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write2(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+            }
+        };
+    }
+
 
 
     private void read1(Context context1) {
@@ -697,6 +791,22 @@ Button Help;
         startActivityForResult(intent8, READ_FILE8);
     }
 
+    private void write1(Context context1) {
+        Intent intent1 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent1.addCategory(Intent.CATEGORY_OPENABLE);
+        intent1.setType("text/plain");
+        intent1.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent1, CREATE_FILE1250);
+    }
+
+    private void write2(Context context2) {
+        Intent intent2 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent2.addCategory(Intent.CATEGORY_OPENABLE);
+        intent2.setType("text/plain");
+        intent2.putExtra(Intent.EXTRA_TITLE,"MyOutputFile");
+        startActivityForResult(intent2, CREATE_FILE1260);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -733,7 +843,17 @@ Button Help;
                     e.printStackTrace();
                 }
                 // important!
-                outputX(exec("cat "+getFilesDir()+"/Solution.dat"));
+//                outputX(exec("cat "+getFilesDir()+"/Solution.dat"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("Solution.dat");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
@@ -772,7 +892,17 @@ Button Help;
                     e.printStackTrace();
                 }
                 // important!
-                outputX(exec("cat "+getFilesDir()+"/Gas.dat"));
+//                outputX(exec("cat "+getFilesDir()+"/Gas.dat"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("Gas.dat");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
@@ -838,7 +968,17 @@ Button Help;
                     e.printStackTrace();
                 }
                 // important!
-                outputX(exec("cat "+getFilesDir()+"/SMS_kin.txt"));
+//                outputX(exec("cat "+getFilesDir()+"/SMS_kin.txt"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("SMS_kin.txt");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
@@ -877,7 +1017,17 @@ Button Help;
                     e.printStackTrace();
                 }
                 // important!
-                outputX(exec("cat "+getFilesDir()+"/SS_kin.txt"));
+//                outputX(exec("cat "+getFilesDir()+"/SS_kin.txt"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("SS_kin.txt");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
@@ -916,8 +1066,18 @@ Button Help;
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // tady to je dulezite!
-                outputX(exec("cat "+getFilesDir()+"/R_kin.txt"));
+                // important!
+//                outputX(exec("cat "+getFilesDir()+"/R_kin.txt"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("R_kin.txt");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
@@ -956,10 +1116,62 @@ Button Help;
                     e.printStackTrace();
                 }
                 // important!
-                outputX(exec("cat "+getFilesDir()+"/K_kin.txt"));
+//                outputX(exec("cat "+getFilesDir()+"/K_kin.txt"));
+                try {
+                    FileOutputStream fileout50 = openFileOutput("DisplayCurrentFile.txt",MODE_PRIVATE);
+                    OutputStreamWriter outputWriter50 = new OutputStreamWriter(fileout50);
+                    outputWriter50.write("K_kin.txt");
+                    outputWriter50.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+                outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE1250 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri01 = data.getData();
+                ParcelFileDescriptor pfd01 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd01.getFileDescriptor());
+                String fileContents = PhreeqcInput.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd01.close();
+                FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE1260 && data != null) {
+            // save output file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri02 = data.getData();
+                ParcelFileDescriptor pfd02 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd02.getFileDescriptor());
+                String fileContents = outputView2.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd02.close();
+                FileOutputStream fileout = openFileOutput("Input.phr.out", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -975,6 +1187,7 @@ Button Help;
                 // TODO Auto-generated method stub //
             exec("rm "+getFilesDir()+"/FragmentSS.dat");
             exec("rm "+getFilesDir()+"/Solution.dat");
+            exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
 
                 File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
@@ -1409,6 +1622,7 @@ Button Help;
                 // TODO Auto-generated method stub //
                 exec("rm "+getFilesDir()+"/FragmentP.dat");
                 exec("rm "+getFilesDir()+"/Gas.dat");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
 
                 File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
@@ -1553,16 +1767,482 @@ Button Help;
         };
     }
 
-    private View.OnClickListener ResetKinClick; {
+    private View.OnClickListener ResetSMSKinClick; {
 
-        ResetKinClick = new View.OnClickListener() {
+        ResetSMSKinClick = new View.OnClickListener() {
             public void onClick(View v) {
 
                 // TODO Auto-generated method stub //
                 exec("rm "+getFilesDir()+"/SMS_kin.txt");
+//                exec("rm "+getFilesDir()+"/SS_kin.txt");
+//                exec("rm "+getFilesDir()+"/R_kin.txt");
+//                exec("rm "+getFilesDir()+"/K_kin.txt");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
+
+                File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
+
+                if (!filePathP.exists()) {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat does not exist.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat is available.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+                if (!filePathSS.exists()) {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                if (!filePathSMS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                if (!filePathSS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                if (!filePathR_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                if (!filePathK_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener ResetSSKinClick; {
+
+        ResetSSKinClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // TODO Auto-generated method stub //
+//                exec("rm "+getFilesDir()+"/SMS_kin.txt");
                 exec("rm "+getFilesDir()+"/SS_kin.txt");
+//                exec("rm "+getFilesDir()+"/R_kin.txt");
+//                exec("rm "+getFilesDir()+"/K_kin.txt");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
+
+                File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
+
+                if (!filePathP.exists()) {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat does not exist.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat is available.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+                if (!filePathSS.exists()) {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                if (!filePathSMS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                if (!filePathSS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                if (!filePathR_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                if (!filePathK_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener ResetRKinClick; {
+
+        ResetRKinClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // TODO Auto-generated method stub //
+//                exec("rm "+getFilesDir()+"/SMS_kin.txt");
+//                exec("rm "+getFilesDir()+"/SS_kin.txt");
                 exec("rm "+getFilesDir()+"/R_kin.txt");
+//                exec("rm "+getFilesDir()+"/K_kin.txt");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
+
+                File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
+
+                if (!filePathP.exists()) {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat does not exist.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat is available.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+                if (!filePathSS.exists()) {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                if (!filePathSMS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                if (!filePathSS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                if (!filePathR_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                if (!filePathK_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener ResetKKinClick; {
+
+        ResetKKinClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // TODO Auto-generated method stub //
+//                exec("rm "+getFilesDir()+"/SMS_kin.txt");
+//                exec("rm "+getFilesDir()+"/SS_kin.txt");
+//                exec("rm "+getFilesDir()+"/R_kin.txt");
                 exec("rm "+getFilesDir()+"/K_kin.txt");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
 
                 File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
@@ -1742,7 +2422,7 @@ Button Help;
         EditText editText10 = new EditText(Phreeqc.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Phreeqc.this)
-                .setMessage("The file will be saved in the folder /work")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/phreeqc_work")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -1760,7 +2440,7 @@ Button Help;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_work");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/phreeqc_work");
                     }
                 })
 
@@ -1843,6 +2523,7 @@ Button Help;
                         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
                         Toast.makeText(getApplicationContext(), "Calculation finished", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -1942,7 +2623,7 @@ Button Help;
         EditText editText15 = new EditText(Phreeqc.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Phreeqc.this)
-                .setMessage("The file will be saved in the folder /work")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/phreeqc_work")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText15)
 
@@ -1960,7 +2641,7 @@ Button Help;
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_work");
+                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/phreeqc_work");
                     }
                 })
 
@@ -2084,6 +2765,66 @@ Button Help;
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 Intent intent = new Intent(Phreeqc.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddSSiClick; {
+        AddSSiClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddSolutionSpecies.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddPiClick; {
+        AddPiClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddPhases.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddSMS_kiniClick; {
+        AddSMS_kiniClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddKinSolutionMasterSpecies.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddSS_kiniClick; {
+        AddSS_kiniClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddKinSolutionSpecies.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddR_kiniClick; {
+        AddR_kiniClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddKinRates.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddK_kiniClick; {
+        AddK_kiniClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Phreeqc.this, AddKinKinetics.class);
                 startActivity(intent);
             }
         };
@@ -2244,6 +2985,8 @@ Button Help;
             }
         }
 
+        String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
+        outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
         output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
         output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
         output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));

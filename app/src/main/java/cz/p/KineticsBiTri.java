@@ -96,6 +96,7 @@ public class KineticsBiTri extends MainActivity {
     private EditText smiE;
 
     private Button AddTS;
+    private Button AddTSi;
     private Button ResetTS;
     private Button processBiTri;
     private Button quit;
@@ -182,6 +183,8 @@ public class KineticsBiTri extends MainActivity {
 
         AddTS = (Button) findViewById(R.id.AddTS);
         AddTS.setOnClickListener(AddTSClick);
+        AddTSi = (Button) findViewById(R.id.AddTSi);
+        AddTSi.setOnClickListener(AddTSiClick);
         ResetTS = (Button) findViewById(R.id.ResetTS);
         ResetTS.setOnClickListener(ResetTSClick);
         processBiTri = (Button) findViewById(R.id.processBiTri);
@@ -1410,6 +1413,16 @@ public class KineticsBiTri extends MainActivity {
                     exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SMS.txt");
                     exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SS.txt");
 
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/gas "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/solv "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/iupac "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/formula "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/damping_factor "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+getFilesDir()+File.separator+"output");
+
                     /////////////////////////////////// Display fields ///////////////////////////////////////////////
 
                     MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
@@ -1477,7 +1490,17 @@ public class KineticsBiTri extends MainActivity {
 //                }.start();
 
 
-                Intent intent = new Intent(KineticsBiTri.this, MainActivity.class);
+                Intent intent = new Intent(KineticsBiTri.this, ResumeActivityKin.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener AddTSiClick; {
+        AddTSiClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(KineticsBiTri.this, AddTSBiTri.class);
                 startActivity(intent);
             }
         };

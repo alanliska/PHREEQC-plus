@@ -1,0 +1,29 @@
+#Atmospheric profile input file
+/data/data/cz.p/files/atmospheric-profile.dat
+
+#Chemistry output file
+/data/data/cz.p/files/chemistry.dat
+
+#Monitor output file
+/data/data/cz.p/files/monitor.dat
+
+#FastChem console verbose level (1 - 4); 1 = almost silent, 4 = detailed console output
+1
+
+#Output mixing ratios (MR) or particle number densities (ND, default)
+MR
+
+#Element abundance file   
+/data/data/cz.p/files/abundances.dat
+
+#Species data file
+/data/data/cz.p/files/fastchem_database.dat
+
+#Accuracy of chemistry iteration
+1.0e-4
+
+#Max number of chemistry iterations 
+80000  
+
+#Max number internal solver iterations
+20000

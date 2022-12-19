@@ -1,1 +1,1 @@
-phreeqc.txt
+phreeqc_w.dat

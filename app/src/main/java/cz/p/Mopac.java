@@ -35,15 +35,16 @@ import java.io.OutputStreamWriter;
 public class Mopac extends MainActivity {
 
     private Handler handler = new Handler();
-
-
     private TextView Description;
     private TextView MopacLabel;
     private EditText MopacInput;
     Button openInputfile;
+    Button openIntInputfile;
     Button saveInputfile;
+    Button saveExtInputfile;
     Button RunMopac;
     Button saveOutputfile;
+    Button saveExtOutputfile;
     Button Highlight;
     Button Quit;
     private TextView textViewX;
@@ -51,6 +52,10 @@ public class Mopac extends MainActivity {
     private EditText outputView2;
     private static final int READ_FILE6 = 6;
     private Uri documentUri6;
+    private static final int CREATE_FILE20 = 20;
+    private Uri documentUri20;
+    private static final int CREATE_FILE21 = 21;
+    private Uri documentUri21;
 
 
     /**
@@ -211,12 +216,17 @@ public class Mopac extends MainActivity {
         MopacInput = (EditText) findViewById(R.id.MopacInput);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
         saveInputfile = (Button) findViewById(R.id.saveInputfile);
         saveInputfile.setOnClickListener(saveInputfileClick);
+        saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
+        saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         RunMopac = (Button) findViewById(R.id.RunMopac);
         RunMopac.setOnClickListener(RunChemsolClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
+        saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
+        saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -224,6 +234,14 @@ public class Mopac extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+
+        openIntInputfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Mopac.this, MopacWork.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -247,11 +265,49 @@ public class Mopac extends MainActivity {
         };
     }
 
+    private View.OnClickListener saveExtInputfileClick; {
+
+        saveExtInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write1(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtOutputfileClick; {
+
+        saveExtOutputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write2(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+            }
+        };
+    }
+
     private void read6(Context context6) {
         Intent intent6 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent6.addCategory(Intent.CATEGORY_OPENABLE);
         intent6.setType("text/plain");
         startActivityForResult(intent6, READ_FILE6);
+    }
+
+    private void write1(Context context1) {
+        Intent intent1 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent1.addCategory(Intent.CATEGORY_OPENABLE);
+        intent1.setType("text/plain");
+        intent1.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent1, CREATE_FILE20);
+    }
+
+    private void write2(Context context2) {
+        Intent intent2 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent2.addCategory(Intent.CATEGORY_OPENABLE);
+        intent2.setType("text/plain");
+        intent2.putExtra(Intent.EXTRA_TITLE,"MyOutputFile");
+        startActivityForResult(intent2, CREATE_FILE21);
     }
 
     @Override
@@ -285,6 +341,48 @@ public class Mopac extends MainActivity {
             }
         }
 
+        if (requestCode == CREATE_FILE20 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri20 = data.getData();
+                ParcelFileDescriptor pfd20 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd20.getFileDescriptor());
+                String fileContents = MopacInput.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd20.close();
+                FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE21 && data != null) {
+            // save output file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri21 = data.getData();
+                ParcelFileDescriptor pfd21 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd21.getFileDescriptor());
+                String fileContents = outputView2.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd21.close();
+                FileOutputStream fileout = openFileOutput("Input.out", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     private View.OnClickListener saveInputfileClick; {
@@ -313,7 +411,7 @@ public class Mopac extends MainActivity {
         EditText editText10 = new EditText(Mopac.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Mopac.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/mopac")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/mopac")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -331,7 +429,7 @@ public class Mopac extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"mopac");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/mopac");
                     }
                 })
 
@@ -494,7 +592,7 @@ public class Mopac extends MainActivity {
         EditText editText15 = new EditText(Mopac.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Mopac.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/mopac")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/mopac")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText15)
 
@@ -512,7 +610,7 @@ public class Mopac extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"mopac");
+                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/mopac");
                     }
                 })
 

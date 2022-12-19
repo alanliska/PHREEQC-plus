@@ -73,7 +73,7 @@
             android:id="@+id/formulaA_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula:"
+            android:text="\nFormula (without any brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -168,7 +168,7 @@
             android:id="@+id/formulaB_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula:"
+            android:text="\nFormula (without any brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -242,7 +242,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
-            android:text="SELECT XYZ FILE CONTAINING THE TRANSITION STATE" />
+            android:text="SELECT EXTERNAL XYZ FILE CONTAINING THE TRANSITION STATE" />
+        <Button
+            android:id="@+id/AddTSi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="SELECT INTERNAL XYZ FILE CONTAINING THE TRANSITION STATE" />
         <Button
             android:id="@+id/ResetTS"
             android:layout_width="match_parent"
@@ -322,7 +328,7 @@
             android:id="@+id/formulaC_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula:"
+            android:text="\nFormula (without any brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -417,7 +423,7 @@
             android:id="@+id/formulaD_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula:"
+            android:text="\nFormula (without any brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText

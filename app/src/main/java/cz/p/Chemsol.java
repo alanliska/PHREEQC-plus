@@ -41,9 +41,12 @@ public class Chemsol extends MainActivity {
     private TextView ChemsolLabel;
     private EditText ChemsolInput;
     Button openInputfile;
+    Button openIntInputfile;
     Button saveInputfile;
+    Button saveExtInputfile;
     Button RunChemsol;
     Button saveOutputfile;
+    Button saveExtOutputfile;
     Button Highlight;
     Button Quit;
     private TextView textViewX;
@@ -51,7 +54,10 @@ public class Chemsol extends MainActivity {
     private EditText outputView2;
     private static final int READ_FILE5 = 5;
     private Uri documentUri5;
-
+    private static final int CREATE_FILE40 = 40;
+    private Uri documentUri40;
+    private static final int CREATE_FILE41 = 41;
+    private Uri documentUri41;
 
 
     /**
@@ -212,12 +218,17 @@ public class Chemsol extends MainActivity {
         ChemsolInput = (EditText) findViewById(R.id.ChemsolInput);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
         saveInputfile = (Button) findViewById(R.id.saveInputfile);
         saveInputfile.setOnClickListener(saveInputfileClick);
+        saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
+        saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         RunChemsol = (Button) findViewById(R.id.RunChemsol);
         RunChemsol.setOnClickListener(RunChemsolClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
+        saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
+        saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -225,6 +236,14 @@ public class Chemsol extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+
+        openIntInputfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Chemsol.this, ChemsolWork.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -243,7 +262,29 @@ public class Chemsol extends MainActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 read5(getApplicationContext());
-                output3(exec("cat "+getFilesDir()+"/Input.inp"));
+                output3(exec("cat "+getFilesDir()+"/Input-chemsol.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtInputfileClick; {
+
+        saveExtInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write1(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-chemsol.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtOutputfileClick; {
+
+        saveExtOutputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write2(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-chemsol.txt"));
             }
         };
     }
@@ -253,6 +294,22 @@ public class Chemsol extends MainActivity {
         intent5.addCategory(Intent.CATEGORY_OPENABLE);
         intent5.setType("text/plain");
         startActivityForResult(intent5, READ_FILE5);
+    }
+
+    private void write1(Context context1) {
+        Intent intent1 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent1.addCategory(Intent.CATEGORY_OPENABLE);
+        intent1.setType("text/plain");
+        intent1.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent1, CREATE_FILE40);
+    }
+
+    private void write2(Context context2) {
+        Intent intent2 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent2.addCategory(Intent.CATEGORY_OPENABLE);
+        intent2.setType("text/plain");
+        intent2.putExtra(Intent.EXTRA_TITLE,"MyOutputFile");
+        startActivityForResult(intent2, CREATE_FILE41);
     }
 
     @Override
@@ -286,6 +343,48 @@ public class Chemsol extends MainActivity {
             }
         }
 
+        if (requestCode == CREATE_FILE40 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri40 = data.getData();
+                ParcelFileDescriptor pfd40 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd40.getFileDescriptor());
+                String fileContents = ChemsolInput.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd40.close();
+                FileOutputStream fileout = openFileOutput("Input-chemsol.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE41 && data != null) {
+            // save output file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri41 = data.getData();
+                ParcelFileDescriptor pfd41 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd41.getFileDescriptor());
+                String fileContents = outputView2.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd41.close();
+                FileOutputStream fileout = openFileOutput("Input.log", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     private View.OnClickListener saveInputfileClick; {
@@ -314,7 +413,7 @@ public class Chemsol extends MainActivity {
         EditText editText10 = new EditText(Chemsol.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Chemsol.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/chemsol")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/chemsol")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -332,7 +431,7 @@ public class Chemsol extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"chemsol");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/chemsol");
                     }
                 })
 
@@ -500,7 +599,7 @@ public class Chemsol extends MainActivity {
         EditText editText15 = new EditText(Chemsol.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Chemsol.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/chemsol")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/chemsol")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText15)
 
@@ -518,7 +617,7 @@ public class Chemsol extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"chemsol");
+                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/chemsol");
                     }
                 })
 
@@ -611,6 +710,8 @@ public class Chemsol extends MainActivity {
             }
         }.start();
     }
+
+
 
 
 

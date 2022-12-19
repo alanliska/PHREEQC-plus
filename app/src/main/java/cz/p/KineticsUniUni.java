@@ -66,6 +66,7 @@ public class KineticsUniUni extends MainActivity {
     private EditText smiB;
 
     private Button AddTS;
+    private Button AddTSi;
     private Button ResetTS;
     private Button processUniUni;
     private Button quit;
@@ -122,6 +123,8 @@ public class KineticsUniUni extends MainActivity {
 
         AddTS = (Button) findViewById(R.id.AddTS);
         AddTS.setOnClickListener(AddTSClick);
+        AddTSi = (Button) findViewById(R.id.AddTSi);
+        AddTSi.setOnClickListener(AddTSiClick);
         ResetTS = (Button) findViewById(R.id.ResetTS);
         ResetTS.setOnClickListener(ResetTSClick);
         processUniUni = (Button) findViewById(R.id.processUniUni);
@@ -815,6 +818,16 @@ public class KineticsUniUni extends MainActivity {
                     exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SMS.txt");
                     exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SS.txt");
 
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/gas "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/solv "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/iupac "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/formula "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/damping_factor "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+getFilesDir()+File.separator+"output");
+//                    exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+getFilesDir()+File.separator+"output");
+
                     /////////////////////////////////// Display fields ///////////////////////////////////////////////
 
                     MethodADisplay(exec("cat "+getFilesDir()+"/UniUni_methodA.txt"));
@@ -870,11 +883,18 @@ public class KineticsUniUni extends MainActivity {
 //                }.start();
 
 
-                Intent intent = new Intent(KineticsUniUni.this, MainActivity.class);
+                Intent intent = new Intent(KineticsUniUni.this, ResumeActivityKin.class);
                 startActivity(intent);
-                String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                exec("rm "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_g.txt");
-                exec("rm "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_s.txt");
+                }
+        };
+    }
+
+    private View.OnClickListener AddTSiClick; {
+        AddTSiClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(KineticsUniUni.this, AddTSUniUni.class);
+                startActivity(intent);
             }
         };
     }

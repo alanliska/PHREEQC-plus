@@ -42,6 +42,7 @@ public class ConvertG extends MainActivity {
     private EditText TabData;
     private EditText SaveName;
     Button openInputfile;
+    Button openInputfile2;
     Button Convert;
     Button Quit;
     private TextView ConvertedDataLabel;
@@ -209,6 +210,35 @@ public class ConvertG extends MainActivity {
         SaveName = (EditText) findViewById(R.id.SaveName);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openInputfile2 = (Button) findViewById(R.id.openInputfile2);
+        openInputfile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String InputData = TabData.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("Thermochemistry_g.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputData);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String SaveOutputName = SaveName.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SaveOutputName);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(ConvertG.this, ConvertPickerG.class);
+                startActivity(intent);
+            }
+        });
         Convert = (Button) findViewById(R.id.Convert);
         Convert.setOnClickListener(ConvertClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -274,7 +304,7 @@ public class ConvertG extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                read8(getApplicationContext());
+//                read8(getApplicationContext());
                 exec("cp "+getFilesDir()+"/Thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
                 progressDialog = new ProgressDialog(ConvertG.this);
                 progressDialog.setTitle("Please wait...");
@@ -295,14 +325,15 @@ public class ConvertG extends MainActivity {
                         makeDatabase_g();
                         modifyOutput_g();
                         Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
-                        onFinish();
+                        onFinishG();
                     }
-                    public void onFinish(){
+                    public void onFinishG(){
                         progressDialog.dismiss();
                     }
                 }.start();
-                Intent intent = new Intent(ConvertG.this, ConvertDialog.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ConvertG.this, ResumeActivity.class);
+//                startActivity(intent);
+                onStart();
             }
         };
     }
@@ -340,8 +371,10 @@ public class ConvertG extends MainActivity {
             e.printStackTrace();
         }
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_g2.dat "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_g.txt");
-
+        exec("cp "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_g.txt");
+        exec("rm "+getFilesDir()+"/Database_g2.dat");
+        exec("chmod -R 755 "+getFilesDir()+"/PHASES");
+        exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_g.txt");
     }
 
     private void read8(Context context8) {

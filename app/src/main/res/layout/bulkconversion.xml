@@ -83,6 +83,11 @@
             android:backgroundTint="#E91E63"
             android:text="CALCULATE WITH MOPAC AND MAKE DATASET" />
 
+        <Button
+            android:id="@+id/help_bulk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOTES ON FILE-FORMAT" />
 
         <Button
             android:id="@+id/quit"

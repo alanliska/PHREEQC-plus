@@ -32,6 +32,25 @@
             android:typeface="monospace" />
 
         <TextView
+            android:id="@+id/solvation_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nMOPAC solvation keywords:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/solvation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
             android:id="@+id/keywords_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -111,7 +130,7 @@
             android:id="@+id/formula_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula:"
+            android:text="\nFormula (to comply with the prebuit-datasets, elements [H], [O], [C], [N], [S] and [F] should be defined in brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText

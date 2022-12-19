@@ -1,0 +1,7443 @@
+# Kotrly-Sucha_2022-11-17
+# Data sources:
+### Kotrly-Sucha
+# Kotrlý, S., Šůcha, L., Chemické rovnováhy v analytické chemii: Tabulky a diagramy, SNTL 1988.
+###
+# Florián, J., and A. Warshel. "ChemSol, version 2.1." University of Southern California, Los Angeles (1999).
+# Bard, A. J., Parsons, R., Jordan, J. (editors), Standard potentials in aqueous solution, Marcel Dekker, New York 1985.
+# Dick, J. M., CHNOSZ: Thermodynamic calculations and diagrams for geochemistry, Frontiers in Earth Science, 7 (2019) 180.
+# Kobayashi, K., Suzuki T.S, Electron Comm Jpn. 2019;102:12–16.
+# Shkol’nikov, E.V., Russian Journal of Physical Chemistry A 90(3) 2016.
+### next sources - please see the footnotes at the individual entries
+#############################
+SOLUTION_MASTER_SPECIES
+[C]     [C]     0       [C]    12.0111
+Ac	Ac+3		0	227		227
+Ag	Ag+		0	107.87		107.87
+Al	Al+3		0	26.9815		26.9815
+Am	Am+3		0	243		243
+Ar	Ar		0	39.948		39.948
+As	H3AsO4	0	141.9435	74.922
+Au	Au+3		0	196.967		196.967
+B	H3BO3	0	61.83311	12.01111
+Ba	Ba+2		0.0     137.34          137.34
+Be	Be+2		0.0     137.34          9.01
+Bk	Bk+3		0	247		247
+Bi	Bi+3		0	208.98		208.98
+Br	Br-		0.0     79.904          79.904
+C	H2CO3	0	62.02525	12.01111
+[CN]	[CN]-		0	26.01781	26.01781
+Ca	Ca+2		0.0     40.08           40.08
+Cd	Cd+2		0	112.4		112.4
+Ce	Ce+3		0	140.12		140.12
+Cf	Cf+3		0	251		251
+Cl	Cl-		0.0     35.453          35.453
+Cm	Cm+3		0	247		247
+Co	Co+2		0	58.933		58.933
+Cr	Cr+3		0	51.996		51.996
+Cs	Cs+		0.0     132.905         132.905
+Cu	Cu+2		0	51.996		51.996
+D	D+		-1.	2		2
+E	e-		0.0     0.0             0.0
+Es	Es+3		0	254		254
+[F]	[F]-		0.0     18.9984         18.9984
+Fe	Fe+2		0	55.847		55.847
+Ga	Ga+3		0	69.72		69.72
+# Ge	Ge+4		0	72.59		72.59
+Ge	Ge(OH)4	0	140.6195	72.59
+H	H+		-1.     1.008           1.008
+H(0)	H2		0.0     1.008
+H(1)	H+		-1.     1.008
+# H	H+		-1      1.008           1.008
+He	He		0	4.0026		4.0026
+Hf	Hf+4		0	178.49		178.49
+Hg	Hg+2		0.0     200.59		200.59
+I	I-		0.0     126.9044        126.9044
+In	In+3		0	114.82		114.82
+Ir	IrO4-2	0	256.1976	192.2
+K	K+		0.0     39.102          39.102
+Kr	Kr		0	83.8		83.8
+La	La+3		0	138.91		138.91
+Li	Li+		0.0     6.939           6.939
+# Ln
+Pr	Pr+3		0	140.907		140.907
+Nd	Nd+3		0	144.24		144.24
+Pm	Pm+3		0	145		145
+Sm	Sm+3		0	150.35		150.35
+Eu	Eu+3		0	151.96		151.96
+Gd	Gd+3		0	157.25		157.25
+Tb	Tb+3		0	158.924		158.924
+Dy	Dy+3		0	162.5		162.5
+Ho	Ho+3		0	164.93		164.93
+Er	Er+3		0	167.26		167.26
+Tm	Tm+3		0	168.934		168.934
+Yb	Yb+3		0	173.04		173.04
+Lu	Lu+3		0	174.97		174.97
+#
+Mg	Mg+2		0.0     24.312          24.312
+Mn	Mn+2		0	54.938		54.938
+Mo	H2MoO4	0	161.9535	95.94
+[N]	[N]H4+	0	18.03858	14.0067
+# [N]	[N]H4+	0	18.03858	14.0067
+# [N]	[N]	0	[N]	14.0067
+# [N]	[N]H4+	0	18.03858	14.0067
+# [N]	H[N]3	0	43.02807	14.0067
+# [N]O	[N]O+		0	30.0061		30.0061
+Na	Na+		0.0     22.9898         22.9898
+Ne	Ne		0	20.183		20.183
+Nb	NbO+3		0	108.9054	92.906
+Ni	Ni+2		0	58.71		58.71
+Np	Np+3		0	237		237
+O	H2O		0.0     16.00           16.00
+O(-2)	H2O		0.0     18.016
+O(0)	O2		0.0     16.00
+# O	H2O		0.0     18.016		16.00
+# O(-2)	H2O		0.0     18.016
+# O(-1)	H2O2	0.0     34.01474
+# bude muset byt takto. protoze jinak s kazdym pridavkem O se prida take H ve dvojnasobnem mnozstvi
+# O        O            0.0     16.00           16.00
+# Os	Os+2		0	190.2		190.2
+Os	OsO4		0	254.1976	190.2
+P	H3PO4	0	97.99532	30.9738
+[P3O9]	[P3O9]-3	0.0	P3O9		236.916
+[P3O10]	[P3O10]-5	0.0	P3O10		252.9154
+[P4O12]	[P4O12]-4	0.0	P4O12		315.888
+[P4O13]	[P4O13]-6	0.0	P4O13		331.8874
+[P5O16]	[P5O16]-7	0.0	P5O16		410.8594
+[P6O18]	[P6O18]-6	0.0	P6O18		473.832
+[P8O24]	[P8O24]-8	0.0	P8O24		631.776
+Pa	Pa+4		0	231		231
+Pb	Pb+2		0	207.19		207.19
+Pd	Pd+2		0	106.3		106.3
+Pt	Pt+2		0	195.09		195.09
+Pu	Pu+3		0	244		244
+Ra	Ra+2		0.0     137.34          226
+Rb	Rb+		0.0     85.47           85.47
+Re	Re+3		0	186.2		186.2
+Rh	Rh+3		0	102.905		102.905
+Rn	Rn		0	222		222
+Ru	Ru+3		0	101.07		101.07
+[S]	[S]-2	0.0     32.064		32.064
+# [S]	H2[S]O3	0.0     82.08		32.064
+# [S]	[S]O3-2	0.0     80.06		32.064
+# [S]	[S]2O3-2	0.0     112.12		32.064
+Sb	SbO+		0	137.7494	121.75
+Sc	Sc+3		0	44.956		44.956
+Se	H2Se		0.0     80.99           78.96
+Si	H4SiO4	0	96.09748	28.068
+Sn	Sn+2		0	118.69		118.69
+Sr	Sr+2		0.0     87.62           87.62
+# Ta	Ta+5		0	180.948		180.948
+Ta	Ta(OH)5	0	265.9849	180.948
+Te	Te-2		0.0     127.60		127.60
+Th	Th+4		0	232.038		232.038
+Ti	Ti+3		0	47.9		47.9
+Tl	Tl+		0	204.37		204.37
+U	U+3		0	238.03		238.03
+V	V+3		0	50.942		50.942
+W	H2WO4	0	249.8636	183.85
+Xe	XeO3		0	179.2982	131.3
+Y	Y+3		0	88.905		88.905
+Zn	Zn+2		0	65.37		65.37
+Zr	Zr+4		0	91.22		91.22
+
+# H	H	0	H	1.00797
+# O	O	0	O	15.9994
+
+SOLUTION_SPECIES
+[C] = [C]
+# nutne rovnovahy
+
+#O2 secondary master species
+        2H2O = O2 + 4H+ + 4e- 
+        log_k           -86.08
+        delta_h 134.79 kcal
+
+#H2 secondary master species
+        2 H+ + 2 e- = H2
+        log_k           -3.15
+        delta_h -1.759 kcal
+	
+
+Ac+3 + 3 e- = Ac ; log_k	    -179.03 ; delta_h	  1047.61 # Bard
+Ag+ + e- = Ag ; log_k	     -32.16 ; delta_h	   172.55 # Bard
+Al+3 + 3 e- = Al ; log_k	    -137.60 ; delta_h	   853.87 # Bard
+Am+3 + 3 e- = Am ; log_k	    -150.19 ; delta_h	   889.41 # Bard
+# H2AsO3- = As + 2 H + 3 O + e- ; log_k	    -359.68 ; delta_h	  2183.69 # Bard
+AsO4-3 = As + 4 O + 3 e- ; log_k	    -338.15 ; delta_h	  2165.81 # Bard
+Au+3 + 3 e- = Au  ; log_k	    17.34 # Bard
+H3BO3 = B + 3 H + 3 O ; log_k	    -509.60 ; delta_h	  3027.13 # Bard
+Ba+2 + 2 e- = Ba ; log_k	    -126.58 ; delta_h	   706.88 # Bard
+Be+2 + 2 e- = Be ; log_k	    -119.35 ; delta_h	   701.90 # Bard
+Bk+3 + 3 e- = Bk ; log_k	    -101.79 ; delta_h	   601.00 # Bard
+Bi+3 + 3 e- = Bi ; log_k	     -16.16 ; delta_h	   115.11 # Bard
+Br- = Br + e- ; log_k	     -35.51 ; delta_h	   219.20 # Bard
+# CH4 = C + 4 H ; log_k	    -278.47 ; delta_h	  1673.69 # Bard
+CO3-2 = C + 3 O + 2 e- ; log_k	    -344.96 ; delta_h	  2124.93 # Bard
+Ca+2 + 2 e- = Ca ; log_k	    -124.92 ; delta_h	   713.91 # Bard
+Cd+2 + 2 e- = Cd ; log_k	    -29.77 ; delta_h	   182.88 # Bard
+Ce+3 + 3 e- = Ce ; log_k	    -188.55 ; delta_h	  1116.74 # Bard
+# elemental Cf not available
+Cl- = Cl + e- ; log_k	     -44.28 ; delta_h	   276.09 # Bard
+Cm+3 + 3 e- = Cm ; log_k	    -168.50 ; delta_h	   991.01 # Bard
+Co+2 + 2 e- = Co ; log_k	     -78.72 ; delta_h	   480.00 # Bard
+Cr+3 + 3 e- = Cr ; log_k	    -101.90 ; delta_h	   643.03 # Bard
+Cs+ + e- = Cs ; log_k	     -60.89 ; delta_h	   308.57 # Bard
+Cu+2 + 2 e- = Cu ; log_k	     -43.40 ; delta_h	   268.05 # Bard
+D+ + e- = D ; log_k	     -38.83 # Bard
+Dy+3 + 3 e- = Dy ; log_k	    -163.56 ; delta_h	   979.34 # Bard
+Er+3 + 3 e- = Er ; log_k	    -169.75 ; delta_h	  1018.54 # Bard
+# elemental Es not available
+Eu+3 + 3 e- = Eu ; log_k	    -128.49 ; delta_h	   774.24 # Bard
+[F]- = [F] + e- ; log_k	     -62.37 ; delta_h	   404.16 # Bard
+Fe+2 + 2 e- = Fe ; log_k	     -81.35 ; delta_h	   501.12 # Bard
+# Fr+ + e- = Fr ; log_k	     -62.63 ; delta_h	   322.91 # SSWS97;NA;OBIGT
+Ga+3 + 3 e- = Ga ; log_k	     -72.32 ; delta_h	   483.80 # Bard
+Gd+3 + 3 e- = Gd ; log_k	    -181.33 ; delta_h	  1077.84 # Bard
+Ge(OH)4 = H2GeO3 + H2O ; log_k	-7.80 # Kobayashi-Suzuki
+H2GeO3 = Ge + 2 H + 3 O ; log_k	    -393.66 ; delta_h	  2397.67 # Bard
+Hf+4 + 4 e- = Hf ; log_k	    -201.02 # Bard
+Hg+2 + 2 e- = Hg ; log_k	    20.68 ; delta_h	    -113.71 # Bard
+Ho+3 + 3 e- = Ho ; log_k	    -167.31 ; delta_h	  1001.14 # Bard
+I- = I + e- ; log_k	     -24.29 ; delta_h	   145.45 # Bard
+In+3 + 3 e- = In ; log_k	     -56.39 ; delta_h	   340.88 # Bard
+# elemental Ir not available
+K+ + e- = K ; log_k	     -62.86 ; delta_h	   328.63 # Bard
+La+3 + 3 e- = La ; log_k	    -192.15 ; delta_h	  1133.74 # Bard
+Li+ + e- = Li ; log_k	     -76.29 ; delta_h	   431.92 # Bard
+Lu+3 + 3 e- = Lu ; log_k	    -187.46 ; delta_h	  1123.54 # Bard
+Mg+2 + 2 e- = Mg ; log_k	    -102.05 ; delta_h	   609.57 # Bard
+Mn+2 + 2 e- = Mn ; log_k	     -84.35 ; delta_h	   496.63 # Bard
+MoO4-2 = Mo + 4 O + 2 e- ; log_k	    -433.03 ; delta_h	  2637.50 # Bard
+[N]H3 = [N] + 3 H ; log_k	    -202.29 ; delta_h	  1208.38 # Bard
+Na+ + e- = Na ; log_k	     -62.02 ; delta_h	   338.73 # Bard
+# NbO3- = Nb + 3 O + e- ; log_k	    -417.39 # Bard
+Nb(OH)5 = Nb + 5 O + 5 H ; log_k	    -786.17 # Bard
+Nd+3 + 3 e- = Nd ; log_k	    -171.62 ; delta_h	  1017.54 # Bard
+Ni+2 + 2 e- = Ni ; log_k	     -78.04 ; delta_h	   491.09 # Bard
+Np+3 + 3 e- = Np ; log_k	    -167.12 ; delta_h	   980.61 # Bard
+OsO4 = Os + 4 O ; log_k	    -362.39 ; delta_h	  2145.41 # Bard
+H2PO4- = P + 2 H + 4 O + e- ; log_k	    -494.39 ; delta_h	  3023.45 # Bard
+Pa+4 + 4 e- = Pa ; log_k	    -200.23 ; delta_h	  1215.61 # Bard
+Pb+2 + 2 e- = Pb ; log_k	     -35.31 ; delta_h	   185.33 # Bard
+Pd+2 + 2 e- = Pd ; log_k	     -31.20 ; delta_h	   224.00 # Bard
+Pm+3 + 3 e- = Pm ; log_k	    -116.16 ; delta_h	   688.00 # Bard
+Pr+3 + 3 e- = Pr ; log_k	    -178.19 ; delta_h	  1055.14 # Bard
+Pt+2 + 2 e- = Pt ; log_k	     -49.33 # Bard
+Pu+3 + 3 e- = Pu ; log_k	    -158.30 ; delta_h	   925.81 # Bard
+Ra+2 + 2 e- = Ra ; log_k	    -124.02 ; delta_h	   671.82 # Bard
+Rb+ + e- = Rb ; log_k	     -61.56 ; delta_h	   313.86 # Bard
+ReO4- = Re + 4 O + e- ; log_k	    -427.69 ; delta_h	  2533.11 # Bard
+Rh+3 + 3 e- = Rh ; log_k	     -53.65 ; delta_h	   372.50 # SSWS97;SS98a.2;OBIGT
+# RuO4-2 = Ru + 4 O + 2 e- ; log_k	    -336.40 # Bard
+RuO4 = Ru + 4 O ; log_k	    -308.98 ; delta_h	  1864.80 # Bard
+H2[S] = [S] + 2 H ; log_k	    -125.53 ; delta_h	   744.81 # Bard
+Sb(OH)3 = Sb + 3 O + 3 H ; log_k	    -400.95 ; delta_h	  2423.83 # Bard
+Sc+3 + 3 e- = Sc ; log_k	    -164.19 ; delta_h	   989.39 # Bard
+# H2Se = Se + 2 H ; log_k	    -107.75 ; delta_h	   635.56 # Bard
+HSe- = Se + H + e- ; log_k	     -65.90 ; delta_h	   419.32 # Bard
+H4SiO4 = Si + 4 O + 4 H ; log_k	    -626.81 # Bard
+Sm+3 + 3 e- = Sm ; log_k	    -149.79 ; delta_h	   891.14 # Bard
+Sn+2 + 2 e- = Sn ; log_k	     -54.32 ; delta_h	   303.47 ; # SSWS97;NA;OBIGT
+Sr+2 + 2 e- = Sr ; log_k	    -123.67 ; delta_h	   701.07 # Bard
+# elemental Ta not available
+Tb+3 + 3 e- = Tb ; log_k	    -180.96 ; delta_h	  1080.04 # Bard
+Te-2 = Te + 2 e- ; log_k	     8.20 # Bard
+# TcO4- = Tc + 4 O + e- ; log_k	    -182.51 ; delta_h	  1028.90 # Bard
+Th+4 + 4 e- = Th ; log_k	    -223.96 ; delta_h	  1355.91 # Bard
+Ti(OH)4  = Ti+4 + 4 OH- ; log_k	-58.65 # Shkol'nikov
+Ti+4 + OH- = TiOH+3 ; log_k	17.98 # Shkol'nikov
+Ti+4 + 2 OH- = Ti(OH)2+2 ; log_k	35.42 # Shkol'nikov
+Ti+4 + 3 OH- = Ti(OH)3+ ; log_k	47.32 # Shkol'nikov
+Ti+4 + 5 OH- = Ti(OH)5- ; log_k	61.26 # Shkol'nikov
+Ti+4 + H2O = TiO+2 + 2 H+ ; log_k	4.20 # Shkol'nikov
+TiO+2 + 2 e- = Ti + O ; log_k	    -222.30 # Bard
+Tl+ + e- = Tl ; log_k	     -34.11 ; delta_h	   171.65 # Bard
+Tm+3 + 3 e- = Tm ; log_k	    -154.82 ; delta_h	   930.74 # Bard
+U+4 + 4 e- = U ; log_k	    -181.85 ; delta_h	  1115.41 # Bard
+V+3 + 3 e- = V ; log_k	    -178.81 ; delta_h	   768.51 # Bard
+WO4-2 = W + 4 O + 2 e- ; log_k	    -483.57 ; delta_h	  2898.61 # Bard
+XeO3 = Xe + 3 O ; log_k	     -46.55 ; delta_h	   307.54 # Bard
+Y+3 + 3 e- = Y ; log_k	    -189.54 ; delta_h	  1132.48 # Bard
+Yb+3 + 3 e- = Yb ; log_k	    -136.06 ; delta_h	   820.14 # Bard
+Zn+2 + 2 e- = Zn ; log_k	     -45.00 ; delta_h	   280.80 # Bard
+# ZrO+2 + 2 e- = Zr + O ; log_k	    -283.43 ; delta_h	  1705.29 # SSWS97;NA;OBIGT
+Zr+4 + 4 e- = Zr ; log_k	    -199.55 ; delta_h	  1232.58 # Bard
+
+
+
+
+e- = e-
+log_k 0
+
+# H+ = H+
+# log_k 0
+
+# H = H
+# log_k 0
+
+# H = H+ + e-  ; log_k	     38.05 ; delta_h	   -219.54 ; #Gf°(aq) =      0.00 kJ.mol-1 (Bard-1985) ; #Hf°(aq) =      0.00 kJ.mol-1 (Bard-1985) ; #H+(aq)
+
+H+ = H+
+log_k 0
+
+D+ = D+
+log_k 0
+
+# definice prvku
+
+Li+ = Li+
+log_k 0
+
+Na+ = Na+
+log_k 0
+
+K+ = K+
+log_k 0
+
+Rb+ = Rb+
+log_k 0
+
+Cs+ = Cs+
+log_k 0
+
+Be+2 = Be+2
+log_k 0
+
+Mg+2 = Mg+2
+log_k 0
+
+Ca+2 = Ca+2
+log_k 0
+
+Sr+2 = Sr+2
+log_k 0
+
+Ba+2 = Ba+2
+log_k 0
+
+Ra+2 = Ra+2
+log_k 0
+
+Sc+3 = Sc+3
+log_k 0
+
+Y+3 = Y+3
+log_k 0
+
+La+3 = La+3
+log_k 0
+
+Ce+3 = Ce+3
+log_k 0
+
+Ce+3 = Ce+4 + e-
+log_k -29.5
+
+Pr+3 = Pr+3
+log_k 0
+
+Nd+3 = Nd+3
+log_k 0
+
+Pm+3 = Pm+3
+log_k 0
+
+Sm+3 = Sm+3
+log_k 0
+
+Eu+3 = Eu+3
+log_k 0
+
+Gd+3 = Gd+3
+log_k 0
+
+Tb+3 = Tb+3
+log_k 0
+
+Dy+3 = Dy+3
+log_k 0
+
+Ho+3 = Ho+3
+log_k 0
+
+Er+3 = Er+3
+log_k 0
+
+Tm+3 = Tm+3
+log_k 0
+
+Yb+3 = Yb+3
+log_k 0
+
+Lu+3 = Lu+3
+log_k 0
+
+Ac+3 = Ac+3
+log_k 0
+
+Th+4 = Th+4
+log_k 0
+
+Pa+4 = Pa+4
+log_k 0
+
+U+3 = U+3
+log_k 0
+
+U+3 = U+4 + e-
+log_k 10.3
+
+U+4 + 2 H2O = UO2+ + 4 H+ + e-
+log_k -9.3
+
+UO2+ = UO2+2 + e-
+log_k -1.0
+
+Np+3 = Np+3
+log_k 0
+
+Np+3 = Np+4 + e-
+log_k -2.6
+
+Np+4 + 2 H2O = NpO2+ + 4 H+ + e-
+log_k -12.5
+
+NpO2+ = NpO2+2 + e-
+log_k -19.2
+
+Pu+3 = Pu+3
+log_k 0
+
+Pu+3 = Pu+4 + e-
+log_k -16.4
+
+Pu+4 + 2 H2O = PuO2+ + 4 H+ + e-
+log_k -35.2
+
+PuO2+ = PuO2+2 + e-
+log_k -15.7
+
+Am+3 = Am+3
+log_k 0
+
+Cm+3 = Cm+3
+log_k 0
+
+Bk+3 = Bk+3
+log_k 0
+
+Cf+3 = Cf+3
+log_k 0
+
+Es+3 = Es+3
+log_k 0
+
+Ti+3 = Ti+3
+log_k 0
+
+Ti+3 + H2O = TiO+2 + 2 H+ + e-
+log_k -1.7
+
+Ti+3 = Ti+4 + e-
+log_k 0.00
+# Antelman
+
+Ti+3 + e- = Ti+2
+log_k 6.2
+
+Zr+4 = Zr+4
+log_k 0
+
+Hf+4 = Hf+4
+log_k 0
+
+V+3 = V+3
+log_k 0
+
+V+3 + e- = V+2
+log_k -4.31
+
+V+3 + H2O = VO+2 + 2 H+ + e-
+log_k -5.7
+
+VO+2 + H2O = VO2+ + 2 H+ + e-
+log_k -16.9
+
+NbO+3 = NbO+3
+log_k 0
+
+NbO+3 + 2 H+ + 2 e- = Nb+3 + H2O
+log_k -11.8
+
+# 2 NbO+3 + 3 H2O = Nb2O5(s) + 6 H+
+# log_k -25.6
+
+# Nb2O5(s) + 5 H2O = 2 Nb(OH)5
+# log_k -18.16
+
+NbO+3 + 4 H2O = Nb(OH)5 + 3 H+
+log_k -21.88
+# vypocteno - Bard+Kotrly-Sucha
+
+# Ta+5 = Ta+5
+# log_k 0
+
+Ta(OH)5 = Ta(OH)5
+log_k 0
+
+Cr+3 = Cr+3
+log_k 0
+
+Cr+3 + 4 H2O = HCrO4- + 7 H+ + 3 e-
+log_k -60.9
+
+HCrO4- = CrO4-2 + H+
+log_k -6.50
+
+HCrO4- + H+ = H2CrO4
+log_k 1.53
+
+2 HCrO4- = Cr2O7-2 + H2O
+log_k -0.175
+
+Cr+3 + e- = Cr+2
+log_k -6.9
+
+H2MoO4 = H2MoO4
+log_k 0
+
+H2MoO4 = HMoO4- + H+
+log_k -3.55
+
+HMoO4- = MoO4-2 + H+
+log_k -3.65
+
+7 MoO4-2 + 8 H+ = Mo7O24-6 + 4H2O
+log_k 52.81
+
+7 MoO4-2 + 9 H+ = Mo7O23(OH)-5 + 4H2O
+log_k 62.14
+
+7 MoO4-2 + 10 H+ = Mo7O22(OH)2-4 + 4H2O
+log_k 65.8
+
+7 MoO4-2 + 11 H+ = Mo7O21(OH)3-3 + 4H2O
+log_k 68.21
+
+H2MoO4 + 6 H+ + e- = Mo+5 + 4 H2O
+log_k 7.00
+
+Mo+5 + 2 e- = Mo+3
+log_k -0.3
+
+Mo+3 = Mo+4 + e-
+log_k -1.7
+
+Mo+3 + 2 H2O = MoO2+ + 4 H+ + 2 e-
+log_k 0.0
+
+H2WO4 = H2WO4
+log_k 0
+
+H2WO4 = HWO4- + H+
+log_k -3.5
+
+HWO4- = WO4-2 + H+
+log_k -4.6
+
+12 WO4-2 + 18 H+ = W12O39-6 + 9 H2O
+log_k 132.51
+
+Mn+2 = Mn+2
+log_k 0
+
+Mn+2 = Mn+3 + e-
+log_k -25.15
+
+Mn+3 = Mn+4 + e-
+log_k -27.9
+
+Mn+2 + 4 H2O = MnO4- + 8 H+ + 5 e-
+log_k -127.6
+
+MnO4- + H+ = HMnO4
+log_k -0.3
+
+MnO4- + e- = MnO4-2
+log_k 9.5
+
+MnO4-2 + e- = MnO4-3
+log_k 4.8
+
+Re+3 = Re+3
+log_k 0
+
+Re+3 + 4 H2O = ReO4- + 8 H+ + 4 e-
+log_k -29.5
+
+Re+3 + 2 e- = Re+
+log_k 4.7
+
+Re+ + 2 e- = Re-
+log_k 7.8
+
+Fe+2 = Fe+2
+log_k 0
+
+Fe+2 = Fe+3 + e-
+log_k -13.0
+
+Fe+3 + 4 H2O = FeO4-2 + 8 H+ + 3 e-
+log_k -96.3
+
+H+ + Fe[CN]6-4 = HFe[CN]6-3
+log_k 4.30
+
+HFe[CN]6-3 + H+ = H2Fe[CN]6-2
+log_k 2.6
+
+Ru+3 = Ru+3
+log_k 0
+
+Ru+3 + e- = Ru+2
+log_k 4.20
+
+Ru+3 = Ru+4 + e-
+log_k -15.3
+
+Ru+3 + 4 H2O = RuO4 + 8 H+ + 5 e-
+log_k -127.99
+# vypocteno - Dean
+
+RuO4 + e- = RuO4-
+log_k 15.04
+# Dean
+
+# Os+2 = Os+2
+# log_k 0
+
+OsO4 = OsO4
+log_k 0
+
+Co+2 = Co+2
+log_k 0
+
+Co+2 = Co+3 + e-
+log_k -33.0
+
+Rh+3 = Rh+3
+log_k 0
+
+Rh+3 = Rh+4 + e-
+log_k -24.3
+
+Rh+3 = Rh+6 + 3 e-
+log_k -76.9
+
+IrO4-2 = IrO4-2
+log_k 0
+
+Ni+2 = Ni+2
+log_k 0
+
+Pd+2 = Pd+2
+log_k 0
+
+Pt+2 = Pt+2
+log_k 0
+
+Cu+2 = Cu+2
+log_k 0
+
+Cu+2 = Cu+3 + e-
+log_k -42.4
+
+Cu+2 + e- = Cu+
+log_k 2.9
+
+Ag+ = Ag+
+log_k 0
+
+Ag+ = Ag+2 + e-
+log_k -33.8
+
+Au+3 = Au+3
+log_k 0
+
+Au+3 + 2 e- = Au+
+log_k 45.97
+# Dean
+
+Zn+2 = Zn+2
+log_k 0
+
+Cd+2 = Cd+2
+log_k 0
+
+Hg+2 = Hg+2
+log_k 0
+
+2 Hg+2 + 2 e- = Hg2+2
+log_k 30.7
+
+Hg+2 + 2 e- = Hg
+log_k 1000
+
+H3BO3 = H3BO3
+log_k 0
+
+H3BO3 + H2O = B(OH)4- + H+
+log_k -9.236
+
+Al+3 = Al+3
+log_k 0
+
+Ga+3 = Ga+3
+log_k 0
+
+Ga+3 + 2 e- = Ga+
+log_k -13.5
+
+In+3 = In+3
+log_k 0
+
+In+3 + 2 e- = In+
+log_k -13.7
+
+Tl+ = Tl+
+log_k 0
+
+Tl+ = Tl+3 + 2 e-
+log_k -42.6
+
+H2CO3 = H2CO3
+log_k 0
+
+H2CO3 = HCO3- + H+
+log_k -6.35
+
+HCO3- = CO3-2 + H+
+log_k -10.33
+
+# H2C[S]3 = H+ + HC[S]3-
+# log_k -2.68
+
+# HC[S]3- = H+ + C[S]3-2
+# log_k -8.22
+
+[CN]- = [CN]-
+log_k 0
+
+[CN]- + H+ = H[CN]
+log_k 9.21
+
+H[CN] + [S]-2 = [S][CN]- + H+ + 2 e-
+log_k 19.78
+# vypocteno - Liska
+
+[S][CN]- + H+ = H[S][CN]
+log_k 0.9
+
+H[CN] + [S]-2 = [S][CN]- + H+ + 2 e-
+log_k 19.78
+# vypocteno - Liska
+
+[S][CN]- + H+ = H[S][CN]
+log_k 0.9
+
+H[CN] + H2Se = Se[CN]- + 3 H+ + 2 e-
+log_k 10.17
+# vypocteno - Liska
+
+H[CN] + H2O = HO[CN] + 2 H+ + 2 e-
+log_k -11.9
+# vypocteno - Liska
+
+HO[CN] = O[CN]- + H+
+log_k -3.46
+# Liska
+
+H4SiO4 = H4SiO4
+log_k 0
+
+H4SiO4 = SiO(OH)3- + H+
+log_k -9.86
+
+SiO(OH)3- = SiO2(OH)2-2 + H+
+log_k -13.1
+
+# Ge+4 = Ge+4
+# log_k 0
+# predefinovano na H2GeO3. kterou pro formalni konzistenci povazujeme z
+# analogie s kremicitany za Ge(OH)4
+Ge(OH)4 = Ge(OH)4
+log_k 0
+
+Ge(OH)4 = GeO(OH)3- + H+
+log_k -9.3
+
+GeO(OH)3- = GeO2(OH)2-2 + H+
+log_k -12.6
+
+# Ge+4 + 2 e- = Ge+2
+# log_k 0.0
+
+Ge(OH)4 + 4 H+ + 2 e- = Ge+2 + 4 H2O
+log_k -7.1
+# pozor - nen� ps�no Ge(OH)4. ale H2GeO3 - snad je to tot�
+
+Ge+2 = Ge+4 + 2 e-
+log_k 0.0
+
+Sn+2 = Sn+2
+log_k 0
+
+Sn+2 = Sn+4 + 2 e-
+log_k -4.9
+
+Pb+2 = Pb+2
+log_k 0
+
+Pb+2 = Pb+4 + 2 e-
+log_k -56.0
+
+[N]H4+ = [N]H4+
+log_k 0
+
+[N]H4+ = [N]H3 + H+
+log_k -9.244
+
+# [N]H4+ = [N]H4+
+# log_k 0
+
+# [N]H4+ = [N]H3 + H+
+# log_k -9.244
+
+# [N] = [N]
+# log_k 0
+
+# [N]H4+ = [N]H4+
+# log_k 0
+
+# [N]H4+ = [N]H3 + H+
+# log_k -9.244
+
+# H[N]3 = H[N]3
+# log_k 0
+
+H[N]3 = [N]3- + H+
+log_k -4.65
+
+[N]O+ = [N]O+
+log_k 0
+
+2 [N]H4+ = [N]2H5+ + 3 H+ + 2 e-
+log_k -43.1
+
+[N]2H5+ = [N]2H4 + H+
+log_k -7.98
+
+[N]2H5+ + H+ = [N]2H6+2
+log_k -0.9
+
+[N]H4+ + H2O = [N]H3OH+ + 2 H+ + 2 e-
+log_k -45.6
+
+[N]H3OH+ = [N]H2OH + H+
+log_k -5.96
+
+[N]H4+ + 3 H2O = [N]O3- + 10 H+ + 8 e-
+log_k -118.75
+
+[N]O3- + H+ = H[N]O3
+log_k -1.34
+
+[N]H4+ + H2O = [N]O+ + 6 H+ + 6 e-
+log_k -95.25
+
+[N]H4+ + 2 H2O = H[N]O2 + 7 H+ + 6 e-
+log_k -87.15
+
+H[N]O2 = [N]O2- + H+
+log_k -3.15
+
+[N]H4+ + H2O = [N]O+ + 6 H+ + 6 e-
+log_k -95.25
+
+[N]H4+ + 2 H2O = H[N]O2 + 7 H+ + 6 e-
+log_k -87.15
+
+H[N]O2 = [N]O2- + H+
+log_k -3.15
+
+3 [N]O+ + 7 H+ + 10 e- = H[N]3 + 3 H2O
+log_k 117.99
+
+2 [N]O+ + 2 H+ + 4 e- = H2[N]2O2
+log_k 73.4
+
+H2[N]2O2 = H[N]2O2- + H+
+log_k -7.18
+
+H[N]2O2- = [N]2O2-2 + H+
+log_k -11.54
+
+# [N]O+ + 2 H2O = [N]OO2- + 4 H+ + 2 e-
+# log_k -23.7
+
+# [N]OO2- + H+ = [N]OO2H
+# log_k -1.34
+
+# [N]O+ + H2O = H[N]OO + H+
+# log_k 8.1
+
+# H[N]OO = [N]OO- + H+
+# log_k -3.15
+
+[N]O+ + 4 H+ + 4 e- = H3[N]OH+
+log_k 49.9
+
+H3[N]OH+ = H2[N]OH + H+
+log_k -5.96
+
+H3PO4 = H3PO4
+log_k 0
+
+H3PO4 + 2 H+ + 2 e- = H3PO3 + H2O
+log_k -9.3
+
+H3PO4 = H2PO4- + H+
+log_k -2.148
+
+H2PO4- = HPO4-2 + H+
+log_k -7.199
+
+HPO4-2 = PO4-3 + H+
+log_k -12.35
+
+H3PO3 + 2 H+ + 2 e- = H3PO2 + H2O
+log_k -16.9
+
+#############################
+# prozatim z JH-CEBOCALE.dat
+[P3O9]-3 = [P3O9]-3
+	log_k	0.00
+[P3O9]-3 + H+ = H[P3O9]-2
+	log_k	2.05
+[P3O10]-5 = [P3O10]-5
+	log_k	0.00
+[P3O10]-5 + H+ = H[P3O10]-4
+	log_k	9.25
+H[P3O10]-4 + H+ = H2[P3O10]-3
+	log_k	6.54
+H2[P3O10]-3 + H+ = H3[P3O10]-2
+	log_k	2.5
+H3[P3O10]-2 + H+ = H4[P3O10]-
+	log_k	1.0
+[P4O12]-4 = [P4O12]-4
+	log_k	0.00
+[P4O12]-4 + H+ = H[P4O12]-3
+	log_k	2.76
+[P4O13]-6 = [P4O13]-6
+	log_k	0.00
+[P4O13]-6 + H+ = H[P4O13]-5
+	log_k	8.34
+H[P4O13]-5 + H+ = H2[P4O13]-4
+	log_k	6.63
+H2[P4O13]-4 + H+ = H3[P4O13]-3
+	log_k	2.23
+H3[P4O13]-3 + H+ = H4[P4O13]-2
+	log_k	1.4
+[P5O16]-7 = [P5O16]-7
+	log_k	0.00
+[P6O18]-6 = [P6O18]-6
+	log_k	0.00
+[P8O24]-8 = [P8O24]-8
+	log_k	0.00
+#########################################
+
+H3AsO4 = H3AsO4
+log_k 0
+
+H3AsO4 + 2 H+ + 2 e- = HAsO2 + 2 H2O
+log_k 18.9
+
+H3AsO4 = H2AsO4- + H+
+log_k -2.24
+
+H2AsO4- = HAsO4-2 + H+
+log_k -6.96
+
+HAsO4-2 = AsO4-3 + H+
+log_k -11.50
+
+HAsO2 + 2 H2O = As(OH)4- + H+
+log_k -9.29
+
+HAsO2 + H2O = H3AsO3
+log_k 0.00
+# vypocteno - Bard
+
+SbO+ = SbO+
+log_k 0
+
+# Sb(OH)5 + H2O = Sb(OH)6- + H+
+# log_k -2.72
+
+Bi+3 = Bi+3
+log_k 0
+
+H2O = H2O
+log_k 0
+
+0.5 O2 = O ; log_k	-41.3 ; delta_h	250.3
+
+0.5 H2 = H			 ; log_k	-36.3	 ; delta_h	219.1
+
+H2O = OH- + H+
+log_k -13.997
+
+# H2O = H2O
+# log_k 0
+# -activity_water
+# -mole_balance H2O
+# # dulezite - pro H
+
+# O = O
+# log_k 0
+
+# 2 H + O = H2O ; 	log_k	  153.37 ; 	delta_h	   -958.08 #	Gf°(l) =   -237.18 kJ.mol-1 (Bard-1985) #	Hf°(l) =   -285.83 kJ.mol-1 (Bard-1985) #H2O(aq)
+
+# H2O2 = H2O2
+# log_k 0
+
+2 H2O = H2O2 + 2 H+ + 2 e-
+log_k -59.8
+
+H2O2 = HO2- + H+
+log_k -11.65
+
+H2O = OH- + H+
+log_k -13.997
+
+[S]-2 = [S]-2
+log_k 0
+
+H+ + H[S]- = H2[S]
+log_k 7.02
+
+H+ + [S]-2 = H[S]-
+log_k 13.9
+
+# H2[S]O3 = H2[S]O3
+# log_k 0
+
+H2[S]O3 = H[S]O3- + H+
+log_k -1.91
+
+H[S]O3- = [S]O3-2 + H+
+log_k -7.18
+
+# [S]2O3-2 = [S]2O3-2
+# log_k 0
+
+[S]2O3-2 + H+ = H[S]2O3-
+log_k 1.6
+
+H[S]2O3- + H+ = H2[S]2O3
+log_k 0.6
+
+# [S]O3-2 = [S]O3-2
+# log_k 0
+
+# H+ + H[S]O3- = H2[S]O3
+# log_k 1.91
+
+# H+ + [S]O3-2 = H[S]O3-
+# log_k 7.18
+
+2 H2[S]O3 + 2 H+ + 4 e- = [S]2O3-2 + 3 H2O
+log_k 27.0
+
+[S]-2 + 3 H2O = H2[S]O3 + 4 H+ + 6 e-
+log_k -14.7
+
+[S]-2 + 4 H2O = [S]O4-2 + 8 H+ + 8 e-
+log_k -20.4
+
+[S]O4-2 + H+ = H[S]O4-
+log_k 1.99
+
+H[S]O4- + H+ = H2[S]O4
+log_k -3.0
+
+H+ + H[S]- = H2[S]
+log_k 7.02
+
+H+ + [S]-2 = H[S]-
+log_k 13.9
+
+2 [S]-2 + 8 H2O = [S]2O8-2 + 16 H+ + 18 e-
+log_k -101.6
+
+2 H2[S]O3 + 8 H+ + 10 e- = [S]2-2 + 6 H2O
+log_k 44.2
+
+2 [S]-2 = [S]2-2 + 2 e-
+log_k 14.8
+
+3 H2[S]O3 + 12 H+ + 14 e- = [S]3-2 + 9 H2O
+log_k 75.8
+
+4 H2[S]O3 + 16 H+ + 18 e- = [S]4-2 + 12 H2O
+log_k 109.7
+
+5 H2[S]O3 + 20 H+ + 22 e- = [S]5-2 + 15 H2O
+log_k 140.3
+
+6 H2[S]O3 + 24 H+ + 26 e- = [S]6-2 + 18 H2O
+log_k 170.4
+
+[S]4-2 + H+ = H[S]4-
+log_k 6.3
+
+H[S]4- + H+ = H2[S]4
+log_k 3.8
+
+[S]5-2 + H+ = H[S]5-
+log_k 5.7
+
+H[S]5- + H+ = H2[S]5
+log_k 3.5
+
+2 [S]2O3-2 = [S]4O6-2 + 2 e-
+log_k -3.0
+
+2 [S]O3-2 + 2 H2O + 2 e- = [S]2O4-2 + 4 OH-
+log_k -37.9
+
+2 [S]O3-2 = [S]2O6-2 + 2 e-
+log_k -1.25
+
+H2Se + 3 H2O = H2SeO3 + 6 H+ + 6 e-
+log_k -36.5
+
+H2SeO3 + H2O = SeO4-2 + 4 H+ + 2 e-
+log_k -38.9
+
+H2Se = H2Se
+log_k 0
+
+H2Se = HSe- + H+
+log_k -3.89
+
+HSe- = Se-2 + H+
+log_k -15.0
+
+H2SeO3 = HSeO3- + H+
+log_k -2.75
+
+HSeO3- = SeO3-2 + H+
+log_k -8.5
+
+2 H2SeO3 = (H2SeO3)2
+log_k 0.17
+
+SeO4-2 + H+ = HSeO4-
+log_k 1.7
+
+Te-2 = Te-2
+log_k 0
+
+H+ + HTe- = H2Te
+log_k 2.6
+
+H+ + Te-2 = HTe-
+log_k 12.2
+
+# Te(OH)4 = TeO(OH)3- + H+
+# log_k -2.68
+
+# TeO(OH)3- = TeO2(OH)2-2 + H+
+# log_k -9.8
+
+# Te(OH)4 + H+ = Te(OH)3+ + H2O
+# log_k -3.13
+
+[F]- = [F]-
+log_k 0
+
+[F]- + H+ = H[F]
+log_k 3.17
+
+H[F] + [F]- = H[F]2-
+log_k 0.5
+
+Cl- = Cl-
+log_k 0
+
+# Cl- = 0.5 Cl2 + e-
+# log_k -23.5
+
+Cl- + H+ = HCl
+log_k -7
+
+HClO = ClO- + H+
+log_k -7.53
+
+HClO2 = ClO2- + H+
+log_k -1.95
+
+ClO3- + H+ = HClO3
+log_k -2.7
+
+ClO4- + H+ = HClO4
+log_k -7.3
+
+Cl- + H2O = HClO + H+ + 2 e-
+log_k -50.55
+
+HClO + H2O =  HClO2 + 2 H+ + 2 e-
+log_k -55.4
+
+Cl- + 3 H2O = ClO3- + 6 H+ + 6 e-
+log_k -146.95
+
+ClO3- + H2O = ClO4- + 2 H+ + 2 e-
+log_k -40.2
+
+Br- = Br-
+log_k 0
+
+# Br- = 0.5 Br2 + e-
+# log_k -18.37
+
+H+ + Br- = HBr
+log_k -9
+
+HBrO = BrO- + H+ 
+log_k 8.63
+
+Br- + H2O = HBrO + H+ + 2 e-
+log_k -45
+
+Br- + 3 H2O = BrO3- + 6 H+ + 6 e-
+log_k -146
+
+I- = I-
+log_k 0
+
+H+ + I- = HI
+log_k -9.5
+
+HIO = IO- + H+
+log_k -10.64
+
+H+ + IO3- = HIO3
+log_k 0.77
+
+# I- = 0.5 I2 + e-
+# log_k -10.5
+
+3 I- = I3- + 2 e-
+log_k -18.1
+
+I- + H[CN] = I[CN] + 2 e- + H+
+log_k -19.65
+
+I- + Cl- = ICl + 2 e-
+log_k -29.15
+
+I- + Br- = IBr + 2 e-
+log_k -26.25
+
+I- + H2O = HIO + H+ + 2 e-
+log_k -33.55
+
+I- + 3 H2O = IO3- + 6 H+ + 6 e-
+log_k -110.05
+
+IO3- + 3 H2O = H5IO6 + H+ + 2 e-
+log_k -54
+
+He = He
+log_k 0
+
+Ne = Ne
+log_k 0
+
+Ar = Ar
+log_k 0
+
+Kr = Kr
+log_k 0
+
+XeO3 = XeO3
+log_k 0
+
+XeO3 + 3 H2O = H4XeO6 + 2 H+ + 2 e-
+log_k -100
+
+Rn = Rn
+log_k 0
+
+# Komplexy
+
+Na+ + B(OH)4- = NaB(OH)4
+	log_k	1.87
+Fe+3 + B(OH)4- = FeB(OH)4+2
+	log_k	8.5
+Fe+3 + 2 B(OH)4- = Fe(B(OH)4)2+
+	log_k	15.6
+Fe+3 + 3 B(OH)4- = Fe(B(OH)4)3
+	log_k	20.6
+Fe+3 + 4 B(OH)4- = Fe(B(OH)4)4-
+	log_k	20.3
+Co+2 + 4 B(OH)4- = Co(B(OH)4)4-2
+	log_k	10.03
+Ni+2 + 3 B(OH)4- = Ni(B(OH)4)3-
+	log_k	8.44
+Cu+2 + B(OH)4- = CuB(OH)4+
+	log_k	7.13
+Cu+2 + 2 B(OH)4- = Cu(B(OH)4)2
+	log_k	12.45
+Cu+2 + 3 B(OH)4- = Cu(B(OH)4)3-
+	log_k	15.17
+Ag+ + B(OH)4- = AgB(OH)4
+	log_k	0.45
+Zn+2 + 4 B(OH)4- = Zn(B(OH)4)4-2
+	log_k	11.8
+Cd+2 + 4 B(OH)4- = Cd(B(OH)4)4-2
+	log_k	10.6
+Pb+2 + B(OH)4- = PbB(OH)4+
+	log_k	5.21
+Pb+2 + 3 B(OH)4- = Pb(B(OH)4)3-
+	log_k	11.17
+
+Mg+2 + CO3-2 = MgCO3
+	log_k	2.88
+Mg+2 + HCO3- = MgHCO3+
+	log_k	0.95
+Ca+2 + CO3-2 = CaCO3
+	log_k	3.15
+Ca+2 + HCO3- = CaHCO3+
+	log_k	1.0
+Ba+2 + CO3-2 = BaCO3
+	log_k	2.78
+La+3 + H2CO3 = LaCO3+ + 2 H+
+	log_k	-9
+Er+3 + 3 CO3-2 = Er(CO3)3-3
+	log_k	10.6
+Pr+3 + 4 CO3-2 = Pr(CO3)4-5
+	log_k	11.2
+Nd+3 + 4 CO3-2 = Nd(CO3)4-5
+	log_k	11.2
+UO2+2 + 2 CO3-2 = UO2(CO3)2-2
+	log_k	14.6
+UO2+2 + 3 CO3-2 = UO2(CO3)3-4
+	log_k	18.3
+PuO2+2 + 2 CO3-2 = PuO2(CO3)2-2
+	log_k	15.1
+PuO2+2 + OH- + CO3-2 = PuO2OHCO3-
+	log_k	23.85
+Mn+2 + HCO3- = MnHCO3+
+	log_k	1.8
+Cu+2 + CO3-2 = CuCO3
+	log_k	6.75
+Cu+2 + 2 CO3-2 = Cu(CO3)2-2
+	log_k	9.92
+Cd+2 + 3 CO3-2 = Cd(CO3)3-4
+	log_k	6.24
+Pb+2 + 2 CO3-2 = Pb(CO3)2-2
+	log_k	9.09
+Pb+2 + 2 HCO3- = Pb(HCO3)2
+	log_k	4.77
+Pb+2 + 3 HCO3- = Pb(HCO3)3-
+	log_k	5.19
+
+Fe+2 + 6 [CN]- = Fe[CN]6-4
+	log_k	35.4
+Fe+3 + 6 [CN]- = Fe[CN]6-3
+	log_k	43.6
+Ni+2 + [CN]- = Ni[CN]+
+	log_k	7.03
+Ni+2 + 4 [CN]- = Ni[CN]4-2
+	log_k	30.22
+Ni[CN]4-2 + H+ = NiH[CN]4-
+	log_k	5.4
+NiH[CN]4- + H+ = NiH2[CN]4
+	log_k	4.5
+NiH2[CN]4 + H+ = NiH3[CN]4+
+	log_k	2.6
+Pd+2 + 4 [CN]- = Pd[CN]4-2
+	log_k	42.4
+Pd+2 + 5 [CN]- = Pd[CN]5-3
+	log_k	45.3
+Pt+2 + 4 [CN]- = Pt[CN]4-2
+	log_k	41
+Cu+ + 2 [CN]- = Cu[CN]2-
+	log_k	16.26
+Cu+ + 3 [CN]- = Cu[CN]3-2
+	log_k	21.6
+Cu+ + 4 [CN]- = Cu[CN]4-3
+	log_k	23.1
+Cu+2 + 4 [CN]- = Cu[CN]4-2
+	log_k	25
+Ag+ + 2 [CN]- = Ag[CN]2-
+	log_k	20.48
+Ag+ + 3 [CN]- = Ag[CN]3-2
+	log_k	21.4
+Ag+ + 4 [CN]- = Ag[CN]4-3
+	log_k	20.8
+Ag+ + OH- + [CN]- = AgOH[CN]-
+	log_k	13.2
+Au+ + 2 [CN]- = Au[CN]2-
+	log_k	38.3
+Au+3 + 4 [CN]- = Au[CN]4-
+	log_k	56
+Zn+2 + [CN]- = Zn[CN]+
+	log_k	5.3
+Zn+2 + 2 [CN]- = Zn[CN]2
+	log_k	11.07
+Zn+2 + 3 [CN]- = Zn[CN]3-
+	log_k	16.05
+Zn+2 + 4 [CN]- = Zn[CN]4-2
+	log_k	19.62
+Cd+2 + [CN]- = Cd[CN]+
+	log_k	6.01
+Cd+2 + 2 [CN]- = Cd[CN]2
+	log_k	11.12
+Cd+2 + 3 [CN]- = Cd[CN]3-
+	log_k	15.65
+Cd+2 + 4 [CN]- = Cd[CN]4-2
+	log_k	17.92
+Hg+2 + [CN]- = Hg[CN]+
+	log_k	17.00
+Hg+2 + 2 [CN]- = Hg[CN]2
+	log_k	32.75
+Hg+2 + 3 [CN]- = Hg[CN]3-
+	log_k	36.31
+Hg+2 + 4 [CN]- = Hg[CN]4-2
+	log_k	38.97
+Hg+2 + OH- + [CN]- = HgOH[CN]
+	log_k	28.9
+Tl+3 + 4 [CN]- = Tl[CN]4-
+	log_k	35
+Pb+2 + 4 [CN]- = Pb[CN]4-2
+	log_k	10.3
+
+Sc+3 + [S][CN]- = Sc[S][CN]+2
+	log_k	0.20
+La+3 + [S][CN]- = La[S][CN]+2
+	log_k	0.12
+Ce+3 + [S][CN]- = Ce[S][CN]+2
+	log_k	0.15
+Pr+3 + [S][CN]- = Pr[S][CN]+2
+	log_k	0.15
+Nd+3 + [S][CN]- = Nd[S][CN]+2
+	log_k	0.15
+Pm+3 + [S][CN]- = Pm[S][CN]+2
+	log_k	0.15
+Sm+3 + [S][CN]- = Sm[S][CN]+2
+	log_k	0.15
+Eu+3 + [S][CN]- = Eu[S][CN]+2
+	log_k	0.15
+Gd+3 + [S][CN]- = Gd[S][CN]+2
+	log_k	0.15
+Tb+3 + [S][CN]- = Tb[S][CN]+2
+	log_k	0.15
+Dy+3 + [S][CN]- = Dy[S][CN]+2
+	log_k	0.15
+Ho+3 + [S][CN]- = Ho[S][CN]+2
+	log_k	0.15
+Er+3 + [S][CN]- = Er[S][CN]+2
+	log_k	0.15
+Tm+3 + [S][CN]- = Tm[S][CN]+2
+	log_k	0.15
+Yb+3 + [S][CN]- = Yb[S][CN]+2
+	log_k	0.15
+Lu+3 + [S][CN]- = Lu[S][CN]+2
+	log_k	0.15
+TiOH+3 + [S][CN]- = TiOH[S][CN]+2
+	log_k	1.7
+# ZrOOH+3 + [S][CN]- = ZrOOH[S][CN]+2
+	# log_k	1.15
+Th+4 + [S][CN]- = Th[S][CN]+3
+	log_k	1.08
+Th+4 + 2 [S][CN]- = Th([S][CN])2+2
+	log_k	1.78
+V+2 + [S][CN]- = V[S][CN]+
+	log_k	1.43
+V+3 + [S][CN]- = V[S][CN]+2
+	log_k	2.07
+VO+2 + [S][CN]- = VO[S][CN]+
+	log_k	2.32
+VO+2 + 2 [S][CN]- = VO([S][CN])2
+	log_k	3.68
+Cr+2 + [S][CN]- = Cr[S][CN]+
+	log_k	1.09
+Cr+2 + 2 [S][CN]- = Cr([S][CN])2
+	log_k	0.77
+Cr+3 + [S][CN]- = Cr[S][CN]+2
+	log_k	3.08
+Cr+3 + 2 [S][CN]- = Cr([S][CN])2+
+	log_k	2.98
+U+4 + [S][CN]- = U[S][CN]+3
+	log_k	1.49
+U+4 + 2 [S][CN]- = U([S][CN])2+2
+	log_k	1.95
+U+4 + 3 [S][CN]- = U([S][CN])3+
+	log_k	2.2
+UO2+2 + [S][CN]- = UO2[S][CN]+
+	log_k	0.93
+UO2+2 + 2 [S][CN]- = UO2([S][CN])2
+	log_k	0.72
+UO2+2 + 3 [S][CN]- = UO2([S][CN])3-
+	log_k	0.18
+Ac+3 + [S][CN]- = Ac[S][CN]+2
+	log_k	0.5
+U+3 + [S][CN]- = U[S][CN]+2
+	log_k	0.5
+Np+3 + [S][CN]- = Np[S][CN]+2
+	log_k	0.5
+Pu+3 + [S][CN]- = Pu[S][CN]+2
+	log_k	0.5
+Mn+2 + [S][CN]- = Mn[S][CN]+
+	log_k	1.23
+Fe+2 + [S][CN]- = Fe[S][CN]+
+	log_k	1.31
+Fe+3 + [S][CN]- = Fe[S][CN]+2
+	log_k	3.02
+Fe+3 + 2 [S][CN]- = Fe([S][CN])2+
+	log_k	4.64
+Fe+3 + 3 [S][CN]- = Fe([S][CN])3
+	log_k	5.0
+Fe+3 + 4 [S][CN]- = Fe([S][CN])4-
+	log_k	6.3
+Fe+3 + 5 [S][CN]- = Fe([S][CN])5-2
+	log_k	6.2
+Fe+3 + 6 [S][CN]- = Fe([S][CN])6-3
+	log_k	6.1
+Co+2 + [S][CN]- = Co[S][CN]+
+	log_k	1.72
+Co+2 + 2 [S][CN]- = Co([S][CN])2
+	log_k	1.32
+Co+2 + 3 [S][CN]- = Co([S][CN])3-
+	log_k	-0.38
+Ni+2 + [S][CN]- = Ni[S][CN]+
+	log_k	1.76
+Ni+2 + 2 [S][CN]- = Ni([S][CN])2
+	log_k	1.58
+Ni+2 + 3 [S][CN]- = Ni([S][CN])3-
+	log_k	1.5
+Pd+2 + 4 [S][CN]- = Pd([S][CN])4-2
+	log_k	27.2
+Cu+ + 2 [S][CN]- = Cu([S][CN])2-
+	log_k	11.00
+Cu+ + 3 [S][CN]- = Cu([S][CN])3-2
+	log_k	10.9
+Cu+ + 4 [S][CN]- = Cu([S][CN])4-3
+	log_k	10.4
+Cu+2 + [S][CN]- = Cu[S][CN]+
+	log_k	2.33
+Cu+2 + 2 [S][CN]- = Cu([S][CN])2
+	log_k	3.65
+Ag+ + [S][CN]- = Ag[S][CN]
+	log_k	4.8
+Ag+ + 2 [S][CN]- = Ag([S][CN])2-
+	log_k	8.23
+Ag+ + 3 [S][CN]- = Ag([S][CN])3-2
+	log_k	9.5
+Ag+ + 4 [S][CN]- = Ag([S][CN])4-3
+	log_k	9.7
+Au+ + [S][CN]- = Au[S][CN]
+	log_k	15.27
+Au+ + 2 [S][CN]- = Au([S][CN])2-
+	log_k	16.98
+Au+3 + 4 [S][CN]- = Au([S][CN])4-
+	log_k	43
+Zn+2 + [S][CN]- = Zn[S][CN]+
+	log_k	1.33
+Zn+2 + 2 [S][CN]- = Zn([S][CN])2
+	log_k	1.91
+Zn+2 + 3 [S][CN]- = Zn([S][CN])3-
+	log_k	2.0
+Zn+2 + 4 [S][CN]- = Zn([S][CN])4-2
+	log_k	1.6
+Cd+2 + [S][CN]- = Cd[S][CN]+
+	log_k	1.89
+Cd+2 + 2 [S][CN]- = Cd([S][CN])2
+	log_k	2.78
+Cd+2 + 3 [S][CN]- = Cd([S][CN])3-
+	log_k	2.8
+Cd+2 + 4 [S][CN]- = Cd([S][CN])4-2
+	log_k	2.3
+Hg+2 + [S][CN]- = Hg[S][CN]+
+	log_k	9.08
+Hg+2 + 2 [S][CN]- = Hg([S][CN])2
+	log_k	17.26
+Hg+2 + 3 [S][CN]- = Hg([S][CN])3-
+	log_k	19.27
+Hg+2 + 4 [S][CN]- = Hg([S][CN])4-2
+	log_k	21.8
+Al+3 + [S][CN]- = Al[S][CN]+2
+	log_k	0.42
+Ga+3 + [S][CN]- = Ga[S][CN]+2
+	log_k	2.15
+In+3 + [S][CN]- = In[S][CN]+2
+	log_k	3.15
+In+3 + 2 [S][CN]- = In([S][CN])2+
+	log_k	3.53
+In+3 + 3 [S][CN]- = In([S][CN])3
+	log_k	4.6
+Tl+ + [S][CN]- = Tl[S][CN]
+	log_k	0.58
+Tl+ + 2 [S][CN]- = Tl([S][CN])2-
+	log_k	0.00
+Tl+ + 3 [S][CN]- = Tl([S][CN])3-2
+	log_k	-0.4
+Bi+3 + [S][CN]- = Bi[S][CN]+2
+	log_k	2.21
+Bi+3 + 2 [S][CN]- = Bi([S][CN])2+
+	log_k	2.7
+Bi+3 + 3 [S][CN]- = Bi([S][CN])3
+	log_k	4.4
+Bi+3 + 4 [S][CN]- = Bi([S][CN])4-
+	log_k	5.2
+Bi+3 + 5 [S][CN]- = Bi([S][CN])5-2
+	log_k	5.8
+Bi+3 + 6 [S][CN]- = Bi([S][CN])6-3
+	log_k	5.4
+	
+Sc+3 + [S][CN]- = Sc[S][CN]+2
+	log_k	0.20
+La+3 + [S][CN]- = La[S][CN]+2
+	log_k	0.12
+Ce+3 + [S][CN]- = Ce[S][CN]+2
+	log_k	0.15
+Pr+3 + [S][CN]- = Pr[S][CN]+2
+	log_k	0.15
+Nd+3 + [S][CN]- = Nd[S][CN]+2
+	log_k	0.15
+Pm+3 + [S][CN]- = Pm[S][CN]+2
+	log_k	0.15
+Sm+3 + [S][CN]- = Sm[S][CN]+2
+	log_k	0.15
+Eu+3 + [S][CN]- = Eu[S][CN]+2
+	log_k	0.15
+Gd+3 + [S][CN]- = Gd[S][CN]+2
+	log_k	0.15
+Tb+3 + [S][CN]- = Tb[S][CN]+2
+	log_k	0.15
+Dy+3 + [S][CN]- = Dy[S][CN]+2
+	log_k	0.15
+Ho+3 + [S][CN]- = Ho[S][CN]+2
+	log_k	0.15
+Er+3 + [S][CN]- = Er[S][CN]+2
+	log_k	0.15
+Tm+3 + [S][CN]- = Tm[S][CN]+2
+	log_k	0.15
+Yb+3 + [S][CN]- = Yb[S][CN]+2
+	log_k	0.15
+Lu+3 + [S][CN]- = Lu[S][CN]+2
+	log_k	0.15
+TiOH+3 + [S][CN]- = TiOH[S][CN]+2
+	log_k	1.7
+# ZrOOH+3 + [S][CN]- = ZrOOH[S][CN]+2
+	# log_k	1.15
+Th+4 + [S][CN]- = Th[S][CN]+3
+	log_k	1.08
+Th+4 + 2 [S][CN]- = Th([S][CN])2+2
+	log_k	1.78
+V+2 + [S][CN]- = V[S][CN]+
+	log_k	1.43
+V+3 + [S][CN]- = V[S][CN]+2
+	log_k	2.07
+VO+2 + [S][CN]- = VO[S][CN]+
+	log_k	2.32
+VO+2 + 2 [S][CN]- = VO([S][CN])2
+	log_k	3.68
+Cr+2 + [S][CN]- = Cr[S][CN]+
+	log_k	1.09
+Cr+2 + 2 [S][CN]- = Cr([S][CN])2
+	log_k	0.77
+Cr+3 + [S][CN]- = Cr[S][CN]+2
+	log_k	3.08
+Cr+3 + 2 [S][CN]- = Cr([S][CN])2+
+	log_k	2.98
+U+4 + [S][CN]- = U[S][CN]+3
+	log_k	1.49
+U+4 + 2 [S][CN]- = U([S][CN])2+2
+	log_k	1.95
+U+4 + 3 [S][CN]- = U([S][CN])3+
+	log_k	2.2
+UO2+2 + [S][CN]- = UO2[S][CN]+
+	log_k	0.93
+UO2+2 + 2 [S][CN]- = UO2([S][CN])2
+	log_k	0.72
+UO2+2 + 3 [S][CN]- = UO2([S][CN])3-
+	log_k	0.18
+Ac+3 + [S][CN]- = Ac[S][CN]+2
+	log_k	0.5
+U+3 + [S][CN]- = U[S][CN]+2
+	log_k	0.5
+Np+3 + [S][CN]- = Np[S][CN]+2
+	log_k	0.5
+Pu+3 + [S][CN]- = Pu[S][CN]+2
+	log_k	0.5
+Mn+2 + [S][CN]- = Mn[S][CN]+
+	log_k	1.23
+Fe+2 + [S][CN]- = Fe[S][CN]+
+	log_k	1.31
+Fe+3 + [S][CN]- = Fe[S][CN]+2
+	log_k	3.02
+Fe+3 + 2 [S][CN]- = Fe([S][CN])2+
+	log_k	4.64
+Fe+3 + 3 [S][CN]- = Fe([S][CN])3
+	log_k	5.0
+Fe+3 + 4 [S][CN]- = Fe([S][CN])4-
+	log_k	6.3
+Fe+3 + 5 [S][CN]- = Fe([S][CN])5-2
+	log_k	6.2
+Fe+3 + 6 [S][CN]- = Fe([S][CN])6-3
+	log_k	6.1
+Co+2 + [S][CN]- = Co[S][CN]+
+	log_k	1.72
+Co+2 + 2 [S][CN]- = Co([S][CN])2
+	log_k	1.32
+Co+2 + 3 [S][CN]- = Co([S][CN])3-
+	log_k	-0.38
+Ni+2 + [S][CN]- = Ni[S][CN]+
+	log_k	1.76
+Ni+2 + 2 [S][CN]- = Ni([S][CN])2
+	log_k	1.58
+Ni+2 + 3 [S][CN]- = Ni([S][CN])3-
+	log_k	1.5
+Pd+2 + 4 [S][CN]- = Pd([S][CN])4-2
+	log_k	27.2
+Cu+ + 2 [S][CN]- = Cu([S][CN])2-
+	log_k	11.00
+Cu+ + 3 [S][CN]- = Cu([S][CN])3-2
+	log_k	10.9
+Cu+ + 4 [S][CN]- = Cu([S][CN])4-3
+	log_k	10.4
+Cu+2 + [S][CN]- = Cu[S][CN]+
+	log_k	2.33
+Cu+2 + 2 [S][CN]- = Cu([S][CN])2
+	log_k	3.65
+Ag+ + [S][CN]- = Ag[S][CN]
+	log_k	4.8
+Ag+ + 2 [S][CN]- = Ag([S][CN])2-
+	log_k	8.23
+Ag+ + 3 [S][CN]- = Ag([S][CN])3-2
+	log_k	9.5
+Ag+ + 4 [S][CN]- = Ag([S][CN])4-3
+	log_k	9.7
+Au+ + [S][CN]- = Au[S][CN]
+	log_k	15.27
+Au+ + 2 [S][CN]- = Au([S][CN])2-
+	log_k	16.98
+Au+3 + 4 [S][CN]- = Au([S][CN])4-
+	log_k	43
+Zn+2 + [S][CN]- = Zn[S][CN]+
+	log_k	1.33
+Zn+2 + 2 [S][CN]- = Zn([S][CN])2
+	log_k	1.91
+Zn+2 + 3 [S][CN]- = Zn([S][CN])3-
+	log_k	2.0
+Zn+2 + 4 [S][CN]- = Zn([S][CN])4-2
+	log_k	1.6
+Cd+2 + [S][CN]- = Cd[S][CN]+
+	log_k	1.89
+Cd+2 + 2 [S][CN]- = Cd([S][CN])2
+	log_k	2.78
+Cd+2 + 3 [S][CN]- = Cd([S][CN])3-
+	log_k	2.8
+Cd+2 + 4 [S][CN]- = Cd([S][CN])4-2
+	log_k	2.3
+Hg+2 + [S][CN]- = Hg[S][CN]+
+	log_k	9.08
+Hg+2 + 2 [S][CN]- = Hg([S][CN])2
+	log_k	17.26
+Hg+2 + 3 [S][CN]- = Hg([S][CN])3-
+	log_k	19.27
+Hg+2 + 4 [S][CN]- = Hg([S][CN])4-2
+	log_k	21.8
+Al+3 + [S][CN]- = Al[S][CN]+2
+	log_k	0.42
+Ga+3 + [S][CN]- = Ga[S][CN]+2
+	log_k	2.15
+In+3 + [S][CN]- = In[S][CN]+2
+	log_k	3.15
+In+3 + 2 [S][CN]- = In([S][CN])2+
+	log_k	3.53
+In+3 + 3 [S][CN]- = In([S][CN])3
+	log_k	4.6
+Tl+ + [S][CN]- = Tl[S][CN]
+	log_k	0.58
+Tl+ + 2 [S][CN]- = Tl([S][CN])2-
+	log_k	0.00
+Tl+ + 3 [S][CN]- = Tl([S][CN])3-2
+	log_k	-0.4
+Bi+3 + [S][CN]- = Bi[S][CN]+2
+	log_k	2.21
+Bi+3 + 2 [S][CN]- = Bi([S][CN])2+
+	log_k	2.7
+Bi+3 + 3 [S][CN]- = Bi([S][CN])3
+	log_k	4.4
+Bi+3 + 4 [S][CN]- = Bi([S][CN])4-
+	log_k	5.2
+Bi+3 + 5 [S][CN]- = Bi([S][CN])5-2
+	log_k	5.8
+Bi+3 + 6 [S][CN]- = Bi([S][CN])6-3
+	log_k	5.4
+
+Li+ + [N]H3 = Li[N]H3+
+	log_k	-0.3
+Li+ + 2 [N]H3 = Li([N]H3)2+
+	log_k	-1.1
+Li+ + 3 [N]H3 = Li([N]H3)3+
+	log_k	-2.4
+Mg+2 + [N]H3 = Mg[N]H3+2
+	log_k	0.23
+Mg+2 + 2 [N]H3 = Mg([N]H3)2+2
+	log_k	0.08
+Mg+2 + 3 [N]H3 = Mg([N]H3)3+2
+	log_k	-0.3
+Ca+2 + [N]H3 = Ca[N]H3+2
+	log_k	-0.2
+Ca+2 + 2 [N]H3 = Ca([N]H3)2+2
+	log_k	-0.8
+Ca+2 + 3 [N]H3 = Ca([N]H3)3+2
+	log_k	-1.6
+Ca+2 + 4 [N]H3 = Ca([N]H3)4+2
+	log_k	-2.7
+Ca+2 + 5 [N]H3 = Ca([N]H3)5+2
+	log_k	-4.0
+Ca+2 + 6 [N]H3 = Ca([N]H3)6+2
+	log_k	-5.7
+Cr+3 + 6 [N]H3 = Cr([N]H3)6+3
+	log_k	13
+2 Cr+3 + 3 OH- + 6 [N]H3 = Cr2(OH)3([N]H3)6+3
+	log_k	46.42
+Mn+2 + [N]H3 = Mn[N]H3+2
+	log_k	1.00
+Mn+2 + 2 [N]H3 = Mn([N]H3)2+2
+	log_k	1.54
+Mn+2 + 3 [N]H3 = Mn([N]H3)3+2
+	log_k	1.70
+Mn+2 + 4 [N]H3 = Mn([N]H3)4+2
+	log_k	1.3
+Fe+2 + [N]H3 = Fe[N]H3+2
+	log_k	1.4
+Fe+2 + 2 [N]H3 = Fe([N]H3)2+2
+	log_k	2.2
+Fe+2 + 4 [N]H3 = Fe([N]H3)4+2
+	log_k	3.7
+Co+2 + [N]H3 = Co[N]H3+2
+	log_k	1.99
+Co+2 + 2 [N]H3 = Co([N]H3)2+2
+	log_k	3.50
+Co+2 + 3 [N]H3 = Co([N]H3)3+2
+	log_k	4.43
+Co+2 + 4 [N]H3 = Co([N]H3)4+2
+	log_k	5.07
+Co+2 + 5 [N]H3 = Co([N]H3)5+2
+	log_k	5.13
+Co+2 + 6 [N]H3 = Co([N]H3)6+2
+	log_k	4.39
+Co+3 + [N]H3 = Co[N]H3+3
+	log_k	7.3
+Co+3 + 2 [N]H3 = Co([N]H3)2+3
+	log_k	14.0
+Co+3 + 3 [N]H3 = Co([N]H3)3+3
+	log_k	20.1
+Co+3 + 4 [N]H3 = Co([N]H3)4+3
+	log_k	25.7
+Co+3 + 5 [N]H3 = Co([N]H3)5+3
+	log_k	30.8
+Co+3 + 6 [N]H3 = Co([N]H3)6+3
+	log_k	35.2
+Co([N]H3)6+3 + H2O = Co([N]H3)5OH+2 + [N]H4+
+	log_k 	-1.0
+Co([N]H3)5OH+2 + H2O = Co([N]H3)4(OH)2+ + [N]H4+
+	log_k 	-2.6
+Ni+2 + [N]H3 = Ni[N]H3+2
+	log_k	2.72
+Ni+2 + 2 [N]H3 = Ni([N]H3)2+2
+	log_k	4.89
+Ni+2 + 3 [N]H3 = Ni([N]H3)3+2
+	log_k	6.55
+Ni+2 + 4 [N]H3 = Ni([N]H3)4+2
+	log_k	7.67
+Ni+2 + 5 [N]H3 = Ni([N]H3)5+2
+	log_k	8.34
+Ni+2 + 6 [N]H3 = Ni([N]H3)6+2
+	log_k	8.31
+Pd+2 + [N]H3 = Pd[N]H3+2
+	log_k	9.6
+Pd+2 + 2 [N]H3 = Pd([N]H3)2+2
+	log_k	18.5
+Pd+2 + 3 [N]H3 = Pd([N]H3)3+2
+	log_k	26.0
+Pd+2 + 4 [N]H3 = Pd([N]H3)4+2
+	log_k	32.8
+Pt+2 + 4 [N]H3 = Pt([N]H3)4+2
+	log_k	35.3
+Cu+ + [N]H3 = Cu[N]H3+
+	log_k	5.93
+Cu+ + 2 [N]H3 = Cu([N]H3)2+
+	log_k	10.58
+Cu+2 + [N]H3 = Cu[N]H3+2
+	log_k	4.04
+Cu+2 + 2 [N]H3 = Cu([N]H3)2+2
+	log_k	7.47
+Cu+2 + 3 [N]H3 = Cu([N]H3)3+2
+	log_k	10.27
+Cu+2 + 4 [N]H3 = Cu([N]H3)4+2
+	log_k	11.75
+Cu+2 + 5 [N]H3 = Cu([N]H3)5+2
+	log_k	12.43
+Ag+ + [N]H3 = Ag[N]H3+
+	log_k	3.31
+Ag+ + 2 [N]H3 = Ag([N]H3)2+
+	log_k	7.22
+Au+ + 2 [N]H3 = Au([N]H3)2+
+	log_k	27
+Au+3 + 4 [N]H3 = Au([N]H3)4+3
+	log_k	30
+Zn+2 + [N]H3 = Zn[N]H3+2
+	log_k	2.21
+Zn+2 + 2 [N]H3 = Zn([N]H3)2+2
+	log_k	4.50
+Zn+2 + 3 [N]H3 = Zn([N]H3)3+2
+	log_k	6.86
+Zn+2 + 4 [N]H3 = Zn([N]H3)4+2
+	log_k	8.89
+Cd+2 + [N]H3 = Cd[N]H3+2
+	log_k	2.55
+Cd+2 + 2 [N]H3 = Cd([N]H3)2+2
+	log_k	4.56
+Cd+2 + 3 [N]H3 = Cd([N]H3)3+2
+	log_k	5.90
+Cd+2 + 4 [N]H3 = Cd([N]H3)4+2
+	log_k	6.74
+Cd+2 + 5 [N]H3 = Cd([N]H3)5+2
+	log_k	6.9
+Cd+2 + 6 [N]H3 = Cd([N]H3)6+2
+	log_k	5.41
+Hg+2 + [N]H3 = Hg[N]H3+2
+	log_k	8.8
+Hg+2 + 2 [N]H3 = Hg([N]H3)2+2
+	log_k	17.8
+Hg+2 + 3 [N]H3 = Hg([N]H3)3+2
+	log_k	18.4
+Hg+2 + 4 [N]H3 = Hg([N]H3)4+2
+	log_k	19.3
+Tl+ + [N]H3 = Tl[N]H3+
+	log_k	-0.9
+Tl+3 + 4 [N]H3 = Tl([N]H3)4+3
+	log_k	17
+Tl(OH)2+ + [N]H3 = Tl(OH)2[N]H3+
+	log_k	4.6
+Tl(OH)2[N]H3+ + [N]H3 = Tl(OH)2([N]H3)2+
+	log_k	4.7
+Tl(OH)2([N]H3)2+ + [N]H3 = Tl(OH)2([N]H3)3+
+	log_k	2.3
+Tl(OH)2([N]H3)3+ + [N]H3 = Tl(OH)2([N]H3)4+
+	log_k	1.5
+
+Li+ + [N]H3 = Li[N]H3+
+	log_k	-0.3
+Li+ + 2 [N]H3 = Li([N]H3)2+
+	log_k	-1.1
+Li+ + 3 [N]H3 = Li([N]H3)3+
+	log_k	-2.4
+Mg+2 + [N]H3 = Mg[N]H3+2
+	log_k	0.23
+Mg+2 + 2 [N]H3 = Mg([N]H3)2+2
+	log_k	0.08
+Mg+2 + 3 [N]H3 = Mg([N]H3)3+2
+	log_k	-0.3
+Ca+2 + [N]H3 = Ca[N]H3+2
+	log_k	-0.2
+Ca+2 + 2 [N]H3 = Ca([N]H3)2+2
+	log_k	-0.8
+Ca+2 + 3 [N]H3 = Ca([N]H3)3+2
+	log_k	-1.6
+Ca+2 + 4 [N]H3 = Ca([N]H3)4+2
+	log_k	-2.7
+Ca+2 + 5 [N]H3 = Ca([N]H3)5+2
+	log_k	-4.0
+Ca+2 + 6 [N]H3 = Ca([N]H3)6+2
+	log_k	-5.7
+Cr+3 + 6 [N]H3 = Cr([N]H3)6+3
+	log_k	13
+2 Cr+3 + 3 OH- + 6 [N]H3 = Cr2(OH)3([N]H3)6+3
+	log_k	46.42
+Mn+2 + [N]H3 = Mn[N]H3+2
+	log_k	1.00
+Mn+2 + 2 [N]H3 = Mn([N]H3)2+2
+	log_k	1.54
+Mn+2 + 3 [N]H3 = Mn([N]H3)3+2
+	log_k	1.70
+Mn+2 + 4 [N]H3 = Mn([N]H3)4+2
+	log_k	1.3
+Fe+2 + [N]H3 = Fe[N]H3+2
+	log_k	1.4
+Fe+2 + 2 [N]H3 = Fe([N]H3)2+2
+	log_k	2.2
+Fe+2 + 4 [N]H3 = Fe([N]H3)4+2
+	log_k	3.7
+Co+2 + [N]H3 = Co[N]H3+2
+	log_k	1.99
+Co+2 + 2 [N]H3 = Co([N]H3)2+2
+	log_k	3.50
+Co+2 + 3 [N]H3 = Co([N]H3)3+2
+	log_k	4.43
+Co+2 + 4 [N]H3 = Co([N]H3)4+2
+	log_k	5.07
+Co+2 + 5 [N]H3 = Co([N]H3)5+2
+	log_k	5.13
+Co+2 + 6 [N]H3 = Co([N]H3)6+2
+	log_k	4.39
+Co+3 + [N]H3 = Co[N]H3+3
+	log_k	7.3
+Co+3 + 2 [N]H3 = Co([N]H3)2+3
+	log_k	14.0
+Co+3 + 3 [N]H3 = Co([N]H3)3+3
+	log_k	20.1
+Co+3 + 4 [N]H3 = Co([N]H3)4+3
+	log_k	25.7
+Co+3 + 5 [N]H3 = Co([N]H3)5+3
+	log_k	30.8
+Co+3 + 6 [N]H3 = Co([N]H3)6+3
+	log_k	35.2
+Co([N]H3)6+3 + H2O = Co([N]H3)5OH+2 + [N]H4+
+	log_k 	-1.0
+Co([N]H3)5OH+2 + H2O = Co([N]H3)4(OH)2+ + [N]H4+
+	log_k 	-2.6
+Ni+2 + [N]H3 = Ni[N]H3+2
+	log_k	2.72
+Ni+2 + 2 [N]H3 = Ni([N]H3)2+2
+	log_k	4.89
+Ni+2 + 3 [N]H3 = Ni([N]H3)3+2
+	log_k	6.55
+Ni+2 + 4 [N]H3 = Ni([N]H3)4+2
+	log_k	7.67
+Ni+2 + 5 [N]H3 = Ni([N]H3)5+2
+	log_k	8.34
+Ni+2 + 6 [N]H3 = Ni([N]H3)6+2
+	log_k	8.31
+Pd+2 + [N]H3 = Pd[N]H3+2
+	log_k	9.6
+Pd+2 + 2 [N]H3 = Pd([N]H3)2+2
+	log_k	18.5
+Pd+2 + 3 [N]H3 = Pd([N]H3)3+2
+	log_k	26.0
+Pd+2 + 4 [N]H3 = Pd([N]H3)4+2
+	log_k	32.8
+Pt+2 + 4 [N]H3 = Pt([N]H3)4+2
+	log_k	35.3
+Cu+ + [N]H3 = Cu[N]H3+
+	log_k	5.93
+Cu+ + 2 [N]H3 = Cu([N]H3)2+
+	log_k	10.58
+Cu+2 + [N]H3 = Cu[N]H3+2
+	log_k	4.04
+Cu+2 + 2 [N]H3 = Cu([N]H3)2+2
+	log_k	7.47
+Cu+2 + 3 [N]H3 = Cu([N]H3)3+2
+	log_k	10.27
+Cu+2 + 4 [N]H3 = Cu([N]H3)4+2
+	log_k	11.75
+Cu+2 + 5 [N]H3 = Cu([N]H3)5+2
+	log_k	12.43
+Ag+ + [N]H3 = Ag[N]H3+
+	log_k	3.31
+Ag+ + 2 [N]H3 = Ag([N]H3)2+
+	log_k	7.22
+Au+ + 2 [N]H3 = Au([N]H3)2+
+	log_k	27
+Au+3 + 4 [N]H3 = Au([N]H3)4+3
+	log_k	30
+Zn+2 + [N]H3 = Zn[N]H3+2
+	log_k	2.21
+Zn+2 + 2 [N]H3 = Zn([N]H3)2+2
+	log_k	4.50
+Zn+2 + 3 [N]H3 = Zn([N]H3)3+2
+	log_k	6.86
+Zn+2 + 4 [N]H3 = Zn([N]H3)4+2
+	log_k	8.89
+Cd+2 + [N]H3 = Cd[N]H3+2
+	log_k	2.55
+Cd+2 + 2 [N]H3 = Cd([N]H3)2+2
+	log_k	4.56
+Cd+2 + 3 [N]H3 = Cd([N]H3)3+2
+	log_k	5.90
+Cd+2 + 4 [N]H3 = Cd([N]H3)4+2
+	log_k	6.74
+Cd+2 + 5 [N]H3 = Cd([N]H3)5+2
+	log_k	6.9
+Cd+2 + 6 [N]H3 = Cd([N]H3)6+2
+	log_k	5.41
+Hg+2 + [N]H3 = Hg[N]H3+2
+	log_k	8.8
+Hg+2 + 2 [N]H3 = Hg([N]H3)2+2
+	log_k	17.8
+Hg+2 + 3 [N]H3 = Hg([N]H3)3+2
+	log_k	18.4
+Hg+2 + 4 [N]H3 = Hg([N]H3)4+2
+	log_k	19.3
+Tl+ + [N]H3 = Tl[N]H3+
+	log_k	-0.9
+Tl+3 + 4 [N]H3 = Tl([N]H3)4+3
+	log_k	17
+Tl(OH)2+ + [N]H3 = Tl(OH)2[N]H3+
+	log_k	4.6
+Tl(OH)2[N]H3+ + [N]H3 = Tl(OH)2([N]H3)2+
+	log_k	4.7
+Tl(OH)2([N]H3)2+ + [N]H3 = Tl(OH)2([N]H3)3+
+	log_k	2.3
+Tl(OH)2([N]H3)3+ + [N]H3 = Tl(OH)2([N]H3)4+
+	log_k	1.5	
+
+Li+ + [N]H3 = Li[N]H3+
+	log_k	-0.3
+Li+ + 2 [N]H3 = Li([N]H3)2+
+	log_k	-1.1
+Li+ + 3 [N]H3 = Li([N]H3)3+
+	log_k	-2.4
+Mg+2 + [N]H3 = Mg[N]H3+2
+	log_k	0.23
+Mg+2 + 2 [N]H3 = Mg([N]H3)2+2
+	log_k	0.08
+Mg+2 + 3 [N]H3 = Mg([N]H3)3+2
+	log_k	-0.3
+Ca+2 + [N]H3 = Ca[N]H3+2
+	log_k	-0.2
+Ca+2 + 2 [N]H3 = Ca([N]H3)2+2
+	log_k	-0.8
+Ca+2 + 3 [N]H3 = Ca([N]H3)3+2
+	log_k	-1.6
+Ca+2 + 4 [N]H3 = Ca([N]H3)4+2
+	log_k	-2.7
+Ca+2 + 5 [N]H3 = Ca([N]H3)5+2
+	log_k	-4.0
+Ca+2 + 6 [N]H3 = Ca([N]H3)6+2
+	log_k	-5.7
+Cr+3 + 6 [N]H3 = Cr([N]H3)6+3
+	log_k	13
+2 Cr+3 + 3 OH- + 6 [N]H3 = Cr2(OH)3([N]H3)6+3
+	log_k	46.42
+Mn+2 + [N]H3 = Mn[N]H3+2
+	log_k	1.00
+Mn+2 + 2 [N]H3 = Mn([N]H3)2+2
+	log_k	1.54
+Mn+2 + 3 [N]H3 = Mn([N]H3)3+2
+	log_k	1.70
+Mn+2 + 4 [N]H3 = Mn([N]H3)4+2
+	log_k	1.3
+Fe+2 + [N]H3 = Fe[N]H3+2
+	log_k	1.4
+Fe+2 + 2 [N]H3 = Fe([N]H3)2+2
+	log_k	2.2
+Fe+2 + 4 [N]H3 = Fe([N]H3)4+2
+	log_k	3.7
+Co+2 + [N]H3 = Co[N]H3+2
+	log_k	1.99
+Co+2 + 2 [N]H3 = Co([N]H3)2+2
+	log_k	3.50
+Co+2 + 3 [N]H3 = Co([N]H3)3+2
+	log_k	4.43
+Co+2 + 4 [N]H3 = Co([N]H3)4+2
+	log_k	5.07
+Co+2 + 5 [N]H3 = Co([N]H3)5+2
+	log_k	5.13
+Co+2 + 6 [N]H3 = Co([N]H3)6+2
+	log_k	4.39
+Co+3 + [N]H3 = Co[N]H3+3
+	log_k	7.3
+Co+3 + 2 [N]H3 = Co([N]H3)2+3
+	log_k	14.0
+Co+3 + 3 [N]H3 = Co([N]H3)3+3
+	log_k	20.1
+Co+3 + 4 [N]H3 = Co([N]H3)4+3
+	log_k	25.7
+Co+3 + 5 [N]H3 = Co([N]H3)5+3
+	log_k	30.8
+Co+3 + 6 [N]H3 = Co([N]H3)6+3
+	log_k	35.2
+Co([N]H3)6+3 + H2O = Co([N]H3)5OH+2 + [N]H4+
+	log_k 	-1.0
+Co([N]H3)5OH+2 + H2O = Co([N]H3)4(OH)2+ + [N]H4+
+	log_k 	-2.6
+Ni+2 + [N]H3 = Ni[N]H3+2
+	log_k	2.72
+Ni+2 + 2 [N]H3 = Ni([N]H3)2+2
+	log_k	4.89
+Ni+2 + 3 [N]H3 = Ni([N]H3)3+2
+	log_k	6.55
+Ni+2 + 4 [N]H3 = Ni([N]H3)4+2
+	log_k	7.67
+Ni+2 + 5 [N]H3 = Ni([N]H3)5+2
+	log_k	8.34
+Ni+2 + 6 [N]H3 = Ni([N]H3)6+2
+	log_k	8.31
+Pd+2 + [N]H3 = Pd[N]H3+2
+	log_k	9.6
+Pd+2 + 2 [N]H3 = Pd([N]H3)2+2
+	log_k	18.5
+Pd+2 + 3 [N]H3 = Pd([N]H3)3+2
+	log_k	26.0
+Pd+2 + 4 [N]H3 = Pd([N]H3)4+2
+	log_k	32.8
+Pt+2 + 4 [N]H3 = Pt([N]H3)4+2
+	log_k	35.3
+Cu+ + [N]H3 = Cu[N]H3+
+	log_k	5.93
+Cu+ + 2 [N]H3 = Cu([N]H3)2+
+	log_k	10.58
+Cu+2 + [N]H3 = Cu[N]H3+2
+	log_k	4.04
+Cu+2 + 2 [N]H3 = Cu([N]H3)2+2
+	log_k	7.47
+Cu+2 + 3 [N]H3 = Cu([N]H3)3+2
+	log_k	10.27
+Cu+2 + 4 [N]H3 = Cu([N]H3)4+2
+	log_k	11.75
+Cu+2 + 5 [N]H3 = Cu([N]H3)5+2
+	log_k	12.43
+Ag+ + [N]H3 = Ag[N]H3+
+	log_k	3.31
+Ag+ + 2 [N]H3 = Ag([N]H3)2+
+	log_k	7.22
+Au+ + 2 [N]H3 = Au([N]H3)2+
+	log_k	27
+Au+3 + 4 [N]H3 = Au([N]H3)4+3
+	log_k	30
+Zn+2 + [N]H3 = Zn[N]H3+2
+	log_k	2.21
+Zn+2 + 2 [N]H3 = Zn([N]H3)2+2
+	log_k	4.50
+Zn+2 + 3 [N]H3 = Zn([N]H3)3+2
+	log_k	6.86
+Zn+2 + 4 [N]H3 = Zn([N]H3)4+2
+	log_k	8.89
+Cd+2 + [N]H3 = Cd[N]H3+2
+	log_k	2.55
+Cd+2 + 2 [N]H3 = Cd([N]H3)2+2
+	log_k	4.56
+Cd+2 + 3 [N]H3 = Cd([N]H3)3+2
+	log_k	5.90
+Cd+2 + 4 [N]H3 = Cd([N]H3)4+2
+	log_k	6.74
+Cd+2 + 5 [N]H3 = Cd([N]H3)5+2
+	log_k	6.9
+Cd+2 + 6 [N]H3 = Cd([N]H3)6+2
+	log_k	5.41
+Hg+2 + [N]H3 = Hg[N]H3+2
+	log_k	8.8
+Hg+2 + 2 [N]H3 = Hg([N]H3)2+2
+	log_k	17.8
+Hg+2 + 3 [N]H3 = Hg([N]H3)3+2
+	log_k	18.4
+Hg+2 + 4 [N]H3 = Hg([N]H3)4+2
+	log_k	19.3
+Tl+ + [N]H3 = Tl[N]H3+
+	log_k	-0.9
+Tl+3 + 4 [N]H3 = Tl([N]H3)4+3
+	log_k	17
+Tl(OH)2+ + [N]H3 = Tl(OH)2[N]H3+
+	log_k	4.6
+Tl(OH)2[N]H3+ + [N]H3 = Tl(OH)2([N]H3)2+
+	log_k	4.7
+Tl(OH)2([N]H3)2+ + [N]H3 = Tl(OH)2([N]H3)3+
+	log_k	2.3
+Tl(OH)2([N]H3)3+ + [N]H3 = Tl(OH)2([N]H3)4+
+	log_k	1.5
+
+Na+ + [N]O3- = Na[N]O3
+	log_k	-0.6
+K+ + [N]O3- = K[N]O3
+	log_k	-0.15
+Be+2 + [N]O3- = Be[N]O3+
+	log_k	-0.6
+Ca+2 + [N]O3- = Ca[N]O3+
+	log_k	0.7
+Ca+2 + 2 [N]O3- = Ca([N]O3)2
+	log_k	0.6
+Sr+2 + [N]O3- = Sr[N]O3+
+	log_k	0.8
+Sr+2 + 2 [N]O3- = Sr([N]O3)2
+	log_k	0.8
+Ba+2 + [N]O3- = Ba[N]O3+
+	log_k	0.9
+Ba+2 + 2 [N]O3- = Ba([N]O3)2
+	log_k	1.0
+Sc+3 + [N]O3- = Sc[N]O3+2
+	log_k	0.55
+Sc+3 + 2 [N]O3- = Sc([N]O3)2+
+	log_k	0.08
+La+3 + [N]O3- = La[N]O3+2
+	log_k	0.1
+Ce+3 + [N]O3- = Ce[N]O3+2
+	log_k	0.3
+Pr+3 + [N]O3- = Pr[N]O3+2
+	log_k	0.3
+Nd+3 + [N]O3- = Nd[N]O3+2
+	log_k	0.3
+Pm+3 + [N]O3- = Pm[N]O3+2
+	log_k	0.3
+Sm+3 + [N]O3- = Sm[N]O3+2
+	log_k	0.3
+Eu+3 + [N]O3- = Eu[N]O3+2
+	log_k	0.3
+Gd+3 + [N]O3- = Gd[N]O3+2
+	log_k	0.0
+Tb+3 + [N]O3- = Tb[N]O3+2
+	log_k	-0.2
+Dy+3 + [N]O3- = Dy[N]O3+2
+	log_k	-0.2
+Ho+3 + [N]O3- = Ho[N]O3+2
+	log_k	-0.2
+Er+3 + [N]O3- = Er[N]O3+2
+	log_k	-0.2
+Tm+3 + [N]O3- = Tm[N]O3+2
+	log_k	-0.2
+Yb+3 + [N]O3- = Yb[N]O3+2
+	log_k	-0.2
+Lu+3 + [N]O3- = Lu[N]O3+2
+	log_k	-0.2
+Ce+4 + [N]O3- = Ce[N]O3+3
+	log_k	0.78
+Ce+4 + 2 [N]O3- = Ce([N]O3)2+2
+	log_k	1.20
+Ce+4 + 3 [N]O3- = Ce([N]O3)3+
+	log_k	1.34
+Ce+4 + 4 [N]O3- = Ce([N]O3)4
+	log_k	1.24
+Ce+4 + 5 [N]O3- = Ce([N]O3)5-
+	log_k	1.07
+Zr+4 + [N]O3- = Zr[N]O3+3
+	log_k	0.3
+Zr+4 + 2 [N]O3- = Zr([N]O3)2+2
+	log_k	0.1
+Zr+4 + 3 [N]O3- = Zr([N]O3)3+
+	log_k	-0.3
+Zr+4 + 4 [N]O3- = Zr([N]O3)4
+	log_k	-0.8
+Hf+4 + [N]O3- = Hf[N]O3+3
+	log_k	0.34
+Hf+4 + 3 [N]O3- = Hf([N]O3)3+
+	log_k	-0.7
+Th+4 + [N]O3- = Th[N]O3+3
+	log_k	0.67
+Th+4 + 2 [N]O3- = Th([N]O3)2+2
+	log_k	0.15
+VO2+ + [N]O3- = VO2[N]O3
+	log_k	-0.5
+Cr+3 + [N]O3- = Cr[N]O3+2
+	log_k	-2.01
+# MoO2+2 + 2 [N]O3- = MoO2([N]O3)2
+	# log_k	0.14
+# MoO2+2 + [N]O3- = MoO2[N]O3+
+	# log_k	-0.08
+U+4 + [N]O3- = U[N]O3+3
+	log_k	0.20
+U+4 + 2 [N]O3- = U([N]O3)2+2
+	log_k	0.2
+U+4 + 3 [N]O3- = U([N]O3)3+
+	log_k	0.0
+U+4 + 4 [N]O3- = U([N]O3)4
+	log_k	-0.5
+UO2+2 + [N]O3- = UO2[N]O3+
+	log_k	-0.3
+Np+4 + [N]O3- = Np[N]O3+3
+	log_k	1.7
+Np+4 + 2 [N]O3- = Np([N]O3)2+2
+	log_k	0.1
+Np+4 + 3 [N]O3- = Np([N]O3)3+
+	log_k	-0.3
+NpO2+ + [N]O3- = NpO2[N]O3
+	log_k	-0.25
+NpO2+2 + [N]O3- = NpO2[N]O3+
+	log_k	-0.9
+Am+3 + [N]O3- = Am[N]O3+2
+	log_k	0.26
+Mn+2 + [N]O3- = Mn[N]O3+
+	log_k	0.2
+Mn+2 + 2 [N]O3- = Mn([N]O3)2
+	log_k	0.6
+Fe+3 + [N]O3- = Fe[N]O3+2
+	log_k	1.0
+Co+2 + [N]O3- = Co[N]O3+
+	log_k	0.2
+Co+2 + 2 [N]O3- = Co([N]O3)2
+	log_k	-0.3
+Ni+2 + [N]O3- = Ni[N]O3+
+	log_k	0.4
+Ni+2 + 2 [N]O3- = Ni([N]O3)2
+	log_k	-0.5
+Cu+2 + [N]O3- = Cu[N]O3+
+	log_k	0.5
+Cu+2 + 2 [N]O3- = Cu([N]O3)2
+	log_k	-0.4
+Ag+ + [N]O3- = Ag[N]O3
+	log_k	-0.2
+Zn+2 + [N]O3- = Zn[N]O3+
+	log_k	0.4
+Zn+2 + 2 [N]O3- = Zn([N]O3)2
+	log_k	-0.3
+Cd+2 + [N]O3- = Cd[N]O3+
+	log_k	0.5
+Cd+2 + 2 [N]O3- = Cd([N]O3)2
+	log_k	0.2
+Hg2+2 + [N]O3- = Hg2[N]O3+
+	log_k	0.08
+Hg2+2 + 2 [N]O3- = Hg2([N]O3)2
+	log_k	-0.3
+Hg+2 + [N]O3- = Hg[N]O3+
+	log_k	0.11
+Hg+2 + 2 [N]O3- = Hg([N]O3)2
+	log_k	0.0
+In+3 + [N]O3- = In[N]O3+2
+	log_k	0.18
+In+3 + 2 [N]O3- = In([N]O3)2+
+	log_k	-0.3
+Tl+ + [N]O3- = Tl[N]O3
+	log_k	0.33
+Tl+3 + [N]O3- = Tl[N]O3+2
+	log_k	0.90
+Tl+3 + 2 [N]O3- = Tl([N]O3)2+
+	log_k	0.1
+Tl+3 + 3 [N]O3- = Tl([N]O3)3
+	log_k	1.1
+Pb+2 + [N]O3- = Pb[N]O3+
+	log_k	1.17
+Pb+2 + 2 [N]O3- = Pb([N]O3)2
+	log_k	1.4
+Pb+2 + 3 [N]O3- = Pb([N]O3)3-
+	log_k	0.1
+Pb+2 + 4 [N]O3- = Pb([N]O3)4-2
+	log_k	-0.3
+Bi+3 + [N]O3- = Bi[N]O3+2
+	log_k	1.7
+Bi+3 + 2 [N]O3- = Bi([N]O3)2+
+	log_k	2.5
+Bi+3 + 3 [N]O3- = Bi([N]O3)3
+	log_k	0.7
+Bi+3 + 4 [N]O3- = Bi([N]O3)4-
+	log_k	0.6
+
+# Na+ + [N]OO2- = Na[N]OO2
+	# log_k	-0.6
+# K+ + [N]OO2- = K[N]OO2
+	# log_k	-0.15
+# Be+2 + [N]OO2- = Be[N]OO2+
+	# log_k	-0.6
+# Ca+2 + [N]OO2- = Ca[N]OO2+
+	# log_k	0.7
+# Ca+2 + 2 [N]OO2- = Ca([N]OO2)2
+	# log_k	0.6
+# Sr+2 + [N]OO2- = Sr[N]OO2+
+	# log_k	0.8
+# Sr+2 + 2 [N]OO2- = Sr([N]OO2)2
+	# log_k	0.8
+# Ba+2 + [N]OO2- = Ba[N]OO2+
+	# log_k	0.9
+# Ba+2 + 2 [N]OO2- = Ba([N]OO2)2
+	# log_k	1.0
+# Sc+3 + [N]OO2- = Sc[N]OO2+2
+	# log_k	0.55
+# Sc+3 + 2 [N]OO2- = Sc([N]OO2)2+
+	# log_k	0.08
+# La+3 + [N]OO2- = La[N]OO2+2
+	# log_k	0.1
+# Ce+3 + [N]OO2- = Ce[N]OO2+2
+	# log_k	0.3
+# Pr+3 + [N]OO2- = Pr[N]OO2+2
+	# log_k	0.3
+# Nd+3 + [N]OO2- = Nd[N]OO2+2
+	# log_k	0.3
+# Pm+3 + [N]OO2- = Pm[N]OO2+2
+	# log_k	0.3
+# Sm+3 + [N]OO2- = Sm[N]OO2+2
+	# log_k	0.3
+# Eu+3 + [N]OO2- = Eu[N]OO2+2
+	# log_k	0.3
+# Gd+3 + [N]OO2- = Gd[N]OO2+2
+	# log_k	0.0
+# Tb+3 + [N]OO2- = Tb[N]OO2+2
+	# log_k	-0.2
+# Dy+3 + [N]OO2- = Dy[N]OO2+2
+	# log_k	-0.2
+# Ho+3 + [N]OO2- = Ho[N]OO2+2
+	# log_k	-0.2
+# Er+3 + [N]OO2- = Er[N]OO2+2
+	# log_k	-0.2
+# Tm+3 + [N]OO2- = Tm[N]OO2+2
+	# log_k	-0.2
+# Yb+3 + [N]OO2- = Yb[N]OO2+2
+	# log_k	-0.2
+# Lu+3 + [N]OO2- = Lu[N]OO2+2
+	# log_k	-0.2
+# Ce+4 + [N]OO2- = Ce[N]OO2+3
+	# log_k	0.78
+# Ce+4 + 2 [N]OO2- = Ce([N]OO2)2+2
+	# log_k	1.20
+# Ce+4 + 3 [N]OO2- = Ce([N]OO2)3+
+	# log_k	1.34
+# Ce+4 + 4 [N]OO2- = Ce([N]OO2)4
+	# log_k	1.24
+# Ce+4 + 5 [N]OO2- = Ce([N]OO2)5-
+	# log_k	1.07
+# Zr+4 + [N]OO2- = Zr[N]OO2+3
+	# log_k	0.3
+# Zr+4 + 2 [N]OO2- = Zr([N]OO2)2+2
+	# log_k	0.1
+# Zr+4 + 3 [N]OO2- = Zr([N]OO2)3+
+	# log_k	-0.3
+# Zr+4 + 4 [N]OO2- = Zr([N]OO2)4
+	# log_k	-0.8
+# Hf+4 + [N]OO2- = Hf[N]OO2+3
+	# log_k	0.34
+# Hf+4 + 3 [N]OO2- = Hf([N]OO2)3+
+	# log_k	-0.7
+# Th+4 + [N]OO2- = Th[N]OO2+3
+	# log_k	0.67
+# Th+4 + 2 [N]OO2- = Th([N]OO2)2+2
+	# log_k	0.15
+# VO2+ + [N]OO2- = VO2[N]OO2
+	# log_k	-0.5
+# Cr+3 + [N]OO2- = Cr[N]OO2+2
+	# log_k	-2.01
+# # MoO2+2 + 2 [N]OO2- = MoO2([N]OO2)2
+	# # log_k	0.14
+# # MoO2+2 + [N]OO2- = MoO2[N]OO2+
+	# # log_k	-0.08
+# U+4 + [N]OO2- = U[N]OO2+3
+	# log_k	0.20
+# U+4 + 2 [N]OO2- = U([N]OO2)2+2
+	# log_k	0.2
+# U+4 + 3 [N]OO2- = U([N]OO2)3+
+	# log_k	0.0
+# U+4 + 4 [N]OO2- = U([N]OO2)4
+	# log_k	-0.5
+# UO2+2 + [N]OO2- = UO2[N]OO2+
+	# log_k	-0.3
+# Np+4 + [N]OO2- = Np[N]OO2+3
+	# log_k	1.7
+# Np+4 + 2 [N]OO2- = Np([N]OO2)2+2
+	# log_k	0.1
+# Np+4 + 3 [N]OO2- = Np([N]OO2)3+
+	# log_k	-0.3
+# NpO2+ + [N]OO2- = NpO2[N]OO2
+	# log_k	-0.25
+# NpO2+2 + [N]OO2- = NpO2[N]OO2+
+	# log_k	-0.9
+# Am+3 + [N]OO2- = Am[N]OO2+2
+	# log_k	0.26
+# Mn+2 + [N]OO2- = Mn[N]OO2+
+	# log_k	0.2
+# Mn+2 + 2 [N]OO2- = Mn([N]OO2)2
+	# log_k	0.6
+# Fe+3 + [N]OO2- = Fe[N]OO2+2
+	# log_k	1.0
+# Co+2 + [N]OO2- = Co[N]OO2+
+	# log_k	0.2
+# Co+2 + 2 [N]OO2- = Co([N]OO2)2
+	# log_k	-0.3
+# Ni+2 + [N]OO2- = Ni[N]OO2+
+	# log_k	0.4
+# Ni+2 + 2 [N]OO2- = Ni([N]OO2)2
+	# log_k	-0.5
+# Cu+2 + [N]OO2- = Cu[N]OO2+
+	# log_k	0.5
+# Cu+2 + 2 [N]OO2- = Cu([N]OO2)2
+	# log_k	-0.4
+# Ag+ + [N]OO2- = Ag[N]OO2
+	# log_k	-0.2
+# Zn+2 + [N]OO2- = Zn[N]OO2+
+	# log_k	0.4
+# Zn+2 + 2 [N]OO2- = Zn([N]OO2)2
+	# log_k	-0.3
+# Cd+2 + [N]OO2- = Cd[N]OO2+
+	# log_k	0.5
+# Cd+2 + 2 [N]OO2- = Cd([N]OO2)2
+	# log_k	0.2
+# Hg2+2 + [N]OO2- = Hg2[N]OO2+
+	# log_k	0.08
+# Hg2+2 + 2 [N]OO2- = Hg2([N]OO2)2
+	# log_k	-0.3
+# Hg+2 + [N]OO2- = Hg[N]OO2+
+	# log_k	0.11
+# Hg+2 + 2 [N]OO2- = Hg([N]OO2)2
+	# log_k	0.0
+# In+3 + [N]OO2- = In[N]OO2+2
+	# log_k	0.18
+# In+3 + 2 [N]OO2- = In([N]OO2)2+
+	# log_k	-0.3
+# Tl+ + [N]OO2- = Tl[N]OO2
+	# log_k	0.33
+# Tl+3 + [N]OO2- = Tl[N]OO2+2
+	# log_k	0.90
+# Tl+3 + 2 [N]OO2- = Tl([N]OO2)2+
+	# log_k	0.1
+# Tl+3 + 3 [N]OO2- = Tl([N]OO2)3
+	# log_k	1.1
+# Pb+2 + [N]OO2- = Pb[N]OO2+
+	# log_k	1.17
+# Pb+2 + 2 [N]OO2- = Pb([N]OO2)2
+	# log_k	1.4
+# Pb+2 + 3 [N]OO2- = Pb([N]OO2)3-
+	# log_k	0.1
+# Pb+2 + 4 [N]OO2- = Pb([N]OO2)4-2
+	# log_k	-0.3
+# Bi+3 + [N]OO2- = Bi[N]OO2+2
+	# log_k	1.7
+# Bi+3 + 2 [N]OO2- = Bi([N]OO2)2+
+	# log_k	2.5
+# Bi+3 + 3 [N]OO2- = Bi([N]OO2)3
+	# log_k	0.7
+# Bi+3 + 4 [N]OO2- = Bi([N]OO2)4-
+	# log_k	0.6
+
+Li+ + HPO4-2 = LiHPO4-
+	log_k	0.72
+Na+ + HPO4-2 = NaHPO4-
+	log_k	0.60
+K+ + HPO4-2 = KHPO4-
+	log_k	0.49
+Mg+2 + PO4-3 = MgPO4-
+	log_k	3.4
+Mg+2 + HPO4-2 = MgHPO4
+	log_k	2.91
+Mg+2 + H2PO4- = MgH2PO4+
+	log_k	0.7
+Ca+2 + PO4-3 = CaPO4-
+	log_k	6.46
+Ca+2 + HPO4-2 = CaHPO4
+	log_k	2.74
+Ca+2 + H2PO4- = CaH2PO4+
+	log_k	1.4
+Sr+2 + PO4-3 = SrPO4-
+	log_k	4.2
+Sr+2 + HPO4-2 = SrHPO4
+	log_k	1.2
+Sr+2 + H2PO4- = SrH2PO4+
+	log_k	0.3
+Y+3 + H2PO4- = YH2PO4+2
+	log_k	2.65
+La+3 + H2PO4- = LaH2PO4+2
+	log_k	1.61
+Ce+3 + PO4-3 = CePO4
+   log_k 18.52
+Ce+3 + H2PO4- = CeH2PO4+2
+	log_k	2.33
+Th+4 + HPO4-2 = ThHPO4+2
+	log_k	10.8
+Th+4 + 2 HPO4-2 = Th(HPO4)2
+	log_k	22.8
+Th+4 + 3 HPO4-2 = Th(HPO4)3-2
+	log_k	31.3
+Th+4 + H2PO4- = ThH2PO4+3
+	log_k	3.96
+Th+4 + 2 H2PO4- = Th(H2PO4)2+2
+	log_k	7.5
+Th+4 + H2PO4- + H3PO4 = ThH(H2PO4)2+3
+	log_k	6.0
+Th+4 + H3PO4 = ThH3PO4+4
+	log_k	1.89
+Cr+3 + HPO4-2 = CrHPO4+
+	log_k	9.4
+HCrO4- + H2PO4- = HCrO3PO4-2 + H2O
+	log_k	0.48
+HCrO4- + H3PO4 = H2CrO3PO4- + H2O
+	log_k	0.95
+H2MoO4 + H2PO4- = MoO2PO4- + 2 H2O
+	log_k	2.7
+H2MoO4 + 2 HPO4-2 = MoO2(PO4)2-4 + 2 H2O
+	log_k	19.2
+H2MoO4 + H3PO4 = MoO2HPO4 + 2 H2O
+	log_k	3.16
+H2MoO4 + 2 H3PO4 = MoO2(HPO4)2-2 + 2 H+ + 2 H2O
+	log_k	3.35
+U+4 + HPO4-2 = UHPO4+2
+	log_k	12.0
+U+4 + 2 HPO4-2 = U(HPO4)2
+	log_k	22.0
+U+4 + 3 HPO4-2 = U(HPO4)3-2
+	log_k	30.6
+U+4 + 4 HPO4-2 = U(HPO4)4-4
+	log_k	38.6
+UO2+2 + HPO4-2 = UO2HPO4
+	log_k	8.43
+UO2+2 + 2 HPO4-2 = UO2(HPO4)2-2
+	log_k	18.57
+UO2+2 + H2PO4- = UO2H2PO4+
+	log_k	3.0
+UO2+2 + 2 H2PO4- = UO2(H2PO4)2
+	log_k	5.5
+UO2+2 + 3 H2PO4- = UO2(H2PO4)3-
+	log_k	7.4
+UO2+2 + H3PO4 = UO2H3PO4+2
+	log_k	1.8
+UO2+2 + 2 H3PO4 = UO2(H3PO4)2+2
+	log_k	3.9
+UO2+2 + 3 H3PO4 = UO2(H3PO4)3+2
+	log_k	5.3
+UO2+2 + H2PO4- + H3PO4 = UO2H(H2PO4)2+
+	log_k	3.0
+Np+4 + HPO4-2 = NpHPO4+2
+	log_k	12.4
+Np+4 + 2 HPO4-2 = Np(HPO4)2
+	log_k	23.1
+Np+4 + 3 HPO4-2 = Np(HPO4)3-2
+	log_k	32.0
+Np+4 + 4 HPO4-2 = Np(HPO4)4-4
+	log_k	41.0
+NpO2+ + HPO4-2 = NpO2HPO4-
+	log_k	3.38
+NpO2+ + H2PO4- = NpO2H2PO4
+	log_k	0.81
+Pu+4 + HPO4-2 = PuHPO4+2
+	log_k	12.92
+Pu+4 + 2 HPO4-2 = Pu(HPO4)2
+	log_k	23.74
+Pu+4 + 3 HPO4-2 = Pu(HPO4)3-2
+	log_k	33.42
+Pu+4 + 4 HPO4-2 = Pu(HPO4)4-4
+	log_k	43.22
+Pu+4 + 5 HPO4-2 = Pu(HPO4)5-6
+	log_k	52.02
+PuO2+ + HPO4-2 = PuO2HPO4-
+	log_k	8.2
+PuO2+ + H2PO4- = PuO2H2PO4
+	log_k	3.93
+Am+3 + H2PO4- = AmH2PO4+2
+	log_k	2.51
+Mn+2 + HPO4-2 = MnHPO4
+	log_k	2.58
+Fe+2 + HPO4-2 = FeHPO4
+	log_k	3.6
+Fe+2 + H2PO4- = FeH2PO4+
+	log_k	2.7
+Fe+3 + HPO4-2 = FeHPO4+
+	log_k	8.30
+Fe+3 + H2PO4- = FeH2PO4+2
+	log_k	3.47
+2 Fe+3 + HPO4-2 = Fe2HPO4+4
+	log_k	11.14
+Co+2 + HPO4-2 = CoHPO4
+	log_k	2.18
+Ni+2 + HPO4-2 = NiHPO4
+	log_k	2.08
+Cu+2 + HPO4-2 = CuHPO4
+	log_k	3.2
+Cu+2 + H2PO4- = CuH2PO4+
+	log_k	1.3
+Zn+2 + HPO4-2 = ZnHPO4
+	log_k	2.4
+Zn+2 + H2PO4- = ZnH2PO4+
+	log_k	1.2
+Al+3 + H2PO4- = AlH2PO4+2
+	log_k	3
+Al+3 + 2 H2PO4- = Al(H2PO4)2+
+	log_k	5.3
+Al+3 + 3 H2PO4- = Al(H2PO4)3
+	log_k	7.6
+In+3 + H2PO4- = InH2PO4+2
+	log_k	1.43
+Pb+2 + HPO4-2 = PbHPO4
+	log_k	3.1
+Pb+2 + H2PO4- = PbH2PO4+
+	log_k	1.5
+
+2.0000 HPO4-- + 2.0000 H+  =  H2P2O7-- +1.0000 H2O
+#        -llnl_gamma           4.0    
+        log_k           +12.0709
+	-delta_H	19.7192	kJ/mol	# Calculated enthalpy of reaction	H2P2O7-2
+#	Enthalpy of formation:	-544.6 kcal/mol
+        -analytic 1.4825e+002 6.7021e-002 -2.8329e+003 -5.9251e+001 -4.4248e+001
+#       -Range:  0-300
+# LLNL.DAT
+
+H2P2O7-2 + H+ = H3P2O7-
+	log_k	2.2
+H3P2O7- + H+ = H4P2O7
+	log_k	0.8
+H2P2O7-2 = HP2O7-3 + H+
+	log_k	-6.70
+HP2O7-3 = P2O7-4 + H+
+	log_k	-9.40
+
+Li+ + P2O7-4 = LiP2O7-3
+	log_k	3.4
+Li+ + HP2O7-3 = LiHP2O7-2
+	log_k	2.0
+Na+ + P2O7-4 = NaP2O7-3
+	log_k	2.29
+NaP2O7-3 + Na+  = Na2P2O7-2
+	log_k	1.9
+Na+ + HP2O7-3 = NaHP2O7-2
+	log_k	1.4
+K+ + P2O7-4 = KP2O7-3
+	log_k	2.1
+Mg+2 + P2O7-4 = MgP2O7-2
+	log_k	7.2
+Mg+2 + 2 P2O7-4 = Mg(P2O7)2-6
+	log_k	7.80
+Mg+2 + HP2O7-3 = MgHP2O7-
+	log_k	3.18
+MgP2O7-2 + OH- = Mg(OH)P2O7-3
+	log_k	2.1
+Ca+2 + P2O7-4 = CaP2O7-2
+	log_k	6.8
+Ca+2 + HP2O7-3 = CaHP2O7-
+	log_k	3.3
+CaP2O7-2 + OH- = Ca(OH)P2O7-3
+	log_k	2.1
+Sr+2 + P2O7-4 = SrP2O7-2
+	log_k	5.4
+SrP2O7-2 + OH- = Sr(OH)P2O7-3
+	log_k	2.3
+La+3 + P2O7-4 = LaP2O7-
+	log_k	16.72
+La+3 + 2 P2O7-4 = La(P2O7)2-5
+	log_k	18.57
+Ce+3 + P2O7-4 = CeP2O7-
+	log_k	17.15
+Ce+4 + P2O7-4 = CeP2O7
+	log_k	18.41
+Nd+3 + 2 P2O7-4 = Nd(P2O7)2-5
+	log_k	20.5
+Pm+3 + 2 P2O7-4 = Pm(P2O7)2-5
+	log_k	20.5
+Sm+3 + 2 P2O7-4 = Sm(P2O7)2-5
+	log_k	20.5
+Eu+3 + 2 P2O7-4 = Eu(P2O7)2-5
+	log_k	20.5
+Gd+3 + 2 P2O7-4 = Gd(P2O7)2-5
+	log_k	20.5
+Tb+3 + 2 P2O7-4 = Tb(P2O7)2-5
+	log_k	20.5
+Dy+3 + 2 P2O7-4 = Dy(P2O7)2-5
+	log_k	20.5
+Ho+3 + 2 P2O7-4 = Ho(P2O7)2-5
+	log_k	20.5
+Er+3 + 2 P2O7-4 = Er(P2O7)2-5
+	log_k	20.5
+Yb+3 + P2O7-4 = YbP2O7-
+	log_k	17.5
+Yb+3 + 2 P2O7-4 = Yb(P2O7)2-5
+	log_k	19.4
+Lu+3 + 2 P2O7-4 = Lu(P2O7)2-5
+	log_k	22.23
+Mn+3 + P2O7-4 = MnP2O7-
+	log_k	16.68
+Mn+3 + 2 P2O7-4 = Mn(P2O7)2-5
+	log_k	31.85
+Mn+3 + H2P2O7-2 = MnH2P2O7+
+	log_k	5.11
+Mn+3 + 2 H2P2O7-2 = Mn(H2P2O7)2-
+	log_k	8.41
+Mn+3 + 3 H2P2O7-2 = Mn(H2P2O7)3-3
+	log_k	11.24
+Fe+3 + 2 P2O7-4 = Fe(P2O7)2-5
+	log_k	5.55
+2 Fe+3 + P2O7-4 = Fe2P2O7+2
+	log_k	23.4
+Fe+3 + P2O7-4 + 2 OH- = Fe(OH)2P2O7-3
+	log_k	31
+Fe+3 + 2 HP2O7-3 = Fe(HP2O7)2-3
+	log_k	22.19
+Fe+3 + H2P2O7-2 = FeH2P2O7+
+	log_k	6.97
+Fe+3 + H3P2O7- = FeH3P2O7+2
+	log_k	6.43
+Co+2 + P2O7-4 = CoP2O7-2
+	log_k	6.1
+Co+2 + HP2O7-3 = CoHP2O7-
+	log_k	3.4
+Ni+2 + P2O7-4 = NiP2O7-2
+	log_k	5.94
+Ni+2 + HP2O7-3 = NiHP2O7-
+	log_k	3.71
+Ni+2 + 2 P2O7-4 = Ni(P2O7)2-6
+	log_k	2.0
+Cu+2 + P2O7-4 = CuP2O7-2
+	log_k	7.6
+Cu+2 + 2 P2O7-4 = Cu(P2O7)2-6
+	log_k	12.45
+Cu+2 + HP2O7-3 = CuHP2O7-
+	log_k	4.45
+Cu+2 + H2P2O7-2 = CuH2P2O7
+	log_k	1.99
+Cu(P2O7)2-6 + H+ = CuH(P2O7)2-5
+	log_k	4.9
+CuH(P2O7)2-5 + H+ = CuH2(P2O7)2-4
+	log_k	4.7
+CuH2(P2O7)2-4 + H+ = CuH3(P2O7)2-3
+	log_k	3.7
+CuH3(P2O7)2-3 + H+ = CuH4(P2O7)2-2
+	log_k	2.7
+CuH4(P2O7)2-2 + H+ = CuH5(P2O7)2-
+	log_k	1.7
+Zn+2 + P2O7-4 = ZnP2O7-2
+	log_k	8.7
+Zn+2 + 2 P2O7-4 = Zn(P2O7)2-6
+	log_k	11.0
+ZnP2O7-2 + OH- = Zn(OH)P2O7-3
+	log_k	4.4
+Cd+2 + P2O7-4 = CdP2O7-2
+	log_k	8.7
+Cd+2 + P2O7-4 + OH- = Cd(OH)P2O7-3
+	log_k	11.8
+Hg2+2 + 2 P2O7-4 = Hg2(P2O7)2-6
+	log_k	12.38
+Hg2+2 + OH- + P2O7-4 = Hg2(OH)P2O7-3
+	log_k	15.64
+Hg+2 + P2O7-4 + OH- = Hg(OH)P2O7-3
+	log_k	17.45
+Tl+ + P2O7-4 = TlP2O7-3
+	log_k	1.69
+Tl+ + 2 P2O7-4 = Tl(P2O7)2-7
+	log_k	1.9
+Sn+2 + P2O7-4 = SnP2O7-2
+	log_k	14
+Sn+2 + 2 P2O7-4 = Sn(P2O7)2-6
+	log_k	16.42
+Sn+2 + H2P2O7-2 = SnH2P2O7
+	log_k	4.48
+Sn+2 + 2 H2P2O7-2 = Sn(H2P2O7)2-2
+	log_k	6.08
+SnOH+ + H2P2O7-2 = Sn(OH)H2P2O7-
+	log_k	5.48
+SnOH+ + 2 H2P2O7-2 = Sn(OH)(H2P2O7)2-3
+	log_k	7.30
+Pb+2 + P2O7-4 = PbP2O7-2
+	log_k	7.3
+Pb+2 + 2 P2O7-4 = Pb(P2O7)2-6
+	log_k	10.15
+
+Na+ + [P3O9]-3 = Na[P3O9]-2
+	log_k	1.40
+Mg+2 + [P3O9]-3 = Mg[P3O9]-
+	log_k	3.31
+Ca+2 + [P3O9]-3 = Ca[P3O9]-
+	log_k	3.47
+Sr+2 + [P3O9]-3 = Sr[P3O9]-
+	log_k	3.35
+Ba+2 + [P3O9]-3 = Ba[P3O9]-
+	log_k	3.35
+La+3 + [P3O9]-3 = La[P3O9]
+	log_k	5.70
+Pm+3 + [P3O9]-3 = Pm[P3O9]
+	log_k	5.74
+Am+3 + [P3O9]-3 = Am[P3O9]
+	log_k	6.06
+Cm+3 + [P3O9]-3 = Cm[P3O9]
+	log_k	5.92
+Mn+2 + [P3O9]-3 = Mn[P3O9]-
+	log_k	3.57
+Ni+2 + [P3O9]-3 = Ni[P3O9]-
+	log_k	3.22
+Cu+2 + [P3O9]-3 = Cu[P3O9]-
+	log_k	1.58
+Zn+2 + [P3O9]-3 = Zn[P3O9]-
+	log_k	1.94
+
+Na+ + [P4O12]-4 = Na[P4O12]-3
+	log_k	2.10
+Mg+2 + [P4O12]-4 = Mg[P4O12]-2
+	log_k	5.17
+Ca+2 + [P4O12]-4 = Ca[P4O12]-2
+	log_k	5.37
+Ca+2 + 2 [P4O12]-4 = Ca([P4O12])2-6
+	log_k	8.02
+Sr+2 + [P4O12]-4 = Sr[P4O12]-2
+	log_k	5.12
+Sr+2 + 2 [P4O12]-4 = Sr([P4O12])2-6
+	log_k	7.54
+Ba+2 + [P4O12]-4 = Ba[P4O12]-2
+	log_k	4.99
+La+3 + [P4O12]-4 = La[P4O12]-
+	log_k	6.66
+Mn+2 + [P4O12]-4 = Mn[P4O12]-2
+	log_k	5.74
+Ni+2 + [P4O12]-4 = Ni[P4O12]-2
+	log_k 4.95
+Ni+2 + 2 [P4O12]-4 = Ni([P4O12])2-6
+	log_k	3.48
+Co+2 + [P4O12]-4 = Co[P4O12]-2
+	log_k	2.62
+Cu+2 + [P4O12]-4 = Cu[P4O12]-2
+	log_k	3.04
+Cu+2 + 2 [P4O12]-4 = Cu([P4O12])2-6
+	log_k	4.28
+Zn+2 + [P4O12]-4 = Zn[P4O12]-2
+	log_k	2.86
+
+Na+ + [P6O18]-6 = Na[P6O18]-5
+	log_k	4.3
+Ca+2 + [P6O18]-6 = Ca[P6O18]-4
+	log_k	6.9
+Sr+2 + [P6O18]-6 = Sr[P6O18]-4
+	log_k	3.73
+Co+2 + [P6O18]-6 = Co[P6O18]-4
+	log_k	3.65
+Zn+2 + [P6O18]-6 = Zn[P6O18]-4
+	log_k	3.95
+
+Na+ + [P8O24]-8 = Na[P8O24]-7
+	log_k	4.6
+Ca+2 + [P8O24]-8 = Ca[P8O24]-6
+	log_k	8.1
+Sr+2 + [P8O24]-8 = Sr[P8O24]-6
+	log_k	4.30
+Co+2 + [P8O24]-8 = Co[P8O24]-6
+	log_k	4.80
+Zn+2 + [P8O24]-8 = Zn[P8O24]-6
+	log_k	5.02
+
+Li+ + [P3O10]-5 = Li[P3O10]-4
+	log_k	3.9
+Li+ + H[P3O10]-4 = LiH[P3O10]-3
+	log_k	1.88
+Na+ + [P3O10]-5 = Na[P3O10]-4
+	log_k	2.7
+Na+ + H[P3O10]-4 = NaH[P3O10]-3
+	log_k	0.77
+K+ + [P3O10]-5 = K[P3O10]-4
+	log_k	2.8
+Cs+ + [P3O10]-5 = Cs[P3O10]-4
+	log_k	2.8
+Be+2 + H[P3O10]-4 = BeH[P3O10]-2
+	log_k	5.35
+Mg+2 + [P3O10]-5 = Mg[P3O10]-3
+	log_k	8.6
+Mg+2 + H[P3O10]-4 = MgH[P3O10]-2
+	log_k	3.5
+Mg[P3O10]-3 + OH- = Mg(OH)[P3O10]-4
+	log_k	2.4
+Ca+2 + [P3O10]-5 = Ca[P3O10]-3
+	log_k	8.1
+Ca+2 + H[P3O10]-4 = CaH[P3O10]-2
+	log_k	3.04
+Ca[P3O10]-3 + OH- = Ca(OH)[P3O10]-4
+	log_k	2.3
+Sr+2 + [P3O10]-5 = Sr[P3O10]-3
+	log_k	7.2
+Sr+2 + H[P3O10]-4 = SrH[P3O10]-2
+	log_k	2.53
+Sr[P3O10]-3 + OH- = Sr(OH)[P3O10]-4
+	log_k	2.1
+Ba+2 + [P3O10]-5 = Ba[P3O10]-3
+	log_k	6.3
+Ba+2 + H[P3O10]-4 = BaH[P3O10]-2
+	log_k	1.8
+Y+3 + 2 [P3O10]-5 = Y([P3O10])2-7
+	log_k	17.21
+Y+3 + H[P3O10]-4 = YH[P3O10]-
+	log_k	4.97
+Y+3 + 2 H[P3O10]-4 = Y(H[P3O10])2-5
+	log_k	8.87
+La+3 + [P3O10]-5 = La[P3O10]-2
+	log_k	6.56
+La+3 + 2 [P3O10]-5 = La([P3O10])2-7
+	log_k	15.8
+La+3 + H[P3O10]-4 = LaH[P3O10]-
+	log_k	4.6
+La+3 + 2 H[P3O10]-4 = La(H[P3O10])2-5
+	log_k	8.3
+Pr+3 + 2 [P3O10]-5 = Pr([P3O10])2-7
+	log_k	17.2
+Pr+3 + H[P3O10]-4 = PrH[P3O10]-
+	log_k	5.0
+Pr+3 + 2 H[P3O10]-4 = Pr(H[P3O10])2-5
+	log_k	8.8
+Sm+3 + 2 [P3O10]-5 = Sm([P3O10])2-7
+	log_k	17.2
+Sm+3 + H[P3O10]-4 = SmH[P3O10]-
+	log_k	5.0
+Sm+3 + 2 H[P3O10]-4 = Sm(H[P3O10])2-5
+	log_k	8.8
+Eu+3 + 2 [P3O10]-5 = Eu([P3O10])2-7
+	log_k	17.2
+Eu+3 + H[P3O10]-4 = EuH[P3O10]-
+	log_k	5.0
+Eu+3 + 2 H[P3O10]-4 = Eu(H[P3O10])2-5
+	log_k	8.8
+Gd+3 + 2 [P3O10]-5 = Gd([P3O10])2-7
+	log_k	17.2
+Gd+3 + H[P3O10]-4 = GdH[P3O10]-
+	log_k	5.0
+Gd+3 + 2 H[P3O10]-4 = Gd(H[P3O10])2-5
+	log_k	8.8
+Dy+3 + 2 [P3O10]-5 = Dy([P3O10])2-7
+	log_k	17.2
+Dy+3 + H[P3O10]-4 = DyH[P3O10]-
+	log_k	5.0
+Dy+3 + 2 H[P3O10]-4 = Dy(H[P3O10])2-5
+	log_k	8.8
+Er+3 + 2 [P3O10]-5 = Er([P3O10])2-7
+	log_k	17.2
+Er+3 + H[P3O10]-4 = ErH[P3O10]-
+	log_k	5.0
+Er+3 + 2 H[P3O10]-4 = Er(H[P3O10])2-5
+	log_k	8.8
+Yb+3 + 2 [P3O10]-5 = Yb([P3O10])2-7
+	log_k	17.2
+Yb+3 + H[P3O10]-4 = YbH[P3O10]-
+	log_k	5.0
+Yb+3 + 2 H[P3O10]-4 = Yb(H[P3O10])2-5
+	log_k	8.8
+Mn+2 + [P3O10]-5 = Mn[P3O10]-3
+	log_k	7.15
+Mn+2 + H[P3O10]-4 = MnH[P3O10]-2
+	log_k	3.77
+Fe+2 + H2[P3O10]-3 = FeH2[P3O10]-
+	log_k	2.38
+Fe+2 + H3[P3O10]-2 = FeH3[P3O10]
+	log_k	2.12
+Fe+3 + 2 H[P3O10]-4 = Fe(H[P3O10])2-5
+	log_k	20.63
+Fe+3 + H2[P3O10]-3 = FeH2[P3O10]
+	log_k	7.03
+Fe+3 + H3[P3O10]-2 = FeH3[P3O10]+
+	log_k	6.37
+Co+2 + [P3O10]-5 = Co[P3O10]-3
+	log_k	6.94
+Co+2 + H[P3O10]-4 = CoH[P3O10]-2
+	log_k	3.81
+Ni+2 + [P3O10]-5 = Ni[P3O10]-3
+	log_k	6.75
+Ni+2 + H[P3O10]-4 = NiH[P3O10]-2
+	log_k	3.65
+Cu+2 + [P3O10]-5 = Cu[P3O10]-3
+	log_k	8.3
+Cu+2 + H[P3O10]-4 = CuH[P3O10]-2
+	log_k	4.34
+Zn+2 + [P3O10]-5 = Zn[P3O10]-3
+	log_k	9.7
+Zn+2 + H[P3O10]-4 = ZnH[P3O10]-2
+	log_k	3.92
+Zn[P3O10]-3 + OH- = Zn(OH)[P3O10]-4
+	log_k	3.3
+Cd+2 + [P3O10]-5 = Cd[P3O10]-3
+	log_k	9.8
+Cd+2 + H[P3O10]-4 = CdH[P3O10]-2
+	log_k	3.60
+Cd[P3O10]-3 + OH- = Cd(OH)[P3O10]-4
+	log_k	2.8
+Hg2+2 + 2 [P3O10]-5 = Hg2([P3O10])2-8
+	log_k	11.23
+Hg2+2 + OH- + [P3O10]-5 = Hg2(OH)[P3O10]-4
+	log_k	15.00
+In+3 + 2 H2[P3O10]-3 = In(H2[P3O10])2-3
+	log_k	14.16
+Tl+ + [P3O10]-5 = Tl[P3O10]-4
+	log_k	1.34
+Tl+ + 2 [P3O10]-5 = Tl([P3O10])2-9
+	log_k	2.26
+Pb+2 + H[P3O10]-4 = PbH[P3O10]-2
+	log_k	6.32
+
+Li+ + [P4O13]-6 = Li[P4O13]-5
+	log_k	2.64
+Li+ + H[P4O13]-5 = LiH[P4O13]-4
+	log_k 1.59
+Na+ + [P4O13]-6 = Na[P4O13]-5
+	log_k	1.79
+Na+ + H[P4O13]-5 = NaH[P4O13]-4
+	log_k	1.10
+K+ + [P4O13]-6 = K[P4O13]-5
+	log_k	1.71
+K+ + H[P4O13]-5 = KH[P4O13]-4
+	log_k	1.11
+Mg+2 + [P4O13]-6 = Mg[P4O13]-4
+	log_k	6.04
+Mg+2 + H[P4O13]-5 = MgH[P4O13]-3
+	log_k	3.74
+Mg[P4O13]-4 + Mg+2 = Mg2[P4O13]-2
+	log_k	2.19
+Ca+2 + [P4O13]-6 = Ca[P4O13]-4
+	log_k	5.46
+Ca+2 + H[P4O13]-5 = CaH[P4O13]-3
+	log_k	3.54
+Ca[P4O13]-4 + Ca+2 = Ca2[P4O13]-2
+	log_k	3.07
+Sr+2 + [P4O13]-6 = Sr[P4O13]-4
+	log_k	4.82
+Sr+2 + H[P4O13]-5 = SrH[P4O13]-3
+	log_k	3.49
+Sr[P4O13]-4 + Sr+2 = Sr2[P4O13]-2
+	log_k	3.42
+Ba+2 + [P4O13]-6 = Ba[P4O13]-4
+	log_k	4.99
+La+3 + [P4O13]-6 = La[P4O13]-3
+   log_k 6.59
+La+3 + H[P4O13]-5 = LaH[P4O13]-2
+	log_k	3.29
+Cu+2 + [P4O13]-6 = Cu[P4O13]-4
+	log_k	9.44
+Cu+2 + 2 [P4O13]-6 = Cu([P4O13])2-10
+	log_k	10.60
+Cu+2 + H[P4O13]-5 = CuH[P4O13]-3
+	log_k	6.66
+Cu+2 + H2[P4O13]-4 = CuH2[P4O13]-2
+	log_k	3.48
+Cu[P4O13]-4 + OH- = Cu(OH)[P4O13]-5
+	log_k	3.86
+Cu([P4O13])2-10 + H+ = CuH([P4O13])2-9
+	log_k	8.40
+CuH([P4O13])2-9 + H+ = CuH2([P4O13])2-8
+	log_k	7.28
+CuH2([P4O13])2-8 + H+ = CuH3([P4O13])2-7
+	log_k	4.52
+CuH3([P4O13])2-7 + H+ = CuH4([P4O13])2-6
+	log_k	3.55
+Hg2+2 + [P4O13]-6 = Hg2[P4O13]-4
+	log_k	7.32
+Hg2+2 + 2 [P4O13]-6 = Hg2([P4O13])2-10
+	log_k	9.88
+Hg2+2 + OH- + [P4O13]-6 = Hg2(OH)[P4O13]-5
+	log_k	15.26
+Hg2+2 + 2 OH- + [P4O13]-6 = Hg2(OH)2[P4O13]-6
+	log_k	22.45
+
+Li+ + [P5O16]-7 = Li[P5O16]-6
+	log_k	1.5
+Na+ + [P5O16]-7 = Na[P5O16]-6
+	log_k	1.3
+K+ + [P5O16]-7 = K[P5O16]-6
+	log_k	0.7
+Mg+2 + [P5O16]-7 = Mg[P5O16]-5
+	log_k	3.2
+Ca+2 + [P5O16]-7 = Ca[P5O16]-5
+	log_k	3.0
+Sr+2 + [P5O16]-7 = Sr[P5O16]-5
+	log_k	2.8
+Ba+2 + 2 [P5O16]-7 = Ba([P5O16])2-12
+	log_k	5.5
+UO2+2 + [P5O16]-7 = UO2[P5O16]-5
+	log_k	3.0
+Mn+2 + 2 [P5O16]-7 = Mn([P5O16])2-12
+	log_k	5.5
+Fe+2 + [P5O16]-7 = Fe[P5O16]-5
+	log_k	3.0
+Fe+3 + 2 [P5O16]-7 = Fe([P5O16])2-11
+	log_k	6.5
+Co+2 + [P5O16]-7 = Co[P5O16]-5
+	log_k	3.0
+Ni+2 + [P5O16]-7 = Ni[P5O16]-5
+	log_k	3.0
+Cu+2 + [P5O16]-7 = Cu[P5O16]-5
+	log_k	3.5
+Ag+ + [P5O16]-7 = Ag[P5O16]-6
+	log_k	3.5
+Zn+2 + [P5O16]-7 = Zn[P5O16]-5
+	log_k	2.5
+Pb+2 + [P5O16]-7 = Pb[P5O16]-5
+	log_k	5.5
+
+Li+ + OH- = LiOH
+	log_k	0.36
+Na+ + OH- = NaOH
+	log_k	-0.2
+K+ + OH- = KOH
+	log_k	-0.5
+Be+2 + OH- = BeOH+
+	log_k	8.6
+Be+2 + 2 OH- = Be(OH)2
+	log_k	14.4
+Be+2 + 3 OH- = Be(OH)3-
+	log_k	18.8
+Be+2 + 4 OH- = Be(OH)4-2
+	log_k	18.6
+3 Be+2 + 3 OH- = Be3(OH)3+3
+	log_k	33.1
+6 Be+2 + 8 OH- = Be6(OH)8+4
+	log_k	85
+Mg+2 + OH- = MgOH+
+	log_k	2.85
+4 Mg+2 + 4 OH- = Mg4(OH)4+4
+	log_k	16.3
+Ca+2 + OH- = CaOH+
+	log_k	1.3
+Sr+2 + OH- =SrOH+
+	log_k	0.8
+Ba+2 + OH- = BaOH+
+	log_k	0.6
+Sc+3 + OH- = ScOH+2
+	log_k	9.7
+Sc+3 + 2 OH- = Sc(OH)2+
+	log_k	18.3
+Sc+3 + 3 OH- = Sc(OH)3
+	log_k	25.9
+Sc+3 + 4 OH- = Sc(OH)4-
+	log_k	30
+2 Sc+3 + 2 OH- = Sc2(OH)2+4
+	log_k	22.0
+3 Sc+3 + 5 OH- = Sc3(OH)5+4
+	log_k	53.8
+Y+3 + OH- = YOH+2
+	log_k	6.1
+Y+3 + 2 OH- = Y(OH)2+
+	log_k	11.6
+Y+3 + 3 OH- = Y(OH)3
+	log_k	16.0
+Y+3 + 4 OH- = Y(OH)4-
+	log_k	19.5
+2 Y+3 + 2 OH- = Y2(OH)2+4
+	log_k	13.8
+3 Y+3 + 5 OH- = Y3(OH)5+4
+	log_k	38.4
+La+3 + OH- = LaOH+2
+	log_k	5.5
+La+3 + 2 OH- = La(OH)2+
+	log_k	10
+La+3 + 3 OH- = La(OH)3
+	log_k	15
+La+3 + 4 OH- = La(OH)4-
+	log_k	18
+2 La+3 + 2 OH- = La2(OH)2+4
+	log_k	10.5
+3 La+3 + 5 OH- = La3(OH)5+4
+	log_k	31.7
+5 La+3 + 9 OH- = La5(OH)9+6
+	log_k	54.8
+Ce+3 + OH- = CeOH+2
+	log_k	5.7
+2 Ce+3 + 2 OH- = Ce2(OH)2+4
+	log_k	12.5
+3 Ce+3 + 5 OH- = Ce3(OH)5+4
+	log_k	36.5
+Ce+4 + OH- = CeOH+3
+	log_k	14.9
+Ce+4 + 2 OH- = Ce(OH)2+2
+	log_k	27.9
+2 Ce+4 + 2 OH- = Ce2(OH)2+6
+	log_k	31.2
+2 Ce+4 + 3 OH- = Ce2(OH)3+5
+	log_k	45.5
+2 Ce+4 + 4 OH- = Ce2(OH)4+4
+	log_k	58.7
+6 Ce+4 + 12 OH- = Ce6(OH)12+12
+	log_k	186
+Pr+3 + OH- = PrOH+2
+	log_k	6
+Pr+3 + 2 OH- = Pr(OH)2+
+	log_k	12
+Pr+3 + 3 OH- = Pr(OH)3
+	log_k	17
+Pr+3 + 4 OH- = Pr(OH)4-
+	log_k	22
+2 Pr+3 + 2 OH- = Pr2(OH)2+4
+	log_k	14
+3 Pr+3 + 5 OH- = Pr3(OH)5+4
+	log_k	41
+Nd+3 + OH- = NdOH+2
+	log_k	6
+Nd+3 + 2 OH- = Nd(OH)2+
+	log_k	12
+Nd+3 + 3 OH- = Nd(OH)3
+	log_k	17
+Nd+3 + 4 OH- = Nd(OH)4-
+	log_k	22
+2 Nd+3 + 2 OH- = Nd2(OH)2+4
+	log_k	14
+3 Nd+3 + 5 OH- = Nd3(OH)5+4
+	log_k	41
+Pm+3 + OH- = PmOH+2
+	log_k	6
+Pm+3 + 2 OH- = Pm(OH)2+
+	log_k	12
+Pm+3 + 3 OH- = Pm(OH)3
+	log_k	17
+Pm+3 + 4 OH- = Pm(OH)4-
+	log_k	22
+2 Pm+3 + 2 OH- = Pm2(OH)2+4
+	log_k	14
+3 Pm+3 + 5 OH- = Pm3(OH)5+4
+	log_k	41
+Sm+3 + OH- = SmOH+2
+	log_k	6
+Sm+3 + 2 OH- = Sm(OH)2+
+	log_k	12
+Sm+3 + 3 OH- = Sm(OH)3
+	log_k	17
+Sm+3 + 4 OH- = Sm(OH)4-
+	log_k	22
+2 Sm+3 + 2 OH- = Sm2(OH)2+4
+	log_k	14
+3 Sm+3 + 5 OH- = Sm3(OH)5+4
+	log_k	41
+Eu+3 + OH- = EuOH+2
+	log_k	6
+Eu+3 + 2 OH- = Eu(OH)2+
+	log_k	12
+Eu+3 + 3 OH- = Eu(OH)3
+	log_k	17
+Eu+3 + 4 OH- = Eu(OH)4-
+	log_k	22
+2 Eu+3 + 2 OH- = Eu2(OH)2+4
+	log_k	14
+3 Eu+3 + 5 OH- = Eu3(OH)5+4
+	log_k	41
+Gd+3 + OH- = GdOH+2
+	log_k	6
+Gd+3 + 2 OH- = Gd(OH)2+
+	log_k	12
+Gd+3 + 3 OH- = Gd(OH)3
+	log_k	17
+Gd+3 + 4 OH- = Gd(OH)4-
+	log_k	22
+2 Gd+3 + 2 OH- = Gd2(OH)2+4
+	log_k	14
+3 Gd+3 + 5 OH- = Gd3(OH)5+4
+	log_k	41
+Tb+3 + OH- = TbOH+2
+	log_k	6
+Tb+3 + 2 OH- = Tb(OH)2+
+	log_k	12
+Tb+3 + 3 OH- = Tb(OH)3
+	log_k	17
+Tb+3 + 4 OH- = Tb(OH)4-
+	log_k	22
+2 Tb+3 + 2 OH- = Tb2(OH)2+4
+	log_k	14
+3 Tb+3 + 5 OH- = Tb3(OH)5+4
+	log_k	41
+Dy+3 + OH- = DyOH+2
+	log_k	6
+Dy+3 + 2 OH- = Dy(OH)2+
+	log_k	12
+Dy+3 + 3 OH- = Dy(OH)3
+	log_k	17
+Dy+3 + 4 OH- = Dy(OH)4-
+	log_k	22
+2 Dy+3 + 2 OH- = Dy2(OH)2+4
+	log_k	14
+3 Dy+3 + 5 OH- = Dy3(OH)5+4
+	log_k	41
+Ho+3 + OH- = HoOH+2
+	log_k	6
+Ho+3 + 2 OH- = Ho(OH)2+
+	log_k	12
+Ho+3 + 3 OH- = Ho(OH)3
+	log_k	17
+Ho+3 + 4 OH- = Ho(OH)4-
+	log_k	22
+2 Ho+3 + 2 OH- = Ho2(OH)2+4
+	log_k	14
+3 Ho+3 + 5 OH- = Ho3(OH)5+4
+	log_k	41
+Er+3 + OH- = ErOH+2
+	log_k	6
+Er+3 + 2 OH- = Er(OH)2+
+	log_k	12
+Er+3 + 3 OH- = Er(OH)3
+	log_k	17
+Er+3 + 4 OH- = Er(OH)4-
+	log_k	22
+2 Er+3 + 2 OH- = Er2(OH)2+4
+	log_k	14
+3 Er+3 + 5 OH- = Er3(OH)5+4
+	log_k	41
+Tm+3 + OH- = TmOH+2
+	log_k	6
+Tm+3 + 2 OH- = Tm(OH)2+
+	log_k	12
+Tm+3 + 3 OH- = Tm(OH)3
+	log_k	17
+Tm+3 + 4 OH- = Tm(OH)4-
+	log_k	22
+2 Tm+3 + 2 OH- = Tm2(OH)2+4
+	log_k	14
+3 Tm+3 + 5 OH- = Tm3(OH)5+4
+	log_k	41
+Yb+3 + OH- = YbOH+2
+	log_k	6
+Yb+3 + 2 OH- = Yb(OH)2+
+	log_k	12
+Yb+3 + 3 OH- = Yb(OH)3
+	log_k	17
+Yb+3 + 4 OH- = Yb(OH)4-
+	log_k	22
+2 Yb+3 + 2 OH- = Yb2(OH)2+4
+	log_k	14
+3 Yb+3 + 5 OH- = Yb3(OH)5+4
+	log_k	41
+Lu+3 + OH- = LuOH+2
+	log_k	6
+Lu+3 + 2 OH- = Lu(OH)2+
+	log_k	12
+Lu+3 + 3 OH- = Lu(OH)3
+	log_k	17
+Lu+3 + 4 OH- = Lu(OH)4-
+	log_k	22
+2 Lu+3 + 2 OH- = Lu2(OH)2+4
+	log_k	14
+3 Lu+3 + 5 OH- = Lu3(OH)5+4
+	log_k	41
+Ti+3 + OH- = TiOH+2
+	log_k	12.7
+2 Ti+3 + 2 OH- = Ti2(OH)2+4
+	log_k	24.4
+Ti(OH)2+2 + OH- = Ti(OH)3+
+	log_k	11.7
+Ti(OH)2+2 + 2 OH- = Ti(OH)4
+	log_k	23.2
+Ti+4 + OH- = TiOH+3
+	log_k	18.0
+Ti+4 + 2 OH- = Ti(OH)2+2
+	log_k	35.2
+Ti+4 + 3 OH- = Ti(OH)3+
+	log_k	47.7
+Ti+4 + 4 OH- = Ti(OH)4
+	log_k	58.7
+Zr+4 + OH- = ZrOH+3
+	log_k	14.3
+Zr+4 + 2 OH- = Zr(OH)2+2
+	log_k	26.3
+Zr+4 + 3 OH- = Zr(OH)3+
+	log_k	36.9
+Zr+4 + 4 OH- = Zr(OH)4
+	log_k	46.3
+Zr+4 + 5 OH- = Zr(OH)5-
+	log_k	54.0
+3 Zr+4 + 4 OH- = Zr3(OH)4+8
+	log_k	55.4
+3 Zr+4 + 5 OH- = Zr3(OH)5+7
+	log_k	73.7
+4 Zr+4 + 8 OH- = Zr4(OH)8+8
+	log_k	106.0
+Hf+4 + OH- = HfOH+3
+	log_k	13.7
+Hf+4 + 2 OH- = Hf(OH)2+2
+	log_k	25.6
+Hf+4 + 3 OH- = Hf(OH)3+
+	log_k	36.0
+Hf+4 + 4 OH- = Hf(OH)4
+	log_k	45.3
+Hf+4 + 5 OH- = Hf(OH)5-
+	log_k	52.8
+Th+4 + OH- = ThOH+3
+	log_k	10.8
+Th+4 + 2 OH- = Th(OH)2+2
+	log_k	21.1
+Th+4 + 3 OH- = Th(OH)3+
+	log_k	30.3
+Th+4 + 4 OH- = Th(OH)4
+	log_k	40.1
+2 Th+4 + 2 OH- = Th2(OH)2+6
+	log_k	21.9
+2 Th+4 + 3 OH- = Th2(OH)3+5
+	log_k	33.8
+2 Th+4 + 5 OH- = Th2(OH)5+3
+	log_k	53.7
+3 Th+4 + 3 OH- = Th3(OH)3+9
+	log_k	35.7
+4 Th+4 + 8 OH- = Th4(OH)8+8
+	log_k	90.9
+6 Th+4 + 14 OH- = Th6(OH)14+10
+	log_k	162.1
+6 Th+4 + 15 OH- = Th6(OH)15+9
+	log_k	173.2
+V+3 + OH- = VOH+2
+	log_k	11.7
+2 V+3 + 2 OH- = V2(OH)2+4
+	log_k	24.2
+2 V+3 + 3 OH- = V2(OH)3+3
+	log_k	34.5
+VO+2 + OH- = VO(OH)+
+	log_k	8.3
+VO+2 + 2 OH- = VO(OH)2
+	log_k	18.31
+2 VO+2 + 2 OH- = (VO)2(OH)2+2
+	log_k	21.3
+VO2+ + OH- = VO2OH
+	log_k	10.7
+VO2+ + 2 OH- = VO2(OH)2-
+	log_k	20.7
+VO2+ + 3 OH- = VO2(OH)3-2
+	log_k	26.1
+VO2+ + 4 OH- = VO2(OH)4-3
+	log_k	25.8
+2 VO2+ + 5 OH- = (VO2)2(OH)5-3
+	log_k	48.9
+2 VO2+ + 6 OH- = (VO2)2(OH)6-4
+	log_k	52.8
+3 VO2+ + 6 OH- = (VO2)3(OH)6-3
+	log_k	68.2
+10 VO2+ + 14 OH- = (VO2)10(OH)14-4
+	log_k	185.3
+10 VO2+ + 15 OH- = (VO2)10(OH)15-5
+	log_k	195.7
+10 VO2+ + 16 OH- = (VO2)10(OH)16-6
+	log_k	203.4
+Nb(OH)5 = Nb(OH)4+ + OH-
+	log_k	-14.4
+Nb(OH)5 + OH- = Nb(OH)6-
+	log_k	6.4
+Ta(OH)5 = Ta(OH)4+ + OH-
+	log_k	-12.8
+Ta(OH)5 + OH- = Ta(OH)6-
+	log_k	4.2
+Pa+4 + OH- = PaOH+3
+	log_k	14.80
+Pa+4 + 2 OH- = Pa(OH)2+2
+	log_k	28.00
+Pa+4 + 3 OH- = Pa(OH)3+
+	log_k	40.5
+Pa+4 + 4 OH- = Pa(OH)4
+	log_k	51.4
+# Pa(OH)3+2 + OH- = Pa(OH)4+
+	# log_k	14.5
+# Pa(OH)4+ + OH- = Pa(OH)5
+	# log_k	9.5
+Cr+3 + OH- = CrOH+2
+	log_k	10.07
+Cr+3 + 2 OH- = Cr(OH)2+
+	log_k	18.3
+Cr+3 + 3 OH- = Cr(OH)3
+	log_k	24
+Cr+3 + 4 OH- = Cr(OH)4-
+	log_k	28.6
+2 Cr+3 + 2 OH- = Cr2(OH)2+4
+	log_k	22.93
+3 Cr+3 + 4 OH- = Cr3(OH)4+5
+	log_k	47.84
+4 Cr+3 + 4 OH- = Cr4(OH)4+8
+	log_k	50.7
+4 Cr+3 + 6 OH- = Cr4(OH)6+6
+	log_k	72.8
+U+4 + OH- = UOH+3
+	log_k	13.3
+U+4 + 2 OH- = U(OH)2+2
+	log_k	25.4
+U+4 + 3 OH- = U(OH)3+
+	log_k	36.2
+U+4 + 4 OH- = U(OH)4
+	log_k	45.7
+U+4 + 5 OH- = U(OH)5-
+	log_k	54.0
+6 U+4 + 15 OH- = U6(OH)15+9
+	log_k	192.8
+UO2+2 + OH- = UO2OH+
+	log_k	8.2
+2 UO2+2 + 2 OH- = (UO2)2(OH)2+2
+	log_k	22.4
+3 UO2+2 + 4 OH- = (UO2)3(OH)4+2
+	log_k	44.24
+3 UO2+2 + 5 OH- = (UO2)3(OH)5+
+	log_k	54.4
+Np+4 + OH- = NpOH+3
+	log_k	12.5
+NpO2+ + OH- = NpO2OH
+	log_k	5.15
+NpO2+2 + OH- = NpO2OH+
+	log_k	8.9
+2 NpO2+2 + 2 OH- = (NpO2)2(OH)2+2
+	log_k	21.6
+3 NpO2+2 + 5 OH- = (NpO2)3(OH)5+
+	log_k	52.5
+Pu+3 + OH- = PuOH+2
+	log_k	7.0
+Pu+4 + OH- = PuOH+3
+	log_k	13.5
+Pu+4 + 2 OH- = Pu(OH)2+2
+	log_k	25.7
+Pu+4 + 3 OH- = Pu(OH)3+
+	log_k	36.7
+Pu+4 + 4 OH- = Pu(OH)4
+	log_k	46.5
+Pu+4 + 5 OH- = Pu(OH)5-
+	log_k	55.0
+PuO2+ + OH- = PuO2OH
+	log_k	4.3
+PuO2+2 + OH- = PuO2OH+
+	log_k	8.4
+2 PuO2+2 + 2 OH- = (PuO2)2(OH)2+2
+	log_k	19.6
+3 PuO2+2 + 5 OH- = (PuO2)3(OH)5+
+	log_k	48.4
+Am+3 + OH- = AmOH+2
+	log_k	8.0
+Bk+3 + OH- = BkOH+2
+	log_k	8.0
+Cf+3 + OH- = CfOH+2
+	log_k	8.0
+Mn+2 + OH- = MnOH+2
+	log_k	3.4
+Mn+2 + 2 OH- = Mn(OH)2
+	log_k	5.8
+Mn+2 + 3 OH- = Mn(OH)3-
+	log_k	7.2
+Mn+2 + 4 OH- = Mn(OH)4-2
+	log_k	7.7
+2 Mn+2 + 3 OH- = Mn2(OH)3+
+	log_k	18.1
+Mn+3 + OH- = MnOH+2
+	log_k	14.4
+Fe+2 + OH- = FeOH+2
+	log_k	4.5
+Fe+2 + 2 OH- = Fe(OH)2
+	log_k	7.4
+Fe+2 + 3 OH- = Fe(OH)3-
+	log_k	10.0
+Fe+2 + 4 OH- = Fe(OH)4-2
+	log_k	9.6
+Fe+3 + OH- = FeOH+2
+	log_k	1.81
+Fe+3 + 2 OH- = Fe(OH)2+
+	log_k	22.3
+Fe+3 + 3 OH- = Fe(OH)3
+	log_k	30
+Fe+3 + 4 OH- = Fe(OH)4-
+	log_k	34.4
+2 Fe+3 + 2 OH- = Fe2(OH)2+4
+	log_k	25.1
+3 Fe+3 + 4 OH- = Fe3(OH)4+5
+	log_k	49.7
+Co+2 + OH- = CoOH+2
+	log_k	4.3
+Co+2 + 2 OH- = Co(OH)2
+	log_k	8.4
+Co+2 + 3 OH- = Co(OH)3-
+	log_k	9.7
+Co+2 + 4 OH- = Co(OH)4-2
+	log_k	10.2
+4 Co+2 + 4 OH- = Co4(OH)4+4
+	log_k	25.6
+Co+3 + OH- = CoOH+2
+	log_k	13.52
+Ni+2 + OH- = NiOH+
+	log_k	4.1
+Ni+2 + 2 OH- = Ni(OH)2
+	log_k	9
+Ni+2 + 3 OH- = Ni(OH)3-
+	log_k 11
+Ni+2 + 4 OH- = Ni(OH)4-2
+	log_k 12
+4 Ni+2 + 4 OH- = Ni4(OH)4+4
+	log_k	28.3
+Rh+3 + OH- = RhOH+2
+	log_k	10.67
+Pd+2 + OH- = PdOH+
+	log_k	13.0
+Pd+2 + 2 OH- = Pd(OH)2
+	log_k	25.8
+Pd+2 + 3 OH- = Pd(OH)3-
+	log_k	29.4
+Pd+2 + 4 OH- = Pd(OH)4-2
+	log_k	42.2
+RuO4 + OH- = RuO4(OH)-
+	log_k	2.1
+OsO4 + OH- = OsO4(OH)-
+	log_k	1.9
+OsO4 + 2 OH- = OsO4(OH)2-2
+	log_k	1.1
+Cu+2 + OH- = CuOH+
+	log_k	6.3
+Cu+2 + 2 OH- = Cu(OH)2
+	log_k	10.7
+Cu+2 + 3 OH- = Cu(OH)3-
+	log_k	14.2
+Cu+2 + 4 OH- = Cu(OH)4-2
+	log_k	16.4
+2 Cu+2 + 2 OH- = Cu2(OH)2+2
+	log_k	17.7
+Ag+ + OH- = AgOH
+	log_k	2.0
+Ag+ + 2 OH- = Ag(OH)2-
+	log_k	3.99
+Au+3 + OH- = AuOH+2
+	log_k	15.51
+Au+3 + 2 OH- = Au(OH)2+
+	log_k	29
+Au+3 + 3 OH- = Au(OH)3
+	log_k	42
+Au+3 + 4 OH- = Au(OH)4-
+	log_k	44.22
+Au+3 + 5 OH- = Au(OH)5-2
+	log_k	44.86
+Au+3 + 6 OH- = Au(OH)6-3
+	log_k	42.9
+Zn+2 + OH- = ZnOH+
+	log_k	5.0
+Zn+2 + 2 OH- = Zn(OH)2
+	log_k	11.1
+Zn+2 + 3 OH- = Zn(OH)3-
+	log_k	13.6
+Zn+2 + 4 OH- = Zn(OH)4-2
+	log_k	14.8
+2 Zn+2 + 6 OH- = Zn2(OH)6-2
+	log_k	26.2
+Cd+2 + OH- = CdOH+
+	log_k	3.9
+Cd+2 + 2 OH- = Cd(OH)2
+	log_k	7.7
+Cd+2 + 3 OH- = Cd(OH)3-
+	log_k	8.69
+Cd+2 + 4 OH- = Cd(OH)4-2
+	log_k	8.7
+4 Cd+2 + 4 OH- = Cd4(OH)4+4
+	log_k	23.2
+Hg+2 + OH- = HgOH+
+	log_k	10.6
+Hg+2 + 2 OH- = Hg(OH)2
+	log_k	21.8
+Hg+2 + 3 OH- = Hg(OH)3-
+	log_k	20.9
+3 Hg+2 + 3 OH- = Hg3(OH)3+3
+	log_k	356
+Hg2+2 + OH- = Hg2OH+
+	log_k	8.7
+Al+3 + OH- = AlOH+2
+	log_k	9.01
+Al+3 + 2 OH- = Al(OH)2+
+	log_k	18.7
+Al+3 + 3 OH- = Al(OH)3
+	log_k	27.0
+Al+3 + 4 OH- = Al(OH)4-
+	log_k	33.0
+2 Al+3 + 2 OH- = Al2(OH)2+4
+	log_k	20.3
+3 Al+3 + 4 OH- = Al3(OH)4+5
+	log_k	42.1
+13 Al+3 + 32 OH- = Al13(OH)32+7
+	log_k	349.2
+Ga+3 + OH- = GaOH+2
+	log_k	11.4
+Ga+3 + 2 OH- = Ga(OH)2+
+	log_k	22.1
+Ga+3 + 3 OH- = Ga(OH)3
+	log_k	31.7
+Ga+3 + 4 OH- = Ga(OH)4-
+	log_k	39.4
+26 Ga+3 + 65 OH- = Ga26(OH)65+13
+	log_k	770.7
+In+3 + OH- = InOH+2
+	log_k	10.0
+In+3 + 2 OH- = In(OH)2+
+	log_k	20.2
+In+3 + 3 OH- = In(OH)3
+	log_k	29.6
+In+3 + 4 OH- = In(OH)4-
+	log_k	33.9
+3 In+3 + 4 OH- = In3(OH)4+5
+	log_k	50.2
+Tl+ + OH- = TlOH
+	log_k	0.79
+Tl+ + 2 OH- = Tl(OH)2-
+	log_k	-0.8
+Tl+3 + OH- = TlOH+2
+	log_k	13.4
+Tl+3 + 2 OH- = Tl(OH)2+
+	log_k	26.4
+Tl+3 + 3 OH- = Tl(OH)3
+	log_k	38.7
+Tl+3 + 4 OH- = Tl(OH)4-
+	log_k	41.0
+Ge(OH)4 + OH- = GeO(OH)3- + H2O
+	log_k	4.7
+Ge(OH)4 + 2 OH- = GeO2(OH)2-2 +  2 H2O
+	log_k	6.2
+8 Ge(OH)4 + 3 OH- = Ge8O16(H2O)5(OH)3-3 + 11 H2O
+	log_k	30.4
+Sn+2 + OH- = SnOH+
+	log_k	10.60
+Sn+2 + 2 OH- = Sn(OH)2
+	log_k	20.93
+Sn+2 + 3 OH- = Sn(OH)3-
+	log_k	25.38
+2 Sn+2 + 2 OH- = Sn2(OH)2+2
+	log_k	23.22
+3 Sn+2 + 4 OH- = Sn3(OH)4+2
+	log_k	49.1
+Pb+2 + OH- = PbOH+
+	log_k	6.3
+Pb+2 + 2 OH- = Pb(OH)2
+	log_k	10.9
+Pb+2 + 3 OH- = Pb(OH)3-
+	log_k	13.9
+3 Pb+2 + 4 OH- = Pb3(OH)4+2
+	log_k	32.1
+4 Pb+2 + 4 OH- = Pb4(OH)4+4
+	log_k	35.1
+6 Pb+2 + 8 OH- = Pb6(OH)8+4
+	log_k	68.4
+# Sb(OH)2+ + OH- = Sb(OH)3
+	# log_k	12.6
+# Sb(OH)3 + OH- = Sb(OH)4-
+	# log_k	2.2
+Bi+3 + OH- = BiOH+2
+	log_k	12.9
+Bi+3 + 2 OH- = Bi(OH)2+
+	log_k	24.0
+Bi+3 + 3 OH- = Bi(OH)3
+	log_k	33.1
+Bi+3 + 4 OH- = Bi(OH)4-
+	log_k	34.2
+6 Bi+3 + 12 OH- = Bi6(OH)12+6
+	log_k	165.0
+9 Bi+3 + 20 OH- = Bi9(OH)20+7
+	log_k	271
+9 Bi+3 + 21 OH- = Bi9(OH)21+6
+	log_k	282
+9 Bi+3 + 22 OH- = Bi9(OH)22+5
+	log_k	293
+2 Be+2 + OH- = Be2OH+3
+	log_k	10.0
+2 La+3 + OH- = La2OH+5
+	log_k	4.2
+3 Th+4 + OH- = Th3OH+11
+	log_k	12.7
+2 UO2+2 + OH- = (UO2)2OH+3
+	log_k	9.6
+2 Mn+2 + OH- = Mn2OH+3
+	log_k	3.4
+2 Co+2 + OH- = Co2OH+3
+	log_k	2.7
+2 Ni+2 + OH- = Ni2OH+3
+	log_k	3.3
+2 Zn+2 + OH- = Zn2OH+3
+	log_k	5.0
+2 Cd+2 + OH- = Cd2OH+3
+	log_k	4.6
+2 Hg+2 + OH- = Hg2OH+3
+	log_k	10.7
+2 Pb+2 + OH- = Pb2OH+3
+	log_k	7.6
+
+Pd+2 + H2O = PdOH+ + H+				# thermoddem
+#	-llnl_gamma 4.1
+	log_k    -0.989     
+	delta_h   6.864 kJ/mol        #98sas/sho
+	-analytic 1.9846656E+2  3.0793494E-2  -1.0840137E+4  -7.2243218E+1  5.7624858E+5
+- 2.000H+     + 1.000Pd+2     + 2.000H2O     = Pd(OH)2	#sit
+     log_k    -3.790     #70NAB/KAL
+     delta_h  15.293     #kJ/mol        
+     # Enthalpy of formation:           -366.483        #kJ/mol        
+     -analytic -1.11079E+0 0E+0 -7.98808E+2 0E+0 0E+0
+- 3.000H+     + 1.000Pd+2     + 3.000H2O     = Pd(OH)3-	#sit
+     log_k   -15.930     #70NAB/KAL
+     delta_h  54.863     #kJ/mol        
+     # Enthalpy of formation:           -612.744        #kJ/mol        
+     -analytic -6.31843E+0 0E+0 -2.86569E+3 0E+0 0E+0
+- 4.000H+     + 1.000Pd+2     + 4.000H2O     = Pd(OH)4-2	#sit
+     log_k   -29.360     #70NAB/KAL
+     delta_h  118.563    #kJ/mol        
+     # Enthalpy of formation:           -834.874        #kJ/mol        
+     -analytic -8.58868E+0 0E+0 -6.19297E+3 0E+0 0E+0
+Pd+2 + H2O = PdO + 2 H+				# thermoddem
+#	-llnl_gamma 3.4
+	log_k    -2.184     
+	delta_h   6.074 kJ/mol        #98sas/sho
+	-analytic 2.9119221E+2  4.7652155E-2  -1.4350832E+4  -1.077729E+2  6.4238168E+5
+Pt+2 + Cl- = PtCl+				# thermoddem
+#	-llnl_gamma 4.1
+	log_k     8.692     
+	delta_h  -45.782 kJ/mol        #98sas/sho
+	-analytic 8.136846E+2  1.3336916E-1  -4.2478118E+4  -2.9625189E+2  2.7354002E+6
+Pt+2 + 2 Cl- = PtCl2				# thermoddem
+#	-llnl_gamma 3.4
+	log_k    15.515     
+	delta_h  -92.745 kJ/mol        #98sas/sho
+	-analytic 1.6086651E+3  2.6251481E-1  -8.3744569E+4  -5.8633828E+2  5.3618285E+6
+Pt+2 + 3 Cl- = PtCl3-				# thermoddem
+#	-llnl_gamma 3.6
+	log_k    18.526     
+	delta_h -130.801 kJ/mol        #98sas/sho
+	-analytic 1.5878969E+3  2.6017188E-1  -8.2562704E+4  -5.7909542E+2  5.5922413E+6
+Pt+2 + 4 Cl- = PtCl4-2				# thermoddem
+#	-llnl_gamma 4.7
+	log_k    20.057     
+	delta_h -177.245 kJ/mol        #98sas/sho
+	-analytic 1.5484326E+3  2.5438399E-1  -7.9703614E+4  -5.662E+2  5.7008799E+
+# thermoddem.dat
+
+1.0000 Ru+++ + 1.0000 Cl-  =  RuCl++	#LLNL
+#        -llnl_gamma           4.5    
+        log_k           +2.1742
+	-delta_H	0	      	# Not possible to calculate enthalpy of reaction	RuCl+2
+#	Enthalpy of formation:	-0 kcal/mol
+# LLNL.DAT
+3.000H+     + 1.000Sb(OH)3     - 3.000H2O     = Sb+3	#sit
+     log_k    -0.730     #99LOT/OCH
+     # delta_h  0.000     #kJ/mol        
+     # Enthalpy of formation:                   #kJ/mol        
+     -analytic -7.3E-1 0E+0 0E+0 0E+0 0E+0
+# SIT.DAT
+SbO+ + 2H2O = Sb(OH)3 + H+	#minteq.v4
+	log_k	0.9228
+	delta_h	8.2425	kJ
+#	-gamma	0	0
+		#                  Id:	7403300
+		#        log K source:	PNL89                         
+		#      Delta H source:	PNL89                         
+		#T and ionic strength:	
+# MINTEQ.V4.DAT
+
+Cu+ + 5 [S]5-2 = Cu([S]5)5-9
+	log_k	21
+Ag+ + H[S]- = AgH[S]
+	log_k	16.2
+Ag+ + 2 H[S]- = Ag(H[S])2-
+	log_k	18.0
+AgH[S] = Ag[S]- + H+
+	log_k	-8.3
+Ag(H[S])2- = AgH[S]2-2 + H+
+	log_k	-9.5
+2 Ag(H[S])2- = Ag2H2[S]3-2 + H2[S]
+	log_k	3.2
+Zn+2 + OH- + H[S]- = Zn[S] + H2O
+   log_k 19.0
+Cd+2 + H[S]- = CdH[S]+
+	log_k	7.6
+Cd+2 + 2 H[S]- = Cd(H[S])2
+	log_k	14.6
+Cd+2 + 3 H[S]- = Cd(H[S])3-
+	log_k	16.5
+Cd+2 + 4 H[S]- = Cd(H[S])4-2
+	log_k	18.9
+Hg+2 + 2 H[S]- = Hg(H[S])2
+	log_k	37.71
+Hg(H[S])2 = HgH[S]2- + H+
+	log_k	-6.19
+HgH[S]2- = Hg[S]2-2 + H+
+	log_k	-8.30
+Tl+ + H[S]- = TlH[S]
+	log_k	2.27
+TlH[S] + Tl+ = Tl2H[S]+
+	log_k	5.77
+2 Tl+ + OH- + 3 H[S]- = Tl2(OH)(H[S])3-2
+	log_k	14.96
+2 Tl+ + 2 OH- + 2 H[S]- = Tl2(OH)2(H[S])2-2
+	log_k	16.70
+
+# Cu+ + 5 [S]5-2 = Cu([S]5)5-9
+	# log_k	21
+Ag+ + H[S]- = AgH[S]
+	log_k	16.2
+Ag+ + 2 H[S]- = Ag(H[S])2-
+	log_k	18.0
+AgH[S] = Ag[S]- + H+
+	log_k	-8.3
+Ag(H[S])2- = AgH[S]2-2 + H+
+	log_k	-9.5
+2 Ag(H[S])2- = Ag2H2[S]3-2 + H2[S]
+	log_k	3.2
+Zn+2 + OH- + H[S]- = Zn[S] + H2O
+   log_k 19.0
+Cd+2 + H[S]- = CdH[S]+
+	log_k	7.6
+Cd+2 + 2 H[S]- = Cd(H[S])2
+	log_k	14.6
+Cd+2 + 3 H[S]- = Cd(H[S])3-
+	log_k	16.5
+Cd+2 + 4 H[S]- = Cd(H[S])4-2
+	log_k	18.9
+Hg+2 + 2 H[S]- = Hg(H[S])2
+	log_k	37.71
+Hg(H[S])2 = HgH[S]2- + H+
+	log_k	-6.19
+HgH[S]2- = Hg[S]2-2 + H+
+	log_k	-8.30
+Tl+ + H[S]- = TlH[S]
+	log_k	2.27
+TlH[S] + Tl+ = Tl2H[S]+
+	log_k	5.77
+2 Tl+ + OH- + 3 H[S]- = Tl2(OH)(H[S])3-2
+	log_k	14.96
+2 Tl+ + 2 OH- + 2 H[S]- = Tl2(OH)2(H[S])2-2
+	log_k	16.70
+
+Na+ + [S]2O3-2 = Na[S]2O3-
+	log_k	0.53
+K+ + [S]2O3-2 = K[S]2O3-
+	log_k	0.96
+Mg+2 + [S]2O3-2 = Mg[S]2O3
+	log_k	1.82
+Ca+2 + [S]2O3-2 = Ca[S]2O3
+	log_k	1.98
+Sr+2 + [S]2O3-2 = Sr[S]2O3
+	log_k	2.04
+Ba+2 + [S]2O3-2 = Ba[S]2O3
+	log_k	2.27
+La+3 + [S]2O3-2 = La[S]2O3+
+	log_k	2.99
+Ce+3 + [S]2O3-2 = Ce[S]2O3+
+	log_k	2.82
+Pr+3 + [S]2O3-2 = Pr[S]2O3+
+	log_k	2.82
+Nd+3 + [S]2O3-2 = Nd[S]2O3+
+	log_k	2.82
+Sm+3 + [S]2O3-2 = Sm[S]2O3+
+	log_k	2.82
+2 Ce+3 + 3 [S]2O3-2 = Ce2([S]2O3)3
+   log_k 10.5
+2 Pr+3 + 3 [S]2O3-2 = Pr2([S]2O3)3
+   log_k 10.5
+2 Nd+3 + 3 [S]2O3-2 = Nd2([S]2O3)3
+   log_k 10.5
+2 Sm+3 + 3 [S]2O3-2 = Sm2([S]2O3)3
+   log_k 10.5
+HCrO4- + H[S]2O3- = H2CrO4[S]2O3-2
+	log_k	4.09
+UO2+2 + [S]2O3-2 = UO2[S]2O3
+	log_k	2.04
+Mn+2 + [S]2O3-2 = Mn[S]2O3
+	log_k	1.95
+Fe+2 + [S]2O3-2 = Fe[S]2O3
+	log_k	2.0
+Fe+3 + [S]2O3-2 = Fe[S]2O3+
+	log_k	1.98
+Co+2 + [S]2O3-2 = Co[S]2O3
+	log_k	2.05
+Ni+2 + [S]2O3-2 = Ni[S]2O3
+	log_k	2.06
+Cu+ + [S]2O3-2 = Cu[S]2O3-
+	log_k	10.35
+Cu+ + 2 [S]2O3-2 = Cu([S]2O3)2-3
+	log_k	12.27
+Cu+ + 3 [S]2O3-2 = Cu([S]2O3)3-5
+	log_k	13.71
+Cu+2 + [S]2O3-2 = Cu[S]2O3
+	log_k	12.29
+Ag+ + [S]2O3-2 = Ag[S]2O3-
+	log_k	8.82
+Ag+ + 2 [S]2O3-2 = Ag([S]2O3)2-3
+	log_k	13.67
+Ag+ + 3 [S]2O3-2 = Ag([S]2O3)3-5
+	log_k	14.2
+2 Ag+ + 4 [S]2O3-2 = Ag2([S]2O3)4-6
+	log_k	26.3
+3 Ag+ + 5 [S]2O3-2 = Ag3([S]2O3)5-7
+	log_k	39.8
+6 Ag+ + 8 [S]2O3-2 = Ag6([S]2O3)8-10
+	log_k	78.6
+Zn+2 + [S]2O3-2 = Zn[S]2O3
+	log_k	2.35
+Zn+2 + 2 [S]2O3-2 = Zn([S]2O3)2-2
+	log_k	1.94
+Zn+2 + 3 [S]2O3-2 = Zn([S]2O3)3-4
+	log_k	3.3
+2 Zn+2 + 2 [S]2O3-2 = Zn2([S]2O3)2
+	log_k	5.84
+Cd+2 + [S]2O3-2 = Cd[S]2O3
+	log_k	3.92
+Cd+2 + 2 [S]2O3-2 = Cd([S]2O3)2-2
+	log_k	6.3
+Cd+2 + 3 [S]2O3-2 = Cd([S]2O3)3-4
+	log_k	6.4
+Cd+2 + 4 [S]2O3-2 = Cd([S]2O3)4-6
+	log_k	7.1
+2 Cd+2 + 2 [S]2O3-2 = Cd2([S]2O3)2
+	log_k	11.18
+Hg+2 + 2 [S]2O3-2 = Hg([S]2O3)2-2
+	log_k	29.23
+Hg+2 + 3 [S]2O3-2 = Hg([S]2O3)3-4
+	log_k	30.6
+Tl+ + [S]2O3-2 = Tl[S]2O3-
+	log_k	0.86
+Tl+ + 2 [S]2O3-2 = Tl([S]2O3)2-3
+	log_k	0.72
+Tl+ + 3 [S]2O3-2 = Tl([S]2O3)3-5
+	log_k	0.2
+2 Tl+ + 4 [S]2O3-2 = Tl2([S]2O3)4-6
+	log_k	2.54
+Pb+2 + [S]2O3-2 = Pb[S]2O3
+	log_k	2.42
+Pb+2 + 2 [S]2O3-2 = Pb([S]2O3)2-2
+	log_k	4.86
+Pb+2 + 3 [S]2O3-2 = Pb([S]2O3)3-4
+	log_k	6.2
+Pb+2 + 4 [S]2O3-2 = Pb([S]2O3)4-6
+	log_k	6.2
+
+Ce+3 + [S]O3-2 = Ce[S]O3+
+	log_k	8.04
+UO2+2 + [S]O3-2 = UO2[S]O3
+	log_k	6.0
+UO2+2 + 2 [S]O3-2 = UO2([S]O3)2-2
+	log_k	7.1
+NpO2+2 + [S]O3-2 = NpO2[S]O3
+	log_k	2.15
+NpO2+2 + 2 [S]O3-2 = NpO2([S]O3)2-2
+	log_k	3.00
+Cu+ + [S]O3-2 = Cu[S]O3-
+	log_k	7.85
+Cu+ + 2 [S]O3-2 = Cu([S]O3)2-3
+	log_k	8.7
+Cu+ + 3 [S]O3-2 = Cu([S]O3)3-5
+	log_k	9.4
+Ag+ + [S]O3-2 = Ag[S]O3-
+	log_k	5.60
+Ag+ + 2 [S]O3-2 = Ag([S]O3)2-3
+	log_k	8.68
+Ag+ + 3 [S]O3-2 = Ag([S]O3)3-5
+	log_k	9.00
+Cd+2 + 2 [S]O3-2 = Cd([S]O3)2-2
+	log_k	4.2
+Hg+2 + 2 [S]O3-2 = Hg([S]O3)2-2
+	log_k	24.07
+Hg+2 + 3 [S]O3-2 = Hg([S]O3)3-4
+	log_k	25.96
+
+Ce+3 + [S]O3-2 = Ce[S]O3+
+	log_k	8.04
+UO2+2 + [S]O3-2 = UO2[S]O3
+	log_k	6.0
+UO2+2 + 2 [S]O3-2 = UO2([S]O3)2-2
+	log_k	7.1
+NpO2+2 + [S]O3-2 = NpO2[S]O3
+	log_k	2.15
+NpO2+2 + 2 [S]O3-2 = NpO2([S]O3)2-2
+	log_k	3.00
+Cu+ + [S]O3-2 = Cu[S]O3-
+	log_k	7.85
+Cu+ + 2 [S]O3-2 = Cu([S]O3)2-3
+	log_k	8.7
+Cu+ + 3 [S]O3-2 = Cu([S]O3)3-5
+	log_k	9.4
+Ag+ + [S]O3-2 = Ag[S]O3-
+	log_k	5.60
+Ag+ + 2 [S]O3-2 = Ag([S]O3)2-3
+	log_k	8.68
+Ag+ + 3 [S]O3-2 = Ag([S]O3)3-5
+	log_k	9.00
+Cd+2 + 2 [S]O3-2 = Cd([S]O3)2-2
+	log_k	4.2
+Hg+2 + 2 [S]O3-2 = Hg([S]O3)2-2
+	log_k	24.07
+Hg+2 + 3 [S]O3-2 = Hg([S]O3)3-4
+	log_k	25.96
+
+Li+ + [S]O4-2 = Li[S]O4-
+	log_k	0.64
+Na+ + [S]O4-2 = Na[S]O4-
+	log_k	0.70
+K+ + [S]O4-2 = K[S]O4-
+	log_k	0.85
+[N]H4+ + [S]O4-2 = [N]H4[S]O4-
+	log_k	1.11
+[N]H4+ + [S]O4-2 = [N]H4[S]O4-
+	log_k	1.11
+[N]H4+ + [S]O4-2 = [N]H4[S]O4-
+	log_k	1.11
+Be+2 + [S]O4-2 = Be[S]O4
+	log_k	1.95
+Be+2 + 2 [S]O4-2 = Be([S]O4)2-2
+	log_k	1.78
+Be+2 + 3 [S]O4-2 = Be([S]O4)3-4
+	log_k	2.08
+Mg+2 + [S]O4-2 = Mg[S]O4
+	log_k	2.23
+Ca+2 + [S]O4-2 = Ca[S]O4
+	log_k	2.31
+Sr+2 + [S]O4-2 = Sr[S]O4
+	log_k	2.55
+Ba+2 + [S]O4-2 = Ba[S]O4
+	log_k	2.7
+Ba+2 + 2 [S]O4-2 = Ba([S]O4)2-2
+	log_k	1.42
+Sc+3 + [S]O4-2 = Sc[S]O4+
+	log_k	4.20
+Sc+3 + 2 [S]O4-2 = Sc([S]O4)2-
+	log_k	5.7
+Y+3 + [S]O4-2 = Y[S]O4+
+	log_k	3.47
+Y+3 + 2 [S]O4-2 = Y([S]O4)2-
+	log_k	5.3
+La+3 + [S]O4-2 = La[S]O4+
+	log_k	3.64
+La+3 + 2 [S]O4-2 = La([S]O4)2-
+	log_k	5.29
+Ce+3 + [S]O4-2 = Ce[S]O4+
+	log_k	3.59
+Ce+3 + 2 [S]O4-2 = Ce([S]O4)2-
+	log_k	5.2
+Pr+3 + [S]O4-2 = Pr[S]O4+
+	log_k	3.6
+Pr+3 + 2 [S]O4-2 = Pr([S]O4)2-
+	log_k	5.1
+Nd+3 + [S]O4-2 = Nd[S]O4+
+	log_k	3.6
+Nd+3 + 2 [S]O4-2 = Nd([S]O4)2-
+	log_k	5.1
+Pm+3 + [S]O4-2 = Pm[S]O4+
+	log_k	3.6
+Pm+3 + 2 [S]O4-2 = Pm([S]O4)2-
+	log_k	5.1
+Sm+3 + [S]O4-2 = Sm[S]O4+
+	log_k	3.6
+Sm+3 + 2 [S]O4-2 = Sm([S]O4)2-
+	log_k	5.1
+Eu+3 + [S]O4-2 = Eu[S]O4+
+	log_k	3.6
+Eu+3 + 2 [S]O4-2 = Eu([S]O4)2-
+	log_k	5.1
+Gd+3 + [S]O4-2 = Gd[S]O4+
+	log_k	3.6
+Gd+3 + 2 [S]O4-2 = Gd([S]O4)2-
+	log_k	5.1
+Tb+3 + [S]O4-2 = Tb[S]O4+
+	log_k	3.6
+Tb+3 + 2 [S]O4-2 = Tb([S]O4)2-
+	log_k	5.1
+Dy+3 + [S]O4-2 = Dy[S]O4+
+	log_k	3.6
+Dy+3 + 2 [S]O4-2 = Dy([S]O4)2-
+	log_k	5.1
+Ho+3 + [S]O4-2 = Ho[S]O4+
+	log_k	3.6
+Ho+3 + 2 [S]O4-2 = Ho([S]O4)2-
+	log_k	5.1
+Er+3 + [S]O4-2 = Er[S]O4+
+	log_k	3.6
+Er+3 + 2 [S]O4-2 = Er([S]O4)2-
+	log_k	5.1
+Tm+3 + [S]O4-2 = Tm[S]O4+
+	log_k	3.6
+Tm+3 + 2 [S]O4-2 = Tm([S]O4)2-
+	log_k	5.1
+Yb+3 + [S]O4-2 = Yb[S]O4+
+	log_k	3.6
+Yb+3 + 2 [S]O4-2 = Yb([S]O4)2-
+	log_k	5.1
+Lu+3 + [S]O4-2 = Lu[S]O4+
+	log_k	3.6
+Lu+3 + 2 [S]O4-2 = Lu([S]O4)2-
+	log_k	5.1
+TiO+2 + [S]O4-2 = TiO[S]O4
+	log_k	2.5
+Zr+4 + [S]O4-2 = Zr[S]O4+2
+	log_k	3.67
+Zr+4 + 2 [S]O4-2 = Zr([S]O4)2
+	log_k	6.40
+Zr+4 + 3 [S]O4-2 = Zr([S]O4)3-2
+	log_k	7.4
+Hf+4 + [S]O4-2 = Hf[S]O4+2
+	log_k	3.04
+Hf+4 + 2 [S]O4-2 = Hf([S]O4)2
+	log_k	5.44
+Th+4 + [S]O4-2 = Th[S]O4+2
+	log_k	3.22
+Th+4 + 2 [S]O4-2 = Th([S]O4)2
+	log_k	5.53
+V+3 + [S]O4-2 = V[S]O4+
+	log_k	1.45
+VO+2 + [S]O4-2 = VO[S]O4
+	log_k	2.44
+VO2+ + [S]O4-2 = VO2[S]O4-
+	log_k	0.97
+Cr+3 + [S]O4-2 = Cr[S]O4+
+	log_k	2.60
+U+4 + [S]O4-2 = U[S]O4+2
+	log_k	3.42
+U+4 + 2 [S]O4-2 = U([S]O4)2
+	log_k	5.82
+UO2+2 + [S]O4-2 = UO2[S]O4
+	log_k	2.95
+UO2+2 + 2 [S]O4-2 = UO2([S]O4)2-2
+	log_k	4.0
+UO2+2 + 3 [S]O4-2 = UO2([S]O4)3-4
+	log_k	3.7
+Np+4 + [S]O4-2 = Np[S]O4+2
+	log_k	3.51
+Np+4 + 2 [S]O4-2 = Np([S]O4)2
+	log_k	5.42
+NpO2+2 + [S]O4-2 = NpO2[S]O4
+	log_k	3.27
+NpO2+2 + 2 [S]O4-2 = NpO2([S]O4)2-2
+	log_k	3.8
+Pu+3 + [S]O4-2 = Pu[S]O4+
+	log_k	1.26
+Pu+3 + 2 H[S]O4- = Pu(H[S]O4)2+
+	log_k	1.00
+Pu+4 + [S]O4-2 = Pu[S]O4+2
+	log_k	3.66
+Am+3 + [S]O4-2 = Am[S]O4+
+	log_k	1.86
+Am+3 + 2 [S]O4-2 = Am([S]O4)2-
+	log_k	2.82
+Cm+3 + [S]O4-2 = Cm[S]O4+
+	log_k	1.86
+Cm+3 + 2 [S]O4-2 = Cm([S]O4)2-
+	log_k	2.7
+Cf+3 + [S]O4-2 = Cf[S]O4+
+	log_k	1.36
+Cf+3 + 2 [S]O4-2 = Cf([S]O4)2-
+	log_k	2.07
+Mn+2 + [S]O4-2 = Mn[S]O4
+	log_k	2.26
+Mn+3 + [S]O4-2 = Mn[S]O4+
+	log_k	1.20
+Fe+2 + [S]O4-2 = Fe[S]O4
+	log_k	2.2
+Fe+3 + [S]O4-2 = Fe[S]O4+
+	log_k	4.04
+Fe+3 + 2 [S]O4-2 = Fe([S]O4)2-
+	log_k	5.38
+Co+2 + [S]O4-2 = Co[S]O4
+	log_k	2.36
+Ni+2 + [S]O4-2 = Ni[S]O4
+	log_k	2.37
+Ni+2 + 2 [S]O4-2 = Ni([S]O4)2-2
+	log_k	1.42
+Ru+2 + [S]O4-2 = Ru[S]O4
+	log_k	2.72
+Ru+3 + [S]O4-2 = Ru[S]O4+
+	log_k	2.04
+Ru+3 + 2 [S]O4-2 = Ru([S]O4)2-
+	log_k	3.57
+Cu+2 + [S]O4-2 = Cu[S]O4
+	log_k	2.36
+Ag+ + [S]O4-2 = Ag[S]O4-
+	log_k	1.3
+Ag+ + 2 [S]O4-2 = Ag([S]O4)2-3
+	log_k	0.19
+Ag+ + 3 [S]O4-2 = Ag([S]O4)3-5
+	log_k	0.40
+Zn+2 + [S]O4-2 = Zn[S]O4
+	log_k	2.38
+Zn+2 + 2 [S]O4-2 = Zn([S]O4)2-2
+	log_k	1.9
+Zn+2 + 3 [S]O4-2 = Zn([S]O4)3-4
+	log_k	1.7
+Zn+2 + 4 [S]O4-2 = Zn([S]O4)4-6
+	log_k	1.7
+Cd+2 + [S]O4-2 = Cd[S]O4
+	log_k	2.46
+Cd+2 + 2 [S]O4-2 = Cd([S]O4)2-2
+	log_k	2.0
+Cd+2 + 3 [S]O4-2 = Cd([S]O4)3-4
+	log_k	2.7
+Cd+2 + 4 [S]O4-2 = Cd([S]O4)4-6
+	log_k	2.3
+Hg2+2 + [S]O4-2 = Hg2[S]O4
+	log_k	1.30
+Hg2+2 + 2 [S]O4-2 = Hg2([S]O4)2-2
+	log_k	3.54
+Hg+2 + [S]O4-2 = Hg[S]O4
+	log_k	1.34
+Hg+2 + 2 [S]O4-2 = Hg([S]O4)2-2
+	log_k	2.4
+In+3 + [S]O4-2 = In[S]O4+
+	log_k	1.85
+In+3 + 2 [S]O4-2 = In([S]O4)2-
+	log_k	2.60
+In+3 + 3 [S]O4-2 = In([S]O4)3-3
+	log_k	3.00
+Tl+ + [S]O4-2 = Tl[S]O4-
+	log_k	1.37
+Tl+3 + [S]O4-2 = Tl[S]O4+
+	log_k	2.27
+Pb+2 + [S]O4-2 = Pb[S]O4
+	log_k	2.75
+Pb+2 + 2 [S]O4-2 = Pb([S]O4)2-2
+	log_k	1.99
+Bi+3 + [S]O4-2 = Bi[S]O4+
+	log_k	1.98
+Bi+3 + 2 [S]O4-2 = Bi([S]O4)2-
+	log_k	3.41
+Bi+3 + 3 [S]O4-2 = Bi([S]O4)3-3
+	log_k	4.08
+Bi+3 + 4 [S]O4-2 = Bi([S]O4)4-5
+	log_k	4.34
+Bi+3 + 5 [S]O4-2 = Bi([S]O4)5-7
+	log_k	4.60
+
+Be+2 + [F]- = Be[F]+
+	log_k	5.99
+Be+2 + 2 [F]- = Be[F]2
+	log_k	8.32
+Be+2 + 3 [F]- = Be[F]3-
+	log_k	11.1
+Be+2 + 4 [F]- = Be[F]4-2
+	log_k	13.1
+Mg+2 + [F]- = Mg[F]+
+	log_k	1.8
+Ca+2 + [F]- = Ca[F]+
+	log_k	1.1
+Sr+2 + [F]- = Sr[F]+
+	log_k	0.1
+Ba+2 + [F]- = Ba[F]+
+	log_k	-0.3
+Sc+3 + [F]- = Sc[F]+2
+	log_k	7.1
+Sc+3 + 2 [F]- = Sc[F]2+
+	log_k	12.9
+Sc+3 + 3 [F]- = Sc[F]3
+	log_k	17.4
+Sc+3 + 4 [F]- = Sc[F]4-
+	log_k	20.3
+Y+3 + [F]- = Y[F]+2
+	log_k	4.8
+Y+3 + 2 [F]- = Y[F]2+
+	log_k	8.5
+Y+3 + 3 [F]- = Y[F]3
+	log_k	12.1
+La+3 + [F]- = La[F]+2
+	log_k	3.6
+Ce+3 + [F]- = Ce[F]+2
+	log_k	4.0
+Pr+3 + [F]- = Pr[F]+2
+	log_k	3.4
+Nd+3 + [F]- = Nd[F]+2
+	log_k	3.4
+Pm+3 + [F]- = Pm[F]+2
+	log_k	3.4
+Sm+3 + [F]- = Sm[F]+2
+	log_k	3.4
+Eu+3 + [F]- = Eu[F]+2
+	log_k	3.4
+Gd+3 + [F]- = Gd[F]+2
+	log_k	3.4
+Tb+3 + [F]- = Tb[F]+2
+	log_k	3.4
+Dy+3 + [F]- = Dy[F]+2
+	log_k	3.4
+Ho+3 + [F]- = Ho[F]+2
+	log_k	3.4
+Er+3 + [F]- = Er[F]+2
+	log_k	3.4
+Tm+3 + [F]- = Tm[F]+2
+	log_k	3.4
+Yb+3 + [F]- = Yb[F]+2
+	log_k	3.4
+Lu+3 + [F]- = Lu[F]+2
+	log_k	3.4
+TiO+2 + [F]- = TiO[F]+
+	log_k	6.65
+TiO+2 + 2 [F]- = TiO[F]2
+	log_k	11.74
+TiO+2 + 3 [F]- = TiO[F]3-
+	log_k	16.32
+TiO+2 + 4 [F]- = TiO[F]4-2
+	log_k	20.38
+Zr+4 + [F]- = Zr[F]+3
+	log_k	9.8
+Zr+4 + 2 [F]- = Zr[F]2+2
+	log_k	16.4
+Zr+4 + 3 [F]- = Zr[F]3+
+	log_k	22.4
+Zr+4 + 4 [F]- = Zr[F]4
+	log_k	29.5
+Zr+4 + 5 [F]- = Zr[F]5-
+	log_k	23.5
+Zr+4 + 6 [F]- = Zr[F]6-2
+	log_k	28.3
+Hf+4 + [F]- = Hf[F]+3
+	log_k	9.0
+Hf+4 + 2 [F]- = Hf[F]2+2
+	log_k	16.5
+Hf+4 + 3 [F]- = Hf[F]3+
+	log_k	23.1
+Hf+4 + 4 [F]- = Hf[F]4
+	log_k	28.8
+Hf+4 + 5 [F]- = Hf[F]5-
+	log_k	34.0
+Hf+4 + 6 [F]- = Hf[F]6-2
+	log_k	38.0
+Th+4 + [F]- = Th[F]+3
+	log_k	8.44
+Th+4 + 2 [F]- = Th[F]2+2
+	log_k	15.08
+Th+4 + 3 [F]- = Th[F]3+
+	log_k	19.8
+Th+4 + 4 [F]- = Th[F]4
+	log_k	23.2
+VO+2 + [F]- = VO[F]+
+	log_k	3.37
+VO+2 + 2 [F]- = VO[F]2
+	log_k	5.74
+VO+2 + 3 [F]- = VO[F]3-
+	log_k	7.29
+VO+2 + 4 [F]- = VO[F]4-2
+	log_k	8.1
+VO2+ + [F]- = VO2[F]
+	log_k	3.04
+VO2+ + 2 [F]- = VO2[F]2-
+	log_k	5.60
+VO2+ + 3 [F]- = VO2[F]3-2
+	log_k	6.9
+VO2+ + 4 [F]- = VO2[F]4-3
+	log_k	7.0
+# Nb(OH)3[F]2 + H[F] = Nb(OH)2[F]3 + H2O
+	# log_k	4.2
+# Nb(OH)4[F] + [F]- = Nb(OH)4[F]2-
+	# log_k	6.81
+# Nb(OH)2[F]4- + [F]- = Nb(OH)2[F]5-2
+	# log_k	2.51
+# Ta[F]4+ = Ta[F]3+2 + [F]-
+	# log_k	-5.86
+# Ta[F]5 = Ta[F]4+ + [F]-
+	# log_k	-4.8
+# Ta[F]5 + [F]- = Ta[F]6-
+	# log_k	3.7
+# Ta[F]6- + [F]- = Ta[F]7-2
+	# log_k	3.2
+# Ta[F]7-2 + [F]- = Ta[F]8-3
+	# log_k	3
+Cr+3 + [F]- = Cr[F]+2
+	log_k	5.2
+Cr+3 + 2 [F]- = Cr[F]2+
+	log_k	7.70
+Cr+3 + 3 [F]- = Cr[F]3
+	log_k	10.2
+U+4 + [F]- = U[F]+3
+	log_k	9.0
+U+4 + 2 [F]- = U[F]2+2
+	log_k	15.7
+U+4 + 3 [F]- = U[F]3+
+	log_k	21.2
+UO2+2 + [F]- = UO2[F]+
+	log_k	4.3
+UO2+2 + 2 [F]- = UO2[F]2
+	log_k	7.97
+UO2+2 + 3 [F]- = UO2[F]3-
+	log_k	10.55
+UO2+2 + 4 [F]- = UO2[F]4-2
+	log_k	12.0
+Np+4 + [F]- = Np[F]+3
+	log_k	8.3
+Np+4 + 2 [F]- = Np[F]2+2
+	log_k	14.5
+Np+4 + 3 [F]- = Np[F]3+
+	log_k	20.3
+Np+4 + 4 [F]- = Np[F]4
+	log_k	25.1
+NpO2+2 + [F]- = NpO2[F]+
+	log_k	4.6
+NpO2+2 + 2 [F]- = NpO2[F]2
+	log_k	7.01
+Pu+4 + [F]- = Pu[F]+3
+	log_k	6.77
+PuO2+2 + [F]- = PuO2[F]+
+	log_k	5.07
+PuO2+2 + 2 [F]- = PuO2[F]2
+	log_k	10.07
+PuO2+2 + 3 [F]- = PuO2[F]3-
+	log_k	14.96
+PuO2+2 + 4 [F]- = PuO2[F]4-2
+	log_k	18.14
+Mn+2 + [F]- = Mn[F]+
+	log_k	0.7
+Mn+3 + [F]- = Mn[F]+2
+	log_k	5.65
+Fe+2 + [F]- = Fe[F]+
+	log_k	0.8
+Fe+3 + [F]- = Fe[F]+2
+	log_k	6.0
+Fe+3 + 2 [F]- = Fe[F]2+
+	log_k	9.13
+Fe+3 + 3 [F]- = Fe[F]3
+	log_k	11.9
+Co+2 + [F]- = Co[F]+
+	log_k	0.4
+Ni+2 + [F]- = Ni[F]+
+	log_k	0.5
+Cu+2 + [F]- = Cu[F]+
+	log_k	1.2
+Ag+ + [F]- = Ag[F]
+	log_k	0.4
+Zn+2 + [F]- = Zn[F]+
+	log_k	1.15
+Cd+2 + [F]- = Cd[F]+
+	log_k	0.46
+Cd+2 + 2 [F]- = Cd[F]2
+	log_k	0.53
+Hg+2 + [F]- = Hg[F]+
+	log_k	1.6
+H3BO3 + [F]- = B(OH)3[F]-
+	log_k	-0.30
+H3BO3 + 2 [F]- + H+ = B(OH)2[F]2- + H2O
+	log_k	7.52
+H3BO3 + 3 [F]- + 2 H+ = B(OH)[F]3- + 2 H2O
+	log_k	13.4
+H3BO3 + 4 [F]- + 3 H+ = B[F]4- + 3 H2O
+	log_k	19.8
+Al+3 + [F]- = Al[F]+2
+	log_k	7.0
+Al+3 + 2 [F]- = Al[F]2+
+	log_k	12.6
+Al+3 + 3 [F]- = Al[F]3
+	log_k	16.7
+Al+3 + 4 [F]- = Al[F]4-
+	log_k	19.1
+Al+3 + 5 [F]- = Al[F]5-2
+	log_k	19.4
+Al+3 + 6 [F]- = Al[F]6-3
+	log_k	19.8
+Ga+3 + [F]- = Ga[F]+2
+	log_k	5.9
+Ga+3 + 2 [F]- = Ga[F]2+
+	log_k	8.00
+Ga+3 + 3 [F]- = Ga[F]3
+	log_k	10.5
+In+3 + [F]- = In[F]+2
+	log_k	4.6
+In+3 + 2 [F]- = In[F]2+
+	log_k	8.1
+In+3 + 3 [F]- = In[F]3
+	log_k	10.3
+In+3 + 4 [F]- = In[F]4-
+	log_k	11.5
+Tl+ + [F]- = Tl[F]
+	log_k	0.10
+Ge(OH)4 + 4 H[F] = Ge[F]4 + 4 H2O
+	log_k	7.30
+# Ge(OH)4 + 5 H[F] = GeH[F]5- + 4 OH-
+	# log_k	8.94
+# nevychazi podle puvodni definice
+Sn+2 + [F]- = Sn[F]+
+	log_k	4.08
+Sn+2 + 2 [F]- = Sn[F]2
+	log_k	6.68
+Sn+2 + 3 [F]- = Sn[F]3-
+   log_k 9.5
+Sn+4 + 6 [F]- = Sn[F]6-2
+	log_k	25
+Pb+2 + [F]- = Pb[F]+
+	log_k	1.44
+Pb+2 + 2 [F]- = Pb[F]2
+	log_k	2.54
+H2AsO4- + [F]- = AsO3[F]-2 + H2O
+	log_k	-0.75
+Sb+3 + [F]- = Sb[F]+2
+	log_k	-3.0
+Sb+3 + 2 [F]- = Sb[F]2+
+	log_k	5.7
+Sb+3 + 3 [F]- = Sb[F]3
+	log_k	8.3
+Sb+3 + 4 [F]- = Sb[F]4-
+	log_k	10.9
+Bi+3 + [F]- = Bi[F]+2
+	log_k	1.42
+
+Na+ + Cl- = NaCl
+	log_k	-1.85
+K+ + Cl- = KCl
+	log_k	-0.5
+Rb+ + Cl- = RbCl
+	log_k	-0.5
+Cs+ + Cl- = CsCl
+	log_k	-0.5
+Be+2 + Cl- = BeCl+
+	log_k	-0.3
+Be+2 + 2 Cl- = BeCl2
+	log_k	-0.7
+Mg+2 + Cl- = MgCl+
+	log_k	-1.0
+Ba+2 + Cl- = BaCl+
+	log_k	-0.13
+Sc+3 + Cl- = ScCl+2
+	log_k	0.04
+Sc+3 + 2 Cl- = ScCl2+
+	log_k	-0.1
+La+3 + Cl- = LaCl+2
+	log_k	-0.1
+La+3 + 2 Cl- = LaCl2+
+	log_k	-0.6
+Ce+3 + Cl- = CeCl+2
+	log_k	-0.2
+Ce+3 + 2 Cl- = CeCl2+
+	log_k	-0.7
+Pr+3 + Cl- = PrCl+2
+	log_k	-0.2
+Pr+3 + 2 Cl- = PrCl2+
+	log_k	-0.7
+Eu+3 + Cl- = EuCl+2
+	log_k	-0.2
+Eu+3 + 2 Cl- = EuCl2+
+	log_k	-0.7
+Tm+3 + Cl- =TmCl+2
+	log_k	-0.2
+Tm+3 + 2 Cl- = TmCl2+
+	log_k	-0.7
+Yb+3 + Cl- = YbCl+2
+	log_k	-0.2
+Yb+3 + 2 Cl- = YbCl2+
+	log_k	-0.7
+Lu+3 + Cl- = LuCl+2
+	log_k	-0.2
+Lu+3 + 2 Cl- = LuCl2+
+	log_k	-0.7
+Ac+3 + Cl- = AcCl+2
+	log_k	-0.2
+Ac+3 + 2 Cl- = AcCl2+
+	log_k	-0.7
+Ti+3 + Cl- = TiCl+2
+	log_k	0.34
+TiO+2 + Cl- = TiOCl+
+	log_k	0.55
+TiO+2 + 2 Cl- = TiOCl2
+	log_k	0.15
+Zr+4 + Cl- = ZrCl+3
+	log_k	0.30
+Zr+4 + 2 Cl- = ZrCl2+2
+	log_k	1.32
+Zr+4 + 3 Cl- = ZrCl3+
+	log_k	1.51
+Zr+4 + 4 Cl- = ZrCl4
+	log_k	1.2
+Hf+4 + Cl- = HfCl+3
+	log_k	0.38
+Hf+4 + 2 Cl- = HfCl2+2
+	log_k	0.07
+Hf+4 + 3 Cl- = HfCl3+
+	log_k	-0.6
+Th+4 + Cl- = ThCl+3
+	log_k	1.38
+Th+4 + 2 Cl- = ThCl2+2
+	log_k	-1.0
+Th+4 + 3 Cl- = ThCl3+
+	log_k	-0.9
+Th+4 + 4 Cl- = ThCl4
+	log_k	-1.5
+Th+4 + 5 Cl- = ThCl5-
+	log_k	-2.5
+VO+2 + Cl- = VOCl+
+	log_k	0.04
+Cr+3 + Cl- = CrCl+2
+	log_k	-0.5
+CrO4-2 + 2 H+ + Cl- = CrO3Cl- + H2O
+	log_k	1.1
+U+3 + Cl- = UCl+2
+	log_k	-2.89
+U+4 + Cl- = UCl+3
+	log_k	0.26
+UO2+2 + Cl- = UO2Cl+
+	log_k	0.21
+Np+4 + Cl- = NpCl+3
+	log_k	0.15
+Np+4 + 2 Cl- = NpCl2+2
+	log_k	-0.15
+Np+4 + 3 Cl- = NpCl3+
+	log_k	-0.5
+NpO2+2 + Cl- = NpO2Cl+
+	log_k	-0.3
+NpO2+2 + 2 Cl- = NpO2Cl2
+	log_k	-0.8
+Pu+4 + Cl- = PuCl+3
+	log_k	0.14
+Pu+4 + 2 Cl- = PuCl2+2
+	log_k	-0.17
+Pu+4 + 3 Cl- = PuCl3+
+	log_k	-1.0
+PuO2+2 + Cl- = PuO2Cl+
+	log_k	0.10
+PuO2+2 + 2 Cl- = PuO2Cl2
+	log_k	-0.35
+Pu+3 + Cl- = PuCl+2
+	log_k	-0.1
+Am+3 + Cl- = AmCl+2
+	log_k	-0.60
+Am+3 + 2 Cl- = AmCl2+
+	log_k	-0.42
+Bk+3 + Cl- = BkCl+2
+	log_k	-0.02
+Es+3 + Cl- = EsCl+2
+	log_k	-0.02
+Mn+2 + Cl- = MnCl+
+	log_k	0.04
+Mn+3 + Cl- = MnCl+2
+	log_k	0.9
+Co+2 + Cl- = CoCl+
+	log_k	-0.05
+Ni+2 + Cl- = NiCl+
+	log_k	0.00
+Fe+2 + Cl- = FeCl+
+	log_k	-0.3
+Fe+2 + 2 Cl- = FeCl2
+	log_k	0.4
+Fe+3 + Cl- = FeCl+2
+	log_k	1.48
+Fe+3 + 2 Cl- = FeCl2+
+	log_k	2.13
+Fe+3 + 3 Cl- = FeCl3
+	log_k	1.1
+Fe+3 + 4 Cl- = FeCl4-
+	log_k	-1.3
+RuCl+2 + Cl- = RuCl2+
+	log_k	1.4
+RuCl2+ + Cl- = RuCl3
+	log_k	0.4
+Rh+3 + Cl- = RhCl+2
+	log_k	2.45
+Rh+3 + 2 Cl- = RhCl2+
+	log_k	4.54
+Rh+3 + 3 Cl- = RhCl3
+	log_k	5.92
+Rh+3 + 4 Cl- = RhCl4-
+	log_k	7.08
+Rh+3 + 5 Cl- = RhCl5-2
+	log_k	8.75
+Rh+3 + 6 Cl- = RhCl6-3
+	log_k	8.43
+Pd+2 + Cl- = PdCl+
+	log_k	6.1
+Pd+2 + 2 Cl- = PdCl2
+	log_k	10.7
+Pd+2 + 3 Cl- = PdCl3-
+	log_k	13.1
+Pd+2 + 4 Cl- = PdCl4-2
+	log_k	15.4
+Pt+2 + Cl- = PtCl+
+	log_k	7
+PtCl+ + Cl- = PtCl2
+	log_k	4.0
+PtCl2 + Cl- = PtCl3-
+	log_k	2.96
+PtCl3- + Cl- = PtCl4-2
+	log_k	1.90
+PtCl2 = ClPtCl
+	log_k	0.08
+Pt(OH)3Cl-2 + H2O = Pt(OH)4-2 + Cl- + H+
+	log_k	-10.5
+Pt(OH)2Cl2-2 + H2O = Pt(OH)3Cl-2 + Cl- + H+
+	log_k	-10.0
+Pt(OH)Cl3-2 + H2O = Pt(OH)2Cl2-2 + Cl- + H+
+	log_k	-9.5
+PtCl4-2 + H2O = Pt(OH)Cl3-2 + Cl- + H+
+	log_k	-8.7
+Cu+ + Cl- = CuCl
+	log_k	2.70
+Cu+ + 2 Cl- = CuCl2-
+	log_k	5.5
+Cu+ + 3 Cl- = CuCl3-2
+	log_k	5.7
+2 Cu+ + 3 Cl- = Cu2Cl3-
+	log_k	12.08
+3 Cu+ + 4 Cl- = Cu3Cl4-
+	log_k	13.1
+2 Cu+ + 5 Cl- = Cu2Cl5-3
+	log_k	11.60
+2 Cu+ + 6 Cl- = Cu2Cl6-4
+	log_k	11.30
+3 Cu+ + 4 Cl- = Cu3Cl4-
+   log_k 18.18
+3 Cu+ + 5 Cl- = Cu3Cl5-2
+	log_k	18.04
+3 Cu+ + 6 Cl- = Cu3Cl6-3
+	log_k	17.70
+5 Cu+ + 4 Cl- = Cu5Cl4+
+	log_k	24.48
+6 Cu+ + 4 Cl- = Cu6Cl4+2
+	log_k	24.25
+Cu+2 + Cl- = CuCl+
+	log_k	0.40
+Cu+2 + 2 Cl- = CuCl2
+	log_k	-0.4
+Ag+ + Cl- = AgCl
+	log_k	3.31
+Ag+ + 2 Cl- = AgCl2-
+	log_k	5.25
+Ag+ + 3 Cl- = AgCl3-2
+	log_k	6.0
+Au(OH)4- + H+ + Cl- = Au(OH)3Cl- + H2O
+	log_k	8.51
+Au(OH)4- + 2 H+ + 2 Cl- = Au(OH)2Cl2- + 2 H2O
+	log_k	16.57
+Au(OH)4- + 3 H+ + 3 Cl- = Au(OH)Cl3- + 3 H2O
+	log_k	23.6
+Au(OH)4- + 4 H+ + 4 Cl- = AuCl4- + 4 H2O
+	log_k	29.6
+Zn+2 + Cl- = ZnCl+
+	log_k	0.43
+Zn+2 + 2 Cl- = ZnCl2
+	log_k	0.61
+Zn+2 + 3 Cl- = ZnCl3-
+	log_k	0.5
+Zn+2 + 4 Cl- = ZnCl4-2
+	log_k	0.2
+Cd+2 + Cl- = CdCl+
+	log_k	1.98
+Cd+2 + 2 Cl- = CdCl2
+	log_k	2.6
+Cd+2 + 3 Cl- = CdCl3-
+	log_k	2.4
+Cd+2 + 4 Cl- = CdCl4-2
+	log_k	1.7
+Hg+2 + Cl- = HgCl+
+	log_k	6.74
+Hg+2 + 2 Cl- = HgCl2
+	log_k	13.22
+Hg+2 + 3 Cl- = HgCl3-
+	log_k	14.1
+Hg+2 + 4 Cl- = HgCl4-2
+	log_k	15.1
+HgCl+ + OH- = Hg(OH)Cl
+	log_k	10.7
+Ga+3 + Cl- = GaCl+2
+	log_k	0.01
+In+3 + Cl- = InCl+2
+	log_k	2.32
+In+3 + 2 Cl- = InCl2+
+	log_k	3.62
+In+3 + 3 Cl- = InCl3
+	log_k	4.0
+InCl+2 + OH- = In(OH)Cl+
+	log_k	10.3
+In(OH)Cl+ + In+3 = In2(OH)Cl+4
+	log_k	1.6
+Tl+ + Cl- = TlCl
+	log_k	0.49
+Tl+ + 2 Cl- = TlCl2-
+	log_k	0.0
+Tl+3 + Cl- = TlCl+2
+	log_k	7.72
+Tl+3 + 2 Cl- = TlCl2+
+	log_k	13.48
+Tl+3 + 3 Cl- = TlCl3
+	log_k	16.5
+Tl+3 + 4 Cl- = TlCl4-
+	log_k	18.3
+TlCl+2 + OH- = Tl(OH)Cl+
+	log_k	12.31
+Sn+2 + Cl- = SnCl+
+	log_k	1.51
+Sn+2 + 2 Cl- = SnCl2
+	log_k	2.25
+Sn+2 + 3 Cl- = SnCl3-
+	log_k	2.0
+Sn+2 + 4 Cl- = SnCl4-2
+	log_k	1.5
+Pb+2 + Cl- = PbCl+
+	log_k	1.59
+Pb+2 + 2 Cl- = PbCl2
+	log_k	1.8
+Pb+2 + 3 Cl- = PbCl3-
+	log_k	1.7
+Pb+2 + 4 Cl- = PbCl4-2
+	log_k	1.4
+H3AsO3 +  H+ + Cl- = As(OH)2Cl + H2O
+	log_k	-1.07
+H3AsO3 + 2 H+ + 2 Cl- = As(OH)Cl2 + 2 H2O
+	log_k	-4.54
+H3AsO3 + 3 H+ + 3 Cl- = AsCl3 + 3 H2O
+	log_k	-8.7
+Sb+3 + Cl- = SbCl+2
+	log_k	2.3
+Sb+3 + 2 Cl- = SbCl2+
+	log_k	3.5
+Sb+3 + 3 Cl- = SbCl3
+	log_k	4.2
+Sb+3 + 4 Cl- = SbCl4-
+	log_k	4.7
+Sb+3 + 5 Cl- = SbCl5-2
+	log_k	4.7
+Sb+3 + 6 Cl- = SbCl6-3
+	log_k	4.1
+Bi+3 + Cl- = BiCl+2
+	log_k	2.36
+Bi+3 + 2 Cl- = BiCl2+
+	log_k	3.5
+Bi+3 + 3 Cl- = BiCl3
+	log_k	5.4
+Bi+3 + 4 Cl- = BiCl4-
+	log_k	6.1
+Bi+3 + 5 Cl- = BiCl5-2
+	log_k	6.7
+Bi+3 + 6 Cl- = BiCl6-3
+	log_k	6.6
+
+Na+ + Br- = NaBr
+	log_k -3.1
+K+ + Br- = KBr
+	log_k -0.6
+Rb+ + Br- = RbBr
+	log_k -0.6
+Cs+ + Br- = CsBr
+	log_k -0.6
+Be+2 + Br- = BeBr+
+	log_k -0.4
+Be+2 + 2 Br- = BeBr2
+	log_k -0.8
+Mg+2 + Br- = MgBr+
+	log_k -1.4
+Sc+3 + Br- = ScBr+2
+	log_k -0.07
+Sc+3 + 2 Br- = ScBr2+
+	log_k -0.3
+Y+3 + Br- = YBr+2
+	log_k -0.15
+Ce+3 + Br- = CeBr+2
+	log_k -0.3
+Pr+3 + Br- = PrBr+2
+	log_k -0.3
+Sm+3 + Br- = SmBr+2
+	log_k -0.3
+Eu+3 + Br- = EuBr+2
+	log_k -0.3
+Ho+3 + Br- = HoBr+2
+	log_k -0.3
+Er+3 + Br- = ErBr+2
+	log_k -0.3
+Hf+4 + Br- = HfBr+3
+	log_k -0.1
+U+3 + Br- = UBr+2
+	log_k -3.95
+U+4 + Br- = UBr+3
+	log_k 0.18
+UO2+2 + Br- = UO2Br+
+	log_k 0.2
+Np+3 + Br- = NpBr+2
+	log_k -3.4
+Np+3 + 2 Br- = NpBr2+
+	log_k -6.5
+Pu+3 + Br- = PuBr+2
+	log_k -3.4
+Pu+3 + 2 Br- = PuBr2+
+	log_k -6.5
+Am+3 + Br- = AmBr+2
+	log_k -3.4
+Am+3 + 2 Br- = AmBr2+
+	log_k -6.5
+Mn+2 + Br- = MnBr+
+	log_k 0.27
+Mn+2 + 2 Br- = MnBr2
+	log_k 0.01
+Fe+3 + Br- = FeBr+2
+	log_k 0.6
+Fe+3 + 2 Br- = FeBr2+
+	log_k -0.5
+Co+2 + Br- = CoBr+
+	log_k -0.13
+Co+2 + 2 Br- = CoBr2
+	log_k -0.4
+Ni+2 + Br- = NiBr+
+	log_k -0.12
+Pd+2 + Br- = PdBr+
+	log_k  5.17
+Pd+2 + 2 Br- = PdBr2
+	log_k 9.42
+Pd+2 + 3 Br- = PdBr3-
+	log_k 12.7
+Pd+2 + 4 Br- = PdBr4-2
+	log_k 14.9
+Pt(OH)4-2 + Br- + H+ = Pt(OH)3Br-2 + H2O
+	log_k 10.75
+Pt(OH)3Br-2 + Br- + H+ = Pt(OH)2Br2-2 + H2O
+	log_k 10.3
+Pt(OH)2Br2-2 + Br- + H+ = Pt(OH)Br3-2 + H2O
+	log_k 9.6
+Pt(OH)Br3-2 + Br- + H+ = PtBr4-2 + H2O
+	log_k 7.75
+# Pt(OH)6-2 + Br- + H+ = Pt(OH)5Br-2 + H2O
+	# log_k 9.55
+# Pt(OH)5Br-2 + Br- + H+ = Pt(OH)4Br2-2 + H2O
+	# log_k 9.5
+# Pt(OH)4Br2-2 + Br- + H+ = Pt(OH)3Br3-2 + H2O
+	# log_k 9.3
+# Pt(OH)3Br3-2 + Br- + H+ = Pt(OH)2Br4-2 + H2O
+	# log_k 9.0
+# Pt(OH)2Br4-2 + Br- + H+ = Pt(OH)Br5-2 + H2O
+	# log_k 8.9
+# Pt(OH)Br5-2 + Br- + H+ = PtBr6-2 + H2O
+	# log_k 8.5
+Cu+ + 2 Br- = CuBr2-
+	log_k 5.9
+Cu+2 + Br- = CuBr+
+	log_k -0.03
+Ag+ + Br- = AgBr
+	log_k 4.68
+Ag+ + 2 Br- = AgBr2-
+	log_k 7.7
+Ag+ + 3 Br- = AgBr3-2
+	log_k 8.7
+Ag+ + 4 Br- = AgBr4-3
+	log_k 9.0
+Zn+2 + Br- = ZnBr+
+	log_k -0.19
+Zn+2 + 2 Br- = ZnBr2
+	log_k -1.15
+Zn+2 + 3 Br- = ZnBr3-
+	log_k -0.55
+Zn+2 + 4 Br- = ZnBr4-2
+	log_k -1.5
+Cd+2 + Br- = CdBr+
+	log_k 2.14
+Cd+2 + 2 Br- = CdBr2
+	log_k 3.0
+Cd+2 + 3 Br- = CdBr3-
+	log_k 3.0
+Cd+2 + 4 Br- = CdBr4-2
+	log_k 2.9
+Hg+2 + Br- = HgBr+
+	log_k 9.00
+Hg+2 + 2 Br- = HgBr2
+	log_k 17.1
+Hg+2 + 3 Br- = HgBr3-
+	log_k 19.4
+Hg+2 + 4 Br- = HgBr4-2
+	log_k 21.0
+Ga+3 + Br- = GaBr+2
+	log_k -0.10
+In+3 + Br- = InBr+2
+	log_k 1.93
+In+3 + 2 Br- = InBr2+
+	log_k 3.1
+In+3 + 3 Br- = InBr3
+	log_k 3.4
+In+3 + 4 Br- = InBr4-
+	log_k 4.8
+Tl+ + Br- = TlBr
+	log_k 0.91
+Tl+ + 2 Br- = TlBr2-
+	log_k 0.17
+Tl+ + 3 Br- = TlBr3-2
+	log_k -0.1
+Tl+ + 4 Br- = TlBr4-3
+	log_k -0.6
+Tl+3 + Br- = TlBr+2
+	log_k 9.7
+Tl+3 + 2 Br- = TlBr2+
+	log_k 16.6
+Tl+3 + 3 Br- = TlBr3
+	log_k 21.2
+Tl+3 + 4 Br- = TlBr4-
+	log_k 23.9
+Sn+2 + Br- = SnBr+
+	log_k 1.16
+Sn+2 + 2 Br- = SnBr2
+	log_k 1.7
+Sn+2 + 3 Br- = SnBr3-
+	log_k 1.2
+Sn+2 + 4 Br- = SnBr4-2
+	log_k 0.4
+Pb+2 + Br- = PbBr+
+	log_k 1.77
+Pb+2 + 2 Br- = PbBr2
+	log_k 2.6
+Pb+2 + 3 Br- = PbBr3-
+	log_k 3.0
+Pb+2 + 4 Br- = PbBr4-2
+	log_k 2.3
+Pb+2 + 5 Br- = PbBr5-3
+	log_k 1.6
+Bi+3 + Br- = BiBr+2
+	log_k 3.06
+Bi+3 + 2 Br- = BiBr2+
+	log_k 5.6
+Bi+3 + 3 Br- = BiBr3
+	log_k 7.4
+Bi+3 + 4 Br- = BiBr4-
+	log_k 8.6
+Bi+3 + 5 Br- = BiBr5-2
+	log_k 9.2
+Bi+3 + 6 Br- = BiBr6-3
+	log_k 8.7
+
+K+ + I- = KI
+	log_k -0.19
+Hf+4 + I- = HfI+3
+	log_k -0.5
+U+4 + I- = UI+3
+	log_k 0.18
+Fe+3 + I- = FeI+2
+	log_k 2.85
+Fe+3 + 2 I- = FeI2+
+	log_k 1.57
+Pd+2 + 4 I- = PdI4-2
+	log_k 24.5
+Pt(OH)4-2 + I- + H+ = Pt(OH)3I-2 + H2O
+	log_k 12
+Pt(OH)3I-2 + I- + H+ = Pt(OH)2I2-2 + H2O
+	log_k 11.7
+Pt(OH)2I2-2 + I- + H+ = Pt(OH)I3-2 + H2O
+	log_k 11
+Pt(OH)I3-2 + I- + H+ = PtI4-2 + H2O
+	log_k 10
+# Pt(OH)6-2 + I- + H+ = Pt(OH)5I-2 + H2O
+	# log_k 12.2
+# Pt(OH)5I-2 + I- + H+ = Pt(OH)4I2-2 + H2O
+	# log_k 12.0
+# Pt(OH)4I2-2 + I- + H+ = Pt(OH)3I3-2 + H2O
+	# log_k 11.9
+# Pt(OH)3I3-2 + I- + H+ = Pt(OH)2I4-2 + H2O
+	# log_k 11.8
+# Pt(OH)2I4-2 + I- + H+ = Pt(OH)I5-2 + H2O
+	# log_k 11.4
+# Pt(OH)I5-2 + I- + H+ = PtI6-2 + H2O
+	# log_k 10.4
+Cu+ + 2 I- = CuI2-
+	log_k 8.9
+Cu+ + 3 I- = CuI3-2
+	log_k 9.4
+Cu+ + 4 I- = CuI4-3
+	log_k 9.7
+Ag+ + I- = AgI
+	log_k 6.58
+Ag+ + 2 I- = AgI2-
+	log_k 11.7
+Ag+ + 3 I- = AgI3-2
+	log_k 13.1
+Ag+ + 4 I- = AgI4-3
+	log_k 14.2
+2 Ag+ + 6 I- =Ag2I6-4
+	log_k 29.7
+3 Ag+ + 8 I- = Ag3I8-5
+	log_k 46.4
+Zn+2 + I- = ZnI+
+	log_k -0.47
+Zn+2 + 2 I- = ZnI2
+	log_k -2.00
+Zn+2 + 3 I- = ZnI3-
+	log_k -0.74
+Zn+2 + 4 I- = ZnI4-2
+	log_k -1.25
+Cd+2 + I- = CdI+
+	log_k 2.28
+Cd+2 + 2 I- = CdI2
+	log_k 3.92
+Cd+2 + 3 I- = CdI3-
+	log_k 5.0
+Cd+2 + 4 I- = CdI4-2
+	log_k 6.0
+Hg+2 + I- = HgI+
+	log_k 12.87
+Hg+2 + 2 I- = HgI2
+	log_k 23.82
+Hg+2 + 3 I- = HgI3-
+	log_k 27.6
+Hg+2 + 4 I- = HgI4-2
+	log_k 29.8
+HgI+ + OH- = Hg(OH)I
+	log_k 9.74
+Sn+2 + I- = SnI+
+	log_k 0.70
+Sn+2 + 2 I- = SnI2
+	log_k 11.13
+Sn+2 + 3 I- = SnI3-
+	log_k 2.1
+Sn+2 + 4 I- = SnI4-2
+	log_k 2.3
+Sn+2 + 6 I- = SnI6-4
+	log_k 2.6
+Sn+2 + 8 I- = SnI8-6
+	log_k 2.1
+Pb+2 + I- = PbI+
+	log_k 1.26
+Pb+2 + 2 I- = PbI2
+	log_k 2.8
+Pb+2 + 3 I- = PbI3-
+	log_k 3.4
+Pb+2 + 4 I- = PbI4-2
+	log_k 3.9
+Ga+3 + I- = GaI+2
+	log_k -0.2
+In+3 + I- = InI+2
+	log_k 1.64
+In+3 + 2 I- = InI2+
+	log_k 2.56
+Tl+ + I- = TlI
+	log_k 0.74
+Tl+ + 2 I- = TlI2-
+	log_k 0.90
+Tl+ + 3 I- = TlI3-2
+	log_k 1.06
+Tl+3 + 4 I- = TlI4-
+	log_k 35.7
+Bi+3 + I- = BiI+2
+	log_k 3.63
+Bi+3 + 4 I- = BiI4-
+	log_k 15.0
+Bi+3 + 5 I- = BiI5-2
+	log_k 16.8
+Bi+3 + 6 I- = BiI6-3
+	log_k 18.8
+
+
+PHASES
+# necessary definitions:
+H(g) ; H = H ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 217.965 kJ.mol-1 (Bard) ; #S° = 114.71 J.K-1.mol-1 (Bard) #H(g)
+D(g) ; D = D ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 221.673 kJ.mol-1 (Bard) ; #S° = 123.35 J.K-1.mol-1 (Bard) #D(g)
+# T(g) ; T = T ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 221.673 kJ.mol-1 (D-guess) ; #S° = 123.35 J.K-1.mol-1 (D-guess) #D(g)
+O(g) ; O = O ; log_k	-3.45 ; delta_h	-2.27 ; #H°f = 249.17 kJ.mol-1 (Bard) ; #S° = 160.95 J.K-1.mol-1 (Bard) #O(g)
+[F](g) ; [F] = [F] ; log_k	-2.67 ; delta_h	-7.46 ; #H°f = 78.91 kJ.mol-1 (Bard) ; #S° = 158.64 J.K-1.mol-1 (Bard) #F(g)
+Cl(g) ; Cl = Cl ; log_k	-2.80 ; delta_h	-12.44 ; #H°f = 121.679 kJ.mol-1 (Bard) ; #S° = 165.09 J.K-1.mol-1 (Bard) #Cl(g)
+Br(g) ; Br = Br ; log_k	-2.85 ; delta_h	-14.24 ; #H°f = 111.884 kJ.mol-1 (Bard) ; #S° = 174.91 J.K-1.mol-1 (Bard) #Br(g)
+I(g) ; I = I ; log_k	-2.93 ; delta_h	-17.33 ; #H°f = 106.62 kJ.mol-1 (Bard) ; #S° = 180.68 J.K-1.mol-1 (Bard) #I(g)
+[S](g) ; [S] = [S] ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 278.81 kJ.mol-1 (Bard) ; #S° = 167.71 J.K-1.mol-1 (Bard) #S(g)
+Se(g) ; Se = Se ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 227.07 kJ.mol-1 (Bard) ; #S° = 176.58 J.K-1.mol-1 (Bard) #Se(g)
+Te(g) ; Te = Te ; log_k	-2.91 ; delta_h	-16.50 ; #H°f = 196.73 kJ.mol-1 (Bard) ; #S° = 182.63 J.K-1.mol-1 (Bard) #Te(g)
+# Po(g) ; Po = Po ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 146.988 kJ.mol-1 (Bard) ; #S° = 188.81 J.K-1.mol-1 (Bard) #Po(g)
+[N](g) ; [N] = [N] ; log_k	-3.67 ; delta_h	-3.23 ; #H°f = 472.704 kJ.mol-1 (Bard) ; #S° = 153.20 J.K-1.mol-1 (Bard) #N(g)
+P(g) ; P = P ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 314.25 kJ.mol-1 (Bard) ; #S° = 162.93 J.K-1.mol-1 (Bard) #P(g)
+As(g) ; As = As ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 302.5 kJ.mol-1 (Bard) ; #S° = 174.10 J.K-1.mol-1 (Bard) #As(g)
+Sb(g) ; Sb = Sb ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 262.3 kJ.mol-1 (Bard) ; #S° = 180.16 J.K-1.mol-1 (Bard) #Sb(g)
+Bi(g) ; Bi = Bi ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 207.1 kJ.mol-1 (Bard) ; #S° = 186.90 J.K-1.mol-1 (Bard) #Bi(g)
+[C](g) ; [C] = [C] ; log_k	-2.71 ; delta_h	-8.71 ; #H°f = 718.384 kJ.mol-1 (Bard) ; #S° = 157.99 J.K-1.mol-1 (Bard) #C(g)
+C(g) ; C = C ; log_k	-2.71 ; delta_h	-8.71 ; #H°f = 718.384 kJ.mol-1 (Bard) ; #S° = 157.99 J.K-1.mol-1 (Bard) #C(g)
+Si(g) ; Si = Si ; log_k	-2.80 ; delta_h	-12.02 ; #H°f = 368.4 kJ.mol-1 (Bard) ; #S° = 167.90 J.K-1.mol-1 (Bard) #Si(g)
+Ge(g) ; Ge = Ge ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 328.19 kJ.mol-1 (Bard) ; #S° = 167.80 J.K-1.mol-1 (Bard) #Ge(g)
+Sn(g) ; Sn = Sn ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 301 kJ.mol-1 (Bard) ; #S° = 168.39 J.K-1.mol-1 (Bard) #Sn(g)
+Pb(g) ; Pb = Pb ; log_k	-2.69 ; delta_h	-8.04 ; #H°f = 193.9 kJ.mol-1 (Bard) ; #S° = 175.27 J.K-1.mol-1 (Bard) #Pb(g)
+Ga(g) ; Ga = Ga ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 277 kJ.mol-1 (Bard) ; #S° = 169.00 J.K-1.mol-1 (Bard) #Ga(g)
+In(g) ; In = In ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 243.3 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #In(g)
+Tl(g) ; Tl = Tl ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 182.2 kJ.mol-1 (Bard) ; #S° = 180.85 J.K-1.mol-1 (Bard) #Tl(g)
+Zn(g) ; Zn = Zn ; log_k	-2.55 ; delta_h	-2.77 ; #H°f = 130.73 kJ.mol-1 (Bard) ; #S° = 160.88 J.K-1.mol-1 (Bard) #Zn(g)
+Cd(g) ; Cd = Cd ; log_k	-2.61 ; delta_h	-5.03 ; #H°f = 112.01 kJ.mol-1 (Bard) ; #S° = 167.75 J.K-1.mol-1 (Bard) #Cd(g)
+Hg(g) ; Hg = Hg ; log_k	-2.60 ; delta_h	-4.86 ; #H°f = 61.317 kJ.mol-1 (Bard) ; #S° = 174.85 J.K-1.mol-1 (Bard) #Hg(g)
+Cu(g) ; Cu = Cu ; log_k	-2.60 ; delta_h	-4.49 ; #H°f = 338 kJ.mol-1 (Bard) ; #S° = 166.52 J.K-1.mol-1 (Bard) #Cu(g)
+Ag(g) ; Ag = Ag ; log_k	-2.64 ; delta_h	-6.37 ; #H°f = 284.69 kJ.mol-1 (Bard) ; #S° = 172.97 J.K-1.mol-1 (Bard) #Ag(g)
+Au(g) ; Au = Au ; log_k	-2.58 ; delta_h	-3.94 ; #H°f = 366 kJ.mol-1 (Bard) ; #S° = 180.39 J.K-1.mol-1 (Bard) #Au(g)
+Ni(g) ; Ni = Ni ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 425.14 kJ.mol-1 (Bard) ; #S° = 182.39 J.K-1.mol-1 (Bard) #Ni(g)
+Pd(g) ; Pd = Pd ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 378.2 kJ.mol-1 (Bard) ; #S° = 167.05 J.K-1.mol-1 (Bard) #Pd(g)
+Pt(g) ; Pt = Pt ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 565.3 kJ.mol-1 (Bard) ; #S° = 192.41 J.K-1.mol-1 (Bard) #Pt(g)
+Co(g) ; Co = Co ; log_k	-2.55 ; delta_h	-2.90 ; #H°f = 439 kJ.mol-1 (Bard) ; #S° = 179.41 J.K-1.mol-1 (Bard) #Co(g)
+Rh(g) ; Rh = Rh ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 556.9 kJ.mol-1 (Bard) ; #S° = 185.81 J.K-1.mol-1 (Bard) #Rh(g)
+# Ir(g) ; Ir = Ir ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 665.3 kJ.mol-1 (Bard) ; #S° = 193.58 J.K-1.mol-1 (Bard) #Ir(g)
+Fe(g) ; Fe = Fe ; log_k	-2.58 ; delta_h	-4.28 ; #H°f = 416.3 kJ.mol-1 (Bard) ; #S° = 180.38 J.K-1.mol-1 (Bard) #Fe(g)
+Ru(g) ; Ru = Ru ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 642.7 kJ.mol-1 (Bard) ; #S° = 186.51 J.K-1.mol-1 (Bard) #Ru(g)
+Os(g) ; Os = Os ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 791 kJ.mol-1 (Bard) ; #S° = 192.57 J.K-1.mol-1 (Bard) #Os(g)
+Mn(g) ; Mn = Mn ; log_k	-2.60 ; delta_h	-4.82 ; #H°f = 280.7 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #Mn(g)
+# Tc(g) ; Tc = Tc ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 38.7 kJ.mol-1 (Bard) ; #S° = 10.30 J.K-1.mol-1 (Bard) #Tc(g)
+Re(g) ; Re = Re ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 769.9 kJ.mol-1 (Bard) ; #S° = 188.83 J.K-1.mol-1 (Bard) #Re(g)
+Cr(g) ; Cr = Cr ; log_k	-2.60 ; delta_h	-4.57 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 174.39 J.K-1.mol-1 (Bard) #Cr(g)
+Mo(g) ; Mo = Mo ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 658.1 kJ.mol-1 (Bard) ; #S° = 181.95 J.K-1.mol-1 (Bard) #Mo(g)
+W(g) ; W = W ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 856.883 kJ.mol-1 (Bard) ; #S° = 173.84 J.K-1.mol-1 (Bard) #W(g)
+V(g) ; V = V ; log_k	-2.60 ; delta_h	-4.70 ; #H°f = 515.5 kJ.mol-1 (Bard) ; #S° = 182.20 J.K-1.mol-1 (Bard) #V(g)
+Nb(g) ; Nb = Nb ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 725.9 kJ.mol-1 (Bard) ; #S° = 186.26 J.K-1.mol-1 (Bard) #Nb(g)
+# Ta(g) ; Ta = Ta ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 782 kJ.mol-1 (Bard) ; #S° = 185.21 J.K-1.mol-1 (Bard) #Ta(g)
+Ti(g) ; Ti = Ti ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 180.20 J.K-1.mol-1 (Bard) #Ti(g)
+Zr(g) ; Zr = Zr ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 608.8 kJ.mol-1 (Bard) ; #S° = 181.36 J.K-1.mol-1 (Bard) #Zr(g)
+Hf(g) ; Hf = Hf ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 619.2 kJ.mol-1 (Bard) ; #S° = 186.99 J.K-1.mol-1 (Bard) #Hf(g)
+Sc(g) ; Sc = Sc ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 381.2 kJ.mol-1 (Bard) ; #S° = 174.68 J.K-1.mol-1 (Bard) #Sc(g)
+Y(g) ; Y = Y ; log_k	-2.58 ; delta_h	-3.82 ; #H°f = 421.3 kJ.mol-1 (Bard) ; #S° = 179.48 J.K-1.mol-1 (Bard) #Y(g)
+La(g) ; La = La ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 431 kJ.mol-1 (Bard) ; #S° = 182.38 J.K-1.mol-1 (Bard) #La(g)
+# Ac(g) ; Ac = Ac ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 406 kJ.mol-1 (Bard) ; #S° = 188.10 J.K-1.mol-1 (Bard) #Ac(g)
+Ce(g) ; Ce = Ce ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 420.1 kJ.mol-1 (Bard) ; #S° = 191.77 J.K-1.mol-1 (Bard) #Ce(g)
+Pr(g) ; Pr = Pr ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 356.9 kJ.mol-1 (Bard) ; #S° = 189.81 J.K-1.mol-1 (Bard) #Pr(g)
+Nd(g) ; Nd = Nd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 326.9 kJ.mol-1 (Bard) ; #S° = 189.41 J.K-1.mol-1 (Bard) #Nd(g)
+Pm(g) ; Pm = Pm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 318 kJ.mol-1 (Bard) ; #S° = 187.10 J.K-1.mol-1 (Bard) #Pm(g)
+Sm(g) ; Sm = Sm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 206.7 kJ.mol-1 (Bard) ; #S° = 183.04 J.K-1.mol-1 (Bard) #Sm(g)
+Eu(g) ; Eu = Eu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 177.4 kJ.mol-1 (Bard) ; #S° = 188.80 J.K-1.mol-1 (Bard) #Eu(g)
+Gd(g) ; Gd = Gd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 194.31 J.K-1.mol-1 (Bard) #Gd(g)
+Tb(g) ; Tb = Tb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 388.7 kJ.mol-1 (Bard) ; #S° = 303.58 J.K-1.mol-1 (Bard) #Tb(g)
+Dy(g) ; Dy = Dy ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 290.4 kJ.mol-1 (Bard) ; #S° = 196.63 J.K-1.mol-1 (Bard) #Dy(g)
+Ho(g) ; Ho = Ho ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 300.6 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Ho(g)
+Er(g) ; Er = Er ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 311.9 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Er(g)
+Tm(g) ; Tm = Tm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 232.2 kJ.mol-1 (Bard) ; #S° = 190.11 J.K-1.mol-1 (Bard) #Tm(g)
+Yb(g) ; Yb = Yb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 155.6 kJ.mol-1 (Bard) ; #S° = 173.13 J.K-1.mol-1 (Bard) #Yb(g)
+Lu(g) ; Lu = Lu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 427.6 kJ.mol-1 (Bard) ; #S° = 184.80 J.K-1.mol-1 (Bard) #Lu(g)
+Th(g) ; Th = Th ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 597.1 kJ.mol-1 (Bard) ; #S° = 190.04 J.K-1.mol-1 (Bard) #Th(g)
+Pa(g) ; Pa = Pa ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 607 kJ.mol-1 (Bard) ; #S° = 197.90 J.K-1.mol-1 (Bard) #Pa(g)
+U(g) ; U = U ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 531.4 kJ.mol-1 (Bard) ; #S° = 199.70 J.K-1.mol-1 (Bard) #U(g)
+Np(g) ; Np = Np ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 464.8 kJ.mol-1 (Bard) ; #S° = 117.61 J.K-1.mol-1 (Bard) #Np(g)
+Pu(g) ; Pu = Pu ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 345.2 kJ.mol-1 (Bard) ; #S° = 177.10 J.K-1.mol-1 (Bard) #Pu(g)
+B(g) ; B = B ; log_k	-2.66 ; delta_h	-7.21 ; #H°f = 562.7 kJ.mol-1 (Bard) ; #S° = 153.34 J.K-1.mol-1 (Bard) #B(g)
+Al(g) ; Al = Al ; log_k	-2.57 ; delta_h	-3.53 ; #H°f = 329.7 kJ.mol-1 (Bard) ; #S° = 164.44 J.K-1.mol-1 (Bard) #Al(g)
+Be(g) ; Be = Be ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 324.3 kJ.mol-1 (Bard) ; #S° = 136.16 J.K-1.mol-1 (Bard) #Be(g)
+Mg(g) ; Mg = Mg ; log_k	-2.58 ; delta_h	-4.15 ; #H°f = 147.1 kJ.mol-1 (Bard) ; #S° = 148.59 J.K-1.mol-1 (Bard) #Mg(g)
+Ca(g) ; Ca = Ca ; log_k	-2.66 ; delta_h	-7.12 ; #H°f = 178.2 kJ.mol-1 (Bard) ; #S° = 154.88 J.K-1.mol-1 (Bard) #Ca(g)
+Sr(g) ; Sr = Sr ; log_k	-2.72 ; delta_h	-9.13 ; #H°f = 164.4 kJ.mol-1 (Bard) ; #S° = 164.51 J.K-1.mol-1 (Bard) #Sr(g)
+Ba(g) ; Ba = Ba ; log_k	-2.76 ; delta_h	-10.76 ; #H°f = 180 kJ.mol-1 (Bard) ; #S° = 170.13 J.K-1.mol-1 (Bard) #Ba(g)
+Ra(g) ; Ra = Ra ; log_k	-2.86 ; delta_h	-14.78 ; #H°f = 159 kJ.mol-1 (Bard) ; #S° = 176.36 J.K-1.mol-1 (Bard) #Ra(g)
+Li(g) ; Li = Li ; log_k	-2.63 ; delta_h	-5.91 ; #H°f = 160.71 kJ.mol-1 (Bard) ; #S° = 138.67 J.K-1.mol-1 (Bard) #Li(g)
+Na(g) ; Na = Na ; log_k	-2.69 ; delta_h	-8.25 ; #H°f = 107.68 kJ.mol-1 (Bard) ; #S° = 153.61 J.K-1.mol-1 (Bard) #Na(g)
+K(g) ; K = K ; log_k	-2.78 ; delta_h	-11.81 ; #H°f = 89.16 kJ.mol-1 (Bard) ; #S° = 160.20 J.K-1.mol-1 (Bard) #K(g)
+Rb(g) ; Rb = Rb ; log_k	-2.82 ; delta_h	-13.02 ; #H°f = 85.81 kJ.mol-1 (Bard) ; #S° = 169.99 J.K-1.mol-1 (Bard) #Rb(g)
+Cs(g) ; Cs = Cs ; log_k	-2.88 ; delta_h	-15.49 ; #H°f = 78.78 kJ.mol-1 (Bard) ; #S° = 175.49 J.K-1.mol-1 (Bard) #Cs(g)
+#Fr(g) ; Fr = Fr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 0.00 J.K-1.mol-1 (Bard) #Fr(g)
+He(g) ; He = He ; log_k	-2.36 ; delta_h	1.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 126.15 J.K-1.mol-1 (Bard) #He(g)
+Ne(g) ; Ne = Ne ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 146.33 J.K-1.mol-1 (Bard) #Ne(g)
+Ar(g) ; Ar = Ar ; log_k	-2.74 ; delta_h	-9.89 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 154.84 J.K-1.mol-1 (Bard) #Ar(g)
+Kr(g) ; Kr = Kr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 164.98 J.K-1.mol-1 (Bard) #Kr(g)
+Xe(g) ; Xe = Xe ; log_k	-2.88 ; delta_h	-15.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 169.68 J.K-1.mol-1 (Bard) #Xe(g)
+Rn(g) ; Rn = Rn ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 176.21 J.K-1.mol-1 (Bard) #Rn(g)
+Am(g) ; Am = Am ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 284.1 kJ.mol-1 (Bard) ; #S° = 194.40 J.K-1.mol-1 (Bard) #Am(g)
+Cm(g) ; Cm = Cm ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 387.4 kJ.mol-1 (Bard) ; #S° = 197.00 J.K-1.mol-1 (Bard) #Cm(g)
+
+H2(g)
+H2 = 2 H+ + 2 e-
+log_k 0
+
+H(g)
+H = H+ + e-
+log_k -9.6
+
+D2(g)
+D2 = 2 D+ + 2 e-
+log_k 0.1961
+
+Li(s)
+Li = Li+ + e-
+log_k 51.5
+
+LiHg(s)
+LiHg = Li+ + Hg + e-
+log_k 37.0
+-no_check
+
+Li[F](s)
+Li[F] = Li+ + [F]-
+log_k -2.77
+
+Na(s)
+Na = Na+ + e-
+log_k 45.86
+
+NaHg(s)
+NaHg = Na+ + Hg + e-
+log_k 33.1
+-no_check
+
+K(s)
+K = K+ + e-
+log_k 49.44
+
+KHg(s)
+KHg = K+ + Hg + e-
+log_k 33.32
+-no_check
+
+# KIO4(s)
+# KIO4 = K+ + IO4-
+# log_k -3.43
+
+Rb(s)
+Rb = Rb+ + e-
+log_k 49.5
+
+RbHg(s)
+RbHg = Rb+ + Hg + e-
+log_k 30.6
+-no_check
+
+Cs(s)
+Cs = Cs+ + e-
+log_k 49.4
+
+CsHg(s)
+CsHg = Cs+ + Hg + e-
+log_k 30.1
+-no_check
+
+# CsIO4(s)
+# CsIO4 = Cs+ + IO4-
+# log_k -2.65
+
+Be(s)
+Be = Be+2 + 2 e-
+log_k 62.5
+
+Be(OH)2(s.am)
+Be(OH)2 = Be+2 + 2 OH-
+log_k -21.0
+
+Be(OH)2(s.a)
+Be(OH)2 = Be+2 + 2 OH-
+log_k -21.31
+
+Be(OH)2(s.b)
+Be(OH)2 = Be+2 + 2 OH-
+log_k -21.7
+
+Mg(s)
+Mg = Mg+2 + 2 e-
+log_k 80.3
+
+MgCO3(s)
+MgCO3 = Mg+2 + CO3-2
+log_k -7.46
+
+MgCO3.3H2O(s)
+MgCO3:3H2O = Mg+2 + CO3-2 + 3 H2O
+log_k -4.67
+
+Mg3(PO4)2.8H2O(s)
+Mg3(PO4)2:8H2O = 3 Mg+2 + 2 PO4-3 + 8 H2O
+log_k -25.20
+
+MgHPO4.3H2O(s)
+MgHPO4:3H2O = Mg+2 + HPO4-2 + 3 H2O
+log_k -5.82
+
+Mg[N]H4PO4(s)[N]
+Mg[N]H4PO4 = Mg+2 + [N]H4+ + PO4-3
+log_k -12.6
+
+Mg[N]H4PO4(s)[N]
+Mg[N]H4PO4 = Mg+2 + [N]H4+ + PO4-3
+log_k -12.6
+
+Mg[N]H4PO4(s)[N]
+Mg[N]H4PO4 = Mg+2 + [N]H4+ + PO4-3
+log_k -12.6
+
+Mg(OH)2(s)
+Mg(OH)2 = Mg+2 + 2 OH-
+log_k -11.15
+
+MgSeO3.6H2O(s)
+MgSeO3:6H2O = Mg+2 + SeO3-2 + 6 H2O
+log_k -5.36
+
+Mg[F]2(s)
+Mg[F]2 = Mg+2 + 2 [F]-
+log_k -8.18
+
+#MgC2O4(s)[C-R-C]
+#MgOO[C-R-C]OO = Mg+2 + OO[C-R-C]OO-2
+#log_k -4.07
+# stavelan
+
+Ca(s)
+Ca = Ca+2 + 2 e-
+log_k 97.0
+
+CaHg(s)
+CaHg = Ca+2 + Hg + 2 e-
+log_k 67.48
+-no_check
+
+CaCO3(s.kalcit)
+CaCO3 = Ca+2 + CO3-2
+log_k -8.35
+
+CaCO3(s.aragonit)
+CaCO3 = Ca+2 + CO3-2
+log_k -8.22
+
+# CaSiO3(s)
+# CaSiO3 = Ca+2 + SiO3-2
+# log_k -7.2
+
+CaHPO4.2H2O(s)
+CaHPO4:2H2O= Ca+2 + HPO4-2 + 2 H2O
+log_k -6.58
+
+# Ca2P2O7(s)
+# Ca2P2O7 = 2 Ca+2 + P2O7-4
+# log_k -7.9
+
+Ca(OH)2(s)
+Ca(OH)2 = Ca+2 + 2 OH-
+log_k -5.19
+
+Ca[S]O3(s)[S]
+Ca[S]O3 = Ca+2 + [S]O3-2
+log_k -6.5
+
+Ca[S]O3(s)[S]
+Ca[S]O3 = Ca+2 + [S]O3-2
+log_k -6.5
+
+Ca[S]O4(s)
+Ca[S]O4 = Ca+2 + [S]O4-2
+log_k -4.62
+
+CaSeO4(s)
+CaSeO4 = Ca+2 + SeO4-2
+log_k -4.40
+
+CaMoO4(s)
+CaMoO4 = Ca+2 + MoO4-2
+log_k -8.0
+
+Ca[F]2(s)
+Ca[F]2 = Ca+2 + 2 [F]-
+log_k -10.41
+
+Ca(IO3)2(s)
+Ca(IO3)2 = Ca+2 + 2 IO3-
+log_k -6.15
+
+#CaC2O4(s)[C-R-C]
+#CaOO[C-R-C]OO = Ca+2 + OO[C-R-C]OO-2
+#log_k -7.9
+# stavelan
+
+Sr(s)
+Sr = Sr+2 + 2 e-
+log_k 97.7
+
+SrCO3(s)
+SrCO3 = Sr+2 + CO3-2
+log_k -9.03
+
+SrHPO4(s)
+SrHPO4 = Sr+2 + HPO4-2
+log_k -6.92
+
+# Sr2P2O7(s)
+# Sr2P2O7 = 2 Sr+2 + P2O7-4
+# log_k -7.5
+
+Sr[S]O4(s)
+Sr[S]O4 = Sr+2 + [S]O4-2
+log_k -6.50
+
+Sr[F]2(s)
+Sr[F]2 = Sr+2 + 2 [F]-
+log_k -8.54
+
+#SrC2O4(s)[C-R-C]
+#SrOO[C-R-C]OO = Sr+2 + OO[C-R-C]OO-2
+#log_k -6.4
+# stavelan
+
+Ba(s)
+Ba = Ba+2 + 2 e-
+log_k 98.4
+
+BaCO3(s)
+BaCO3 = Ba+2 + CO3-2
+log_k -8.3
+
+Ba3(PO4)3(s)
+Ba3(PO4)2 = 3 Ba+2 + 2 PO4-3
+log_k -29.3
+
+BaHPO4(s)
+BaHPO4 = Ba+2 + HPO4-2
+log_k -7.40
+
+Ba(OH)2.8H2O(s)
+Ba(OH)2:8H2O = Ba+2 + 2 OH- + 8 H2O
+log_k -3.6
+
+Ba[S]O4(s)
+Ba[S]O4 = Ba+2 + [S]O4-2
+log_k -9.96
+
+Ba[S]2O3(s)
+Ba[S]2O3 = Ba+2 + [S]2O3-2
+log_k -4.79
+
+BaSeO3(s)
+BaSeO3 = Ba+2 + SeO3-2
+log_k -6.57
+
+BaSeO4(s)
+BaSeO4 = Ba+2 + SeO4-2
+log_k -7.46
+
+BaCrO4(s)
+BaCrO4 = Ba+2 + CrO4-2
+log_k -9.67
+
+Ba[F]2(s)
+Ba[F]2 = Ba+2 + 2 [F]-
+log_k -5.76
+
+Ba(BrO3)2.H2O(s)
+Ba(BrO3)2:H2O = Ba+2 + 2 BrO3- + H2O
+log_k -5.11
+
+Ba(IO3)2(s)
+Ba(IO3)2 = Ba+2 + 2 IO3-
+log_k -7.60
+
+#BaC2O4(s)[C-R-C]
+#BaOO[C-R-C]OO = Ba+2 + OO[C-R-C]OO-2
+#log_k -6.0
+# stavelan
+
+Ra(s)
+Ra = Ra+2 + 2 e-
+log_k 98.7
+
+Sc(s)
+Sc = Sc+3 + 3 e-
+log_k 105.5
+
+ScOOH(s)
+ScO(OH) + H2O = Sc+3 + 3 OH-
+log_k -32.7
+
+Y(s)
+Y = Y+3 + 3 e-
+log_k 120
+
+Y2(CO3)3(s)
+Y2(CO3)3 = 2 Y+3 + 3 CO3-2
+log_k -30.6
+
+Y(OH)3(s)
+Y(OH)3 = Y+3 + 3 OH-
+log_k -22.4
+
+Y(IO3)3(s)
+Y(IO3)3 = Y+3 + 3 IO3-
+log_k -10.15
+
+La(s)
+La = La+3 + 3 e-
+log_k 128
+
+La2(CO3)3(s)
+La2(CO3)3 = 2 La+3 + 3 CO3-2
+log_k -33.4
+
+LaPO4(s)
+LaPO4 = La+3 + PO4-3
+log_k -22.43
+
+La(OH)3(s)
+La(OH)3 = La+3 + 3 OH-
+log_k -20.7
+
+La(IO3)3(s)
+La(IO3)3 = La+3 + 3 IO3-
+log_k -10.99
+
+#La2(C2O4)3(s)[C-R-C]
+#La2(OO[C-R-C]OO)3 = 2 La+3 + 3 OO[C-R-C]OO-2
+#log_k -25.0
+# stavelan
+
+Ce(s)
+Ce = Ce+3 + 3 e-
+log_k 118
+
+Ce(OH)3(s)
+Ce(OH)3 = Ce+3 + 3 OH-
+log_k -23.2
+
+Ce[F]3(s)
+Ce[F]3 = Ce+3 + 3 [F]-
+log_k -15.1
+
+Ce(IO3)3(s)
+Ce(IO3)3 = Ce+3 + 3 IO3-
+log_k -10.86
+
+#Ce2(C2O4)3(s)[C-R-C]
+#Ce2(OO[C-R-C]OO)3 = 2 Ce+3 + 3 OO[C-R-C]OO-2
+#log_k -25.5
+# stavelan
+
+CeO2(s)
+CeO2 + 2 H2O = Ce+4 + 4 OH-
+log_k -65.0
+
+Ce(IO3)4(s)
+Ce(IO3)4 = Ce+4 + 4 IO3-
+log_k -9.50
+
+Pr(s)
+Pr = Pr+3 + 3 e-
+log_k 120
+
+Nd(s)
+Nd = Nd+3 + 3 e-
+log_k 120
+
+Pm(s)
+Pm = Pm+3 + 3 e-
+log_k 120
+
+Sm(s)
+Sm = Sm+3 + 3 e-
+log_k 120
+
+Eu(s)
+Eu = Eu+3 + 3 e-
+log_k 120
+
+Gd(s)
+Gd = Gd+3 + 3 e-
+log_k 120
+
+Tb(s)
+Tb = Tb+3 + 3 e-
+log_k 120
+
+Dy(s)
+Dy = Dy+3 + 3 e-
+log_k 120
+
+Ho(s)
+Ho = Ho+3 + 3 e-
+log_k 120
+
+Er(s)
+Er = Er+3 + 3 e-
+log_k 120
+
+Tm(s)
+Tm = Tm+3 + 3 e-
+log_k 120
+
+Yb(s)
+Yb = Yb+3 + 3 e-
+log_k 120
+
+Lu(s)
+Lu = Lu+3 + 3 e-
+log_k 120
+
+Nd2(CO3)3(s)
+Nd2(CO3)3 = 2 Nd+3 + 3 CO3-2
+log_k -32
+
+Sm2(CO3)3(s)
+Sm2(CO3)3 = 2 Sm+3 + 3 CO3-2
+log_k -32
+
+Gd2(CO3)3(s)
+Gd2(CO3)3 = 2 Gd+3 + 3 CO3-2
+log_k -32
+
+Dy2(CO3)3(s)
+Dy2(CO3)3 = 2 Dy+3 + 3 CO3-2
+log_k -32
+
+Yb2(CO3)3(s)
+Yb2(CO3)3 = 2 Yb+3 + 3 CO3-2
+log_k -32
+
+Pr(IO3)3(s)
+Pr(IO3)3 = Pr+3 + 3 IO3-
+log_k -11
+
+Nd(IO3)3(s)
+Nd(IO3)3 = Nd+3 + 3 IO3-
+log_k -11
+
+Pm(IO3)3(s)
+Pm(IO3)3 = Pm+3 + 3 IO3-
+log_k -11
+
+Sm(IO3)3(s)
+Sm(IO3)3 = Sm+3 + 3 IO3-
+log_k -11
+
+Eu(IO3)3(s)
+Eu(IO3)3 = Eu+3 + 3 IO3-
+log_k -11
+
+Gd(IO3)3(s)
+Gd(IO3)3 = Gd+3 + 3 IO3-
+log_k -11
+
+Tb(IO3)3(s)
+Tb(IO3)3 = Tb+3 + 3 IO3-
+log_k -11
+
+Dy(IO3)3(s)
+Dy(IO3)3 = Dy+3 + 3 IO3-
+log_k -11
+
+Ho(IO3)3(s)
+Ho(IO3)3 = Ho+3 + 3 IO3-
+log_k -11
+
+Er(IO3)3(s)
+Er(IO3)3 = Er+3 + 3 IO3-
+log_k -11
+
+Tm(IO3)3(s)
+Tm(IO3)3 = Tm+3 + 3 IO3-
+log_k -11
+
+Yb(IO3)3(s)
+Yb(IO3)3 = Yb+3 + 3 IO3-
+log_k -11
+
+Lu(IO3)3(s)
+Lu(IO3)3 = Lu+3 + 3 IO3-
+log_k -11
+
+Pr(OH)3(s)
+Pr(OH)3 = Pr+3 + 3 OH-
+log_k -25
+
+Nd(OH)3(s)
+Nd(OH)3 = Nd+3 + 3 OH-
+log_k -25
+
+Pm(OH)3(s)
+Pm(OH)3 = Pm+3 + 3 OH-
+log_k -25
+
+Sm(OH)3(s)
+Sm(OH)3 = Sm+3 + 3 OH-
+log_k -25
+
+Eu(OH)3(s)
+Eu(OH)3 = Eu+3 + 3 OH-
+log_k -25
+
+Gd(OH)3(s)
+Gd(OH)3 = Gd+3 + 3 OH-
+log_k -25
+
+Tb(OH)3(s)
+Tb(OH)3 = Tb+3 + 3 OH-
+log_k -25
+
+Dy(OH)3(s)
+Dy(OH)3 = Dy+3 + 3 OH-
+log_k -25
+
+Ho(OH)3(s)
+Ho(OH)3 = Ho+3 + 3 OH-
+log_k -25
+
+Er(OH)3(s)
+Er(OH)3 = Er+3 + 3 OH-
+log_k -25
+
+Tm(OH)3(s)
+Tm(OH)3 = Tm+3 + 3 OH-
+log_k -25
+
+Yb(OH)3(s)
+Yb(OH)3 = Yb+3 + 3 OH-
+log_k -25
+
+Lu(OH)3(s)
+Lu(OH)3 = Lu+3 + 3 OH-
+log_k -25
+
+Th(s)
+Th = Th+4 + 4 e-
+log_k 128.5
+
+Th(OH)4(s)
+Th(OH)4 = Th+4 + 4 OH-
+log_k -44.7
+
+ThO2(s)
+ThO2 + 2 H2O = Th+4 + 4 OH-
+log_k -49.7
+
+Th[F]4(s)
+Th[F]4 = Th+4 + 4 [F]-
+log_k -28.3
+
+Th(IO3)4(s)
+Th(IO3)4 = Th+4 + 4 IO3-
+log_k -14.62
+
+#Th(C2O4)2(s)[C-R-C]
+#Th(OO[C-R-C]OO)2 = Th+4 + 2 OO[C-R-C]OO-2
+#log_k -24.96
+# stavelan
+
+PaO2(s)
+PaO2 + 2 H2O = Pa+4 + 4 OH-
+log_k -53.4
+
+# Pa2O5(s)
+# Pa2O5 + H2O = 2 PaO2+ + 2 OH-
+# log_k -32
+
+U(s)
+U = U+3 + 3 e-
+log_k 91.3
+
+UO2(s)
+UO2 = UO2+2 + 2 e-
+log_k -15.1
+
+# UO2(s)
+# UO2 + 2 H2O = U+4 + 4 OH-
+# log_k -56.2
+
+U[F]4(s)
+U[F]4 = U+4 + 4 [F]-
+log_k -21.24
+
+(UO2)3(PO4)3(s)
+(UO2)3(PO4)2 = 3 UO2+2 + 2 PO4-3
+log_k -49.7
+
+UO2HPO4(s)
+UO2HPO4 = UO2+2 + HPO4-2
+log_k -12.17
+
+UO2(OH)2(s)
+UO2(OH)2 = UO2+2 + 2 OH-
+log_k -22.4
+
+UO2(IO3)2(s)
+UO2(IO3)2 = UO2+2 + 2 IO3-
+log_k -7.01
+
+#UO2C2O4(s)[C-R-C]
+#UO2OO[C-R-C]OO = UO2+2 + OO[C-R-C]OO-2
+#log_k -8.66
+# stavelan
+
+Np(s)
+Np = Np+3 + 3 e-
+log_k 93.8
+
+NpO2(s)
+NpO2 + 2 H2O = Np+4 + 4 OH-
+log_k -60
+
+#Np(C2O4)2(s)[C-R-C]
+#Np(OO[C-R-C]OO)2 = Np+4 + 2 OO[C-R-C]OO-2
+#log_k -22.07
+# stavelan
+
+NpO2OH(s.am)
+NpO2OH = NpO2+ + OH-
+log_k -9.3
+
+NpO2(OH)2(s.am)
+NpO2(OH)2 = NpO2+2 + 2 OH-
+log_k -21.4
+
+Pu(s)
+Pu = Pu+3 + 3 e-
+log_k 103
+
+Pu(OH)3(s)
+Pu(OH)3 = Pu+3 + 3 OH-
+log_k -19.7
+
+Pu(OH)4(s)
+Pu(OH)4 = Pu+4 + 4 OH-
+log_k -47.3
+
+#Pu(C2O4)2(s)[C-R-C]
+#Pu(OO[C-R-C]OO)2 = Pu+4 + 2 OO[C-R-C]OO-2
+#log_k -21.3
+# stavelan
+
+PuO2OH(s.am)
+PuO2OH = PuO2+ + OH-
+log_k -8.6
+
+#PuO2C2O4(s)[C-R-C]
+#PuO2OO[C-R-C]OO = PuO2+2 + OO[C-R-C]OO-2
+#log_k -9.23
+# stavelan
+
+Ti(s)
+Ti = Ti+2 + 2 e-
+log_k -55.1
+
+# Ti(OH)4(s)
+# Ti(OH)4 = Ti+4 + 4 OH-
+# log_k -53.10
+
+TiO(OH)2(s)
+TiO(OH)2 = TiO+2 + 2 OH-
+log_k -32.8
+
+Zr(s)
+Zr = Zr+4 + 4 e-
+log_k 103
+
+# ZrO(H2PO4)2(s)
+# ZrO(H2PO4)2 = ZrO+2 + 2 H2PO4-
+# log_k -17.64
+
+ZrO2(s)
+ZrO2 + 2 H2O = Zr+4 + 4 OH-
+log_k -54.1
+
+HfO2(s)
+HfO2 + 2 H2O = Hf+4 + 4 OH-
+log_k -54.8
+
+V(s)
+V = V+2 + 2 e-
+log_k 40.6
+
+V(OH)3(s)
+V(OH)3 = V+3 + 3 OH-
+log_k -34.3
+
+(VO)3(PO4)2(s)
+(VO)3(PO4)2 = 3 VO+2 + 2 PO4-3
+log_k -25.1
+
+VO(OH)2(s)
+VO(OH)2 = VO+2 + 2 OH-
+log_k -23.5
+
+V2O4(s.a)
+V2O4 + 2 H2O = 2 VO+2 + 4 OH-
+log_k -47.42
+
+# [N]H4H2VO4(s)[N]
+# [N]H4H2VO4 = [N]H4+ + H2VO4-
+# log_k -3.5
+
+# [N]H4H2VO4(s)[N]
+# [N]H4H2VO4 = [N]H4+ + H2VO4-
+# log_k -3.5
+
+# [N]H4H2VO4(s)[N]
+# [N]H4H2VO4 = [N]H4+ + H2VO4-
+# log_k -3.5
+
+V2O5(s)
+V2O5 + H2O = 2 VO2+ + 2 OH-
+log_k -26.68
+
+Nb(s)
+Nb = Nb+3 + 3 e-
+log_k 56
+
+Nb2O5(s)
+Nb2O5 + 10 H+ + 4 e- = 2 Nb+3 + 5 H2O
+log_k 2
+
+Cr(s)
+Cr = Cr+2 + 2 e-
+log_k 30.8
+
+Mo(s)
+Mo + 4 H2O = H2MoO4 + 6 H+ + 6 e-
+log_k 0.0
+
+W(s)
+W + 4 H2O = H2WO4 + 6 H+ + 6 e-
+log_k 3
+
+H2WO4(s)
+H2WO4 = 2 H+ + WO4-2
+log_k -14.05
+
+Mn(s)
+Mn = Mn+2 + 2 e-
+log_k 40.0
+
+MnO2(s)
+MnO2 + 4 H+ + 2 e- = Mn+2 + 2 H2O
+log_k 41.6
+
+Mn3O4(s)
+Mn3O4 + 8 H+ + 2 e- = 3 Mn+2 + 4 H2O
+log_k 59.3
+
+Mn(OH)3(s)
+Mn(OH)3 + 3 H+ + e- = Mn+2 + 3 H2O
+log_k 31.1
+
+MnCO3(s)
+MnCO3 = Mn+2 + CO3-2
+log_k -9.30
+
+Mn(OH)2(s.aktivni)
+Mn(OH)2 = Mn+2 + 2 OH-
+log_k -12.8
+
+Mn[S](s.ruzovy)
+Mn[S] = Mn+2 + [S]-2
+log_k -10.5
+
+Mn[S](s.ruzovy)
+Mn[S] = Mn+2 + [S]-2
+log_k -10.5
+
+Mn[S](s.zeleny)
+Mn[S] = Mn+2 + [S]-2
+log_k -13.5
+
+Mn[S](s.zeleny)
+Mn[S] = Mn+2 + [S]-2
+log_k -13.5
+
+Re(s)
+Re + e- = Re-
+log_k -2.5
+
+ReO2(s)
+ReO2 + 4 H+ + 5 e- = Re- + 2 H2O
+log_k 15.1
+
+ReO3(s)
+ReO3 + 6 H+ + 7 e- = Re- + 3 H2O
+log_k 28.6
+
+FeOOH(s)
+FeOOH + 3 H+ + e- = Fe+2 + 2 H2O
+log_k 15.9
+
+Fe3O4(s)
+Fe3O4 + 8 H+ + 2 e- = 3 Fe+2 + 4 H2O
+log_k 41.6
+
+Fe(s)
+Fe = Fe+2 + 2 e-
+log_k 14.9
+
+FeCO3(s)
+FeCO3 = Fe+2 + CO3-2
+log_k -10.68
+
+Fe(OH)2(s.aktivni)
+Fe(OH)2 = Fe+2 + 2 OH-
+log_k -15.1
+
+Fe[S](s)
+Fe[S] = Fe+2 + [S]-2
+log_k -18.1
+
+Fe[S](s)
+Fe[S] = Fe+2 + [S]-2
+log_k -18.1
+
+FeSe(s)
+FeSe = Fe+2 + Se-2
+log_k -26.0
+
+FePO4.2H2O(s)
+FePO4:2H2O = Fe+3 + PO4-3 + 2 H2O
+log_k -26.4
+
+# Fe4(P2O7)3(s)
+# Fe4(P2O7)3 = 4 Fe+3 + 3 P2O7-4
+# log_k -22.6
+
+Fe(OH)3(s)
+Fe(OH)3 = Fe+3 + 3 OH-
+log_k -38.8
+
+Fe2O3(s)
+Fe2O3 + 3 H2O = 2 Fe+3 + 6 OH-
+log_k -85.4
+
+FeOOH(s.a)
+FeO(OH) + H2O = Fe+3 + 3 OH-
+log_k -41.5
+
+FeOOH(s.am)
+FeO(OH) + H2O = Fe+3 + 3 OH-
+log_k -39.5
+
+Co(s)
+Co = Co+2 + 2 e-
+log_k 9.5
+
+CoCO3(s)
+CoCO3 = Co+2 + CO3-2
+log_k -9.98
+
+Co(OH)2(s.modry)
+Co(OH)2 = Co+2 + 2 OH-
+log_k -14.2
+
+Co(OH)2(s.akt-ruzovy)
+Co(OH)2 = Co+2 + 2 OH-
+log_k -14.8
+
+Co(OH)2(s.nekt-ruzovy)
+Co(OH)2 = Co+2 + 2 OH-
+log_k -15.7
+
+Co[S](s.a)
+Co[S] = Co+2 + [S]-2
+log_k -21.3
+
+Co[S](s.a)
+Co[S] = Co+2 + [S]-2
+log_k -21.3
+
+Co[S](s.b)
+Co[S] = Co+2 + [S]-2
+log_k -25.6
+
+Co[S](s.b)
+Co[S] = Co+2 + [S]-2
+log_k -25.6
+
+CoSe(s)
+CoSe = Co+2 + Se-2
+log_k -31.2
+
+Co(OH)3(s)
+Co(OH)3 = Co+3 + 3 OH-
+log_k -44.5
+
+IrO2(s)
+IrO2 + 2 H2O = IrO4-2 + 4 H+ + 2 e-
+log_k -44
+
+Ir(s)
+Ir + 4 H2O = IrO4-2 + 8 H+ + 6 e-
+log_k -106.9
+
+Ni(s)
+Ni = Ni+2 + 2 e-
+log_k 8.45
+
+Ni(OH)3(s)
+Ni(OH)3 + 3 H+ + e- = Ni+2 + 3 H2O
+log_k 35.2
+
+NiO2(s)
+NiO2 + 4 H+ + 2 e- = Ni+2 + 2 H2O
+log_k 68
+
+Ni(OH)4(s)
+Ni(OH)4 + 2 e- = Ni+2 + 4 OH-
+log_k 2.25
+
+NiCO3(s)
+NiCO3 = Ni+2 + CO3-2
+log_k -6.87
+
+Ni(OH)2(s)
+Ni(OH)2 = Ni+2 + 2 OH-
+log_k -15.2
+
+Ni[S](s.a)
+Ni[S] = Ni+2 + [S]-2
+log_k -19.4
+
+Ni[S](s.a)
+Ni[S] = Ni+2 + [S]-2
+log_k -19.4
+
+Ni[S](s.b)
+Ni[S] = Ni+2 + [S]-2
+log_k -24.9
+
+Ni[S](s.b)
+Ni[S] = Ni+2 + [S]-2
+log_k -24.9
+
+Ni[S](s.g)
+Ni[S] = Ni+2 + [S]-2
+log_k -26.6
+
+Ni[S](s.g)
+Ni[S] = Ni+2 + [S]-2
+log_k -26.6
+
+NiSe(s)
+NiSe = Ni+2 + Se-2
+log_k -32.7
+
+Pd(s)
+Pd = Pd+2 + 2 e-
+log_k -33
+
+#PdO3(s)
+#PdO3 + 6 H+ + 4 e- = Pd+2 + 3 H2O
+#log_k 
+
+Pd([N]3)2(s.a)
+Pd([N]3)2 = Pd+2 + 2[N]3-
+log_k -8.57
+
+Pd(OH)2
+Pd(OH)2 = Pd+2 + 2 OH-
+log_k -28.5
+
+#Cu2O3(s)
+#Cu2O3 + 6 H+ + 2 e- = 2 Cu+2 + 3 H2O
+#log_k 
+
+Cu(s)
+Cu = Cu+2 + 2 e-
+log_k -11.4
+
+CuHg(s)
+CuHg = Cu+2 + Hg + 2 e-
+log_k -11.61
+-no_check
+
+Cu[S]C[N](s)
+Cu[S][CN] = Cu+ + [S][CN]-
+log_k -13.40
+
+Cu[S]C[N](s)
+Cu[S][CN] = Cu+ + [S][CN]-
+log_k -13.40
+
+Cu2O(s)
+Cu2O + H2O = 2 Cu+ + 2 OH-
+log_k -29.4
+
+Cu2[S](s)
+Cu2[S] = 2 Cu+ + [S]-2
+log_k -48.5
+
+Cu2[S](s)
+Cu2[S] = 2 Cu+ + [S]-2
+log_k -48.5
+
+Cu2Se(s)
+Cu2Se = 2 Cu+ + Se-2
+log_k -60.8
+
+CuCl(s)
+CuCl = Cu+ + Cl-
+log_k -7.38
+
+CuBr(s)
+CuBr = Cu+ + Br-
+log_k -8.3
+
+CuI(s)
+CuI = Cu+ + I-
+log_k -12.0
+
+CuCO3(s)
+CuCO3 = Cu+2 + CO3-2
+log_k -9.63
+
+Cu2(OH)2CO3(s)
+Cu2(OH)2CO3 = 2 Cu+2 + 2 OH- + CO3-2
+log_k -31.90
+
+Cu3(OH)2(CO3)2(s.azurit)
+Cu3(OH)2(CO3)2 = 3 Cu+2 + 2 OH- + 2 CO3-2
+log_k -45.96
+
+Cu2(OH)2CO3(s.malachit)
+Cu2(OH)2CO3 = 2 Cu+2 + 2 OH- + CO3-2
+log_k -33.78
+
+K2Cu(HCO3)4(s)
+K2Cu(HCO3)4 = 2 K+ + Cu+2 + 4 HCO3-
+log_k -11.5
+
+Cu(OH)2(s)
+Cu(OH)2 = Cu+2 + 2 OH-
+log_k -19.32
+
+CuO(s)
+CuO + H2O = Cu+2 + 2 OH-
+log_k -20.35
+
+Cu[S](s)
+Cu[S] = Cu+2 + [S]-2
+log_k -36.1
+
+Cu[S](s)
+Cu[S] = Cu+2 + [S]-2
+log_k -36.1
+
+CuSe(s)
+CuSe = Cu+2 + Se-2
+log_k -48.1
+
+#CuC2O4(s)[C-R-C]
+#CuOO[C-R-C]OO = Cu+2 + OO[C-R-C]OO-2
+#log_k -7.54
+# stavelan
+
+Ag2O3(s)
+Ag2O3 + 6 H+ + 4 e- = 2 Ag+ + 3 H2O
+log_k 118.8
+
+AgO(s)
+AgO + 2 H+ + e- = Ag+ + H2O
+log_k 30.49
+
+Ag2CO3(s)
+Ag2CO3 = 2 Ag+ + CO3-2
+log_k -11.19
+
+AgC[N](s)
+Ag[CN] = Ag+ + [CN]-
+log_k -15.66
+
+AgOC[N](s)
+AgO[CN] = Ag+ + O[CN]-
+log_k -6.64
+
+Ag[S]C[N](s)
+Ag[S][CN] = Ag+ + [S][CN]-
+log_k -11.97
+
+Ag[S]C[N](s)
+Ag[S][CN] = Ag+ + [S][CN]-
+log_k -11.97
+
+Ag4Fe(C[N])6(s)
+Ag4Fe[CN]6 = 4 Ag+ + Fe[CN]6-4
+log_k -44.07
+
+Ag[N]3(s)
+Ag[N]3 = Ag+ + [N]3-
+log_k -8.56
+
+Ag[N]O2(s)
+Ag[N]O2 = Ag+ + [N]O2-
+log_k -4.13
+
+# Ag[N]O2(s)[N]O
+# Ag[N]OO = Ag+ + [N]OO-
+# log_k -4.13
+
+Ag2[N]2O2(s)
+Ag2[N]2O2 = 2 Ag+ + [N]2O2-2
+log_k -18.89
+
+Ag3PO4(s)
+Ag3PO4 = 3 Ag+ + PO4-3
+log_k -17.55
+
+Ag3AsO4(s)
+Ag3AsO4 = 3 Ag+ + AsO4-3
+log_k -22.0
+
+Ag2O(s)
+Ag2O + H2O = 2 Ag+ + 2 OH-
+log_k -15.42
+
+Ag2[S](s)
+Ag2[S] = 2 Ag+ + [S]-2
+log_k -50.1
+
+Ag2[S](s)
+Ag2[S] = 2 Ag+ + [S]-2
+log_k -50.1
+
+Ag2[S]O3(s)[S]
+Ag2[S]O3 = 2 Ag+ + [S]O3-2
+log_k -13.82
+
+Ag2[S]O3(s)[S]
+Ag2[S]O3 = 2 Ag+ + [S]O3-2
+log_k -13.82
+
+Ag2[S]O4(s)
+Ag2[S]O4 = 2 Ag+ + [S]O4-2
+log_k -4.83
+
+Ag2Se(s)
+Ag2Se = 2 Ag+ + Se-2
+log_k -63.7
+
+Ag2SeO3(s)
+Ag2SeO3 = 2 Ag+ + SeO3-2
+log_k -15.55
+
+Ag2SeO4(s)
+Ag2SeO4 = 2 Ag+ + SeO4-2
+log_k -8.91
+
+# Ag2H2TeO4(s)
+# Ag2H2TeO4 = 2 Ag+ + H2TeO4-2
+# log_k -2.43
+
+# Ag2HVO4(s)
+# Ag2HVO4 = 2 Ag+ + HVO4-2
+# log_k -13.7
+
+# AgH2VO4(s)
+# AgH2VO4 = Ag+ + H2VO4-
+# log_k -6.3
+
+Ag2CrO4(s)
+Ag2CrO4 = 2 Ag+ + CrO4-2
+log_k -11.92
+
+Ag2MoO4(s)
+Ag2MoO4 = 2 Ag+ + MoO4-2
+log_k -11.55
+
+Ag2WO4(s)
+Ag2WO4 = 2 Ag+ + WO4-2
+log_k -11.26
+
+AgCl(s)
+AgCl = Ag+ + Cl-
+log_k -9.74
+
+AgBr(s)
+AgBr = Ag+ + Br-
+log_k -12.30
+
+AgBrO3(s)
+AgBrO3 = Ag+ + BrO3-
+log_k -4.26
+
+AgI(s)
+AgI = Ag+ + I-
+log_k -16.08
+
+AgIO3(s)
+AgIO3 = Ag+ + IO3-
+log_k -7.51
+
+#Ag2C2O4(s)[C-R-C]
+#Ag2OO[C-R-C]OO = 2 Ag+ + OO[C-R-C]OO-2
+#log_k -11.0
+# stavelan
+
+Au(s)
+Au = Au+3 + 3 e-
+log_k -76.1
+
+Au(OH)3(s)
+Au(OH)3 = Au+3 + 3 OH-
+log_k -47.5
+
+Zn(s)
+Zn = Zn+2 + 2 e-
+log_k 25.79
+
+Zn(C[N])(s)
+Zn[CN]2 = Zn+2 + 2 [CN]-
+log_k -15.5
+
+ZnCO3(s)
+ZnCO3 = Zn+2 + CO3-2
+log_k -10.0
+
+Zn2Fe(C[N])6(s)
+Zn2Fe[CN]6 = 2 Zn+2 + Fe[CN]6-4
+log_k -15.68
+
+Zn3(PO4)2.4H2O(s)
+Zn3(PO4)2:4H2O = 3 Zn+2 + 2 PO4-3 + 4 H2O
+log_k -35.3
+
+Zn(OH)2(s.am)
+Zn(OH)2 = Zn+2 + 2 OH-
+log_k -15.52
+
+Zn(OH)2(s.b)
+Zn(OH)2 = Zn+2 + 2 OH-
+log_k -16.2
+
+ZnO(s)
+ZnO + H2O = Zn+2 + 2 OH-
+log_k -16.66
+
+Zn[S](s.a)
+Zn[S] = Zn+2 + [S]-2
+log_k -24.7
+
+Zn[S](s.a)
+Zn[S] = Zn+2 + [S]-2
+log_k -24.7
+
+Zn[S](s.b)
+Zn[S] = Zn+2 + [S]-2
+log_k -22.5
+
+Zn[S](s.b)
+Zn[S] = Zn+2 + [S]-2
+log_k -22.5
+
+ZnSe(s)
+ZnSe = Zn+2 + Se-2
+log_k -29.4
+
+#ZnC2O4(s)[C-R-C]
+#ZnOO[C-R-C]OO = Zn+2 + OO[C-R-C]OO-2
+#log_k -8.89
+# stavelan
+
+Cd(s)
+Cd = Cd+2 + 2 e-
+log_k 13.6
+
+CdHg(s)
+CdHg = Cd+2 + Hg + 2 e-
+log_k 11.9
+-no_check
+
+CdCO3(s)
+CdCO3 = Cd+2 + CO3-2
+log_k -13.74
+
+Cd(OH)2(s.b)
+Cd(OH)2 = Cd+2 + 2 OH-
+log_k -14.35
+
+Cd(OH)2(s.g)
+Cd(OH)2 = Cd+2 + 2 OH-
+log_k -14.10
+
+Cd[S](s)
+Cd[S] = Cd+2 + [S]-2
+log_k -27.0
+
+Cd[S](s)
+Cd[S] = Cd+2 + [S]-2
+log_k -27.0
+
+CdSe(s)
+CdSe = Cd+2 + Se-2
+log_k -35.2
+
+#CdC2O4(s)[C-R-C]
+#CdOO[C-R-C]OO = Cd+2 + OO[C-R-C]OO-2
+#log_k -7.82
+# stavelan
+
+# CeP2O7(s)
+# CeP2O7 = Ce+4 + P2O7-4
+# log_k -23.46
+
+Hg(l)
+Hg = Hg+2 + 2 e-
+log_k -28.75
+
+Hg2CO3(s)
+Hg2CO3 = Hg2+2 + CO3-2
+log_k -16.05
+
+Hg2(C[N])2(s)
+Hg2[CN]2 = Hg2+2 + 2 [CN]-
+log_k -39.3
+
+Hg2([S]C[N])2(s)
+Hg2([S][CN])2 = Hg2+2 + 2 [S][CN]-
+log_k -19.52
+
+Hg2([S]C[N])2(s)
+Hg2([S][CN])2 = Hg2+2 + 2 [S][CN]-
+log_k -19.52
+
+Hg2[S]O4(s)
+Hg2[S]O4 = Hg2+2 + [S]O4-2
+log_k -6.13
+
+Hg2CrO4(s)
+Hg2CrO4 = Hg2+2 + CrO4-2
+log_k -8.70
+
+Hg2WO4(s)
+Hg2WO4 = Hg2+2 + WO4-2
+log_k -16.96
+
+Hg2Cl2(s)
+Hg2Cl2 = Hg2+2 + 2 Cl-
+log_k -17.91
+
+Hg2Br2(s)
+Hg2Br2 = Hg2+2 + 2 Br-
+log_k -22.25
+
+Hg2I2(s)
+Hg2I2 = Hg2+2 + 2 I-
+log_k -28.33
+
+Hg([S]C[N])2(s)
+Hg([S][CN])2 = Hg+2 + 2 [S][CN]-
+log_k -19.56
+
+Hg([S]C[N])2(s)
+Hg([S][CN])2 = Hg+2 + 2 [S][CN]-
+log_k -19.56
+
+HgO(s.cerveny)
+HgO + H2O = Hg+2 + 2 OH-
+log_k -25.44
+
+Hg[S](s.cerny)
+Hg[S] = Hg+2 + [S]-2
+log_k -52.7
+
+Hg[S](s.cerny)
+Hg[S] = Hg+2 + [S]-2
+log_k -52.7
+
+Hg[S](s.cerveny)
+Hg[S] = Hg+2 + [S]-2
+log_k -53.3
+
+Hg[S](s.cerveny)
+Hg[S] = Hg+2 + [S]-2
+log_k -53.3
+
+HgSe(s)
+HgSe = Hg+2 + Se-2
+log_k -64.5
+
+HgBr2(s)
+HgBr2 = Hg+2 + 2 Br-
+log_k -18.9
+
+HgI2(s)
+HgI2 = Hg+2 + 2 I-
+log_k -27.95
+
+B(s)
+B + 3 H2O = H3BO3 + 3 H+ + 3 e-
+log_k 44
+
+Al(s)
+Al = Al+3 + 3 e-
+log_k 84.2
+
+AlPO4(s)
+AlPO4 = Al+3 + PO4-3
+log_k -18.24
+
+Al(OH)3(s.am)
+Al(OH)3 = Al+3 + 3 OH-
+log_k -32.34
+
+Al(OH)3(s.hydrargylit)
+Al(OH)3 = Al+3 + 3 OH-
+log_k -36.30
+
+Al(OH)3(s.gibbsit)
+Al(OH)3 = Al+3 + 3 OH-
+log_k -33.5
+
+AlOOH(s)
+AlO(OH) + H2O = Al+3 + 3 OH-
+log_k -34.02
+
+Ga(s)
+Ga = Ga+3 + 3 e-
+log_k 28.4
+
+GaPO4(s)
+GaPO4 = Ga+3 + PO4-3
+log_k -21.0
+
+Ga(OH)3(s.am)
+Ga(OH)3 = Ga+3 + 3 OH-
+log_k -37
+
+GaOOH(s)
+GaO(OH) + H2O = Ga+3 + 3 OH-
+log_k -39.1
+
+InPO4(s)
+InPO4 = In+3 + PO4-3
+log_k -21.63
+
+In(OH)3(s)
+In(OH)3 = In+3 + 3 OH-
+log_k -36.9
+
+In2O3(s)
+In2O3 + 3 H2O = 2 In+3 + 6 OH-
+log_k -71.8
+
+In2[S]3(s)
+In2[S]3 = 2 In+3 + 3 [S]-2
+log_k -73.2
+
+In2[S]3(s)
+In2[S]3 = 2 In+3 + 3 [S]-2
+log_k -73.2
+
+Tl(s)
+Tl = Tl+ + e-
+log_k 5.68
+
+TlHg(s)
+TlHg = Tl+ + Hg + e-
+log_k 5.64
+-no_check
+
+Tl[S]C[N](s)
+Tl[S][CN] = Tl+ + [S][CN]-
+log_k -3.79
+
+Tl[S]C[N](s)
+Tl[S][CN] = Tl+ + [S][CN]-
+log_k -3.79
+
+Tl[N]3(s)
+Tl[N]3 = Tl+ + [N]3-
+log_k -3.66
+
+Tl2[S](s)
+Tl2[S] = 2 Tl+ + [S]-2
+log_k -21.2
+
+Tl2[S](s)
+Tl2[S] = 2 Tl+ + [S]-2
+log_k -21.2
+
+Tl2[S]2O3(s)
+Tl2[S]2O3 = 2 Tl+ + [S]2O3-2
+log_k -4.54
+
+Tl2CrO4(s)
+Tl2CrO4 = 2 Tl+ + CrO4-2
+log_k -12.01
+
+TlCl(s)
+TlCl = Tl+ + Cl-
+log_k -3.74
+
+TlBr(s)
+TlBr = Tl+ + Br-
+log_k -5.44
+
+TlBrO3(s)
+TlBrO3 = Tl+ + BrO3-
+log_k -3.78
+
+TlI(s)
+TlI = Tl+ + I-
+log_k -7.23
+
+Tl2O3(s)
+Tl2O3 + 3 H2O = 2 Tl+3 + 6 OH-
+log_k -90.4
+
+CO2(g)
+CO2 + H2O = H2CO3
+log_k -1.46
+
+(C[N])2(g)
+[CN]2 + H2O = HO[CN] + H[CN]
+log_k 0.7
+
+SiO2(s.am)
+SiO2 + 2 H2O = H4SiO4
+log_k -2.74
+
+SiO2(s.kremen)
+SiO2 + 2 H2O = H4SiO4
+log_k -4.0
+
+GeO2(s.hex)
+GeO2 + 4 H+ + 2 e- = Ge+2 + 2 H2O
+log_k -8.4
+
+GeO2(s.tetr)
+GeO2 + 4 H+ + 2 e- = Ge+2 + 2 H2O
+log_k -11.4
+
+GeO(s.hn)
+GeO + 2 H+ = Ge+2 + H2O
+log_k -4.4
+
+GeO(s.zl)
+GeO + 2 H+ = Ge+2 + H2O
+log_k 0.8
+
+Ge(s)
+Ge = Ge+2 + 2 e-
+log_k -7.8
+
+GeH4(g)
+GeH4 = Ge+2 + 4 H+ + 6 e-
+log_k 12.2
+
+GeO(s.hnedy)
+GeO + H2O = Ge+2 + 2 OH-
+log_k -3.7
+
+Sn(s)
+Sn = Sn+2 + 2 e-
+log_k 4.75
+
+SnO(s)
+SnO + H2O = Sn+2 + 2 OH-
+log_k -26.2
+
+Sn[S](s)
+Sn[S] = Sn+2 + [S]-2
+log_k -25.9
+
+Sn[S](s)
+Sn[S] = Sn+2 + [S]-2
+log_k -25.9
+
+SnSe(s)
+SnSe = Sn+2 + Se-2
+log_k -38.4
+
+SnI2(s)
+SnI2 = Sn+2 + 2 I-
+log_k -5.08
+
+SnO2(s)
+SnO2 + 2 H2O = Sn+4 + 4 OH-
+log_k -64.4
+
+PbO2(s)
+PbO2 + 4 H+ + 2 e- = Pb+2 + 2 H2O
+log_k 49.2
+
+#Pb3O4(s)
+#Pb3O4 + 4 H2O + 2 e- = 3 Pb+2 + 8 OH-
+#log_k 
+
+Pb(s)
+Pb = Pb+2 + 2 e-
+log_k 4.26
+
+PbCO3(s)
+PbCO3 = Pb+2 + CO3-2
+log_k -13.13
+
+Pb2Fe(C[N])6(s)
+Pb2Fe[CN]6 = 2 Pb+2 + Fe[CN]6-4
+log_k -18.02
+
+Pb3(PO4)3(s)
+Pb3(PO4)2 = 3 Pb+2 + 2 PO4-3
+log_k -43.53
+
+PbHPO4(s)
+PbHPO4 = Pb+2 + HPO4-2
+log_k -11.43
+
+PbO(s.cerveny)
+PbO + H2O = Pb+2 + 2 OH-
+log_k -15.3
+
+PbO(s.zluty)
+PbO + H2O = Pb+2 + 2 OH-
+log_k -15.1
+
+Pb2O(OH)2(s)
+Pb2O(OH)2 + H2O = 2 Pb+2 + 4 OH-
+log_k -29.8
+
+Pb[S](s)
+Pb[S] = Pb+2 + [S]-2
+log_k -27.5
+
+Pb[S](s)
+Pb[S] = Pb+2 + [S]-2
+log_k -27.5
+
+Pb[S]O4(s)
+Pb[S]O4 = Pb+2 + [S]O4-2
+log_k -7.79
+
+PbSe(s)
+PbSe = Pb+2 + Se-2
+log_k -42.1
+
+PbSeO4(s)
+PbSeO4 = Pb+2 + SeO4-2
+log_k -6.84
+
+PbCrO4(s)
+PbCrO4 = Pb+2 + CrO4-2
+log_k -13.75
+
+PbMoO4(s)
+PbMoO4 = Pb+2 + MoO4-2
+log_k -13.0
+
+Pb[F]2(s)
+Pb[F]2 = Pb+2 + 2 [F]-
+log_k -7.44
+
+PbCl2(s)
+PbCl2 = Pb+2 + 2 Cl-
+log_k -4.78
+
+PbBr2(s)
+PbBr2 = Pb+2 + 2 Br-
+log_k -5.68
+
+Pb(BrO3)2(s)
+Pb(BrO3)2 = Pb+2 + 2 BrO3-
+log_k -5.10
+
+PbI2(s)
+PbI2 = Pb+2 + 2 I-
+log_k -8.10
+
+#PbC2O4(s)[C-R-C]
+#PbOO[C-R-C]OO = Pb+2 + OO[C-R-C]OO-2
+#log_k -10.5
+# stavelan
+
+# PbO2(s)
+# PbO2 + 2 H2O = Pb+4 + 4 OH-
+# log_k -64
+
+[N]H3(g)
+[N]H3 + H+ = [N]H4+
+log_k 11.11
+
+# [N]H3(g)[N]
+# [N]H3 + H+ = [N]H4+
+# log_k 11.11
+
+# [N]H3(g)[N]
+# [N]H3 + H+ = [N]H4+
+# log_k 11.11
+
+H[N]3(g)
+H[N]3 = H[N]3
+log_k 1.08
+
+[N]2(g)
+[N]2 + 8 H+ + 6 e- = 2 [N]H4+
+log_k 27.5
+
+[N]2O(g)
+[N]2O + 10 H+ + 8 e- = 2 [N]H4+ + H2O
+log_k 43.85
+
+[N]O(g)
+[N]O + 6 H+ + 5 e- = [N]H4+ + H2O
+log_k 70.8
+
+[N]2O4(g)
+[N]2O4 + 16 H+ + 14 e- = 2 [N]H4+ + 4 H2O
+log_k 210.5
+
+# [N]2(g)[N]
+# [N]2 + 5 H+ + 4 e- = [N]2H5+
+# log_k -15.2
+
+# [N]2(g)[N]
+# [N]2 + 8 H+ + 6 e- = 2 [N]H4+
+# log_k 27.5
+
+# [N]O(g)[N]O
+# [N]O = [N]O+ + e-
+# log_k -24.7
+
+# [N]2O4(g)[N]O
+# [N]O2O2 + 4 H+ + 2 e- = 2 [N]O+ + 2 H2O
+# log_k 20.0
+
+P4(s)
+P4 + 8 H2O = 4 H3PO2 + 4 H+ + 4 e-
+log_k 34.4
+
+P4H2(g)
+P4H2 + 8 H2O = 4 H3PO2 + 6 H+ + 6 e-
+log_k 46.4
+
+PH3(g)
+PH3 + 2 H2O = H3PO2 + 4 H+ + 4 e-
+log_k 5.6
+
+As2O3(s)
+As2O3 + H2O = 2 HAsO2
+log_k -1.3
+
+# As4O6(s)
+# As4O6 + 2 H2O = 4 HAsO2
+# log_k -2.72
+# # As(OH)3
+
+As(s)
+As + 2 H2O = HAsO2 + 3 H+ + 3 e-
+log_k -12.55
+
+AsH3(g)
+AsH3 + 2 H2O = HAsO2 + 6 H+ + 6 e-
+log_k 18.45
+
+As4O6(s)
+As4O6 + 2 H2O = 4 HAsO2
+log_k -2.72
+
+Sb(s)
+Sb + H2O = SbO+ + 2 H+ + 3 e-
+log_k -10.7
+
+SbH3(g)
+SbH3 + H2O = SbO+ + 5 H+ + 6 e-
+log_k 15.2
+
+Sb2O3(s.romb)
+Sb2O3 + H2O = 2 SbO+ + 2 OH-
+log_k -35.32
+
+Sb2O3(s.kub)
+Sb2O3 + H2O = 2 SbO+ + 2 OH-
+log_k -35.56
+
+# Sb2[S]3(s)
+# Sb2[S]3 = 2 Sb+3 + 3 [S]-2
+# log_k -93
+
+BiO[N]O3(s)[N]
+BiO[N]O3 + H2O = Bi+3 + 2 OH- + [N]O3-
+log_k -31.20
+
+# BiO[N]O3(s)[N]O
+# BiO[N]OO2 + H2O = Bi+3 + 2 OH- + [N]OO2-
+# log_k -31.20
+
+BiPO4(s)
+BiPO4 = Bi+3 + PO4-3
+log_k -22.9
+
+Bi2O3(s)
+Bi2O3 + 3 H2O = 2 Bi+3 + 6 OH-
+log_k -77.06
+
+Bi2[S]3(s)
+Bi2[S]3 = 2 Bi+3 + 3 [S]-2
+log_k -100
+
+Bi2[S]3(s)
+Bi2[S]3 = 2 Bi+3 + 3 [S]-2
+log_k -100
+
+BiOCl(s)
+BiOCl + H2O = Bi+3 + 2 OH- + Cl-
+log_k -35.8
+
+BiOBr(s)
+BiOBr + H2O = Bi+3 + 2 OH- + Br-
+log_k -34.16
+
+BiI3(s)
+BiI3 = Bi+3 + 3 I-
+log_k -18.09
+
+O2(g)
+O2 + 4 H+ + 4 e- = 2 H2O
+log_k 83.1
+
+O3(g)
+O3 + 6 H+ + 6 e- = 3 H2O
+log_k 153.1
+
+[S](s)
+[S] + 2 e- = [S]-2
+log_k -15.7
+
+[S](s)
+[S] + 2 e- = [S]-2
+log_k -15.7
+
+#[S](s)
+#[S] + [S]O3-2 = [S][S]O3-2
+#log_k 5.8
+
+H2[S](g)[S]
+H2[S] = H2[S]
+log_k -0.99
+
+H2[S](g)[S]
+H2[S] = H2[S]
+log_k -0.99
+
+[S]O2(g)[S]
+[S]O2 + H2O = H2[S]O3
+log_k 0.09
+
+[S]O2(g)[S]
+[S]O2 + H2O = H2[S]O3
+log_k 0.09
+
+H2Se(g)
+H2Se = H2Se
+log_k -1.0
+
+Se(s)
+Se + 2 H+ + 2 e- = H2Se
+log_k -13.5
+
+Te(s)
+Te + 2 e- = Te-2
+log_k -38.5
+
+H2Te(g)
+H2Te = Te-2 + 2 H+
+log_k -14.5
+
+TeO2(s)
+TeO2 + 4 H+ + 6 e- = Te-2 + 2 H2O
+log_k -2.8
+
+# TeO2(s)
+# TeO2 + 2 H2O = Te(OH)4
+# log_k -4.7
+
+[F]2(g)
+[F]2 + 2 e- = 2 [F]-
+log_k 97.0
+
+Cl2(g)
+Cl2 + 2 e- = 2 Cl-
+log_k 45.9
+
+ClO2(g)
+ClO2 + H+ + e- = HClO2
+log_k 45.9
+
+Br2(l)
+Br2 + 2 e- = 2 Br-
+log_k 36.0
+
+I2(s)
+I2 + 2 e- = 2 I-
+log_k 18.1
+
+ICl3(s)
+ICl3 + 4 e- = I- + 3 Cl-
+log_k 73.95
+
+Xe(g)
+Xe + 3 H2O = XeO3 + 6 H+ + 6 e-
+log_k -180
+
+He(g)
+        He  =  + 1.0000 He       
+        log_k           -3.4143
+	-delta_H	-0.6276	kJ/mol	# Calculated enthalpy of reaction	He(g)
+#	Enthalpy of formation:	0 kcal/mol
+        -analytic -1.3402e+001 4.6358e-003 1.8295e+002 2.8070e+000 9.3373e+004
+#       -Range:  0-300
+# LLNL.DAT - He
+
+Ne(g)
+        Ne  =  + 1.0000 Ne       
+        log_k           -3.3462
+	-delta_H	-3.64008	kJ/mol	# Calculated enthalpy of reaction	Ne(g)
+#	Enthalpy of formation:	0 kcal/mol
+        -analytic -6.5169e+000 6.3991e-003 0.0000e+000 0.0000e+000 1.1271e+005
+#       -Range:  0-300
+# LLNL.DAT - Ne
+
+Ar(g)
+        Ar  =  + 1.0000 Ar       
+        log_k           -2.8587
+	-delta_H	-12.0081	kJ/mol	# Calculated enthalpy of reaction	Ar(g)
+#	Enthalpy of formation:	0 kcal/mol
+        -analytic -7.4387e+000 7.8991e-003 0.0000e+000 0.0000e+000 1.9830e+005
+#       -Range:  0-300
+# LLNL.DAT - Ar
+
+Kr(g)
+        Kr  =  + 1.0000 Kr       
+        log_k           -2.6051
+	-delta_H	-15.2716	kJ/mol	# Calculated enthalpy of reaction	Kr(g)
+#	Enthalpy of formation:	0 kcal/mol
+        -analytic -2.1251e+001 4.8308e-003 4.2971e+002 5.3591e+000 2.2304e+005
+#       -Range:  0-300
+# LLNL.DAT - Kr
+
+Rn(g)
+        Rn  =  + 1.0000 Rn       
+        log_k           -2.0451
+	-delta_H	-20.92	kJ/mol	# Calculated enthalpy of reaction	Rn(g)
+#	Enthalpy of formation:	0 kcal/mol
+        -analytic -3.0258e+001 4.9893e-003 1.4118e+002 8.8798e+000 3.8095e+005
+#       -Range:  0-300
+# LLNL.DAT - Rn
+
+H2O(g)
+	H2O = H2O
+	-log_k  1.506; delta_h -44.03 kJ
+	-T_c  647.3
+	-P_c  217.60
+	-Omega 0.344
+	-analytic   -16.5066 -2.0013E-3  2710.7  3.7646  0 2.24E-6
+# PHREEQC.DAT - H2O
+
+H2O(s)
+        H2O = H2O
+        log_k           0.1387
+	-delta_H	6.74879	kJ/mol	# Calculated enthalpy of reaction	Ice
+#	Enthalpy of formation:	-69.93 kcal/mol
+        -analytic -2.3260e+001 4.7948e-004 7.7351e+002 8.3499e+000 1.3143e+001
+#       -Range:  0-200
+# LLNL.DAT - H2O
+
+
+
+
+E[N]D

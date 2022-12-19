@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/label00"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to deleting of specific files from the internal private app folders.\n"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/label000"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+
+        <TextView
+            android:id="@+id/label01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/bulk_conversion"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/bulk_conversion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label02"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/chemsol"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/chemsol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label03"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/database"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/database"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label03a"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/docs"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/docs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label04"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/mopac"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/mopac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label05"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/obabel"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/obabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label06"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/phreeqc_work"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/phreeqc_work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label06a"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/work"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label07"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/LIQUIDS"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/liquids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label08"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/PHASES"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/phases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label10a"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/PSEUDOPHASES"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/pseudophases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label09"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/SOLIDS"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solids"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label10"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/SOLUTION_SPECIES"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solution_species"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label11"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/atmospheric-profiles"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/atmospheric_profiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label12"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/damping_factor"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/damping_factor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+
+        <TextView
+            android:id="@+id/label13"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/element-abundances"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/element_abundances"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label14"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/fastchem_datasets"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/fastchem_datasets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label15"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/formula"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/formula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label16"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/iupac"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/iupac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label17"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/kinetics"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/kinetics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label18"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/phreeqc_datasets"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/phreeqc_datasets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label19"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/smiles"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/smiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label20"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/tautomers"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/tautomers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label21"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/xyz"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/gas"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label23"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/gas/opt"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/gas_opt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label24"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/gas/opt/results"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/gas_opt_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label25"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/gas/thermo"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/gas_thermo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label26"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/gas/thermo/results"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/gas_thermo_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label27"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/solv"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label28"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/solv/opt"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solv_opt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label29"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/solv/opt/results"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solv_opt_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label30"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/solv/thermo"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solv_thermo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label31"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/solv/thermo/results"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/solv_thermo_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK" />
+
+
+    </LinearLayout>
+</ScrollView>

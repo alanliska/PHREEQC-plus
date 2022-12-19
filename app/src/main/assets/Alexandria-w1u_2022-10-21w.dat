@@ -1,0 +1,4440 @@
+# Alexandria-w1u_2021-10-21w
+# Data source:
+# Ghahremanpour, M., van Maaren, P. & van der Spoel, D. The Alexandria library, a quantum-chemical database of molecular properties for force field development. Sci Data 5, 180062 (2018). https://doi.org/10.1038/sdata.2018.62
+LLNL_AQUEOUS_MODEL_PARAMETERS
+-temperatures
+        -298.14   -200.00   -150.00  -100.000
+         0.0100   25.0000   60.0000  100.0000
+       150.0000  200.0000  250.0000  300.0000
+       500.0000 1000.0000 2500.0000 5000.0000 #debye huckel a (adh)
+-dh_a
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0 #debye huckel b (bdh)
+-dh_b
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+-bdot
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0
+         0    0    0    0 #cco2   (coefficients for the Drummond (1981) polynomial)
+-co2_coefs
+        0              0
+          0                0
+      0
+      #kdyztak pak zmenit
+SOLUTION_MASTER_SPECIES # Necessary block: E, Cat and O
+E	e-	0	0	0
+ # Inorganics
+H	H+		-1.     1.008           1.008
+H(0)	H2		0.0     1.008
+H(1)	H+		-1.     1.008 # H	H+		-1.     1.008           1.008 # H(0)	H2		0.0     1.008 # H(1)	H+		-1.     1.008
+D	D	0	D	2.014102
+T	T	0	T	3.016049
+
+He	He	0	He	4.0026
+Ne	Ne	0	Ne	20.183
+Ar	Ar	0	Ar	39.948
+Kr	Kr	0	Kr	83.8
+Xe	Xe	0	Xe	131.3
+Rn	Rn	0	Rn	222
+
+[F]	[F]	0	[F]	18.9984
+Cl	Cl	0	Cl	35.453
+Br	Br	0	Br	79.909
+I	I	0	I	126.904
+
+O	H2O		0.0     16.00           16.00
+O(-2)	H2O		0.0     18.016
+O(0)	O2		0.0     16.00 # O	H2O		0.0     16.00           16.00 # O(-2)	H2O		0.0     18.016 # O(0)	O2		0.0     16.00
+[S]	[S]	0	[S]	32.064
+Se	Se	0	Se	78.96
+Te	Te	0	Te	127.6
+Po	Po	0	Po	209
+
+[N]	[N]	0	[N]	14.0067
+P	P	0	P	30.9738
+As	As	0	As	74.922
+Sb	Sb	0	Sb	121.75
+Bi	Bi	0	Bi	208.98
+
+[C]	[C]	0	[C]	12.01111
+Si	Si	0	Si	28.068
+Ge	Ge	0	Ge	72.59
+Sn	Sn	0	Sn	118.69
+Pb	Pb	0	Pb	207.19
+
+B	B	0	B	10.811
+Al	Al	0	Al	26.9815
+Ga	Ga	0	Ga	69.72
+In	In	0	In	114.82
+Tl	Tl	0	Tl	204.37
+
+Be	Be	0	Be	9.0122
+Mg	Mg	0	Mg	24.312
+Ca	Ca	0	Ca	40.08
+Sr	Sr	0	Sr	87.32
+Ba	Ba	0	Ba	137.34
+Ra	Ra	0	Ra	226
+
+Li	Li	0	Li	6.939
+Na	Na	0	Na	22.9898
+K	K	0	K	39.102
+Rb	Rb	0	Rb	85.47
+Cs	Cs	0	Cs	132.905
+Fr	Fr	0	Fr	223
+
+Sc	Sc	0	Sc	44.956
+Ti	Ti	0	Ti	47.9
+V	V	0	V	50.942
+Cr	Cr	0	Cr	51.996
+Mn	Mn	0	Mn	54.938
+Fe	Fe	0	Fe	55.847
+Co	Co	0	Co	58.933
+Ni	Ni	0	Ni	58.71
+Cu	Cu	0	Cu	63.54
+Zn	Zn	0	Zn	65.37
+
+Y	Y	0	Y	88.905
+Zr	Zr	0	Zr	91.22
+Nb	Nb	0	Nb	92.906
+Mo	Mo	0	Mo	95.94
+Tc	Tc	0	Tc	98
+Ru	Ru	0	Ru	101.07
+Rh	Rh	0	Rh	102.905
+Pd	Pd	0	Pd	106.3
+Ag	Ag	0	Ag	107.87
+Cd	Cd	0	Cd	112.4
+
+La	La	0	La	138.91
+Hf	Hf	0	Hf	178.49
+Ta	Ta	0	Ta	180.948
+W	W	0	W	183.85
+Re	Re	0	Re	186.2
+Os	Os	0	Os	190.2
+Ir	Ir	0	Ir	192.2
+Pt	Pt	0	Pt	195.09
+Au	Au	0	Au	196.967
+Hg	Hg	0	Hg	200.59
+
+Ce	Ce	0	Ce	140.12
+Pr	Pr	0	Pr	140.907
+Nd	Nd	0	Nd	144.24
+Pm	Pm	0	Pm	144.24
+Sm	Sm	0	Sm	150.35
+Eu	Eu	0	Eu	151.96
+Gd	Gd	0	Gd	157.25
+Tb	Tb	0	Tb	158.924
+Dy	Dy	0	Dy	162.5
+Ho	Ho	0	Ho	164.93
+Er	Er	0	Er	167.26
+Tm	Tm	0	Tm	168.934
+Yb	Yb	0	Yb	173.04
+Lu	Lu	0	Lu	174.97
+
+Ac	Ac	0	Ac	232.038
+Th	Th	0	Th	232.038
+Pa	Pa	0	Pa	231
+U	U	0	U	238.03
+Np	Np	0	Np	237
+Pu	Pu	0	Pu	244
+Am	Am	0	Am	243
+Cm	Cm	0	Cm	247
+Bk	Bk	0	Bk	247
+ # dummy:
+M	M	0	M	1
+X	X	0	X	1
+
+SOLUTION_SPECIES # nutne rovnovahy
+2 H2O = O2 + 4 H+ + 4 e- 
+log_k -85.9081
+delta_h 559.5264
+2 H+ + 2 e- = H2
+log_k -3.1016
+delta_h -4.184
+
+M = M
+log_k 0
+X = X
+log_k 0
+
+M = M+ + e-
+log_k 100
+X + e- = X-
+log_k 100
+
+e- = e-
+log_k 0
+
+H+ = H+
+log_k 0
+
+H2O = H2O
+log_k 0
+
+H2O = OH- + H+
+log_k -13.9794
+delta_h 55.80623
+
+0.5 O2 = O
+log_k -39.7779
+delta_h	248.3862
+
+0.5 H2 = H
+log_k -33.6767
+delta_h	217.0557
+	
+D = D ; log_k	0.00
+
+T = T ; log_k	0.00
+
+
+
+He = He ; log_k	0.00
+Ne = Ne ; log_k	0.00
+Ar = Ar ; log_k	0.00
+Kr = Kr ; log_k	0.00
+Xe = Xe ; log_k	0.00
+Rn = Rn ; log_k	0.00
+[F] = [F] ; log_k	0.00
+Cl = Cl ; log_k	0.00
+Br = Br ; log_k	0.00
+I = I ; log_k	0.00
+[S] = [S] ; log_k	0.00
+Se = Se ; log_k	0.00
+Te = Te ; log_k	0.00
+Po = Po ; log_k	0.00
+[N] = [N] ; log_k	0.00
+P = P ; log_k	0.00
+As = As ; log_k	0.00
+Sb = Sb ; log_k	0.00
+Bi = Bi ; log_k	0.00
+[C] = [C] ; log_k	0.00
+Si = Si ; log_k	0.00
+Ge = Ge ; log_k	0.00
+Sn = Sn ; log_k	0.00
+Pb = Pb ; log_k	0.00
+B = B ; log_k	0.00
+Al = Al ; log_k	0.00
+Ga = Ga ; log_k	0.00
+In = In ; log_k	0.00
+Tl = Tl ; log_k	0.00
+Be = Be ; log_k	0.00
+Mg = Mg ; log_k	0.00
+Ca = Ca ; log_k	0.00
+Sr = Sr ; log_k	0.00
+Ba = Ba ; log_k	0.00
+Ra = Ra ; log_k	0.00
+Li = Li ; log_k	0.00
+Na = Na ; log_k	0.00
+K = K ; log_k	0.00
+Rb = Rb ; log_k	0.00
+Cs = Cs ; log_k	0.00
+Fr = Fr ; log_k	0.00
+Sc = Sc ; log_k	0.00
+Ti = Ti ; log_k	0.00
+V = V ; log_k	0.00
+Cr = Cr ; log_k	0.00
+Mn = Mn ; log_k	0.00
+Fe = Fe ; log_k	0.00
+Co = Co ; log_k	0.00
+Ni = Ni ; log_k	0.00
+Cu = Cu ; log_k	0.00
+Zn = Zn ; log_k	0.00
+Y = Y ; log_k	0.00
+Zr = Zr ; log_k	0.00
+Nb = Nb ; log_k	0.00
+Mo = Mo ; log_k	0.00
+Tc = Tc ; log_k	0.00
+Ru = Ru ; log_k	0.00
+Rh = Rh ; log_k	0.00
+Pd = Pd ; log_k	0.00
+Ag = Ag ; log_k	0.00
+Cd = Cd ; log_k	0.00
+La = La ; log_k	0.00
+Hf = Hf ; log_k	0.00
+Ta = Ta ; log_k	0.00
+W = W ; log_k	0.00
+Re = Re ; log_k	0.00
+Os = Os ; log_k	0.00
+Ir = Ir ; log_k	0.00
+Pt = Pt ; log_k	0.00
+Au = Au ; log_k	0.00
+Hg = Hg ; log_k	0.00
+Ce = Ce ; log_k	0.00
+Pr = Pr ; log_k	0.00
+Nd = Nd ; log_k	0.00
+Sm = Sm ; log_k	0.00
+Pm = Pm ; log_k	0.00
+Eu = Eu ; log_k	0.00
+Gd = Gd ; log_k	0.00
+Tb = Tb ; log_k	0.00
+Dy = Dy ; log_k	0.00
+Ho = Ho ; log_k	0.00
+Er = Er ; log_k	0.00
+Tm = Tm ; log_k	0.00
+Yb = Yb ; log_k	0.00
+Lu = Lu ; log_k	0.00
+Ac = Ac ; log_k	0.00
+Th = Th ; log_k	0.00
+Pa = Pa ; log_k	0.00
+U = U ; log_k	0.00
+Np = Np ; log_k	0.00
+Pu = Pu ; log_k	0.00
+Am = Am ; log_k	0.00
+Cm = Cm ; log_k	0.00
+Bk = Bk ; log_k	0.00
+ # # H2O ve stavu (aq) je jen formalismus - bere se jako (l) - kvůli výpočtům v režimu constrained equilibria, kde je jí třeba explicitně definovat ve fázi roztoku # 2 H + O = H2O ; log_k	  153.38 ; delta_h	   -970.93 ; #Gf°(l) =   -237.18 kJ.mol-1 (Bard-1985) #Hf°(l) =   -285.83 kJ.mol-1 (Bard-1985)  #H2O(aq) # # opravena chyba - *(-1) # H = H+ + e- ; log_k	     35.61 ; delta_h	   -217.97 #Gf°(aq) =      0.00 kJ.mol-1 (Bard-1985) #Hf°(aq) =      0.00 kJ.mol-1 (Bard-1985) #H+(aq) # D = D+ + e- ; log_k	     36.39 #Gf°(aq) =     -1.20 kJ.mol-1 (Bard-1985) #D+(aq)
+
+
+
+
+PHASES # names of elements have to match exactly the definitions, i.e. including the square brackets!!!
+# H(g)
+# H = H ; log_k	     0.34 ; delta_h	    -3.00 #Gf°(g) =    203.25 kJ.mol-1 (Bard) #Hf°(g) =    217.97 kJ.mol-1 (Bard)
+# Li(g)
+# Li = Li ; log_k	     0.15 ; delta_h	   -10.49 #Gf°(g) =    128.03 kJ.mol-1 (Bard) #Hf°(g) =    160.71 kJ.mol-1 (Bard)
+# Na(g)
+# Na = Na ; log_k	     0.08 ; delta_h	   -12.83 #Gf°(g) =     77.30 kJ.mol-1 (Bard) #Hf°(g) =    107.68 kJ.mol-1 (Bard)
+# K(g)
+# K = K ; log_k	    -0.01 ; delta_h	   -16.39 #Gf°(g) =     60.92 kJ.mol-1 (Bard) #Hf°(g) =     89.16 kJ.mol-1 (Bard)
+# Rb(g)
+# Rb = Rb ; log_k	    -0.04 ; delta_h	   -17.60 #Gf°(g) =     55.86 kJ.mol-1 (Bard) #Hf°(g) =     85.81 kJ.mol-1 (Bard)
+# Cs(g)
+# Cs = Cs ; log_k	    -0.11 ; delta_h	   -20.07 #Gf°(g) =     51.21 kJ.mol-1 (Bard) #Hf°(g) =     78.78 kJ.mol-1 (Bard)
+# Fr(g)
+# Fr = Fr ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =     46.65 kJ.mol-1 (Bard) #Hf°(g) =     72.80 kJ.mol-1 (Bard)
+# Be(g)
+# Be = Be ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    286.60 kJ.mol-1 (Bard) #Hf°(g) =    324.30 kJ.mol-1 (Bard)
+# Mg(g)
+# Mg = Mg ; log_k	     0.19 ; delta_h	    -8.73 #Gf°(g) =    113.08 kJ.mol-1 (Bard) #Hf°(g) =    147.10 kJ.mol-1 (Bard)
+# Ca(g)
+# Ca = Ca ; log_k	     0.11 ; delta_h	   -11.70 #Gf°(g) =    144.30 kJ.mol-1 (Bard) #Hf°(g) =    178.20 kJ.mol-1 (Bard)
+# Sr(g)
+# Sr = Sr ; log_k	     0.06 ; delta_h	   -13.71 #Gf°(g) =    131.00 kJ.mol-1 (Bard) #Hf°(g) =    164.40 kJ.mol-1 (Bard)
+# Ba(g)
+# Ba = Ba ; log_k	     0.02 ; delta_h	   -15.34 #Gf°(g) =    146.00 kJ.mol-1 (Bard) #Hf°(g) =    180.00 kJ.mol-1 (Bard)
+# Ra(g)
+# Ra = Ra ; log_k	    -0.08 ; delta_h	   -19.36 #Gf°(g) =    130.00 kJ.mol-1 (Bard) #Hf°(g) =    159.00 kJ.mol-1 (Bard)
+# B(g)
+# B = B ; log_k	     0.11 ; delta_h	   -11.79 #Gf°(g) =    518.80 kJ.mol-1 (Bard) #Hf°(g) =    562.70 kJ.mol-1 (Bard)
+# Al(g)
+# Al = Al ; log_k	     0.21 ; delta_h	    -8.11 #Gf°(g) =    285.80 kJ.mol-1 (Bard) #Hf°(g) =    329.70 kJ.mol-1 (Bard)
+# Ga(g)
+# Ga = Ga ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    239.00 kJ.mol-1 (Bard) #Hf°(g) =    277.00 kJ.mol-1 (Bard)
+# In(g)
+# In = In ; log_k	     0.11 ; delta_h	   -12.00 #Gf°(g) =    208.70 kJ.mol-1 (Bard) #Hf°(g) =    243.30 kJ.mol-1 (Bard)
+# Tl(g)
+# Tl = Tl ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    147.40 kJ.mol-1 (Bard) #Hf°(g) =    182.20 kJ.mol-1 (Bard)
+# [C](g)
+# [C] = [C] ; log_k	     0.07 ; delta_h	   -13.29 #Gf°(g) =    672.98 kJ.mol-1 (Bard) #Hf°(g) =    718.38 kJ.mol-1 (Bard)
+# Si(g)
+# Si = Si ; log_k	    -0.01 ; delta_h	   -16.60 #Gf°(g) =    323.90 kJ.mol-1 (Bard) #Hf°(g) =    368.40 kJ.mol-1 (Bard)
+# Ge(g)
+# Ge = Ge ; log_k	     0.10 ; delta_h	   -12.29 #Gf°(g) =    209.80 kJ.mol-1 (Bard) #Hf°(g) =    328.19 kJ.mol-1 (Bard)
+# Sn(g)
+# Sn = Sn ; log_k	     0.11 ; delta_h	   -12.00 #Gf°(g) =    268.00 kJ.mol-1 (Bard) #Hf°(g) =    301.00 kJ.mol-1 (Bard)
+# Pb(g)
+# Pb = Pb ; log_k	     0.09 ; delta_h	   -12.62 #Gf°(g) =    161.00 kJ.mol-1 (Bard) #Hf°(g) =    193.90 kJ.mol-1 (Bard)
+# [N](g)
+# [N] = [N] ; log_k	    -0.89 ; delta_h	    -7.81 #Gf°(g) =    455.56 kJ.mol-1 (Bard) #Hf°(g) =    472.70 kJ.mol-1 (Bard)
+# P(g)
+# P = P ; log_k	    -0.03 ; delta_h	   -17.35 #Gf°(g) =    278.84 kJ.mol-1 (Bard) #Hf°(g) =    314.25 kJ.mol-1 (Bard)
+# As(g)
+# As = As ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    261.00 kJ.mol-1 (Bard) #Hf°(g) =    302.50 kJ.mol-1 (Bard)
+# Sb(g)
+# Sb = Sb ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    222.20 kJ.mol-1 (Bard) #Hf°(g) =    262.30 kJ.mol-1 (Bard)
+# Bi(g)
+# Bi = Bi ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    168.20 kJ.mol-1 (Bard) #Hf°(g) =    207.10 kJ.mol-1 (Bard)
+# O(g)
+# O = O ; log_k	    -0.67 ; delta_h	    -6.85 #Gf°(g) =    231.75 kJ.mol-1 (Bard) #Hf°(g) =    249.17 kJ.mol-1 (Bard)
+# [S](g)
+# [S] = [S] ; log_k	    -0.03 ; delta_h	   -17.35 #Gf°(g) =    238.28 kJ.mol-1 (Bard) #Hf°(g) =    278.81 kJ.mol-1 (Bard)
+# Se(g)
+# Se = Se ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    187.07 kJ.mol-1 (Bard) #Hf°(g) =    227.07 kJ.mol-1 (Bard)
+# Te(g)
+# Te = Te ; log_k	    -0.13 ; delta_h	   -21.08 #Gf°(g) =    157.11 kJ.mol-1 (Bard) #Hf°(g) =    196.73 kJ.mol-1 (Bard)
+# Po(g)
+# Po = Po ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    109.41 kJ.mol-1 (Bard) #Hf°(g) =    146.99 kJ.mol-1 (Bard)
+# [F](g)
+# [F] = [F] ; log_k	     0.11 ; delta_h	   -12.04 #Gf°(g) =     61.83 kJ.mol-1 (Bard) #Hf°(g) =     78.91 kJ.mol-1 (Bard)
+# Cl(g)
+# Cl = Cl ; log_k	    -0.03 ; delta_h	   -17.02 #Gf°(g) =    105.70 kJ.mol-1 (Bard) #Hf°(g) =    121.68 kJ.mol-1 (Bard)
+# Br(g)
+# Br = Br ; log_k	    -0.07 ; delta_h	   -18.82 #Gf°(g) =     82.43 kJ.mol-1 (Bard) #Hf°(g) =    111.88 kJ.mol-1 (Bard)
+# I(g)
+# I = I ; log_k	    -0.15 ; delta_h	   -21.91 #Gf°(g) =     70.15 kJ.mol-1 (Bard) #Hf°(g) =    106.32 kJ.mol-1 (Bard)
+# He(g)
+# He = He ; log_k	     0.34 ; delta_h	    -3.00 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Ne(g)
+# Ne = Ne ; log_k	     0.10 ; delta_h	   -12.29 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Ar(g)
+# Ar = Ar ; log_k	     0.04 ; delta_h	   -14.47 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Kr(g)
+# Kr = Kr ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Xe(g)
+# Xe = Xe ; log_k	    -0.10 ; delta_h	   -19.74 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Rn(g)
+# Rn = Rn ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =      0.00 kJ.mol-1 (Bard) #Hf°(g) =      0.00 kJ.mol-1 (Bard)
+# Sc(g)
+# Sc = Sc ; log_k	     0.23 ; delta_h	    -7.19 #Gf°(g) =    339.30 kJ.mol-1 (Bard) #Hf°(g) =    381.20 kJ.mol-1 (Bard)
+# Y(g)
+# Y = Y ; log_k	     0.20 ; delta_h	    -8.40 #Gf°(g) =    381.10 kJ.mol-1 (Bard) #Hf°(g) =    421.30 kJ.mol-1 (Bard)
+# La(g)
+# La = La ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    393.56 kJ.mol-1 (Bard) #Hf°(g) =    431.00 kJ.mol-1 (Bard)
+# Ac(g)
+# Ac = Ac ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    366.00 kJ.mol-1 (Bard) #Hf°(g) =    406.00 kJ.mol-1 (Bard)
+# Ti(g)
+# Ti = Ti ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =   -351.50 kJ.mol-1 (Bard) #Hf°(g) =    397.50 kJ.mol-1 (Bard)
+# Zr(g)
+# Zr = Zr ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    578.00 kJ.mol-1 (Bard) #Hf°(g) =    620.50 kJ.mol-1 (Bard)
+# Hf(g)
+# Hf = Hf ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    576.50 kJ.mol-1 (Bard) #Hf°(g) =    619.20 kJ.mol-1 (Bard)
+# V(g)
+# V = V ; log_k	     0.18 ; delta_h	    -9.28 #Gf°(g) =    469.80 kJ.mol-1 (Bard) #Hf°(g) =    515.50 kJ.mol-1 (Bard)
+# Nb(g)
+# Nb = Nb ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    681.10 kJ.mol-1 (Bard) #Hf°(g) =    725.90 kJ.mol-1 (Bard)
+# Ta(g)
+# Ta = Ta ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    739.30 kJ.mol-1 (Bard) #Hf°(g) =    782.00 kJ.mol-1 (Bard)
+# Cr(g)
+# Cr = Cr ; log_k	     0.18 ; delta_h	    -9.15 #Gf°(g) =    352.70 kJ.mol-1 (Bard) #Hf°(g) =    397.50 kJ.mol-1 (Bard)
+# Mo(g)
+# Mo = Mo ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    612.50 kJ.mol-1 (Bard) #Hf°(g) =    658.10 kJ.mol-1 (Bard)
+# W(g)
+# W = W ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    814.79 kJ.mol-1 (Bard) #Hf°(g) =    856.88 kJ.mol-1 (Bard)
+# Mn(g)
+# Mn = Mn ; log_k	     0.18 ; delta_h	    -9.40 #Gf°(g) =    238.50 kJ.mol-1 (Bard) #Hf°(g) =    280.70 kJ.mol-1 (Bard)
+# Tc(g)
+# Tc = Tc ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    656.26 kJ.mol-1 (Bard) #Hf°(g) =    681.10 kJ.mol-1 (Bard)
+# Re(g)
+# Re = Re ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    724.70 kJ.mol-1 (Bard) #Hf°(g) =    769.90 kJ.mol-1 (Bard)
+# Fe(g)
+# Fe = Fe ; log_k	     0.19 ; delta_h	    -8.86 #Gf°(g) =    370.70 kJ.mol-1 (Bard) #Hf°(g) =    416.30 kJ.mol-1 (Bard)
+# Ru(g)
+# Ru = Ru ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    595.80 kJ.mol-1 (Bard) #Hf°(g) =    642.70 kJ.mol-1 (Bard)
+# Os(g)
+# Os = Os ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    745.00 kJ.mol-1 (Bard) #Hf°(g) =    791.00 kJ.mol-1 (Bard)
+# Co(g)
+# Co = Co ; log_k	     0.22 ; delta_h	    -7.48 #Gf°(g) =    380.30 kJ.mol-1 (Bard) #Hf°(g) =    424.70 kJ.mol-1 (Bard)
+# Rh(g)
+# Rh = Rh ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    510.80 kJ.mol-1 (Bard) #Hf°(g) =    556.90 kJ.mol-1 (Bard)
+# Ir(g)
+# Ir = Ir ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    617.90 kJ.mol-1 (Bard) #Hf°(g) =    665.30 kJ.mol-1 (Bard)
+# Ni(g)
+# Ni = Ni ; log_k	     0.23 ; delta_h	    -7.19 #Gf°(g) =    379.80 kJ.mol-1 (Bard) #Hf°(g) =    425.14 kJ.mol-1 (Bard)
+# Pd(g)
+# Pd = Pd ; log_k	     0.17 ; delta_h	    -9.78 #Gf°(g) =    339.70 kJ.mol-1 (Bard) #Hf°(g) =    378.20 kJ.mol-1 (Bard)
+# Pt(g)
+# Pt = Pt ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    520.50 kJ.mol-1 (Bard) #Hf°(g) =    565.30 kJ.mol-1 (Bard)
+# Cu(g)
+# Cu = Cu ; log_k	     0.19 ; delta_h	    -9.07 #Gf°(g) =    298.30 kJ.mol-1 (Bard) #Hf°(g) =    338.00 kJ.mol-1 (Bard)
+# Ag(g)
+# Ag = Ag ; log_k	     0.14 ; delta_h	   -10.95 #Gf°(g) =    245.80 kJ.mol-1 (Bard) #Hf°(g) =    284.69 kJ.mol-1 (Bard)
+# Au(g)
+# Au = Au ; log_k	     0.20 ; delta_h	    -8.52 #Gf°(g) =    326.00 kJ.mol-1 (Bard) #Hf°(g) =    366.00 kJ.mol-1 (Bard)
+# Zn(g)
+# Zn = Zn ; log_k	     0.23 ; delta_h	    -7.35 #Gf°(g) =     95.18 kJ.mol-1 (Bard) #Hf°(g) =    130.73 kJ.mol-1 (Bard)
+# Cd(g)
+# Cd = Cd ; log_k	     0.17 ; delta_h	    -9.61 #Gf°(g) =     77.41 kJ.mol-1 (Bard) #Hf°(g) =    112.01 kJ.mol-1 (Bard)
+# Hg(g)
+# Hg = Hg ; log_k	     0.17 ; delta_h	    -9.44 #Gf°(g) =     31.85 kJ.mol-1 (Bard) #Hf°(g) =     61.32 kJ.mol-1 (Bard)
+# Ce(g)
+# Ce = Ce ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    385.00 kJ.mol-1 (Bard) #Hf°(g) =    423.00 kJ.mol-1 (Bard)
+# Pr(g)
+# Pr = Pr ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    320.90 kJ.mol-1 (Bard) #Hf°(g) =    355.60 kJ.mol-1 (Bard)
+# Nd(g)
+# Nd = Nd ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    292.40 kJ.mol-1 (Bard) #Hf°(g) =    327.60 kJ.mol-1 (Bard)
+# Pm(g)
+# Pm = Pm ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    318.00 kJ.mol-1 (Bard) #Hf°(g) =    318.00 kJ.mol-1 (Bard)
+# Sm(g)
+# Sm = Sm ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    172.80 kJ.mol-1 (Bard) #Hf°(g) =    206.70 kJ.mol-1 (Bard)
+# Eu(g)
+# Eu = Eu ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    142.20 kJ.mol-1 (Bard) #Hf°(g) =    175.30 kJ.mol-1 (Bard)
+# Gd(g)
+# Gd = Gd ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    359.80 kJ.mol-1 (Bard) #Hf°(g) =    397.50 kJ.mol-1 (Bard)
+# Tb(g)
+# Tb = Tb ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    349.70 kJ.mol-1 (Bard) #Hf°(g) =    388.70 kJ.mol-1 (Bard)
+# Dy(g)
+# Dy = Dy ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    254.40 kJ.mol-1 (Bard) #Hf°(g) =    290.40 kJ.mol-1 (Bard)
+# Ho(g)
+# Ho = Ho ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    264.80 kJ.mol-1 (Bard) #Hf°(g) =    300.80 kJ.mol-1 (Bard)
+# Er(g)
+# Er = Er ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    280.70 kJ.mol-1 (Bard) #Hf°(g) =    317.10 kJ.mol-1 (Bard)
+# Tm(g)
+# Tm = Tm ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    197.50 kJ.mol-1 (Bard) #Hf°(g) =    232.20 kJ.mol-1 (Bard)
+# Yb(g)
+# Yb = Yb ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    118.40 kJ.mol-1 (Bard) #Hf°(g) =    152.30 kJ.mol-1 (Bard)
+# Lu(g)
+# Lu = Lu ; log_k	     0.13 ; delta_h	   -11.24 #Gf°(g) =    387.80 kJ.mol-1 (Bard) #Hf°(g) =    427.60 kJ.mol-1 (Bard)
+# Th(g)
+# Th = Th ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    556.40 kJ.mol-1 (Bard) #Hf°(g) =    597.10 kJ.mol-1 (Bard)
+# Pa(g)
+# Pa = Pa ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    563.00 kJ.mol-1 (Bard) #Hf°(g) =    607.00 kJ.mol-1 (Bard)
+# U(g)
+# U = U ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    486.80 kJ.mol-1 (Bard) #Hf°(g) =    531.40 kJ.mol-1 (Bard)
+# Np(g)
+# Np = Np ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    420.90 kJ.mol-1 (Bard) #Hf°(g) =    464.80 kJ.mol-1 (Bard)
+# Pu(g)
+# Pu = Pu ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    309.10 kJ.mol-1 (Bard) #Hf°(g) =    345.20 kJ.mol-1 (Bard)
+# Am(g)
+# Am = Am ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    242.30 kJ.mol-1 (Bard) #Hf°(g) =    284.10 kJ.mol-1 (Bard)
+# Cm(g)
+# Cm = Cm ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    350.10 kJ.mol-1 (Bard) #Hf°(g) =    387.40 kJ.mol-1 (Bard)
+# Bk(g)
+# Bk = Bk ; log_k	     0.00 ; delta_h	   -15.97 #Gf°(g) =    310.00 kJ.mol-1 (Bard) #Hf°(g) =    310.00 kJ.mol-1 (Bard)
+
+H(g) ; H = H ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 217.965 kJ.mol-1 (Bard) ; #S° = 114.71 J.K-1.mol-1 (Bard) #H(g)
+D(g) ; D = D ; log_k	-2.44 ; delta_h	1.58 ; #H°f = 221.673 kJ.mol-1 (Bard) ; #S° = 123.35 J.K-1.mol-1 (Bard) #D(g)
+O(g) ; O = O ; log_k	-3.45 ; delta_h	-2.27 ; #H°f = 249.17 kJ.mol-1 (Bard) ; #S° = 160.95 J.K-1.mol-1 (Bard) #O(g)
+[F](g) ; [F] = [F] ; log_k	-2.67 ; delta_h	-7.46 ; #H°f = 78.91 kJ.mol-1 (Bard) ; #S° = 158.64 J.K-1.mol-1 (Bard) #F(g)
+Cl(g) ; Cl = Cl ; log_k	-2.80 ; delta_h	-12.44 ; #H°f = 121.679 kJ.mol-1 (Bard) ; #S° = 165.09 J.K-1.mol-1 (Bard) #Cl(g)
+Br(g) ; Br = Br ; log_k	-2.85 ; delta_h	-14.24 ; #H°f = 111.884 kJ.mol-1 (Bard) ; #S° = 174.91 J.K-1.mol-1 (Bard) #Br(g)
+I(g) ; I = I ; log_k	-2.93 ; delta_h	-17.33 ; #H°f = 106.62 kJ.mol-1 (Bard) ; #S° = 180.68 J.K-1.mol-1 (Bard) #I(g)
+[S](g) ; [S] = [S] ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 278.81 kJ.mol-1 (Bard) ; #S° = 167.71 J.K-1.mol-1 (Bard) #S(g)
+Se(g) ; Se = Se ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 227.07 kJ.mol-1 (Bard) ; #S° = 176.58 J.K-1.mol-1 (Bard) #Se(g)
+Te(g) ; Te = Te ; log_k	-2.91 ; delta_h	-16.50 ; #H°f = 196.73 kJ.mol-1 (Bard) ; #S° = 182.63 J.K-1.mol-1 (Bard) #Te(g)
+Po(g) ; Po = Po ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 146.988 kJ.mol-1 (Bard) ; #S° = 188.81 J.K-1.mol-1 (Bard) #Po(g)
+[N](g) ; [N] = [N] ; log_k	-3.67 ; delta_h	-3.23 ; #H°f = 472.704 kJ.mol-1 (Bard) ; #S° = 153.20 J.K-1.mol-1 (Bard) #N(g)
+P(g) ; P = P ; log_k	-2.81 ; delta_h	-12.77 ; #H°f = 314.25 kJ.mol-1 (Bard) ; #S° = 162.93 J.K-1.mol-1 (Bard) #P(g)
+As(g) ; As = As ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 302.5 kJ.mol-1 (Bard) ; #S° = 174.10 J.K-1.mol-1 (Bard) #As(g)
+Sb(g) ; Sb = Sb ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 262.3 kJ.mol-1 (Bard) ; #S° = 180.16 J.K-1.mol-1 (Bard) #Sb(g)
+Bi(g) ; Bi = Bi ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 207.1 kJ.mol-1 (Bard) ; #S° = 186.90 J.K-1.mol-1 (Bard) #Bi(g)
+[C](g) ; [C] = [C] ; log_k	-2.71 ; delta_h	-8.71 ; #H°f = 718.384 kJ.mol-1 (Bard) ; #S° = 157.99 J.K-1.mol-1 (Bard) #C(g)
+Si(g) ; Si = Si ; log_k	-2.80 ; delta_h	-12.02 ; #H°f = 368.4 kJ.mol-1 (Bard) ; #S° = 167.90 J.K-1.mol-1 (Bard) #Si(g)
+Ge(g) ; Ge = Ge ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 328.19 kJ.mol-1 (Bard) ; #S° = 167.80 J.K-1.mol-1 (Bard) #Ge(g)
+Sn(g) ; Sn = Sn ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 301 kJ.mol-1 (Bard) ; #S° = 168.39 J.K-1.mol-1 (Bard) #Sn(g)
+Pb(g) ; Pb = Pb ; log_k	-2.69 ; delta_h	-8.04 ; #H°f = 193.9 kJ.mol-1 (Bard) ; #S° = 175.27 J.K-1.mol-1 (Bard) #Pb(g)
+Ga(g) ; Ga = Ga ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 277 kJ.mol-1 (Bard) ; #S° = 169.00 J.K-1.mol-1 (Bard) #Ga(g)
+In(g) ; In = In ; log_k	-2.67 ; delta_h	-7.42 ; #H°f = 243.3 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #In(g)
+Tl(g) ; Tl = Tl ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 182.2 kJ.mol-1 (Bard) ; #S° = 180.85 J.K-1.mol-1 (Bard) #Tl(g)
+Zn(g) ; Zn = Zn ; log_k	-2.55 ; delta_h	-2.77 ; #H°f = 130.73 kJ.mol-1 (Bard) ; #S° = 160.88 J.K-1.mol-1 (Bard) #Zn(g)
+Cd(g) ; Cd = Cd ; log_k	-2.61 ; delta_h	-5.03 ; #H°f = 112.01 kJ.mol-1 (Bard) ; #S° = 167.75 J.K-1.mol-1 (Bard) #Cd(g)
+Hg(g) ; Hg = Hg ; log_k	-2.60 ; delta_h	-4.86 ; #H°f = 61.317 kJ.mol-1 (Bard) ; #S° = 174.85 J.K-1.mol-1 (Bard) #Hg(g)
+Cu(g) ; Cu = Cu ; log_k	-2.60 ; delta_h	-4.49 ; #H°f = 338 kJ.mol-1 (Bard) ; #S° = 166.52 J.K-1.mol-1 (Bard) #Cu(g)
+Ag(g) ; Ag = Ag ; log_k	-2.64 ; delta_h	-6.37 ; #H°f = 284.69 kJ.mol-1 (Bard) ; #S° = 172.97 J.K-1.mol-1 (Bard) #Ag(g)
+Au(g) ; Au = Au ; log_k	-2.58 ; delta_h	-3.94 ; #H°f = 366 kJ.mol-1 (Bard) ; #S° = 180.39 J.K-1.mol-1 (Bard) #Au(g)
+Ni(g) ; Ni = Ni ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 425.14 kJ.mol-1 (Bard) ; #S° = 182.39 J.K-1.mol-1 (Bard) #Ni(g)
+Pd(g) ; Pd = Pd ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 378.2 kJ.mol-1 (Bard) ; #S° = 167.05 J.K-1.mol-1 (Bard) #Pd(g)
+Pt(g) ; Pt = Pt ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 565.3 kJ.mol-1 (Bard) ; #S° = 192.41 J.K-1.mol-1 (Bard) #Pt(g)
+Co(g) ; Co = Co ; log_k	-2.55 ; delta_h	-2.90 ; #H°f = 439 kJ.mol-1 (Bard) ; #S° = 179.41 J.K-1.mol-1 (Bard) #Co(g)
+Rh(g) ; Rh = Rh ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 556.9 kJ.mol-1 (Bard) ; #S° = 185.81 J.K-1.mol-1 (Bard) #Rh(g)
+Ir(g) ; Ir = Ir ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 665.3 kJ.mol-1 (Bard) ; #S° = 193.58 J.K-1.mol-1 (Bard) #Ir(g)
+Fe(g) ; Fe = Fe ; log_k	-2.58 ; delta_h	-4.28 ; #H°f = 416.3 kJ.mol-1 (Bard) ; #S° = 180.38 J.K-1.mol-1 (Bard) #Fe(g)
+Ru(g) ; Ru = Ru ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 642.7 kJ.mol-1 (Bard) ; #S° = 186.51 J.K-1.mol-1 (Bard) #Ru(g)
+Os(g) ; Os = Os ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 791 kJ.mol-1 (Bard) ; #S° = 192.57 J.K-1.mol-1 (Bard) #Os(g)
+Mn(g) ; Mn = Mn ; log_k	-2.60 ; delta_h	-4.82 ; #H°f = 280.7 kJ.mol-1 (Bard) ; #S° = 173.70 J.K-1.mol-1 (Bard) #Mn(g)
+Tc(g) ; Tc = Tc ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 38.7 kJ.mol-1 (Bard) ; #S° = 10.30 J.K-1.mol-1 (Bard) #Tc(g)
+Re(g) ; Re = Re ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 769.9 kJ.mol-1 (Bard) ; #S° = 188.83 J.K-1.mol-1 (Bard) #Re(g)
+Cr(g) ; Cr = Cr ; log_k	-2.60 ; delta_h	-4.57 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 174.39 J.K-1.mol-1 (Bard) #Cr(g)
+Mo(g) ; Mo = Mo ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 658.1 kJ.mol-1 (Bard) ; #S° = 181.95 J.K-1.mol-1 (Bard) #Mo(g)
+W(g) ; W = W ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 856.883 kJ.mol-1 (Bard) ; #S° = 173.84 J.K-1.mol-1 (Bard) #W(g)
+V(g) ; V = V ; log_k	-2.60 ; delta_h	-4.70 ; #H°f = 515.5 kJ.mol-1 (Bard) ; #S° = 182.20 J.K-1.mol-1 (Bard) #V(g)
+Nb(g) ; Nb = Nb ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 725.9 kJ.mol-1 (Bard) ; #S° = 186.26 J.K-1.mol-1 (Bard) #Nb(g)
+Ta(g) ; Ta = Ta ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 782 kJ.mol-1 (Bard) ; #S° = 185.21 J.K-1.mol-1 (Bard) #Ta(g)
+Ti(g) ; Ti = Ti ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 180.20 J.K-1.mol-1 (Bard) #Ti(g)
+Zr(g) ; Zr = Zr ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 608.8 kJ.mol-1 (Bard) ; #S° = 181.36 J.K-1.mol-1 (Bard) #Zr(g)
+Hf(g) ; Hf = Hf ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 619.2 kJ.mol-1 (Bard) ; #S° = 186.99 J.K-1.mol-1 (Bard) #Hf(g)
+Sc(g) ; Sc = Sc ; log_k	-2.54 ; delta_h	-2.61 ; #H°f = 381.2 kJ.mol-1 (Bard) ; #S° = 174.68 J.K-1.mol-1 (Bard) #Sc(g)
+Y(g) ; Y = Y ; log_k	-2.58 ; delta_h	-3.82 ; #H°f = 421.3 kJ.mol-1 (Bard) ; #S° = 179.48 J.K-1.mol-1 (Bard) #Y(g)
+La(g) ; La = La ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 431 kJ.mol-1 (Bard) ; #S° = 182.38 J.K-1.mol-1 (Bard) #La(g)
+Ac(g) ; Ac = Ac ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 406 kJ.mol-1 (Bard) ; #S° = 188.10 J.K-1.mol-1 (Bard) #Ac(g)
+Ce(g) ; Ce = Ce ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 420.1 kJ.mol-1 (Bard) ; #S° = 191.77 J.K-1.mol-1 (Bard) #Ce(g)
+Pr(g) ; Pr = Pr ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 356.9 kJ.mol-1 (Bard) ; #S° = 189.81 J.K-1.mol-1 (Bard) #Pr(g)
+Nd(g) ; Nd = Nd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 326.9 kJ.mol-1 (Bard) ; #S° = 189.41 J.K-1.mol-1 (Bard) #Nd(g)
+Pm(g) ; Pm = Pm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 318 kJ.mol-1 (Bard) ; #S° = 187.10 J.K-1.mol-1 (Bard) #Pm(g)
+Sm(g) ; Sm = Sm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 206.7 kJ.mol-1 (Bard) ; #S° = 183.04 J.K-1.mol-1 (Bard) #Sm(g)
+Eu(g) ; Eu = Eu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 177.4 kJ.mol-1 (Bard) ; #S° = 188.80 J.K-1.mol-1 (Bard) #Eu(g)
+Gd(g) ; Gd = Gd ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 397.5 kJ.mol-1 (Bard) ; #S° = 194.31 J.K-1.mol-1 (Bard) #Gd(g)
+Tb(g) ; Tb = Tb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 388.7 kJ.mol-1 (Bard) ; #S° = 303.58 J.K-1.mol-1 (Bard) #Tb(g)
+Dy(g) ; Dy = Dy ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 290.4 kJ.mol-1 (Bard) ; #S° = 196.63 J.K-1.mol-1 (Bard) #Dy(g)
+Ho(g) ; Ho = Ho ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 300.6 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Ho(g)
+Er(g) ; Er = Er ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 311.9 kJ.mol-1 (Bard) ; #S° = 195.59 J.K-1.mol-1 (Bard) #Er(g)
+Tm(g) ; Tm = Tm ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 232.2 kJ.mol-1 (Bard) ; #S° = 190.11 J.K-1.mol-1 (Bard) #Tm(g)
+Yb(g) ; Yb = Yb ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 155.6 kJ.mol-1 (Bard) ; #S° = 173.13 J.K-1.mol-1 (Bard) #Yb(g)
+Lu(g) ; Lu = Lu ; log_k	-2.66 ; delta_h	-6.66 ; #H°f = 427.6 kJ.mol-1 (Bard) ; #S° = 184.80 J.K-1.mol-1 (Bard) #Lu(g)
+Th(g) ; Th = Th ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 597.1 kJ.mol-1 (Bard) ; #S° = 190.04 J.K-1.mol-1 (Bard) #Th(g)
+Pa(g) ; Pa = Pa ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 607 kJ.mol-1 (Bard) ; #S° = 197.90 J.K-1.mol-1 (Bard) #Pa(g)
+U(g) ; U = U ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 531.4 kJ.mol-1 (Bard) ; #S° = 199.70 J.K-1.mol-1 (Bard) #U(g)
+Np(g) ; Np = Np ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 464.8 kJ.mol-1 (Bard) ; #S° = 117.61 J.K-1.mol-1 (Bard) #Np(g)
+Pu(g) ; Pu = Pu ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 345.2 kJ.mol-1 (Bard) ; #S° = 177.10 J.K-1.mol-1 (Bard) #Pu(g)
+B(g) ; B = B ; log_k	-2.66 ; delta_h	-7.21 ; #H°f = 562.7 kJ.mol-1 (Bard) ; #S° = 153.34 J.K-1.mol-1 (Bard) #B(g)
+Al(g) ; Al = Al ; log_k	-2.57 ; delta_h	-3.53 ; #H°f = 329.7 kJ.mol-1 (Bard) ; #S° = 164.44 J.K-1.mol-1 (Bard) #Al(g)
+Be(g) ; Be = Be ; log_k	-2.61 ; delta_h	-5.20 ; #H°f = 324.3 kJ.mol-1 (Bard) ; #S° = 136.16 J.K-1.mol-1 (Bard) #Be(g)
+Mg(g) ; Mg = Mg ; log_k	-2.58 ; delta_h	-4.15 ; #H°f = 147.1 kJ.mol-1 (Bard) ; #S° = 148.59 J.K-1.mol-1 (Bard) #Mg(g)
+Ca(g) ; Ca = Ca ; log_k	-2.66 ; delta_h	-7.12 ; #H°f = 178.2 kJ.mol-1 (Bard) ; #S° = 154.88 J.K-1.mol-1 (Bard) #Ca(g)
+Sr(g) ; Sr = Sr ; log_k	-2.72 ; delta_h	-9.13 ; #H°f = 164.4 kJ.mol-1 (Bard) ; #S° = 164.51 J.K-1.mol-1 (Bard) #Sr(g)
+Ba(g) ; Ba = Ba ; log_k	-2.76 ; delta_h	-10.76 ; #H°f = 180 kJ.mol-1 (Bard) ; #S° = 170.13 J.K-1.mol-1 (Bard) #Ba(g)
+Ra(g) ; Ra = Ra ; log_k	-2.86 ; delta_h	-14.78 ; #H°f = 159 kJ.mol-1 (Bard) ; #S° = 176.36 J.K-1.mol-1 (Bard) #Ra(g)
+Li(g) ; Li = Li ; log_k	-2.63 ; delta_h	-5.91 ; #H°f = 160.71 kJ.mol-1 (Bard) ; #S° = 138.67 J.K-1.mol-1 (Bard) #Li(g)
+Na(g) ; Na = Na ; log_k	-2.69 ; delta_h	-8.25 ; #H°f = 107.68 kJ.mol-1 (Bard) ; #S° = 153.61 J.K-1.mol-1 (Bard) #Na(g)
+K(g) ; K = K ; log_k	-2.78 ; delta_h	-11.81 ; #H°f = 89.16 kJ.mol-1 (Bard) ; #S° = 160.20 J.K-1.mol-1 (Bard) #K(g)
+Rb(g) ; Rb = Rb ; log_k	-2.82 ; delta_h	-13.02 ; #H°f = 85.81 kJ.mol-1 (Bard) ; #S° = 169.99 J.K-1.mol-1 (Bard) #Rb(g)
+Cs(g) ; Cs = Cs ; log_k	-2.88 ; delta_h	-15.49 ; #H°f = 78.78 kJ.mol-1 (Bard) ; #S° = 175.49 J.K-1.mol-1 (Bard) #Cs(g)
+#Fr(g) ; Fr = Fr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 0.00 J.K-1.mol-1 (Bard) #Fr(g)
+He(g) ; He = He ; log_k	-2.36 ; delta_h	1.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 126.15 J.K-1.mol-1 (Bard) #He(g)
+Ne(g) ; Ne = Ne ; log_k	-2.68 ; delta_h	-7.71 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 146.33 J.K-1.mol-1 (Bard) #Ne(g)
+Ar(g) ; Ar = Ar ; log_k	-2.74 ; delta_h	-9.89 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 154.84 J.K-1.mol-1 (Bard) #Ar(g)
+Kr(g) ; Kr = Kr ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 164.98 J.K-1.mol-1 (Bard) #Kr(g)
+Xe(g) ; Xe = Xe ; log_k	-2.88 ; delta_h	-15.16 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 169.68 J.K-1.mol-1 (Bard) #Xe(g)
+Rn(g) ; Rn = Rn ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 0 kJ.mol-1 (Bard) ; #S° = 176.21 J.K-1.mol-1 (Bard) #Rn(g)
+Am(g) ; Am = Am ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 284.1 kJ.mol-1 (Bard) ; #S° = 194.40 J.K-1.mol-1 (Bard) #Am(g)
+Cm(g) ; Cm = Cm ; log_k	-2.77 ; delta_h	-11.39 ; #H°f = 387.4 kJ.mol-1 (Bard) ; #S° = 197.00 J.K-1.mol-1 (Bard) #Cm(g)
+
+
+
+# next phases:
+
+
+
+1-butanethiol(g)
+[C]4H10[S] = 4 [C](g) + 10 H(g) + [S](g) 
+	log_k	  -858.80
+	delta_h	  5364.36
+#	Gf°(g) =  -1461464.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1461359.50 kJ.mol-1 (Alexandria-library-w1u)
+1-buten-3-yne(g)
+[C]4H4 = 4 [C](g) + 4 H(g)
+	log_k	  -560.86
+	delta_h	  3432.86
+#	Gf°(g) =   -406330.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -406247.68 kJ.mol-1 (Alexandria-library-w1u)
+1-butene(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -740.08
+	delta_h	  4586.55
+#	Gf°(g) =   -412738.70 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412650.22 kJ.mol-1 (Alexandria-library-w1u)
+1-butyne(g)
+[C]4H6 = 4 [C](g) + 6 H(g)
+	log_k	  -645.98
+	delta_h	  3983.46
+#	Gf°(g) =   -409508.80 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -409422.71 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-1-fluoroethane(g)
+[C]2H4Cl[F] = Cl(g) + 2 [C](g) + 4 H(g) + [F](g) 
+	log_k	  -448.73
+	delta_h	  2791.73
+#	Gf°(g) =  -1677014.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1676927.28 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-11-difluoroethane(g)
+[C]2H3Cl[F]2 = Cl(g) + 2 [C](g) + 3 H(g) + 2 [F](g) 
+	log_k	  -461.70
+	delta_h	  2872.33
+#	Gf°(g) =  -1937708.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1937616.88 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-2-ethoxyethane(g)
+[C]4H9ClO = Cl(g) + 4 [C](g) + 9 H(g) + O(g) 
+	log_k	  -868.41
+	delta_h	  5424.50
+#	Gf°(g) =  -1820240.33 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1820130.38 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-2-methoxyethane(g)
+[C]3H7ClO = Cl(g) + 3 [C](g) + 7 H(g) + O(g) 
+	log_k	  -680.36
+	delta_h	  4248.05
+#	Gf°(g) =  -1717038.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1716938.01 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-2-methylpropane(g)
+[C]4H9Cl = Cl(g) + 4 [C](g) + 9 H(g) 
+	log_k	  -810.85
+	delta_h	  5061.00
+#	Gf°(g) =  -1622718.83 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1622619.39 kJ.mol-1 (Alexandria-library-w1u)
+1-chloro-2-propanol(g)
+[C]3H7ClO = Cl(g) + 3 [C](g) + 7 H(g) + O(g) 
+	log_k	  -687.61
+	delta_h	  4291.50
+#	Gf°(g) =  -1717079.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1716981.46 kJ.mol-1 (Alexandria-library-w1u)
+1-chlorobutane(g)
+[C]4H9Cl = Cl(g) + 4 [C](g) + 9 H(g) 
+	log_k	  -810.70
+	delta_h	  5058.44
+#	Gf°(g) =  -1622717.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1622616.83 kJ.mol-1 (Alexandria-library-w1u)
+1-chloropropane-trans(g)
+[C]3H7Cl = Cl(g) + 3 [C](g) + 7 H(g) 
+	log_k	  -625.36
+	delta_h	  3897.42
+#	Gf°(g) =  -1519531.49 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1519439.89 kJ.mol-1 (Alexandria-library-w1u)
+1-fluoropropane-gauche(g)
+[C]3H7[F] = 3 [C](g) + 7 H(g) + [F](g) 
+	log_k	  -647.81
+	delta_h	  4026.99
+#	Gf°(g) =   -573396.06 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -573308.17 kJ.mol-1 (Alexandria-library-w1u)
+1-methylimidazole(g)
+[C]4H6[N]2 = 4 [C](g) + 6 H(g) + 2 [N](g)
+	log_k	  -805.80
+	delta_h	  4980.52
+#	Gf°(g) =   -697213.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -697121.33 kJ.mol-1 (Alexandria-library-w1u)
+1-methylpyrazole(g)
+[C]4H6[N]2 = 4 [C](g) + 6 H(g) + 2 [N](g)
+	log_k	  -799.78
+	delta_h	  4943.17
+#	Gf°(g) =   -697179.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -697083.98 kJ.mol-1 (Alexandria-library-w1u)
+1-methylpyrrole(g)
+[C]5H7[N] = 5 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -882.48
+	delta_h	  5450.17
+#	Gf°(g) =   -655037.38 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -654943.90 kJ.mol-1 (Alexandria-library-w1u)
+1-nitroethene(g)
+[C]2H3[N]O2 = 2 [C](g) + 3 H(g) + [N](g)  + 2 O(g)
+	log_k	  -487.26
+	delta_h	  3021.08
+#	Gf°(g) =   -743474.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -743386.46 kJ.mol-1 (Alexandria-library-w1u)
+1-nitropropane(g)
+[C]3H7[N]O2 = 3 [C](g) + 7 H(g) + [N](g)  + 2 O(g)
+	log_k	  -761.58
+	delta_h	  4749.70
+#	Gf°(g) =   -849861.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -849755.42 kJ.mol-1 (Alexandria-library-w1u)
+1-phosphapropyne(g)
+[C]2H3P = P(g) + 2 [C](g) + 3 H(g) 
+	log_k	  -360.34
+	delta_h	  2217.98
+#	Gf°(g) =  -1101056.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1100977.41 kJ.mol-1 (Alexandria-library-w1u)
+1-propanol-trans(g)
+[C]3H8O = 3 [C](g) + 8 H(g) + O(g) 
+	log_k	  -701.42
+	delta_h	  4365.07
+#	Gf°(g) =   -510275.11 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -510184.75 kJ.mol-1 (Alexandria-library-w1u)
+1-propyn-3-ylium-1-ide(g)
+[C]3H2 = 3 [C](g) + 2 H(g)
+	log_k	  -333.65
+	delta_h	  2030.80
+#	Gf°(g) =   -302904.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -302829.70 kJ.mol-1 (Alexandria-library-w1u)
+11-dichloro-1-fluoroethane(g)
+[C]2H3Cl2[F] = 2 Cl(g) + 2 [C](g) + 3 H(g) + [F](g) 
+	log_k	  -431.17
+	delta_h	  2696.98
+#	Gf°(g) =  -2883797.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2883702.82 kJ.mol-1 (Alexandria-library-w1u)
+11-dichloro-2-fluoropropene(g)
+[C]3H3Cl2[F] = 2 Cl(g) + 3 [C](g) + 3 H(g) + [F](g) 
+	log_k	  -529.58
+	delta_h	  3294.95
+#	Gf°(g) =  -2983795.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2983692.28 kJ.mol-1 (Alexandria-library-w1u)
+11-dichloro-22-difluoroethene(g)
+[C]2Cl2[F]2 = 2 Cl(g) + 2 [C](g) + 2 [F](g) 
+	log_k	  -346.27
+	delta_h	  2152.81
+#	Gf°(g) =  -3141240.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3141143.22 kJ.mol-1 (Alexandria-library-w1u)
+11-dichloroethane(g)
+[C]2H4Cl2 = 2 Cl(g) + 2 [C](g) + 4 H(g) 
+	log_k	  -422.68
+	delta_h	  2642.03
+#	Gf°(g) =  -2623129.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2623038.88 kJ.mol-1 (Alexandria-library-w1u)
+11-dichloroethene(g)
+[C]2H2Cl2 = 2 Cl(g) + 2 [C](g) + 2 H(g) 
+	log_k	  -334.53
+	delta_h	  2075.43
+#	Gf°(g) =  -2619933.61 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2619847.84 kJ.mol-1 (Alexandria-library-w1u)
+11-difluoroethane(g)
+[C]2H4[F]2 = 2 [C](g) + 4 H(g) + 2 [F](g)
+	log_k	  -476.55
+	delta_h	  2951.64
+#	Gf°(g) =   -730909.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -730825.90 kJ.mol-1 (Alexandria-library-w1u)
+11-difluoroethene(g)
+[C]2H2[F]2 = 2 [C](g) + 2 H(g) + 2 [F](g)
+	log_k	  -386.21
+	delta_h	  2372.72
+#	Gf°(g) =   -727701.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -727622.54 kJ.mol-1 (Alexandria-library-w1u)
+11-difluoropropene(g)
+[C]3H4[F]2 = 3 [C](g) + 4 H(g) + 2 [F](g)
+	log_k	  -573.70
+	delta_h	  3543.36
+#	Gf°(g) =   -830900.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -830809.11 kJ.mol-1 (Alexandria-library-w1u)
+111-trifluoroethane(g)
+[C]2H3[F]3 = 2 [C](g) + 3 H(g) + 3 [F](g)
+	log_k	  -493.47
+	delta_h	  3054.86
+#	Gf°(g) =   -991626.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -991538.11 kJ.mol-1 (Alexandria-library-w1u)
+1112-tetrafluoroethane(g)
+[C]2H2[F]4 = 2 [C](g) + 2 H(g) + 4 [F](g)
+	log_k	  -494.86
+	delta_h	  3067.50
+#	Gf°(g) =  -1252254.20 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1252159.75 kJ.mol-1 (Alexandria-library-w1u)
+112-trichloroethane(g)
+[C]2H3Cl3 = 3 Cl(g) + 2 [C](g) + 3 H(g) 
+	log_k	  -404.10
+	delta_h	  2540.02
+#	Gf°(g) =  -3829906.97 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3829807.15 kJ.mol-1 (Alexandria-library-w1u)
+112-trifluoroethane(g)
+[C]2H3[F]3 = 2 [C](g) + 3 H(g) + 3 [F](g)
+	log_k	  -479.54
+	delta_h	  2973.24
+#	Gf°(g) =   -991546.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -991456.49 kJ.mol-1 (Alexandria-library-w1u)
+1122-tetrafluoroethane(g)
+[C]2H2[F]4 = 2 [C](g) + 2 H(g) + 4 [F](g)
+	log_k	  -490.71
+	delta_h	  3042.73
+#	Gf°(g) =  -1252230.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1252134.97 kJ.mol-1 (Alexandria-library-w1u)
+12-butadiene(g)
+[C]4H6 = 4 [C](g) + 6 H(g)
+	log_k	  -649.61
+	delta_h	  4003.91
+#	Gf°(g) =   -409529.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -409443.16 kJ.mol-1 (Alexandria-library-w1u)
+12-dichloroethane(g)
+[C]2H4Cl2 = 2 Cl(g) + 2 [C](g) + 4 H(g) 
+	log_k	  -423.30
+	delta_h	  2644.58
+#	Gf°(g) =  -2623133.06 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2623041.43 kJ.mol-1 (Alexandria-library-w1u)
+12-dichloropropane(g)
+[C]3H6Cl2 = 2 Cl(g) + 3 [C](g) + 6 H(g) 
+	log_k	  -610.18
+	delta_h	  3815.96
+#	Gf°(g) =  -2726328.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2726228.73 kJ.mol-1 (Alexandria-library-w1u)
+12-difluoroethane-trans(g)
+[C]2H4[F]2 = 2 [C](g) + 4 H(g) + 2 [F](g)
+	log_k	  -466.72
+	delta_h	  2893.85
+#	Gf°(g) =   -730853.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -730768.11 kJ.mol-1 (Alexandria-library-w1u)
+12-difluoropropane(g)
+[C]3H6[F]2 = 3 [C](g) + 6 H(g) + 2 [F](g)
+	log_k	  -656.09
+	delta_h	  4079.28
+#	Gf°(g) =   -834063.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -833969.45 kJ.mol-1 (Alexandria-library-w1u)
+12-epoxy-2-methylpropane(g)
+[C]4H8O = 4 [C](g) + 8 H(g) + O(g) 
+	log_k	  -797.10
+	delta_h	  4954.02
+#	Gf°(g) =   -610257.09 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -610165.18 kJ.mol-1 (Alexandria-library-w1u)
+12-ethanediamine(g)
+[C]2H8[N]2 = 2 [C](g) + 8 H(g) + 2 [N](g)
+	log_k	  -659.55
+	delta_h	  4128.16
+#	Gf°(g) =   -500200.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -500110.41 kJ.mol-1 (Alexandria-library-w1u)
+12-ethanedithiol(g)
+[C]2H6[S]2 = 2 [C](g) + 6 H(g) + 2 [S](g)
+	log_k	  -520.89
+	delta_h	  3266.67
+#	Gf°(g) =  -2300633.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2300537.01 kJ.mol-1 (Alexandria-library-w1u)
+12-oxaphosphole(g)
+[C]3H3OP = P(g) + 3 [C](g) + 3 H(g) + O(g) 
+	log_k	  -553.23
+	delta_h	  3403.09
+#	Gf°(g) =  -1398785.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1398701.50 kJ.mol-1 (Alexandria-library-w1u)
+12-propylene-oxide(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -608.59
+	delta_h	  3773.87
+#	Gf°(g) =   -507052.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506969.11 kJ.mol-1 (Alexandria-library-w1u)
+123-pentatriene(g)
+[C]5H6 = 5 [C](g) + 6 H(g)
+	log_k	  -747.00
+	delta_h	  4596.78
+#	Gf°(g) =   -509521.28 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -509427.52 kJ.mol-1 (Alexandria-library-w1u)
+123-propanetriol(g)
+[C]3H8O3 = 3 [C](g) + 8 H(g) + 3 O(g)
+	log_k	  -826.66
+	delta_h	  5161.05
+#	Gf°(g) =   -905375.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -905275.70 kJ.mol-1 (Alexandria-library-w1u)
+124-trioxane(g)
+[C]3H6O3 = 3 [C](g) + 6 H(g) + 3 O(g)
+	log_k	  -701.31
+	delta_h	  4385.98
+#	Gf°(g) =   -901967.60 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -901876.20 kJ.mol-1 (Alexandria-library-w1u)
+125-thiadiazole(g)
+[C]2H2[N]2[S] = 2 [C](g) + 2 H(g) + 2 [N](g) + [S](g) 
+	log_k	  -467.51
+	delta_h	  2881.93
+#	Gf°(g) =  -1536380.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1536297.94 kJ.mol-1 (Alexandria-library-w1u)
+13-butadiyne(g)
+[C]4H2 = 4 [C](g) + 2 H(g)
+	log_k	  -465.77
+	delta_h	  2830.78
+#	Gf°(g) =   -403094.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -403021.17 kJ.mol-1 (Alexandria-library-w1u)
+13-cyclopentadiene(g)
+[C]5H6 = 5 [C](g) + 6 H(g)
+	log_k	  -766.33
+	delta_h	  4717.72
+#	Gf°(g) =   -509631.60 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -509548.46 kJ.mol-1 (Alexandria-library-w1u)
+13-dichloro-2-propanol(g)
+[C]3H6Cl2O = 2 Cl(g) + 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -668.68
+	delta_h	  4186.19
+#	Gf°(g) =  -2923855.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2923746.44 kJ.mol-1 (Alexandria-library-w1u)
+13-dichloropropane(g)
+[C]3H6Cl2 = 2 Cl(g) + 3 [C](g) + 6 H(g) 
+	log_k	  -608.54
+	delta_h	  3804.71
+#	Gf°(g) =  -2726318.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2726217.48 kJ.mol-1 (Alexandria-library-w1u)
+13-difluorobenzene(g)
+[C]6H4[F]2 = 6 [C](g) + 4 H(g) + 2 [F](g)
+	log_k	  -912.45
+	delta_h	  5604.06
+#	Gf°(g) =  -1131141.30 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1131044.28 kJ.mol-1 (Alexandria-library-w1u)
+13-dioxolane(g)
+[C]3H6O2 = 3 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -678.38
+	delta_h	  4212.06
+#	Gf°(g) =   -704643.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -704554.79 kJ.mol-1 (Alexandria-library-w1u)
+13-dithiolane(g)
+[C]3H6[S]2 = 3 [C](g) + 6 H(g) + 2 [S](g)
+	log_k	  -627.30
+	delta_h	  3918.38
+#	Gf°(g) =  -2400676.44 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2400580.21 kJ.mol-1 (Alexandria-library-w1u)
+13-oxazole(g)
+[C]3H3[N]O = 3 [C](g) + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -574.24
+	delta_h	  3523.91
+#	Gf°(g) =   -646213.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -646133.29 kJ.mol-1 (Alexandria-library-w1u)
+13-propanediamine(g)
+[C]3H10[N]2 = 3 [C](g) + 10 H(g) + 2 [N](g)
+	log_k	  -844.43
+	delta_h	  5286.18
+#	Gf°(g) =   -603384.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -603284.35 kJ.mol-1 (Alexandria-library-w1u)
+13-thiazole(g)
+[C]3H3[N][S] = 3 [C](g) + 3 H(g) + [N](g)  + [S](g) 
+	log_k	  -548.21
+	delta_h	  3374.45
+#	Gf°(g) =  -1494227.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1494143.38 kJ.mol-1 (Alexandria-library-w1u)
+132-dioxathiolane-2-oxide(g)
+[C]2H4O3[S] = 2 [C](g) + 4 H(g) + 3 O(g) + [S](g) 
+	log_k	  -593.24
+	delta_h	  3700.90
+#	Gf°(g) =  -1844577.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1844482.24 kJ.mol-1 (Alexandria-library-w1u)
+134-thiadiazole(g)
+[C]2H2[N]2[S] = 2 [C](g) + 2 H(g) + 2 [N](g) + [S](g) 
+	log_k	  -457.89
+	delta_h	  2826.52
+#	Gf°(g) =  -1536325.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1536242.53 kJ.mol-1 (Alexandria-library-w1u)
+135-hexatriyne(g)
+[C]6H2 = 6 [C](g) + 2 H(g)
+	log_k	  -664.90
+	delta_h	  4040.36
+#	Gf°(g) =   -603103.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -603013.72 kJ.mol-1 (Alexandria-library-w1u)
+14-dioxidopyrazine(g)
+[C]4H4[N]2O2 = 4 [C](g) + 4 H(g) + 2 [N](g) + 2 O(g)
+	log_k	  -804.12
+	delta_h	  4993.25
+#	Gf°(g) =  -1088897.45 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1088804.60 kJ.mol-1 (Alexandria-library-w1u)
+14-dioxin(g)
+[C]4H4O2 = 4 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -695.12
+	delta_h	  4282.27
+#	Gf°(g) =   -801482.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -801392.06 kJ.mol-1 (Alexandria-library-w1u)
+1E-1-chloro-1-pentene(g)
+[C]5H9Cl = Cl(g) + 5 [C](g) + 9 H(g) 
+	log_k	  -909.16
+	delta_h	  5662.49
+#	Gf°(g) =  -1722715.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1722612.38 kJ.mol-1 (Alexandria-library-w1u)
+1E-1-fluoro-1-butene(g)
+[C]4H7[F] = 4 [C](g) + 7 H(g) + [F](g) 
+	log_k	  -746.26
+	delta_h	  4630.46
+#	Gf°(g) =   -673393.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -673303.13 kJ.mol-1 (Alexandria-library-w1u)
+1H-124-triazole(g)
+[C]2H3[N]3 = 2 [C](g) + 3 H(g) + 3 [N](g)
+	log_k	  -538.46
+	delta_h	  3321.23
+#	Gf°(g) =   -636173.62 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -636093.19 kJ.mol-1 (Alexandria-library-w1u)
+1H-tetrazole(g)
+[C]H2[N]4 = [C](g)  + 2 H(g) + 4 [N](g)
+	log_k	  -441.05
+	delta_h	  2732.70
+#	Gf°(g) =   -678231.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -678151.73 kJ.mol-1 (Alexandria-library-w1u)
+1Z-1-fluoro-1-pentene(g)
+[C]5H9[F] = 5 [C](g) + 9 H(g) + [F](g) 
+	log_k	  -932.80
+	delta_h	  5799.31
+#	Gf°(g) =   -776587.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -776487.90 kJ.mol-1 (Alexandria-library-w1u)
+2-aminoethanol(g)
+[C]2H7[N]O = 2 [C](g) + 7 H(g) + [N](g)  + O(g) 
+	log_k	  -617.79
+	delta_h	  3855.61
+#	Gf°(g) =   -552411.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -552322.35 kJ.mol-1 (Alexandria-library-w1u)
+2-butanone(g)
+[C]4H8O = 4 [C](g) + 8 H(g) + O(g) 
+	log_k	  -818.38
+	delta_h	  5065.92
+#	Gf°(g) =   -610378.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -610277.08 kJ.mol-1 (Alexandria-library-w1u)
+2-butyne(g)
+[C]4H6 = 4 [C](g) + 6 H(g)
+	log_k	  -650.64
+	delta_h	  4012.90
+#	Gf°(g) =   -409535.44 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -409452.15 kJ.mol-1 (Alexandria-library-w1u)
+2-chloro-11-difluoroethylene(g)
+[C]2HCl[F]2 = Cl(g) + 2 [C](g) + H(g) + 2 [F](g) 
+	log_k	  -366.94
+	delta_h	  2264.61
+#	Gf°(g) =  -1934474.97 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1934384.73 kJ.mol-1 (Alexandria-library-w1u)
+2-chloro-111-trifluoroethane(g)
+[C]2H2Cl[F]3 = Cl(g) + 2 [C](g) + 2 H(g) + 3 [F](g) 
+	log_k	  -472.70
+	delta_h	  2940.40
+#	Gf°(g) =  -2198391.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2198293.94 kJ.mol-1 (Alexandria-library-w1u)
+2-chloroacetaldehyde(g)
+[C]2H3ClO = Cl(g) + 2 [C](g) + 3 H(g) + O(g) 
+	log_k	  -422.82
+	delta_h	  2608.30
+#	Gf°(g) =  -1610747.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1610657.92 kJ.mol-1 (Alexandria-library-w1u)
+2-chloroethanol(g)
+[C]2H5ClO = Cl(g) + 2 [C](g) + 5 H(g) + O(g) 
+	log_k	  -499.84
+	delta_h	  3114.24
+#	Gf°(g) =  -1613879.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1613788.28 kJ.mol-1 (Alexandria-library-w1u)
+2-chloropropane(g)
+[C]3H7Cl = Cl(g) + 3 [C](g) + 7 H(g) 
+	log_k	  -626.95
+	delta_h	  3907.76
+#	Gf°(g) =  -1519540.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1519450.24 kJ.mol-1 (Alexandria-library-w1u)
+2-chloropropene(g)
+[C]3H5Cl = Cl(g) + 3 [C](g) + 5 H(g) 
+	log_k	  -541.20
+	delta_h	  3352.68
+#	Gf°(g) =  -1516358.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1516270.73 kJ.mol-1 (Alexandria-library-w1u)
+2-chloropyridine(g)
+[C]5H4Cl[N] = Cl(g) + 5 [C](g) + 4 H(g) + [N](g) 
+	log_k	  -798.26
+	delta_h	  4913.30
+#	Gf°(g) =  -1858747.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1858652.89 kJ.mol-1 (Alexandria-library-w1u)
+2-fluoro-2-methylpropane(g)
+[C]4H9[F] = 4 [C](g) + 9 H(g) + [F](g) 
+	log_k	  -839.08
+	delta_h	  5224.02
+#	Gf°(g) =   -676616.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -676521.12 kJ.mol-1 (Alexandria-library-w1u)
+2-fluoropropane(g)
+[C]3H7[F] = 3 [C](g) + 7 H(g) + [F](g) 
+	log_k	  -651.14
+	delta_h	  4046.53
+#	Gf°(g) =   -573415.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -573327.70 kJ.mol-1 (Alexandria-library-w1u)
+2-isocyano-2-methylpropane(g)
+[C]5H9[N] = 5 [C](g) + 9 H(g) + [N](g) 
+	log_k	  -949.35
+	delta_h	  5892.16
+#	Gf°(g) =   -658111.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -658010.32 kJ.mol-1 (Alexandria-library-w1u)
+2-isocyanopropane(g)
+[C]4H7[N] = 4 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -763.11
+	delta_h	  4723.84
+#	Gf°(g) =   -554920.18 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -554826.08 kJ.mol-1 (Alexandria-library-w1u)
+2-mercaptoethanol(g)
+[C]2H6O[S] = 2 [C](g) + 6 H(g) + O(g)  + [S](g) 
+	log_k	  -548.28
+	delta_h	  3420.70
+#	Gf°(g) =  -1452627.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1452531.49 kJ.mol-1 (Alexandria-library-w1u)
+2-methyl-13-butadiene(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -843.97
+	delta_h	  5219.75
+#	Gf°(g) =   -512767.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512674.91 kJ.mol-1 (Alexandria-library-w1u)
+2-methyl-13-dioxolane(g)
+[C]4H8O2 = 4 [C](g) + 8 H(g) + 2 O(g)
+	log_k	  -868.72
+	delta_h	  5402.85
+#	Gf°(g) =   -807858.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -807761.50 kJ.mol-1 (Alexandria-library-w1u)
+2-methylfuran(g)
+[C]5H6O = 5 [C](g) + 6 H(g) + O(g) 
+	log_k	  -840.45
+	delta_h	  5177.91
+#	Gf°(g) =   -707247.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707156.14 kJ.mol-1 (Alexandria-library-w1u)
+2-methyloxazole(g)
+[C]4H5[N]O = 4 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -765.30
+	delta_h	  4716.27
+#	Gf°(g) =   -749432.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -749341.57 kJ.mol-1 (Alexandria-library-w1u)
+2-methylprop-1-en-1-one(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -728.78
+	delta_h	  4492.96
+#	Gf°(g) =   -607174.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -607079.69 kJ.mol-1 (Alexandria-library-w1u)
+2-methylprop-2-enenitrile(g)
+[C]4H5[N] = 4 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -693.28
+	delta_h	  4260.10
+#	Gf°(g) =   -551828.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -551737.91 kJ.mol-1 (Alexandria-library-w1u)
+2-methylpropanenitrile(g)
+[C]4H7[N] = 4 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -777.61
+	delta_h	  4807.16
+#	Gf°(g) =   -555002.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -554909.40 kJ.mol-1 (Alexandria-library-w1u)
+2-methylpropanoic-acid(g)
+[C]4H8O2 = 4 [C](g) + 8 H(g) + 2 O(g)
+	log_k	  -892.95
+	delta_h	  5535.47
+#	Gf°(g) =   -807997.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -807894.12 kJ.mol-1 (Alexandria-library-w1u)
+2-methylpropenal(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -728.00
+	delta_h	  4489.61
+#	Gf°(g) =   -607169.88 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -607076.34 kJ.mol-1 (Alexandria-library-w1u)
+2-methylthiophene(g)
+[C]5H6[S] = 5 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -814.88
+	delta_h	  5030.18
+#	Gf°(g) =  -1555263.80 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1555167.96 kJ.mol-1 (Alexandria-library-w1u)
+2-nitropropane(g)
+[C]3H7[N]O2 = 3 [C](g) + 7 H(g) + [N](g)  + 2 O(g)
+	log_k	  -762.93
+	delta_h	  4761.23
+#	Gf°(g) =   -849869.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -849766.96 kJ.mol-1 (Alexandria-library-w1u)
+2-oxetanone(g)
+[C]3H4O2 = 3 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -612.44
+	delta_h	  3771.48
+#	Gf°(g) =   -701574.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -701489.78 kJ.mol-1 (Alexandria-library-w1u)
+2-pentanethiol(g)
+[C]5H12[S] = 5 [C](g) + 12 H(g) + [S](g) 
+	log_k	 -1044.44
+	delta_h	  6528.66
+#	Gf°(g) =  -1564652.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1564539.72 kJ.mol-1 (Alexandria-library-w1u)
+2-propanethiol(g)
+[C]3H8[S] = 3 [C](g) + 8 H(g) + [S](g) 
+	log_k	  -674.28
+	delta_h	  4209.73
+#	Gf°(g) =  -1358282.28 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1358188.96 kJ.mol-1 (Alexandria-library-w1u)
+2-propyn-1-ol(g)
+[C]3H4O = 3 [C](g) + 4 H(g) + O(g) 
+	log_k	  -517.94
+	delta_h	  3185.85
+#	Gf°(g) =   -503842.34 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -503756.67 kJ.mol-1 (Alexandria-library-w1u)
+2-pyridinecarbonitrile(g)
+[C]6H4[N]2 = 6 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -948.54
+	delta_h	  5810.80
+#	Gf°(g) =   -894207.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -894110.16 kJ.mol-1 (Alexandria-library-w1u)
+2-thiophene-carbonitrile(g)
+[C]5H3[N][S] = 5 [C](g) + 3 H(g) + [N](g)  + [S](g) 
+	log_k	  -764.89
+	delta_h	  4687.34
+#	Gf°(g) =  -1694335.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1694239.25 kJ.mol-1 (Alexandria-library-w1u)
+22-dichloropropane(g)
+[C]3H6Cl2 = 2 Cl(g) + 3 [C](g) + 6 H(g) 
+	log_k	  -609.63
+	delta_h	  3814.56
+#	Gf°(g) =  -2726325.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2726227.33 kJ.mol-1 (Alexandria-library-w1u)
+222-trichloroacetonitrile(g)
+[C]2Cl3[N] = 3 Cl(g) + 2 [C](g) + [N](g) 
+	log_k	  -340.18
+	delta_h	  2116.02
+#	Gf°(g) =  -3968899.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3968797.30 kJ.mol-1 (Alexandria-library-w1u)
+222-trifluoroethanol(g)
+[C]2H3[F]3O = 2 [C](g) + 3 H(g) + 3 [F](g) + O(g) 
+	log_k	  -551.56
+	delta_h	  3424.37
+#	Gf°(g) =  -1189150.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1189055.10 kJ.mol-1 (Alexandria-library-w1u)
+2233-tetrafluoro-1-propanol(g)
+[C]3H4[F]4O = 3 [C](g) + 4 H(g) + 4 [F](g) + O(g) 
+	log_k	  -738.68
+	delta_h	  4598.27
+#	Gf°(g) =  -1552967.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1552853.92 kJ.mol-1 (Alexandria-library-w1u)
+23-dihydrofuran(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -721.98
+	delta_h	  4462.06
+#	Gf°(g) =   -607135.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -607048.79 kJ.mol-1 (Alexandria-library-w1u)
+23-epoxy-1-propanol(g)
+[C]3H6O2 = 3 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -667.91
+	delta_h	  4148.97
+#	Gf°(g) =   -704584.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -704491.70 kJ.mol-1 (Alexandria-library-w1u)
+24-cyclopentadien-1-one(g)
+[C]5H4O = 5 [C](g) + 4 H(g) + O(g) 
+	log_k	  -751.30
+	delta_h	  4604.27
+#	Gf°(g) =   -704045.99 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -703958.07 kJ.mol-1 (Alexandria-library-w1u)
+25-dihydro-1H-pyrrole(g)
+[C]4H7[N] = 4 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -761.16
+	delta_h	  4719.54
+#	Gf°(g) =   -554909.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -554821.78 kJ.mol-1 (Alexandria-library-w1u)
+25-dihydrofuran(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -719.56
+	delta_h	  4448.89
+#	Gf°(g) =   -607121.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -607035.62 kJ.mol-1 (Alexandria-library-w1u)
+25-dihydrothiophene(g)
+[C]4H6[S] = 4 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -696.84
+	delta_h	  4318.12
+#	Gf°(g) =  -1455154.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1455064.40 kJ.mol-1 (Alexandria-library-w1u)
+26-difluoropyridine(g)
+[C]5H3[F]2[N] = 5 [C](g) + 3 H(g) + 2 [F](g) + [N](g) 
+	log_k	  -836.99
+	delta_h	  5141.33
+#	Gf°(g) =  -1173324.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1173228.62 kJ.mol-1 (Alexandria-library-w1u)
+2E-2-butenenitrile(g)
+[C]4H5[N] = 4 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -694.44
+	delta_h	  4266.26
+#	Gf°(g) =   -551835.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -551744.08 kJ.mol-1 (Alexandria-library-w1u)
+2H-123-triazole(g)
+[C]2H3[N]3 = 2 [C](g) + 3 H(g) + 3 [N](g)
+	log_k	  -529.33
+	delta_h	  3269.07
+#	Gf°(g) =   -636121.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -636041.03 kJ.mol-1 (Alexandria-library-w1u)
+2H-tetrazole(g)
+[C]H2[N]4 = [C](g)  + 2 H(g) + 4 [N](g)
+	log_k	  -442.54
+	delta_h	  2741.45
+#	Gf°(g) =   -678240.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -678160.49 kJ.mol-1 (Alexandria-library-w1u)
+2R-2-butanol(g)
+[C]4H10O = 4 [C](g) + 10 H(g) + O(g) 
+	log_k	  -889.15
+	delta_h	  5541.42
+#	Gf°(g) =   -613475.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -613377.01 kJ.mol-1 (Alexandria-library-w1u)
+2Z-2-butenenitrile(g)
+[C]4H5[N] = 4 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -694.44
+	delta_h	  4266.26
+#	Gf°(g) =   -551835.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -551744.08 kJ.mol-1 (Alexandria-library-w1u)
+3-amino-1-propanol(g)
+[C]3H9[N]O = 3 [C](g) + 9 H(g) + [N](g)  + O(g) 
+	log_k	  -802.93
+	delta_h	  5015.12
+#	Gf°(g) =   -655597.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -655497.78 kJ.mol-1 (Alexandria-library-w1u)
+3-chloro-111-trifluoropropane(g)
+[C]3H4Cl[F]3 = Cl(g) + 3 [C](g) + 4 H(g) + 3 [F](g) 
+	log_k	  -661.43
+	delta_h	  4120.59
+#	Gf°(g) =  -2301597.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2301490.05 kJ.mol-1 (Alexandria-library-w1u)
+3-chloropropan-1-ol(g)
+[C]3H7ClO = Cl(g) + 3 [C](g) + 7 H(g) + O(g) 
+	log_k	  -685.15
+	delta_h	  4275.31
+#	Gf°(g) =  -1717065.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1716965.28 kJ.mol-1 (Alexandria-library-w1u)
+3-chloropropene(g)
+[C]3H5Cl = Cl(g) + 3 [C](g) + 5 H(g) 
+	log_k	  -538.42
+	delta_h	  3335.82
+#	Gf°(g) =  -1516342.49 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1516253.86 kJ.mol-1 (Alexandria-library-w1u)
+3-chloropropyne(g)
+[C]3H3Cl = Cl(g) + 3 [C](g) + 3 H(g) 
+	log_k	  -441.75
+	delta_h	  2717.83
+#	Gf°(g) =  -1513097.99 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1513011.45 kJ.mol-1 (Alexandria-library-w1u)
+3-chloropyridine(g)
+[C]5H4Cl[N] = Cl(g) + 5 [C](g) + 4 H(g) + [N](g) 
+	log_k	  -796.48
+	delta_h	  4903.05
+#	Gf°(g) =  -1858737.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1858642.64 kJ.mol-1 (Alexandria-library-w1u)
+3-cyclopenten-1-one(g)
+[C]5H6O = 5 [C](g) + 6 H(g) + O(g) 
+	log_k	  -842.53
+	delta_h	  5190.05
+#	Gf°(g) =   -707259.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707168.27 kJ.mol-1 (Alexandria-library-w1u)
+3-fluoropropene-gauche(g)
+[C]3H5[F] = 3 [C](g) + 5 H(g) + [F](g) 
+	log_k	  -560.22
+	delta_h	  3461.23
+#	Gf°(g) =   -570203.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -570117.98 kJ.mol-1 (Alexandria-library-w1u)
+3-fluoropropyne(g)
+[C]3H3[F] = 3 [C](g) + 3 H(g) + [F](g) 
+	log_k	  -463.61
+	delta_h	  2843.74
+#	Gf°(g) =   -566959.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -566876.07 kJ.mol-1 (Alexandria-library-w1u)
+3-hydroxypropanenitrile-trans(g)
+[C]3H5[N]O = 3 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -652.31
+	delta_h	  4024.88
+#	Gf°(g) =   -649352.06 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -649258.69 kJ.mol-1 (Alexandria-library-w1u)
+3-methoxy-12-propadiene(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -703.05
+	delta_h	  4344.55
+#	Gf°(g) =   -607027.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -606931.29 kJ.mol-1 (Alexandria-library-w1u)
+3-methyl-1-butene-gauche(g)
+[C]5H10 = 5 [C](g) + 10 H(g)
+	log_k	  -925.72
+	delta_h	  5750.36
+#	Gf°(g) =   -515926.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -515829.95 kJ.mol-1 (Alexandria-library-w1u)
+3-methyl-2-butenenitrile(g)
+[C]5H7[N] = 5 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -883.18
+	delta_h	  5446.95
+#	Gf°(g) =   -655041.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -654940.68 kJ.mol-1 (Alexandria-library-w1u)
+3-methyl-2-cyclopenten-1-one(g)
+[C]6H8O = 6 [C](g) + 8 H(g) + O(g) 
+	log_k	 -1032.30
+	delta_h	  6375.96
+#	Gf°(g) =   -810471.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -810370.10 kJ.mol-1 (Alexandria-library-w1u)
+3-methylfuran(g)
+[C]5H6O = 5 [C](g) + 6 H(g) + O(g) 
+	log_k	  -838.46
+	delta_h	  5166.45
+#	Gf°(g) =   -707236.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707144.67 kJ.mol-1 (Alexandria-library-w1u)
+3-methylthiophene(g)
+[C]5H6[S] = 5 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -814.86
+	delta_h	  5030.57
+#	Gf°(g) =  -1555263.67 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1555168.34 kJ.mol-1 (Alexandria-library-w1u)
+3-oxetanone(g)
+[C]3H4O2 = 3 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -595.37
+	delta_h	  3672.64
+#	Gf°(g) =   -701477.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -701390.95 kJ.mol-1 (Alexandria-library-w1u)
+3-pyridinecarbonitrile(g)
+[C]6H4[N]2 = 6 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -949.34
+	delta_h	  5815.32
+#	Gf°(g) =   -894212.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -894114.68 kJ.mol-1 (Alexandria-library-w1u)
+3-thiophene-carbonitrile(g)
+[C]5H3[N][S] = 5 [C](g) + 3 H(g) + [N](g)  + [S](g) 
+	log_k	  -765.41
+	delta_h	  4690.40
+#	Gf°(g) =  -1694338.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1694242.31 kJ.mol-1 (Alexandria-library-w1u)
+33-difluorocyclopropene(g)
+[C]3H2[F]2 = 3 [C](g) + 2 H(g) + 2 [F](g)
+	log_k	  -467.18
+	delta_h	  2873.47
+#	Gf°(g) =   -827599.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -827514.78 kJ.mol-1 (Alexandria-library-w1u)
+33-dimethylcyclopropene(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -817.16
+	delta_h	  5066.79
+#	Gf°(g) =   -512614.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512521.95 kJ.mol-1 (Alexandria-library-w1u)
+333-trifluoropropene(g)
+[C]3H3[F]3 = 3 [C](g) + 3 H(g) + 3 [F](g)
+	log_k	  -589.48
+	delta_h	  3640.80
+#	Gf°(g) =  -1091610.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1091515.54 kJ.mol-1 (Alexandria-library-w1u)
+35-cyclohexadiene-12-dione(g)
+[C]6H4O2 = 6 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -929.91
+	delta_h	  5703.39
+#	Gf°(g) =  -1001694.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1001596.16 kJ.mol-1 (Alexandria-library-w1u)
+36-dihydro-12-dioxin(g)
+[C]4H6O2 = 4 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -746.32
+	delta_h	  4643.44
+#	Gf°(g) =   -804467.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -804377.66 kJ.mol-1 (Alexandria-library-w1u)
+3E-hexa-135-triene(g)
+[C]6H8 = 6 [C](g) + 8 H(g)
+	log_k	  -947.62
+	delta_h	  5851.02
+#	Gf°(g) =   -612795.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -612697.67 kJ.mol-1 (Alexandria-library-w1u)
+4-methyl-12-pentadiene(g)
+[C]6H10 = 6 [C](g) + 10 H(g)
+	log_k	 -1020.69
+	delta_h	  6329.36
+#	Gf°(g) =   -615904.83 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -615800.45 kJ.mol-1 (Alexandria-library-w1u)
+4-methylisoxazole(g)
+[C]4H5[N]O = 4 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -745.76
+	delta_h	  4604.49
+#	Gf°(g) =   -749321.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -749229.79 kJ.mol-1 (Alexandria-library-w1u)
+4-methyloxazole(g)
+[C]4H5[N]O = 4 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -763.59
+	delta_h	  4707.17
+#	Gf°(g) =   -749423.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -749332.47 kJ.mol-1 (Alexandria-library-w1u)
+4-methyloxetan-2-one(g)
+[C]4H6O2 = 4 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -801.53
+	delta_h	  4954.63
+#	Gf°(g) =   -804782.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -804688.85 kJ.mol-1 (Alexandria-library-w1u)
+4-methylthiadiazole(g)
+[C]3H4[N]2[S] = 3 [C](g) + 4 H(g) + 2 [N](g) + [S](g) 
+	log_k	  -644.89
+	delta_h	  3995.17
+#	Gf°(g) =  -1639521.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1639427.09 kJ.mol-1 (Alexandria-library-w1u)
+45-dihydro-1H-pyrazole(g)
+[C]3H6[N]2 = 3 [C](g) + 6 H(g) + 2 [N](g)
+	log_k	  -677.88
+	delta_h	  4214.16
+#	Gf°(g) =   -597047.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -596963.48 kJ.mol-1 (Alexandria-library-w1u)
+4H-pyran-4-one(g)
+[C]5H4O2 = 5 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -827.50
+	delta_h	  5080.42
+#	Gf°(g) =   -901673.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -901581.70 kJ.mol-1 (Alexandria-library-w1u)
+4H-pyran(g)
+[C]5H6O = 5 [C](g) + 6 H(g) + O(g) 
+	log_k	  -827.67
+	delta_h	  5106.82
+#	Gf°(g) =   -707174.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707085.04 kJ.mol-1 (Alexandria-library-w1u)
+5-methyloxazole(g)
+[C]4H5[N]O = 4 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -764.25
+	delta_h	  4711.00
+#	Gf°(g) =   -749426.90 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -749336.29 kJ.mol-1 (Alexandria-library-w1u)
+E-13-dichloroprop-1-ene(g)
+[C]3H4Cl2 = 2 Cl(g) + 3 [C](g) + 4 H(g) 
+	log_k	  -523.27
+	delta_h	  3252.98
+#	Gf°(g) =  -2723139.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2723041.31 kJ.mol-1 (Alexandria-library-w1u)
+E-2-butene(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -742.68
+	delta_h	  4601.04
+#	Gf°(g) =   -412753.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412664.72 kJ.mol-1 (Alexandria-library-w1u)
+E-but-2-enedinitrile(g)
+[C]4H2[N]2 = 4 [C](g) + 2 H(g) + 2 [N](g)
+	log_k	  -641.05
+	delta_h	  3902.33
+#	Gf°(g) =   -690888.06 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -690794.27 kJ.mol-1 (Alexandria-library-w1u)
+E-difluorodiazene(g)
+[F]2[N]2 = 2 [F](g) + 2 [N](g)
+	log_k	  -166.12
+	delta_h	  1050.00
+#	Gf°(g) =   -811673.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -811593.98 kJ.mol-1 (Alexandria-library-w1u)
+N-methylethanimine(g)
+[C]3H7[N] = 3 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -662.00
+	delta_h	  4108.71
+#	Gf°(g) =   -454907.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -454819.46 kJ.mol-1 (Alexandria-library-w1u)
+N-methylformamide(g)
+[C]2H5[N]O = 2 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -554.38
+	delta_h	  3428.24
+#	Gf°(g) =   -549357.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -549270.56 kJ.mol-1 (Alexandria-library-w1u)
+N-methylhydroxylamine(g)
+[C]H5[N]O = [C](g)  + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -408.84
+	delta_h	  2560.83
+#	Gf°(g) =   -449090.70 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -449011.66 kJ.mol-1 (Alexandria-library-w1u)
+N-methylidenehydroxylamine(g)
+[C]H3[N]O = [C](g)  + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -334.94
+	delta_h	  2074.33
+#	Gf°(g) =   -445976.16 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -445900.73 kJ.mol-1 (Alexandria-library-w1u)
+N-methylmethanimine(g)
+[C]2H5[N] = 2 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -471.41
+	delta_h	  2918.36
+#	Gf°(g) =   -351690.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -351613.20 kJ.mol-1 (Alexandria-library-w1u)
+NN-difluoromethanamine(g)
+[C]H3[F]2[N] = [C](g)  + 3 H(g) + 2 [F](g) + [N](g) 
+	log_k	  -334.30
+	delta_h	  2107.38
+#	Gf°(g) =   -772712.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -772628.71 kJ.mol-1 (Alexandria-library-w1u)
+Z-1-chloroprop-1-ene(g)
+[C]3H5Cl = Cl(g) + 3 [C](g) + 5 H(g) 
+	log_k	  -540.56
+	delta_h	  3347.35
+#	Gf°(g) =  -1516354.70 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1516265.40 kJ.mol-1 (Alexandria-library-w1u)
+Z-1-fluoroprop-1-ene(g)
+[C]3H5[F] = 3 [C](g) + 5 H(g) + [F](g) 
+	log_k	  -563.45
+	delta_h	  3479.24
+#	Gf°(g) =   -570221.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -570135.99 kJ.mol-1 (Alexandria-library-w1u)
+Z-but-2-enedinitrile(g)
+[C]4H2[N]2 = 4 [C](g) + 2 H(g) + 2 [N](g)
+	log_k	  -640.24
+	delta_h	  3897.57
+#	Gf°(g) =   -690883.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -690789.52 kJ.mol-1 (Alexandria-library-w1u)
+Z-difluorodiazene(g)
+[F]2[N]2 = 2 [F](g) + 2 [N](g)
+	log_k	  -167.80
+	delta_h	  1059.29
+#	Gf°(g) =   -811683.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -811603.26 kJ.mol-1 (Alexandria-library-w1u)
+acetaldehyde(g)
+[C]2H4O = 2 [C](g) + 4 H(g) + O(g) 
+	log_k	  -441.10
+	delta_h	  2710.44
+#	Gf°(g) =   -403967.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -403889.76 kJ.mol-1 (Alexandria-library-w1u)
+acetate(g)
+[C]2H3O2- = 2 [C](g) + 3 H(g) + 2 O(g) + e-
+	log_k	  -500.05
+	delta_h	  3053.73
+#	Gf°(g) =   -600154.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -600068.33 kJ.mol-1 (Alexandria-library-w1u)
+acetic-acid(g)
+[C]2H4O2 = 2 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -522.37
+	delta_h	  3212.24
+#	Gf°(g) =   -601624.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -601539.05 kJ.mol-1 (Alexandria-library-w1u)
+acetone(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -632.36
+	delta_h	  3903.23
+#	Gf°(g) =   -507188.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -507098.48 kJ.mol-1 (Alexandria-library-w1u)
+acetyl-chloride(g)
+[C]2H3ClO = Cl(g) + 2 [C](g) + 3 H(g) + O(g) 
+	log_k	  -434.96
+	delta_h	  2678.89
+#	Gf°(g) =  -1610816.28 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1610728.51 kJ.mol-1 (Alexandria-library-w1u)
+acetyl-cyanide(g)
+[C]3H3[N]O = 3 [C](g) + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -575.71
+	delta_h	  3521.39
+#	Gf°(g) =   -646222.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -646130.77 kJ.mol-1 (Alexandria-library-w1u)
+acetyl-fluoride(g)
+[C]2H3[F]O = 2 [C](g) + 3 H(g) + [F](g)  + O(g) 
+	log_k	  -463.27
+	delta_h	  2841.92
+#	Gf°(g) =   -664714.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -664630.24 kJ.mol-1 (Alexandria-library-w1u)
+acetylene(g)
+[C]2H2 = 2 [C](g) + 2 H(g)
+	log_k	  -268.48
+	delta_h	  1629.90
+#	Gf°(g) =   -203096.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -203037.31 kJ.mol-1 (Alexandria-library-w1u)
+acetylenolate(g)
+[C]2HO- = 2 [C](g) + H(g)  + O(g)  + e-
+	log_k	  -320.71
+	delta_h	  1931.27
+#	Gf°(g) =   -399245.18 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -399173.95 kJ.mol-1 (Alexandria-library-w1u)
+acetylphosphane(g)
+[C]2H5PO = P(g) + 2 [C](g) + 5 H(g) + O(g) 
+	log_k	  -517.19
+	delta_h	  3212.52
+#	Gf°(g) =  -1301836.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1301743.86 kJ.mol-1 (Alexandria-library-w1u)
+acrylamide(g)
+[C]3H5[N]O = 3 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -662.01
+	delta_h	  4079.91
+#	Gf°(g) =   -649407.43 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -649313.72 kJ.mol-1 (Alexandria-library-w1u)
+allylamine(g)
+[C]3H7[N] = 3 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -656.54
+	delta_h	  4077.67
+#	Gf°(g) =   -454876.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -454788.42 kJ.mol-1 (Alexandria-library-w1u)
+aluminium-chloride-oxide(g)
+AlClO = Al(g) + Cl(g) + O(g) 
+	log_k	  -147.44
+	delta_h	   904.05
+#	Gf°(g) =  -2042698.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2042621.55 kJ.mol-1 (Alexandria-library-w1u)
+aluminium-fluoride-oxide(g)
+Al[F]O = Al(g) + [F](g) + O(g) 
+	log_k	  -172.06
+	delta_h	  1062.90
+#	Gf°(g) =  -1096575.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1096519.11 kJ.mol-1 (Alexandria-library-w1u)
+aluminium-monofluoride(g)
+Al[F] = Al(g) + [F](g) 
+	log_k	  -111.98
+	delta_h	   666.46
+#	Gf°(g) =   -899039.34 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -898975.19 kJ.mol-1 (Alexandria-library-w1u)
+aluminium-trichloride(g)
+AlCl3 = Al(g) + 3 Cl(g) 
+	log_k	  -199.01
+	delta_h	  1226.44
+#	Gf°(g) =  -4262259.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4262161.46 kJ.mol-1 (Alexandria-library-w1u)
+aluminium-trifluoride(g)
+Al[F]3 = Al(g) + 3 [F](g) 
+	log_k	  -286.82
+	delta_h	  1731.47
+#	Gf°(g) =  -1423969.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1423882.61 kJ.mol-1 (Alexandria-library-w1u)
+amino-radical(g)
+[N]H2 = [N](g)  + 2 H(g)
+	log_k	  -119.61
+	delta_h	   738.71
+#	Gf°(g) =   -146771.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -146713.92 kJ.mol-1 (Alexandria-library-w1u)
+ammonia(g)
+[N]H3 = [N](g)  + 3 H(g)
+	log_k	  -190.57
+	delta_h	  1175.84
+#	Gf°(g) =   -148523.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -148463.26 kJ.mol-1 (Alexandria-library-w1u)
+ammonium(g)
+H4[N]+ + e- = 4 H(g) + [N](g) 
+	log_k	  -104.76
+	delta_h	   717.80
+#	Gf°(g) =   -149376.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -149317.43 kJ.mol-1 (Alexandria-library-w1u)
+argon(g)
+Ar = Ar(g) 
+	log_k	     0.00
+	delta_h	     0.00
+#	Gf°(g) =  -1385147.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1385100.93 kJ.mol-1 (Alexandria-library-w1u)
+azide(g)
+[N]3- = 3 [N](g) + e-
+	log_k	  -204.44
+	delta_h	  1242.61
+#	Gf°(g) =   -431359.88 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -431294.95 kJ.mol-1 (Alexandria-library-w1u)
+benzene(g)
+[C]6H6 = 6 [C](g) + 6 H(g)
+	log_k	  -894.63
+	delta_h	  5491.51
+#	Gf°(g) =   -609799.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -609713.73 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-chloride-fluoride(g)
+BeCl[F] = Be(g) + Cl(g) + [F](g) 
+	log_k	  -183.78
+	delta_h	  1108.95
+#	Gf°(g) =  -1509802.01 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1509728.97 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-chloride-hydroxide(g)
+BeClOH = Be(g) + Cl(g) + O(g) + H(g) 
+	log_k	  -232.38
+	delta_h	  1415.36
+#	Gf°(g) =  -1446652.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1446573.87 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-chloride(g)
+BeCl2 = Be(g) + 2 Cl(g) 
+	log_k	  -152.06
+	delta_h	   928.36
+#	Gf°(g) =  -2455884.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2455809.68 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-fluoride-hydroxide(g)
+Be[F]OH = Be(g) + [F](g) + O(g) + H(g) 
+	log_k	  -262.51
+	delta_h	  1588.66
+#	Gf°(g) =   -500560.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -500485.88 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-fluoride(g)
+Be[F]2 = Be(g) + 2 [F](g) 
+	log_k	  -213.84
+	delta_h	  1283.53
+#	Gf°(g) =   -563710.00 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -563642.26 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-hydride(g)
+BeH2 = Be(g) + 2 H(g) 
+	log_k	   -99.42
+	delta_h	   624.21
+#	Gf°(g) =    -41817.11 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -41764.95 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-hydroxide(g)
+BeO2H2 = Be(g) + 2 O(g) + 2 H(g) 
+	log_k	  -309.70
+	delta_h	  1888.56
+#	Gf°(g) =   -437403.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -437324.27 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-monohydride(g)
+BeH = Be(g) + H(g) 
+	log_k	   -36.86
+	delta_h	   232.53
+#	Gf°(g) =    -40113.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -40061.05 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-oxide(g)
+BeO = Be(g) + O(g) 
+	log_k	   -74.76
+	delta_h	   453.93
+#	Gf°(g) =   -236176.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -236117.72 kJ.mol-1 (Alexandria-library-w1u)
+beryllium-sulfide(g)
+Be[S] = Be(g) + [S](g) 
+	log_k	   -53.10
+	delta_h	   329.06
+#	Gf°(g) =  -1084215.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1084152.40 kJ.mol-1 (Alexandria-library-w1u)
+bicyclo220hexa-14-2-5-triene(g)
+[C]6H4 = 6 [C](g) + 4 H(g)
+	log_k	  -718.50
+	delta_h	  4418.18
+#	Gf°(g) =   -606101.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -606015.98 kJ.mol-1 (Alexandria-library-w1u)
+borane-carbonyl(g)
+BH3[C]O = B(g) + 3 H(g) + [C](g) + O(g) 
+	log_k	  -376.91
+	delta_h	  2309.63
+#	Gf°(g) =   -367610.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -367533.75 kJ.mol-1 (Alexandria-library-w1u)
+borane(g)
+BH3 = B(g) + 3 H(g) 
+	log_k	  -184.45
+	delta_h	  1137.78
+#	Gf°(g) =    -69883.47 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -69822.92 kJ.mol-1 (Alexandria-library-w1u)
+boron-hydroxide(g)
+BH3O3 = B(g) + 3 H(g) + 3 O(g) 
+	log_k	  -478.04
+	delta_h	  2926.26
+#	Gf°(g) =   -663138.01 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -663053.86 kJ.mol-1 (Alexandria-library-w1u)
+boron-monofluoride(g)
+B[F] = B(g) + [F](g) 
+	log_k	  -126.72
+	delta_h	   751.65
+#	Gf°(g) =   -327481.13 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -327421.36 kJ.mol-1 (Alexandria-library-w1u)
+boron-monohydride(g)
+BH = B(g) + H(g) 
+	log_k	   -55.02
+	delta_h	   340.07
+#	Gf°(g) =    -66451.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -66400.78 kJ.mol-1 (Alexandria-library-w1u)
+boron-nitride(g)
+B[N] = B(g) + [N](g) 
+	log_k	   -61.22
+	delta_h	   379.39
+#	Gf°(g) =   -208537.43 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -208478.67 kJ.mol-1 (Alexandria-library-w1u)
+boron-phosphide(g)
+BP = B(g) + P(g) 
+	log_k	   -42.20
+	delta_h	   269.77
+#	Gf°(g) =   -961120.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -961058.08 kJ.mol-1 (Alexandria-library-w1u)
+boron-tetrafluoride(g)
+B[F]4- = B(g) + 4 [F](g) + e- 
+	log_k	  -427.33
+	delta_h	  2579.61
+#	Gf°(g) =  -1115099.44 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1115012.95 kJ.mol-1 (Alexandria-library-w1u)
+boron-trichloride(g)
+BCl3 = B(g) + 3 Cl(g) 
+	log_k	  -211.56
+	delta_h	  1303.61
+#	Gf°(g) =  -3690688.67 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3690599.62 kJ.mol-1 (Alexandria-library-w1u)
+boron-trifluoride(g)
+B[F]3 = B(g) + 3 [F](g) 
+	log_k	  -321.37
+	delta_h	  1933.96
+#	Gf°(g) =   -852524.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -852446.08 kJ.mol-1 (Alexandria-library-w1u)
+but-3-yn-2-one(g)
+[C]4H4O = 4 [C](g) + 4 H(g) + O(g) 
+	log_k	  -633.75
+	delta_h	  3884.50
+#	Gf°(g) =   -603939.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -603846.81 kJ.mol-1 (Alexandria-library-w1u)
+buta-13-diene(g)
+[C]4H6 = 4 [C](g) + 6 H(g)
+	log_k	  -656.60
+	delta_h	  4047.86
+#	Gf°(g) =   -409569.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -409487.11 kJ.mol-1 (Alexandria-library-w1u)
+butane(g)
+[C]4H10 = 4 [C](g) + 10 H(g)
+	log_k	  -826.26
+	delta_h	  5143.91
+#	Gf°(g) =   -415923.33 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -415832.02 kJ.mol-1 (Alexandria-library-w1u)
+butanoic-acid(g)
+[C]4H8O2 = 4 [C](g) + 8 H(g) + 2 O(g)
+	log_k	  -893.27
+	delta_h	  5536.24
+#	Gf°(g) =   -807998.91 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -807894.89 kJ.mol-1 (Alexandria-library-w1u)
+carbamic-acid(g)
+[C]H3[N]O2 = [C](g)  + 3 H(g) + [N](g)  + 2 O(g)
+	log_k	  -449.65
+	delta_h	  2766.67
+#	Gf°(g) =   -643823.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -643740.55 kJ.mol-1 (Alexandria-library-w1u)
+carboimidic-difluoride(g)
+[C]H[F]2[N] = [C](g)  + H(g)  + 2 [F](g) + [N](g) 
+	log_k	  -315.16
+	delta_h	  1933.65
+#	Gf°(g) =   -769910.13 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -769830.55 kJ.mol-1 (Alexandria-library-w1u)
+carbon-dioxide(g)
+[C]O2 = [C](g)  + 2 O(g)
+	log_k	  -268.10
+	delta_h	  1601.81
+#	Gf°(g) =   -495351.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -495288.28 kJ.mol-1 (Alexandria-library-w1u)
+carbon-monosulfide(g)
+[C][S] = [C](g)  + [S](g) 
+	log_k	  -115.62
+	delta_h	   689.61
+#	Gf°(g) =  -1145450.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1145388.13 kJ.mol-1 (Alexandria-library-w1u)
+carbon-monoxide(g)
+[C]O = [C](g)  + O(g) 
+	log_k	  -180.04
+	delta_h	  1058.58
+#	Gf°(g) =   -297656.43 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -297597.56 kJ.mol-1 (Alexandria-library-w1u)
+carbon-oxide-sulfide(g)
+[C]O[S] = [C](g)  + O(g)  + [S](g) 
+	log_k	  -229.43
+	delta_h	  1378.45
+#	Gf°(g) =  -1343293.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1343224.46 kJ.mol-1 (Alexandria-library-w1u)
+carbon-tetrachloride(g)
+[C]Cl4 = 4 Cl(g) + [C](g) 
+	log_k	  -191.18
+	delta_h	  1226.22
+#	Gf°(g) =  -4933446.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4933347.73 kJ.mol-1 (Alexandria-library-w1u)
+carbon-tetrafluoride(g)
+[C][F]4 = [C](g)  + 4 [F](g)
+	log_k	  -316.53
+	delta_h	  1947.17
+#	Gf°(g) =  -1149107.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1149023.50 kJ.mol-1 (Alexandria-library-w1u)
+carbonate(g)
+[C]O3-2 =  + [C](g) + 3 O(g) + 2 e- 
+	log_k	  -255.97
+	delta_h	  1571.01
+#	Gf°(g) =   -692482.92 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -692404.96 kJ.mol-1 (Alexandria-library-w1u)
+carbonochloridic-acid(g)
+[C]HClO2 = Cl(g) + [C](g) + H(g) + 2 O(g) 
+	log_k	  -317.53
+	delta_h	  1946.02
+#	Gf°(g) =  -1705210.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1705127.20 kJ.mol-1 (Alexandria-library-w1u)
+carbonofluoridic-acid(g)
+[C]H[F]O2 = [C](g)  + H(g)  + [F](g)  + 2 O(g)
+	log_k	  -345.84
+	delta_h	  2108.99
+#	Gf°(g) =   -759108.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -759028.88 kJ.mol-1 (Alexandria-library-w1u)
+carbonyl-dichloride(g)
+[C]Cl2O = 2 Cl(g) + [C](g) + O(g) 
+	log_k	  -228.69
+	delta_h	  1403.61
+#	Gf°(g) =  -2714393.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2714307.59 kJ.mol-1 (Alexandria-library-w1u)
+carbonyl-fluoride(g)
+[C][F]2O = [C](g)  + 2 [F](g) + O(g) 
+	log_k	  -284.06
+	delta_h	  1722.41
+#	Gf°(g) =   -822182.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -822103.81 kJ.mol-1 (Alexandria-library-w1u)
+chlorine-fluoride(g)
+Cl[F] = Cl(g) + [F](g) 
+	log_k	   -38.92
+	delta_h	   249.70
+#	Gf°(g) =  -1470418.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1470353.41 kJ.mol-1 (Alexandria-library-w1u)
+chlorine-oxide(g)
+ClO = Cl(g) + O(g) 
+	log_k	   -42.88
+	delta_h	   271.68
+#	Gf°(g) =  -1405667.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1405601.68 kJ.mol-1 (Alexandria-library-w1u)
+chlorine-trifluoride(g)
+Cl[F]3 = Cl(g) + 3 [F](g) 
+	log_k	   -74.16
+	delta_h	   521.53
+#	Gf°(g) =  -1994552.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1994467.67 kJ.mol-1 (Alexandria-library-w1u)
+chlorine(g)
+Cl2 = 2 Cl(g) 
+	log_k	   -35.55
+	delta_h	   231.14
+#	Gf°(g) =  -2416662.61 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2416596.15 kJ.mol-1 (Alexandria-library-w1u)
+chloroacetyl-chloride-gauche(g)
+[C]2H2Cl2O = 2 Cl(g) + 2 [C](g) + 2 H(g) + O(g) 
+	log_k	  -414.63
+	delta_h	  2567.39
+#	Gf°(g) =  -2817583.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2817487.30 kJ.mol-1 (Alexandria-library-w1u)
+chloroacetylene(g)
+[C]2HCl = Cl(g) + 2 [C](g) + H(g) 
+	log_k	  -249.89
+	delta_h	  1524.98
+#	Gf°(g) =  -1409874.28 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1409802.68 kJ.mol-1 (Alexandria-library-w1u)
+chlorobenzene(g)
+[C]6H5Cl = Cl(g) + 6 [C](g) + 5 H(g) 
+	log_k	  -879.57
+	delta_h	  5409.77
+#	Gf°(g) =  -1816597.30 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1816502.29 kJ.mol-1 (Alexandria-library-w1u)
+chlorodifluoromethane(g)
+[C]HCl[F]2 = Cl(g) + [C](g) + H(g) + 2 [F](g) 
+	log_k	  -270.90
+	delta_h	  1678.42
+#	Gf°(g) =  -1834490.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1834407.05 kJ.mol-1 (Alexandria-library-w1u)
+chloroethene(g)
+[C]2H3Cl = Cl(g) + 2 [C](g) + 3 H(g) 
+	log_k	  -352.28
+	delta_h	  2170.79
+#	Gf°(g) =  -1413151.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1413072.91 kJ.mol-1 (Alexandria-library-w1u)
+chlorofluoromethane(g)
+[C]H2Cl[F] = Cl(g) + [C](g) + 2 H(g) + [F](g) 
+	log_k	  -258.77
+	delta_h	  1603.30
+#	Gf°(g) =  -1573801.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1573722.94 kJ.mol-1 (Alexandria-library-w1u)
+chloromethane(g)
+[C]H3Cl = Cl(g) + [C](g) + 3 H(g) 
+	log_k	  -252.77
+	delta_h	  1564.43
+#	Gf°(g) =  -1313147.62 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1313075.07 kJ.mol-1 (Alexandria-library-w1u)
+chloromethylidynephosphane(g)
+[C]ClP = Cl(g) + P(g) + [C](g) 
+	log_k	  -152.97
+	delta_h	   939.63
+#	Gf°(g) =  -2204627.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2204553.43 kJ.mol-1 (Alexandria-library-w1u)
+chloromethyloxirane(g)
+[C]3H5ClO = Cl(g) + 3 [C](g) + 5 H(g) + O(g) 
+	log_k	  -591.44
+	delta_h	  3679.73
+#	Gf°(g) =  -1713838.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1713745.26 kJ.mol-1 (Alexandria-library-w1u)
+chlorophosphine(g)
+ClH2P = Cl(g) + P(g) + 2 H(g) 
+	log_k	  -150.36
+	delta_h	   946.15
+#	Gf°(g) =  -2107869.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2107792.89 kJ.mol-1 (Alexandria-library-w1u)
+chlorosilane(g)
+SiH3Cl = Si(g) + Cl(g) + 3 H(g) 
+	log_k	  -215.16
+	delta_h	  1347.97
+#	Gf°(g) =  -1973348.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1973271.07 kJ.mol-1 (Alexandria-library-w1u)
+chlorotrifluoroethene(g)
+[C]2Cl[F]3 = Cl(g) + 2 [C](g) + 3 [F](g) 
+	log_k	  -368.64
+	delta_h	  2279.59
+#	Gf°(g) =  -2195104.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2195008.70 kJ.mol-1 (Alexandria-library-w1u)
+chlorotrifluoromethane(g)
+[C]Cl[F]3 = Cl(g) + [C](g) + 3 [F](g) 
+	log_k	  -283.91
+	delta_h	  1759.53
+#	Gf°(g) =  -2095185.11 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2095097.15 kJ.mol-1 (Alexandria-library-w1u)
+chlorotrifluorosilane(g)
+Cl[F]3Si = Cl(g) + Si(g) + 3 [F](g) 
+	log_k	  -346.71
+	delta_h	  2114.59
+#	Gf°(g) =  -2755959.11 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2755864.68 kJ.mol-1 (Alexandria-library-w1u)
+chlorotrimethylsilane(g)
+[C]3H9ClSi = Cl(g) + Si(g) + 3 [C](g) + 9 H(g) 
+	log_k	  -797.15
+	delta_h	  4974.84
+#	Gf°(g) =  -2283056.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2282945.70 kJ.mol-1 (Alexandria-library-w1u)
+cis-12-dichloroethene(g)
+[C]2H2Cl2 = 2 Cl(g) + 2 [C](g) + 2 H(g) 
+	log_k	  -335.85
+	delta_h	  2080.75
+#	Gf°(g) =  -2619941.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2619853.17 kJ.mol-1 (Alexandria-library-w1u)
+cis-12-difluoroethene(g)
+[C]2H2[F]2 = 2 [C](g) + 2 H(g) + 2 [F](g)
+	log_k	  -379.20
+	delta_h	  2329.95
+#	Gf°(g) =   -727661.47 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -727579.78 kJ.mol-1 (Alexandria-library-w1u)
+cis-13-pentadiene(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -844.04
+	delta_h	  5218.07
+#	Gf°(g) =   -512767.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512673.24 kJ.mol-1 (Alexandria-library-w1u)
+cis-2-butene(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -741.86
+	delta_h	  4595.18
+#	Gf°(g) =   -412748.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412658.85 kJ.mol-1 (Alexandria-library-w1u)
+cis-crotonic-acid(g)
+[C]4H6O2 = 4 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -805.56
+	delta_h	  4969.03
+#	Gf°(g) =   -804805.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -804703.25 kJ.mol-1 (Alexandria-library-w1u)
+cyanamide(g)
+[C]H2[N]2 = [C](g)  + 2 H(g) + 2 [N](g)
+	log_k	  -323.21
+	delta_h	  1975.01
+#	Gf°(g) =   -390766.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -390692.48 kJ.mol-1 (Alexandria-library-w1u)
+cyano-radical(g)
+[C][N] = [C](g)  + [N](g) 
+	log_k	  -124.49
+	delta_h	   740.25
+#	Gf°(g) =   -243542.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -243482.52 kJ.mol-1 (Alexandria-library-w1u)
+cyano-thiocyanate(g)
+[C]2[N]2[S] = 2 [C](g) + 2 [N](g) + [S](g) 
+	log_k	  -374.80
+	delta_h	  2278.28
+#	Gf°(g) =  -1533158.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1533069.86 kJ.mol-1 (Alexandria-library-w1u)
+cyanoacetylene(g)
+[C]3H[N] = 3 [C](g) + H(g)  + [N](g) 
+	log_k	  -407.12
+	delta_h	  2462.54
+#	Gf°(g) =   -445374.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -445300.00 kJ.mol-1 (Alexandria-library-w1u)
+cyanogen-chloride(g)
+[C]Cl[N] = Cl(g) + [C](g) + [N](g) 
+	log_k	  -192.77
+	delta_h	  1167.60
+#	Gf°(g) =  -1452162.44 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1452092.38 kJ.mol-1 (Alexandria-library-w1u)
+cyanogen-fluoride(g)
+[C][F][N] = [C](g)  + [F](g)  + [N](g) 
+	log_k	  -209.08
+	delta_h	  1261.80
+#	Gf°(g) =   -505991.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -505925.28 kJ.mol-1 (Alexandria-library-w1u)
+cyanoimino-methylene-azanide(g)
+[C]2[N]3- = 2 [C](g) + 3 [N](g) + e-
+	log_k	  -457.13
+	delta_h	  2754.56
+#	Gf°(g) =   -631673.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -631589.88 kJ.mol-1 (Alexandria-library-w1u)
+cyanomethyl-radical(g)
+[C]2H2[N] = 2 [C](g) + 2 H(g) + [N](g) 
+	log_k	  -345.02
+	delta_h	  2096.40
+#	Gf°(g) =   -346930.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -346854.59 kJ.mol-1 (Alexandria-library-w1u)
+cyclobutadiene(g)
+[C]4H4 = 4 [C](g) + 4 H(g)
+	log_k	  -531.55
+	delta_h	  3269.31
+#	Gf°(g) =   -406162.92 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -406084.13 kJ.mol-1 (Alexandria-library-w1u)
+cyclobutane-12-dione(g)
+[C]4H4O2 = 4 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -710.85
+	delta_h	  4368.49
+#	Gf°(g) =   -801572.18 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -801478.29 kJ.mol-1 (Alexandria-library-w1u)
+cyclobutane-13-dione(g)
+[C]4H4O2 = 4 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -713.51
+	delta_h	  4384.09
+#	Gf°(g) =   -801587.38 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -801493.88 kJ.mol-1 (Alexandria-library-w1u)
+cyclobutane(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -732.43
+	delta_h	  4549.24
+#	Gf°(g) =   -412694.99 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412612.92 kJ.mol-1 (Alexandria-library-w1u)
+cyclobutene(g)
+[C]4H6 = 4 [C](g) + 6 H(g)
+	log_k	  -644.78
+	delta_h	  3983.02
+#	Gf°(g) =   -409502.00 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -409422.27 kJ.mol-1 (Alexandria-library-w1u)
+cyclopent-2-en-1-one(g)
+[C]5H6O = 5 [C](g) + 6 H(g) + O(g) 
+	log_k	  -842.53
+	delta_h	  5190.05
+#	Gf°(g) =   -707259.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707168.27 kJ.mol-1 (Alexandria-library-w1u)
+cyclopentene(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -847.57
+	delta_h	  5246.26
+#	Gf°(g) =   -512788.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512701.43 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropane(g)
+[C]3H6 = 3 [C](g) + 6 H(g)
+	log_k	  -547.22
+	delta_h	  3386.44
+#	Gf°(g) =   -309509.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -309434.20 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropanecarbonitrile(g)
+[C]4H5[N] = 4 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -685.23
+	delta_h	  4217.98
+#	Gf°(g) =   -551782.93 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -551695.79 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropanol(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -608.99
+	delta_h	  3776.87
+#	Gf°(g) =   -507054.75 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506972.11 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropanone(g)
+[C]3H4O = 3 [C](g) + 4 H(g) + O(g) 
+	log_k	  -526.05
+	delta_h	  3236.91
+#	Gf°(g) =   -503888.62 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -503807.72 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropene(g)
+[C]3H4 = 3 [C](g) + 4 H(g)
+	log_k	  -443.03
+	delta_h	  2724.45
+#	Gf°(g) =   -306221.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -306147.78 kJ.mol-1 (Alexandria-library-w1u)
+cyclopropylamine(g)
+[C]3H7[N] = 3 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -651.40
+	delta_h	  4052.76
+#	Gf°(g) =   -454846.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -454763.51 kJ.mol-1 (Alexandria-library-w1u)
+diazene(g)
+H2[N]2 = 2 H(g) + 2 [N](g)
+	log_k	  -192.63
+	delta_h	  1194.19
+#	Gf°(g) =   -290585.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -290520.17 kJ.mol-1 (Alexandria-library-w1u)
+diazomethane(g)
+[C]H2[N]2 = [C](g)  + 2 H(g) + 2 [N](g)
+	log_k	  -302.99
+	delta_h	  1859.61
+#	Gf°(g) =   -390650.92 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -390577.09 kJ.mol-1 (Alexandria-library-w1u)
+diborane-6(g)
+B2H6 = 2 B(g) + 6 H(g) 
+	log_k	  -386.14
+	delta_h	  2422.54
+#	Gf°(g) =   -139865.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -139792.82 kJ.mol-1 (Alexandria-library-w1u)
+dicarbon(g)
+[C]2 = 2 [C](g)
+	log_k	   -80.71
+	delta_h	   492.68
+#	Gf°(g) =   -199332.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -199275.66 kJ.mol-1 (Alexandria-library-w1u)
+dichloro-difluoroaluminate(g)
+AlCl2[F]2- = Al(g) + 2 Cl(g) + 2 [F](g) + e- 
+	log_k	  -362.44
+	delta_h	  2201.13
+#	Gf°(g) =  -3578898.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3578796.07 kJ.mol-1 (Alexandria-library-w1u)
+dichloroacetic-acid(g)
+[C]2H2Cl2O2 = 2 Cl(g) + 2 [C](g) + 2 H(g) + 2 O(g) 
+	log_k	  -481.97
+	delta_h	  2990.74
+#	Gf°(g) =  -3015161.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3015058.13 kJ.mol-1 (Alexandria-library-w1u)
+dichloroborane(g)
+HBCl2 = B(g) + 2 Cl(g) + H(g) 
+	log_k	  -205.82
+	delta_h	  1265.11
+#	Gf°(g) =  -2483772.43 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2483690.83 kJ.mol-1 (Alexandria-library-w1u)
+dichlorodifluoromethane(g)
+[C]Cl2[F]2 = 2 Cl(g) + [C](g) + 2 [F](g) 
+	log_k	  -251.95
+	delta_h	  1575.70
+#	Gf°(g) =  -3041266.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3041174.62 kJ.mol-1 (Alexandria-library-w1u)
+dichlorofluoromethane(g)
+[C]HCl2[F] = 2 Cl(g) + [C](g) + H(g) + [F](g) 
+	log_k	  -241.77
+	delta_h	  1510.78
+#	Gf°(g) =  -2780588.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2780500.70 kJ.mol-1 (Alexandria-library-w1u)
+dichloromethane(g)
+[C]H2Cl2 = 2 Cl(g) + [C](g) + 2 H(g) 
+	log_k	  -234.58
+	delta_h	  1463.98
+#	Gf°(g) =  -2519927.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2519844.91 kJ.mol-1 (Alexandria-library-w1u)
+dichlorophosphine(g)
+Cl2HP = 2 Cl(g) + P(g) + H(g) 
+	log_k	  -147.99
+	delta_h	   935.53
+#	Gf°(g) =  -3314739.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3314652.56 kJ.mol-1 (Alexandria-library-w1u)
+dichlorosilane(g)
+Cl2H2Si = 2 Cl(g) + Si(g) + 2 H(g) 
+	log_k	  -224.73
+	delta_h	  1407.70
+#	Gf°(g) =  -3180286.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3180201.09 kJ.mol-1 (Alexandria-library-w1u)
+dichlorosilylene(g)
+Cl2Si = 2 Cl(g) + Si(g) 
+	log_k	  -136.28
+	delta_h	   835.89
+#	Gf°(g) =  -3177089.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3177004.85 kJ.mol-1 (Alexandria-library-w1u)
+dicyanamide(g)
+[C]2H[N]3 = 2 [C](g) + H(g)  + 3 [N](g)
+	log_k	  -446.99
+	delta_h	  2725.04
+#	Gf°(g) =   -632958.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -632872.57 kJ.mol-1 (Alexandria-library-w1u)
+diethylether(g)
+[C]4H10O = 4 [C](g) + 10 H(g) + O(g) 
+	log_k	  -884.80
+	delta_h	  5515.06
+#	Gf°(g) =   -613450.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -613350.65 kJ.mol-1 (Alexandria-library-w1u)
+difluoramine(g)
+[F]2H[N] = 2 [F](g) + H(g)  + [N](g) 
+	log_k	  -145.46
+	delta_h	   924.94
+#	Gf°(g) =   -669505.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -669430.35 kJ.mol-1 (Alexandria-library-w1u)
+difluorine-monoxide(g)
+[F]2O = 2 [F](g) + O(g) 
+	log_k	   -57.38
+	delta_h	   389.59
+#	Gf°(g) =   -721453.03 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -721379.50 kJ.mol-1 (Alexandria-library-w1u)
+difluoroborane(g)
+B[F]2H = B(g) + 2 [F](g) + H(g) 
+	log_k	  -278.30
+	delta_h	  1682.92
+#	Gf°(g) =   -591658.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -591586.05 kJ.mol-1 (Alexandria-library-w1u)
+difluorodisulfane(g)
+[F]2[S]2 = 2 [F](g) + 2 [S](g)
+	log_k	  -160.36
+	delta_h	  1013.66
+#	Gf°(g) =  -2615558.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2615470.15 kJ.mol-1 (Alexandria-library-w1u)
+difluoromethane(g)
+[C]H2[F]2 = [C](g)  + 2 H(g) + 2 [F](g)
+	log_k	  -285.03
+	delta_h	  1754.48
+#	Gf°(g) =   -627688.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -627612.82 kJ.mol-1 (Alexandria-library-w1u)
+difluoromethene(g)
+[C][F]2 = [C](g)  + 2 [F](g)
+	log_k	  -175.21
+	delta_h	  1062.84
+#	Gf°(g) =   -624368.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -624296.75 kJ.mol-1 (Alexandria-library-w1u)
+difluoromethyl-methyl-ether(g)
+[C]2H4[F]2O = 2 [C](g) + 4 H(g) + 2 [F](g) + O(g) 
+	log_k	  -536.78
+	delta_h	  3332.64
+#	Gf°(g) =   -928446.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -928354.38 kJ.mol-1 (Alexandria-library-w1u)
+difluorophosphine(g)
+[F]2HP = P(g) + 2 [F](g) + H(g) 
+	log_k	  -204.55
+	delta_h	  1261.49
+#	Gf°(g) =  -1422534.93 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1422455.92 kJ.mol-1 (Alexandria-library-w1u)
+difluorophosphineborane(g)
+B[F]2H4P = B(g) + P(g) + 2 [F](g) + 4 H(g) 
+	log_k	  -401.62
+	delta_h	  2518.92
+#	Gf°(g) =  -1492490.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1492398.49 kJ.mol-1 (Alexandria-library-w1u)
+difluorosilane(g)
+[F]2H2Si = Si(g) + 2 [F](g) + 2 H(g) 
+	log_k	  -291.72
+	delta_h	  1791.10
+#	Gf°(g) =  -1288141.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1288061.90 kJ.mol-1 (Alexandria-library-w1u)
+difluorosilylene(g)
+[F]2Si = Si(g) + 2 [F](g) 
+	log_k	  -202.90
+	delta_h	  1219.18
+#	Gf°(g) =  -1284942.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1284865.55 kJ.mol-1 (Alexandria-library-w1u)
+dihydrogen-carbonate(g)
+[C]H2O3 = [C](g)  + 2 H(g) + 3 O(g)
+	log_k	  -399.10
+	delta_h	  2444.47
+#	Gf°(g) =   -695985.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -695902.85 kJ.mol-1 (Alexandria-library-w1u)
+dihydrogen-phosphate(g)
+H2O4P- = P(g) + 2 H(g) + 4 O(g) + e- 
+	log_k	  -480.26
+	delta_h	  2950.95
+#	Gf°(g) =  -1690297.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1690205.14 kJ.mol-1 (Alexandria-library-w1u)
+dihydrogen-sulfate(g)
+H2O4[S] = 2 H(g) + 4 O(g) + [S](g) 
+	log_k	  -377.15
+	delta_h	  2360.68
+#	Gf°(g) =  -1838972.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1838882.09 kJ.mol-1 (Alexandria-library-w1u)
+dihydroxy-fluorophosphine(g)
+[F]H2O2P = P(g) + [F](g) + 2 H(g) + 2 O(g) 
+	log_k	  -345.30
+	delta_h	  2133.63
+#	Gf°(g) =  -1557104.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1557014.05 kJ.mol-1 (Alexandria-library-w1u)
+dihydroxy-phosphine(g)
+H3O2P = P(g) + 3 H(g) + 2 O(g) 
+	log_k	  -308.70
+	delta_h	  1921.96
+#	Gf°(g) =  -1296275.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1296193.38 kJ.mol-1 (Alexandria-library-w1u)
+diketene(g)
+[C]4H4O2 = 4 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -714.80
+	delta_h	  4394.25
+#	Gf°(g) =   -801594.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -801504.05 kJ.mol-1 (Alexandria-library-w1u)
+dilithium(g)
+Li2 = 2 Li(g) 
+	log_k	   -11.18
+	delta_h	    87.80
+#	Gf°(g) =    -39474.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -39415.98 kJ.mol-1 (Alexandria-library-w1u)
+dimethoxymethane(g)
+[C]3H8O2 = 3 [C](g) + 8 H(g) + 2 O(g)
+	log_k	  -755.68
+	delta_h	  4712.38
+#	Gf°(g) =   -707777.75 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707679.54 kJ.mol-1 (Alexandria-library-w1u)
+dimethyl-carbonate(g)
+[C]3H6O3 = 3 [C](g) + 6 H(g) + 3 O(g)
+	log_k	  -765.65
+	delta_h	  4742.71
+#	Gf°(g) =   -902334.83 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -902232.93 kJ.mol-1 (Alexandria-library-w1u)
+dimethyl-disulfide(g)
+[C]2H6[S]2 = 2 [C](g) + 6 H(g) + 2 [S](g)
+	log_k	  -525.28
+	delta_h	  3288.22
+#	Gf°(g) =  -2300658.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2300558.56 kJ.mol-1 (Alexandria-library-w1u)
+dimethyl-silane(g)
+[C]2H8Si = Si(g) + 2 [C](g) + 8 H(g) 
+	log_k	  -591.68
+	delta_h	  3696.56
+#	Gf°(g) =   -972871.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -972781.21 kJ.mol-1 (Alexandria-library-w1u)
+dimethyl-sulfide(g)
+[C]2H6[S] = 2 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -487.29
+	delta_h	  3036.74
+#	Gf°(g) =  -1255086.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1255000.04 kJ.mol-1 (Alexandria-library-w1u)
+dimethyl-sulfoxide(g)
+[C]2H6O[S] = 2 [C](g) + 6 H(g) + O(g)  + [S](g) 
+	log_k	  -540.45
+	delta_h	  3380.35
+#	Gf°(g) =  -1452582.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1452491.14 kJ.mol-1 (Alexandria-library-w1u)
+dimethylamine(g)
+[C]2H7[N] = 2 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -552.35
+	delta_h	  3445.20
+#	Gf°(g) =   -354845.49 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -354764.47 kJ.mol-1 (Alexandria-library-w1u)
+dimethylborane(g)
+[C]2H7B = B(g) + 2 [C](g) + 7 H(g) 
+	log_k	  -576.40
+	delta_h	  3573.56
+#	Gf°(g) =   -276377.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -276290.54 kJ.mol-1 (Alexandria-library-w1u)
+dimethylchlorosilane(g)
+[C]2H7ClSi = Cl(g) + Si(g) + 2 [C](g) + 7 H(g) 
+	log_k	  -603.51
+	delta_h	  3767.62
+#	Gf°(g) =  -2179822.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2179722.56 kJ.mol-1 (Alexandria-library-w1u)
+dimethyldichlorosilane(g)
+[C]2H6Cl2Si = 2 Cl(g) + Si(g) + 2 [C](g) + 6 H(g) 
+	log_k	  -614.78
+	delta_h	  3836.18
+#	Gf°(g) =  -3386770.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3386661.41 kJ.mol-1 (Alexandria-library-w1u)
+dimethylether(g)
+[C]2H6O = 2 [C](g) + 6 H(g) + O(g) 
+	log_k	  -508.78
+	delta_h	  3162.54
+#	Gf°(g) =   -407046.93 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -406966.30 kJ.mol-1 (Alexandria-library-w1u)
+dimethylphosphine(g)
+[C]2H7P = P(g) + 2 [C](g) + 7 H(g) 
+	log_k	  -531.54
+	delta_h	  3322.97
+#	Gf°(g) =  -1107418.70 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1107331.26 kJ.mol-1 (Alexandria-library-w1u)
+dimethylsilanone(g)
+[C]2H7OSi = Si(g) + 2 [C](g) + 7 H(g) + O(g) 
+	log_k	  -355.49
+	delta_h	  2350.28
+#	Gf°(g) =  -1167369.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1167270.20 kJ.mol-1 (Alexandria-library-w1u)
+dinitrogen-tetroxide(g)
+[N]2O4 = 2 [N](g) + 4 O(g)
+	log_k	  -312.74
+	delta_h	  1964.81
+#	Gf°(g) =  -1077349.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1077256.32 kJ.mol-1 (Alexandria-library-w1u)
+dinitrogen-trioxide(g)
+[N]2O3 = 2 [N](g) + 3 O(g)
+	log_k	  -261.21
+	delta_h	  1629.46
+#	Gf°(g) =   -879862.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -879773.48 kJ.mol-1 (Alexandria-library-w1u)
+diphosphorus(g)
+P2 = 2 P(g) 
+	log_k	   -78.99
+	delta_h	   483.18
+#	Gf°(g) =  -1792627.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1792562.79 kJ.mol-1 (Alexandria-library-w1u)
+disilicon(g)
+Si2 = 2 Si(g) 
+	log_k	   -30.13
+	delta_h	   202.00
+#	Gf°(g) =  -1519874.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1519809.90 kJ.mol-1 (Alexandria-library-w1u)
+disiloxane(g)
+H6OSi2 = 2 Si(g) + 6 H(g) + O(g) 
+	log_k	  -444.36
+	delta_h	  2780.80
+#	Gf°(g) =  -1727510.49 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1727409.47 kJ.mol-1 (Alexandria-library-w1u)
+disilyne(g)
+H2Si2 = 2 Si(g) + 2 H(g) 
+	log_k	  -133.46
+	delta_h	   846.75
+#	Gf°(g) =  -1523157.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1523079.08 kJ.mol-1 (Alexandria-library-w1u)
+disulfur-dichloride(g)
+Cl2[S]2 = 2 Cl(g) + 2 [S](g) 
+	log_k	  -123.35
+	delta_h	   798.82
+#	Gf°(g) =  -4507873.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4507777.91 kJ.mol-1 (Alexandria-library-w1u)
+disulfur-monoxide(g)
+O[S]2 = O(g)  + 2 [S](g)
+	log_k	  -133.98
+	delta_h	   826.64
+#	Gf°(g) =  -2288667.78 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2288588.21 kJ.mol-1 (Alexandria-library-w1u)
+disulfur(g)
+[S]2 = 2 [S](g)
+	log_k	   -70.54
+	delta_h	   430.69
+#	Gf°(g) =  -2091112.78 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2091044.77 kJ.mol-1 (Alexandria-library-w1u)
+divinyl-ether(g)
+[C]4H6O = 4 [C](g) + 6 H(g) + O(g) 
+	log_k	  -715.22
+	delta_h	  4418.10
+#	Gf°(g) =   -607096.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -607004.83 kJ.mol-1 (Alexandria-library-w1u)
+epichlorohydrin(g)
+[C]3H5ClO = Cl(g) + 3 [C](g) + 5 H(g) + O(g) 
+	log_k	  -590.54
+	delta_h	  3674.96
+#	Gf°(g) =  -1713832.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1713740.49 kJ.mol-1 (Alexandria-library-w1u)
+ethane(g)
+[C]2H6 = 2 [C](g) + 6 H(g)
+	log_k	  -455.39
+	delta_h	  2820.63
+#	Gf°(g) =   -209549.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -209476.89 kJ.mol-1 (Alexandria-library-w1u)
+ethanethial(g)
+[C]2H4[S] = 2 [C](g) + 4 H(g) + [S](g) 
+	log_k	  -402.96
+	delta_h	  2492.20
+#	Gf°(g) =  -1251912.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1251831.07 kJ.mol-1 (Alexandria-library-w1u)
+ethanethiol-gauche(g)
+[C]2H6[S] = 2 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -488.34
+	delta_h	  3044.16
+#	Gf°(g) =  -1255092.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1255007.47 kJ.mol-1 (Alexandria-library-w1u)
+ethanimine(g)
+[C]2H5[N] = 2 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -477.77
+	delta_h	  2954.14
+#	Gf°(g) =   -351727.06 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -351648.97 kJ.mol-1 (Alexandria-library-w1u)
+ethanol-trans(g)
+[C]2H6O = 2 [C](g) + 6 H(g) + O(g) 
+	log_k	  -516.06
+	delta_h	  3204.09
+#	Gf°(g) =   -407088.45 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -407007.84 kJ.mol-1 (Alexandria-library-w1u)
+ethanolate(g)
+[C]2H5O- = 2 [C](g) + 5 H(g) + O(g)  + e-
+	log_k	  -471.11
+	delta_h	  2919.51
+#	Gf°(g) =   -405489.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -405411.05 kJ.mol-1 (Alexandria-library-w1u)
+ethene(g)
+[C]2H4 = 2 [C](g) + 4 H(g)
+	log_k	  -365.99
+	delta_h	  2249.19
+#	Gf°(g) =   -206346.25 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -206281.02 kJ.mol-1 (Alexandria-library-w1u)
+ethenolate(g)
+[C]2H3O- = 2 [C](g) + 3 H(g) + O(g)  + e-
+	log_k	  -404.81
+	delta_h	  2475.67
+#	Gf°(g) =   -402417.97 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -402342.78 kJ.mol-1 (Alexandria-library-w1u)
+ethoxy-radical(g)
+[C]2H5O = 2 [C](g) + 5 H(g) + O(g) 
+	log_k	  -451.04
+	delta_h	  2791.09
+#	Gf°(g) =   -405370.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -405282.63 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-2-cyanoacetate(g)
+[C]5H7[N]O2 = 5 [C](g) + 7 H(g) + [N](g)  + 2 O(g)
+	log_k	 -1022.87
+	delta_h	  6317.72
+#	Gf°(g) =  -1050224.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1050106.42 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-cyanate(g)
+[C]3H5[N]O = 3 [C](g) + 5 H(g) + [N](g)  + O(g) 
+	log_k	  -644.76
+	delta_h	  3981.55
+#	Gf°(g) =   -649308.99 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -649215.36 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-formate-trans(g)
+[C]3H6O2 = 3 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -698.55
+	delta_h	  4321.80
+#	Gf°(g) =   -704758.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -704664.53 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-methylamine(g)
+[C]3H9[N] = 3 [C](g) + 9 H(g) + [N](g) 
+	log_k	  -739.22
+	delta_h	  4615.05
+#	Gf°(g) =   -458040.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -457950.23 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-nitrite(g)
+[C]2H5[N]O2 = 2 [C](g) + 5 H(g) + [N](g)  + 2 O(g)
+	log_k	  -574.91
+	delta_h	  3582.53
+#	Gf°(g) =   -746667.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -746572.34 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-radical(g)
+[C]2H5 = 2 [C](g) + 5 H(g)
+	log_k	  -389.67
+	delta_h	  2407.22
+#	Gf°(g) =   -207827.78 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -207751.27 kJ.mol-1 (Alexandria-library-w1u)
+ethyl-vinyl-ether(g)
+[C]4H8O = 4 [C](g) + 8 H(g) + O(g) 
+	log_k	  -800.96
+	delta_h	  4967.19
+#	Gf°(g) =   -610279.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -610178.35 kJ.mol-1 (Alexandria-library-w1u)
+ethylamine-gauche(g)
+[C]2H7[N] = 2 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -557.35
+	delta_h	  3473.67
+#	Gf°(g) =   -354874.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -354792.93 kJ.mol-1 (Alexandria-library-w1u)
+ethylene-carbonate(g)
+[C]3H4O3 = 3 [C](g) + 4 H(g) + 3 O(g)
+	log_k	  -687.50
+	delta_h	  4240.00
+#	Gf°(g) =   -899195.97 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -899105.79 kJ.mol-1 (Alexandria-library-w1u)
+ethylene-oxide(g)
+[C]2H4O = 2 [C](g) + 4 H(g) + O(g) 
+	log_k	  -419.26
+	delta_h	  2589.91
+#	Gf°(g) =   -403843.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -403769.23 kJ.mol-1 (Alexandria-library-w1u)
+ethyleneglycol(g)
+[C]2H6O2 = 2 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -575.95
+	delta_h	  3581.85
+#	Gf°(g) =   -604623.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -604533.09 kJ.mol-1 (Alexandria-library-w1u)
+ethyleneimine(g)
+[C]2H5[N] = 2 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -460.91
+	delta_h	  2861.54
+#	Gf°(g) =   -351630.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -351556.37 kJ.mol-1 (Alexandria-library-w1u)
+ethylphosphane(g)
+[C]2H7P = P(g) + 2 [C](g) + 7 H(g) 
+	log_k	  -527.86
+	delta_h	  3302.72
+#	Gf°(g) =  -1107397.67 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1107311.00 kJ.mol-1 (Alexandria-library-w1u)
+ethylsulfanyl(g)
+[C]2H5[S] = 2 [C](g) + 5 H(g) + [S](g) 
+	log_k	  -432.43
+	delta_h	  2691.32
+#	Gf°(g) =  -1253426.90 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1253342.41 kJ.mol-1 (Alexandria-library-w1u)
+ethynyl-radical(g)
+[C]2H = 2 [C](g) + H(g) 
+	log_k	  -177.04
+	delta_h	  1069.17
+#	Gf°(g) =   -201228.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -201164.36 kJ.mol-1 (Alexandria-library-w1u)
+ethynyloxidanyl(g)
+[C]2HO = 2 [C](g) + H(g)  + O(g) 
+	log_k	  -287.65
+	delta_h	  1736.95
+#	Gf°(g) =   -399052.90 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -398979.63 kJ.mol-1 (Alexandria-library-w1u)
+ethynylsilane(g)
+[C]2H4Si = Si(g) + 2 [C](g) + 4 H(g) 
+	log_k	  -405.24
+	delta_h	  2503.41
+#	Gf°(g) =   -966421.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -966339.20 kJ.mol-1 (Alexandria-library-w1u)
+fluoramide(g)
+[F]H2[N] = [F](g)  + 2 H(g) + [N](g) 
+	log_k	  -163.61
+	delta_h	  1024.43
+#	Gf°(g) =   -408989.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -408920.85 kJ.mol-1 (Alexandria-library-w1u)
+fluorine-azide(g)
+[F][N]3 = [F](g)  + 3 [N](g)
+	log_k	  -195.16
+	delta_h	  1216.20
+#	Gf°(g) =   -693269.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -693189.75 kJ.mol-1 (Alexandria-library-w1u)
+fluorine-monoxide(g)
+[F]O = [F](g)  + O(g) 
+	log_k	   -35.81
+	delta_h	   231.98
+#	Gf°(g) =   -459363.66 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -459300.68 kJ.mol-1 (Alexandria-library-w1u)
+fluorine(g)
+[F]2 = 2 [F](g)
+	log_k	   -22.20
+	delta_h	   156.61
+#	Gf°(g) =   -524059.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -523999.03 kJ.mol-1 (Alexandria-library-w1u)
+fluoroacetylene(g)
+[C]2H[F] = 2 [C](g) + H(g)  + [F](g) 
+	log_k	  -266.33
+	delta_h	  1619.76
+#	Gf°(g) =   -463704.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -463636.16 kJ.mol-1 (Alexandria-library-w1u)
+fluorobenzene(g)
+[C]6H5[F] = 6 [C](g) + 5 H(g) + [F](g) 
+	log_k	  -903.79
+	delta_h	  5549.20
+#	Gf°(g) =   -870471.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -870380.42 kJ.mol-1 (Alexandria-library-w1u)
+fluorodisilane(g)
+[F]H5Si2 = 2 Si(g) + [F](g) + 5 H(g) 
+	log_k	  -374.70
+	delta_h	  2356.92
+#	Gf°(g) =  -1790539.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1790447.10 kJ.mol-1 (Alexandria-library-w1u)
+fluoroethane(g)
+[C]2H5[F] = 2 [C](g) + 5 H(g) + [F](g) 
+	log_k	  -462.35
+	delta_h	  2864.94
+#	Gf°(g) =   -470208.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -470130.20 kJ.mol-1 (Alexandria-library-w1u)
+fluoroethene(g)
+[C]2H3[F] = 2 [C](g) + 3 H(g) + [F](g) 
+	log_k	  -375.50
+	delta_h	  2304.40
+#	Gf°(g) =   -467020.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -466945.23 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethane(g)
+[C]H3[F] = [C](g)  + 3 H(g) + [F](g) 
+	log_k	  -273.23
+	delta_h	  1682.38
+#	Gf°(g) =   -367000.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -366931.73 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethylene(g)
+[C]H[F] = [C](g)  + H(g)  + [F](g) 
+	log_k	  -141.21
+	delta_h	   863.11
+#	Gf°(g) =   -363554.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -363488.02 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethylidyne+(g)
+[C][F]+ + e- = [C](g)  + [F](g) 
+	log_k	    66.81
+	delta_h	  -355.06
+#	Gf°(g) =   -361017.20 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -360957.64 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethylidyne(g)
+[C][F] = [C](g)  + [F](g) 
+	log_k	   -92.78
+	delta_h	   557.26
+#	Gf°(g) =   -361931.75 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -361869.96 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethylidynephosphane(g)
+[C][F]P = P(g) + [C](g) + [F](g) 
+	log_k	  -171.01
+	delta_h	  1043.77
+#	Gf°(g) =  -1258466.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1258396.27 kJ.mol-1 (Alexandria-library-w1u)
+fluoromethylsilane(g)
+[C]H5[F]Si = Si(g) + [C](g) + 5 H(g) + [F](g) 
+	log_k	  -441.50
+	delta_h	  2742.50
+#	Gf°(g) =  -1130505.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1130420.22 kJ.mol-1 (Alexandria-library-w1u)
+fluorophosphine(g)
+[F]H2P = P(g) + [F](g) + 2 H(g) 
+	log_k	  -175.13
+	delta_h	  1089.03
+#	Gf°(g) =  -1161747.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1161674.47 kJ.mol-1 (Alexandria-library-w1u)
+fluorosilane(g)
+SiH3[F] = Si(g) + 3 H(g) + [F](g) 
+	log_k	  -246.63
+	delta_h	  1529.03
+#	Gf°(g) =  -1027264.61 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1027190.83 kJ.mol-1 (Alexandria-library-w1u)
+formaldehyde(g)
+[C]H2O = [C](g)  + 2 H(g) + O(g) 
+	log_k	  -247.93
+	delta_h	  1506.43
+#	Gf°(g) =   -300736.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -300669.84 kJ.mol-1 (Alexandria-library-w1u)
+formamide(g)
+[C]H3[N]O = [C](g)  + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -372.46
+	delta_h	  2286.90
+#	Gf°(g) =   -446190.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -446113.30 kJ.mol-1 (Alexandria-library-w1u)
+formic-acid(g)
+[C]H2O2 = [C](g)  + 2 H(g) + 2 O(g)
+	log_k	  -330.58
+	delta_h	  2016.45
+#	Gf°(g) =   -498401.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -498327.35 kJ.mol-1 (Alexandria-library-w1u)
+formyl-fluoride(g)
+[C]H[F]O = [C](g)  + H(g)  + [F](g)  + O(g) 
+	log_k	  -270.44
+	delta_h	  1639.17
+#	Gf°(g) =   -561485.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -561411.57 kJ.mol-1 (Alexandria-library-w1u)
+formyl-radical(g)
+[C]HO = [C](g)  + H(g)  + O(g) 
+	log_k	  -190.83
+	delta_h	  1146.37
+#	Gf°(g) =   -299064.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -298997.57 kJ.mol-1 (Alexandria-library-w1u)
+fulminic-acid(g)
+[C]H[N]O = [C](g)  + H(g)  + [N](g)  + O(g) 
+	log_k	  -245.94
+	delta_h	  1502.43
+#	Gf°(g) =   -442775.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -442704.40 kJ.mol-1 (Alexandria-library-w1u)
+fulvene(g)
+[C]6H6 = 6 [C](g) + 6 H(g)
+	log_k	  -870.11
+	delta_h	  5348.78
+#	Gf°(g) =   -609659.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -609571.00 kJ.mol-1 (Alexandria-library-w1u)
+furan-25-dione(g)
+[C]4H2O3 = 4 [C](g) + 2 H(g) + 3 O(g)
+	log_k	  -721.89
+	delta_h	  4410.27
+#	Gf°(g) =   -996135.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -996043.12 kJ.mol-1 (Alexandria-library-w1u)
+glycine(g)
+[C]2H5[N]O2 = 2 [C](g) + 5 H(g) + [N](g)  + 2 O(g)
+	log_k	  -623.69
+	delta_h	  3863.99
+#	Gf°(g) =   -746945.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -746853.79 kJ.mol-1 (Alexandria-library-w1u)
+glycolaldehyde(g)
+[C]2H4O2 = 2 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -499.93
+	delta_h	  3081.87
+#	Gf°(g) =   -601496.58 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -601408.68 kJ.mol-1 (Alexandria-library-w1u)
+glyoxal-trans(g)
+[C]2H2O2 = 2 [C](g) + 2 H(g) + 2 O(g)
+	log_k	  -420.33
+	delta_h	  2564.42
+#	Gf°(g) =   -598349.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -598266.81 kJ.mol-1 (Alexandria-library-w1u)
+guanidine(g)
+[C]H5[N]3 = [C](g)  + 5 H(g) + 3 [N](g)
+	log_k	  -516.20
+	delta_h	  3215.00
+#	Gf°(g) =   -539303.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -539219.90 kJ.mol-1 (Alexandria-library-w1u)
+helium-4(g)
+He = He(g) 
+	log_k	    -0.00
+	delta_h	     0.00
+#	Gf°(g) =     -7683.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =     -7645.84 kJ.mol-1 (Alexandria-library-w1u)
+hexa-15-diyne(g)
+[C]6H6 = 6 [C](g) + 6 H(g)
+	log_k	  -836.28
+	delta_h	  5144.74
+#	Gf°(g) =   -609466.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -609366.97 kJ.mol-1 (Alexandria-library-w1u)
+hexaborane-10(g)
+B6H10 = 6 B(g) + 10 H(g) 
+	log_k	  -867.50
+	delta_h	  5460.40
+#	Gf°(g) =   -407164.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -407073.54 kJ.mol-1 (Alexandria-library-w1u)
+hexafluoroethane(g)
+[C]2[F]6 = 2 [C](g) + 6 [F](g)
+	log_k	  -517.87
+	delta_h	  3213.13
+#	Gf°(g) =  -1773625.33 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1773523.36 kJ.mol-1 (Alexandria-library-w1u)
+hydrazine(g)
+H4[N]2 = 4 H(g) + 2 [N](g)
+	log_k	  -276.17
+	delta_h	  1733.89
+#	Gf°(g) =   -293754.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -293684.31 kJ.mol-1 (Alexandria-library-w1u)
+hydrazoic-acid(g)
+H[N]3 = H(g)  + 3 [N](g)
+	log_k	  -225.05
+	delta_h	  1384.52
+#	Gf°(g) =   -432820.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -432749.08 kJ.mol-1 (Alexandria-library-w1u)
+hydrazyl-radical(g)
+H3[N]2 = 3 H(g) + 2 [N](g)
+	log_k	  -224.95
+	delta_h	  1407.10
+#	Gf°(g) =   -292115.99 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -292045.30 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-carbonate(g)
+[C]HO3- = [C](g)  + H(g)  + 3 O(g) + e-
+	log_k	  -390.02
+	delta_h	  2365.25
+#	Gf°(g) =   -694590.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -694511.42 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-chloride(g)
+HCl = Cl(g) + H(g) 
+	log_k	   -69.91
+	delta_h	   424.91
+#	Gf°(g) =  -1209975.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1209919.62 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-cyanide(g)
+[C]H[N] = [C](g)  + H(g)  + [N](g) 
+	log_k	  -212.35
+	delta_h	  1276.28
+#	Gf°(g) =   -245390.74 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -245330.77 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-fluoride(g)
+H[F] = H(g)  + [F](g) 
+	log_k	   -92.08
+	delta_h	   553.05
+#	Gf°(g) =   -263838.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -263786.48 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-isocyanide(g)
+[C]H[N] = [C](g)  + H(g)  + [N](g) 
+	log_k	  -202.30
+	delta_h	  1217.73
+#	Gf°(g) =   -245333.38 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -245272.21 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-peroxide(g)
+H2O2 = 2 H(g) + 2 O(g)
+	log_k	  -169.11
+	delta_h	  1056.65
+#	Gf°(g) =   -398043.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -397976.05 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-phosphate(g)
+HO4P-2 = P(g) + H(g) + 4 O(g) + 2 e- 
+	log_k	  -369.98
+	delta_h	  2296.14
+#	Gf°(g) =  -1688325.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1688238.11 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-sulfate(g)
+HO4[S]- = H(g)  + 4 O(g) + [S](g)  + e-
+	log_k	  -380.95
+	delta_h	  2350.98
+#	Gf°(g) =  -1837651.18 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1837560.18 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen-sulfide(g)
+H2[S] = 2 H(g) + [S](g) 
+	log_k	  -118.31
+	delta_h	   730.34
+#	Gf°(g) =  -1048723.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1048661.80 kJ.mol-1 (Alexandria-library-w1u)
+hydrogen(g)
+H2 = 2 H(g)
+	log_k	   -71.67
+	delta_h	   438.55
+#	Gf°(g) =     -3101.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =     -3062.97 kJ.mol-1 (Alexandria-library-w1u)
+hydronium(g)
+H3O+ + e- = 3 H(g) + O(g) 
+	log_k	   -36.22
+	delta_h	   290.69
+#	Gf°(g) =   -201435.20 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -201374.82 kJ.mol-1 (Alexandria-library-w1u)
+hydroxyazaniumylidynemethane(g)
+[C]H[N]O = [C](g)  + H(g)  + [N](g)  + O(g) 
+	log_k	  -232.93
+	delta_h	  1425.25
+#	Gf°(g) =   -442701.13 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -442627.22 kJ.mol-1 (Alexandria-library-w1u)
+hydroxyde-(g)
+HO- = H(g)  + O(g)  + e-
+	log_k	   -81.65
+	delta_h	   497.88
+#	Gf°(g) =   -199008.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -198957.58 kJ.mol-1 (Alexandria-library-w1u)
+hydroxyde(g)
+HO = H(g)  + O(g) 
+	log_k	   -70.38
+	delta_h	   428.22
+#	Gf°(g) =   -198941.04 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -198887.93 kJ.mol-1 (Alexandria-library-w1u)
+hydroxylamine(g)
+H3[N]O = 3 H(g) + [N](g)  + O(g) 
+	log_k	  -227.00
+	delta_h	  1419.31
+#	Gf°(g) =   -345924.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -345854.22 kJ.mol-1 (Alexandria-library-w1u)
+hydroxymethanide(g)
+[C]H3O = [C](g)  + 3 H(g) + O(g) 
+	log_k	  -265.65
+	delta_h	  1636.89
+#	Gf°(g) =   -302184.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -302112.51 kJ.mol-1 (Alexandria-library-w1u)
+hydroxysulfanyl(g)
+HO[S] = H(g)  + O(g)  + [S](g) 
+	log_k	  -403.52
+	delta_h	  2358.91
+#	Gf°(g) =  -1246197.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1246125.65 kJ.mol-1 (Alexandria-library-w1u)
+hypochlorous-acid(g)
+ClHO = Cl(g) + H(g) + O(g) 
+	log_k	  -104.33
+	delta_h	   651.97
+#	Gf°(g) =  -1407364.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1407294.18 kJ.mol-1 (Alexandria-library-w1u)
+hypofluorous-acid(g)
+[F]HO = [F](g)  + H(g)  + O(g) 
+	log_k	  -100.23
+	delta_h	   629.29
+#	Gf°(g) =   -461077.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -461010.20 kJ.mol-1 (Alexandria-library-w1u)
+imidogen(g)
+H[N] = H(g)  + [N](g) 
+	log_k	   -56.59
+	delta_h	   348.88
+#	Gf°(g) =   -145065.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -145011.88 kJ.mol-1 (Alexandria-library-w1u)
+iminoazanium(g)
+H3[N]2+ + e- = 3 H(g) + 2 [N](g)
+	log_k	   -93.86
+	delta_h	   658.25
+#	Gf°(g) =   -291364.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -291296.46 kJ.mol-1 (Alexandria-library-w1u)
+isobutanal-gauche(g)
+[C]4H8O = 4 [C](g) + 8 H(g) + O(g) 
+	log_k	  -812.25
+	delta_h	  5036.22
+#	Gf°(g) =   -610343.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -610247.38 kJ.mol-1 (Alexandria-library-w1u)
+isocyanato-radical(g)
+[N][C]O = [N](g)  + [C](g)  + O(g) 
+	log_k	  -221.95
+	delta_h	  1334.88
+#	Gf°(g) =   -441292.11 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -441224.64 kJ.mol-1 (Alexandria-library-w1u)
+isocyanic-acid(g)
+[C]H[N]O = [C](g)  + H(g)  + [N](g)  + O(g) 
+	log_k	  -295.97
+	delta_h	  1787.93
+#	Gf°(g) =   -443060.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -442989.90 kJ.mol-1 (Alexandria-library-w1u)
+isocyanomethane(g)
+[C]2H3[N] = 2 [C](g) + 3 H(g) + [N](g) 
+	log_k	  -389.46
+	delta_h	  2383.81
+#	Gf°(g) =   -348530.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -348454.21 kJ.mol-1 (Alexandria-library-w1u)
+isocyanomethanide(g)
+[C]2H2[N]- = 2 [C](g) + 2 H(g) + [N](g)  + e-
+	log_k	  -341.96
+	delta_h	  2084.32
+#	Gf°(g) =   -346916.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -346842.51 kJ.mol-1 (Alexandria-library-w1u)
+isopropylamine(g)
+[C]3H9[N] = 3 [C](g) + 9 H(g) + [N](g) 
+	log_k	  -744.31
+	delta_h	  4645.14
+#	Gf°(g) =   -458069.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -457980.32 kJ.mol-1 (Alexandria-library-w1u)
+isothiocyanic-acid(g)
+[C]H[N][S] = [C](g)  + H(g)  + [N](g)  + [S](g) 
+	log_k	  -257.14
+	delta_h	  1565.37
+#	Gf°(g) =  -1291001.47 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1290926.89 kJ.mol-1 (Alexandria-library-w1u)
+isoxazole(g)
+[C]3H3[N]O = 3 [C](g) + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -557.98
+	delta_h	  3430.92
+#	Gf°(g) =   -646120.93 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -646040.30 kJ.mol-1 (Alexandria-library-w1u)
+ketene(g)
+[C]2H2O = 2 [C](g) + 2 H(g) + O(g) 
+	log_k	  -357.55
+	delta_h	  2169.67
+#	Gf°(g) =   -400798.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -400724.56 kJ.mol-1 (Alexandria-library-w1u)
+lithium-chloride(g)
+LiCl = Li(g) + Cl(g) 
+	log_k	   -75.68
+	delta_h	   457.30
+#	Gf°(g) =  -1228367.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1228303.90 kJ.mol-1 (Alexandria-library-w1u)
+lithium-fluoride(g)
+Li[F] = Li(g) + [F](g) 
+	log_k	   -94.81
+	delta_h	   567.93
+#	Gf°(g) =   -282212.92 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -282153.23 kJ.mol-1 (Alexandria-library-w1u)
+lithium-hydride(g)
+HLi = Li(g) + H(g) 
+	log_k	   -37.61
+	delta_h	   239.33
+#	Gf°(g) =    -21266.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -21215.63 kJ.mol-1 (Alexandria-library-w1u)
+lithium-hydroxide(g)
+HLiO = Li(g) + H(g) + O(g) 
+	log_k	  -138.90
+	delta_h	   851.08
+#	Gf°(g) =   -219037.60 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -218974.87 kJ.mol-1 (Alexandria-library-w1u)
+lithium-monoxide(g)
+LiO = Li(g) + O(g) 
+	log_k	   -58.05
+	delta_h	   356.94
+#	Gf°(g) =   -217229.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -217168.52 kJ.mol-1 (Alexandria-library-w1u)
+lithium-sodium(g)
+LiNa = Li(g) + Na(g) 
+	log_k	    -9.86
+	delta_h	    78.13
+#	Gf°(g) =   -445912.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -445846.75 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-chloride-fluoride(g)
+Cl[F]Mg = Cl(g) + Mg(g) + [F](g) 
+	log_k	  -143.20
+	delta_h	   874.87
+#	Gf°(g) =  -1996408.04 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1996328.90 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-chloride-hydroxide(g)
+HClMgO = Cl(g) + Mg(g) + H(g) + O(g) 
+	log_k	  -189.58
+	delta_h	  1168.12
+#	Gf°(g) =  -1933245.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1933160.64 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-chloride(g)
+MgCl2 = Mg(g) + 2 Cl(g) 
+	log_k	  -121.17
+	delta_h	   749.54
+#	Gf°(g) =  -2942545.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2942464.87 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-fluoride-hydroxide(g)
+H[F]MgO = Mg(g) + H(g) + [F](g) + O(g) 
+	log_k	  -208.30
+	delta_h	  1295.75
+#	Gf°(g) =   -987089.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -987026.98 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-fluoride(g)
+Mg[F]2 = Mg(g) + 2 [F](g) 
+	log_k	  -164.41
+	delta_h	   999.00
+#	Gf°(g) =  -1050265.54 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1050191.73 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-hydroxide(g)
+H2MgO2 = Mg(g) + 2 H(g) + 2 O(g) 
+	log_k	  -256.35
+	delta_h	  1582.45
+#	Gf°(g) =   -923936.33 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -923852.17 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-oxide(g)
+MgO = Mg(g) + O(g) 
+	log_k	   -33.33
+	delta_h	   216.52
+#	Gf°(g) =   -722777.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -722714.32 kJ.mol-1 (Alexandria-library-w1u)
+magnesium-sulfide(g)
+Mg[S] = Mg(g) + [S](g) 
+	log_k	   -30.06
+	delta_h	   196.77
+#	Gf°(g) =  -1570921.20 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1570854.12 kJ.mol-1 (Alexandria-library-w1u)
+mercapto(g)
+H[S] = H(g)  + [S](g) 
+	log_k	   -58.04
+	delta_h	   356.22
+#	Gf°(g) =  -1047032.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1046975.47 kJ.mol-1 (Alexandria-library-w1u)
+methacrylic-acid(g)
+[C]4H6O2 = 4 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -808.84
+	delta_h	  4991.31
+#	Gf°(g) =   -804824.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -804725.53 kJ.mol-1 (Alexandria-library-w1u)
+methane(g)
+[C]H4 = [C](g)  + 4 H(g)
+	log_k	  -270.92
+	delta_h	  1665.74
+#	Gf°(g) =   -106367.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -106306.09 kJ.mol-1 (Alexandria-library-w1u)
+methanediol(g)
+[C]H4O2 = [C](g)  + 4 H(g) + 2 O(g)
+	log_k	  -394.31
+	delta_h	  2443.30
+#	Gf°(g) =   -501457.90 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -501378.62 kJ.mol-1 (Alexandria-library-w1u)
+methanedithione(g)
+[C][S]2 = [C](g)  + 2 [S](g)
+	log_k	  -189.12
+	delta_h	  1147.40
+#	Gf°(g) =  -2191225.43 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2191152.96 kJ.mol-1 (Alexandria-library-w1u)
+methanesulfonyl-chloride(g)
+[C]H3ClO2[S] = Cl(g) + [C](g) + 3 H(g) + 2 O(g) + [S](g) 
+	log_k	  -411.64
+	delta_h	  2587.34
+#	Gf°(g) =  -2753795.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2753699.99 kJ.mol-1 (Alexandria-library-w1u)
+methanethiol-radical(g)
+[C]H2[S]H = [C](g)  + 2 H(g) + [S](g)  + H(g) 
+	log_k	  -241.16
+	delta_h	  1491.55
+#	Gf°(g) =  -1150206.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1150126.72 kJ.mol-1 (Alexandria-library-w1u)
+methanethiol(g)
+[C]H4[S] = [C](g)  + 4 H(g) + [S](g) 
+	log_k	  -302.27
+	delta_h	  1878.72
+#	Gf°(g) =  -1151901.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1151826.10 kJ.mol-1 (Alexandria-library-w1u)
+methanide(g)
+[C]H3- = [C](g)  + 3 H(g) + e-
+	log_k	  -193.11
+	delta_h	  1192.38
+#	Gf°(g) =   -104580.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -104520.51 kJ.mol-1 (Alexandria-library-w1u)
+methanimine(g)
+[C]H3[N] = [C](g)  + 3 H(g) + [N](g) 
+	log_k	  -286.65
+	delta_h	  1760.99
+#	Gf°(g) =   -248507.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -248439.90 kJ.mol-1 (Alexandria-library-w1u)
+methanol(g)
+[C]H4O = [C](g)  + 4 H(g) + O(g) 
+	log_k	  -327.88
+	delta_h	  2026.89
+#	Gf°(g) =   -303885.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -303814.73 kJ.mol-1 (Alexandria-library-w1u)
+methoxyethane(g)
+[C]3H8O = 3 [C](g) + 8 H(g) + O(g) 
+	log_k	  -696.83
+	delta_h	  4339.02
+#	Gf°(g) =   -510248.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -510158.69 kJ.mol-1 (Alexandria-library-w1u)
+methoxyethyne(g)
+[C]3H4O = 3 [C](g) + 4 H(g) + O(g) 
+	log_k	  -510.74
+	delta_h	  3144.95
+#	Gf°(g) =   -503801.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -503715.76 kJ.mol-1 (Alexandria-library-w1u)
+methyl-acetate(g)
+[C]3H6O2 = 3 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -702.23
+	delta_h	  4339.77
+#	Gf°(g) =   -704779.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -704682.50 kJ.mol-1 (Alexandria-library-w1u)
+methyl-acrylate(g)
+[C]4H6O2 = 4 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -800.88
+	delta_h	  4944.81
+#	Gf°(g) =   -804778.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -804679.03 kJ.mol-1 (Alexandria-library-w1u)
+methyl-azide(g)
+[C]H3[N]3 = [C](g)  + 3 H(g) + 3 [N](g)
+	log_k	  -407.66
+	delta_h	  2526.82
+#	Gf°(g) =   -535991.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -535907.29 kJ.mol-1 (Alexandria-library-w1u)
+methyl-carbonate(g)
+[C]2H3O3- = 2 [C](g) + 3 H(g) + 3 O(g) + e-
+	log_k	  -569.67
+	delta_h	  3492.06
+#	Gf°(g) =   -797744.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -797654.15 kJ.mol-1 (Alexandria-library-w1u)
+methyl-chloroacetate(g)
+[C]3H5ClO2 = Cl(g) + 3 [C](g) + 5 H(g) + 2 O(g) 
+	log_k	  -682.09
+	delta_h	  4229.28
+#	Gf°(g) =  -1911548.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1911442.30 kJ.mol-1 (Alexandria-library-w1u)
+methyl-chloroformate(g)
+[C]2H3ClO2 = Cl(g) + 2 [C](g) + 3 H(g) + 2 O(g) 
+	log_k	  -498.10
+	delta_h	  3078.51
+#	Gf°(g) =  -1808369.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1808275.61 kJ.mol-1 (Alexandria-library-w1u)
+methyl-chlorosilane(g)
+[C]H5ClSi = Cl(g) + Si(g) + [C](g) + 5 H(g) 
+	log_k	  -409.48
+	delta_h	  2558.47
+#	Gf°(g) =  -2076586.28 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2076497.49 kJ.mol-1 (Alexandria-library-w1u)
+methyl-cyanate(g)
+[C]2H3[N]O = 2 [C](g) + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -455.98
+	delta_h	  2800.89
+#	Gf°(g) =   -546102.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -546018.78 kJ.mol-1 (Alexandria-library-w1u)
+methyl-dichlorosilane(g)
+[C]H4Cl2Si = 2 Cl(g) + Si(g) + [C](g) + 4 H(g) 
+	log_k	  -420.22
+	delta_h	  2623.55
+#	Gf°(g) =  -3283531.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3283432.86 kJ.mol-1 (Alexandria-library-w1u)
+methyl-formate(g)
+[C]2H4O2 = 2 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -510.66
+	delta_h	  3146.06
+#	Gf°(g) =   -601557.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -601472.87 kJ.mol-1 (Alexandria-library-w1u)
+methyl-hypofluorite(g)
+[C]H3[F]O = [C](g)  + 3 H(g) + [F](g)  + O(g) 
+	log_k	  -285.49
+	delta_h	  1789.11
+#	Gf°(g) =   -564263.75 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -564185.94 kJ.mol-1 (Alexandria-library-w1u)
+methyl-isocyanate(g)
+[C]2H3[N]O = 2 [C](g) + 3 H(g) + [N](g)  + O(g) 
+	log_k	  -478.44
+	delta_h	  2926.05
+#	Gf°(g) =   -546231.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -546143.94 kJ.mol-1 (Alexandria-library-w1u)
+methyl-isopropenyl-ketone(g)
+[C]5H8O = 5 [C](g) + 8 H(g) + O(g) 
+	log_k	  -919.13
+	delta_h	  5684.48
+#	Gf°(g) =   -710389.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -710287.13 kJ.mol-1 (Alexandria-library-w1u)
+methyl-isopropyl-sulfide(g)
+[C]4H10[S] = 4 [C](g) + 10 H(g) + [S](g) 
+	log_k	  -858.53
+	delta_h	  5363.28
+#	Gf°(g) =  -1461462.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1461358.42 kJ.mol-1 (Alexandria-library-w1u)
+methyl-nitrate(g)
+[C]H3[N]O3 = [C](g)  + 3 H(g) + [N](g)  + 3 O(g)
+	log_k	  -434.34
+	delta_h	  2718.82
+#	Gf°(g) =   -840929.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -840840.19 kJ.mol-1 (Alexandria-library-w1u)
+methyl-nitrite(g)
+[C]H3[N]O2 = [C](g)  + 3 H(g) + [N](g)  + 2 O(g)
+	log_k	  -386.91
+	delta_h	  2406.26
+#	Gf°(g) =   -643465.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -643380.15 kJ.mol-1 (Alexandria-library-w1u)
+methyl-propyl-ether-trans-trans(g)
+[C]4H10O = 4 [C](g) + 10 H(g) + O(g) 
+	log_k	  -882.12
+	delta_h	  5499.62
+#	Gf°(g) =   -613435.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -613335.21 kJ.mol-1 (Alexandria-library-w1u)
+methyl-silyl-ether(g)
+[C]H6OSi = Si(g) + [C](g) + 6 H(g) + O(g) 
+	log_k	  -473.49
+	delta_h	  2955.82
+#	Gf°(g) =  -1067261.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1067172.04 kJ.mol-1 (Alexandria-library-w1u)
+methyl-sulfate(g)
+[C]H3O4[S]- = [C](g)  + 3 H(g) + 4 O(g) + [S](g)  + e-
+	log_k	  -560.27
+	delta_h	  3480.37
+#	Gf°(g) =  -1940803.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1940705.49 kJ.mol-1 (Alexandria-library-w1u)
+methyl-thiocyanate(g)
+[C]2H3[N][S] = 2 [C](g) + 3 H(g) + [N](g)  + [S](g) 
+	log_k	  -435.80
+	delta_h	  2683.63
+#	Gf°(g) =  -1394149.83 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1394061.07 kJ.mol-1 (Alexandria-library-w1u)
+methyl-vinyl-ether-cis(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -612.98
+	delta_h	  3797.17
+#	Gf°(g) =   -507077.52 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506992.41 kJ.mol-1 (Alexandria-library-w1u)
+methylamine(g)
+[C]H5[N] = [C](g)  + 5 H(g) + [N](g) 
+	log_k	  -370.37
+	delta_h	  2303.11
+#	Gf°(g) =   -251678.16 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -251606.46 kJ.mol-1 (Alexandria-library-w1u)
+methylborane(g)
+[C]H5B = B(g) + [C](g) + 5 H(g) 
+	log_k	  -380.41
+	delta_h	  2358.94
+#	Gf°(g) =   -173130.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -173060.00 kJ.mol-1 (Alexandria-library-w1u)
+methylcyclopropane(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -733.95
+	delta_h	  4555.72
+#	Gf°(g) =   -412703.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412619.39 kJ.mol-1 (Alexandria-library-w1u)
+methyldiborane(g)
+[C]H8B2 = 2 B(g) + [C](g) + 8 H(g) 
+	log_k	  -578.61
+	delta_h	  3623.02
+#	Gf°(g) =   -243092.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -243009.22 kJ.mol-1 (Alexandria-library-w1u)
+methyldifluorophosphine(g)
+[C]H3[F]2P = P(g) + [C](g) + 3 H(g) + 2 [F](g) 
+	log_k	  -399.34
+	delta_h	  2475.95
+#	Gf°(g) =  -1525775.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1525686.30 kJ.mol-1 (Alexandria-library-w1u)
+methylene(g)
+[C]H2 = [C](g)  + 2 H(g)
+	log_k	  -124.74
+	delta_h	   766.54
+#	Gf°(g) =   -102840.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -102782.46 kJ.mol-1 (Alexandria-library-w1u)
+methylenecyclopropene(g)
+[C]4H4 = 4 [C](g) + 4 H(g)
+	log_k	  -544.18
+	delta_h	  3339.91
+#	Gf°(g) =   -406235.03 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -406154.72 kJ.mol-1 (Alexandria-library-w1u)
+methylhydroperoxide(g)
+[C]H4O2 = [C](g)  + 4 H(g) + 2 O(g)
+	log_k	  -352.62
+	delta_h	  2204.12
+#	Gf°(g) =   -501219.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -501139.44 kJ.mol-1 (Alexandria-library-w1u)
+methylidyne+(g)
+[C]H+ + e- = [C](g)  + H(g) 
+	log_k	   129.95
+	delta_h	  -717.92
+#	Gf°(g) =   -100036.91 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =    -99985.79 kJ.mol-1 (Alexandria-library-w1u)
+methylidyne(g)
+[C]H = [C](g)  + H(g) 
+	log_k	   -55.52
+	delta_h	   342.67
+#	Gf°(g) =   -101099.15 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -101046.37 kJ.mol-1 (Alexandria-library-w1u)
+methylidynephosphane(g)
+[C]HP = P(g) + [C](g) + H(g) 
+	log_k	  -167.35
+	delta_h	  1018.44
+#	Gf°(g) =   -997825.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -997761.95 kJ.mol-1 (Alexandria-library-w1u)
+methylidynesilane(g)
+[C]H2Si = Si(g) + [C](g) + 2 H(g) 
+	log_k	  -178.77
+	delta_h	  1108.38
+#	Gf°(g) =   -863000.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -862928.25 kJ.mol-1 (Alexandria-library-w1u)
+methyloxirane(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -608.59
+	delta_h	  3773.87
+#	Gf°(g) =   -507052.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506969.11 kJ.mol-1 (Alexandria-library-w1u)
+methylphosphine(g)
+[C]H5P = P(g) + [C](g) + 5 H(g) 
+	log_k	  -343.25
+	delta_h	  2146.12
+#	Gf°(g) =  -1004215.37 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1004138.49 kJ.mol-1 (Alexandria-library-w1u)
+methylphosphonic-difluoride(g)
+[C]H3[F]2OP = P(g) + [C](g) + 3 H(g) + 2 [F](g) + O(g) 
+	log_k	  -493.09
+	delta_h	  3052.25
+#	Gf°(g) =  -1723503.36 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1723410.09 kJ.mol-1 (Alexandria-library-w1u)
+methylpropene(g)
+[C]4H8 = 4 [C](g) + 8 H(g)
+	log_k	  -742.84
+	delta_h	  4602.71
+#	Gf°(g) =   -412754.45 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -412666.39 kJ.mol-1 (Alexandria-library-w1u)
+methylsilane(g)
+[C]H6Si = Si(g) + [C](g) + 6 H(g) 
+	log_k	  -398.91
+	delta_h	  2495.00
+#	Gf°(g) =   -869642.52 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -869563.73 kJ.mol-1 (Alexandria-library-w1u)
+methylsulfanyl(g)
+[C]H3[S] = [C](g)  + 3 H(g) + [S](g) 
+	log_k	  -246.36
+	delta_h	  1526.47
+#	Gf°(g) =  -1150236.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1150161.64 kJ.mol-1 (Alexandria-library-w1u)
+monochloro-trifluoroaluminate(g)
+AlCl[F]3- = Al(g) + Cl(g) + 3 [F](g) + e- 
+	log_k	  -390.57
+	delta_h	  2363.26
+#	Gf°(g) =  -2632795.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2632696.90 kJ.mol-1 (Alexandria-library-w1u)
+n-butylamine(g)
+[C]4H11[N] = 4 [C](g) + 11 H(g) + [N](g) 
+	log_k	  -928.20
+	delta_h	  5796.74
+#	Gf°(g) =   -561247.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -561147.83 kJ.mol-1 (Alexandria-library-w1u)
+neon-argon(g)
+ArNe = Ar(g) + Ne(g) 
+	log_k	     2.74
+	delta_h	     3.69
+#	Gf°(g) =  -1723758.14 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1723687.78 kJ.mol-1 (Alexandria-library-w1u)
+neon(g)
+Ne = Ne(g) 
+	log_k	     0.00
+	delta_h	     0.00
+#	Gf°(g) =   -338626.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -338583.16 kJ.mol-1 (Alexandria-library-w1u)
+nitramide(g)
+H2[N]2O2 = 2 H(g) + 2 [N](g) + 2 O(g)
+	log_k	  -302.59
+	delta_h	  1897.74
+#	Gf°(g) =   -685598.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -685518.70 kJ.mol-1 (Alexandria-library-w1u)
+nitrate(g)
+[N]O3- = [N](g)  + 3 O(g) + e-
+	log_k	  -245.78
+	delta_h	  1513.54
+#	Gf°(g) =   -736381.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -736306.78 kJ.mol-1 (Alexandria-library-w1u)
+nitric-acid(g)
+H[N]O3 = H(g)  + [N](g)  + 3 O(g)
+	log_k	  -253.00
+	delta_h	  1580.97
+#	Gf°(g) =   -737765.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -737686.42 kJ.mol-1 (Alexandria-library-w1u)
+nitric-oxide(g)
+[N]O = [N](g)  + O(g) 
+	log_k	  -106.89
+	delta_h	   640.07
+#	Gf°(g) =   -341199.48 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -341138.33 kJ.mol-1 (Alexandria-library-w1u)
+nitroethane(g)
+[C]2H5[N]O2 = 2 [C](g) + 5 H(g) + [N](g)  + 2 O(g)
+	log_k	  -576.06
+	delta_h	  3589.21
+#	Gf°(g) =   -746673.95 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -746579.02 kJ.mol-1 (Alexandria-library-w1u)
+nitrogen-dioxide(g)
+[N]O2 = [N](g)  + 2 O(g)
+	log_k	  -156.43
+	delta_h	   957.97
+#	Gf°(g) =   -538675.21 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -538603.73 kJ.mol-1 (Alexandria-library-w1u)
+nitrogen-sulfide(g)
+[N][S] = [N](g)  + [S](g) 
+	log_k	   -77.80
+	delta_h	   473.01
+#	Gf°(g) =  -1189195.57 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1189130.82 kJ.mol-1 (Alexandria-library-w1u)
+nitrogen-trichloride(g)
+Cl3[N] = 3 Cl(g) + [N](g) 
+	log_k	   -86.82
+	delta_h	   591.74
+#	Gf°(g) =  -3768581.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3768490.03 kJ.mol-1 (Alexandria-library-w1u)
+nitrogen-trifluoride(g)
+[F]3[N] = 3 [F](g) + [N](g) 
+	log_k	  -132.85
+	delta_h	   858.70
+#	Gf°(g) =   -930053.58 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -929973.10 kJ.mol-1 (Alexandria-library-w1u)
+nitrogen(g)
+[N]2 = 2 [N](g)
+	log_k	  -159.91
+	delta_h	   947.02
+#	Gf°(g) =   -287705.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -287648.58 kJ.mol-1 (Alexandria-library-w1u)
+nitromethane(g)
+[C]H3[N]O2 = [C](g)  + 3 H(g) + [N](g)  + 2 O(g)
+	log_k	  -389.04
+	delta_h	  2416.66
+#	Gf°(g) =   -643477.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -643390.55 kJ.mol-1 (Alexandria-library-w1u)
+nitronium(g)
+[N]O2+ + e- = [N](g)  + 2 O(g)
+	log_k	     9.72
+	delta_h	    13.76
+#	Gf°(g) =   -537723.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -537659.52 kJ.mol-1 (Alexandria-library-w1u)
+nitrosyl-chloride(g)
+Cl[N]O = Cl(g) + [N](g) + O(g) 
+	log_k	  -129.55
+	delta_h	   800.03
+#	Gf°(g) =  -1549558.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1549480.81 kJ.mol-1 (Alexandria-library-w1u)
+nitrosyl-fluoride(g)
+[F][N]O = [F](g)  + [N](g)  + O(g) 
+	log_k	  -145.87
+	delta_h	   894.97
+#	Gf°(g) =   -603388.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -603314.44 kJ.mol-1 (Alexandria-library-w1u)
+nitrosyl-hydride(g)
+H[N]O = H(g)  + [N](g)  + O(g) 
+	log_k	  -135.45
+	delta_h	   832.67
+#	Gf°(g) =   -342708.90 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -342643.15 kJ.mol-1 (Alexandria-library-w1u)
+nitrous-acid-trans(g)
+H[N]O2 = H(g)  + [N](g)  + 2 O(g)
+	log_k	  -205.40
+	delta_h	  1269.10
+#	Gf°(g) =   -540301.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -540227.07 kJ.mol-1 (Alexandria-library-w1u)
+nitrous-oxide(g)
+[N]2O = 2 [N](g) + O(g) 
+	log_k	  -186.22
+	delta_h	  1134.29
+#	Gf°(g) =   -485048.73 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -484983.34 kJ.mol-1 (Alexandria-library-w1u)
+nitryl-fluoride(g)
+[F][N]O2 = [F](g)  + [N](g)  + 2 O(g)
+	log_k	  -190.06
+	delta_h	  1187.59
+#	Gf°(g) =   -800833.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -800754.55 kJ.mol-1 (Alexandria-library-w1u)
+oxalonitrile(g)
+[C]2[N]2 = 2 [C](g) + 2 [N](g)
+	log_k	  -344.40
+	delta_h	  2074.35
+#	Gf°(g) =   -487630.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -487558.89 kJ.mol-1 (Alexandria-library-w1u)
+oxetane(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -605.76
+	delta_h	  3757.53
+#	Gf°(g) =   -507036.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506952.77 kJ.mol-1 (Alexandria-library-w1u)
+oxido-oxo-ammonium(g)
+H[N]O2 = H(g)  + [N](g)  + 2 O(g)
+	log_k	  -199.89
+	delta_h	  1239.00
+#	Gf°(g) =   -540269.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -540196.97 kJ.mol-1 (Alexandria-library-w1u)
+oxophosphane(g)
+HOP = P(g) + H(g) + O(g) 
+	log_k	  -142.38
+	delta_h	   870.68
+#	Gf°(g) =  -1095440.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1095370.19 kJ.mol-1 (Alexandria-library-w1u)
+oxosilylene(g)
+SiO = Si(g) + O(g) 
+	log_k	  -131.65
+	delta_h	   781.40
+#	Gf°(g) =   -957795.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -957732.84 kJ.mol-1 (Alexandria-library-w1u)
+oxygen-monofluoride(g)
+[F]O = [F](g)  + O(g) 
+	log_k	   -35.81
+	delta_h	   231.98
+#	Gf°(g) =   -459363.66 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -459300.68 kJ.mol-1 (Alexandria-library-w1u)
+oxygen(g)
+O2 = 2 O(g)
+	log_k	   -84.44
+	delta_h	   511.77
+#	Gf°(g) =   -394867.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -394806.75 kJ.mol-1 (Alexandria-library-w1u)
+ozone(g)
+O3 = 3 O(g)
+	log_k	   -89.45
+	delta_h	   576.00
+#	Gf°(g) =   -592089.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -592018.46 kJ.mol-1 (Alexandria-library-w1u)
+pent-2-yne(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -837.05
+	delta_h	  5170.45
+#	Gf°(g) =   -512728.03 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512625.61 kJ.mol-1 (Alexandria-library-w1u)
+pentafluorophosphorane(g)
+P[F]5 = P(g) + 5 [F](g) 
+	log_k	  -358.36
+	delta_h	  2229.09
+#	Gf°(g) =  -2207965.32 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2207874.94 kJ.mol-1 (Alexandria-library-w1u)
+pentane(g)
+[C]5H12 = 5 [C](g) + 12 H(g)
+	log_k	 -1011.62
+	delta_h	  6305.09
+#	Gf°(g) =   -519109.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -519009.11 kJ.mol-1 (Alexandria-library-w1u)
+perchloric-acid(g)
+ClHO4 = Cl(g) + H(g) + 4 O(g) 
+	log_k	  -192.83
+	delta_h	  1275.39
+#	Gf°(g) =  -1999448.61 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1999360.06 kJ.mol-1 (Alexandria-library-w1u)
+perchloryl-fluoride(g)
+Cl[F]O3 = Cl(g) + [F](g) + 3 O(g) 
+	log_k	  -134.14
+	delta_h	   908.47
+#	Gf°(g) =  -2062540.61 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2062454.64 kJ.mol-1 (Alexandria-library-w1u)
+perfluoroperoxide(g)
+[F]2O2 = 2 [F](g) + 2 O(g)
+	log_k	   -93.53
+	delta_h	   633.82
+#	Gf°(g) =   -918852.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -918771.21 kJ.mol-1 (Alexandria-library-w1u)
+phenol(g)
+[C]6H6O = 6 [C](g) + 6 H(g) + O(g) 
+	log_k	  -960.36
+	delta_h	  5905.18
+#	Gf°(g) =   -807367.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -807274.90 kJ.mol-1 (Alexandria-library-w1u)
+phosphanide(g)
+PH2- = P(g) + 2 H(g) + e- 
+	log_k	  -116.46
+	delta_h	   721.84
+#	Gf°(g) =   -899449.51 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -899386.07 kJ.mol-1 (Alexandria-library-w1u)
+phosphate(g)
+O4P-3 = P(g) + 4 O(g) + 3 e- 
+	log_k	  -157.66
+	delta_h	  1054.71
+#	Gf°(g) =  -1685770.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1685684.46 kJ.mol-1 (Alexandria-library-w1u)
+phosphine(g)
+H3P = P(g) + 3 H(g) 
+	log_k	  -156.02
+	delta_h	   976.31
+#	Gf°(g) =   -901018.09 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -900952.76 kJ.mol-1 (Alexandria-library-w1u)
+phosphino-radical(g)
+PH2 = P(g) + 2 H(g) 
+	log_k	  -102.53
+	delta_h	   637.08
+#	Gf°(g) =   -899366.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -899301.31 kJ.mol-1 (Alexandria-library-w1u)
+phosphonium(g)
+H4P+ + e- = P(g) + 4 H(g) 
+	log_k	   -57.02
+	delta_h	   443.08
+#	Gf°(g) =   -901795.79 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -901731.75 kJ.mol-1 (Alexandria-library-w1u)
+phosphor-hexafluoride(g)
+[F]6P- = P(g) + 6 [F](g) + e- 
+	log_k	  -471.95
+	delta_h	  2918.86
+#	Gf°(g) =  -2470583.55 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2470485.92 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-V-oxychloride(g)
+Cl3OP = 3 Cl(g) + P(g) + O(g) 
+	log_k	  -225.92
+	delta_h	  1425.76
+#	Gf°(g) =  -4719260.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4719160.57 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-V-oxyfluoride(g)
+P[F]3O = P(g) + 3 [F](g) + O(g) 
+	log_k	  -328.47
+	delta_h	  2015.98
+#	Gf°(g) =  -1881055.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1880966.90 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-V-sulfide-trifluoride(g)
+P[S][F]3 = P(g) + [S](g) + 3 [F](g) 
+	log_k	  -287.86
+	delta_h	  1783.01
+#	Gf°(g) =  -2728985.40 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2728893.48 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-iii-fluoride(g)
+[F]3P = P(g) + 3 [F](g) 
+	log_k	  -243.25
+	delta_h	  1487.92
+#	Gf°(g) =  -1683375.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1683291.35 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-monoxide(g)
+OP = P(g) + O(g) 
+	log_k	   -99.50
+	delta_h	   596.99
+#	Gf°(g) =  -1093849.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1093784.28 kJ.mol-1 (Alexandria-library-w1u)
+phosphorus-nitride(g)
+[N]P = P(g) + [N](g) 
+	log_k	  -100.22
+	delta_h	   603.44
+#	Gf°(g) =  -1040056.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1039994.03 kJ.mol-1 (Alexandria-library-w1u)
+phosphoxide-hydrodoxide(g)
+HO2P- = P(g) + H(g) + 2 O(g) + e- 
+	log_k	  -239.01
+	delta_h	  1463.42
+#	Gf°(g) =  -1293188.53 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1293110.42 kJ.mol-1 (Alexandria-library-w1u)
+prop-1-yn-1-ol(g)
+[C]3H4O = 3 [C](g) + 4 H(g) + O(g) 
+	log_k	  -521.10
+	delta_h	  3195.94
+#	Gf°(g) =   -503860.33 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -503766.75 kJ.mol-1 (Alexandria-library-w1u)
+prop-2-en-1-ol(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -614.12
+	delta_h	  3800.83
+#	Gf°(g) =   -507084.04 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -506996.07 kJ.mol-1 (Alexandria-library-w1u)
+prop-2-ynal(g)
+[C]3H2O = 3 [C](g) + 2 H(g) + O(g) 
+	log_k	  -441.75
+	delta_h	  2686.59
+#	Gf°(g) =   -500714.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -500632.98 kJ.mol-1 (Alexandria-library-w1u)
+propa-12-diene(g)
+[C]3H3 = 3 [C](g) + 3 H(g)
+	log_k	  -403.00
+	delta_h	  2458.43
+#	Gf°(g) =   -304646.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -304569.54 kJ.mol-1 (Alexandria-library-w1u)
+propanal-cis(g)
+[C]3H6O = 3 [C](g) + 6 H(g) + O(g) 
+	log_k	  -626.85
+	delta_h	  3874.24
+#	Gf°(g) =   -507156.72 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -507069.48 kJ.mol-1 (Alexandria-library-w1u)
+propane-13-diol(g)
+[C]3H8O2 = 3 [C](g) + 8 H(g) + 2 O(g)
+	log_k	  -761.47
+	delta_h	  4744.98
+#	Gf°(g) =   -707810.80 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -707712.14 kJ.mol-1 (Alexandria-library-w1u)
+propane(g)
+[C]3H8 = 3 [C](g) + 8 H(g)
+	log_k	  -640.85
+	delta_h	  3982.46
+#	Gf°(g) =   -312736.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -312654.64 kJ.mol-1 (Alexandria-library-w1u)
+propanoic-acid-cis(g)
+[C]3H6O2 = 3 [C](g) + 6 H(g) + 2 O(g)
+	log_k	  -707.91
+	delta_h	  4375.18
+#	Gf°(g) =   -704812.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -704717.91 kJ.mol-1 (Alexandria-library-w1u)
+propargylamine(g)
+[C]3H5[N] = 3 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -560.68
+	delta_h	  3464.11
+#	Gf°(g) =   -451636.14 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -451550.43 kJ.mol-1 (Alexandria-library-w1u)
+propenal(g)
+[C]3H4O = 3 [C](g) + 4 H(g) + O(g) 
+	log_k	  -541.41
+	delta_h	  3322.56
+#	Gf°(g) =   -503976.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -503893.37 kJ.mol-1 (Alexandria-library-w1u)
+propene(g)
+[C]3H6 = 3 [C](g) + 6 H(g)
+	log_k	  -554.89
+	delta_h	  3426.42
+#	Gf°(g) =   -309553.01 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -309474.17 kJ.mol-1 (Alexandria-library-w1u)
+propenyl-radical(g)
+[C]3H5 = 3 [C](g) + 5 H(g)
+	log_k	  -499.10
+	delta_h	  3074.22
+#	Gf°(g) =   -307888.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -307809.77 kJ.mol-1 (Alexandria-library-w1u)
+propylammonium(g)
+[C]3H10[N]+ + e- = 3 [C](g) + 10 H(g) + [N](g) 
+	log_k	  -668.65
+	delta_h	  4241.56
+#	Gf°(g) =   -458980.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -458888.95 kJ.mol-1 (Alexandria-library-w1u)
+propyleneimine-trans(g)
+[C]3H7[N] = 3 [C](g) + 7 H(g) + [N](g) 
+	log_k	  -649.29
+	delta_h	  4040.14
+#	Gf°(g) =   -454834.66 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -454750.89 kJ.mol-1 (Alexandria-library-w1u)
+propyne(g)
+[C]3H4 = 3 [C](g) + 4 H(g)
+	log_k	  -460.80
+	delta_h	  2823.54
+#	Gf°(g) =   -306323.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -306246.87 kJ.mol-1 (Alexandria-library-w1u)
+pyrazine(g)
+[C]4H4[N]2 = 4 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -728.08
+	delta_h	  4476.03
+#	Gf°(g) =   -694077.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -693992.41 kJ.mol-1 (Alexandria-library-w1u)
+pyrazole(g)
+[C]3H4[N]2 = 3 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -614.33
+	delta_h	  3786.34
+#	Gf°(g) =   -593992.42 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -593911.23 kJ.mol-1 (Alexandria-library-w1u)
+pyridazine(g)
+[C]4H4[N]2 = 4 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -714.99
+	delta_h	  4401.05
+#	Gf°(g) =   -694002.87 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -693917.43 kJ.mol-1 (Alexandria-library-w1u)
+pyridine(g)
+[C]5H5[N] = 5 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -812.13
+	delta_h	  4988.20
+#	Gf°(g) =   -651943.09 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -651857.50 kJ.mol-1 (Alexandria-library-w1u)
+pyridinium(g)
+[C]5H6[N]+ + e- = 5 [C](g) + 6 H(g) + [N](g) 
+	log_k	  -740.84
+	delta_h	  4611.35
+#	Gf°(g) =   -652878.93 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -652792.86 kJ.mol-1 (Alexandria-library-w1u)
+pyrimidine(g)
+[C]4H4[N]2 = 4 [C](g) + 4 H(g) + 2 [N](g)
+	log_k	  -731.04
+	delta_h	  4492.83
+#	Gf°(g) =   -694094.46 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -694009.21 kJ.mol-1 (Alexandria-library-w1u)
+pyrrole(g)
+[C]4H5[N] = 4 [C](g) + 5 H(g) + [N](g) 
+	log_k	  -699.06
+	delta_h	  4301.90
+#	Gf°(g) =   -551861.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -551779.71 kJ.mol-1 (Alexandria-library-w1u)
+pyrrolidine-2-one(g)
+[C]4H7[N]O = 4 [C](g) + 7 H(g) + [N](g)  + O(g) 
+	log_k	  -852.24
+	delta_h	  5279.76
+#	Gf°(g) =   -752621.88 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -752529.49 kJ.mol-1 (Alexandria-library-w1u)
+pyrrolidine-2-thione(g)
+[C]4H7[N][S] = 4 [C](g) + 7 H(g) + [N](g)  + [S](g) 
+	log_k	  -813.78
+	delta_h	  5059.66
+#	Gf°(g) =  -1600564.50 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1600468.93 kJ.mol-1 (Alexandria-library-w1u)
+quinone(g)
+[C]6H4O2 = 6 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -935.68
+	delta_h	  5735.50
+#	Gf°(g) =  -1001727.22 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1001628.28 kJ.mol-1 (Alexandria-library-w1u)
+silane(g)
+H4Si = Si(g) + 4 H(g) 
+	log_k	  -206.23
+	delta_h	  1294.17
+#	Gf°(g) =   -766414.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -766346.98 kJ.mol-1 (Alexandria-library-w1u)
+silanecarbonitrile(g)
+[C]H3[N]Si = Si(g) + [C](g) + 3 H(g) + [N](g) 
+	log_k	  -349.42
+	delta_h	  2152.91
+#	Gf°(g) =  -1008717.31 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1008635.78 kJ.mol-1 (Alexandria-library-w1u)
+silanethiol(g)
+H4[S]Si = Si(g) + 4 H(g) + [S](g) 
+	log_k	  -256.28
+	delta_h	  1613.71
+#	Gf°(g) =  -1812054.85 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1811973.56 kJ.mol-1 (Alexandria-library-w1u)
+silanol(g)
+H4OSi = Si(g) + 4 H(g) + O(g) 
+	log_k	  -295.33
+	delta_h	  1838.68
+#	Gf°(g) =   -964115.60 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -964038.98 kJ.mol-1 (Alexandria-library-w1u)
+silanone(g)
+SiH2O = Si(g) + 2 H(g) + O(g) 
+	log_k	  -198.93
+	delta_h	  1224.97
+#	Gf°(g) =   -960872.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -960800.84 kJ.mol-1 (Alexandria-library-w1u)
+silicon-monosulfide(g)
+[S]Si = Si(g) + [S](g) 
+	log_k	   -98.94
+	delta_h	   593.63
+#	Gf°(g) =  -1805771.26 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1805704.61 kJ.mol-1 (Alexandria-library-w1u)
+silicon-monoxide(g)
+OSi = Si(g) + O(g) 
+	log_k	  -131.65
+	delta_h	   781.40
+#	Gf°(g) =   -957795.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -957732.84 kJ.mol-1 (Alexandria-library-w1u)
+silyl-radical(g)
+SiH3 = Si(g) + 3 H(g) 
+	log_k	  -145.94
+	delta_h	   915.68
+#	Gf°(g) =   -764723.62 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -764656.27 kJ.mol-1 (Alexandria-library-w1u)
+silylene(g)
+SiH2 = Si(g) + 2 H(g) 
+	log_k	   -99.48
+	delta_h	   621.83
+#	Gf°(g) =   -763112.03 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -763050.21 kJ.mol-1 (Alexandria-library-w1u)
+silylidenesilane(g)
+H4Si2 = 2 Si(g) + 4 H(g) 
+	log_k	  -233.85
+	delta_h	  1484.65
+#	Gf°(g) =  -1526423.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1526341.41 kJ.mol-1 (Alexandria-library-w1u)
+silylphosphane(g)
+H5PSi = P(g) + Si(g) + 5 H(g) 
+	log_k	  -287.68
+	delta_h	  1825.58
+#	Gf°(g) =  -1664313.82 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1664230.41 kJ.mol-1 (Alexandria-library-w1u)
+silylsilanide(g)
+Si2H5 = 2 Si(g) + 5 H(g) 
+	log_k	  -277.26
+	delta_h	  1761.49
+#	Gf°(g) =  -1528017.38 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1527930.47 kJ.mol-1 (Alexandria-library-w1u)
+sodium-chloride(g)
+NaCl = Na(g) + Cl(g) 
+	log_k	   -63.23
+	delta_h	   385.64
+#	Gf°(g) =  -1634741.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1634672.67 kJ.mol-1 (Alexandria-library-w1u)
+sodium-fluoride(g)
+Na[F] = Na(g) + [F](g) 
+	log_k	   -75.70
+	delta_h	   458.16
+#	Gf°(g) =   -688548.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -688483.89 kJ.mol-1 (Alexandria-library-w1u)
+sodium-hydride(g)
+HNa = Na(g) + H(g) 
+	log_k	   -28.48
+	delta_h	   186.45
+#	Gf°(g) =   -427659.24 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -427603.19 kJ.mol-1 (Alexandria-library-w1u)
+sodium-hydroxide(g)
+NaOH = Na(g) + O(g) + H(g) 
+	log_k	  -119.01
+	delta_h	   733.88
+#	Gf°(g) =   -625368.94 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -625298.11 kJ.mol-1 (Alexandria-library-w1u)
+sodium-lithium-oxide(g)
+LiNaO = Li(g) + Na(g) + O(g) 
+	log_k	   -92.92
+	delta_h	   586.27
+#	Gf°(g) =   -643579.09 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -643502.38 kJ.mol-1 (Alexandria-library-w1u)
+succinic-anhydride(g)
+[C]4H4O3 = 4 [C](g) + 4 H(g) + 3 O(g)
+	log_k	  -808.01
+	delta_h	  4964.45
+#	Gf°(g) =   -999319.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -999221.72 kJ.mol-1 (Alexandria-library-w1u)
+sulfanyloxidanyl(g)
+H[S]O = H(g)  + [S](g)  + O(g) 
+	log_k	  -124.48
+	delta_h	   766.17
+#	Gf°(g) =  -1244604.88 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1244532.91 kJ.mol-1 (Alexandria-library-w1u)
+sulfate(g)
+O4[S]-2 =  + 4 O(g) + [S](g) + 2 e- 
+	log_k	  -277.08
+	delta_h	  1733.64
+#	Gf°(g) =  -1835715.59 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1835630.63 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-dichloride(g)
+Cl2[S] = 2 Cl(g) + [S](g) 
+	log_k	   -80.60
+	delta_h	   516.93
+#	Gf°(g) =  -3462274.84 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3462188.98 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-difluoride(g)
+[F]2[S] = 2 [F](g) + [S](g) 
+	log_k	  -115.03
+	delta_h	   717.77
+#	Gf°(g) =  -1569944.19 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1569867.23 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-dioxide(g)
+O2[S] = 2 O(g) + [S](g) 
+	log_k	  -170.32
+	delta_h	  1037.10
+#	Gf°(g) =  -1440713.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1440639.11 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-hexafluoride(g)
+[F]6[S] = 6 [F](g) + [S](g) 
+	log_k	  -294.07
+	delta_h	  1901.59
+#	Gf°(g) =  -2618831.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2618735.88 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-monofluoride(g)
+[F][S]- = [F](g)  + [S](g)  + e-
+	log_k	   -89.47
+	delta_h	   542.27
+#	Gf°(g) =  -1307835.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1307770.51 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-monoxide(g)
+O[S] = O(g)  + [S](g) 
+	log_k	   -86.95
+	delta_h	   523.60
+#	Gf°(g) =  -1243044.27 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1242978.13 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-tetrafluoride(g)
+[F]4[S] = 4 [F](g) + [S](g) 
+	log_k	  -210.32
+	delta_h	  1338.85
+#	Gf°(g) =  -2094420.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2094330.72 kJ.mol-1 (Alexandria-library-w1u)
+sulfur-trioxide(g)
+O3[S] = 3 O(g) + [S](g) 
+	log_k	  -221.76
+	delta_h	  1373.63
+#	Gf°(g) =  -1638199.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1638123.13 kJ.mol-1 (Alexandria-library-w1u)
+sulfuryl-dichloride(g)
+Cl2O2[S] = 2 Cl(g) + 2 O(g) + [S](g) 
+	log_k	  -204.99
+	delta_h	  1308.59
+#	Gf°(g) =  -3857370.67 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3857275.61 kJ.mol-1 (Alexandria-library-w1u)
+sulfuryl-difluoride(g)
+[F]2O2[S] = 2 [F](g) + 2 O(g) + [S](g) 
+	log_k	  -262.30
+	delta_h	  1639.67
+#	Gf°(g) =  -1965170.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1965084.10 kJ.mol-1 (Alexandria-library-w1u)
+tetraborane-10(g)
+B4H10 = 4 B(g) + 10 H(g) 
+	log_k	  -693.92
+	delta_h	  4387.10
+#	Gf°(g) =   -276590.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -276503.23 kJ.mol-1 (Alexandria-library-w1u)
+tetrachloroaluminate(g)
+AlCl4- = Al(g) + 4 Cl(g) + e- 
+	log_k	  -304.12
+	delta_h	  1865.38
+#	Gf°(g) =  -5471092.77 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -5470982.91 kJ.mol-1 (Alexandria-library-w1u)
+tetrachloroethylene(g)
+[C]2Cl4 = 4 Cl(g) + 2 [C](g) 
+	log_k	  -296.40
+	delta_h	  1868.30
+#	Gf°(g) =  -5033482.98 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -5033381.30 kJ.mol-1 (Alexandria-library-w1u)
+tetrachlorosilane(g)
+Cl4Si = 4 Cl(g) + Si(g) 
+	log_k	  -242.15
+	delta_h	  1513.81
+#	Gf°(g) =  -5594153.02 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -5594047.78 kJ.mol-1 (Alexandria-library-w1u)
+tetrafluoroaluminate(g)
+Al[F]4- = Al(g) + 4 [F](g) + e- 
+	log_k	  -417.74
+	delta_h	  2520.16
+#	Gf°(g) =  -1686687.04 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1686592.50 kJ.mol-1 (Alexandria-library-w1u)
+tetrafluoroethylene(g)
+[C]2[F]4 = 2 [C](g) + 4 [F](g)
+	log_k	  -391.84
+	delta_h	  2414.72
+#	Gf°(g) =  -1248973.45 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1248882.53 kJ.mol-1 (Alexandria-library-w1u)
+tetrafluorohydrazine(g)
+[F]4[N]2 = 4 [F](g) + 2 [N](g)
+	log_k	  -198.22
+	delta_h	  1309.23
+#	Gf°(g) =  -1335789.45 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1335695.62 kJ.mol-1 (Alexandria-library-w1u)
+tetrafluorosilane(g)
+[F]4Si = Si(g) + 4 [F](g) 
+	log_k	  -381.47
+	delta_h	  2314.40
+#	Gf°(g) =  -1809893.96 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1809803.19 kJ.mol-1 (Alexandria-library-w1u)
+tetrahydrothiophene(g)
+[C]4H8[S] = 4 [C](g) + 8 H(g) + [S](g) 
+	log_k	  -780.49
+	delta_h	  4862.34
+#	Gf°(g) =  -1458324.38 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1458233.05 kJ.mol-1 (Alexandria-library-w1u)
+tetraphosphor(g)
+P4 = 4 P(g) 
+	log_k	  -185.63
+	delta_h	  1164.43
+#	Gf°(g) =  -3585413.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3585323.65 kJ.mol-1 (Alexandria-library-w1u)
+thiacyclopropane(g)
+[C]2H4[S] = 2 [C](g) + 4 H(g) + [S](g) 
+	log_k	  -400.22
+	delta_h	  2480.09
+#	Gf°(g) =  -1251896.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1251818.96 kJ.mol-1 (Alexandria-library-w1u)
+thiane(g)
+[C]5H10[S] = 5 [C](g) + 10 H(g) + [S](g) 
+	log_k	  -966.12
+	delta_h	  6029.64
+#	Gf°(g) =  -1561512.56 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1561416.27 kJ.mol-1 (Alexandria-library-w1u)
+thiazyl-fluoride(g)
+[F][N][S] = [F](g)  + [N](g)  + [S](g) 
+	log_k	  -134.17
+	delta_h	   827.22
+#	Gf°(g) =  -1451483.63 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1451406.24 kJ.mol-1 (Alexandria-library-w1u)
+thiazyl-trifluoride(g)
+[F]3[N][S] = 3 [F](g) + [N](g)  + [S](g) 
+	log_k	  -204.94
+	delta_h	  1310.29
+#	Gf°(g) =  -1975820.12 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1975731.73 kJ.mol-1 (Alexandria-library-w1u)
+thiethane(g)
+[C]3H6[S] = 3 [C](g) + 6 H(g) + [S](g) 
+	log_k	  -583.76
+	delta_h	  3632.85
+#	Gf°(g) =  -1355072.89 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1354987.65 kJ.mol-1 (Alexandria-library-w1u)
+thiocarbonyl-dichloride(g)
+[C]Cl2[S] = 2 Cl(g) + [C](g) + [S](g) 
+	log_k	  -184.44
+	delta_h	  1150.37
+#	Gf°(g) =  -3562303.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3562213.91 kJ.mol-1 (Alexandria-library-w1u)
+thiocyanate(g)
+[C][N][S]- = [C](g)  + [N](g)  + [S](g)  + e-
+	log_k	  -251.09
+	delta_h	  1505.56
+#	Gf°(g) =  -1289624.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1289554.87 kJ.mol-1 (Alexandria-library-w1u)
+thioformaldehyde(g)
+[C]H2[S] = [C](g)  + 2 H(g) + [S](g) 
+	log_k	  -211.64
+	delta_h	  1299.97
+#	Gf°(g) =  -1148691.68 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1148622.93 kJ.mol-1 (Alexandria-library-w1u)
+thionitrosyl-chloride(g)
+Cl[N][S] = Cl(g) + [N](g) + [S](g) 
+	log_k	   -95.06
+	delta_h	   602.65
+#	Gf°(g) =  -2397523.97 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2397442.97 kJ.mol-1 (Alexandria-library-w1u)
+thionitrosyl-fluoride(g)
+[F][N][S] = [F](g)  + [N](g)  + [S](g) 
+	log_k	  -107.29
+	delta_h	   674.04
+#	Gf°(g) =  -1451330.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1451253.06 kJ.mol-1 (Alexandria-library-w1u)
+thionyl-chloride(g)
+Cl2O[S] = 2 Cl(g) + O(g) + [S](g) 
+	log_k	  -147.69
+	delta_h	   939.03
+#	Gf°(g) =  -3659850.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3659758.57 kJ.mol-1 (Alexandria-library-w1u)
+thionyl-difluoride(g)
+[F]2O[S] = 2 [F](g) + O(g)  + [S](g) 
+	log_k	  -200.69
+	delta_h	  1245.65
+#	Gf°(g) =  -1767626.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1767542.59 kJ.mol-1 (Alexandria-library-w1u)
+thionylimide(g)
+H[N]O[S] = H(g)  + [N](g)  + O(g)  + [S](g) 
+	log_k	  -199.12
+	delta_h	  1233.30
+#	Gf°(g) =  -1388427.34 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1388350.82 kJ.mol-1 (Alexandria-library-w1u)
+thiophene(g)
+[C]4H4[S] = 4 [C](g) + 4 H(g) + [S](g) 
+	log_k	  -627.22
+	delta_h	  3857.64
+#	Gf°(g) =  -1452064.05 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1451979.50 kJ.mol-1 (Alexandria-library-w1u)
+thiosulfate(g)
+[S]2O3-2 =  + 2 [S](g) + 3 O(g) + 2 e- 
+	log_k	  -256.30
+	delta_h	  1612.53
+#	Gf°(g) =  -2683759.10 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2683669.06 kJ.mol-1 (Alexandria-library-w1u)
+thiothionyl-fluoride(g)
+[F]2[S]2 = 2 [F](g) + 2 [S](g)
+	log_k	  -160.48
+	delta_h	  1014.62
+#	Gf°(g) =  -2615558.69 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2615471.11 kJ.mol-1 (Alexandria-library-w1u)
+trans-12-dichloroethene(g)
+[C]2H2Cl2 = 2 Cl(g) + 2 [C](g) + 2 H(g) 
+	log_k	  -335.50
+	delta_h	  2080.19
+#	Gf°(g) =  -2619939.14 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -2619852.61 kJ.mol-1 (Alexandria-library-w1u)
+trans-13-pentadiene(g)
+[C]5H8 = 5 [C](g) + 8 H(g)
+	log_k	  -845.14
+	delta_h	  5224.95
+#	Gf°(g) =   -512774.23 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -512680.11 kJ.mol-1 (Alexandria-library-w1u)
+trichlorofluoromethane(g)
+[C]Cl3[F] = 3 Cl(g) + [C](g) + [F](g) 
+	log_k	  -220.95
+	delta_h	  1397.38
+#	Gf°(g) =  -3987352.86 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3987257.59 kJ.mol-1 (Alexandria-library-w1u)
+trichlorofluorosilane(g)
+Cl3[F]Si = 3 Cl(g) + Si(g) + [F](g) 
+	log_k	  -276.98
+	delta_h	  1713.93
+#	Gf°(g) =  -4648088.29 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4647986.61 kJ.mol-1 (Alexandria-library-w1u)
+trichloromethane(g)
+[C]HCl3 = 3 Cl(g) + [C](g) + H(g) 
+	log_k	  -214.54
+	delta_h	  1354.14
+#	Gf°(g) =  -3726696.39 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -3726605.35 kJ.mol-1 (Alexandria-library-w1u)
+trichloromethylsilane(g)
+[C]H3Cl3Si = 3 Cl(g) + Si(g) + [C](g) + 3 H(g) 
+	log_k	  -429.83
+	delta_h	  2682.78
+#	Gf°(g) =  -4490469.41 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4490362.38 kJ.mol-1 (Alexandria-library-w1u)
+trifluoramine-oxide(g)
+[F]3[N]O = 3 [F](g) + [N](g)  + O(g) 
+	log_k	  -177.34
+	delta_h	  1153.17
+#	Gf°(g) =  -1127500.47 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1127415.07 kJ.mol-1 (Alexandria-library-w1u)
+trifluoro-methyl-silane(g)
+[C]H3[F]3Si = Si(g) + [C](g) + 3 H(g) + 3 [F](g) 
+	log_k	  -534.42
+	delta_h	  3283.29
+#	Gf°(g) =  -1652275.65 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1652179.00 kJ.mol-1 (Alexandria-library-w1u)
+trifluoroacetamide(g)
+[C]2H2[F]3[N]O = 2 [C](g) + 2 H(g) + 3 [F](g) + [N](g)  + O(g) 
+	log_k	  -592.25
+	delta_h	  3660.08
+#	Gf°(g) =  -1331433.13 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1331329.38 kJ.mol-1 (Alexandria-library-w1u)
+trifluoroacetic-acid(g)
+[C]2H[F]3O2 = 2 [C](g) + H(g)  + 3 [F](g) + 2 O(g)
+	log_k	  -548.11
+	delta_h	  3376.45
+#	Gf°(g) =  -1383631.30 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1383530.24 kJ.mol-1 (Alexandria-library-w1u)
+trifluoroacetonitrile(g)
+[C]2[F]3[N] = 2 [C](g) + 3 [F](g) + [N](g) 
+	log_k	  -428.50
+	delta_h	  2623.81
+#	Gf°(g) =  -1130612.81 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1130521.20 kJ.mol-1 (Alexandria-library-w1u)
+trifluoroethene(g)
+[C]2H[F]3 = 2 [C](g) + H(g)  + 3 [F](g)
+	log_k	  -386.96
+	delta_h	  2379.76
+#	Gf°(g) =   -988325.64 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -988238.58 kJ.mol-1 (Alexandria-library-w1u)
+trifluoroisocyanomethane(g)
+[C]2[F]3[N] = 2 [C](g) + 3 [F](g) + [N](g) 
+	log_k	  -418.56
+	delta_h	  2565.88
+#	Gf°(g) =  -1130556.07 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1130463.27 kJ.mol-1 (Alexandria-library-w1u)
+trifluoromethane(g)
+[C]H[F]3 = [C](g)  + H(g)  + 3 [F](g)
+	log_k	  -301.74
+	delta_h	  1855.84
+#	Gf°(g) =   -888403.35 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -888323.17 kJ.mol-1 (Alexandria-library-w1u)
+trifluoromethyl-radical(g)
+[C][F]3 = [C](g)  + 3 [F](g)
+	log_k	  -232.21
+	delta_h	  1423.41
+#	Gf°(g) =   -886660.16 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -886578.52 kJ.mol-1 (Alexandria-library-w1u)
+trimethylamine(g)
+[C]3H9[N] = 3 [C](g) + 9 H(g) + [N](g) 
+	log_k	  -735.25
+	delta_h	  4594.21
+#	Gf°(g) =   -458018.08 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -457929.39 kJ.mol-1 (Alexandria-library-w1u)
+trimethylphosphine(g)
+[C]3H9P = P(g) + 3 [C](g) + 9 H(g) 
+	log_k	  -720.73
+	delta_h	  4506.00
+#	Gf°(g) =  -1210627.17 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1210530.20 kJ.mol-1 (Alexandria-library-w1u)
+uracil(g)
+[C]4H4[N]2O2 = 4 [C](g) + 4 H(g) + 2 [N](g) + 2 O(g)
+	log_k	  -887.99
+	delta_h	  5466.42
+#	Gf°(g) =  -1089376.16 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -1089277.77 kJ.mol-1 (Alexandria-library-w1u)
+urea(g)
+[C]H4[N]2O = [C](g)  + 4 H(g) + 2 [N](g) + O(g) 
+	log_k	  -488.06
+	delta_h	  3023.82
+#	Gf°(g) =   -591592.92 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -591513.21 kJ.mol-1 (Alexandria-library-w1u)
+vinyl-formate(g)
+[C]3H4O2 = 3 [C](g) + 4 H(g) + 2 O(g)
+	log_k	  -611.71
+	delta_h	  3761.58
+#	Gf°(g) =   -701570.47 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -701479.88 kJ.mol-1 (Alexandria-library-w1u)
+vinyl-radical(g)
+[C]2H3 = 2 [C](g) + 3 H(g)
+	log_k	  -293.26
+	delta_h	  1795.47
+#	Gf°(g) =   -204584.71 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -204515.09 kJ.mol-1 (Alexandria-library-w1u)
+vinyloxy-radical(g)
+[C]2H3O = 2 [C](g) + 3 H(g) + O(g) 
+	log_k	  -379.40
+	delta_h	  2325.06
+#	Gf°(g) =   -402269.30 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -402192.17 kJ.mol-1 (Alexandria-library-w1u)
+vinylsilane(g)
+[C]2H6Si = Si(g) + 2 [C](g) + 6 H(g) 
+	log_k	  -495.54
+	delta_h	  3084.40
+#	Gf°(g) =   -969629.91 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -969544.62 kJ.mol-1 (Alexandria-library-w1u)
+vinyltrichlorosilane(g)
+[C]2H3Cl3Si = 3 Cl(g) + Si(g) + 2 [C](g) + 3 H(g) 
+	log_k	  -525.58
+	delta_h	  3267.52
+#	Gf°(g) =  -4590451.80 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =  -4590338.61 kJ.mol-1 (Alexandria-library-w1u)
+water(g)
+H2O = 2 H(g) + O(g) 
+	log_k	  -148.93
+	delta_h	   907.60
+#	Gf°(g) =   -200735.76 kJ.mol-1 (Alexandria-library-w1u)
+#	Hf°(g) =   -200679.51 kJ.mol-1 (Alexandria-library-w1u)
+
+END

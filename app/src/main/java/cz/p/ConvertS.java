@@ -42,6 +42,7 @@ public class ConvertS extends MainActivity {
     private EditText TabData;
     private EditText SaveName;
     Button openInputfile;
+    Button openInputfile2;
     Button Convert;
     Button Quit;
     private TextView ConvertedDataLabel;
@@ -209,6 +210,35 @@ public class ConvertS extends MainActivity {
         SaveName = (EditText) findViewById(R.id.SaveName);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openInputfile2 = (Button) findViewById(R.id.openInputfile2);
+        openInputfile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String InputData = TabData.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("Thermochemistry_s.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputData);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String SaveOutputName = SaveName.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SaveOutputName);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(ConvertS.this, ConvertPickerS.class);
+                startActivity(intent);
+            }
+        });
         Convert = (Button) findViewById(R.id.Convert);
         Convert.setOnClickListener(ConvertClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -274,8 +304,10 @@ public class ConvertS extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                read11(getApplicationContext());
+//                read11(getApplicationContext());
                 exec("cp "+getFilesDir()+"/Thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
+                exec("cp "+getFilesDir()+"/Thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
+
                 progressDialog = new ProgressDialog(ConvertS.this);
                 progressDialog.setTitle("Please wait...");
                 progressDialog.setMessage("Converting data to database.");
@@ -295,14 +327,15 @@ public class ConvertS extends MainActivity {
                         makeDatabase_solv();
                         modifyOutput_solv();
                         Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
-                        onFinish();
+                        onFinishS();
                     }
-                    public void onFinish(){
+                    public void onFinishS(){
                         progressDialog.dismiss();
                     }
                 }.start();
-                Intent intent = new Intent(ConvertS.this, ConvertDialog.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ConvertS.this, ResumeActivity.class);
+//                startActivity(intent);
+                onStart();
             }
         };
     }
@@ -312,6 +345,10 @@ public class ConvertS extends MainActivity {
             exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.bas");
             exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
             exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.bas");
+            exec("chmod -R 755 "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -336,12 +373,32 @@ public class ConvertS extends MainActivity {
             OutputStreamWriter outputWriter215 = new OutputStreamWriter(fileout215);
             outputWriter215.write(Raw_g2);
             outputWriter215.close();
+
+            String Raw_ss = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
+            while (Raw_ss.contains("= + e- =")){  //2 spaces
+                Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+            }
+            FileOutputStream fileout216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter216 = new OutputStreamWriter(fileout216);
+            outputWriter216.write(Raw_ss);
+            outputWriter216.close();
+
+            String Raw_ss2 = exec("cat "+getFilesDir()+"/Database_solid_sol1.dat");
+            while (Raw_ss2.contains("(solv) ;  = ")){  //2 spaces
+                Raw_ss2 = Raw_ss2.replace("(solv) ;  = ", ""); //(2 spaces, 1 space)
+            }
+            FileOutputStream fileout217 = openFileOutput("Database_solid_sol2.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter217 = new OutputStreamWriter(fileout217);
+            outputWriter217.write(Raw_ss2);
+            outputWriter217.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_s2.dat "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_s.txt");
-
+        exec("cp "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_s.txt");
+        exec("cp "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_solid_sol.txt");
+        exec("rm "+getFilesDir()+"/Database_s2.dat");
+        exec("rm "+getFilesDir()+"/Database_solid_sol2.dat");
     }
 
     private void read11(Context context11) {

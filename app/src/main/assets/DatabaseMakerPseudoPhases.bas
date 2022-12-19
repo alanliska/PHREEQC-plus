@@ -3,9 +3,135 @@ CLS
 DIM Inp$(10001)
 DIM Inp2$(10001)
 
+Count_e = 0
+Count_H = 0
+Count__H = 0
+Count_Li = 0
+Count_Na = 0
+Count_K = 0
+Count_Rb = 0
+Count_Cs = 0
+Count_Fr = 0
+Count_Be = 0
+Count_Mg = 0
+Count_Ca = 0
+Count_Sr = 0
+Count_Ba = 0
+Count_Ra = 0
+Count_Sc = 0
+Count_Y = 0
+Count_La = 0
+Count_Ac = 0
+Count_Ce = 0
+Count_Pr = 0
+Count_Nd = 0
+Count_Pm = 0
+Count_Sm = 0
+Count_Eu = 0
+Count_Gd = 0
+Count_Tb = 0
+Count_Dy = 0
+Count_Ho = 0
+Count_Er = 0
+Count_Tm = 0
+Count_Yb = 0
+Count_Lu = 0
+Count_Th = 0
+Count_Pa = 0
+Count_U = 0
+Count_Np = 0
+Count_Pu = 0
+Count_Am = 0
+Count_Cm = 0
+Count_Bk = 0
+Count_Cf = 0
+Count_Es = 0
+Count_Fm = 0
+Count_Md = 0
+Count_No = 0
+Count_Lr = 0
+Count_Ti = 0
+Count_Zr = 0
+Count_Hf = 0
+Count_Rf = 0
+Count_V = 0
+Count_Nb = 0
+Count_Ta = 0
+Count_Db = 0
+Count_Cr = 0
+Count_Mo = 0
+Count_W = 0
+Count_Sg = 0
+Count_Mn = 0
+Count_Tc = 0
+Count_Re = 0
+Count_Bh = 0
+Count_Fe = 0
+Count_Ru = 0
+Count_Os = 0
+Count_Hs = 0
+Count_Co = 0
+Count_Rh = 0
+Count_Ir = 0
+Count_Mt = 0
+Count_Ni = 0
+Count_Pd = 0
+Count_Pt = 0
+Count_Ds = 0
+Count_Cu = 0
+Count_Ag = 0
+Count_Au = 0
+Count_Rg = 0
+Count_Zn = 0
+Count_Cd = 0
+Count_Hg = 0
+Count_Cn = 0
+Count_B = 0
+Count_Al = 0
+Count_Ga = 0
+Count_In = 0
+Count_Tl = 0
+Count_Nh = 0
+Count_C = 0
+Count__C = 0
+Count_Si = 0
+Count_Ge = 0
+Count_Sn = 0
+Count_Pb = 0
+Count_Fl = 0
+Count_N = 0
+Count__N = 0
+Count_P = 0
+Count_As = 0
+Count_Sb = 0
+Count_Bi = 0
+Count_Mc = 0
+Count_O = 0
+Count__O = 0
+Count_S = 0
+Count__S = 0
+Count_Se = 0
+Count_Te = 0
+Count_Po = 0
+Count_Lv = 0
+Count_F = 0
+Count__F = 0
+Count_Cl = 0
+Count_Br = 0
+Count_I = 0
+Count_At = 0
+Count_Ts = 0
+Count_He = 0
+Count_Ne = 0
+Count_Ar = 0
+Count_Kr = 0
+Count_Xe = 0
+Count_Rn = 0
+Count_Og = 0
 
 Cum_S = 0
 Cum_H = 0
+Cum_C = 0
 Cum_G = 0
 Cum_Probe = 0
 
@@ -25,8 +151,10 @@ CLOSE #21
 OPEN "I", #1, "/data/data/cz.p/files/PHASES/Thermochemistry_g.txt"
 OPEN "O", #10, "/data/data/cz.p/files/PHASES/Database_g.dat"
 CLOSE #10
+OPEN "O", #11, "/data/data/cz.p/files/PHASES/Fastchem_g.dat"
+CLOSE #11
 OPEN "A", #10, "/data/data/cz.p/files/PHASES/Database_g.dat"
-
+OPEN "A", #11, "/data/data/cz.p/files/PHASES/Fastchem_g.dat"
 
 #PRINT #10, "PHREEQC database fragment"
 #PRINT #10, "========================="
@@ -73,12 +201,14 @@ Lim5% = INSTR(LineData$, " ", Lim4%+1)
 DummyH$ = MID$(LineData$, Lim4%+1, Lim5%-Lim4%-1)
 Lim6% = INSTR(LineData$, " ", Lim5%+1)
 DummyC$ = MID$(LineData$, Lim5%+1, Lim6%-Lim5%-1)
+C = VAL(DummyC$) * Conversion
 Lim7% = INSTR(LineData$, " ", Lim6%+1)
 S$ = MID$(LineData$, Lim6%+1, LenghtData%-Lim6%)
 S = VAL(S$) * Conversion + S_corr
 
 Cum_H = Cum_H + H
 Cum_S = Cum_S + S
+Cum_C = Cum_C + C
 
 IF H$ = "" THEN 
 Cum_Probe = Cum_Probe + 1
@@ -2245,6 +2375,8 @@ SegmSpecies$ = SegmSpecies$
 
 ENDIF
 
+Count_e = CountElectrons
+
 
 # i s p�idan�mi z�vorkami
 
@@ -2422,28 +2554,277 @@ LenghtRequest% = LEN(Request$)
 Lim101% = INSTR(Request$, " ")
 RefFragm$ = LEFT$(Request$, Lim101%-1)
 Lim102% = INSTR(Request$, " ", Lim101%+1)
+Lim103% = INSTR(Request$, " ", Lim102%+1)
 RefH$ = MID$(Request$, Lim101%+1, Lim102%-Lim101%-1)
 RefH = VAL(RefH$) * Conversion + H0_corr
-RefS$ = MID$(Request$, Lim102%+1, LenghtRequest%-Lim102%)
+RefS$ = MID$(Request$, Lim102%+1, Lim103%-Lim102%-1)
 RefS = VAL(RefS$) * Conversion + S0_corr
+RefC$ = MID$(Request$, Lim103%+1, LenghtRequest%-Lim103%)
+RefC = VAL(RefC$) * Conversion
 
 
 IF (Elmnt$ = RefFragm$ OR RefFragm$ = Elmnt$) AND (Elmnt$ <> "" OR RefFragm$ <> "") THEN 
 
 Cum_H = Cum_H - ElmntCount * RefH
 Cum_S = Cum_S - ElmntCount * RefS
+Cum_C = Cum_C - ElmntCount * RefC
 
+# Block for Fastchem
+
+IF Elmnt$ = "H" THEN
+Count_H = Count_H + ElmntCount
+ELSE IF Elmnt$ = "[H]" THEN
+Count__H = Count__H + ElmntCount
+ELSE IF Elmnt$ = "Li" THEN
+Count_Li = Count_Li + ElmntCount
+ELSE IF Elmnt$ = "Na" THEN
+Count_Na = Count_Na + ElmntCount
+ELSE IF Elmnt$ = "K" THEN
+Count_K = Count_K + ElmntCount
+ELSE IF Elmnt$ = "Rb" THEN
+Count_Rb = Count_Rb + ElmntCount
+ELSE IF Elmnt$ = "Cs" THEN
+Count_Cs = Count_Cs + ElmntCount
+ELSE IF Elmnt$ = "Fr" THEN
+Count_Fr = Count_Fr + ElmntCount
+ELSE IF Elmnt$ = "Be" THEN
+Count_Be = Count_Be + ElmntCount
+ELSE IF Elmnt$ = "Mg" THEN
+Count_Mg = Count_Mg + ElmntCount
+ELSE IF Elmnt$ = "Ca" THEN
+Count_Ca = Count_Ca + ElmntCount
+ELSE IF Elmnt$ = "Sr" THEN
+Count_Sr = Count_Sr + ElmntCount
+ELSE IF Elmnt$ = "Ba" THEN
+Count_Ba = Count_Ba + ElmntCount
+ELSE IF Elmnt$ = "Ra" THEN
+Count_Ra = Count_Ra + ElmntCount
+ELSE IF Elmnt$ = "Sc" THEN
+Count_Sc = Count_Sc + ElmntCount
+ELSE IF Elmnt$ = "Y" THEN
+Count_Y = Count_Y + ElmntCount
+ELSE IF Elmnt$ = "La" THEN
+Count_La = Count_La + ElmntCount
+ELSE IF Elmnt$ = "Ac" THEN
+Count_Ac = Count_Ac + ElmntCount
+ELSE IF Elmnt$ = "Ce" THEN
+Count_Ce = Count_Ce + ElmntCount
+ELSE IF Elmnt$ = "Pr" THEN
+Count_Pr = Count_Pr + ElmntCount
+ELSE IF Elmnt$ = "Nd" THEN
+Count_Nd = Count_Nd + ElmntCount
+ELSE IF Elmnt$ = "Pm" THEN
+Count_Pm = Count_Pm + ElmntCount
+ELSE IF Elmnt$ = "Sm" THEN
+Count_Sm = Count_Sm + ElmntCount
+ELSE IF Elmnt$ = "Eu" THEN
+Count_Eu = Count_Eu + ElmntCount
+ELSE IF Elmnt$ = "Gd" THEN
+Count_Gd = Count_Gd + ElmntCount
+ELSE IF Elmnt$ = "Tb" THEN
+Count_Tb = Count_Tb + ElmntCount
+ELSE IF Elmnt$ = "Dy" THEN
+Count_Dy = Count_Dy + ElmntCount
+ELSE IF Elmnt$ = "Ho" THEN
+Count_Ho = Count_Ho + ElmntCount
+ELSE IF Elmnt$ = "Er" THEN
+Count_Er = Count_Er + ElmntCount
+ELSE IF Elmnt$ = "Tm" THEN
+Count_Tm = Count_Tm + ElmntCount
+ELSE IF Elmnt$ = "Yb" THEN
+Count_Yb = Count_Yb + ElmntCount
+ELSE IF Elmnt$ = "Lu" THEN
+Count_Lu = Count_Lu + ElmntCount
+ELSE IF Elmnt$ = "Th" THEN
+Count_Th = Count_Th + ElmntCount
+ELSE IF Elmnt$ = "Pa" THEN
+Count_Pa = Count_Pa + ElmntCount
+ELSE IF Elmnt$ = "U" THEN
+Count_U = Count_U + ElmntCount
+ELSE IF Elmnt$ = "Np" THEN
+Count_Np = Count_Np + ElmntCount
+ELSE IF Elmnt$ = "Pu" THEN
+Count_Pu = Count_Pu + ElmntCount
+ELSE IF Elmnt$ = "Am" THEN
+Count_Am = Count_Am + ElmntCount
+ELSE IF Elmnt$ = "Cm" THEN
+Count_Cm = Count_Cm + ElmntCount
+ELSE IF Elmnt$ = "Bk" THEN
+Count_Bk = Count_Bk + ElmntCount
+ELSE IF Elmnt$ = "Cf" THEN
+Count_Cf = Count_Cf + ElmntCount
+ELSE IF Elmnt$ = "Es" THEN
+Count_Es = Count_Es + ElmntCount
+ELSE IF Elmnt$ = "Fm" THEN
+Count_Fm = Count_Fm + ElmntCount
+ELSE IF Elmnt$ = "Md" THEN
+Count_Md = Count_Md + ElmntCount
+ELSE IF Elmnt$ = "No" THEN
+Count_No = Count_No + ElmntCount
+ELSE IF Elmnt$ = "Lr" THEN
+Count_Lr = Count_Lr + ElmntCount
+ELSE IF Elmnt$ = "Ti" THEN
+Count_Ti = Count_Ti + ElmntCount
+ELSE IF Elmnt$ = "Zr" THEN
+Count_Zr = Count_Zr + ElmntCount
+ELSE IF Elmnt$ = "Hf" THEN
+Count_Hf = Count_Hf + ElmntCount
+ELSE IF Elmnt$ = "Rf" THEN
+Count_Rf = Count_Rf + ElmntCount
+ELSE IF Elmnt$ = "V" THEN
+Count_V = Count_V + ElmntCount
+ELSE IF Elmnt$ = "Nb" THEN
+Count_Nb = Count_Nb + ElmntCount
+ELSE IF Elmnt$ = "Ta" THEN
+Count_Ta = Count_Ta + ElmntCount
+ELSE IF Elmnt$ = "Db" THEN
+Count_Db = Count_Db + ElmntCount
+ELSE IF Elmnt$ = "Cr" THEN
+Count_Cr = Count_Cr + ElmntCount
+ELSE IF Elmnt$ = "Mo" THEN
+Count_Mo = Count_Mo + ElmntCount
+ELSE IF Elmnt$ = "W" THEN
+Count_W = Count_W + ElmntCount
+ELSE IF Elmnt$ = "Sg" THEN
+Count_Sg = Count_Sg + ElmntCount
+ELSE IF Elmnt$ = "Mn" THEN
+Count_Mn = Count_Mn + ElmntCount
+ELSE IF Elmnt$ = "Tc" THEN
+Count_Tc = Count_Tc + ElmntCount
+ELSE IF Elmnt$ = "Re" THEN
+Count_Re = Count_Re + ElmntCount
+ELSE IF Elmnt$ = "Bh" THEN
+Count_Bh = Count_Bh + ElmntCount
+ELSE IF Elmnt$ = "Fe" THEN
+Count_Fe = Count_Fe + ElmntCount
+ELSE IF Elmnt$ = "Ru" THEN
+Count_Ru = Count_Ru + ElmntCount
+ELSE IF Elmnt$ = "Os" THEN
+Count_Os = Count_Os + ElmntCount
+ELSE IF Elmnt$ = "Hs" THEN
+Count_Hs = Count_Hs + ElmntCount
+ELSE IF Elmnt$ = "Co" THEN
+Count_Co = Count_Co + ElmntCount
+ELSE IF Elmnt$ = "Rh" THEN
+Count_Rh = Count_Rh + ElmntCount
+ELSE IF Elmnt$ = "Ir" THEN
+Count_Ir = Count_Ir + ElmntCount
+ELSE IF Elmnt$ = "Mt" THEN
+Count_Mt = Count_Mt + ElmntCount
+ELSE IF Elmnt$ = "Ni" THEN
+Count_Ni = Count_Ni + ElmntCount
+ELSE IF Elmnt$ = "Pd" THEN
+Count_Pd = Count_Pd + ElmntCount
+ELSE IF Elmnt$ = "Pt" THEN
+Count_Pt = Count_Pt + ElmntCount
+ELSE IF Elmnt$ = "Ds" THEN
+Count_Ds = Count_Ds + ElmntCount
+ELSE IF Elmnt$ = "Cu" THEN
+Count_Cu = Count_Cu + ElmntCount
+ELSE IF Elmnt$ = "Ag" THEN
+Count_Ag = Count_Ag + ElmntCount
+ELSE IF Elmnt$ = "Au" THEN
+Count_Au = Count_Au + ElmntCount
+ELSE IF Elmnt$ = "Rg" THEN
+Count_Rg = Count_Rg + ElmntCount
+ELSE IF Elmnt$ = "Zn" THEN
+Count_Zn = Count_Zn + ElmntCount
+ELSE IF Elmnt$ = "Cd" THEN
+Count_Cd = Count_Cd + ElmntCount
+ELSE IF Elmnt$ = "Hg" THEN
+Count_Hg = Count_Hg + ElmntCount
+ELSE IF Elmnt$ = "Cn" THEN
+Count_Cn = Count_Cn + ElmntCount
+ELSE IF Elmnt$ = "B" THEN
+Count_B = Count_B + ElmntCount
+ELSE IF Elmnt$ = "Al" THEN
+Count_Al = Count_Al + ElmntCount
+ELSE IF Elmnt$ = "Ga" THEN
+Count_Ga = Count_Ga + ElmntCount
+ELSE IF Elmnt$ = "In" THEN
+Count_In = Count_In + ElmntCount
+ELSE IF Elmnt$ = "Tl" THEN
+Count_Tl = Count_Tl + ElmntCount
+ELSE IF Elmnt$ = "Nh" THEN
+Count_Nh = Count_Nh + ElmntCount
+ELSE IF Elmnt$ = "C" THEN
+Count_C = Count_C + ElmntCount
+ELSE IF Elmnt$ = "[C]" THEN
+Count__C = Count__C + ElmntCount
+ELSE IF Elmnt$ = "Si" THEN
+Count_Si = Count_Si + ElmntCount
+ELSE IF Elmnt$ = "Ge" THEN
+Count_Ge = Count_Ge + ElmntCount
+ELSE IF Elmnt$ = "Sn" THEN
+Count_Sn = Count_Sn + ElmntCount
+ELSE IF Elmnt$ = "Pb" THEN
+Count_Pb = Count_Pb + ElmntCount
+ELSE IF Elmnt$ = "Fl" THEN
+Count_Fl = Count_Fl + ElmntCount
+ELSE IF Elmnt$ = "N" THEN
+Count_N = Count_N + ElmntCount
+ELSE IF Elmnt$ = "[N]" THEN
+Count__N = Count__N + ElmntCount
+ELSE IF Elmnt$ = "P" THEN
+Count_P = Count_P + ElmntCount
+ELSE IF Elmnt$ = "As" THEN
+Count_As = Count_As + ElmntCount
+ELSE IF Elmnt$ = "Sb" THEN
+Count_Sb = Count_Sb + ElmntCount
+ELSE IF Elmnt$ = "Bi" THEN
+Count_Bi = Count_Bi + ElmntCount
+ELSE IF Elmnt$ = "Mc" THEN
+Count_Mc = Count_Mc + ElmntCount
+ELSE IF Elmnt$ = "O" THEN
+Count_O = Count_O + ElmntCount
+ELSE IF Elmnt$ = "[O]" THEN
+Count__O = Count__O + ElmntCount
+ELSE IF Elmnt$ = "S" THEN
+Count_S = Count_S + ElmntCount
+ELSE IF Elmnt$ = "[S]" THEN
+Count__S = Count__S + ElmntCount
+ELSE IF Elmnt$ = "Se" THEN
+Count_Se = Count_Se + ElmntCount
+ELSE IF Elmnt$ = "Te" THEN
+Count_Te = Count_Te + ElmntCount
+ELSE IF Elmnt$ = "Po" THEN
+Count_Po = Count_Po + ElmntCount
+ELSE IF Elmnt$ = "Lv" THEN
+Count_Lv = Count_Lv + ElmntCount
+ELSE IF Elmnt$ = "F" THEN
+Count_F = Count_F + ElmntCount
+ELSE IF Elmnt$ = "[F]" THEN
+Count__F = Count__F + ElmntCount
+ELSE IF Elmnt$ = "Cl" THEN
+Count_Cl = Count_Cl + ElmntCount
+ELSE IF Elmnt$ = "Br" THEN
+Count_Br = Count_Br + ElmntCount
+ELSE IF Elmnt$ = "I" THEN
+Count_I = Count_I + ElmntCount
+ELSE IF Elmnt$ = "At" THEN
+Count_At = Count_At + ElmntCount
+ELSE IF Elmnt$ = "Ts" THEN
+Count_Ts = Count_Ts + ElmntCount
+ELSE IF Elmnt$ = "He" THEN
+Count_He = Count_He + ElmntCount
+ELSE IF Elmnt$ = "Ne" THEN
+Count_Ne = Count_Ne + ElmntCount
+ELSE IF Elmnt$ = "Ar" THEN
+Count_Ar = Count_Ar + ElmntCount
+ELSE IF Elmnt$ = "Kr" THEN
+Count_Kr = Count_Kr + ElmntCount
+ELSE IF Elmnt$ = "Xe" THEN
+Count_Xe = Count_Xe + ElmntCount
+ELSE IF Elmnt$ = "Rn" THEN
+Count_Rn = Count_Rn + ElmntCount
+ELSE IF Elmnt$ = "Og" THEN
+Count_Og = Count_Og + ElmntCount
 ENDIF
 
 
 
 
-
-
-
-
-
-
+ENDIF
 
 
 
@@ -2549,8 +2930,785 @@ PRINT #10, CHR$(035), "Hf�("+StateCmp$+") = "; H USING "######.##"; " kJ.mol-1
 ENDIF
 PRINT #10, CHR$(035), "S�("+StateCmp$+") = "; S USING "######.##"; " J.K-1.mol-1 ("+ReferenceS$+")"
 
+# Fastchem:
+Cum_H = -Cum_H
+log_K = (-52.237/Temperature) * Cum_G
+
+a1 = (0.43429 / 8.314) * (Cum_C * Temperature - Cum_H)
+a2 = 0
+a3 = log_K + (0.43429 / 8.314 ) * ((Cum_H / Temperature) - 2*Cum_C)
+a4 = 0.43429 * Cum_C / (8.314 * Temperature)
+a5 = 0
+
+PRINT #11, Species$;
+PRINT #11, " ";
+PRINT #11, Description$;
+PRINT #11, " ";
+PRINT #11, ":";
+IF Count_e > 0 THEN
+PRINT #11, " ";
+PRINT #11, "e-";
+PRINT #11, " ";
+PRINT #11, Count_e;
+ENDIF
+IF Count_H > 0 THEN
+PRINT #11, " ";
+PRINT #11, "H";
+PRINT #11, " ";
+PRINT #11, Count_H;
+ENDIF
+IF Count__H > 0 THEN
+PRINT #11, " ";
+PRINT #11, "H";
+PRINT #11, " ";
+PRINT #11, Count__H;
+ENDIF
+IF Count_Li > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Li";
+PRINT #11, " ";
+PRINT #11, Count_"Li";
+ENDIF
+IF Count_Na > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Na";
+PRINT #11, " ";
+PRINT #11, Count_Na;
+ENDIF
+IF Count_K > 0 THEN
+PRINT #11, " ";
+PRINT #11, "K";
+PRINT #11, " ";
+PRINT #11, Count_K;
+ENDIF
+IF Count_Rb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Rb";
+PRINT #11, " ";
+PRINT #11, Count_Rb;
+ENDIF
+IF Count_Cs > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cs";
+PRINT #11, " ";
+PRINT #11, Count_Cs;
+ENDIF
+IF Count_Fr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Fr";
+PRINT #11, " ";
+PRINT #11, Count_Fr;
+ENDIF
+IF Count_Be > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Be";
+PRINT #11, " ";
+PRINT #11, Count_Be;
+ENDIF
+IF Count_Mg > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Mg";
+PRINT #11, " ";
+PRINT #11, Count_Mg;
+ENDIF
+IF Count_Ca > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ca";
+PRINT #11, " ";
+PRINT #11, Count_Ca;
+ENDIF
+IF Count_Sr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sr";
+PRINT #11, " ";
+PRINT #11, Count_Sr;
+ENDIF
+IF Count_Ba > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ba";
+PRINT #11, " ";
+PRINT #11, Count_Ba;
+ENDIF
+IF Count_Ra > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ra";
+PRINT #11, " ";
+PRINT #11, Count_Ra;
+ENDIF
+IF Count_Sc > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sc";
+PRINT #11, " ";
+PRINT #11, Count_Sc;
+ENDIF
+IF Count_Y > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Y";
+PRINT #11, " ";
+PRINT #11, Count_Y;
+ENDIF
+IF Count_La > 0 THEN
+PRINT #11, " ";
+PRINT #11, "La";
+PRINT #11, " ";
+PRINT #11, Count_La;
+ENDIF
+IF Count_Ac > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ac";
+PRINT #11, " ";
+PRINT #11, Count_Ac;
+ENDIF
+IF Count_Ce > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ce";
+PRINT #11, " ";
+PRINT #11, Count_Ce;
+ENDIF
+IF Count_Nd > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Nd";
+PRINT #11, " ";
+PRINT #11, Count_Nd;
+ENDIF
+IF Count_Pm > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pm";
+PRINT #11, " ";
+PRINT #11, Count_Pm;
+ENDIF
+IF Count_Sm > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sm";
+PRINT #11, " ";
+PRINT #11, Count_Sm;
+ENDIF
+IF Count_Eu > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Eu";
+PRINT #11, " ";
+PRINT #11, Count_Eu;
+ENDIF
+IF Count_Gd > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Gd";
+PRINT #11, " ";
+PRINT #11, Count_Gd;
+ENDIF
+IF Count_Tb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Tb";
+PRINT #11, " ";
+PRINT #11, Count_Tb;
+ENDIF
+IF Count_Dy > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Dy";
+PRINT #11, " ";
+PRINT #11, Count_Dy;
+ENDIF
+IF Count_Ho > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ho";
+PRINT #11, " ";
+PRINT #11, Count_Ho;
+ENDIF
+IF Count_Er > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Er";
+PRINT #11, " ";
+PRINT #11, Count_Er;
+ENDIF
+IF Count_Tm > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Tm";
+PRINT #11, " ";
+PRINT #11, Count_Tm;
+ENDIF
+IF Count_Yb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Yb";
+PRINT #11, " ";
+PRINT #11, Count_Yb;
+ENDIF
+IF Count_Lu > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Lu";
+PRINT #11, " ";
+PRINT #11, Count_Lu;
+ENDIF
+IF Count_Th > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Th";
+PRINT #11, " ";
+PRINT #11, Count_Th;
+ENDIF
+IF Count_Pa > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pa";
+PRINT #11, " ";
+PRINT #11, Count_Pa;
+ENDIF
+IF Count_U > 0 THEN
+PRINT #11, " ";
+PRINT #11, "U";
+PRINT #11, " ";
+PRINT #11, Count_U;
+ENDIF
+IF Count_Np > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Np";
+PRINT #11, " ";
+PRINT #11, Count_Np;
+ENDIF
+IF Count_Pu > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pu";
+PRINT #11, " ";
+PRINT #11, Count_Pu;
+ENDIF
+IF Count_Am > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Am";
+PRINT #11, " ";
+PRINT #11, Count_Am;
+ENDIF
+IF Count_Cm > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cm";
+PRINT #11, " ";
+PRINT #11, Count_Cm;
+ENDIF
+IF Count_Bk > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Bk";
+PRINT #11, " ";
+PRINT #11, Count_Bk;
+ENDIF
+IF Count_Cf > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cf";
+PRINT #11, " ";
+PRINT #11, Count_Cf;
+ENDIF
+IF Count_Es > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Es";
+PRINT #11, " ";
+PRINT #11, Count_Es;
+ENDIF
+IF Count_Fm > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Fm";
+PRINT #11, " ";
+PRINT #11, Count_Fm;
+ENDIF
+IF Count_Md > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Md";
+PRINT #11, " ";
+PRINT #11, Count_Md;
+ENDIF
+IF Count_No > 0 THEN
+PRINT #11, " ";
+PRINT #11, "No";
+PRINT #11, " ";
+PRINT #11, Count_No;
+ENDIF
+IF Count_Lr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Lr";
+PRINT #11, " ";
+PRINT #11, Count_Lr;
+ENDIF
+IF Count_Ti > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ti";
+PRINT #11, " ";
+PRINT #11, Count_Ti;
+ENDIF
+IF Count_Zr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Zr";
+PRINT #11, " ";
+PRINT #11, Count_Zr;
+ENDIF
+IF Count_Hf > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Hf";
+PRINT #11, " ";
+PRINT #11, Count_Hf;
+ENDIF
+IF Count_Rf > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Rf";
+PRINT #11, " ";
+PRINT #11, Count_Rf;
+ENDIF
+IF Count_V > 0 THEN
+PRINT #11, " ";
+PRINT #11, "V";
+PRINT #11, " ";
+PRINT #11, Count_V;
+ENDIF
+IF Count_Nb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Nb";
+PRINT #11, " ";
+PRINT #11, Count_Nb;
+ENDIF
+IF Count_Ta > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ta";
+PRINT #11, " ";
+PRINT #11, Count_Ta;
+ENDIF
+IF Count_Db > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Db";
+PRINT #11, " ";
+PRINT #11, Count_Db;
+ENDIF
+IF Count_Cr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cr";
+PRINT #11, " ";
+PRINT #11, Count_Cr;
+ENDIF
+IF Count_Mo > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Mo";
+PRINT #11, " ";
+PRINT #11, Count_Mo;
+ENDIF
+IF Count_W > 0 THEN
+PRINT #11, " ";
+PRINT #11, "W";
+PRINT #11, " ";
+PRINT #11, Count_W;
+ENDIF
+IF Count_Sg > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sg";
+PRINT #11, " ";
+PRINT #11, Count_Sg;
+ENDIF
+IF Count_Mn > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Mn";
+PRINT #11, " ";
+PRINT #11, Count_Mn;
+ENDIF
+IF Count_Tc > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Tc";
+PRINT #11, " ";
+PRINT #11, Count_Tc;
+ENDIF
+IF Count_Re > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Re";
+PRINT #11, " ";
+PRINT #11, Count_Re;
+ENDIF
+IF Count_Bh > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Bh";
+PRINT #11, " ";
+PRINT #11, Count_Bh;
+ENDIF
+IF Count_Fe > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Fe";
+PRINT #11, " ";
+PRINT #11, Count_Fe;
+ENDIF
+IF Count_Ru > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ru";
+PRINT #11, " ";
+PRINT #11, Count_Ru;
+ENDIF
+IF Count_Os > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Os";
+PRINT #11, " ";
+PRINT #11, Count_Os;
+ENDIF
+IF Count_Hs > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Hs";
+PRINT #11, " ";
+PRINT #11, Count_Hs;
+ENDIF
+IF Count_Co > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Co";
+PRINT #11, " ";
+PRINT #11, Count_Co;
+ENDIF
+IF Count_Rh > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Rh";
+PRINT #11, " ";
+PRINT #11, Count_Rh;
+ENDIF
+IF Count_Ir > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ir";
+PRINT #11, " ";
+PRINT #11, Count_Ir;
+ENDIF
+IF Count_Mt > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Mt";
+PRINT #11, " ";
+PRINT #11, Count_Mt;
+ENDIF
+IF Count_Ni > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ni";
+PRINT #11, " ";
+PRINT #11, Count_Ni;
+ENDIF
+IF Count_Pd > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pd";
+PRINT #11, " ";
+PRINT #11, Count_Pd;
+ENDIF
+IF Count_Pt > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pt";
+PRINT #11, " ";
+PRINT #11, Count_Pt;
+ENDIF
+IF Count_Ds > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ds";
+PRINT #11, " ";
+PRINT #11, Count_Ds;
+ENDIF
+IF Count_Cu > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cu";
+PRINT #11, " ";
+PRINT #11, Count_Cu;
+ENDIF
+IF Count_Ag > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ag";
+PRINT #11, " ";
+PRINT #11, Count_Ag;
+ENDIF
+IF Count_Au > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Au";
+PRINT #11, " ";
+PRINT #11, Count_Au;
+ENDIF
+IF Count_Rg > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Rg";
+PRINT #11, " ";
+PRINT #11, Count_Rg;
+ENDIF
+IF Count_Zn > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Zn";
+PRINT #11, " ";
+PRINT #11, Count_Zn;
+ENDIF
+IF Count_Cd > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cd";
+PRINT #11, " ";
+PRINT #11, Count_Cd;
+ENDIF
+IF Count_Hg > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Hg";
+PRINT #11, " ";
+PRINT #11, Count_Hg;
+ENDIF
+IF Count_Cn > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cn";
+PRINT #11, " ";
+PRINT #11, Count_Cn;
+ENDIF
+IF Count_B > 0 THEN
+PRINT #11, " ";
+PRINT #11, "B";
+PRINT #11, " ";
+PRINT #11, Count_B;
+ENDIF
+IF Count_Al > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Al";
+PRINT #11, " ";
+PRINT #11, Count_Al;
+ENDIF
+IF Count_Ga > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ga";
+PRINT #11, " ";
+PRINT #11, Count_Ga;
+ENDIF
+IF Count_In > 0 THEN
+PRINT #11, " ";
+PRINT #11, "In";
+PRINT #11, " ";
+PRINT #11, Count_In;
+ENDIF
+IF Count_Tl > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Tl";
+PRINT #11, " ";
+PRINT #11, Count_Tl;
+ENDIF
+IF Count_Nh > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Nh";
+PRINT #11, " ";
+PRINT #11, Count_Nh;
+ENDIF
+IF Count_C > 0 THEN
+PRINT #11, " ";
+PRINT #11, "C";
+PRINT #11, " ";
+PRINT #11, Count_C;
+ENDIF
+IF Count__C > 0 THEN
+PRINT #11, " ";
+PRINT #11, "C";
+PRINT #11, " ";
+PRINT #11, Count__C;
+ENDIF
+IF Count_Si > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Si";
+PRINT #11, " ";
+PRINT #11, Count_Si;
+ENDIF
+IF Count_Ge > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ge";
+PRINT #11, " ";
+PRINT #11, Count_Ge;
+ENDIF
+IF Count_Sn > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sn";
+PRINT #11, " ";
+PRINT #11, Count_Sn;
+ENDIF
+IF Count_Pb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Pb";
+PRINT #11, " ";
+PRINT #11, Count_Pb;
+ENDIF
+IF Count_Fl > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Fl";
+PRINT #11, " ";
+PRINT #11, Count_Fl;
+ENDIF
+IF Count_N > 0 THEN
+PRINT #11, " ";
+PRINT #11, "N";
+PRINT #11, " ";
+PRINT #11, Count_N;
+ENDIF
+IF Count__N > 0 THEN
+PRINT #11, " ";
+PRINT #11, "N";
+PRINT #11, " ";
+PRINT #11, Count__N;
+ENDIF
+IF Count_P > 0 THEN
+PRINT #11, " ";
+PRINT #11, "P";
+PRINT #11, " ";
+PRINT #11, Count_P;
+ENDIF
+IF Count_As > 0 THEN
+PRINT #11, " ";
+PRINT #11, "As";
+PRINT #11, " ";
+PRINT #11, Count_As;
+ENDIF
+IF Count_Sb > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Sb";
+PRINT #11, " ";
+PRINT #11, Count_Sb;
+ENDIF
+IF Count_Bi > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Bi";
+PRINT #11, " ";
+PRINT #11, Count_Bi;
+ENDIF
+IF Count_Mc > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Mc";
+PRINT #11, " ";
+PRINT #11, Count_Mc;
+ENDIF
+IF Count_O > 0 THEN
+PRINT #11, " ";
+PRINT #11, "O";
+PRINT #11, " ";
+PRINT #11, Count_O;
+ENDIF
+IF Count__O > 0 THEN
+PRINT #11, " ";
+PRINT #11, "O";
+PRINT #11, " ";
+PRINT #11, Count__O;
+ENDIF
+IF Count_S > 0 THEN
+PRINT #11, " ";
+PRINT #11, "S";
+PRINT #11, " ";
+PRINT #11, Count_S;
+ENDIF
+IF Count__S > 0 THEN
+PRINT #11, " ";
+PRINT #11, "S";
+PRINT #11, " ";
+PRINT #11, Count__S;
+ENDIF
+IF Count_Se > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Se";
+PRINT #11, " ";
+PRINT #11, Count_Se;
+ENDIF
+IF Count_Te > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Te";
+PRINT #11, " ";
+PRINT #11, Count_Te;
+ENDIF
+IF Count_Po > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Po";
+PRINT #11, " ";
+PRINT #11, Count_Po;
+ENDIF
+IF Count_Lv > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Lv";
+PRINT #11, " ";
+PRINT #11, Count_Lv;
+ENDIF
+IF Count_F > 0 THEN
+PRINT #11, " ";
+PRINT #11, "F";
+PRINT #11, " ";
+PRINT #11, Count_F;
+ENDIF
+IF Count__F > 0 THEN
+PRINT #11, " ";
+PRINT #11, "F";
+PRINT #11, " ";
+PRINT #11, Count__F;
+ENDIF
+IF Count_Cl > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Cl";
+PRINT #11, " ";
+PRINT #11, Count_Cl;
+ENDIF
+IF Count_Br > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Br";
+PRINT #11, " ";
+PRINT #11, Count_Br;
+ENDIF
+IF Count_I > 0 THEN
+PRINT #11, " ";
+PRINT #11, "I";
+PRINT #11, " ";
+PRINT #11, Count_I;
+ENDIF
+IF Count_At > 0 THEN
+PRINT #11, " ";
+PRINT #11, "At";
+PRINT #11, " ";
+PRINT #11, Count_At;
+ENDIF
+IF Count_Ts > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ts";
+PRINT #11, " ";
+PRINT #11, Count_Ts;
+ENDIF
+IF Count_He > 0 THEN
+PRINT #11, " ";
+PRINT #11, "He";
+PRINT #11, " ";
+PRINT #11, Count_He;
+ENDIF
+IF Count_Ne > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ne";
+PRINT #11, " ";
+PRINT #11, Count_Ne;
+ENDIF
+IF Count_Ar > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Ar";
+PRINT #11, " ";
+PRINT #11, Count_Ar;
+ENDIF
+IF Count_Kr > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Kr";
+PRINT #11, " ";
+PRINT #11, Count_Kr;
+ENDIF
+IF Count_Xe > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Xe";
+PRINT #11, " ";
+PRINT #11, Count_Xe;
+ENDIF
+IF Count_Rn > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Rn";
+PRINT #11, " ";
+PRINT #11, Count_Rn;
+ENDIF
+IF Count_Og > 0 THEN
+PRINT #11, " ";
+PRINT #11, "Og";
+PRINT #11, " ";
+PRINT #11, Count_Og;
+ENDIF
+PRINT #11, " ";
+PRINT #11, "# Source: NBS tables, other values are theoretical, i.e. Cp = 5/2 R"
+
+#special format: logK = a1/T + a2 ln T + a3 + a4 T + a5 T^2 for FastChem
+PRINT #11, "  ";
+PRINT #11, a1 USING "+#.################^^^^";
+PRINT #11, "  ";
+PRINT #11, a2 USING "+#.################^^^^";
+PRINT #11, "  ";
+PRINT #11, a3 USING "+#.################^^^^";
+PRINT #11, "  ";
+PRINT #11, a4 USING "+#.################^^^^";
+PRINT #11, "  ";
+PRINT #11, a5 USING "+#.################^^^^";
+PRINT #11, " "
+PRINT #11, " "
+
 Cum_H = 0
 Cum_S = 0
+Cum_C = 0
 Cum_G = 0
 log_K = 0
 CountElectrons = 0
@@ -2564,6 +3722,131 @@ RefE = 0
 RefH = 0
 RefG = 0
 Cum_Probe = 0
+Count_e = 0
+Count_H = 0
+Count__H = 0
+Count_Li = 0
+Count_Na = 0
+Count_K = 0
+Count_Rb = 0
+Count_Cs = 0
+Count_Fr = 0
+Count_Be = 0
+Count_Mg = 0
+Count_Ca = 0
+Count_Sr = 0
+Count_Ba = 0
+Count_Ra = 0
+Count_Sc = 0
+Count_Y = 0
+Count_La = 0
+Count_Ac = 0
+Count_Ce = 0
+Count_Pr = 0
+Count_Nd = 0
+Count_Pm = 0
+Count_Sm = 0
+Count_Eu = 0
+Count_Gd = 0
+Count_Tb = 0
+Count_Dy = 0
+Count_Ho = 0
+Count_Er = 0
+Count_Tm = 0
+Count_Yb = 0
+Count_Lu = 0
+Count_Th = 0
+Count_Pa = 0
+Count_U = 0
+Count_Np = 0
+Count_Pu = 0
+Count_Am = 0
+Count_Cm = 0
+Count_Bk = 0
+Count_Cf = 0
+Count_Es = 0
+Count_Fm = 0
+Count_Md = 0
+Count_No = 0
+Count_Lr = 0
+Count_Ti = 0
+Count_Zr = 0
+Count_Hf = 0
+Count_Rf = 0
+Count_V = 0
+Count_Nb = 0
+Count_Ta = 0
+Count_Db = 0
+Count_Cr = 0
+Count_Mo = 0
+Count_W = 0
+Count_Sg = 0
+Count_Mn = 0
+Count_Tc = 0
+Count_Re = 0
+Count_Bh = 0
+Count_Fe = 0
+Count_Ru = 0
+Count_Os = 0
+Count_Hs = 0
+Count_Co = 0
+Count_Rh = 0
+Count_Ir = 0
+Count_Mt = 0
+Count_Ni = 0
+Count_Pd = 0
+Count_Pt = 0
+Count_Ds = 0
+Count_Cu = 0
+Count_Ag = 0
+Count_Au = 0
+Count_Rg = 0
+Count_Zn = 0
+Count_Cd = 0
+Count_Hg = 0
+Count_Cn = 0
+Count_B = 0
+Count_Al = 0
+Count_Ga = 0
+Count_In = 0
+Count_Tl = 0
+Count_Nh = 0
+Count_C = 0
+Count__C = 0
+Count_Si = 0
+Count_Ge = 0
+Count_Sn = 0
+Count_Pb = 0
+Count_Fl = 0
+Count_N = 0
+Count__N = 0
+Count_P = 0
+Count_As = 0
+Count_Sb = 0
+Count_Bi = 0
+Count_Mc = 0
+Count_O = 0
+Count__O = 0
+Count_S = 0
+Count__S = 0
+Count_Se = 0
+Count_Te = 0
+Count_Po = 0
+Count_Lv = 0
+Count_F = 0
+Count__F = 0
+Count_Cl = 0
+Count_Br = 0
+Count_I = 0
+Count_At = 0
+Count_Ts = 0
+Count_He = 0
+Count_Ne = 0
+Count_Ar = 0
+Count_Kr = 0
+Count_Xe = 0
+Count_Rn = 0
+Count_Og = 0
 #Elmnt$ = ""
 
 

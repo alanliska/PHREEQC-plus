@@ -45,9 +45,12 @@ public class Obabel extends MainActivity {
     private TextView OTypeSwitchLabel;
     private EditText OTypeSwitch;
     Button openInputfile;
+    Button openIntInputfile;
     Button saveInputfile;
+    Button saveExtInputfile;
     Button RunObabel;
     Button saveOutputfile;
+    Button saveExtOutputfile;
     Button Highlight;
     Button Quit;
     private TextView textViewX;
@@ -55,6 +58,10 @@ public class Obabel extends MainActivity {
     private EditText outputView2;
     private static final int READ_FILE7 = 7;
     private Uri documentUri7;
+    private static final int CREATE_FILE30 = 30;
+    private Uri documentUri30;
+    private static final int CREATE_FILE31 = 31;
+    private Uri documentUri31;
 
 
     /**
@@ -219,12 +226,17 @@ public class Obabel extends MainActivity {
         OTypeSwitch = (EditText) findViewById(R.id.OTypeSwitch);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
         saveInputfile = (Button) findViewById(R.id.saveInputfile);
         saveInputfile.setOnClickListener(saveInputfileClick);
+        saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
+        saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         RunObabel = (Button) findViewById(R.id.RunObabel);
         RunObabel.setOnClickListener(RunObabelClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
+        saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
+        saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -232,6 +244,14 @@ public class Obabel extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+
+        openIntInputfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Obabel.this, ObabelWork.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -259,11 +279,53 @@ public class Obabel extends MainActivity {
         };
     }
 
+    private View.OnClickListener saveExtInputfileClick; {
+
+        saveExtInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write1(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-openbabel.txt"));
+                outputI(exec("cat "+getFilesDir()+"/InputSwitch.txt"));
+                outputO(exec("cat "+getFilesDir()+"/OutputSwitch.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtOutputfileClick; {
+
+        saveExtOutputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                write2(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/Input-openbabel.txt"));
+                outputI(exec("cat "+getFilesDir()+"/InputSwitch.txt"));
+                outputO(exec("cat "+getFilesDir()+"/OutputSwitch.txt"));
+            }
+        };
+    }
+
     private void read7(Context context7) {
         Intent intent7 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent7.addCategory(Intent.CATEGORY_OPENABLE);
         intent7.setType("text/plain");
         startActivityForResult(intent7, READ_FILE7);
+    }
+
+    private void write1(Context context1) {
+        Intent intent1 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent1.addCategory(Intent.CATEGORY_OPENABLE);
+        intent1.setType("text/plain");
+        intent1.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent1, CREATE_FILE30);
+    }
+
+    private void write2(Context context2) {
+        Intent intent2 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent2.addCategory(Intent.CATEGORY_OPENABLE);
+        intent2.setType("text/plain");
+        intent2.putExtra(Intent.EXTRA_TITLE,"MyOutputFile");
+        startActivityForResult(intent2, CREATE_FILE31);
     }
 
     @Override
@@ -294,6 +356,48 @@ public class Obabel extends MainActivity {
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE30 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri30 = data.getData();
+                ParcelFileDescriptor pfd30 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd30.getFileDescriptor());
+                String fileContents = ObabelInput.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd30.close();
+                FileOutputStream fileout = openFileOutput("Input-openbabel.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE31 && data != null) {
+            // save output file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri31 = data.getData();
+                ParcelFileDescriptor pfd31 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd31.getFileDescriptor());
+                String fileContents = outputView2.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd31.close();
+                FileOutputStream fileout = openFileOutput("Input.obabel", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents + "\n");
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -346,7 +450,7 @@ public class Obabel extends MainActivity {
         EditText editText10 = new EditText(Obabel.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Obabel.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/openbabel")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/obabel")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -364,7 +468,7 @@ public class Obabel extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"openbabel");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/obabel");
                     }
                 })
 
@@ -554,7 +658,7 @@ public class Obabel extends MainActivity {
         EditText editText15 = new EditText(Obabel.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Obabel.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/openbabel")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/obabel")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText15)
 
@@ -572,7 +676,7 @@ public class Obabel extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"openbabel");
+                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/obabel");
                     }
                 })
 

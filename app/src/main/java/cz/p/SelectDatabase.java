@@ -37,7 +37,7 @@ public class SelectDatabase extends MainActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.database);
-        final String rootPath = getFilesDir()+"/phreeqc_database";
+        final String rootPath = getFilesDir()+"/output/phreeqc_datasets";
         final File dir = new File(rootPath);
         files = dir.listFiles();
         final TextView pathOutput = findViewById(R.id.pathOutput);

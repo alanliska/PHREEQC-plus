@@ -38,7 +38,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
-            android:text="(1) APPEND INDIVIDUAL MOPAC CALCULATED SOLUTION_SPECIES FILES" />
+            android:text="(1) APPEND INDIVIDUAL MOPAC CALCULATED EXTERNAL SOLUTION_SPECIES FILES" />
+
+        <Button
+            android:id="@+id/AddSSi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="(1) APPEND INDIVIDUAL MOPAC CALCULATED INTERNAL SOLUTION_SPECIES FILES" />
 
         <Button
             android:id="@+id/ResetSS"
@@ -106,14 +113,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#7703A9F4"
-            android:text="(3) SEARCH IN SELECTED PHREEQC_MOD DATABASE, EXPORT AND APPEND TO THE FILE MODIFIED IN STEP (2)" />
+            android:text="(3) SEARCH IN SELECTED DATABASE, EXPORT AND APPEND TO THE FILE MODIFIED IN STEP (2)" />
 
         <Button
             android:id="@+id/AddP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#03A9F4"
-            android:text="APPEND INDIVIDUAL MOPAC CALCULATED PHASES FILES" />
+            android:text="APPEND INDIVIDUAL MOPAC CALCULATED EXTERNAL PHASES FILES" />
+        <Button
+            android:id="@+id/AddPi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="APPEND INDIVIDUAL MOPAC CALCULATED INTERNAL PHASES FILES" />
         <Button
             android:id="@+id/ResetP"
             android:layout_width="match_parent"
@@ -140,12 +153,6 @@
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
             android:textColor="@android:color/holo_blue_dark"/>
 
-        <Button
-            android:id="@+id/AddSMS_kin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00FF0A"
-            android:text="ADD SOLUTION MASTER SPECIES BLOCK (APPEND)" />
         <TextView
             android:id="@+id/SMSLabel_kin"
             android:layout_width="fill_parent"
@@ -158,13 +165,24 @@
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
             android:textColor="@android:color/holo_red_dark" />
-
         <Button
-            android:id="@+id/AddSS_kin"
+            android:id="@+id/AddSMS_kin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
-            android:text="ADD SOLUTION SPECIES BLOCK (APPEND)" />
+            android:text="ADD SOLUTION MASTER SPECIES BLOCK (APPEND EXTERNAL FILES)" />
+        <Button
+            android:id="@+id/AddSMS_kini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD SOLUTION MASTER SPECIES BLOCK (APPEND INTERNAL FILES)" />
+        <Button
+            android:id="@+id/ResetSMSKin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET SOLUTION MASTER SPECIES BLOCK" />
+
         <TextView
             android:id="@+id/SSLabel_kin"
             android:layout_width="fill_parent"
@@ -177,13 +195,24 @@
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
             android:textColor="@android:color/holo_red_dark" />
-
         <Button
-            android:id="@+id/AddR_kin"
+            android:id="@+id/AddSS_kin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
-            android:text="ADD RATES BLOCK (APPEND)" />
+            android:text="ADD SOLUTION SPECIES BLOCK (APPEND EXTERNAL FILES)" />
+        <Button
+            android:id="@+id/AddSS_kini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD SOLUTION SPECIES BLOCK (APPEND INTERNAL FILES)" />
+        <Button
+            android:id="@+id/ResetSSKin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET SOLUTION SPECIES BLOCK" />
+
         <TextView
             android:id="@+id/RLabel_kin"
             android:layout_width="fill_parent"
@@ -196,13 +225,24 @@
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
             android:textColor="@android:color/holo_red_dark" />
-
         <Button
-            android:id="@+id/AddK_kin"
+            android:id="@+id/AddR_kin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
-            android:text="ADD KINETICS BLOCK (APPEND)" />
+            android:text="ADD RATES BLOCK (APPEND EXTERNAL FILES)" />
+        <Button
+            android:id="@+id/AddR_kini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD RATES BLOCK (APPEND INTERNAL FILES)" />
+        <Button
+            android:id="@+id/ResetRKin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET RATES BLOCK" />
+
         <TextView
             android:id="@+id/KLabel_kin"
             android:layout_width="fill_parent"
@@ -215,12 +255,23 @@
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
             android:textColor="@android:color/holo_red_dark" />
-
         <Button
-            android:id="@+id/ResetKin"
+            android:id="@+id/AddK_kin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RESET KINETICS (DELETE SMS, SS, R AND K)" />
+            android:backgroundTint="#00FF0A"
+            android:text="ADD KINETICS BLOCK (APPEND EXTERNAL FILES)" />
+        <Button
+            android:id="@+id/AddK_kini"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF0A"
+            android:text="ADD KINETICS BLOCK (APPEND INTERNAL FILES)" />
+        <Button
+            android:id="@+id/ResetKKin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET KINETICS BLOCK" />
 
         <TextView
             android:id="@+id/Label2"
@@ -274,12 +325,22 @@
             android:id="@+id/openInputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OPEN INPUTFILE" />
+            android:text="OPEN EXTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/openIntInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL INPUTFILE" />
         <Button
             android:id="@+id/saveInputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE INPUTFILE AS" />
+            android:text="SAVE INPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
             android:id="@+id/RunPhreeqc"
@@ -291,7 +352,12 @@
             android:id="@+id/saveOutputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE OUTPUTFILE AS" />
+            android:text="SAVE OUTPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtOutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
             android:id="@+id/Highlight"

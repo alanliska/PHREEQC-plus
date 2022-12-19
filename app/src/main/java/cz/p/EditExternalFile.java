@@ -45,8 +45,11 @@ public class EditExternalFile extends MainActivity {
     private EditText filepath;
     Button openfile;
     Button savefile;
+    Button quit;
     private static final int READ_FILE101 = 101;
+    private static final int CREATE_FILE102 = 102;
     private Uri documentUri101;
+    private Uri documentUri102;
 
 
 
@@ -61,12 +64,20 @@ public class EditExternalFile extends MainActivity {
 
         fileLabel = (TextView) findViewById(R.id.fileLabel);
         fileInput = (EditText) findViewById(R.id.fileInput);
-        filepathLabel = (TextView) findViewById(R.id.filepathLabel);
-        filepath = (EditText) findViewById(R.id.filepath);
         openfile = (Button) findViewById(R.id.openfile);
         openfile.setOnClickListener(openfileClick);
         savefile = (Button) findViewById(R.id.savefile);
         savefile.setOnClickListener(savefileClick);
+        quit = (Button) findViewById(R.id.quit);
+
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exec("rm -rf "+getFilesDir()+"/EditInput.txt");
+                Intent intent = new Intent(EditExternalFile.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -76,7 +87,6 @@ public class EditExternalFile extends MainActivity {
         super.onStart();
 
         outputInput(exec("cat "+getFilesDir()+"/EditInput.txt"));
-        outputPath(exec("cat "+getFilesDir()+"/ExternalOutput.txt"));
     }
 
 
@@ -87,7 +97,30 @@ public class EditExternalFile extends MainActivity {
                 // TODO Auto-generated method stub //
                 read101(getApplicationContext());
                 outputInput(exec("cat "+getFilesDir()+"/EditInput.txt"));
-                outputPath(exec("cat "+getFilesDir()+"/ExternalOutput.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener savefileClick; {
+
+        savefileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String FileContent = fileInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("EditInput.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(FileContent);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+                write102(getApplicationContext());
+
+                outputInput(exec("cat "+getFilesDir()+"/EditInput.txt"));
+//                Intent intent = new Intent(EditExternalFile.this, MainActivity.class);
+//                startActivity(intent);
             }
         };
     }
@@ -97,6 +130,14 @@ public class EditExternalFile extends MainActivity {
         intent101.addCategory(Intent.CATEGORY_OPENABLE);
         intent101.setType("text/plain");
         startActivityForResult(intent101, READ_FILE101);
+    }
+
+    private void write102(Context context102) {
+        Intent intent102 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent102.addCategory(Intent.CATEGORY_OPENABLE);
+        intent102.setType("text/plain");
+        intent102.putExtra(Intent.EXTRA_TITLE,"MyFile.txt");
+        startActivityForResult(intent102, CREATE_FILE102);
     }
 
     @Override
@@ -130,93 +171,26 @@ public class EditExternalFile extends MainActivity {
             }
         }
 
-    }
-
-
-    private View.OnClickListener savefileClick; {
-
-        savefileClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                String Inputfile = fileInput.getText().toString();
-                try {
-                    FileOutputStream fileout = openFileOutput("EditInput.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(Inputfile);
-                    outputWriter.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                String PathFile = filepath.getText().toString();
-                try {
-                    FileOutputStream fileoutI = openFileOutput("ExternalOutput.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriterI = new OutputStreamWriter(fileoutI);
-                    outputWriterI.write(PathFile);
-                    outputWriterI.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                alertSaveInput();
-                outputInput(exec("cat "+getFilesDir()+"/EditInput.txt"));
-                outputPath(exec("cat "+getFilesDir()+"/ExternalOutput.txt"));
+        if (requestCode == CREATE_FILE102 && data != null) {
+            // save the file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                String fileContents = fileInput.getText().toString();
+                documentUri102 = data.getData();
+                ParcelFileDescriptor pfd102 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd102.getFileDescriptor());
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd102.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
             }
-        };
-    }
-
-
-    public void alertSaveInput(){
-        // creating the EditText widget programatically
-        EditText editText10 = new EditText(EditExternalFile.this);
-        // create the AlertDialog as final
-        final AlertDialog dialog = new AlertDialog.Builder(EditExternalFile.this)
-                .setMessage("The file will be saved in the folder /storage/emulated/0/Documents/phreeqc_plus/"+exec("cat "+getFilesDir()+"/ExternalOutput.txt"))
-                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
-                .setView(editText10)
-
-                // Set the action buttons
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        String Inputfile = fileInput.getText().toString();
-                        String SaveInputName = editText10.getText().toString();
-                        try {
-                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
-                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                            outputWriter.write(Inputfile);
-                            outputWriter.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+exec("cat "+getFilesDir()+"/ExternalOutput.txt"));
-
-                        Intent intent = new Intent(EditExternalFile.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                })
-
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        // removes the AlertDialog in the screen
-                    }
-                })
-                .create();
-
-        // set the focus change listener of the EditText10
-        // this part will make the soft keyboard automatically visible
-        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                }
-            }
-        });
-
-        dialog.show();
+        }
 
     }
+
+
 
 
 
@@ -226,7 +200,6 @@ public class EditExternalFile extends MainActivity {
     protected void onResume() {
         super.onResume();
         outputInput(exec("cat "+getFilesDir()+"/EditInput.txt"));
-        outputPath(exec("cat "+getFilesDir()+"/ExternalOutput.txt"));
     }
 
     // for displaying the output in the second TextView there must be different output3 than output, including the str3/proc3 variables
@@ -237,15 +210,6 @@ public class EditExternalFile extends MainActivity {
             }
         };
         handler.post(procInput);
-    }
-
-    public void outputPath(final String strOutput) {
-        Runnable procOutput = new Runnable() {
-            public void run() {
-                filepath.setText(strOutput);
-            }
-        };
-        handler.post(procOutput);
     }
 
 

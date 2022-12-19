@@ -12,64 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/SdcardLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Content of folder /storage/emulated/0/Documents/phreeqc_plus:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-        <TextView
-            android:id="@+id/Sdcard"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:scrollHorizontally="false"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textIsSelectable="true"></TextView>
-
-        <TextView
-            android:id="@+id/TransferLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Transfer from /storage/emulated/0/Documents/phreeqc_plus to /data/data/cz.p/files following file (including the extension):"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-        <EditText
-            android:id="@+id/Transfer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="monospace"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:fastScrollAlwaysVisible="true"
-            android:scrollbarSize="5dp"
-            android:fastScrollEnabled="true"/>
-        <Button
-            android:id="@+id/TransferButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TRANSFER IN" />
-
-        <TextView
-            android:id="@+id/ContentLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Content of folder /data/data/cz.p/files:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-        <TextView
-            android:id="@+id/Content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fadeScrollbars="false"
-            android:fastScrollAlwaysVisible="true"
-            android:fastScrollEnabled="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:scrollbarSize="5dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:typeface="monospace" />
-
 
 
         <TextView
@@ -201,29 +143,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DELETE" />
-
-        <TextView
-            android:id="@+id/BackLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Transfer from /data/data/cz.p/files/ to /storage/emulated/0/Documents/phreeqc_plus following file (including the extension):"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-        <EditText
-            android:id="@+id/BackOutput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="monospace"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:fastScrollAlwaysVisible="true"
-            android:scrollbarSize="5dp"
-            android:fastScrollEnabled="true"/>
-        <Button
-            android:id="@+id/BackButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TRANSFER OUT" />
 
         <TextView
             android:id="@+id/ShellLabel"

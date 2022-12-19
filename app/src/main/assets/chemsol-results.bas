@@ -1,10 +1,10 @@
 CLS
 
-OPEN "I", #1, "/data/data/cz.p/files/thermo_g.txt"
+OPEN "I", #1, "/data/data/cz.p/files/thermo_s1.txt"
 OPEN "I", #2, "/data/data/cz.p/files/chemsoloutfile.txt"
-OPEN "O", #3, "/data/data/cz.p/files/thermo_s.txt"
+OPEN "O", #3, "/data/data/cz.p/files/thermo_s2.txt"
 CLOSE #3
-OPEN "A", #3, "/data/data/cz.p/files/thermo_s.txt"
+OPEN "A", #3, "/data/data/cz.p/files/thermo_s2.txt"
 
 
 

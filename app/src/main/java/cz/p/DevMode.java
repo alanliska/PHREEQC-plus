@@ -21,14 +21,20 @@ public class DevMode extends MainActivity {
     Button start_xbasic2;
     Button start_xbasic3;
     Button start_xbasic4;
+    Button start_xbasic5;
+    Button start_xbasic6;
     Button start_compg;
     Button start_compl;
     Button start_compc;
     Button start_comps;
+    Button start_compss;
+    Button start_compgcm1;
     Button start_refg;
     Button start_refl;
     Button start_refc;
     Button start_refs;
+    Button start_refss;
+    Button start_refgcm1;
     Button start_vdw;
     Button modify_mulliken;
     Button modify_esp;
@@ -50,14 +56,20 @@ public class DevMode extends MainActivity {
         start_xbasic2 = (Button) findViewById(R.id.start_xbasic2);
         start_xbasic3 = (Button) findViewById(R.id.start_xbasic3);
         start_xbasic4 = (Button) findViewById(R.id.start_xbasic4);
+        start_xbasic5 = (Button) findViewById(R.id.start_xbasic5);
+        start_xbasic6 = (Button) findViewById(R.id.start_xbasic6);
         start_compg = (Button) findViewById(R.id.start_compg);
         start_compl = (Button) findViewById(R.id.start_compl);
         start_compc = (Button) findViewById(R.id.start_compc);
         start_comps = (Button) findViewById(R.id.start_comps);
+        start_compss = (Button) findViewById(R.id.start_compss);
+        start_compgcm1 = (Button) findViewById(R.id.start_compgcm1);
         start_refg = (Button) findViewById(R.id.start_refg);
         start_refl = (Button) findViewById(R.id.start_refl);
         start_refc = (Button) findViewById(R.id.start_refc);
         start_refs = (Button) findViewById(R.id.start_refs);
+        start_refss = (Button) findViewById(R.id.start_refss);
+        start_refgcm1 = (Button) findViewById(R.id.start_refgcm1);
         start_shelltools = (Button) findViewById(R.id.start_shelltools);
 
         modify_mulliken = (Button) findViewById(R.id.modify_mulliken);
@@ -111,6 +123,24 @@ public class DevMode extends MainActivity {
             }
         });
 
+        start_xbasic5 = (Button) findViewById(R.id.start_xbasic5);
+        start_xbasic5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, XBasic5.class);
+                startActivity(intent);
+            }
+        });
+
+        start_xbasic6 = (Button) findViewById(R.id.start_xbasic6);
+        start_xbasic6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, XBasic6.class);
+                startActivity(intent);
+            }
+        });
+
         start_refg = (Button) findViewById(R.id.start_refg);
         start_refg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +177,24 @@ public class DevMode extends MainActivity {
             }
         });
 
+        start_refss = (Button) findViewById(R.id.start_refss);
+        start_refss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, Refss.class);
+                startActivity(intent);
+            }
+        });
+
+        start_refgcm1 = (Button) findViewById(R.id.start_refgcm1);
+        start_refgcm1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, RefGCM1.class);
+                startActivity(intent);
+            }
+        });
+
         start_compg = (Button) findViewById(R.id.start_compg);
         start_compg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +227,24 @@ public class DevMode extends MainActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DevMode.this, Comps.class);
+                startActivity(intent);
+            }
+        });
+
+        start_compss = (Button) findViewById(R.id.start_compss);
+        start_compss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, Compss.class);
+                startActivity(intent);
+            }
+        });
+
+        start_compgcm1 = (Button) findViewById(R.id.start_compgcm1);
+        start_compgcm1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, CompGCM1.class);
                 startActivity(intent);
             }
         });

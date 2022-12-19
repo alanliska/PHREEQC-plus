@@ -28,11 +28,11 @@ import java.io.OutputStreamWriter;
 
 public class ShellTools extends MainActivity {
 
-    private TextView SdcardLabel;
-    private TextView Sdcard;
-    private TextView TransferLabel;
-    private EditText Transfer;
-    private Button TransferButton;
+//    private TextView SdcardLabel;
+//    private TextView Sdcard;
+//    private TextView TransferLabel;
+//    private EditText Transfer;
+//    private Button TransferButton;
     private TextView ContentLabel;
     private TextView Content;
     private TextView RunX11Label;
@@ -50,9 +50,9 @@ public class ShellTools extends MainActivity {
     private TextView DeleteLabel;
     private EditText Delete;
     private Button DeleteButton;
-    private TextView BackLabel;
-    private EditText BackOutput;
-    private Button BackButton;
+//    private TextView BackLabel;
+//    private EditText BackOutput;
+//    private Button BackButton;
     private TextView ShellLabel;
     private EditText Shell;
     private Button ShellButton;
@@ -73,12 +73,12 @@ public class ShellTools extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shelltools);
 
-        SdcardLabel = (TextView) findViewById(R.id.SdcardLabel);
-        Sdcard = (TextView) findViewById(R.id.Sdcard);
-        TransferLabel = (TextView) findViewById(R.id.TransferLabel);
-        Transfer = (EditText) findViewById(R.id.Transfer);
-        TransferButton = (Button) findViewById(R.id.TransferButton);
-        TransferButton.setOnClickListener(TransferButtonClick);
+//        SdcardLabel = (TextView) findViewById(R.id.SdcardLabel);
+//        Sdcard = (TextView) findViewById(R.id.Sdcard);
+//        TransferLabel = (TextView) findViewById(R.id.TransferLabel);
+//        Transfer = (EditText) findViewById(R.id.Transfer);
+//        TransferButton = (Button) findViewById(R.id.TransferButton);
+//        TransferButton.setOnClickListener(TransferButtonClick);
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (TextView) findViewById(R.id.Content);
         RunX11Label = (TextView) findViewById(R.id.RunX11Label);
@@ -99,10 +99,10 @@ public class ShellTools extends MainActivity {
         Delete = (EditText) findViewById(R.id.Delete);
         DeleteButton = (Button) findViewById(R.id.DeleteButton);
         DeleteButton.setOnClickListener(DeleteButtonClick);
-        BackLabel = (TextView) findViewById(R.id.BackLabel);
-        BackOutput = (EditText) findViewById(R.id.BackOutput);
-        BackButton = (Button) findViewById(R.id.BackButton);
-        BackButton.setOnClickListener(BackButtonClick);
+//        BackLabel = (TextView) findViewById(R.id.BackLabel);
+//        BackOutput = (EditText) findViewById(R.id.BackOutput);
+//        BackButton = (Button) findViewById(R.id.BackButton);
+//        BackButton.setOnClickListener(BackButtonClick);
         ShellLabel = (TextView) findViewById(R.id.ShellLabel);
         Shell = (EditText) findViewById(R.id.Shell);
         ShellButton = (Button) findViewById(R.id.ShellButton);
@@ -123,28 +123,28 @@ public class ShellTools extends MainActivity {
         super.onStart();
         String Filename = X11Name.getText().toString();
         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
-        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-        ContentDisplay(exec("ls -l "+getFilesDir()));
+//        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//        ContentDisplay(exec("ls -l "+getFilesDir()));
     }
 
-    private View.OnClickListener TransferButtonClick; {
-        TransferButtonClick = new View.OnClickListener() {
-            public void onClick(View v) {
-//                // TODO Auto-generated method stub //
-                try {
-                    exec("cp "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus/"+Transfer.getText().toString()+" "+getFilesDir());
-                    try {
-                        String Filename = X11Name.getText().toString();
-                        RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
-                    } catch (Exception e) {
-                    }
-                } catch (Exception e) {
-                }
-            }
-        };
-    }
+//    private View.OnClickListener TransferButtonClick; {
+//        TransferButtonClick = new View.OnClickListener() {
+//            public void onClick(View v) {
+////                // TODO Auto-generated method stub //
+//                try {
+//                    exec("cp "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus/"+Transfer.getText().toString()+" "+getFilesDir());
+//                    try {
+//                        String Filename = X11Name.getText().toString();
+//                        RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                    } catch (Exception e) {
+//                    }
+//                } catch (Exception e) {
+//                }
+//            }
+//        };
+//    }
 
     private View.OnClickListener RunX11ButtonClick; {
         RunX11ButtonClick = new View.OnClickListener() {
@@ -162,8 +162,8 @@ public class ShellTools extends MainActivity {
 
                         exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/"+Filename+".b "+getFilesDir()+"/"+Filename+".bas");
                         X11Display(exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/"+Filename+".b"));
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
                         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
                     } catch (Exception e) {
                     }
@@ -180,8 +180,8 @@ public class ShellTools extends MainActivity {
                 try {
                     exec("chmod -R 755 "+getFilesDir());
                     try {
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
                         CatDisplay(exec("cat "+getFilesDir()+"/"+CatOutput.getText().toString()));
                         String Filename = X11Name.getText().toString();
                         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
@@ -201,8 +201,8 @@ public class ShellTools extends MainActivity {
                     exec("chmod -R 755 "+getFilesDir());
                     exec("rm -rf "+getFilesDir()+"/"+Delete.getText().toString());
                     try {
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
                         RunX11Display(exec("cat "+getFilesDir()+"/test.bas"));
                     } catch (Exception e) {
                     }
@@ -212,25 +212,25 @@ public class ShellTools extends MainActivity {
         };
     }
 
-    private View.OnClickListener BackButtonClick; {
-        BackButtonClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                try {
-                    exec("chmod -R 755 "+getFilesDir());
-                    exec("cp "+getFilesDir()+"/"+BackOutput.getText().toString()+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                    try {
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
-                        String Filename = X11Name.getText().toString();
-                        RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
-                    } catch (Exception e) {
-                    }
-                } catch (Exception e) {
-                }
-            }
-        };
-    }
+//    private View.OnClickListener BackButtonClick; {
+//        BackButtonClick = new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub //
+//                try {
+//                    exec("chmod -R 755 "+getFilesDir());
+//                    exec("cp "+getFilesDir()+"/"+BackOutput.getText().toString()+" "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
+//                    try {
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                        String Filename = X11Name.getText().toString();
+//                        RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
+//                    } catch (Exception e) {
+//                    }
+//                } catch (Exception e) {
+//                }
+//            }
+//        };
+//    }
 
     private View.OnClickListener ShellButtonClick; {
         ShellButtonClick = new View.OnClickListener() {
@@ -239,8 +239,8 @@ public class ShellTools extends MainActivity {
                 try {
                     exec("chmod -R 755 "+getFilesDir());
                     try {
-                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
-                        ContentDisplay(exec("ls -l "+getFilesDir()));
+//                        SdcardDisplay(exec("ls -l "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"));
+//                        ContentDisplay(exec("ls -l "+getFilesDir()));
                         ShellDisplay(exec(Shell.getText().toString()));
                         String Filename = X11Name.getText().toString();
                         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
@@ -274,23 +274,23 @@ public class ShellTools extends MainActivity {
         }
     }
 
-    private void SdcardDisplay(final String str1001) {
-        Runnable proc1001 = new Runnable() {
-            public void run() {
-                Sdcard.setText(str1001);
-            }
-        };
-        handler.post(proc1001);
-    }
+//    private void SdcardDisplay(final String str1001) {
+//        Runnable proc1001 = new Runnable() {
+//            public void run() {
+//                Sdcard.setText(str1001);
+//            }
+//        };
+//        handler.post(proc1001);
+//    }
 
-    private void ContentDisplay(final String str1002) {
-        Runnable proc1002 = new Runnable() {
-            public void run() {
-                Content.setText(str1002);
-            }
-        };
-        handler.post(proc1002);
-    }
+//    private void ContentDisplay(final String str1002) {
+//        Runnable proc1002 = new Runnable() {
+//            public void run() {
+//                Content.setText(str1002);
+//            }
+//        };
+//        handler.post(proc1002);
+//    }
 
     private void CatDisplay(final String str1004) {
         Runnable proc1004 = new Runnable() {

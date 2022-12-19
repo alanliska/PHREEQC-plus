@@ -23,6 +23,8 @@ public class Chemsol2 extends MainActivity {
     private Handler handler = new Handler();
     public TextView method_label;
     public EditText method;
+    public TextView solvation_label;
+    public EditText solvation;
     public TextView keywords_label;
     public EditText keywords;
     public TextView iupac_label;
@@ -51,6 +53,8 @@ public class Chemsol2 extends MainActivity {
 
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
+        solvation_label = (TextView) findViewById(R.id.solvation_label);
+        solvation = (EditText) findViewById(R.id.solvation);
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
         tautomers_label = (TextView) findViewById(R.id.tautomers_label);
@@ -80,6 +84,7 @@ public class Chemsol2 extends MainActivity {
     {
         super.onStart();
         method_view(exec("cat "+getFilesDir()+"/method-esp.txt"));
+        solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
         keywords_view(exec("cat "+getFilesDir()+"/keywords-esp.txt"));
         tautomers_view(exec("cat "+getFilesDir()+"/tautomers.txt"));
         damp_view(exec("cat "+getFilesDir()+"/damping-factor.txt"));
@@ -95,11 +100,13 @@ public class Chemsol2 extends MainActivity {
             public void onClick(View v) {
                 String Inputfile = smiles.getText().toString();
                 String InputfileName0 = iupac.getText().toString();
+                String Solvationfile = solvation.getText().toString();
                 String Methodfile = method.getText().toString();
                 String Keywordsfile = keywords.getText().toString();
                 String Tautomers = tautomers.getText().toString();
                 String Formulafile = formula.getText().toString();
                 String DampingFactor = damping_factor.getText().toString();
+
                 File filePath = new File(getFilesDir()+File.separator+"openbabel");
                 try {
                     if (!filePath.exists()) {
@@ -121,6 +128,10 @@ public class Chemsol2 extends MainActivity {
                     OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
                     outputWriter8.write(Formulafile);
                     outputWriter8.close();
+                    FileOutputStream fileout5 = openFileOutput("solvation.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter5 = new OutputStreamWriter(fileout5);
+                    outputWriter5.write(Solvationfile);
+                    outputWriter5.close();
                     FileOutputStream fileout6 = openFileOutput("keywords-esp.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
                     outputWriter6.write(Keywordsfile);
@@ -153,6 +164,7 @@ public class Chemsol2 extends MainActivity {
                     outputWriter4.write(ObabelOutput);
                     outputWriter4.close();
                     String KeyWithoutSolv = Methodfile+" "+Keywordsfile;
+                    String KeyWithSolv = Methodfile+" "+Keywordsfile+" "+Solvationfile;
                     File filePath1 = new File(getFilesDir()+File.separator+"openbabel/gas/opt");
                     try {
                         if (!filePath1.exists()) {
@@ -171,6 +183,25 @@ public class Chemsol2 extends MainActivity {
                         e.printStackTrace();
                     }
                     exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName);
+
+                    File filePath02 = new File(getFilesDir()+File.separator+"openbabel/solv/opt");
+                    try {
+                        if (!filePath02.exists()) {
+                            filePath02.mkdirs();
+                        }
+                        String Sed2 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileName+".xyz");
+                        FileOutputStream fileout8 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                        OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                        outputWriter8.write(KeyWithSolv);
+                        outputWriter8.write("\n");
+                        outputWriter8.write("\n");
+                        outputWriter8.write("\n");
+                        outputWriter8.write(Sed2);
+                        outputWriter8.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileName);
 
                     File filePath2 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo");
                     try {
@@ -243,6 +274,7 @@ public class Chemsol2 extends MainActivity {
                     exec("mv "+getFilesDir()+"/openbabel/"+InputfileName+".damp "+getFilesDir()+File.separator+"openbabel/damping_factor");
 
                     method_view(exec("cat "+getFilesDir()+"/method-esp.txt"));
+                    solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
                     keywords_view(exec("cat "+getFilesDir()+"/keywords-esp.txt"));
                     tautomers_view(exec("cat "+getFilesDir()+"/tautomers.txt"));
                     damp_view(exec("cat "+getFilesDir()+"/damping-factor.txt"));
@@ -265,6 +297,15 @@ public class Chemsol2 extends MainActivity {
             }
         };
         handler.post(method_proc);
+    }
+
+    public void solvation_view(final String solvation_str) {
+        Runnable solvation_proc = new Runnable() {
+            public void run() {
+                solvation.setText(solvation_str);
+            }
+        };
+        handler.post(solvation_proc);
     }
 
     public void keywords_view(final String keywords_str) {
@@ -401,6 +442,15 @@ public class Chemsol2 extends MainActivity {
                             e.printStackTrace();
                         }
 
+                        File filePath9 = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
+                        try {
+                            if (!filePath9.exists()) {
+                                filePath9.mkdirs();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                         File filePath10 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
                         try {
                             if (!filePath10.exists()) {
@@ -429,16 +479,16 @@ public class Chemsol2 extends MainActivity {
                                 exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/gas/opt/results");
                                 exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
                                 exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                                exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo");
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
                                 exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/opt/results");
                                 exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/opt/results");
                                 String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName);
-                                String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".arc");
+                                String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/gas/thermo/results/"+InputfileName+".arc");
                                 FileOutputStream fileout9 = openFileOutput(InputfileName+".mopg", MODE_PRIVATE);
                                 OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
                                 outputWriter9.write(Sed4);
                                 outputWriter9.close();
-                                exec("rm "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".arc");
+                                exec("rm "+getFilesDir()+"/openbabel/gas/thermo/results/"+InputfileName+".arc");
                                 exec("cp "+getFilesDir()+"/"+InputfileName+".mopg "+getFilesDir()+"/openbabel/gas/thermo");
                                 String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
                                 FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
@@ -472,13 +522,87 @@ public class Chemsol2 extends MainActivity {
                                 outputWriter12.write(Sed7);
                                 outputWriter12.close();
                                 exec("rm "+getFilesDir()+"/"+InputfileName+"_g.temp");
-
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
 
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
 
+                        }
+
+
+                        File[] files_solv0 = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
+                        for (File file : files_solv0) {
+                            if (!file.isFile()) continue;
+
+
+                            String InputfileName = file.getName();
+                            String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
+                            String Method = exec("cat "+getFilesDir()+"/method.txt");
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/opt/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/opt/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/opt/results");
+                                String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
+                                String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".arc");
+                                FileOutputStream fileout9 = openFileOutput(InputfileName+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
+                                outputWriter9.write(Sed4);
+                                outputWriter9.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                                FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                                outputWriter10.write("THERMO(298,298) LET "+Sed3);
+                                outputWriter10.write("\n");
+                                outputWriter10.write("\n");
+                                outputWriter10.write(Sed5);
+                                outputWriter10.close();
+                                // arc file would collide with later Chemsol calculation
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".arc");
+
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                                String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
+                                FileOutputStream fileout13 = openFileOutput(InputfileName+"_s1.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                                outputWriter13.write(Grep2);
+                                outputWriter13.close();
+                                String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s1.temp");
+                                FileOutputStream fileout14 = openFileOutput(DatasetName+"_s1.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
+                                outputWriter14.write(InputfileName+" ");
+                                outputWriter14.write(Formula+" ");
+                                outputWriter14.write(Method+" ");
+                                outputWriter14.write(Sed6);
+                                outputWriter14.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileName+"_s1.temp");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
 
 
@@ -497,8 +621,10 @@ public class Chemsol2 extends MainActivity {
 
                             try {
                                 exec("cp "+getFilesDir()+"/openbabel/damping_factor/"+InputfileName+".damp "+getFilesDir()+"/dampfile.txt");
-
-                                exec("cp "+getFilesDir()+"/openbabel/gas/opt/results/"+InputfileName+".arc "+getFilesDir()+"/arcfile0.txt");
+                                // !!!(?) optimized structure is read from the gas phase
+//                                exec("cp "+getFilesDir()+"/openbabel/gas/opt/results/"+InputfileName+".arc "+getFilesDir()+"/arcfile0.txt");
+                                // or from the solution phase
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/results/"+InputfileName+".arc "+getFilesDir()+"/arcfile0.txt");
                                 String Sed444 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/arcfile0.txt");
                                 FileOutputStream fileout944 = openFileOutput("arcfile00.txt", MODE_PRIVATE);
                                 OutputStreamWriter outputWriter944 = new OutputStreamWriter(fileout944);
@@ -517,8 +643,9 @@ public class Chemsol2 extends MainActivity {
                                 outputWriter1145.write(Sed1545);
                                 outputWriter1145.close();
 
-
-                                exec("cp "+getFilesDir()+"/openbabel/gas/opt/results/"+InputfileName+".out "+getFilesDir()+"/mopoutfile0.txt");
+//                                exec("cp "+getFilesDir()+"/openbabel/gas/opt/results/"+InputfileName+".out "+getFilesDir()+"/mopoutfile0.txt");
+                                // !!!(?) charges are read from the aqueous phase
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/results/"+InputfileName+".out "+getFilesDir()+"/mopoutfile0.txt");
 
                                 String Sed445 = exec("sed -e 1,/NAICAP/d "+getFilesDir()+"/mopoutfile0.txt");
                                 FileOutputStream fileout945 = openFileOutput("mopoutfile00.txt", MODE_PRIVATE);
@@ -586,12 +713,12 @@ public class Chemsol2 extends MainActivity {
                                 exec("mv "+getFilesDir()+"/chemsolinput.txt "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".inp");
 
                                 String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
-                                FileOutputStream fileout13 = openFileOutput(InputfileName+"_g.temp",MODE_PRIVATE);
+                                FileOutputStream fileout13 = openFileOutput(InputfileName+"_s1.temp",MODE_PRIVATE);
                                 OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
                                 outputWriter13.write(Grep2);
                                 outputWriter13.close();
-                                String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_g.temp");
-                                FileOutputStream fileout14 = openFileOutput("thermo_g0.txt",MODE_PRIVATE);
+                                String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s1.temp");
+                                FileOutputStream fileout14 = openFileOutput("thermo_s0.txt",MODE_PRIVATE);
                                 OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
                                 outputWriter14.write(InputfileName+" ");
                                 outputWriter14.write(Formula+" ");
@@ -599,11 +726,11 @@ public class Chemsol2 extends MainActivity {
                                 outputWriter14.write(Sed6);
                                 outputWriter14.close();
 
-                                String Despaced = exec("cat "+getFilesDir()+"/thermo_g0.txt");
+                                String Despaced = exec("cat "+getFilesDir()+"/thermo_s0.txt");
                                 while (Despaced.contains("  ")){  //2 spaces
                                     Despaced = Despaced.replace("  ", " "); //(2 spaces, 1 space)
                                 }
-                                FileOutputStream despac = openFileOutput("thermo_g.txt",MODE_PRIVATE);
+                                FileOutputStream despac = openFileOutput("thermo_s1.txt",MODE_PRIVATE);
                                 OutputStreamWriter outputWriterDesp = new OutputStreamWriter(despac);
                                 outputWriterDesp.write(Despaced);
                                 outputWriterDesp.close();
@@ -633,7 +760,7 @@ public class Chemsol2 extends MainActivity {
                                 }
 //
 //
-                                String Sed116 = exec("cat "+getFilesDir()+"/thermo_s.txt");
+                                String Sed116 = exec("cat "+getFilesDir()+"/thermo_s2.txt");
                                 FileOutputStream fileout116 = openFileOutput(DatasetName+"_s.txt",MODE_APPEND);
                                 OutputStreamWriter outputWriter116 = new OutputStreamWriter(fileout116);
                                 outputWriter116.write(Sed116);
@@ -660,7 +787,7 @@ public class Chemsol2 extends MainActivity {
                                 exec("rm "+getFilesDir()+"/chemsoloutfile0.txt");
                                 exec("rm "+getFilesDir()+"/chemsoloutfile00.txt");
                                 exec("rm "+getFilesDir()+"/chemsoloutfile000.txt");
-                                exec("rm "+getFilesDir()+"/thermo_g0.txt");
+                                exec("rm "+getFilesDir()+"/thermo_s0.txt");
                                 exec("rm "+getFilesDir()+"/dampfile.txt");
 
                             } catch (Exception e) {
@@ -695,6 +822,7 @@ public class Chemsol2 extends MainActivity {
 
                         exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
                         exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
+                        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
 
                         try {
 
@@ -719,6 +847,17 @@ public class Chemsol2 extends MainActivity {
                         exec("rm "+getFilesDir()+"/"+DatasetName+"_g.txt");
                         exec("rm "+getFilesDir()+"/"+DatasetName+"_s.txt");
 //for case of fall down the same which already is in MainActivity.java in OnResume:
+
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.bas");
+                        exec("chmod -R 755 "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.bas");
+                        exec("chmod -R 755 "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.bas");
+                        exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
+                        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
+
                         try {
                             String Raw_g = exec("cat "+getFilesDir()+"/PHASES/Database_g.dat");
                             while (Raw_g.contains("= + e- =")){  //2 spaces
@@ -738,6 +877,64 @@ public class Chemsol2 extends MainActivity {
                             outputWriter215.write(Raw_g2);
                             outputWriter215.close();
 
+                            /// new piece of code:
+                            String Raw_g3 = exec("cat "+getFilesDir()+"/Database_g2.dat");
+                            while (Raw_g3.contains("[H]")){
+                                Raw_g3 = Raw_g3.replace("[H]", "H");
+                            }
+                            FileOutputStream fileout2155 = openFileOutput("Database_g3.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2155 = new OutputStreamWriter(fileout2155);
+                            outputWriter2155.write(Raw_g3);
+                            outputWriter2155.close();
+
+                            String Raw_g4 = exec("cat "+getFilesDir()+"/Database_g3.dat");
+                            while (Raw_g4.contains("[O]")){
+                                Raw_g4 = Raw_g4.replace("[O]", "O");
+                            }
+                            FileOutputStream fileout2156 = openFileOutput("Database_g4.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2156 = new OutputStreamWriter(fileout2156);
+                            outputWriter2156.write(Raw_g4);
+                            outputWriter2156.close();
+                            ///
+
+                            String Raw_ss = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
+                            while (Raw_ss.contains("= + e- =")){  //2 spaces
+                                Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                            }
+                            FileOutputStream fileout216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter216 = new OutputStreamWriter(fileout216);
+                            outputWriter216.write(Raw_ss);
+                            outputWriter216.close();
+
+                            String Raw_ss2 = exec("cat "+getFilesDir()+"/Database_solid_sol1.dat");
+                            while (Raw_ss2.contains("(solv) ;  = ")){  //2 spaces
+                                Raw_ss2 = Raw_ss2.replace("(solv) ;  = ", ""); //(2 spaces, 1 space)
+                            }
+                            FileOutputStream fileout217 = openFileOutput("Database_solid_sol2.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter217 = new OutputStreamWriter(fileout217);
+                            outputWriter217.write(Raw_ss2);
+                            outputWriter217.close();
+
+                            /// new piece of code:
+                            String Raw_ss03 = exec("cat "+getFilesDir()+"/Database_solid_sol2.dat");
+                            while (Raw_ss03.contains("[H]")){
+                                Raw_ss03 = Raw_ss03.replace("[H]", "H");
+                            }
+                            FileOutputStream fileout6155 = openFileOutput("Database_solid_sol3.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6155 = new OutputStreamWriter(fileout6155);
+                            outputWriter6155.write(Raw_ss03);
+                            outputWriter6155.close();
+
+                            String Raw_ss04 = exec("cat "+getFilesDir()+"/Database_solid_sol3.dat");
+                            while (Raw_ss04.contains("[O]")){
+                                Raw_ss04 = Raw_ss04.replace("[O]", "O");
+                            }
+                            FileOutputStream fileout6156 = openFileOutput("Database_solid_sol4.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6156 = new OutputStreamWriter(fileout6156);
+                            outputWriter6156.write(Raw_ss04);
+                            outputWriter6156.close();
+                            ///
+
                             String Raw_s = exec("cat "+getFilesDir()+"/SOLUTION_SPECIES/Database_s.dat");
                             while (Raw_s.contains("= + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
@@ -756,27 +953,62 @@ public class Chemsol2 extends MainActivity {
                             outputWriter415.write(Raw_s2);
                             outputWriter415.close();
 
+                            /// new piece of code:
+                            String Raw_s3 = exec("cat "+getFilesDir()+"/Database_s2.dat");
+                            while (Raw_s3.contains("[H]")){
+                                Raw_s3 = Raw_s3.replace("[H]", "H");
+                            }
+                            FileOutputStream fileout4155 = openFileOutput("Database_s3.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter4155 = new OutputStreamWriter(fileout4155);
+                            outputWriter4155.write(Raw_s3);
+                            outputWriter4155.close();
+
+                            String Raw_s4 = exec("cat "+getFilesDir()+"/Database_s3.dat");
+                            while (Raw_s4.contains("[O]")){
+                                Raw_s4 = Raw_s4.replace("[O]", "O");
+                            }
+                            FileOutputStream fileout4156 = openFileOutput("Database_s4.dat",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter4156 = new OutputStreamWriter(fileout4156);
+                            outputWriter4156.write(Raw_s4);
+                            outputWriter4156.close();
+                            ///
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
 
                         String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                        exec("mv "+getFilesDir()+"/Database_g2.dat "+ Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_g.txt");
-                        exec("mv "+getFilesDir()+"/Database_s2.dat "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_s.txt");
-
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/gas "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/solv "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/iupac "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/formula "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/damping_factor "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
-                        exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus");
+                        exec("mv "+getFilesDir()+"/Database_g2.dat "+ getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
+                        exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
+                        exec("chmod -R 755 "+getFilesDir()+"/PHASES");
+                        exec("mv "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_solid_sol.txt");
+                        exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_g.txt");
+                        exec("mv "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_solid_sol.txt");
+                        exec("mv "+getFilesDir()+"/Database_solid_sol4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_solid_sol.txt");
+                        exec("mv "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_s.txt");
+                        exec("mv "+getFilesDir()+"/Database_s4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_s.txt");
+                        exec("rm "+getFilesDir()+"/Database_g.dat");
+                        exec("rm "+getFilesDir()+"/Database_g1.dat");
+                        exec("rm "+getFilesDir()+"/Database_g3.dat");
+                        exec("rm "+getFilesDir()+"/Database_s.dat");
+                        exec("rm "+getFilesDir()+"/Database_s1.dat");
+                        exec("rm "+getFilesDir()+"/Database_s3.dat");
+                        exec("rm "+getFilesDir()+"/Database_solid_sol.dat");
+                        exec("rm "+getFilesDir()+"/Database_solid_sol1.dat");
+                        exec("rm "+getFilesDir()+"/Database_solid_sol3.dat");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/gas "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/solv "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/iupac "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/formula "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/damping_factor "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+getFilesDir()+File.separator+"output");
+//                        exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+getFilesDir()+File.separator+"output");
 // end of repetition
 // this must be inside of ProgressDialog:
                         postActivity();
-
+//                        exec("rm -rf "+getFilesDir()+"/openbabel");
                         onFinish();
                     }
                     public void onFinish(){
@@ -794,13 +1026,16 @@ public class Chemsol2 extends MainActivity {
         // TODO Auto-generated method stub //
         try {
 
-            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.bas");
-            exec("chmod -R 755 "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
-            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
-            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.bas");
-            exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
-            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
-            Intent intent = new Intent(Chemsol2.this, MainActivity.class);
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.bas");
+//            exec("chmod -R 755 "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhases.b");
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.bas");
+//            exec("chmod -R 755 "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.bas");
+//            exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
+//            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhase.b");
+            Intent intent = new Intent(Chemsol2.this, ResumeActivity.class);
             startActivity(intent);
             onResume();
         } catch (Exception e) {
@@ -815,6 +1050,7 @@ public class Chemsol2 extends MainActivity {
             public void onClick(View v) {
                 try {
                     exec("rm -rf "+getFilesDir()+File.separator+"openbabel");
+                    exec("mkdir "+getFilesDir()+File.separator+"openbabel");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

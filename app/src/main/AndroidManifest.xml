@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cz.p">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <application
         android:allowBackup="true"
         android:label="PHREEQC plus"
@@ -21,22 +19,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cz.p.EditExternalFile" />
         <activity android:name="cz.p.OpenBabel" />
         <activity android:name="cz.p.SelectDatabase" />
         <activity android:name="cz.p.XBasic1" />
         <activity android:name="cz.p.XBasic2" />
         <activity android:name="cz.p.XBasic3" />
         <activity android:name="cz.p.XBasic4" />
+        <activity android:name="cz.p.XBasic5" />
+        <activity android:name="cz.p.XBasic6" />
         <activity android:name="cz.p.Phreeqc" />
+        <activity android:name="cz.p.RefGCM1" />
         <activity android:name="cz.p.Refg" />
         <activity android:name="cz.p.Refl" />
         <activity android:name="cz.p.Refc" />
         <activity android:name="cz.p.Refs" />
+        <activity android:name="cz.p.Refss" />
+        <activity android:name="cz.p.CompGCM1" />
         <activity android:name="cz.p.Compg" />
         <activity android:name="cz.p.Compl" />
         <activity android:name="cz.p.Compc" />
         <activity android:name="cz.p.Comps" />
+        <activity android:name="cz.p.Compss" />
         <activity android:name="cz.p.ConvertS" />
         <activity android:name="cz.p.ConvertG" />
         <activity android:name="cz.p.ConvertL" />
@@ -62,5 +65,41 @@
         <activity android:name="cz.p.KineticsUniBi" />
         <activity android:name="cz.p.KineticsBiBi" />
         <activity android:name="cz.p.KineticsBiTri" />
+        <activity android:name="cz.p.Fastchem" />
+        <activity android:name="cz.p.SelectAtmoFile" />
+        <activity android:name="cz.p.SelectAbundFile" />
+        <activity android:name="cz.p.SelectDataFile" />
+        <activity android:name="cz.p.Licenses" />
+        <activity android:name="cz.p.AddSolutionSpecies" />
+        <activity android:name="cz.p.AddPhases" />
+        <activity android:name="cz.p.AddKinSolutionMasterSpecies" />
+        <activity android:name="cz.p.AddKinSolutionSpecies" />
+        <activity android:name="cz.p.AddKinRates" />
+        <activity android:name="cz.p.AddKinKinetics" />
+        <activity android:name="cz.p.AddTSUniUni" />
+        <activity android:name="cz.p.AddTSBiBi" />
+        <activity android:name="cz.p.AddTSBiTri" />
+        <activity android:name="cz.p.AddTSUniBi" />
+        <activity android:name="cz.p.DeleteFile" />
+        <activity android:name="cz.p.DeletePicker" />
+        <activity android:name="cz.p.CustomExport" />
+        <activity android:name="cz.p.CustomPicker" />
+        <activity android:name="cz.p.ExportDialog" />
+        <activity android:name="cz.p.CustomImport" />
+        <activity android:name="cz.p.EditExternalFile" />
+        <activity android:name="cz.p.EditInternalFile" />
+        <activity android:name="cz.p.EditInternalFilePicker" />
+        <activity android:name="cz.p.InternalEditor" />
+        <activity android:name="cz.p.ConvertPickerC" />
+        <activity android:name="cz.p.ConvertPickerL" />
+        <activity android:name="cz.p.ConvertPickerG" />
+        <activity android:name="cz.p.ConvertPickerS" />
+        <activity android:name="cz.p.PhreeqcWork" />
+        <activity android:name="cz.p.ObabelWork" />
+        <activity android:name="cz.p.MopacWork" />
+        <activity android:name="cz.p.ChemsolWork" />
+        <activity android:name="cz.p.ResumeActivity" />
+        <activity android:name="cz.p.ResumeActivityKin" />
+        <activity android:name="cz.p.GCM1" />
     </application>
 </manifest>

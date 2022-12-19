@@ -15,7 +15,7 @@
             android:id="@+id/Description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="This panel is devoted to conversion of tabulated data on gas species to PHREEQC dataset.\n\nThe output file will be saved in the location\n/storage/emulated/0/Documents/phreeqc_plus/phreeqc_datasets\nunder following file name:"
+            android:text="This panel is devoted to conversion of tabulated data on gas species to PHREEQC dataset.\n\nThe output file will be saved in the location\n/data/data/cz.p/files/output/phreeqc_datasets\nunder following file name:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -29,6 +29,33 @@
             android:fastScrollAlwaysVisible="true"
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
+
+
+
+        <Button
+            android:id="@+id/openInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL DATA FILE" />
+
+        <Button
+            android:id="@+id/openInputfile2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL DATA FILE" />
+
+        <Button
+            android:id="@+id/Convert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CONVERT DATA" />
+
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
 
         <TextView
             android:id="@+id/TabDataLabel"
@@ -48,25 +75,6 @@
             android:fastScrollAlwaysVisible="true"
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
-
-        <Button
-            android:id="@+id/openInputfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="OPEN DATA FILE" />
-
-        <Button
-            android:id="@+id/Convert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#E91E63"
-            android:text="CONVERT DATA" />
-
-        <Button
-            android:id="@+id/Quit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="QUIT" />
 
         <TextView
             android:id="@+id/ConvertedDataLabel"

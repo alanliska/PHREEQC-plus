@@ -42,6 +42,7 @@ public class ConvertC extends MainActivity {
     private EditText TabData;
     private EditText SaveName;
     Button openInputfile;
+    Button openInputfile2;
     Button Convert;
     Button Quit;
     private TextView ConvertedDataLabel;
@@ -209,6 +210,35 @@ public class ConvertC extends MainActivity {
         SaveName = (EditText) findViewById(R.id.SaveName);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
+        openInputfile2 = (Button) findViewById(R.id.openInputfile2);
+        openInputfile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String InputData = TabData.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("Thermochemistry_c.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputData);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String SaveOutputName = SaveName.getText().toString();
+
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SaveOutputName);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(ConvertC.this, ConvertPickerC.class);
+                startActivity(intent);
+            }
+        });
         Convert = (Button) findViewById(R.id.Convert);
         Convert.setOnClickListener(ConvertClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -274,7 +304,7 @@ public class ConvertC extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                read9(getApplicationContext());
+//                read9(getApplicationContext());
                 exec("cp "+getFilesDir()+"/Thermochemistry_c.txt "+getFilesDir()+"/SOLIDS/Thermochemistry_c.txt");
                 progressDialog = new ProgressDialog(ConvertC.this);
                 progressDialog.setTitle("Please wait...");
@@ -295,14 +325,15 @@ public class ConvertC extends MainActivity {
                         makeDatabase_c();
                         modifyOutput_c();
                         Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
-                        onFinish();
+                        onFinishC();
                     }
-                    public void onFinish(){
+                    public void onFinishC(){
                         progressDialog.dismiss();
                     }
                 }.start();
-                Intent intent = new Intent(ConvertC.this, ConvertDialog.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ConvertC.this, ResumeActivity.class);
+//                startActivity(intent);
+                onStart();
             }
         };
     }
@@ -340,8 +371,8 @@ public class ConvertC extends MainActivity {
             e.printStackTrace();
         }
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_c2.dat "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_c.txt");
-
+        exec("cp "+getFilesDir()+"/Database_c2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_c.txt");
+        exec("rm "+getFilesDir()+"/Database_c2.dat");
     }
 
     private void read9(Context context9) {
