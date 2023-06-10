@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dataset_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to empirical estimations of rate constants\n\nPrepare PHREEQC kinetics data blocks (SOLUTION_MASTER_SPECIES, SOLUTION_SPECIES, KINETICS and RATES) from calculated data\n\nDataset name:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/dataset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/label21"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(a) empirical qualified estimation: protolytic and some complex formation equilibria (diffusion controlled reactions, Zhou)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm1_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BFEB3B"
+            android:text="PREPARE PHREEQC DATA BLOCKS" />
+
+        <TextView
+            android:id="@+id/label22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(b) empirical qualified estimation: complex formation equilibria (Eigen-Fuoss)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm2_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+
+        <TextView
+            android:id="@+id/label23"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(c) empirical qualified estimation: redox equilibria (Marcus)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm3_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK" />
+
+    </LinearLayout>
+</ScrollView>

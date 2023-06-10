@@ -79,6 +79,8 @@ public class ResumeActivity extends MainActivity {
                 moveSolvThermo();
                 moveSolvThermoResults();
                 moveTautomers();
+                moveCryst();
+                moveLiq();
                 cleanDummyDatasets();
 //                goBack();
 
@@ -399,6 +401,42 @@ public class ResumeActivity extends MainActivity {
             }
         }
 
+    }
+
+    public void moveCryst()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/cryst").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()) {
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/cryst/"+fileName+" "+getFilesDir()+"/output/cryst");
+                } catch (Exception e) {
+                }
+
+            }
+        }
+    }
+
+    public void moveLiq()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/liq").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()) {
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/liq/"+fileName+" "+getFilesDir()+"/output/liq");
+                } catch (Exception e) {
+                }
+
+            }
+        }
     }
 
     public void cleanDummyDatasets()

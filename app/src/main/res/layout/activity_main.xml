@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
 
         <Button
             android:id="@+id/start_bulk"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
 
         <TextView
             android:id="@+id/label2"
@@ -78,21 +78,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
 
         <TextView
-            android:id="@+id/label21"
+            android:id="@+id/label_dftb_all"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\n(d) empirical qualified estimation (water) = group contribution method (Jankowski)"
+            android:text="\n(d) DFTB+ calculation = geometry optimization in vacuum + solvent (various models available)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button
-            android:id="@+id/start_gcm1"
+            android:id="@+id/start_dftb_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+            android:backgroundTint="#CDE0FF"
+            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+<!---
+        <TextView
+            android:id="@+id/label_cp2k_all"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(e) CP2K calculation = customizable (methods and basis sets)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_cp2k_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CDEFFF"
+            android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
+-->
+        <TextView
+            android:id="@+id/label100"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nAlternative approach (group contribution methods)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_empirical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B1B17C"
+            android:text="EMPIRICAL METHODS" />
 
         <TextView
             android:id="@+id/label3"
@@ -163,6 +191,34 @@
             android:text="MODEL BI-TRIMOLECULAR REACTION" />
 
         <TextView
+            android:id="@+id/label_kin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nGeneral case - use of MOPAC calculated data and/or tabulated data"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D7FF24"
+            android:text="MODEL GENERAL REACTION" />
+
+        <TextView
+            android:id="@+id/label101"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nAlternative approach (group contribution methods)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_empirical_kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#A1B17C"
+            android:text="EMPIRICAL METHODS" />
+
+        <TextView
             android:id="@+id/label4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -185,6 +241,20 @@
             android:backgroundTint="#6F51B5"
             android:text="*** FASTCHEM ***"
             android:textColor="#FFFFFF" />
+<!---
+        <Button
+            android:id="@+id/start_cp2k"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#AFC107"
+            android:text="*** CP2K ***" />
+-->
+        <Button
+            android:id="@+id/start_dftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="*** DFTB ***" />
 
         <Button
             android:id="@+id/start_mopac"
@@ -200,6 +270,13 @@
             android:backgroundTint="#00BCD4"
             android:text="*** CHEMSOL ***"
             android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/start_opsin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:text="*** OPSIN ***" />
 
         <Button
             android:id="@+id/start_obabel"
@@ -261,6 +338,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ABOUT THE APP" />
+
+        <Button
+            android:id="@+id/manual_phreeqc_plus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="* HELP *\n(PHREEQC PLUS MANUAL)" />
 
         <Button
             android:id="@+id/Licenses"

@@ -1,1 +1,0 @@
-EPS=78.4 TS CHARGE=-1

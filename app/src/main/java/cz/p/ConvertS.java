@@ -285,6 +285,190 @@ public class ConvertS extends MainActivity {
                 // TODO Auto-generated method stub //
                 String InputData = TabData.getText().toString();
 
+                InputData = InputData.replace(",", ".");
+                ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                //                try {
+//                    while (InputData.contains("C")){
+                InputData = InputData.replace("C", "[C]");
+                InputData = InputData.replace("[C]a", "Ca");
+                InputData = InputData.replace("[C]b", "Cb");
+                InputData = InputData.replace("[C]c", "Cc");
+                InputData = InputData.replace("[C]d", "Cd");
+                InputData = InputData.replace("[C]e", "Ce");
+                InputData = InputData.replace("[C]f", "Cf");
+                InputData = InputData.replace("[C]g", "Cg");
+                InputData = InputData.replace("[C]h", "Ch");
+                InputData = InputData.replace("[C]i", "Ci");
+                InputData = InputData.replace("[C]j", "Cj");
+                InputData = InputData.replace("[C]k", "Ck");
+                InputData = InputData.replace("[C]l", "Cl");
+                InputData = InputData.replace("[C]m", "Cm");
+                InputData = InputData.replace("[C]n", "Cn");
+                InputData = InputData.replace("[C]o", "Co");
+                InputData = InputData.replace("[C]p", "Cp");
+                InputData = InputData.replace("[C]q", "Cq");
+                InputData = InputData.replace("[C]r", "Cr");
+                InputData = InputData.replace("[C]s", "Cs");
+                InputData = InputData.replace("[C]t", "Ct");
+                InputData = InputData.replace("[C]u", "Cu");
+                InputData = InputData.replace("[C]v", "Cv");
+                InputData = InputData.replace("[C]w", "Cw");
+                InputData = InputData.replace("[C]x", "Cx");
+                InputData = InputData.replace("[C]y", "Cy");
+                InputData = InputData.replace("[C]z", "Cz");
+//                    }
+//                    while (InputData.contains("H")){
+                InputData = InputData.replace("H", "[H]");
+                InputData = InputData.replace("[H]a", "Ha");
+                InputData = InputData.replace("[H]b", "Hb");
+                InputData = InputData.replace("[H]c", "Hc");
+                InputData = InputData.replace("[H]d", "Hd");
+                InputData = InputData.replace("[H]e", "He");
+                InputData = InputData.replace("[H]f", "Hf");
+                InputData = InputData.replace("[H]g", "Hg");
+                InputData = InputData.replace("[H]h", "Hh");
+                InputData = InputData.replace("[H]i", "Hi");
+                InputData = InputData.replace("[H]j", "Hj");
+                InputData = InputData.replace("[H]k", "Hk");
+                InputData = InputData.replace("[H]l", "Hl");
+                InputData = InputData.replace("[H]m", "Hm");
+                InputData = InputData.replace("[H]n", "Hn");
+                InputData = InputData.replace("[H]o", "Ho");
+                InputData = InputData.replace("[H]p", "Hp");
+                InputData = InputData.replace("[H]q", "Hq");
+                InputData = InputData.replace("[H]r", "Hr");
+                InputData = InputData.replace("[H]s", "Hs");
+                InputData = InputData.replace("[H]t", "Ht");
+                InputData = InputData.replace("[H]u", "Hu");
+                InputData = InputData.replace("[H]v", "Hv");
+                InputData = InputData.replace("[H]w", "Hw");
+                InputData = InputData.replace("[H]x", "Hx");
+                InputData = InputData.replace("[H]y", "Hy");
+                InputData = InputData.replace("[H]z", "Hz");
+//                    }
+//                    while (InputData.contains("N")){
+                InputData = InputData.replace("N", "[N]");
+                InputData = InputData.replace("[N]a", "Na");
+                InputData = InputData.replace("[N]b", "Nb");
+                InputData = InputData.replace("[N]c", "Nc");
+                InputData = InputData.replace("[N]d", "Nd");
+                InputData = InputData.replace("[N]e", "Ne");
+                InputData = InputData.replace("[N]f", "Nf");
+                InputData = InputData.replace("[N]g", "Ng");
+                InputData = InputData.replace("[N]h", "Nh");
+                InputData = InputData.replace("[N]i", "Ni");
+                InputData = InputData.replace("[N]j", "Nj");
+                InputData = InputData.replace("[N]k", "Nk");
+                InputData = InputData.replace("[N]l", "Nl");
+                InputData = InputData.replace("[N]m", "Nm");
+                InputData = InputData.replace("[N]n", "Nn");
+                InputData = InputData.replace("[N]o", "No");
+                InputData = InputData.replace("[N]p", "Np");
+                InputData = InputData.replace("[N]q", "Nq");
+                InputData = InputData.replace("[N]r", "Nr");
+                InputData = InputData.replace("[N]s", "Ns");
+                InputData = InputData.replace("[N]t", "Nt");
+                InputData = InputData.replace("[N]u", "Nu");
+                InputData = InputData.replace("[N]v", "Nv");
+                InputData = InputData.replace("[N]w", "Nw");
+                InputData = InputData.replace("[N]x", "Nx");
+                InputData = InputData.replace("[N]y", "Ny");
+                InputData = InputData.replace("[N]z", "Nz");
+//                    }
+//                    while (InputData.contains("O")){
+                InputData = InputData.replace("O", "[O]");
+                InputData = InputData.replace("[O]a", "Oa");
+                InputData = InputData.replace("[O]b", "Ob");
+                InputData = InputData.replace("[O]c", "Oc");
+                InputData = InputData.replace("[O]d", "Od");
+                InputData = InputData.replace("[O]e", "Oe");
+                InputData = InputData.replace("[O]f", "Of");
+                InputData = InputData.replace("[O]g", "Og");
+                InputData = InputData.replace("[O]h", "Oh");
+                InputData = InputData.replace("[O]i", "Oi");
+                InputData = InputData.replace("[O]j", "Oj");
+                InputData = InputData.replace("[O]k", "Ok");
+                InputData = InputData.replace("[O]l", "Ol");
+                InputData = InputData.replace("[O]m", "Om");
+                InputData = InputData.replace("[O]n", "On");
+                InputData = InputData.replace("[O]o", "Oo");
+                InputData = InputData.replace("[O]p", "Op");
+                InputData = InputData.replace("[O]q", "Oq");
+                InputData = InputData.replace("[O]r", "Or");
+                InputData = InputData.replace("[O]s", "Os");
+                InputData = InputData.replace("[O]t", "Ot");
+                InputData = InputData.replace("[O]u", "Ou");
+                InputData = InputData.replace("[O]v", "Ov");
+                InputData = InputData.replace("[O]w", "Ow");
+                InputData = InputData.replace("[O]x", "Ox");
+                InputData = InputData.replace("[O]y", "Oy");
+                InputData = InputData.replace("[O]z", "Oz");
+//                    }
+//                    while (InputData.contains("S")){
+                InputData = InputData.replace("S", "[S]");
+                InputData = InputData.replace("[S]a", "Sa");
+                InputData = InputData.replace("[S]b", "Sb");
+                InputData = InputData.replace("[S]c", "Sc");
+                InputData = InputData.replace("[S]d", "Sd");
+                InputData = InputData.replace("[S]e", "Se");
+                InputData = InputData.replace("[S]f", "Sf");
+                InputData = InputData.replace("[S]g", "Sg");
+                InputData = InputData.replace("[S]h", "Sh");
+                InputData = InputData.replace("[S]i", "Si");
+                InputData = InputData.replace("[S]j", "Sj");
+                InputData = InputData.replace("[S]k", "Sk");
+                InputData = InputData.replace("[S]l", "Sl");
+                InputData = InputData.replace("[S]m", "Sm");
+                InputData = InputData.replace("[S]n", "Sn");
+                InputData = InputData.replace("[S]o", "So");
+                InputData = InputData.replace("[S]p", "Sp");
+                InputData = InputData.replace("[S]q", "Sq");
+                InputData = InputData.replace("[S]r", "Sr");
+                InputData = InputData.replace("[S]s", "Ss");
+                InputData = InputData.replace("[S]t", "St");
+                InputData = InputData.replace("[S]u", "Su");
+                InputData = InputData.replace("[S]v", "Sv");
+                InputData = InputData.replace("[S]w", "Sw");
+                InputData = InputData.replace("[S]x", "Sx");
+                InputData = InputData.replace("[S]y", "Sy");
+                InputData = InputData.replace("[S]z", "Sz");
+//                    }
+//                    while (InputData.contains("F")){
+                InputData = InputData.replace("F", "[F]");
+                InputData = InputData.replace("[F]a", "Fa");
+                InputData = InputData.replace("[F]b", "Fb");
+                InputData = InputData.replace("[F]c", "Fc");
+                InputData = InputData.replace("[F]d", "Fd");
+                InputData = InputData.replace("[F]e", "Fe");
+                InputData = InputData.replace("[F]f", "Ff");
+                InputData = InputData.replace("[F]g", "Fg");
+                InputData = InputData.replace("[F]h", "Fh");
+                InputData = InputData.replace("[F]i", "Fi");
+                InputData = InputData.replace("[F]j", "Fj");
+                InputData = InputData.replace("[F]k", "Fk");
+                InputData = InputData.replace("[F]l", "Fl");
+                InputData = InputData.replace("[F]m", "Fm");
+                InputData = InputData.replace("[F]n", "Fn");
+                InputData = InputData.replace("[F]o", "Fo");
+                InputData = InputData.replace("[F]p", "Fp");
+                InputData = InputData.replace("[F]q", "Fq");
+                InputData = InputData.replace("[F]r", "Fr");
+                InputData = InputData.replace("[F]s", "Fs");
+                InputData = InputData.replace("[F]t", "Ft");
+                InputData = InputData.replace("[F]u", "Fu");
+                InputData = InputData.replace("[F]v", "Fv");
+                InputData = InputData.replace("[F]w", "Fw");
+                InputData = InputData.replace("[F]x", "Fx");
+                InputData = InputData.replace("[F]y", "Fy");
+                InputData = InputData.replace("[F]z", "Fz");
+//                    }
+                InputData = InputData.replace("T[O]T", "TOT");
+                InputData = InputData.replace("[C][H][O][N][S]Z", "CHONSZ");
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 try {
                     FileOutputStream fileout = openFileOutput("Thermochemistry_s.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -360,6 +544,9 @@ public class ConvertS extends MainActivity {
             while (Raw_g.contains("= + e- =")){  //2 spaces
                 Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
             }
+	     while (Raw_g.contains("=  + e- =")){  //2 spaces
+                Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+            }
             FileOutputStream fileout115 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
             OutputStreamWriter outputWriter115 = new OutputStreamWriter(fileout115);
             outputWriter115.write(Raw_g);
@@ -377,6 +564,9 @@ public class ConvertS extends MainActivity {
             String Raw_ss = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
             while (Raw_ss.contains("= + e- =")){  //2 spaces
                 Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+            }
+	    while (Raw_ss.contains("=  + e- =")){  //2 spaces
+                Raw_ss = Raw_ss.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
             }
             FileOutputStream fileout216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
             OutputStreamWriter outputWriter216 = new OutputStreamWriter(fileout216);

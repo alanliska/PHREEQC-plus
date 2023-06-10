@@ -32,6 +32,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
+import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
+import uk.ac.cam.ch.wwmm.opsin.OpsinResult;
+
 public class Mopac extends MainActivity {
 
     private Handler handler = new Handler();
@@ -42,10 +46,13 @@ public class Mopac extends MainActivity {
     Button openIntInputfile;
     Button saveInputfile;
     Button saveExtInputfile;
+    Button generateXYZ;
+    Button opsinXYZ;
     Button RunMopac;
     Button saveOutputfile;
     Button saveExtOutputfile;
     Button Highlight;
+    Button Spectrum;
     Button Quit;
     private TextView textViewX;
     private TextView outputView;
@@ -56,6 +63,7 @@ public class Mopac extends MainActivity {
     private Uri documentUri20;
     private static final int CREATE_FILE21 = 21;
     private Uri documentUri21;
+    Button manual_mopac;
 
 
     /**
@@ -221,8 +229,12 @@ public class Mopac extends MainActivity {
         saveInputfile.setOnClickListener(saveInputfileClick);
         saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
         saveExtInputfile.setOnClickListener(saveExtInputfileClick);
+        generateXYZ = (Button) findViewById(R.id.generateXYZ);
+        generateXYZ.setOnClickListener(GenerateXYZClick);
+        opsinXYZ = (Button) findViewById(R.id.opsinXYZ);
+        opsinXYZ.setOnClickListener(opsinXYZClick);
         RunMopac = (Button) findViewById(R.id.RunMopac);
-        RunMopac.setOnClickListener(RunChemsolClick);
+        RunMopac.setOnClickListener(RunMopacClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
         saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
@@ -234,6 +246,17 @@ public class Mopac extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        Spectrum = (Button) findViewById(R.id.Spectrum);
+        Spectrum.setOnClickListener(SpectrumClick);
+        manual_mopac = (Button) findViewById(R.id.manual_mopac);
+        manual_mopac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Mopac.this, ManualMOPAC.class);
+                startActivity(intent);
+            }
+        });
 
         openIntInputfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,6 +274,237 @@ public class Mopac extends MainActivity {
         super.onStart();
 
         output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+    }
+
+    private View.OnClickListener GenerateXYZClick; {
+
+        GenerateXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertGenerateXYZ();
+                output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+            }
+        };
+    }
+
+
+    public void alertGenerateXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(Mopac.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Mopac.this)
+                .setMessage("Input the SMILES string and convert it to XYZ. The result will be appended to the actual input file.")
+                .setTitle("OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(SmilesString);
+                            outputWriter.close();
+
+                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+
+                            FileOutputStream fileout3 = openFileOutput("temp.xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
+
+                            FileOutputStream fileout4 = openFileOutput("Input-mopac.txt", MODE_APPEND);
+                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+//                            outputWriter4.write(InputFile);
+                            outputWriter4.write("\n");
+                            outputWriter4.write(SedXyz);
+                            outputWriter4.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener opsinXYZClick; {
+
+        opsinXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertOpsinXYZ();
+                output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+            }
+        };
+    }
+
+
+    public void alertOpsinXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(Mopac.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Mopac.this)
+                .setMessage("Input the IUPAC name and convert it to XYZ. The result will be appended to the actual input file.")
+                .setTitle("OPSIN+OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
+
+                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+
+                            FileOutputStream fileout3 = openFileOutput("temp.xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
+
+                            FileOutputStream fileout4 = openFileOutput("Input-mopac.txt", MODE_APPEND);
+                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+//                            outputWriter4.write(InputFile);
+                            outputWriter4.write("\n");
+                            outputWriter4.write(SedXyz);
+                            outputWriter4.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener SpectrumClick; {
+
+        SpectrumClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    String Sed = exec("sed -e 1,/polarization/d "+getFilesDir()+"/Input.out");
+                    FileOutputStream fileout2 = openFileOutput("Input-sed.out", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Sed);
+                    outputWriter2.close();
+                    String Sed3 = exec("sed /Polarizability/,$d "+getFilesDir()+"/Input-sed.out");
+                    FileOutputStream fileout3 = openFileOutput("Input-sed3.out", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Sed3);
+                    outputWriter3.close();
+                    String Sed4 = exec("sed -e 1,2d "+getFilesDir()+"/Input-sed3.out");
+                    FileOutputStream fileout4 = openFileOutput("Input-sed4.out", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+                    outputWriter4.write(Sed4);
+                    outputWriter4.close();
+                    exec("cp "+getFilesDir()+"/Input-sed4.out "+getFilesDir()+"/mopac-spectrum.dat");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SpectrumMOPAC.b "+getFilesDir()+"/SpectrumMOPAC.bas");
+                    exec("chmod -R 755 "+getFilesDir()+"/SpectrumMOPAC.b");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SpectrumMOPAC.b");
+                    exec("rm "+getFilesDir()+"/Input-sed.out");
+                    exec("rm "+getFilesDir()+"/Input-sed3.out");
+                    exec("rm "+getFilesDir()+"/Input-sed4.out");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Mopac.this, SpectrumMOPAC.class);
+                startActivity(intent);
+            }
+        };
     }
 
 
@@ -457,9 +711,9 @@ public class Mopac extends MainActivity {
     }
 
 
-    private View.OnClickListener RunChemsolClick; {
+    private View.OnClickListener RunMopacClick; {
 
-        RunChemsolClick = new View.OnClickListener() {
+        RunMopacClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 String Inputfile = MopacInput.getText().toString();

@@ -44,6 +44,8 @@ public class CustomImport extends MainActivity {
     private TextView label20;
     private TextView label21;
     private TextView label22;
+    private TextView label22a;
+    private TextView label22b;
     private TextView label23;
     private TextView label24;
     private TextView label25;
@@ -53,6 +55,15 @@ public class CustomImport extends MainActivity {
     private TextView label29;
     private TextView label30;
     private TextView label31;
+//    private TextView label32;
+//    private TextView label33;
+//    private TextView label34;
+//    private TextView label35;
+//    private TextView label36;
+//    private TextView label37;
+    private TextView label38;
+    private TextView label39;
+    private TextView label40;
     private Button root;
     private Button bulk_conversion;
     private Button chemsol;
@@ -81,6 +92,8 @@ public class CustomImport extends MainActivity {
     private Button gas_opt_results;
     private Button gas_thermo;
     private Button gas_thermo_results;
+    private Button liq;
+    private Button cryst;
     private Button solv;
     private Button solv_opt;
     private Button solv_opt_results;
@@ -89,6 +102,15 @@ public class CustomImport extends MainActivity {
     private Button quit;
     private Button docs;
     private Button work;
+//    private Button cp2k;
+//    private Button basis;
+//    private Button DFTB;
+//    private Button nonscc;
+//    private Button scc;
+//    private Button xc_section;
+    private Button dftb;
+    private Button sk_files;
+    private Button references;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +147,8 @@ public class CustomImport extends MainActivity {
         label20 = (TextView) findViewById(R.id.label20);
         label21 = (TextView) findViewById(R.id.label21);
         label22 = (TextView) findViewById(R.id.label22);
+        label22a = (TextView) findViewById(R.id.label22a);
+        label22b = (TextView) findViewById(R.id.label22b);
         label23 = (TextView) findViewById(R.id.label23);
         label24 = (TextView) findViewById(R.id.label24);
         label25 = (TextView) findViewById(R.id.label25);
@@ -134,6 +158,15 @@ public class CustomImport extends MainActivity {
         label29 = (TextView) findViewById(R.id.label29);
         label30 = (TextView) findViewById(R.id.label30);
         label31 = (TextView) findViewById(R.id.label31);
+//        label32 = (TextView) findViewById(R.id.label32);
+//        label33 = (TextView) findViewById(R.id.label33);
+//        label34 = (TextView) findViewById(R.id.label34);
+//        label35 = (TextView) findViewById(R.id.label35);
+//        label36 = (TextView) findViewById(R.id.label36);
+//        label37 = (TextView) findViewById(R.id.label37);
+        label38 = (TextView) findViewById(R.id.label38);
+        label39 = (TextView) findViewById(R.id.label39);
+        label40 = (TextView) findViewById(R.id.label40);
 
         root = (Button) findViewById(R.id.root);
         root.setOnClickListener(new View.OnClickListener() {
@@ -645,6 +678,40 @@ public class CustomImport extends MainActivity {
             }
         });
 
+        liq = (Button) findViewById(R.id.liq);
+        liq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Path = getFilesDir()+"/output/liq";
+                String NameOfTheFile = name_of_the_file.getText().toString();
+                try {
+                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cryst = (Button) findViewById(R.id.cryst);
+        cryst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Path = getFilesDir()+"/output/cryst";
+                String NameOfTheFile = name_of_the_file.getText().toString();
+                try {
+                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         solv = (Button) findViewById(R.id.solv);
         solv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -718,6 +785,159 @@ public class CustomImport extends MainActivity {
             @Override
             public void onClick(View v) {
                 String Path = getFilesDir()+"/output/solv/thermo/results";
+                String NameOfTheFile = name_of_the_file.getText().toString();
+                try {
+                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+//        cp2k = (Button) findViewById(R.id.cp2k);
+//        cp2k.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/cp2k";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        basis = (Button) findViewById(R.id.basis);
+//        basis.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/basis";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        DFTB = (Button) findViewById(R.id.DFTB);
+//        DFTB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/basis/DFTB";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        nonscc = (Button) findViewById(R.id.nonscc);
+//        nonscc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/basis/DFTB/nonscc";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        scc = (Button) findViewById(R.id.scc);
+//        scc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/basis/DFTB/scc";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        xc_section = (Button) findViewById(R.id.xc_section);
+//        xc_section.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String Path = getFilesDir()+"/basis/xc_section";
+//                String NameOfTheFile = name_of_the_file.getText().toString();
+//                try {
+//                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+//                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        dftb = (Button) findViewById(R.id.dftb);
+        dftb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Path = getFilesDir()+"/dftb";
+                String NameOfTheFile = name_of_the_file.getText().toString();
+                try {
+                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sk_files = (Button) findViewById(R.id.sk_files);
+        sk_files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Path = getFilesDir()+"/sk_files";
+                String NameOfTheFile = name_of_the_file.getText().toString();
+                try {
+                    exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");
+                    exec("mv "+getFilesDir()+"/ImportedFile.txt "+Path+"/"+NameOfTheFile);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(CustomImport.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        references = (Button) findViewById(R.id.references);
+        references.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Path = getFilesDir()+"/reference";
                 String NameOfTheFile = name_of_the_file.getText().toString();
                 try {
                     exec("chmod 755 "+getFilesDir()+"/ImportedFile.txt");

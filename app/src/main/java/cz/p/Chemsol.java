@@ -58,6 +58,7 @@ public class Chemsol extends MainActivity {
     private Uri documentUri40;
     private static final int CREATE_FILE41 = 41;
     private Uri documentUri41;
+    Button manual_chemsol;
 
 
     /**
@@ -236,6 +237,16 @@ public class Chemsol extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+
+        manual_chemsol = (Button) findViewById(R.id.manual_chemsol);
+        manual_chemsol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Chemsol.this, ManualChemsol.class);
+                startActivity(intent);
+            }
+        });
 
         openIntInputfile.setOnClickListener(new View.OnClickListener() {
             @Override

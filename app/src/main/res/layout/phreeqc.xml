@@ -177,6 +177,29 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
             android:text="ADD SOLUTION MASTER SPECIES BLOCK (APPEND INTERNAL FILES)" />
+        <TextView
+            android:id="@+id/ModifyLabelSMS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Solution master species block is apended now. If only selected species are desired for use in the following kinetics calculation, they can be filtered here (full term to be searched, one name per line):" />
+        <EditText
+            android:id="@+id/ModifyEditSMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/modifybuttonSMS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CCC7FBC3"
+            android:text="FILTER THE SMS DATA BLOCK" />
+
         <Button
             android:id="@+id/ResetSMSKin"
             android:layout_width="match_parent"
@@ -207,6 +230,28 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
             android:text="ADD SOLUTION SPECIES BLOCK (APPEND INTERNAL FILES)" />
+        <TextView
+            android:id="@+id/ModifyLabelSS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Solution species block is apended now. If only selected species are desired for use in the following kinetics calculation, they can be filtered here (full term to be searched, one name per line):" />
+        <EditText
+            android:id="@+id/ModifyEditSS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/modifybuttonSS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CCC7FBC3"
+            android:text="FILTER THE SS DATA BLOCK" />
         <Button
             android:id="@+id/ResetSSKin"
             android:layout_width="match_parent"
@@ -237,6 +282,28 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
             android:text="ADD RATES BLOCK (APPEND INTERNAL FILES)" />
+        <TextView
+            android:id="@+id/ModifyLabelR"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Rates block is apended now. If only selected species are desired for use in the following kinetics calculation, they can be filtered here (full term to be searched, one name per line):" />
+        <EditText
+            android:id="@+id/ModifyEditR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/modifybuttonR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CCC7FBC3"
+            android:text="FILTER THE RATES DATA BLOCK" />
         <Button
             android:id="@+id/ResetRKin"
             android:layout_width="match_parent"
@@ -267,6 +334,28 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF0A"
             android:text="ADD KINETICS BLOCK (APPEND INTERNAL FILES)" />
+        <TextView
+            android:id="@+id/ModifyLabelK"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Kinetics block is apended now. If only selected species are desired for use in the following kinetics calculation, they can be filtered here (full term to be searched, one name per line):" />
+        <EditText
+            android:id="@+id/ModifyEditK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/modifybuttonK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CCC7FBC3"
+            android:text="FILTER THE KINETICS DATA BLOCK" />
         <Button
             android:id="@+id/ResetKKin"
             android:layout_width="match_parent"
@@ -349,6 +438,12 @@
             android:backgroundTint="#E91E63"
             android:text="RUN PHREEQC" />
         <Button
+            android:id="@+id/RunPhreeqcSilent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#AAAAAA"
+            android:text="RUN PHREEQC WITHOUT DISPLAYING OUTPUT\n(FOR GRAPHING PURPOSES)" />
+        <Button
             android:id="@+id/saveOutputfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -370,6 +465,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="HELP" />
+        <Button
+            android:id="@+id/manual_phreeqc2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="OFFICIAL PHREEQC2 MANUAL (EQUATIONS)" />
+        <Button
+            android:id="@+id/manual_phreeqc3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text=" OFFICIAL PHREEQC3 MANUAL" />
+        <Button
+            android:id="@+id/Graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF50"
+            android:text="INVOKE LINE GRAPH" />
+        <Button
+            android:id="@+id/Scatter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF50"
+            android:text="INVOKE SCATTER GRAPH" />
+        <Button
+            android:id="@+id/ResetGraphs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE ALL GRAPH FILES" />
         <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"
@@ -396,7 +520,7 @@
 
         <EditText
             android:id="@+id/outputView2"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textIsSelectable="true"

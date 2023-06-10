@@ -107,6 +107,12 @@
             android:scrollbarSize="5dp"
             android:typeface="monospace" />
 
+        <Button
+            android:id="@+id/A_opsin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NAME TO SMILES CONVERSION (OPSIN)" />
+
         <TextView
             android:id="@+id/methodTS_label"
             android:layout_width="fill_parent"
@@ -268,11 +274,17 @@
             android:typeface="monospace" />
 
         <Button
+            android:id="@+id/B_opsin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NAME TO SMILES CONVERSION (OPSIN)" />
+
+        <Button
             android:id="@+id/processUniUni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E91E63"
-            android:text="CALCULATE ALL SPECIES WITH MOPAC (WAIT)" />
+            android:text="CALCULATE ALL SPECIES WITH MOPAC" />
 
 
         <Button

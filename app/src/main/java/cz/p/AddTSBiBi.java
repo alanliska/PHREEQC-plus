@@ -28,7 +28,7 @@ public class AddTSBiBi extends KineticsBiBi {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generallayout);
-        final String rootPath = getFilesDir()+"/phreeqc_work";
+        final String rootPath = getFilesDir()+"/output/xyz";
         final File dir = new File(rootPath);
         files = dir.listFiles();
         final TextView pathOutput = findViewById(R.id.pathOutput);

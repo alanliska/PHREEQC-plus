@@ -582,7 +582,8 @@ public class GCM1 extends MainActivity {
         ch3 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -599,9 +600,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -610,7 +627,8 @@ public class GCM1 extends MainActivity {
         ch2 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -627,9 +645,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -638,7 +672,8 @@ public class GCM1 extends MainActivity {
         ch2_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -655,9 +690,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -666,7 +717,8 @@ public class GCM1 extends MainActivity {
         ch = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -683,9 +735,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -694,7 +762,8 @@ public class GCM1 extends MainActivity {
         ch_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -711,9 +780,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -722,7 +807,8 @@ public class GCM1 extends MainActivity {
         ch_2rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -739,9 +825,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -750,7 +852,8 @@ public class GCM1 extends MainActivity {
         c = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -767,9 +870,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -778,7 +897,8 @@ public class GCM1 extends MainActivity {
         c_1ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -795,9 +915,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -806,7 +942,8 @@ public class GCM1 extends MainActivity {
         c_2rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -823,9 +960,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -834,7 +987,8 @@ public class GCM1 extends MainActivity {
         ch_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -851,9 +1005,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -862,7 +1032,8 @@ public class GCM1 extends MainActivity {
         ch_double_nonarom_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -879,9 +1050,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -890,7 +1077,8 @@ public class GCM1 extends MainActivity {
         c_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -907,9 +1095,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -918,7 +1122,8 @@ public class GCM1 extends MainActivity {
         ch2_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -935,9 +1140,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -946,7 +1167,8 @@ public class GCM1 extends MainActivity {
         ch_double_arom_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -963,9 +1185,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -974,7 +1212,8 @@ public class GCM1 extends MainActivity {
         c_double_arom_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -991,9 +1230,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1002,7 +1257,8 @@ public class GCM1 extends MainActivity {
         c_nonarom_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1019,9 +1275,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1030,7 +1302,8 @@ public class GCM1 extends MainActivity {
         c_2nonarom_rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1047,9 +1320,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1058,7 +1347,8 @@ public class GCM1 extends MainActivity {
         c_arom_and_nonarom_rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1075,9 +1365,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1086,7 +1392,8 @@ public class GCM1 extends MainActivity {
         c_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1103,9 +1410,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1114,7 +1437,8 @@ public class GCM1 extends MainActivity {
         c_2arom_rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1131,9 +1455,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1142,7 +1482,8 @@ public class GCM1 extends MainActivity {
         ch_triple = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1159,9 +1500,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1170,7 +1527,8 @@ public class GCM1 extends MainActivity {
         c_triple = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1187,9 +1545,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1198,7 +1572,8 @@ public class GCM1 extends MainActivity {
         o_minus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1216,9 +1591,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1227,7 +1618,8 @@ public class GCM1 extends MainActivity {
         oh = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1244,9 +1636,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1255,7 +1663,8 @@ public class GCM1 extends MainActivity {
         o = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1272,9 +1681,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1283,7 +1708,8 @@ public class GCM1 extends MainActivity {
         o_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1300,9 +1726,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1311,7 +1753,8 @@ public class GCM1 extends MainActivity {
         co = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1328,9 +1771,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1339,7 +1798,8 @@ public class GCM1 extends MainActivity {
         co_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1356,9 +1816,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1367,7 +1843,8 @@ public class GCM1 extends MainActivity {
         cho = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1384,9 +1861,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1395,7 +1888,8 @@ public class GCM1 extends MainActivity {
         coo_minus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1413,9 +1907,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1424,7 +1934,8 @@ public class GCM1 extends MainActivity {
         oco = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1441,9 +1952,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1452,7 +1979,8 @@ public class GCM1 extends MainActivity {
         oco_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1469,9 +1997,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1480,7 +2024,8 @@ public class GCM1 extends MainActivity {
         nh3_plus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1498,9 +2043,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1509,7 +2070,8 @@ public class GCM1 extends MainActivity {
         nh2 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1526,9 +2088,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1537,7 +2115,8 @@ public class GCM1 extends MainActivity {
         nh2_plus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1555,9 +2134,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1566,7 +2161,8 @@ public class GCM1 extends MainActivity {
         n = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1583,9 +2179,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1594,7 +2206,8 @@ public class GCM1 extends MainActivity {
         n_2rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1611,9 +2224,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1622,11 +2251,12 @@ public class GCM1 extends MainActivity {
         nh = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(">NH-;1\n");
+                    outputWriter.write("-NH-;1\n");
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm1formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
@@ -1639,9 +2269,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1650,11 +2296,12 @@ public class GCM1 extends MainActivity {
         nh_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(">NH-(ring);1\n");
+                    outputWriter.write("-NH-(ring);1\n");
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm1formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
@@ -1667,9 +2314,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1678,7 +2341,8 @@ public class GCM1 extends MainActivity {
         nh_plus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1696,9 +2360,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1707,7 +2387,8 @@ public class GCM1 extends MainActivity {
         n_plus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1725,9 +2406,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1736,7 +2433,8 @@ public class GCM1 extends MainActivity {
         nh_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1753,9 +2451,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1764,7 +2478,8 @@ public class GCM1 extends MainActivity {
         nh2_plus_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1782,9 +2497,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1793,7 +2524,8 @@ public class GCM1 extends MainActivity {
         nh_plus_double_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1811,9 +2543,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1822,7 +2570,8 @@ public class GCM1 extends MainActivity {
         n_double = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1839,9 +2588,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1850,7 +2615,8 @@ public class GCM1 extends MainActivity {
         n_double_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1867,9 +2633,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1878,7 +2660,8 @@ public class GCM1 extends MainActivity {
         n_plus_double_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1896,9 +2679,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1907,7 +2706,8 @@ public class GCM1 extends MainActivity {
         n_plus_double_2rings = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1925,9 +2725,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1936,7 +2752,8 @@ public class GCM1 extends MainActivity {
         n_triple = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -1953,9 +2770,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1964,7 +2797,8 @@ public class GCM1 extends MainActivity {
         opo3_minus2 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-2;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -1982,9 +2816,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -1993,7 +2843,8 @@ public class GCM1 extends MainActivity {
         opo2_minus2 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-2;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2011,9 +2862,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2022,7 +2889,8 @@ public class GCM1 extends MainActivity {
         opo2_minus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2040,9 +2908,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2051,7 +2935,8 @@ public class GCM1 extends MainActivity {
         opo2_minus_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2069,9 +2954,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2080,7 +2981,8 @@ public class GCM1 extends MainActivity {
         opo2_minus_o = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2098,9 +3000,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2109,7 +3027,8 @@ public class GCM1 extends MainActivity {
         coopo3_minus2 = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-2;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2127,9 +3046,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2138,7 +3073,8 @@ public class GCM1 extends MainActivity {
         s_minus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2156,9 +3092,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2167,11 +3119,12 @@ public class GCM1 extends MainActivity {
         sh = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write("-SH1\n");
+                    outputWriter.write("-SH;1\n");
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm1formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
@@ -2184,9 +3137,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2195,7 +3164,8 @@ public class GCM1 extends MainActivity {
         soh = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2212,9 +3182,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2223,7 +3209,8 @@ public class GCM1 extends MainActivity {
         oso3_minus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge-1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2241,9 +3228,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2252,7 +3255,8 @@ public class GCM1 extends MainActivity {
         s = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2269,9 +3273,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2280,7 +3300,8 @@ public class GCM1 extends MainActivity {
         s_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2297,9 +3318,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2308,7 +3345,8 @@ public class GCM1 extends MainActivity {
         ss = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2325,9 +3363,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2336,7 +3390,8 @@ public class GCM1 extends MainActivity {
         s_plus = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 charge = charge+1;
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
@@ -2354,9 +3409,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2365,7 +3436,8 @@ public class GCM1 extends MainActivity {
         cl_prim = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2382,9 +3454,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2393,7 +3481,8 @@ public class GCM1 extends MainActivity {
         cl_sec = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2410,9 +3499,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2421,7 +3526,8 @@ public class GCM1 extends MainActivity {
         cl_tert = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2438,9 +3544,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2449,7 +3571,8 @@ public class GCM1 extends MainActivity {
         cl2_prim = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2466,9 +3589,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2477,7 +3616,8 @@ public class GCM1 extends MainActivity {
         cl2_sec = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2494,9 +3634,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2505,7 +3661,8 @@ public class GCM1 extends MainActivity {
         cl3_prim = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2522,9 +3679,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2533,7 +3706,8 @@ public class GCM1 extends MainActivity {
         br_ar = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2550,9 +3724,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2561,7 +3751,8 @@ public class GCM1 extends MainActivity {
         i_ar = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2578,9 +3769,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2589,7 +3796,8 @@ public class GCM1 extends MainActivity {
         f_ar = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2606,9 +3814,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2617,7 +3841,8 @@ public class GCM1 extends MainActivity {
         hetero = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2634,9 +3859,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2645,7 +3886,8 @@ public class GCM1 extends MainActivity {
         three_ring = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2662,9 +3904,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2673,7 +3931,8 @@ public class GCM1 extends MainActivity {
         hydrocarbon = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2690,9 +3949,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2701,7 +3976,8 @@ public class GCM1 extends MainActivity {
         conh = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2718,9 +3994,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2729,7 +4021,8 @@ public class GCM1 extends MainActivity {
         cos = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2746,9 +4039,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2757,7 +4066,8 @@ public class GCM1 extends MainActivity {
         viccl = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2774,9 +4084,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2785,7 +4111,8 @@ public class GCM1 extends MainActivity {
         conj_occc = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2802,9 +4129,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2813,7 +4156,8 @@ public class GCM1 extends MainActivity {
         conj_occo = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2830,9 +4174,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2841,7 +4201,8 @@ public class GCM1 extends MainActivity {
         conj_occn = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2858,9 +4219,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2869,7 +4246,8 @@ public class GCM1 extends MainActivity {
         conj_cccn = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2886,9 +4264,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2897,7 +4291,8 @@ public class GCM1 extends MainActivity {
         conj_cccc = new View.OnClickListener() {
             public void onClick(View v) {
                 String InputfileName0 = iupac.getText().toString();
-                String InputfileName = InputfileName0.replace(" ","_");
+                String InputfileName1 = InputfileName0.replace(" ","_");
+		String InputfileName = InputfileName1.replace(",",".");
                 try {
                     FileOutputStream fileout = openFileOutput("GCM1-input.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -2914,9 +4309,25 @@ public class GCM1 extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                String GCM1Formula0 = exec("cat "+getFilesDir()+"/gcm1formula.txt");
+                if (charge==0){
+                    String GCM1Formula = GCM1Formula0;
+                    formula_view(GCM1Formula);
+                } else if (charge==1){
+                    String GCM1Formula = GCM1Formula0+"+";
+                    formula_view(GCM1Formula);
+                } else if (charge==-1){
+                    String GCM1Formula = GCM1Formula0+"-";
+                    formula_view(GCM1Formula);
+                } else if (charge>1){
+                    String GCM1Formula = GCM1Formula0+"+"+charge;
+                    formula_view(GCM1Formula);
+                } else if (charge<-1){
+                    String GCM1Formula = GCM1Formula0+charge;
+                    formula_view(GCM1Formula);
+                }
                 input_view(exec("cat "+getFilesDir()+"/GCM1-input.txt"));
                 iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/gcm1formula.txt"));
             }
         };
     }
@@ -2942,7 +4353,7 @@ public class GCM1 extends MainActivity {
                     } else if (charge>1){
                         outputWriter2.write("+"+charge);
                     } else if (charge<-1){
-                        outputWriter2.write(charge);
+                        outputWriter2.write(""+charge); // here must be sth before charge (""), otherwise there will be printed a not recognizable character
                     }
                     outputWriter2.close();
 
@@ -3012,7 +4423,9 @@ public class GCM1 extends MainActivity {
         click_exit = new View.OnClickListener() {
             public void onClick(View v) {
 
-                String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
 
                 progressDialog = new ProgressDialog(GCM1.this);
                 progressDialog.setTitle("Please wait...");
@@ -3040,7 +4453,7 @@ public class GCM1 extends MainActivity {
                             } else if (charge>1){
                                 outputWriter2.write("+"+charge);
                             } else if (charge<-1){
-                                outputWriter2.write(charge);
+                                outputWriter2.write(""+charge); // here must be sth before charge (""), otherwise there will be printed a not recognizable character
                             }
                             outputWriter2.close();
 
@@ -3056,8 +4469,9 @@ public class GCM1 extends MainActivity {
 
 ////////// process results ///////////////
                         exec("cp "+getFilesDir()+"/GCM1.out "+getFilesDir()+"/GCM1/Thermochemistry_s.txt");
+                        exec("cp "+getFilesDir()+"/GCM1.out "+getFilesDir()+"/openbabel/solv/"+DatasetName+"_thermochemistry_s.txt");
 
-                            exec("chmod -R 755 "+getFilesDir());
+                        exec("chmod -R 755 "+getFilesDir());
 
 
                         exec("mv "+getFilesDir()+"/GCM1.out "+DatasetName+"_s.dat ");
@@ -3079,6 +4493,9 @@ public class GCM1 extends MainActivity {
                             String Raw_s = exec("cat "+getFilesDir()+"/GCM1/Database_s.dat");
                             while (Raw_s.contains("= + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                            }
+			    while (Raw_s.contains("=  + e- =")){  //2 spaces
+                                Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
                             OutputStreamWriter outputWriter315 = new OutputStreamWriter(fileout315);
@@ -3132,6 +4549,9 @@ public class GCM1 extends MainActivity {
 //                            while (Raw_s.contains("= + e- =")){  //2 spaces
 //                                Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
 //                            }
+//                            while (Raw_s.contains("=  + e- =")){  //2 spaces
+//                                Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+//                            }
 //                            FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
 //                            OutputStreamWriter outputWriter315 = new OutputStreamWriter(fileout315);
 //                            outputWriter315.write(Raw_s);
@@ -3149,7 +4569,9 @@ public class GCM1 extends MainActivity {
 //                            e.printStackTrace();
 //                        }
 //                        convertData();
-//                        String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+//                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
 
 
                         exec("mv "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_s.txt");

@@ -161,7 +161,8 @@ public class BulkConversion extends MainActivity {
                 pfd100.close();
 
                 String Sed100 = exec("sed -n 6p "+getFilesDir()+"/BulkConversion.tmp");
-                String BulkConvName = Sed100.replace(" ","_");
+                String BulkConvName1 = Sed100.replace(" ","_");
+		String BulkConvName = BulkConvName1.replace(",",".");
                 exec("mv "+getFilesDir()+"/BulkConversion.tmp "+getFilesDir()+"/bulk_conversion/"+BulkConvName);
 
 
@@ -236,11 +237,13 @@ public class BulkConversion extends MainActivity {
         openbabel_exit_click = new View.OnClickListener() {
             public void onClick(View v) {
 
-                String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
 
                 progressDialog = new ProgressDialog(BulkConversion.this);
                 progressDialog.setTitle("Please wait...");
-                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName);
+                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName0);
                 progressDialog.setCancelable(false);
                 progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -433,6 +436,189 @@ public class BulkConversion extends MainActivity {
                             String Formula = exec("sed -n 1p "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
                             String Method = exec("cat "+getFilesDir()+"/method.txt");
 
+                            Formula = Formula.replace(",", ".");
+
+                            ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                            //                    try {
+//                    while (Formula.contains("C")){
+                            Formula = Formula.replace("C", "[C]");
+                            Formula = Formula.replace("[C]a", "Ca");
+                            Formula = Formula.replace("[C]b", "Cb");
+                            Formula = Formula.replace("[C]c", "Cc");
+                            Formula = Formula.replace("[C]d", "Cd");
+                            Formula = Formula.replace("[C]e", "Ce");
+                            Formula = Formula.replace("[C]f", "Cf");
+                            Formula = Formula.replace("[C]g", "Cg");
+                            Formula = Formula.replace("[C]h", "Ch");
+                            Formula = Formula.replace("[C]i", "Ci");
+                            Formula = Formula.replace("[C]j", "Cj");
+                            Formula = Formula.replace("[C]k", "Ck");
+                            Formula = Formula.replace("[C]l", "Cl");
+                            Formula = Formula.replace("[C]m", "Cm");
+                            Formula = Formula.replace("[C]n", "Cn");
+                            Formula = Formula.replace("[C]o", "Co");
+                            Formula = Formula.replace("[C]p", "Cp");
+                            Formula = Formula.replace("[C]q", "Cq");
+                            Formula = Formula.replace("[C]r", "Cr");
+                            Formula = Formula.replace("[C]s", "Cs");
+                            Formula = Formula.replace("[C]t", "Ct");
+                            Formula = Formula.replace("[C]u", "Cu");
+                            Formula = Formula.replace("[C]v", "Cv");
+                            Formula = Formula.replace("[C]w", "Cw");
+                            Formula = Formula.replace("[C]x", "Cx");
+                            Formula = Formula.replace("[C]y", "Cy");
+                            Formula = Formula.replace("[C]z", "Cz");
+//                    }
+//                    while (Formula.contains("H")){
+                            Formula = Formula.replace("H", "[H]");
+                            Formula = Formula.replace("[H]a", "Ha");
+                            Formula = Formula.replace("[H]b", "Hb");
+                            Formula = Formula.replace("[H]c", "Hc");
+                            Formula = Formula.replace("[H]d", "Hd");
+                            Formula = Formula.replace("[H]e", "He");
+                            Formula = Formula.replace("[H]f", "Hf");
+                            Formula = Formula.replace("[H]g", "Hg");
+                            Formula = Formula.replace("[H]h", "Hh");
+                            Formula = Formula.replace("[H]i", "Hi");
+                            Formula = Formula.replace("[H]j", "Hj");
+                            Formula = Formula.replace("[H]k", "Hk");
+                            Formula = Formula.replace("[H]l", "Hl");
+                            Formula = Formula.replace("[H]m", "Hm");
+                            Formula = Formula.replace("[H]n", "Hn");
+                            Formula = Formula.replace("[H]o", "Ho");
+                            Formula = Formula.replace("[H]p", "Hp");
+                            Formula = Formula.replace("[H]q", "Hq");
+                            Formula = Formula.replace("[H]r", "Hr");
+                            Formula = Formula.replace("[H]s", "Hs");
+                            Formula = Formula.replace("[H]t", "Ht");
+                            Formula = Formula.replace("[H]u", "Hu");
+                            Formula = Formula.replace("[H]v", "Hv");
+                            Formula = Formula.replace("[H]w", "Hw");
+                            Formula = Formula.replace("[H]x", "Hx");
+                            Formula = Formula.replace("[H]y", "Hy");
+                            Formula = Formula.replace("[H]z", "Hz");
+//                    }
+//                    while (Formula.contains("N")){
+                            Formula = Formula.replace("N", "[N]");
+                            Formula = Formula.replace("[N]a", "Na");
+                            Formula = Formula.replace("[N]b", "Nb");
+                            Formula = Formula.replace("[N]c", "Nc");
+                            Formula = Formula.replace("[N]d", "Nd");
+                            Formula = Formula.replace("[N]e", "Ne");
+                            Formula = Formula.replace("[N]f", "Nf");
+                            Formula = Formula.replace("[N]g", "Ng");
+                            Formula = Formula.replace("[N]h", "Nh");
+                            Formula = Formula.replace("[N]i", "Ni");
+                            Formula = Formula.replace("[N]j", "Nj");
+                            Formula = Formula.replace("[N]k", "Nk");
+                            Formula = Formula.replace("[N]l", "Nl");
+                            Formula = Formula.replace("[N]m", "Nm");
+                            Formula = Formula.replace("[N]n", "Nn");
+                            Formula = Formula.replace("[N]o", "No");
+                            Formula = Formula.replace("[N]p", "Np");
+                            Formula = Formula.replace("[N]q", "Nq");
+                            Formula = Formula.replace("[N]r", "Nr");
+                            Formula = Formula.replace("[N]s", "Ns");
+                            Formula = Formula.replace("[N]t", "Nt");
+                            Formula = Formula.replace("[N]u", "Nu");
+                            Formula = Formula.replace("[N]v", "Nv");
+                            Formula = Formula.replace("[N]w", "Nw");
+                            Formula = Formula.replace("[N]x", "Nx");
+                            Formula = Formula.replace("[N]y", "Ny");
+                            Formula = Formula.replace("[N]z", "Nz");
+//                    }
+//                    while (Formula.contains("O")){
+                            Formula = Formula.replace("O", "[O]");
+                            Formula = Formula.replace("[O]a", "Oa");
+                            Formula = Formula.replace("[O]b", "Ob");
+                            Formula = Formula.replace("[O]c", "Oc");
+                            Formula = Formula.replace("[O]d", "Od");
+                            Formula = Formula.replace("[O]e", "Oe");
+                            Formula = Formula.replace("[O]f", "Of");
+                            Formula = Formula.replace("[O]g", "Og");
+                            Formula = Formula.replace("[O]h", "Oh");
+                            Formula = Formula.replace("[O]i", "Oi");
+                            Formula = Formula.replace("[O]j", "Oj");
+                            Formula = Formula.replace("[O]k", "Ok");
+                            Formula = Formula.replace("[O]l", "Ol");
+                            Formula = Formula.replace("[O]m", "Om");
+                            Formula = Formula.replace("[O]n", "On");
+                            Formula = Formula.replace("[O]o", "Oo");
+                            Formula = Formula.replace("[O]p", "Op");
+                            Formula = Formula.replace("[O]q", "Oq");
+                            Formula = Formula.replace("[O]r", "Or");
+                            Formula = Formula.replace("[O]s", "Os");
+                            Formula = Formula.replace("[O]t", "Ot");
+                            Formula = Formula.replace("[O]u", "Ou");
+                            Formula = Formula.replace("[O]v", "Ov");
+                            Formula = Formula.replace("[O]w", "Ow");
+                            Formula = Formula.replace("[O]x", "Ox");
+                            Formula = Formula.replace("[O]y", "Oy");
+                            Formula = Formula.replace("[O]z", "Oz");
+//                    }
+//                    while (Formula.contains("S")){
+                            Formula = Formula.replace("S", "[S]");
+                            Formula = Formula.replace("[S]a", "Sa");
+                            Formula = Formula.replace("[S]b", "Sb");
+                            Formula = Formula.replace("[S]c", "Sc");
+                            Formula = Formula.replace("[S]d", "Sd");
+                            Formula = Formula.replace("[S]e", "Se");
+                            Formula = Formula.replace("[S]f", "Sf");
+                            Formula = Formula.replace("[S]g", "Sg");
+                            Formula = Formula.replace("[S]h", "Sh");
+                            Formula = Formula.replace("[S]i", "Si");
+                            Formula = Formula.replace("[S]j", "Sj");
+                            Formula = Formula.replace("[S]k", "Sk");
+                            Formula = Formula.replace("[S]l", "Sl");
+                            Formula = Formula.replace("[S]m", "Sm");
+                            Formula = Formula.replace("[S]n", "Sn");
+                            Formula = Formula.replace("[S]o", "So");
+                            Formula = Formula.replace("[S]p", "Sp");
+                            Formula = Formula.replace("[S]q", "Sq");
+                            Formula = Formula.replace("[S]r", "Sr");
+                            Formula = Formula.replace("[S]s", "Ss");
+                            Formula = Formula.replace("[S]t", "St");
+                            Formula = Formula.replace("[S]u", "Su");
+                            Formula = Formula.replace("[S]v", "Sv");
+                            Formula = Formula.replace("[S]w", "Sw");
+                            Formula = Formula.replace("[S]x", "Sx");
+                            Formula = Formula.replace("[S]y", "Sy");
+                            Formula = Formula.replace("[S]z", "Sz");
+//                    }
+//                    while (Formula.contains("F")){
+                            Formula = Formula.replace("F", "[F]");
+                            Formula = Formula.replace("[F]a", "Fa");
+                            Formula = Formula.replace("[F]b", "Fb");
+                            Formula = Formula.replace("[F]c", "Fc");
+                            Formula = Formula.replace("[F]d", "Fd");
+                            Formula = Formula.replace("[F]e", "Fe");
+                            Formula = Formula.replace("[F]f", "Ff");
+                            Formula = Formula.replace("[F]g", "Fg");
+                            Formula = Formula.replace("[F]h", "Fh");
+                            Formula = Formula.replace("[F]i", "Fi");
+                            Formula = Formula.replace("[F]j", "Fj");
+                            Formula = Formula.replace("[F]k", "Fk");
+                            Formula = Formula.replace("[F]l", "Fl");
+                            Formula = Formula.replace("[F]m", "Fm");
+                            Formula = Formula.replace("[F]n", "Fn");
+                            Formula = Formula.replace("[F]o", "Fo");
+                            Formula = Formula.replace("[F]p", "Fp");
+                            Formula = Formula.replace("[F]q", "Fq");
+                            Formula = Formula.replace("[F]r", "Fr");
+                            Formula = Formula.replace("[F]s", "Fs");
+                            Formula = Formula.replace("[F]t", "Ft");
+                            Formula = Formula.replace("[F]u", "Fu");
+                            Formula = Formula.replace("[F]v", "Fv");
+                            Formula = Formula.replace("[F]w", "Fw");
+                            Formula = Formula.replace("[F]x", "Fx");
+                            Formula = Formula.replace("[F]y", "Fy");
+                            Formula = Formula.replace("[F]z", "Fz");
+//                    }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                             try {
                                 exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                                 try {
@@ -502,6 +688,189 @@ public class BulkConversion extends MainActivity {
                             String InputfileName = file.getName();
                             String Formula = exec("sed -n 1p "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
                             String Method = exec("cat "+getFilesDir()+"/method.txt");
+
+                            Formula = Formula.replace(",", ".");
+
+                            ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                            //                    try {
+//                    while (Formula.contains("C")){
+                            Formula = Formula.replace("C", "[C]");
+                            Formula = Formula.replace("[C]a", "Ca");
+                            Formula = Formula.replace("[C]b", "Cb");
+                            Formula = Formula.replace("[C]c", "Cc");
+                            Formula = Formula.replace("[C]d", "Cd");
+                            Formula = Formula.replace("[C]e", "Ce");
+                            Formula = Formula.replace("[C]f", "Cf");
+                            Formula = Formula.replace("[C]g", "Cg");
+                            Formula = Formula.replace("[C]h", "Ch");
+                            Formula = Formula.replace("[C]i", "Ci");
+                            Formula = Formula.replace("[C]j", "Cj");
+                            Formula = Formula.replace("[C]k", "Ck");
+                            Formula = Formula.replace("[C]l", "Cl");
+                            Formula = Formula.replace("[C]m", "Cm");
+                            Formula = Formula.replace("[C]n", "Cn");
+                            Formula = Formula.replace("[C]o", "Co");
+                            Formula = Formula.replace("[C]p", "Cp");
+                            Formula = Formula.replace("[C]q", "Cq");
+                            Formula = Formula.replace("[C]r", "Cr");
+                            Formula = Formula.replace("[C]s", "Cs");
+                            Formula = Formula.replace("[C]t", "Ct");
+                            Formula = Formula.replace("[C]u", "Cu");
+                            Formula = Formula.replace("[C]v", "Cv");
+                            Formula = Formula.replace("[C]w", "Cw");
+                            Formula = Formula.replace("[C]x", "Cx");
+                            Formula = Formula.replace("[C]y", "Cy");
+                            Formula = Formula.replace("[C]z", "Cz");
+//                    }
+//                    while (Formula.contains("H")){
+                            Formula = Formula.replace("H", "[H]");
+                            Formula = Formula.replace("[H]a", "Ha");
+                            Formula = Formula.replace("[H]b", "Hb");
+                            Formula = Formula.replace("[H]c", "Hc");
+                            Formula = Formula.replace("[H]d", "Hd");
+                            Formula = Formula.replace("[H]e", "He");
+                            Formula = Formula.replace("[H]f", "Hf");
+                            Formula = Formula.replace("[H]g", "Hg");
+                            Formula = Formula.replace("[H]h", "Hh");
+                            Formula = Formula.replace("[H]i", "Hi");
+                            Formula = Formula.replace("[H]j", "Hj");
+                            Formula = Formula.replace("[H]k", "Hk");
+                            Formula = Formula.replace("[H]l", "Hl");
+                            Formula = Formula.replace("[H]m", "Hm");
+                            Formula = Formula.replace("[H]n", "Hn");
+                            Formula = Formula.replace("[H]o", "Ho");
+                            Formula = Formula.replace("[H]p", "Hp");
+                            Formula = Formula.replace("[H]q", "Hq");
+                            Formula = Formula.replace("[H]r", "Hr");
+                            Formula = Formula.replace("[H]s", "Hs");
+                            Formula = Formula.replace("[H]t", "Ht");
+                            Formula = Formula.replace("[H]u", "Hu");
+                            Formula = Formula.replace("[H]v", "Hv");
+                            Formula = Formula.replace("[H]w", "Hw");
+                            Formula = Formula.replace("[H]x", "Hx");
+                            Formula = Formula.replace("[H]y", "Hy");
+                            Formula = Formula.replace("[H]z", "Hz");
+//                    }
+//                    while (Formula.contains("N")){
+                            Formula = Formula.replace("N", "[N]");
+                            Formula = Formula.replace("[N]a", "Na");
+                            Formula = Formula.replace("[N]b", "Nb");
+                            Formula = Formula.replace("[N]c", "Nc");
+                            Formula = Formula.replace("[N]d", "Nd");
+                            Formula = Formula.replace("[N]e", "Ne");
+                            Formula = Formula.replace("[N]f", "Nf");
+                            Formula = Formula.replace("[N]g", "Ng");
+                            Formula = Formula.replace("[N]h", "Nh");
+                            Formula = Formula.replace("[N]i", "Ni");
+                            Formula = Formula.replace("[N]j", "Nj");
+                            Formula = Formula.replace("[N]k", "Nk");
+                            Formula = Formula.replace("[N]l", "Nl");
+                            Formula = Formula.replace("[N]m", "Nm");
+                            Formula = Formula.replace("[N]n", "Nn");
+                            Formula = Formula.replace("[N]o", "No");
+                            Formula = Formula.replace("[N]p", "Np");
+                            Formula = Formula.replace("[N]q", "Nq");
+                            Formula = Formula.replace("[N]r", "Nr");
+                            Formula = Formula.replace("[N]s", "Ns");
+                            Formula = Formula.replace("[N]t", "Nt");
+                            Formula = Formula.replace("[N]u", "Nu");
+                            Formula = Formula.replace("[N]v", "Nv");
+                            Formula = Formula.replace("[N]w", "Nw");
+                            Formula = Formula.replace("[N]x", "Nx");
+                            Formula = Formula.replace("[N]y", "Ny");
+                            Formula = Formula.replace("[N]z", "Nz");
+//                    }
+//                    while (Formula.contains("O")){
+                            Formula = Formula.replace("O", "[O]");
+                            Formula = Formula.replace("[O]a", "Oa");
+                            Formula = Formula.replace("[O]b", "Ob");
+                            Formula = Formula.replace("[O]c", "Oc");
+                            Formula = Formula.replace("[O]d", "Od");
+                            Formula = Formula.replace("[O]e", "Oe");
+                            Formula = Formula.replace("[O]f", "Of");
+                            Formula = Formula.replace("[O]g", "Og");
+                            Formula = Formula.replace("[O]h", "Oh");
+                            Formula = Formula.replace("[O]i", "Oi");
+                            Formula = Formula.replace("[O]j", "Oj");
+                            Formula = Formula.replace("[O]k", "Ok");
+                            Formula = Formula.replace("[O]l", "Ol");
+                            Formula = Formula.replace("[O]m", "Om");
+                            Formula = Formula.replace("[O]n", "On");
+                            Formula = Formula.replace("[O]o", "Oo");
+                            Formula = Formula.replace("[O]p", "Op");
+                            Formula = Formula.replace("[O]q", "Oq");
+                            Formula = Formula.replace("[O]r", "Or");
+                            Formula = Formula.replace("[O]s", "Os");
+                            Formula = Formula.replace("[O]t", "Ot");
+                            Formula = Formula.replace("[O]u", "Ou");
+                            Formula = Formula.replace("[O]v", "Ov");
+                            Formula = Formula.replace("[O]w", "Ow");
+                            Formula = Formula.replace("[O]x", "Ox");
+                            Formula = Formula.replace("[O]y", "Oy");
+                            Formula = Formula.replace("[O]z", "Oz");
+//                    }
+//                    while (Formula.contains("S")){
+                            Formula = Formula.replace("S", "[S]");
+                            Formula = Formula.replace("[S]a", "Sa");
+                            Formula = Formula.replace("[S]b", "Sb");
+                            Formula = Formula.replace("[S]c", "Sc");
+                            Formula = Formula.replace("[S]d", "Sd");
+                            Formula = Formula.replace("[S]e", "Se");
+                            Formula = Formula.replace("[S]f", "Sf");
+                            Formula = Formula.replace("[S]g", "Sg");
+                            Formula = Formula.replace("[S]h", "Sh");
+                            Formula = Formula.replace("[S]i", "Si");
+                            Formula = Formula.replace("[S]j", "Sj");
+                            Formula = Formula.replace("[S]k", "Sk");
+                            Formula = Formula.replace("[S]l", "Sl");
+                            Formula = Formula.replace("[S]m", "Sm");
+                            Formula = Formula.replace("[S]n", "Sn");
+                            Formula = Formula.replace("[S]o", "So");
+                            Formula = Formula.replace("[S]p", "Sp");
+                            Formula = Formula.replace("[S]q", "Sq");
+                            Formula = Formula.replace("[S]r", "Sr");
+                            Formula = Formula.replace("[S]s", "Ss");
+                            Formula = Formula.replace("[S]t", "St");
+                            Formula = Formula.replace("[S]u", "Su");
+                            Formula = Formula.replace("[S]v", "Sv");
+                            Formula = Formula.replace("[S]w", "Sw");
+                            Formula = Formula.replace("[S]x", "Sx");
+                            Formula = Formula.replace("[S]y", "Sy");
+                            Formula = Formula.replace("[S]z", "Sz");
+//                    }
+//                    while (Formula.contains("F")){
+                            Formula = Formula.replace("F", "[F]");
+                            Formula = Formula.replace("[F]a", "Fa");
+                            Formula = Formula.replace("[F]b", "Fb");
+                            Formula = Formula.replace("[F]c", "Fc");
+                            Formula = Formula.replace("[F]d", "Fd");
+                            Formula = Formula.replace("[F]e", "Fe");
+                            Formula = Formula.replace("[F]f", "Ff");
+                            Formula = Formula.replace("[F]g", "Fg");
+                            Formula = Formula.replace("[F]h", "Fh");
+                            Formula = Formula.replace("[F]i", "Fi");
+                            Formula = Formula.replace("[F]j", "Fj");
+                            Formula = Formula.replace("[F]k", "Fk");
+                            Formula = Formula.replace("[F]l", "Fl");
+                            Formula = Formula.replace("[F]m", "Fm");
+                            Formula = Formula.replace("[F]n", "Fn");
+                            Formula = Formula.replace("[F]o", "Fo");
+                            Formula = Formula.replace("[F]p", "Fp");
+                            Formula = Formula.replace("[F]q", "Fq");
+                            Formula = Formula.replace("[F]r", "Fr");
+                            Formula = Formula.replace("[F]s", "Fs");
+                            Formula = Formula.replace("[F]t", "Ft");
+                            Formula = Formula.replace("[F]u", "Fu");
+                            Formula = Formula.replace("[F]v", "Fv");
+                            Formula = Formula.replace("[F]w", "Fw");
+                            Formula = Formula.replace("[F]x", "Fx");
+                            Formula = Formula.replace("[F]y", "Fy");
+                            Formula = Formula.replace("[F]z", "Fz");
+//                    }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                             try {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
@@ -625,6 +994,9 @@ public class BulkConversion extends MainActivity {
                             while (Raw_g.contains("= + e- =")){  //2 spaces
                                 Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
+			    while (Raw_g.contains("=  + e- =")){  //2 spaces
+                                Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+                            }
                             FileOutputStream fileout115 = openFileOutput("Database_g1.dat",MODE_PRIVATE);
                             OutputStreamWriter outputWriter115 = new OutputStreamWriter(fileout115);
                             outputWriter115.write(Raw_g);
@@ -662,6 +1034,9 @@ public class BulkConversion extends MainActivity {
                             String Raw_ss = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
                             while (Raw_ss.contains("= + e- =")){  //2 spaces
                                 Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                            }
+			    while (Raw_ss.contains("=  + e- =")){  //2 spaces
+                                Raw_ss = Raw_ss.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
                             OutputStreamWriter outputWriter216 = new OutputStreamWriter(fileout216);
@@ -701,6 +1076,9 @@ public class BulkConversion extends MainActivity {
                             while (Raw_s.contains("= + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
+			     while (Raw_s.contains("=  + e- =")){  //2 spaces
+                                Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+                            }
                             FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
                             OutputStreamWriter outputWriter315 = new OutputStreamWriter(fileout315);
                             outputWriter315.write(Raw_s);
@@ -739,7 +1117,9 @@ public class BulkConversion extends MainActivity {
                             e.printStackTrace();
                         }
 
-                        String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
                         exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
                         exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
                         exec("chmod -R 755 "+getFilesDir()+"/PHASES");

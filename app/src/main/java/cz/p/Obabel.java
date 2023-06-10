@@ -62,6 +62,7 @@ public class Obabel extends MainActivity {
     private Uri documentUri30;
     private static final int CREATE_FILE31 = 31;
     private Uri documentUri31;
+    Button manual_openbabel;
 
 
     /**
@@ -244,6 +245,15 @@ public class Obabel extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        manual_openbabel = (Button) findViewById(R.id.manual_openbabel);
+        manual_openbabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Obabel.this, ManualOpenbabel.class);
+                startActivity(intent);
+            }
+        });
 
         openIntInputfile.setOnClickListener(new View.OnClickListener() {
             @Override

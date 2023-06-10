@@ -59,6 +59,20 @@
             android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
+            android:id="@+id/generateXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM SMILES" />
+
+        <Button
+            android:id="@+id/opsinXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
+
+        <Button
             android:id="@+id/RunMopac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,6 +95,18 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="Highlight the output" />
+        <Button
+            android:id="@+id/manual_mopac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="MOPAC2016 MANUAL PAGES COLLECTION" />
+        <Button
+            android:id="@+id/Spectrum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF50"
+            android:text="PLOT SPECTRUM" />
         <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"

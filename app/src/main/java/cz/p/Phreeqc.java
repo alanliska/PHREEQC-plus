@@ -63,70 +63,86 @@ public class Phreeqc extends MainActivity {
     private boolean isCanceled;
 
 
-private TextView Description;
-Button AddSS;
-Button ResetSS;
-private TextView ModifyLabel;
-private EditText ModifyEdit;
-Button modifybutton;
-private TextView ModifyLabel12;
-private EditText ModifyEdit12;
-Button modifybutton12;
-private TextView ModifyLabel2;
-Button saveDatabasefile;
-Button AddP;
-Button ResetP;
-private TextView PhreeqcLabel;
-private EditText PhreeqcInput;
-Button openInputfile;
-Button openIntInputfile;
-Button saveInputfile;
-Button saveExtInputfile;
-Button RunPhreeqc;
-Button saveOutputfile;
-Button saveExtOutputfile;
-Button Highlight;
-Button Quit;
-private TextView textViewX;
-private TextView outputView;
-private EditText outputView2;
-Button SelectDatabase;
-private TextView DataLabel;
-private TextView Data;
-private TextView SSLabel;
-private TextView SS;
-private TextView PLabel;
-private TextView P;
-private Button AddSMS_kin;
-private TextView SMSLabel_kin;
-private TextView SMS_kin;
-private Button AddSS_kin;
-private TextView SSLabel_kin;
-private TextView SS_kin;
-private Button AddR_kin;
-private TextView RLabel_kin;
-private TextView R_kin;
-private Button AddK_kin;
-private TextView KLabel_kin;
-private TextView K_kin;
-private TextView Label0;
-private TextView Label1;
-private TextView Label2;
-private Button ResetSMSKin;
-private Button ResetSSKin;
-private Button ResetRKin;
-private Button ResetKKin;
-Button Help;
+    private TextView Description;
+    Button AddSS;
+    Button ResetSS;
+    private TextView ModifyLabel;
+    private EditText ModifyEdit;
+    Button modifybutton;
+    private TextView ModifyLabel12;
+    private EditText ModifyEdit12;
+    Button modifybutton12;
+    private TextView ModifyLabel2;
+    Button saveDatabasefile;
+    Button AddP;
+    Button ResetP;
+    private TextView PhreeqcLabel;
+    private EditText PhreeqcInput;
+    Button openInputfile;
+    Button openIntInputfile;
+    Button saveInputfile;
+    Button saveExtInputfile;
+    Button RunPhreeqc;
+    Button RunPhreeqcSilent;
+    Button saveOutputfile;
+    Button saveExtOutputfile;
+    Button Highlight;
+    Button Quit;
+    private TextView textViewX;
+    private TextView outputView;
+    private EditText outputView2;
+    Button SelectDatabase;
+    private TextView DataLabel;
+    private TextView Data;
+    private TextView SSLabel;
+    private TextView SS;
+    private TextView PLabel;
+    private TextView P;
+    private Button AddSMS_kin;
+    private TextView SMSLabel_kin;
+    private TextView SMS_kin;
+    private Button AddSS_kin;
+    private TextView SSLabel_kin;
+    private TextView SS_kin;
+    private Button AddR_kin;
+    private TextView RLabel_kin;
+    private TextView R_kin;
+    private Button AddK_kin;
+    private TextView KLabel_kin;
+    private TextView K_kin;
+    private TextView Label0;
+    private TextView Label1;
+    private TextView Label2;
+    private Button ResetSMSKin;
+    private Button ResetSSKin;
+    private Button ResetRKin;
+    private Button ResetKKin;
+    private Button Help;
 
-Button AddSSi;
-Button AddPi;
-Button AddSMS_kini;
-Button AddSS_kini;
-Button AddR_kini;
-Button AddK_kini;
+    private Button AddSSi;
+    private Button AddPi;
+    private Button AddSMS_kini;
+    private Button AddSS_kini;
+    private Button AddR_kini;
+    private Button AddK_kini;
 
-
-
+    private TextView ModifyLabelSMS;
+    private EditText ModifyEditSMS;
+    private Button modifybuttonSMS;
+    private TextView ModifyLabelSS;
+    private EditText ModifyEditSS;
+    private Button modifybuttonSS;
+    private TextView ModifyLabelR;
+    private EditText ModifyEditR;
+    private Button modifybuttonR;
+    private TextView ModifyLabelK;
+    private EditText ModifyEditK;
+    private Button modifybuttonK;
+    Button manual_phreeqc2;
+    Button manual_phreeqc3;
+    Button Graph;
+    Button Scatter;
+    Button ResetGraphs;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -326,6 +342,8 @@ Button AddK_kini;
         saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         RunPhreeqc = (Button) findViewById(R.id.RunPhreeqc);
         RunPhreeqc.setOnClickListener(RunPhreeqcClick);
+        RunPhreeqcSilent = (Button) findViewById(R.id.RunPhreeqcSilent);
+        RunPhreeqcSilent.setOnClickListener(RunPhreeqcSilentClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
         saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
@@ -379,6 +397,870 @@ Button AddK_kini;
         AddK_kini = (Button) findViewById(R.id.AddK_kini);
         AddK_kini.setOnClickListener(AddK_kiniClick);
 
+        ModifyLabelSMS = (TextView) findViewById(R.id.ModifyLabelSMS);
+        ModifyEditSMS = (EditText) findViewById(R.id.ModifyEditSMS);
+        modifybuttonSMS = (Button) findViewById(R.id.modifybuttonSMS);
+        modifybuttonSMS.setOnClickListener(modifybuttonSMSClick);
+
+        ModifyLabelSS = (TextView) findViewById(R.id.ModifyLabelSS);
+        ModifyEditSS = (EditText) findViewById(R.id.ModifyEditSS);
+        modifybuttonSS = (Button) findViewById(R.id.modifybuttonSS);
+        modifybuttonSS.setOnClickListener(modifybuttonSSClick);
+
+        ModifyLabelR = (TextView) findViewById(R.id.ModifyLabelR);
+        ModifyEditR = (EditText) findViewById(R.id.ModifyEditR);
+        modifybuttonR = (Button) findViewById(R.id.modifybuttonR);
+        modifybuttonR.setOnClickListener(modifybuttonRClick);
+
+        ModifyLabelK = (TextView) findViewById(R.id.ModifyLabelK);
+        ModifyEditK = (EditText) findViewById(R.id.ModifyEditK);
+        modifybuttonK = (Button) findViewById(R.id.modifybuttonK);
+        modifybuttonK.setOnClickListener(modifybuttonKClick);
+
+
+        ResetGraphs = (Button) findViewById(R.id.ResetGraphs);
+        ResetGraphs.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+
+                                               // TODO Auto-generated method stub //
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series6.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series7.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series8.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series9.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("touch "+getFilesDir()+"/graph-series1.csv");
+                    exec("touch "+getFilesDir()+"/graph-series2.csv");
+                    exec("touch "+getFilesDir()+"/graph-series3.csv");
+                    exec("touch "+getFilesDir()+"/graph-series4.csv");
+                    exec("touch "+getFilesDir()+"/graph-series5.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series6.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series7.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series8.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series9.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series10.csv");
+
+                    Toast.makeText(getApplicationContext(), "All graph files have been deleted", Toast.LENGTH_SHORT).show();
+
+                    File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
+
+                    if (!filePathP.exists()) {
+                        try {
+                            FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                            outputWriterP.write("Phases fragment Gas.dat does not exist.");
+                            outputWriterP.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                            outputWriterP.write("Phases fragment Gas.dat is available.");
+                            outputWriterP.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+                    if (!filePathSS.exists()) {
+                        try {
+                            FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                            outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                            outputWriterSS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                            outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                            outputWriterSS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                    if (!filePathSMS_kin.exists()) {
+                        try {
+                            FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                            outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                            outputWriterSMS_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                            outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                            outputWriterSMS_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                    if (!filePathSS_kin.exists()) {
+                        try {
+                            FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                            outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                            outputWriterSS_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                            outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                            outputWriterSS_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                    if (!filePathR_kin.exists()) {
+                        try {
+                            FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                            outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                            outputWriterR_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                            outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                            outputWriterR_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                    if (!filePathK_kin.exists()) {
+                        try {
+                            FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                            outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                            outputWriterK_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                            outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                            outputWriterK_kin.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    output2(""); // not to show content of yet deleted file Solution.dat
+                    output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                    output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                    output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                    pView(exec("cat "+getFilesDir()+"/P.txt"));
+                    ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                    dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                    sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                    ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                    r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                    k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                    sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                    ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                    r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                    k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                }
+        });
+
+        Graph = (Button) findViewById(R.id.Graph);
+        Graph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    // remove the header
+                    String Sed = exec("sed -e 1d "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutS = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS = new OutputStreamWriter(fileoutS);
+                    outputWriterS.write(Sed);
+                    outputWriterS.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutG = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG = new OutputStreamWriter(fileoutG);
+                    outputWriterG.write(Sort);
+                    outputWriterG.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutBL = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL = new OutputStreamWriter(fileoutBL);
+                    outputWriterBL.write(BlankLin);
+                    outputWriterBL.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+
+                    // remove the header
+                    String Sed2 = exec("sed -e 1d "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutS2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS2 = new OutputStreamWriter(fileoutS2);
+                    outputWriterS2.write(Sed2);
+                    outputWriterS2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort2 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutG2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG2 = new OutputStreamWriter(fileoutG2);
+                    outputWriterG2.write(Sort2);
+                    outputWriterG2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin2 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutBL2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL2 = new OutputStreamWriter(fileoutBL2);
+                    outputWriterBL2.write(BlankLin2);
+                    outputWriterBL2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+
+                    // remove the header
+                    String Sed3 = exec("sed -e 1d "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutS3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS3 = new OutputStreamWriter(fileoutS3);
+                    outputWriterS3.write(Sed3);
+                    outputWriterS3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort3 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutG3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG3 = new OutputStreamWriter(fileoutG3);
+                    outputWriterG3.write(Sort3);
+                    outputWriterG3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin3 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutBL3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL3 = new OutputStreamWriter(fileoutBL3);
+                    outputWriterBL3.write(BlankLin3);
+                    outputWriterBL3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+
+                    // remove the header
+                    String Sed4 = exec("sed -e 1d "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutS4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS4 = new OutputStreamWriter(fileoutS4);
+                    outputWriterS4.write(Sed4);
+                    outputWriterS4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort4 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutG4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG4 = new OutputStreamWriter(fileoutG4);
+                    outputWriterG4.write(Sort4);
+                    outputWriterG4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin4 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutBL4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL4 = new OutputStreamWriter(fileoutBL4);
+                    outputWriterBL4.write(BlankLin4);
+                    outputWriterBL4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+
+                    // remove the header
+                    String Sed5 = exec("sed -e 1d "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutS5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS5 = new OutputStreamWriter(fileoutS5);
+                    outputWriterS5.write(Sed5);
+                    outputWriterS5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort5 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutG5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG5 = new OutputStreamWriter(fileoutG5);
+                    outputWriterG5.write(Sort5);
+                    outputWriterG5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin5 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutBL5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL5 = new OutputStreamWriter(fileoutBL5);
+                    outputWriterBL5.write(BlankLin5);
+                    outputWriterBL5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+
+                    // remove the header
+                    String Sed6 = exec("sed -e 1d "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutS6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS6 = new OutputStreamWriter(fileoutS6);
+                    outputWriterS6.write(Sed6);
+                    outputWriterS6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort6 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutG6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG6 = new OutputStreamWriter(fileoutG6);
+                    outputWriterG6.write(Sort6);
+                    outputWriterG6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin6 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutBL6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL6 = new OutputStreamWriter(fileoutBL6);
+                    outputWriterBL6.write(BlankLin6);
+                    outputWriterBL6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+
+                    // remove the header
+                    String Sed7 = exec("sed -e 1d "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutS7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS7 = new OutputStreamWriter(fileoutS7);
+                    outputWriterS7.write(Sed7);
+                    outputWriterS7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort7 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutG7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG7 = new OutputStreamWriter(fileoutG7);
+                    outputWriterG7.write(Sort7);
+                    outputWriterG7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin7 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutBL7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL7 = new OutputStreamWriter(fileoutBL7);
+                    outputWriterBL7.write(BlankLin7);
+                    outputWriterBL7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+
+                    // remove the header
+                    String Sed8 = exec("sed -e 1d "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutS8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS8 = new OutputStreamWriter(fileoutS8);
+                    outputWriterS8.write(Sed8);
+                    outputWriterS8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort8 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutG8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG8 = new OutputStreamWriter(fileoutG8);
+                    outputWriterG8.write(Sort8);
+                    outputWriterG8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin8 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutBL8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL8 = new OutputStreamWriter(fileoutBL8);
+                    outputWriterBL8.write(BlankLin8);
+                    outputWriterBL8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+
+                    // remove the header
+                    String Sed9 = exec("sed -e 1d "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutS9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS9 = new OutputStreamWriter(fileoutS9);
+                    outputWriterS9.write(Sed9);
+                    outputWriterS9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort9 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutG9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG9 = new OutputStreamWriter(fileoutG9);
+                    outputWriterG9.write(Sort9);
+                    outputWriterG9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin9 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutBL9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL9 = new OutputStreamWriter(fileoutBL9);
+                    outputWriterBL9.write(BlankLin9);
+                    outputWriterBL9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+
+                    // remove the header
+                    String Sed10 = exec("sed -e 1d "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutS10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS10 = new OutputStreamWriter(fileoutS10);
+                    outputWriterS10.write(Sed10);
+                    outputWriterS10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort10 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutG10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG10 = new OutputStreamWriter(fileoutG10);
+                    outputWriterG10.write(Sort10);
+                    outputWriterG10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin10 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutBL10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL10 = new OutputStreamWriter(fileoutBL10);
+                    outputWriterBL10.write(BlankLin10);
+                    outputWriterBL10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Phreeqc.this, Graph.class);
+                startActivity(intent);
+            }
+        });
+
+        Scatter = (Button) findViewById(R.id.Scatter);
+        Scatter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    // remove the header
+                    String Sed = exec("sed -e 1d "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutS = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS = new OutputStreamWriter(fileoutS);
+                    outputWriterS.write(Sed);
+                    outputWriterS.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutG = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG = new OutputStreamWriter(fileoutG);
+                    outputWriterG.write(Sort);
+                    outputWriterG.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series1.csv");
+                    FileOutputStream fileoutBL = openFileOutput("graph-series1.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL = new OutputStreamWriter(fileoutBL);
+                    outputWriterBL.write(BlankLin);
+                    outputWriterBL.close();
+                    exec("rm "+getFilesDir()+"/graph-series1.csv");
+                    exec("mv "+getFilesDir()+"/graph-series1.tmp "+getFilesDir()+"/graph-series1.csv");
+
+                    // remove the header
+                    String Sed2 = exec("sed -e 1d "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutS2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS2 = new OutputStreamWriter(fileoutS2);
+                    outputWriterS2.write(Sed2);
+                    outputWriterS2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort2 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutG2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG2 = new OutputStreamWriter(fileoutG2);
+                    outputWriterG2.write(Sort2);
+                    outputWriterG2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin2 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series2.csv");
+                    FileOutputStream fileoutBL2 = openFileOutput("graph-series2.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL2 = new OutputStreamWriter(fileoutBL2);
+                    outputWriterBL2.write(BlankLin2);
+                    outputWriterBL2.close();
+                    exec("rm "+getFilesDir()+"/graph-series2.csv");
+                    exec("mv "+getFilesDir()+"/graph-series2.tmp "+getFilesDir()+"/graph-series2.csv");
+
+                    // remove the header
+                    String Sed3 = exec("sed -e 1d "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutS3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS3 = new OutputStreamWriter(fileoutS3);
+                    outputWriterS3.write(Sed3);
+                    outputWriterS3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort3 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutG3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG3 = new OutputStreamWriter(fileoutG3);
+                    outputWriterG3.write(Sort3);
+                    outputWriterG3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin3 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series3.csv");
+                    FileOutputStream fileoutBL3 = openFileOutput("graph-series3.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL3 = new OutputStreamWriter(fileoutBL3);
+                    outputWriterBL3.write(BlankLin3);
+                    outputWriterBL3.close();
+                    exec("rm "+getFilesDir()+"/graph-series3.csv");
+                    exec("mv "+getFilesDir()+"/graph-series3.tmp "+getFilesDir()+"/graph-series3.csv");
+
+                    // remove the header
+                    String Sed4 = exec("sed -e 1d "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutS4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS4 = new OutputStreamWriter(fileoutS4);
+                    outputWriterS4.write(Sed4);
+                    outputWriterS4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort4 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutG4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG4 = new OutputStreamWriter(fileoutG4);
+                    outputWriterG4.write(Sort4);
+                    outputWriterG4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin4 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series4.csv");
+                    FileOutputStream fileoutBL4 = openFileOutput("graph-series4.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL4 = new OutputStreamWriter(fileoutBL4);
+                    outputWriterBL4.write(BlankLin4);
+                    outputWriterBL4.close();
+                    exec("rm "+getFilesDir()+"/graph-series4.csv");
+                    exec("mv "+getFilesDir()+"/graph-series4.tmp "+getFilesDir()+"/graph-series4.csv");
+
+                    // remove the header
+                    String Sed5 = exec("sed -e 1d "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutS5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS5 = new OutputStreamWriter(fileoutS5);
+                    outputWriterS5.write(Sed5);
+                    outputWriterS5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort5 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutG5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG5 = new OutputStreamWriter(fileoutG5);
+                    outputWriterG5.write(Sort5);
+                    outputWriterG5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin5 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series5.csv");
+                    FileOutputStream fileoutBL5 = openFileOutput("graph-series5.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL5 = new OutputStreamWriter(fileoutBL5);
+                    outputWriterBL5.write(BlankLin5);
+                    outputWriterBL5.close();
+                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                    exec("mv "+getFilesDir()+"/graph-series5.tmp "+getFilesDir()+"/graph-series5.csv");
+
+                    // remove the header
+                    String Sed6 = exec("sed -e 1d "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutS6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS6 = new OutputStreamWriter(fileoutS6);
+                    outputWriterS6.write(Sed6);
+                    outputWriterS6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort6 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutG6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG6 = new OutputStreamWriter(fileoutG6);
+                    outputWriterG6.write(Sort6);
+                    outputWriterG6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin6 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series6.csv");
+                    FileOutputStream fileoutBL6 = openFileOutput("graph-series6.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL6 = new OutputStreamWriter(fileoutBL6);
+                    outputWriterBL6.write(BlankLin6);
+                    outputWriterBL6.close();
+                    exec("rm "+getFilesDir()+"/graph-series6.csv");
+                    exec("mv "+getFilesDir()+"/graph-series6.tmp "+getFilesDir()+"/graph-series6.csv");
+
+                    // remove the header
+                    String Sed7 = exec("sed -e 1d "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutS7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS7 = new OutputStreamWriter(fileoutS7);
+                    outputWriterS7.write(Sed7);
+                    outputWriterS7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort7 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutG7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG7 = new OutputStreamWriter(fileoutG7);
+                    outputWriterG7.write(Sort7);
+                    outputWriterG7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin7 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series7.csv");
+                    FileOutputStream fileoutBL7 = openFileOutput("graph-series7.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL7 = new OutputStreamWriter(fileoutBL7);
+                    outputWriterBL7.write(BlankLin7);
+                    outputWriterBL7.close();
+                    exec("rm "+getFilesDir()+"/graph-series7.csv");
+                    exec("mv "+getFilesDir()+"/graph-series7.tmp "+getFilesDir()+"/graph-series7.csv");
+
+                    // remove the header
+                    String Sed8 = exec("sed -e 1d "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutS8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS8 = new OutputStreamWriter(fileoutS8);
+                    outputWriterS8.write(Sed8);
+                    outputWriterS8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort8 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutG8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG8 = new OutputStreamWriter(fileoutG8);
+                    outputWriterG8.write(Sort8);
+                    outputWriterG8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin8 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series8.csv");
+                    FileOutputStream fileoutBL8 = openFileOutput("graph-series8.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL8 = new OutputStreamWriter(fileoutBL8);
+                    outputWriterBL8.write(BlankLin8);
+                    outputWriterBL8.close();
+                    exec("rm "+getFilesDir()+"/graph-series8.csv");
+                    exec("mv "+getFilesDir()+"/graph-series8.tmp "+getFilesDir()+"/graph-series8.csv");
+
+                    // remove the header
+                    String Sed9 = exec("sed -e 1d "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutS9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS9 = new OutputStreamWriter(fileoutS9);
+                    outputWriterS9.write(Sed9);
+                    outputWriterS9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort9 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutG9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG9 = new OutputStreamWriter(fileoutG9);
+                    outputWriterG9.write(Sort9);
+                    outputWriterG9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin9 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series9.csv");
+                    FileOutputStream fileoutBL9 = openFileOutput("graph-series9.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL9 = new OutputStreamWriter(fileoutBL9);
+                    outputWriterBL9.write(BlankLin9);
+                    outputWriterBL9.close();
+                    exec("rm "+getFilesDir()+"/graph-series9.csv");
+                    exec("mv "+getFilesDir()+"/graph-series9.tmp "+getFilesDir()+"/graph-series9.csv");
+
+                    // remove the header
+                    String Sed10 = exec("sed -e 1d "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutS10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterS10 = new OutputStreamWriter(fileoutS10);
+                    outputWriterS10.write(Sed10);
+                    outputWriterS10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+                    // sort file by first column, it must not contain header
+                    // sort file by first column, it must not contain header
+                    // original command - without extended shell, using Android built in toybox
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // such a command would work in extended shell, not in simple:
+                    // String Sort = exec("sort -t',' -k1n,1 "+getFilesDir()+"/graph.csv");
+                    // working:
+                    String Sort10 = exec("sort -t, -g -k1,1 "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutG10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterG10 = new OutputStreamWriter(fileoutG10);
+                    outputWriterG10.write(Sort10);
+                    outputWriterG10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+                    // remove blank lines in sorted file
+                    String BlankLin10 = exec("sed /^[[:space:]]*$/d "+getFilesDir()+"/graph-series10.csv");
+                    FileOutputStream fileoutBL10 = openFileOutput("graph-series10.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterBL10 = new OutputStreamWriter(fileoutBL10);
+                    outputWriterBL10.write(BlankLin10);
+                    outputWriterBL10.close();
+                    exec("rm "+getFilesDir()+"/graph-series10.csv");
+                    exec("mv "+getFilesDir()+"/graph-series10.tmp "+getFilesDir()+"/graph-series10.csv");
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Phreeqc.this, Scatter.class);
+                startActivity(intent);
+            }
+        });
+
+        manual_phreeqc2 = (Button) findViewById(R.id.manual_phreeqc2);
+        manual_phreeqc2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Phreeqc.this, ManualPHREEQC2.class);
+                startActivity(intent);
+            }
+        });
+
+        manual_phreeqc3 = (Button) findViewById(R.id.manual_phreeqc3);
+        manual_phreeqc3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Phreeqc.this, ManualPHREEQC3.class);
+                startActivity(intent);
+            }
+        });
+
 
         openIntInputfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -408,46 +1290,46 @@ Button AddK_kini;
 
         File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
-            if (!filePathP.exists()) {
-                try {
+        if (!filePathP.exists()) {
+            try {
                 FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
                 OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
                 outputWriterP.write("Phases fragment Gas.dat does not exist.");
                 outputWriterP.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                    try {
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
                 FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
                 OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
                 outputWriterP.write("Phases fragment Gas.dat is available.");
                 outputWriterP.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
 
-            File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
-                if (!filePathSS.exists()) {
-                    try {
-                    FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
-                    outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
-                    outputWriterSS.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                        try {
-                    FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
-                    outputWriterSS.write("Solution species fragment Solution.dat is available.");
-                    outputWriterSS.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                }
+        File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+        if (!filePathSS.exists()) {
+            try {
+                FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                outputWriterSS.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                outputWriterSS.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
 
@@ -545,6 +1427,10 @@ Button AddK_kini;
         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
     }
 
     private View.OnClickListener AddSSClick; {
@@ -553,7 +1439,8 @@ Button AddK_kini;
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 read1(getApplicationContext());
-                outputX(exec("cat "+getFilesDir()+"/Solution.dat"));
+//                outputX(exec("cat "+getFilesDir()+"/Solution.dat"));
+                output2(exec("cat "+getFilesDir()+"/Solution.dat"));
                 output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                 output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
                 output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
@@ -564,6 +1451,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -574,7 +1465,8 @@ Button AddK_kini;
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 read2(getApplicationContext());
-                outputX(exec("cat "+getFilesDir()+"/Gas.dat"));
+//                outputX(exec("cat "+getFilesDir()+"/Gas.dat"));
+                output2(exec("cat "+getFilesDir()+"/Gas.dat"));
                 output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                 output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
                 output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
@@ -585,6 +1477,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -618,6 +1514,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -638,6 +1538,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -658,6 +1562,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -678,6 +1586,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -697,6 +1609,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -716,6 +1632,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -735,6 +1655,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -1185,9 +2109,9 @@ Button AddK_kini;
 
 
                 // TODO Auto-generated method stub //
-            exec("rm "+getFilesDir()+"/FragmentSS.dat");
-            exec("rm "+getFilesDir()+"/Solution.dat");
-            exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
+                exec("rm "+getFilesDir()+"/FragmentSS.dat");
+                exec("rm "+getFilesDir()+"/Solution.dat");
+                exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
 
                 File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
 
@@ -1328,6 +2252,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -1413,6 +2341,7 @@ Button AddK_kini;
                         }
 
                         output2highlighted(exec("cat "+getFilesDir()+"/Solution.dat"));
+//                        output2(exec("cat "+getFilesDir()+"/Solution.dat"));
                         output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                         output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
                         output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
@@ -1423,6 +2352,10 @@ Button AddK_kini;
                         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -1553,8 +2486,8 @@ Button AddK_kini;
                                 e.printStackTrace();
                             }
                         }
-
                         output2highlighted(exec("cat "+getFilesDir()+"/Solution.dat"));
+//                        output2(exec("cat "+getFilesDir()+"/Solution.dat"));
                         output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                         output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
                         output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
@@ -1565,6 +2498,10 @@ Button AddK_kini;
                         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -1610,7 +2547,518 @@ Button AddK_kini;
         }.start();
     }
 
+    private View.OnClickListener modifybuttonSMSClick; {
 
+        modifybuttonSMSClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Keywordfile = ModifyEditSMS.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("KeywordsSMS.phr", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Keywordfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("cp "+getFilesDir()+"/KeywordsSMS.phr "+getFilesDir()+"/Solution_species.dat");
+                exec("cp "+getFilesDir()+"/SMS_kin.txt "+getFilesDir()+"/Selected.dat");
+                // TODO Auto-generated method stub //
+                openprogressdialogSMS();
+
+            }
+        };
+    }
+
+    private void openprogressdialogSMS() {
+        // TODO Auto-generated method stub //
+        progressDialog = new ProgressDialog(Phreeqc.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Retrieving data...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+                try {
+                    exec("chmod 755 -R "+getFilesDir());
+                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+                    exec("chmod 755 -R "+getFilesDir()+"/work");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
+                    exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SMS_kin.txt");
+
+                    try {
+                        File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                        if (!filePathSMS_kin.exists()) {
+                            try {
+                                FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                                outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                                outputWriterSMS_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                                outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                                outputWriterSMS_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        output2highlighted(exec("cat "+getFilesDir()+"/SMS_kin.txt"));
+//                        output2(exec("cat "+getFilesDir()+"/SMS_kin.txt"));
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                onFinish();
+            }
+            // Executes UNIX command.
+            private String exec(String command) {
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+                    process.waitFor();
+                    return output.toString();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+            public void output2highlighted(final String str2) {
+                Runnable proc2 = new Runnable() {
+                    public void run() {
+                        outputView2.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                    }
+                };
+                handler.post(proc2);
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
+
+    private View.OnClickListener modifybuttonSSClick; {
+
+        modifybuttonSSClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Keywordfile = ModifyEditSS.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("KeywordsSS.phr", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Keywordfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("cp "+getFilesDir()+"/KeywordsSS.phr "+getFilesDir()+"/Solution_species.dat");
+                exec("cp "+getFilesDir()+"/SS_kin.txt "+getFilesDir()+"/Selected.dat");
+                // TODO Auto-generated method stub //
+                openprogressdialogSS();
+
+            }
+        };
+    }
+
+    private void openprogressdialogSS() {
+        // TODO Auto-generated method stub //
+        progressDialog = new ProgressDialog(Phreeqc.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Retrieving data...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+                try {
+                    exec("chmod 755 -R "+getFilesDir());
+                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+                    exec("chmod 755 -R "+getFilesDir()+"/work");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
+                    exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SS_kin.txt");
+
+                    try {
+                        File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                        if (!filePathSS_kin.exists()) {
+                            try {
+                                FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                                outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                                outputWriterSS_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                                outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                                outputWriterSS_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        output2highlighted(exec("cat "+getFilesDir()+"/SS_kin.txt"));
+//                        output2(exec("cat "+getFilesDir()+"/SS_kin.txt"));
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                onFinish();
+            }
+            // Executes UNIX command.
+            private String exec(String command) {
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+                    process.waitFor();
+                    return output.toString();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+            public void output2highlighted(final String str2) {
+                Runnable proc2 = new Runnable() {
+                    public void run() {
+                        outputView2.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                    }
+                };
+                handler.post(proc2);
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
+
+    private View.OnClickListener modifybuttonRClick; {
+
+        modifybuttonRClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Keywordfile = ModifyEditR.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("KeywordsR.phr", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Keywordfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("cp "+getFilesDir()+"/KeywordsR.phr "+getFilesDir()+"/Solution_species.dat");
+                exec("cp "+getFilesDir()+"/R_kin.txt "+getFilesDir()+"/Selected.dat");
+                // TODO Auto-generated method stub //
+                openprogressdialogR();
+
+            }
+        };
+    }
+
+    private void openprogressdialogR() {
+        // TODO Auto-generated method stub //
+        progressDialog = new ProgressDialog(Phreeqc.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Retrieving data...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+                try {
+                    exec("chmod 755 -R "+getFilesDir());
+                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+                    exec("chmod 755 -R "+getFilesDir()+"/work");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
+                    exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/R_kin.txt");
+
+                    try {
+                        File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                        if (!filePathR_kin.exists()) {
+                            try {
+                                FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                                outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                                outputWriterR_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                                outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                                outputWriterR_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        output2highlighted(exec("cat "+getFilesDir()+"/R_kin.txt"));
+//                        output2(exec("cat "+getFilesDir()+"/R_kin.txt"));
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                onFinish();
+            }
+            // Executes UNIX command.
+            private String exec(String command) {
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+                    process.waitFor();
+                    return output.toString();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+            public void output2highlighted(final String str2) {
+                Runnable proc2 = new Runnable() {
+                    public void run() {
+                        outputView2.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                    }
+                };
+                handler.post(proc2);
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
+
+    private View.OnClickListener modifybuttonKClick; {
+
+        modifybuttonKClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Keywordfile = ModifyEditK.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("KeywordsK.phr", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Keywordfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("cp "+getFilesDir()+"/KeywordsK.phr "+getFilesDir()+"/Solution_species.dat");
+                exec("cp "+getFilesDir()+"/K_kin.txt "+getFilesDir()+"/Selected.dat");
+                // TODO Auto-generated method stub //
+                openprogressdialogK();
+
+            }
+        };
+    }
+
+    private void openprogressdialogK() {
+        // TODO Auto-generated method stub //
+        progressDialog = new ProgressDialog(Phreeqc.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Retrieving data...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+                try {
+                    exec("chmod 755 -R "+getFilesDir());
+                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+                    exec("chmod 755 -R "+getFilesDir()+"/work");
+                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
+                    exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/K_kin.txt");
+
+                    try {
+                        File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                        if (!filePathK_kin.exists()) {
+                            try {
+                                FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                                outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                                outputWriterK_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                                OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                                outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                                outputWriterK_kin.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        output2highlighted(exec("cat "+getFilesDir()+"/K_kin.txt"));
+//                        output2(exec("cat "+getFilesDir()+"/K_kin.txt"));
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                onFinish();
+            }
+            // Executes UNIX command.
+            private String exec(String command) {
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+                    process.waitFor();
+                    return output.toString();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+            public void output2highlighted(final String str2) {
+                Runnable proc2 = new Runnable() {
+                    public void run() {
+                        outputView2.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                    }
+                };
+                handler.post(proc2);
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
 
     private View.OnClickListener ResetPClick; {
 
@@ -1763,6 +3211,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -1918,6 +3370,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2073,6 +3529,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2228,6 +3688,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2383,6 +3847,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2412,6 +3880,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2505,12 +3977,13 @@ Button AddK_kini;
         progressDialog.show();
         new Thread() {
             public void run() {
-                exec("cp "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+ File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+"Database.dat "+getFilesDir()+"");
+//                exec("cp "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+ File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+"Database.dat "+getFilesDir()+"");
                 try {
                     exec("chmod 755 -R "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir());
                     exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
                     exec("chmod 755 "+getFilesDir()+"/Input.phr.out");
+
                     try {
                         output2(exec("cat "+getFilesDir()+"/Input.phr.out"));
                         output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
@@ -2523,6 +3996,10 @@ Button AddK_kini;
                         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
                         exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
                         Toast.makeText(getApplicationContext(), "Calculation finished", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
@@ -2583,7 +4060,101 @@ Button AddK_kini;
 
 
 
+    private View.OnClickListener RunPhreeqcSilentClick; {
 
+        RunPhreeqcSilentClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = PhreeqcInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                // TODO Auto-generated method stub //
+                openprogressdialogS();
+            }
+        };
+    }
+
+    private void openprogressdialogS() {
+        // TODO Auto-generated method stub //
+        progressDialog = new ProgressDialog(Phreeqc.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Calculation is running...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+//                exec("cp "+Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)+ File.separator+"phreeqc_plus"+File.separator+"phreeqc_datasets"+File.separator+"Database.dat "+getFilesDir()+"");
+                try {
+                    exec("chmod 755 -R "+getFilesDir()+"/work");
+                    exec("chmod 755 -R "+getFilesDir());
+                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
+                    exec("chmod 755 "+getFilesDir()+"/Input.phr.out");
+
+                    try {
+                        output2("Silent mode: PHREEQC output is in file /data/data/cz.p/files/Input.phr.out");
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
+                        Toast.makeText(getApplicationContext(), "Calculation finished", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                onFinish();
+            }
+
+            // Executes UNIX command.
+            private String exec(String command) {
+                try {
+                    Process process = Runtime.getRuntime().exec(command);
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+                    int read;
+                    char[] buffer = new char[4096];
+                    StringBuffer output = new StringBuffer();
+                    while ((read = reader.read(buffer)) > 0) {
+                        output.append(buffer, 0, read);
+                    }
+                    reader.close();
+                    process.waitFor();
+                    return output.toString();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
 
 
 
@@ -2610,6 +4181,10 @@ Button AddK_kini;
                 ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                 r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                 k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
             }
         };
     }
@@ -2709,6 +4284,10 @@ Button AddK_kini;
                     ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
                     r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
                     k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                    sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                    ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                    r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                    k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
                     Toast.makeText(getApplicationContext(), "Numbers highlighted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                 }
@@ -2986,7 +4565,8 @@ Button AddK_kini;
         }
 
         String DisplayedFieldFile = exec("cat "+getFilesDir()+"/DisplayCurrentFile.txt");
-        outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
+//        outputX(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
+        output2(exec("cat "+getFilesDir()+"/"+DisplayedFieldFile));
         output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
         output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
         output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
@@ -2997,6 +4577,10 @@ Button AddK_kini;
         ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
         r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
         k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
 
     }
 
@@ -3080,6 +4664,38 @@ Button AddK_kini;
             }
         };
         handler.post(procK_kin);
+    }
+    public void sms_filter_View(final String sms_filter_Data) {
+        Runnable procsms_filter = new Runnable() {
+            public void run() {
+                ModifyEditSMS.setText(sms_filter_Data);
+            }
+        };
+        handler.post(procsms_filter);
+    }
+    public void ss_filter_View(final String ss_filter_Data) {
+        Runnable procss_filter = new Runnable() {
+            public void run() {
+                ModifyEditSS.setText(ss_filter_Data);
+            }
+        };
+        handler.post(procss_filter);
+    }
+    public void r_filter_View(final String r_filter_Data) {
+        Runnable procr_filter = new Runnable() {
+            public void run() {
+                ModifyEditR.setText(r_filter_Data);
+            }
+        };
+        handler.post(procr_filter);
+    }
+    public void k_filter_View(final String k_filter_Data) {
+        Runnable prock_filter = new Runnable() {
+            public void run() {
+                ModifyEditK.setText(k_filter_Data);
+            }
+        };
+        handler.post(prock_filter);
     }
 
     // Executes UNIX command.

@@ -78,6 +78,8 @@ public class ResumeActivityKin extends MainActivity {
                 moveSolvOptResults();
                 moveSolvThermo();
                 moveSolvThermoResults();
+                moveCryst();
+                moveLiq();
                 cleanDummyDatasets();
 //                goBack();
 
@@ -382,9 +384,47 @@ public class ResumeActivityKin extends MainActivity {
 
     }
 
+    public void moveCryst()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/cryst").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()) {
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/cryst/"+fileName+" "+getFilesDir()+"/output/cryst");
+                } catch (Exception e) {
+                }
+
+            }
+        }
+    }
+
+    public void moveLiq()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/liq").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()) {
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/liq/"+fileName+" "+getFilesDir()+"/output/liq");
+                } catch (Exception e) {
+                }
+
+            }
+        }
+    }
+
     public void cleanDummyDatasets()
     {
-        String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
 //        exec("rm "+getFilesDir()+"/output/phreeqc_datasets"+File.separator+DatasetName+"_g.txt");
 //        exec("rm "+getFilesDir()+"/output/phreeqc_datasets"+File.separator+DatasetName+"_s.txt");
 //        exec("rm "+getFilesDir()+"/output/phreeqc_datasets"+File.separator+"hydrocarbons-PM7_s.txt");

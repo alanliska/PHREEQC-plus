@@ -1,1 +1,0 @@
-Rates fragment R_kin.txt does not exist.

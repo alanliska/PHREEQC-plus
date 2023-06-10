@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
+import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
+import uk.ac.cam.ch.wwmm.opsin.OpsinResult;
+
 public class KineticsBiTri extends MainActivity {
 
     private TextView methodA_label;
@@ -100,6 +104,11 @@ public class KineticsBiTri extends MainActivity {
     private Button ResetTS;
     private Button processBiTri;
     private Button quit;
+    public Button A_opsin;
+    public Button B_opsin;
+    public Button C_opsin;
+    public Button D_opsin;
+    public Button E_opsin;
 
     private TextView TSLabel;
     private TextView TS;
@@ -192,6 +201,17 @@ public class KineticsBiTri extends MainActivity {
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(QuitClick);
 
+        A_opsin = (Button) findViewById(R.id.A_opsin);
+        A_opsin.setOnClickListener(A_opsin_click);
+        B_opsin = (Button) findViewById(R.id.B_opsin);
+        B_opsin.setOnClickListener(B_opsin_click);
+        C_opsin = (Button) findViewById(R.id.C_opsin);
+        C_opsin.setOnClickListener(C_opsin_click);
+        D_opsin = (Button) findViewById(R.id.D_opsin);
+        D_opsin.setOnClickListener(D_opsin_click);
+        E_opsin = (Button) findViewById(R.id.E_opsin);
+        E_opsin.setOnClickListener(E_opsin_click);
+
     }
 
     public void onStart()
@@ -247,6 +267,1171 @@ public class KineticsBiTri extends MainActivity {
         }
 
         TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiTri_TS_status.txt"));
+    }
+
+    private View.OnClickListener A_opsin_click; {
+
+        A_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String InputfileE = smiE.getText().toString();
+                String InputfileName0E = iupacE.getText().toString();
+                String MethodfileE = methodE.getText().toString();
+                String KeywordsfileE = keywE.getText().toString();
+                String FormulafileE = formulaE.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiTri_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiTri_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiTri_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiTri_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiTri_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiTri_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiTri_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiTri_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiTri_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiTri_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiTri_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiTri_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout130 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter130 = new OutputStreamWriter(fileout130);
+                    outputWriter130.write(InputfileE);
+                    outputWriter130.close();
+                    FileOutputStream fileout132 = openFileOutput("BiTri_methodE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter132 = new OutputStreamWriter(fileout132);
+                    outputWriter132.write(MethodfileE);
+                    outputWriter132.close();
+                    FileOutputStream fileout133 = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter133 = new OutputStreamWriter(fileout133);
+                    outputWriter133.write(InputfileName0E);
+                    outputWriter133.close();
+                    FileOutputStream fileout138 = openFileOutput("BiTri_formulaE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                    outputWriter138.write(FormulafileE);
+                    outputWriter138.close();
+                    FileOutputStream fileout136 = openFileOutput("BiTri_keywE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter136 = new OutputStreamWriter(fileout136);
+                    outputWriter136.write(KeywordsfileE);
+                    outputWriter136.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiTri_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiTri_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacA.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiTri_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiTri_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiTri_methodD.txt"));
+                            MethodEDisplay(exec("cat "+getFilesDir()+"/BiTri_methodE.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiTri_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiTri_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiTri_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiTri_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiTri_keywD.txt"));
+                            KeywEDisplay(exec("cat "+getFilesDir()+"/BiTri_keywE.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiTri_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiTri_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacD.txt"));
+                            IupacEDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacE.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiTri_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaD.txt"));
+                            FormulaEDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaE.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiTri_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesD.txt"));
+                            SmilesEDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesE.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener B_opsin_click; {
+
+        B_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String InputfileE = smiE.getText().toString();
+                String InputfileName0E = iupacE.getText().toString();
+                String MethodfileE = methodE.getText().toString();
+                String KeywordsfileE = keywE.getText().toString();
+                String FormulafileE = formulaE.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiTri_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiTri_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiTri_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiTri_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiTri_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiTri_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiTri_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiTri_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiTri_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiTri_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiTri_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiTri_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout130 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter130 = new OutputStreamWriter(fileout130);
+                    outputWriter130.write(InputfileE);
+                    outputWriter130.close();
+                    FileOutputStream fileout132 = openFileOutput("BiTri_methodE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter132 = new OutputStreamWriter(fileout132);
+                    outputWriter132.write(MethodfileE);
+                    outputWriter132.close();
+                    FileOutputStream fileout133 = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter133 = new OutputStreamWriter(fileout133);
+                    outputWriter133.write(InputfileName0E);
+                    outputWriter133.close();
+                    FileOutputStream fileout138 = openFileOutput("BiTri_formulaE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                    outputWriter138.write(FormulafileE);
+                    outputWriter138.close();
+                    FileOutputStream fileout136 = openFileOutput("BiTri_keywE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter136 = new OutputStreamWriter(fileout136);
+                    outputWriter136.write(KeywordsfileE);
+                    outputWriter136.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiTri_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiTri_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacB.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiTri_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiTri_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiTri_methodD.txt"));
+                            MethodEDisplay(exec("cat "+getFilesDir()+"/BiTri_methodE.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiTri_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiTri_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiTri_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiTri_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiTri_keywD.txt"));
+                            KeywEDisplay(exec("cat "+getFilesDir()+"/BiTri_keywE.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiTri_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiTri_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacD.txt"));
+                            IupacEDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacE.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiTri_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaD.txt"));
+                            FormulaEDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaE.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiTri_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesD.txt"));
+                            SmilesEDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesE.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener C_opsin_click; {
+
+        A_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String InputfileE = smiE.getText().toString();
+                String InputfileName0E = iupacE.getText().toString();
+                String MethodfileE = methodE.getText().toString();
+                String KeywordsfileE = keywE.getText().toString();
+                String FormulafileE = formulaE.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiTri_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiTri_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiTri_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiTri_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiTri_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiTri_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiTri_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiTri_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiTri_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiTri_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiTri_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiTri_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout130 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter130 = new OutputStreamWriter(fileout130);
+                    outputWriter130.write(InputfileE);
+                    outputWriter130.close();
+                    FileOutputStream fileout132 = openFileOutput("BiTri_methodE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter132 = new OutputStreamWriter(fileout132);
+                    outputWriter132.write(MethodfileE);
+                    outputWriter132.close();
+                    FileOutputStream fileout133 = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter133 = new OutputStreamWriter(fileout133);
+                    outputWriter133.write(InputfileName0E);
+                    outputWriter133.close();
+                    FileOutputStream fileout138 = openFileOutput("BiTri_formulaE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                    outputWriter138.write(FormulafileE);
+                    outputWriter138.close();
+                    FileOutputStream fileout136 = openFileOutput("BiTri_keywE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter136 = new OutputStreamWriter(fileout136);
+                    outputWriter136.write(KeywordsfileE);
+                    outputWriter136.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiTri_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiTri_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacC.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiTri_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiTri_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiTri_methodD.txt"));
+                            MethodEDisplay(exec("cat "+getFilesDir()+"/BiTri_methodE.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiTri_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiTri_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiTri_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiTri_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiTri_keywD.txt"));
+                            KeywEDisplay(exec("cat "+getFilesDir()+"/BiTri_keywE.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiTri_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiTri_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacD.txt"));
+                            IupacEDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacE.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiTri_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaD.txt"));
+                            FormulaEDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaE.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiTri_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesD.txt"));
+                            SmilesEDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesE.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener D_opsin_click; {
+
+        D_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String InputfileE = smiE.getText().toString();
+                String InputfileName0E = iupacE.getText().toString();
+                String MethodfileE = methodE.getText().toString();
+                String KeywordsfileE = keywE.getText().toString();
+                String FormulafileE = formulaE.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiTri_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiTri_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiTri_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiTri_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiTri_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiTri_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiTri_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiTri_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiTri_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiTri_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiTri_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiTri_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout130 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter130 = new OutputStreamWriter(fileout130);
+                    outputWriter130.write(InputfileE);
+                    outputWriter130.close();
+                    FileOutputStream fileout132 = openFileOutput("BiTri_methodE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter132 = new OutputStreamWriter(fileout132);
+                    outputWriter132.write(MethodfileE);
+                    outputWriter132.close();
+                    FileOutputStream fileout133 = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter133 = new OutputStreamWriter(fileout133);
+                    outputWriter133.write(InputfileName0E);
+                    outputWriter133.close();
+                    FileOutputStream fileout138 = openFileOutput("BiTri_formulaE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                    outputWriter138.write(FormulafileE);
+                    outputWriter138.close();
+                    FileOutputStream fileout136 = openFileOutput("BiTri_keywE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter136 = new OutputStreamWriter(fileout136);
+                    outputWriter136.write(KeywordsfileE);
+                    outputWriter136.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiTri_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiTri_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacD.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiTri_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiTri_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiTri_methodD.txt"));
+                            MethodEDisplay(exec("cat "+getFilesDir()+"/BiTri_methodE.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiTri_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiTri_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiTri_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiTri_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiTri_keywD.txt"));
+                            KeywEDisplay(exec("cat "+getFilesDir()+"/BiTri_keywE.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiTri_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiTri_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacD.txt"));
+                            IupacEDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacE.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiTri_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaD.txt"));
+                            FormulaEDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaE.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiTri_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesD.txt"));
+                            SmilesEDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesE.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener E_opsin_click; {
+
+        E_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String InputfileE = smiE.getText().toString();
+                String InputfileName0E = iupacE.getText().toString();
+                String MethodfileE = methodE.getText().toString();
+                String KeywordsfileE = keywE.getText().toString();
+                String FormulafileE = formulaE.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiTri_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiTri_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiTri_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiTri_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiTri_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiTri_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiTri_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiTri_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiTri_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiTri_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiTri_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiTri_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiTri_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiTri_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiTri_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiTri_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiTri_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiTri_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiTri_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiTri_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout130 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter130 = new OutputStreamWriter(fileout130);
+                    outputWriter130.write(InputfileE);
+                    outputWriter130.close();
+                    FileOutputStream fileout132 = openFileOutput("BiTri_methodE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter132 = new OutputStreamWriter(fileout132);
+                    outputWriter132.write(MethodfileE);
+                    outputWriter132.close();
+                    FileOutputStream fileout133 = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter133 = new OutputStreamWriter(fileout133);
+                    outputWriter133.write(InputfileName0E);
+                    outputWriter133.close();
+                    FileOutputStream fileout138 = openFileOutput("BiTri_formulaE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                    outputWriter138.write(FormulafileE);
+                    outputWriter138.close();
+                    FileOutputStream fileout136 = openFileOutput("BiTri_keywE.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter136 = new OutputStreamWriter(fileout136);
+                    outputWriter136.write(KeywordsfileE);
+                    outputWriter136.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiTri_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiTri_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacE.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiTri_smilesE.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiTri_iupacE.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiTri_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiTri_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiTri_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiTri_methodD.txt"));
+                            MethodEDisplay(exec("cat "+getFilesDir()+"/BiTri_methodE.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiTri_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiTri_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiTri_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiTri_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiTri_keywD.txt"));
+                            KeywEDisplay(exec("cat "+getFilesDir()+"/BiTri_keywE.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiTri_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiTri_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacD.txt"));
+                            IupacEDisplay(exec("cat "+getFilesDir()+"/BiTri_iupacE.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiTri_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaD.txt"));
+                            FormulaEDisplay(exec("cat "+getFilesDir()+"/BiTri_formulaE.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiTri_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesD.txt"));
+                            SmilesEDisplay(exec("cat "+getFilesDir()+"/BiTri_smilesE.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
     }
 
     private View.OnClickListener AddTSClick; {
@@ -519,22 +1704,23 @@ public class KineticsBiTri extends MainActivity {
         processBiTriClick = new View.OnClickListener() {
             public void onClick(View v) {
 
-//                String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-//                progressDialog = new ProgressDialog(KineticsBiBi.this);
-//                progressDialog.setTitle("Please wait...");
-//                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName);
-//                progressDialog.setCancelable(false);
-//                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                progressDialog.show();
-//                new Thread() {
-//                    public void run() {
-// progressdialog is not working - only few actions run and others are not finished
-                //make sure if numbers of Sed, Grep, OutputWriter etc. are duplicated ??
+                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
+                progressDialog = new ProgressDialog(KineticsBiTri.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName0);
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+// update: resolved!, progressdialog is already working - see the comment at the end of new thread block
                 /////////////////////////////////// A ///////////////////////////////////////////////
                 String InputfileA = smiA.getText().toString();
                 String InputfileName0A = iupacA.getText().toString();
@@ -572,7 +1758,8 @@ public class KineticsBiTri extends MainActivity {
 
                 try {
 
-                    String InputfileNameA = InputfileName0A.replace(" ","_");
+                    String InputfileNameA1 = InputfileName0A.replace(" ","_");
+		    String InputfileNameA = InputfileNameA1.replace(",",".");
                     exec("cp "+getFilesDir()+"/BiTri_smilesA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".smi");
                     exec("cp "+getFilesDir()+"/BiTri_iupacA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".iupac");
                     exec("cp "+getFilesDir()+"/BiTri_formulaA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".formula");
@@ -685,7 +1872,8 @@ public class KineticsBiTri extends MainActivity {
                     outputWriter16.close();
 
 
-                    String InputfileNameB = InputfileName0B.replace(" ","_");
+                    String InputfileNameB1 = InputfileName0B.replace(" ","_");
+		    String InputfileNameB = InputfileNameB1.replace(",",".");
                     exec("cp "+getFilesDir()+"/BiTri_smilesB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".smi");
                     exec("cp "+getFilesDir()+"/BiTri_iupacB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".iupac");
                     exec("cp "+getFilesDir()+"/BiTri_formulaB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".formula");
@@ -745,7 +1933,8 @@ public class KineticsBiTri extends MainActivity {
                     outputWriter26.close();
 
 
-                    String InputfileNameC = InputfileName0C.replace(" ","_");
+                    String InputfileNameC1 = InputfileName0C.replace(" ","_");
+		    String InputfileNameC = InputfileNameC1.replace(",",".");
                     exec("cp "+getFilesDir()+"/BiTri_smilesC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".smi");
                     exec("cp "+getFilesDir()+"/BiTri_iupacC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".iupac");
                     exec("cp "+getFilesDir()+"/BiTri_formulaC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".formula");
@@ -805,7 +1994,8 @@ public class KineticsBiTri extends MainActivity {
                     outputWriter36.close();
 
 
-                    String InputfileNameD = InputfileName0D.replace(" ","_");
+                    String InputfileNameD1 = InputfileName0D.replace(" ","_");
+		    String InputfileNameD = InputfileNameD1.replace(",",".");
                     exec("cp "+getFilesDir()+"/BiTri_smilesD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".smi");
                     exec("cp "+getFilesDir()+"/BiTri_iupacD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".iupac");
                     exec("cp "+getFilesDir()+"/BiTri_formulaD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".formula");
@@ -865,7 +2055,8 @@ public class KineticsBiTri extends MainActivity {
                     outputWriter136.close();
 
 
-                    String InputfileNameE = InputfileName0E.replace(" ","_");
+                    String InputfileNameE1 = InputfileName0E.replace(" ","_");
+		    String InputfileNameE = InputfileNameE1.replace(",",".");
                     exec("cp "+getFilesDir()+"/BiTri_smilesE.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameE+".smi");
                     exec("cp "+getFilesDir()+"/BiTri_iupacE.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameE+".iupac");
                     exec("cp "+getFilesDir()+"/BiTri_formulaE.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameE+".formula");
@@ -1364,7 +2555,9 @@ public class KineticsBiTri extends MainActivity {
                         outputWriter15013.write(Grep15002);
                         outputWriter15013.close();
                         String Sed15006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
-                        String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
                         String FormulaTS = DatasetName+"_TS";
                         String MethodTS = methodTS.getText().toString();
                         FileOutputStream fileout15014 = openFileOutput(InputfileNameTS+"_s.txt",MODE_APPEND);
@@ -1403,15 +2596,69 @@ public class KineticsBiTri extends MainActivity {
 
                     /////////////////////////////////// Export results ///////////////////////////////////////////////
 
-                    String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                    String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+		String DatasetName1 = DatasetName0.replace(" ","_");
+		String DatasetName = DatasetName1.replace(",",".");
                     File filePathExt = new File(getFilesDir()+"/openbabel/kinetics");
                     if (!filePathExt.exists()) {
                         filePathExt.mkdirs();
                     }
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_KINETICS.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_RATES.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SMS.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SS.txt");
+
+                    String Dataset = DatasetName;
+
+                    exec("cp "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/thermo_s_RATES_0.txt");
+                    exec("cp "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+                    exec("cp "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                    exec("cp "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/thermo_s_SS_0.txt");
+
+                    String R = exec("cat "+getFilesDir()+"/thermo_s_RATES_0.txt");
+                    R = R.replace("[H2O]", "H2O");
+                    R = R.replace("[H+]+", "H+");
+                    R = R.replace("[OH-]-", "OH-");
+                    FileOutputStream R_stream = openFileOutput("thermo_s_RATES_w.txt", MODE_PRIVATE);
+                    OutputStreamWriter R_writer = new OutputStreamWriter(R_stream);
+                    R_writer.write(R);
+                    R_writer.close();
+                    exec("mv "+getFilesDir()+"/thermo_s_RATES_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_RATES_w.txt");
+                    exec("rm "+getFilesDir()+"/thermo_s_RATES_0.txt");
+
+                    String K = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+                    K = K.replace("[H2O]", "H2O");
+                    K = K.replace("[H+]+", "H+");
+                    K = K.replace("[OH-]-", "OH-");
+                    FileOutputStream K_stream = openFileOutput("thermo_s_KINETICS_w.txt", MODE_PRIVATE);
+                    OutputStreamWriter K_writer = new OutputStreamWriter(K_stream);
+                    K_writer.write(K);
+                    K_writer.close();
+                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_KINETICS_w.txt");
+                    exec("rm "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+
+                    String SMS = exec("cat "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                    SMS = SMS.replace("[H2O]\t[H2O]\t0\t[H2O]\t1", "");
+                    SMS = SMS.replace("[H+]\t[H+]+\t0\t[H+]\t1", "");
+                    SMS = SMS.replace("[OH-]\t[OH-]-\t0\t[OH-]\t1", "");
+                    FileOutputStream SMS_stream = openFileOutput("thermo_s_SMS_w.txt", MODE_PRIVATE);
+                    OutputStreamWriter SMS_writer = new OutputStreamWriter(SMS_stream);
+                    SMS_writer.write(SMS);
+                    SMS_writer.close();
+                    exec("mv "+getFilesDir()+"/thermo_s_SMS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_MASTER_SPECIES_w.txt");
+                    exec("rm "+getFilesDir()+"/thermo_s_SMS_0.txt");
+
+                    String SS = exec("cat "+getFilesDir()+"/thermo_s_SS_0.txt");
+                    SS = SS.replace("[H2O] = [H2O]", "");
+                    SS = SS.replace("[H+]+ = [H+]+", "");
+                    SS = SS.replace("[OH-]- = [OH-]-", "");
+                    FileOutputStream SS_stream = openFileOutput("thermo_s_SS_w.txt", MODE_PRIVATE);
+                    OutputStreamWriter SS_writer = new OutputStreamWriter(SS_stream);
+                    SS_writer.write(SS);
+                    SS_writer.close();
+                    exec("mv "+getFilesDir()+"/thermo_s_SS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_SPECIES_w.txt");
+                    exec("rm "+getFilesDir()+"/thermo_s_SS_0.txt");
+
+                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_KINETICS_anhydr.txt");
+                    exec("mv "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_RATES_anhydr.txt");
+                    exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_MASTER_SPECIES_anhydr.txt");
+                    exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_SPECIES_anhydr.txt");
 
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
@@ -1479,19 +2726,20 @@ public class KineticsBiTri extends MainActivity {
 
                 } catch (Exception e) {
                 }
+//here:
+                        Intent intent = new Intent(KineticsBiTri.this, ResumeActivityKin.class);
+                        startActivity(intent);
 
+                        onFinish();
+                    }
+                    public void onFinish(){
+                        progressDialog.dismiss();
+                    }
+                }.start();
 
-
-//                        onFinish();
-//                    }
-//                    public void onFinish(){
-//                        progressDialog.dismiss();
-//                    }
-//                }.start();
-
-
-                Intent intent = new Intent(KineticsBiTri.this, ResumeActivityKin.class);
-                startActivity(intent);
+//not here:
+//                Intent intent = new Intent(KineticsBiTri.this, ResumeActivityKin.class);
+//                startActivity(intent);
             }
         };
     }

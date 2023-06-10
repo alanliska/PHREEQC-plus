@@ -82,6 +82,7 @@ public class Fastchem extends MainActivity {
     private Handler handler = new Handler();
     private TextView DataLabel;
     private TextView Data;
+    Button manual_fastchem;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -282,6 +283,15 @@ public class Fastchem extends MainActivity {
         outputView2 = (EditText) findViewById(R.id.outputView2);
         DataLabel = (TextView) findViewById(R.id.DataLabel);
         Data = (TextView) findViewById(R.id.Data);
+        manual_fastchem = (Button) findViewById(R.id.manual_fastchem);
+        manual_fastchem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Fastchem.this, ManualFastchem.class);
+                startActivity(intent);
+            }
+        });
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -546,7 +556,7 @@ public class Fastchem extends MainActivity {
         EditText editText10 = new EditText(Fastchem.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Fastchem.this)
-                .setMessage("The file will be saved in the folder /data/data/cz.p/files/atmospheric-profiles")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/atmospheric-profiles")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -564,7 +574,7 @@ public class Fastchem extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/atmospheric-profiles");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/output/atmospheric-profiles");
                     }
                 })
 
@@ -616,7 +626,7 @@ public class Fastchem extends MainActivity {
         EditText editText10 = new EditText(Fastchem.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Fastchem.this)
-                .setMessage("The file will be saved in the folder /data/data/cz.p/files/element-abundances")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/element-abundances")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -634,7 +644,7 @@ public class Fastchem extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/element-abundances");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/output/element-abundances");
                     }
                 })
 

@@ -130,7 +130,7 @@
             android:id="@+id/formula_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nFormula (to comply with the prebuit-datasets, elements [H], [O], [C], [N], [S] and [F] should be defined in brackets):"
+            android:text="\nFormula (do not use square brackets [], or brackets inside of brackets):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -165,18 +165,24 @@
             android:typeface="monospace" />
 
         <Button
+            android:id="@+id/openbabel_opsin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NAME TO SMILES CONVERSION (OPSIN)" />
+
+        <Button
             android:id="@+id/openbabel_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
-            android:text="CONVERT TO MOPAC INPUT AND CONTINUE" />
+            android:text="> CONVERT TO MOPAC INPUT AND CONTINUE" />
 
         <Button
             android:id="@+id/openbabel_exit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E91E63"
-            android:text="NEXT STEP (MOPAC CALCULATION)" />
+            android:text=">> NEXT STEP (MOPAC CALCULATION)" />
 
 
         <Button

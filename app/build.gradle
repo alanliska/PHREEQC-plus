@@ -2,18 +2,19 @@ apply plugin: 'com.android.application'
 
 android {
     packagingOptions {
+        { resources.excludes.add("META-INF/*") }
         jniLibs {
             useLegacyPackaging = true
         }
     }
-    compileSdkVersion 33
+    compileSdk 33
 
     defaultConfig {
         applicationId "cz.p"
-        minSdkVersion 23
-        targetSdkVersion 33
-        versionCode 22
-        versionName '2.2'
+        minSdk 24
+        targetSdk 33
+        versionCode 29
+        versionName '3.0'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,41 +28,42 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['src/main/jniLibs']
+//            resources.srcDirs = ['src/main/resources']
         }
     }
-//    flavorDimensions "abi"
-//    productFlavors {
-//        /* removed in NDK r18
-//        arm {
-//            dimension "abi"
-//            ndk {
-//                abiFilters "armeabi"
-//            }
-//            versionCode computeVersionCode(1)
-//            versionName computeVersionName("arm")
-//        }*/
-//        arm7 {
-//            dimension "abi"
-//            /* in NDK r18 minimal available platform is API 16
-//            // Remark: in emulator native commands crash if build is for "armeabi-v7a"
-//            // but work fine with "armeabi". Version 16(JELLY_BEAN) is lowest that
-//            // work fine with "armeabi-v7a".
-//            minSdkVersion 16
-//            */
-//            ndk {
-//                abiFilters "armeabi-v7a"
-//            }
-////            versionCode computeVersionCode(2)
-////            versionName computeVersionName("arm7")
-//        }
-//        i686 {
-//            dimension "abi"
-//            ndk {
-//                abiFilters "x86"
-//            }
-////            versionCode computeVersionCode(3)
-////            versionName computeVersionName("i686")
-//        }
+    flavorDimensions "abi"
+    productFlavors {
+        /* removed in NDK r18
+        arm {
+            dimension "abi"
+            ndk {
+                abiFilters "armeabi"
+            }
+            versionCode computeVersionCode(1)
+            versionName computeVersionName("arm")
+        }*/
+        arm7 {
+            dimension "abi"
+            /* in NDK r18 minimal available platform is API 16
+            // Remark: in emulator native commands crash if build is for "armeabi-v7a"
+            // but work fine with "armeabi". Version 16(JELLY_BEAN) is lowest that
+            // work fine with "armeabi-v7a".
+            minSdkVersion 16
+            */
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+//            versionCode computeVersionCode(2)
+//            versionName computeVersionName("arm7")
+        }
+        i686 {
+            dimension "abi"
+            ndk {
+                abiFilters "x86"
+            }
+//            versionCode computeVersionCode(3)
+//            versionName computeVersionName("i686")
+        }
 //        /* removed in NDK r18
 //        mips {
 //            dimension "abi"
@@ -71,22 +73,22 @@ android {
 //            versionCode computeVersionCode(4)
 //            versionName computeVersionName("mips")
 //        }*/
-//        arm8 {
-//            dimension "abi"
-//            ndk {
-//                abiFilters "arm64-v8a"
-//            }
-////            versionCode computeVersionCode(5)
-////            versionName computeVersionName("arm8")
-//        }
-//        x86_64 {
-//            dimension "abi"
-//            ndk {
-//                abiFilters "x86_64"
-//            }
-////            versionCode computeVersionCode(6)
-////            versionName computeVersionName("x86_64")
-//        }
+        arm8 {
+            dimension "abi"
+            ndk {
+                abiFilters "arm64-v8a"
+            }
+//            versionCode computeVersionCode(5)
+//            versionName computeVersionName("arm8")
+        }
+        x86_64 {
+            dimension "abi"
+            ndk {
+                abiFilters "x86_64"
+            }
+//            versionCode computeVersionCode(6)
+//            versionName computeVersionName("x86_64")
+        }
 //        /* removed in NDK r18
 //        mips64 {
 //            dimension "abi"
@@ -96,7 +98,7 @@ android {
 //            versionCode computeVersionCode(7)
 //            versionName computeVersionName("mips64")
 //        }*/
-//    }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -112,5 +114,28 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
+    implementation 'com.github.Bhuvaneshw:acpdfview:1.1.3'
+    implementation 'com.jjoe64:graphview:4.2.2'
+    implementation 'com.jrummyapps:android-shell:1.0.1'
+    implementation 'uk.ac.cam.ch.opsin:opsin-core:2.7.0'
+    // remove non-working inchi support
+//    implementation 'uk.ac.cam.ch.opsin:opsin-inchi:2.7.0'
+    // important for POM (OPSIN uses that) - otherwise will crash:
+    implementation 'javax.xml.stream:stax-api:1.0'
+    // requires API 26 (Android 8 Oreo) or higher:
+//    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    // older version - force
+    implementation 'org.apache.logging.log4j:log4j-core:2.0'
+    constraints {
+        implementation('org.apache.logging.log4j:log4j-api') {
+            version {
+                strictly('[2.0]')
+                prefer('2.0')
+            }
+            because('CVE-2021-44228, CVE-2021-45046, CVE-2021-45105: Log4j vulnerable to remote code execution and other critical security vulnerabilities')
+        }
+// write like this does not work, it still downloads the newer versions
+//    implementation 'org.apache.logging.log4j:log4j-api:2.6.0'
+    //
+}
 }

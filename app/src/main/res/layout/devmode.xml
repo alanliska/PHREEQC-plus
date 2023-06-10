@@ -16,7 +16,7 @@
             android:id="@+id/dataset_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nDataset name:"
+            android:text="\nThis panel offers additional tools for advanced users"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button
@@ -26,16 +26,52 @@
             android:text="SHELL TOOLS" />
 
         <Button
+            android:id="@+id/start_xbasic01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION MAKER (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_xbasic001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION MAKER (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_xbasic0001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION MAKER (DFTB+)" />
+
+        <Button
             android:id="@+id/start_xbasic1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY SOLUTION MAKER" />
+            android:text="MODIFY SOLUTION MAKER (CONVERSION)" />
+
+        <Button
+            android:id="@+id/start_xbasic12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PHASE MAKER (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_xbasic012"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PHASE MAKER (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_xbasic0012"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PHASE MAKER (DFTB+)" />
 
         <Button
             android:id="@+id/start_xbasic2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY GAS PHASE MAKER" />
+            android:text="MODIFY GAS PHASE MAKER (CONVERSION)" />
 
         <Button
             android:id="@+id/start_xbasic3"
@@ -50,10 +86,28 @@
             android:text="MODIFY SOLID PHASE MAKER" />
 
         <Button
+            android:id="@+id/start_xbasic45"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION MAKER (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_xbasic045"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION MAKER (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_xbasic0045"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION MAKER (DFTB+)" />
+
+        <Button
             android:id="@+id/start_xbasic5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY SOLID SOLUTION MAKER" />
+            android:text="MODIFY SOLID SOLUTION MAKER (CONVERSION)" />
 
         <Button
             android:id="@+id/start_xbasic6"
@@ -62,16 +116,82 @@
             android:text="MODIFY GCM1 MAKER" />
 
         <Button
+            android:id="@+id/start_xbasic7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3_G MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3_L MAKER" />
+
+        <Button
+            android:id="@+id/start_xbasic10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3_C MAKER" />
+
+        <Button
+            android:id="@+id/start_gcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 SUMMATOR" />
+
+        <Button
+            android:id="@+id/start_gcm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 SUMMATOR" />
+
+        <Button
+            android:id="@+id/start_gcm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 SUMMATOR" />
+
+        <Button
             android:id="@+id/start_refs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLUTION REFERENCE" />
+<!---
+        <Button
+            android:id="@+id/start_refscp2k"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLUTION REFERENCE (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_refsdftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLUTION REFERENCE (DFTB+)" />
 
         <Button
             android:id="@+id/start_refg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY GAS REFERENCE" />
+<!---
+        <Button
+            android:id="@+id/start_refgcp2k"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED GAS REFERENCE (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_refgdftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED GAS REFERENCE (DFTB+)" />
 
         <Button
             android:id="@+id/start_refl"
@@ -90,6 +210,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID SOLUTION REFERENCE" />
+<!---
+        <Button
+            android:id="@+id/start_refsscp2k"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLID SOLUTION REFERENCE (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_refssdftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLID SOLUTION REFERENCE (DFTB+)" />
 
         <Button
             android:id="@+id/start_refgcm1"
@@ -98,16 +230,70 @@
             android:text="MODIFY GCM1 REFERENCE" />
 
         <Button
+            android:id="@+id/start_refgcm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 REFERENCE" />
+
+        <Button
+            android:id="@+id/start_refgcm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 REFERENCE" />
+<!---
+        <Button
+            android:id="@+id/start_refgcm4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM4 REFERENCE" />
+-->
+        <Button
+            android:id="@+id/start_compsMOPAC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION PARAMETERS (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_compsCP2K"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION PARAMETERS (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_compsDFTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION PARAMETERS (DFTB)" />
+
+        <Button
             android:id="@+id/start_comps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY SOLUTION PARAMETERS" />
+            android:text="MODIFY SOLUTION PARAMETERS (CONVERSION)" />
+
+        <Button
+            android:id="@+id/start_compgMOPAC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PARAMETERS (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_compgCP2K"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PARAMETERS (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_compgDFTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PARAMETERS (DFTB+)" />
 
         <Button
             android:id="@+id/start_compg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY GAS PARAMETERS" />
+            android:text="MODIFY GAS PARAMETERS (CONVERSION)" />
 
         <Button
             android:id="@+id/start_compl"
@@ -122,16 +308,70 @@
             android:text="MODIFY SOLID PARAMETERS" />
 
         <Button
+            android:id="@+id/start_compssMOPAC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION PARAMETERS (MOPAC)" />
+<!---
+        <Button
+            android:id="@+id/start_compssCP2K"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION PARAMETERS (CP2K)" />
+-->
+        <Button
+            android:id="@+id/start_compssDFTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION PARAMETERS (DFTB+)" />
+
+        <Button
             android:id="@+id/start_compss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MODIFY SOLID SOLUTION PARAMETERS" />
+            android:text="MODIFY SOLID SOLUTION PARAMETERS (CONVERSION)" />
 
         <Button
             android:id="@+id/start_compgcm1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY GCM1 PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compgcm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 PARAMETERS" />
+
+        <Button
+            android:id="@+id/start_compgcm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 PARAMETERS (G,L,C, PARFILE)" />
+<!---
+        <Button
+            android:id="@+id/start_compgcm4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM4 PARAMETERS" />
+-->
+        <Button
+            android:id="@+id/start_datgcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 DATABASE" />
+
+        <Button
+            android:id="@+id/start_datgcm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 DATABASE" />
+
+        <Button
+            android:id="@+id/start_datgcm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 DATABASE" />
 
         <Button
             android:id="@+id/start_vdw"
@@ -180,6 +420,79 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY BI-TRIMOLECULAR KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_gcm1kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_gcm2kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_gcm3kin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 KINETICS EVALUATOR" />
+
+        <Button
+            android:id="@+id/modify_gcm1kinpar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM1 KINETICS PARAMETERS" />
+
+        <Button
+            android:id="@+id/modify_gcm2kinpar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM2 KINETICS PARAMETERS" />
+
+        <Button
+            android:id="@+id/modify_gcm3kinpar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GCM3 KINETICS PARAMETERS" />
+
+        <Button
+            android:id="@+id/modify_generalinit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GENERAL INIT KINETICS" />
+
+        <Button
+            android:id="@+id/modify_generalts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GENERAL TS KINETICS" />
+
+        <Button
+            android:id="@+id/modify_generalmopac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GENERAL MOPAC KINETICS" />
+
+        <Button
+            android:id="@+id/modify_dftbspectrum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY DFTB+ SPECTRUM GENERATOR" />
+
+        <Button
+            android:id="@+id/modify_mopacspectrum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY MOPAC SPECTRUM GENERATOR" />
+
+        <Button
+            android:id="@+id/backup_restore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DF0F00"
+            android:text="BACKUP AND RESTORE THE APP" />
 
         <Button
             android:id="@+id/Quit"

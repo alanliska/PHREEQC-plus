@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LabelMOPAC"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nThe order in which the reactants and products are input is not important. The last step is processing transition state XYZ coordinate file. \n\nCalculate with MOPAC"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <Button
+            android:id="@+id/ReactantMOPAC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8BC34A"
+            android:text="CALCULATE A REACTANT" />
+
+        <Button
+            android:id="@+id/ProductMOPAC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8BC34A"
+            android:text="CALCULATE A PRODUCT" />
+        <TextView
+            android:id="@+id/LabelData"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nAcquire tabulated data"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <Button
+            android:id="@+id/ReactantData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CDDC39"
+            android:text="IMPORT A REACTANT" />
+
+        <Button
+            android:id="@+id/ProductData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CDDC39"
+            android:text="IMPORT A PRODUCT" />
+
+        <Button
+            android:id="@+id/Finalize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="FINALIZE THE CALCULATION \n(RESOLVE THE TRANSITION STATE)" />
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+</ScrollView>

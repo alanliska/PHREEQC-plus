@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dataset_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to empirical (group contribution) methods used for qualified estimations\n\nPrepare PHREEQC (solution + gas + liquid + solid) and FASTCHEM (for gaseous species only) databases from calculated data\n\nDataset name:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/dataset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/label21"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(a) empirical qualified estimation (water) = group contribution method (Jankowski)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+
+        <TextView
+            android:id="@+id/label22"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(b) empirical qualified estimation (gas) = group contribution method (Joback-Reid)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+
+        <TextView
+            android:id="@+id/label23"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(c) empirical qualified estimation (gas/liquid/solid) = group contribution method (van Krevelen)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_gcm3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+        <!---
+                <TextView
+                    android:id="@+id/label24"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="\n(g) empirical qualified estimation (solid) = group contribution method (Klopman)"
+                    android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+                <Button
+                    android:id="@+id/start_gcm4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFEB3B"
+                    android:text="PREPARE PHREEQC DATASHEET FROM GROUPS" />
+        -->
+
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK" />
+
+    </LinearLayout>
+</ScrollView>

@@ -412,6 +412,32 @@
             android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
 
         <TextView
+            android:id="@+id/label22a"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/liq"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/liq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label22b"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/cryst"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/cryst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
             android:id="@+id/label27"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -472,6 +498,123 @@
 
         <Button
             android:id="@+id/solv_thermo_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+<!---
+        <TextView
+            android:id="@+id/label32"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/cp2k"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/cp2k"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label33"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/basis"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/basis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label34"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/basis/DFTB"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/DFTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label35"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/basis/DFTB/nonscc"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/nonscc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label36"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/basis/DFTB/scc"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/scc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label37"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/basis/xc_section"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xc_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+-->
+        <TextView
+            android:id="@+id/label38"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/dftb"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/dftb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label39"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/sk_files"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/sk_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PICK FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label40"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/reference"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/references"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PICK FILE FROM THE SPECIFIED FOLDER" />

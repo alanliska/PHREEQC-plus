@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
+import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
+import uk.ac.cam.ch.wwmm.opsin.OpsinResult;
+
 public class KineticsBiBi extends MainActivity {
 
     private TextView methodA_label;
@@ -90,6 +94,10 @@ public class KineticsBiBi extends MainActivity {
     private Button ResetTS;
     private Button processBiBi;
     private Button quit;
+    public Button A_opsin;
+    public Button B_opsin;
+    public Button C_opsin;
+    public Button D_opsin;
 
     private TextView TSLabel;
     private TextView TS;
@@ -172,6 +180,15 @@ public class KineticsBiBi extends MainActivity {
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(QuitClick);
 
+        A_opsin = (Button) findViewById(R.id.A_opsin);
+        A_opsin.setOnClickListener(A_opsin_click);
+        B_opsin = (Button) findViewById(R.id.B_opsin);
+        B_opsin.setOnClickListener(B_opsin_click);
+        C_opsin = (Button) findViewById(R.id.C_opsin);
+        C_opsin.setOnClickListener(C_opsin_click);
+        D_opsin = (Button) findViewById(R.id.D_opsin);
+        D_opsin.setOnClickListener(D_opsin_click);
+
     }
 
     public void onStart()
@@ -222,6 +239,810 @@ public class KineticsBiBi extends MainActivity {
         }
 
         TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+    }
+
+    private View.OnClickListener A_opsin_click; {
+
+        A_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiBi.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacA.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener B_opsin_click; {
+
+        B_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiBi.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacB.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener C_opsin_click; {
+
+        C_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiBi.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacC.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
+    }
+
+    private View.OnClickListener D_opsin_click; {
+
+        D_opsin_click = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+
+                // TODO Auto-generated method stub //
+                progressDialog = new ProgressDialog(KineticsBiBi.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Conversion is running...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        try {
+                            exec("chmod 755 -R "+getFilesDir());
+                            String NameToConvert = iupacD.getText().toString();
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(NameToConvert+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout3 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(smiles);
+                            outputWriter3.close();
+//                            FileOutputStream fileoutNts = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+//                            OutputStreamWriter outputWriterNts = new OutputStreamWriter(fileoutNts);
+//                            outputWriterNts.write(NameToConvert);
+//                            outputWriterNts.close();
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+
+                        } catch (Exception e) {
+                        }
+                        onFinish();
+                    }
+
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
+        };
     }
 
     private View.OnClickListener AddTSClick; {
@@ -462,762 +1283,824 @@ public class KineticsBiBi extends MainActivity {
         processBiBiClick = new View.OnClickListener() {
             public void onClick(View v) {
 
-//                String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-//                progressDialog = new ProgressDialog(KineticsBiBi.this);
-//                progressDialog.setTitle("Please wait...");
-//                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName);
-//                progressDialog.setCancelable(false);
-//                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                progressDialog.show();
-//                new Thread() {
-//                    public void run() {
-// progressdialog is not working - only few actions run and others are not finished
-                /////////////////////////////////// A ///////////////////////////////////////////////
-                String InputfileA = smiA.getText().toString();
-                String InputfileName0A = iupacA.getText().toString();
-                String MethodfileA = methodA.getText().toString();
-                String KeywordsfileA = keywA.getText().toString();
-                String FormulafileA = formulaA.getText().toString();
-                File filePath = new File(getFilesDir()+File.separator+"openbabel");
-                try {
-                    if (!filePath.exists()) {
-                        filePath.mkdirs();
+                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
+                progressDialog = new ProgressDialog(KineticsBiBi.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Performing MOPAC calculations on species contained in dataset: "+DatasetName0);
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
-                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(InputfileA);
-                    outputWriter.close();
-                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write(MethodfileA);
-                    outputWriter2.close();
-                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
-                    outputWriter3.write(InputfileName0A);
-                    outputWriter3.close();
-                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
-                    outputWriter8.write(FormulafileA);
-                    outputWriter8.close();
-                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
-                    outputWriter6.write(KeywordsfileA);
-                    outputWriter6.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                try {
-
-                    String InputfileNameA = InputfileName0A.replace(" ","_");
-                    exec("cp "+getFilesDir()+"/BiBi_smilesA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".smi");
-                    exec("cp "+getFilesDir()+"/BiBi_iupacA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".iupac");
-                    exec("cp "+getFilesDir()+"/BiBi_formulaA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".formula");
-                    exec("chmod 755 -R "+getFilesDir());
-                    String ObabelOutputA = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameA+".smi -oxyz --gen3d");
-                    FileOutputStream fileout4 = openFileOutput(InputfileNameA+".xyz", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
-                    outputWriter4.write(ObabelOutputA);
-                    outputWriter4.close();
-                    String KeyA = MethodfileA+" "+KeywordsfileA;
-
-                    File filePath2 = new File(getFilesDir()+File.separator+"openbabel/solv/opt");
-                    File filePath2a = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
-                    File filePath2b = new File(getFilesDir()+File.separator+"openbabel/solv/thermo");
-                    File filePath2c = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
-                    try {
-                        if (!filePath2.exists()) {
-                            filePath2.mkdirs();}
-                            if (!filePath2a.exists()) {
-                                filePath2a.mkdirs();
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+// update: resolved!, progressdialog is already working - see the comment at the end of new thread block
+                        /////////////////////////////////// A ///////////////////////////////////////////////
+                        String InputfileA = smiA.getText().toString();
+                        String InputfileName0A = iupacA.getText().toString();
+                        String MethodfileA = methodA.getText().toString();
+                        String KeywordsfileA = keywA.getText().toString();
+                        String FormulafileA = formulaA.getText().toString();
+                        File filePath = new File(getFilesDir()+File.separator+"openbabel");
+                        try {
+                            if (!filePath.exists()) {
+                                filePath.mkdirs();
                             }
-                            if (!filePath2b.exists()) {
-                                filePath2b.mkdirs();
+                            FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(InputfileA);
+                            outputWriter.close();
+                            FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(MethodfileA);
+                            outputWriter2.close();
+                            FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(InputfileName0A);
+                            outputWriter3.close();
+                            FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                            outputWriter8.write(FormulafileA);
+                            outputWriter8.close();
+                            FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                            outputWriter6.write(KeywordsfileA);
+                            outputWriter6.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+
+                            String InputfileNameA1 = InputfileName0A.replace(" ","_");
+                            String InputfileNameA = InputfileNameA1.replace(",",".");
+                            exec("cp "+getFilesDir()+"/BiBi_smilesA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".smi");
+                            exec("cp "+getFilesDir()+"/BiBi_iupacA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".iupac");
+                            exec("cp "+getFilesDir()+"/BiBi_formulaA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".formula");
+                            exec("chmod 755 -R "+getFilesDir());
+                            String ObabelOutputA = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameA+".smi -oxyz --gen3d");
+                            FileOutputStream fileout4 = openFileOutput(InputfileNameA+".xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+                            outputWriter4.write(ObabelOutputA);
+                            outputWriter4.close();
+                            String KeyA = MethodfileA+" "+KeywordsfileA;
+
+                            File filePath2 = new File(getFilesDir()+File.separator+"openbabel/solv/opt");
+                            File filePath2a = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
+                            File filePath2b = new File(getFilesDir()+File.separator+"openbabel/solv/thermo");
+                            File filePath2c = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
+                            try {
+                                if (!filePath2.exists()) {
+                                    filePath2.mkdirs();}
+                                if (!filePath2a.exists()) {
+                                    filePath2a.mkdirs();
+                                }
+                                if (!filePath2b.exists()) {
+                                    filePath2b.mkdirs();
+                                }
+                                if (!filePath2c.exists()) {
+                                    filePath2c.mkdirs();
+                                }
+
+
+                                String Sed2 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameA+".xyz");
+                                FileOutputStream fileout8 = openFileOutput(InputfileNameA+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                                outputWriter8.write(KeyA);
+                                outputWriter8.write("\n");
+                                outputWriter8.write("\n");
+                                outputWriter8.write("\n");
+                                outputWriter8.write(Sed2);
+                                outputWriter8.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                            if (!filePath2c.exists()) {
-                                filePath2c.mkdirs();
+                            exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameA);
+
+                            File filePath3 = new File(getFilesDir()+File.separator+"openbabel/smiles");
+                            try {
+                                if (!filePath3.exists()) {
+                                    filePath3.mkdirs();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
+
+                            File filePath4 = new File(getFilesDir()+File.separator+"openbabel/xyz");
+                            try {
+                                if (!filePath4.exists()) {
+                                    filePath4.mkdirs();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameA+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
+
+                            File filePath5 = new File(getFilesDir()+File.separator+"openbabel/iupac");
+                            try {
+                                if (!filePath5.exists()) {
+                                    filePath5.mkdirs();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+
+                            File filePath7 = new File(getFilesDir()+File.separator+"openbabel/formula");
+                            try {
+                                if (!filePath7.exists()) {
+                                    filePath7.mkdirs();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".formula "+getFilesDir()+File.separator+"openbabel/formula");
+
+                            /////////////////////////////////// B ///////////////////////////////////////////////
+                            String InputfileB = smiB.getText().toString();
+                            String InputfileName0B = iupacB.getText().toString();
+                            String MethodfileB = methodB.getText().toString();
+                            String KeywordsfileB = keywB.getText().toString();
+                            String FormulafileB = formulaB.getText().toString();
+
+                            FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                            outputWriter10.write(InputfileB);
+                            outputWriter10.close();
+                            FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                            outputWriter12.write(MethodfileB);
+                            outputWriter12.close();
+                            FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                            outputWriter13.write(InputfileName0B);
+                            outputWriter13.close();
+                            FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                            outputWriter18.write(FormulafileB);
+                            outputWriter18.close();
+                            FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                            outputWriter16.write(KeywordsfileB);
+                            outputWriter16.close();
+
+
+                            String InputfileNameB1 = InputfileName0B.replace(" ","_");
+                            String InputfileNameB = InputfileNameB1.replace(",",".");
+                            exec("cp "+getFilesDir()+"/BiBi_smilesB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".smi");
+                            exec("cp "+getFilesDir()+"/BiBi_iupacB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".iupac");
+                            exec("cp "+getFilesDir()+"/BiBi_formulaB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".formula");
+                            exec("chmod 755 -R "+getFilesDir());
+                            String ObabelOutputB = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameB+".smi -oxyz --gen3d");
+                            FileOutputStream fileout14 = openFileOutput(InputfileNameB+".xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
+                            outputWriter14.write(ObabelOutputB);
+                            outputWriter14.close();
+                            String KeyB = MethodfileB+" "+KeywordsfileB;
+
+                            try {
+                                String Sed12 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameB+".xyz");
+                                FileOutputStream fileout118 = openFileOutput(InputfileNameB+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter118 = new OutputStreamWriter(fileout118);
+                                outputWriter118.write(KeyB);
+                                outputWriter118.write("\n");
+                                outputWriter118.write("\n");
+                                outputWriter118.write("\n");
+                                outputWriter118.write(Sed12);
+                                outputWriter118.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameB);
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
+                            exec("mv "+getFilesDir()+"/"+InputfileNameB+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".formula "+getFilesDir()+File.separator+"openbabel/formula");
+
+                            /////////////////////////////////// C ///////////////////////////////////////////////
+                            String InputfileC = smiC.getText().toString();
+                            String InputfileName0C = iupacC.getText().toString();
+                            String MethodfileC = methodC.getText().toString();
+                            String KeywordsfileC = keywC.getText().toString();
+                            String FormulafileC = formulaC.getText().toString();
+
+                            FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                            outputWriter20.write(InputfileC);
+                            outputWriter20.close();
+                            FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                            outputWriter22.write(MethodfileC);
+                            outputWriter22.close();
+                            FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                            outputWriter23.write(InputfileName0C);
+                            outputWriter23.close();
+                            FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                            outputWriter28.write(FormulafileC);
+                            outputWriter28.close();
+                            FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                            outputWriter26.write(KeywordsfileC);
+                            outputWriter26.close();
+
+
+                            String InputfileNameC1 = InputfileName0C.replace(" ","_");
+                            String InputfileNameC = InputfileNameC1.replace(",",".");
+                            exec("cp "+getFilesDir()+"/BiBi_smilesC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".smi");
+                            exec("cp "+getFilesDir()+"/BiBi_iupacC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".iupac");
+                            exec("cp "+getFilesDir()+"/BiBi_formulaC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".formula");
+                            exec("chmod 755 -R "+getFilesDir());
+                            String ObabelOutputC = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameC+".smi -oxyz --gen3d");
+                            FileOutputStream fileout24 = openFileOutput(InputfileNameC+".xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter24 = new OutputStreamWriter(fileout24);
+                            outputWriter24.write(ObabelOutputC);
+                            outputWriter24.close();
+                            String KeyC = MethodfileC+" "+KeywordsfileC;
+
+                            try {
+                                String Sed22 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameC+".xyz");
+                                FileOutputStream fileout128 = openFileOutput(InputfileNameC+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter128 = new OutputStreamWriter(fileout128);
+                                outputWriter128.write(KeyC);
+                                outputWriter128.write("\n");
+                                outputWriter128.write("\n");
+                                outputWriter128.write("\n");
+                                outputWriter128.write(Sed22);
+                                outputWriter128.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameC);
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
+                            exec("mv "+getFilesDir()+"/"+InputfileNameC+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".formula "+getFilesDir()+File.separator+"openbabel/formula");
+
+                            /////////////////////////////////// D ///////////////////////////////////////////////
+                            String InputfileD = smiD.getText().toString();
+                            String InputfileName0D = iupacD.getText().toString();
+                            String MethodfileD = methodD.getText().toString();
+                            String KeywordsfileD = keywD.getText().toString();
+                            String FormulafileD = formulaD.getText().toString();
+
+                            FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                            outputWriter30.write(InputfileD);
+                            outputWriter30.close();
+                            FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                            outputWriter32.write(MethodfileD);
+                            outputWriter32.close();
+                            FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                            outputWriter33.write(InputfileName0D);
+                            outputWriter33.close();
+                            FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                            outputWriter38.write(FormulafileD);
+                            outputWriter38.close();
+                            FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                            outputWriter36.write(KeywordsfileD);
+                            outputWriter36.close();
+
+
+                            String InputfileNameD1 = InputfileName0D.replace(" ","_");
+                            String InputfileNameD = InputfileNameD1.replace(",",".");
+                            exec("cp "+getFilesDir()+"/BiBi_smilesD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".smi");
+                            exec("cp "+getFilesDir()+"/BiBi_iupacD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".iupac");
+                            exec("cp "+getFilesDir()+"/BiBi_formulaD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".formula");
+                            exec("chmod 755 -R "+getFilesDir());
+                            String ObabelOutputD = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameD+".smi -oxyz --gen3d");
+                            FileOutputStream fileout34 = openFileOutput(InputfileNameD+".xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter34 = new OutputStreamWriter(fileout34);
+                            outputWriter34.write(ObabelOutputD);
+                            outputWriter34.close();
+                            String KeyD = MethodfileD+" "+KeywordsfileD;
+
+                            try {
+                                String Sed32 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameD+".xyz");
+                                FileOutputStream fileout138 = openFileOutput(InputfileNameD+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
+                                outputWriter138.write(KeyD);
+                                outputWriter138.write("\n");
+                                outputWriter138.write("\n");
+                                outputWriter138.write("\n");
+                                outputWriter138.write(Sed32);
+                                outputWriter138.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameD);
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
+                            exec("mv "+getFilesDir()+"/"+InputfileNameD+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".formula "+getFilesDir()+File.separator+"openbabel/formula");
+
+                            /////////////////////////////////// TS ///////////////////////////////////////////////
+                            String MethodfileTS = methodTS.getText().toString();
+                            String KeywordsfileTS = keywTS.getText().toString();
+
+                            FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                            outputWriter42.write(MethodfileTS);
+                            outputWriter42.close();
+                            FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                            outputWriter46.write(KeywordsfileTS);
+                            outputWriter46.close();
+
+
+                            String InputfileNameTS0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                            String InputfileNameTS = InputfileNameTS0+"_TS";
+                            exec("chmod 755 -R "+getFilesDir());
+                            String KeyTS = MethodfileTS+" "+KeywordsfileTS;
+
+                            try {
+                                String Sed42 = exec("sed -e 1,2d "+getFilesDir()+"/BiBi_TS.txt");
+                                FileOutputStream fileout148 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter148 = new OutputStreamWriter(fileout148);
+                                outputWriter148.write(KeyTS);
+                                outputWriter148.write("\n");
+                                outputWriter148.write("\n");
+                                outputWriter148.write("\n");
+                                outputWriter148.write(Sed42);
+                                outputWriter148.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameTS);
+                            exec("mv "+getFilesDir()+"/BiBi_TS.txt "+getFilesDir()+File.separator+"openbabel/xyz/"+InputfileNameTS+".xyz");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".formula "+getFilesDir()+File.separator+"openbabel/formula");
+
+                            /////////////////////////////////// Calculate A ///////////////////////////////////////////////
+
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameA+" "+getFilesDir()+"/"+InputfileNameA+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed10003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameA);
+                                String Sed10004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".arc");
+                                FileOutputStream fileout10009 = openFileOutput(InputfileNameA+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10009 = new OutputStreamWriter(fileout10009);
+                                outputWriter10009.write(Sed10004);
+                                outputWriter10009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameA+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed10005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".mops");
+                                FileOutputStream fileout10010 = openFileOutput(InputfileNameA+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10010 = new OutputStreamWriter(fileout10010);
+                                outputWriter10010.write("THERMO(298,298) LET "+Sed10003);
+                                outputWriter10010.write("\n");
+                                outputWriter10010.write("\n");
+                                outputWriter10010.write(Sed10005);
+                                outputWriter10010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameA+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".arc");
+
+                                String Grep10002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameA+".out");
+                                FileOutputStream fileout10013 = openFileOutput(InputfileNameA+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10013 = new OutputStreamWriter(fileout10013);
+                                outputWriter10013.write(Grep10002);
+                                outputWriter10013.close();
+                                String Sed10006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameA+"_s.temp");
+                                String FormulaA = formulaA.getText().toString();
+                                String MethodA = methodA.getText().toString();
+                                FileOutputStream fileout10014 = openFileOutput(InputfileNameA+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter10014 = new OutputStreamWriter(fileout10014);
+                                outputWriter10014.write(InputfileNameA+" ");
+                                outputWriter10014.write(FormulaA+" ");
+                                outputWriter10014.write(MethodA+" ");
+                                outputWriter10014.write(Sed10006);
+                                outputWriter10014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameA+"_s.temp");
+
+                                String RawOutput_s = exec("cat "+getFilesDir()+"/"+InputfileNameA+"_s.txt");
+                                while (RawOutput_s.contains("  ")){  //2 spaces
+                                    RawOutput_s = RawOutput_s.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout10016 = openFileOutput("thermo_s_R1.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10016 = new OutputStreamWriter(fileout10016);
+                                outputWriter10016.write(RawOutput_s);
+                                outputWriter10016.close();
+
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
 
 
-                        String Sed2 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameA+".xyz");
-                        FileOutputStream fileout8 = openFileOutput(InputfileNameA+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
-                        outputWriter8.write(KeyA);
-                        outputWriter8.write("\n");
-                        outputWriter8.write("\n");
-                        outputWriter8.write("\n");
-                        outputWriter8.write(Sed2);
-                        outputWriter8.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameA);
-
-                    File filePath3 = new File(getFilesDir()+File.separator+"openbabel/smiles");
-                    try {
-                        if (!filePath3.exists()) {
-                            filePath3.mkdirs();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
-
-                    File filePath4 = new File(getFilesDir()+File.separator+"openbabel/xyz");
-                    try {
-                        if (!filePath4.exists()) {
-                            filePath4.mkdirs();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameA+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
-
-                    File filePath5 = new File(getFilesDir()+File.separator+"openbabel/iupac");
-                    try {
-                        if (!filePath5.exists()) {
-                            filePath5.mkdirs();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-
-                    File filePath7 = new File(getFilesDir()+File.separator+"openbabel/formula");
-                    try {
-                        if (!filePath7.exists()) {
-                            filePath7.mkdirs();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameA+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-                    /////////////////////////////////// B ///////////////////////////////////////////////
-                    String InputfileB = smiB.getText().toString();
-                    String InputfileName0B = iupacB.getText().toString();
-                    String MethodfileB = methodB.getText().toString();
-                    String KeywordsfileB = keywB.getText().toString();
-                    String FormulafileB = formulaB.getText().toString();
-
-                        FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
-                        outputWriter10.write(InputfileB);
-                        outputWriter10.close();
-                        FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
-                        outputWriter12.write(MethodfileB);
-                        outputWriter12.close();
-                        FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
-                        outputWriter13.write(InputfileName0B);
-                        outputWriter13.close();
-                        FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
-                        outputWriter18.write(FormulafileB);
-                        outputWriter18.close();
-                        FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
-                        outputWriter16.write(KeywordsfileB);
-                        outputWriter16.close();
-
-
-                        String InputfileNameB = InputfileName0B.replace(" ","_");
-                        exec("cp "+getFilesDir()+"/BiBi_smilesB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".smi");
-                        exec("cp "+getFilesDir()+"/BiBi_iupacB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".iupac");
-                        exec("cp "+getFilesDir()+"/BiBi_formulaB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".formula");
-                        exec("chmod 755 -R "+getFilesDir());
-                        String ObabelOutputB = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameB+".smi -oxyz --gen3d");
-                        FileOutputStream fileout14 = openFileOutput(InputfileNameB+".xyz", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
-                        outputWriter14.write(ObabelOutputB);
-                        outputWriter14.close();
-                        String KeyB = MethodfileB+" "+KeywordsfileB;
-
-                        try {
-                            String Sed12 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameB+".xyz");
-                            FileOutputStream fileout118 = openFileOutput(InputfileNameB+".mop", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter118 = new OutputStreamWriter(fileout118);
-                            outputWriter118.write(KeyB);
-                            outputWriter118.write("\n");
-                            outputWriter118.write("\n");
-                            outputWriter118.write("\n");
-                            outputWriter118.write(Sed12);
-                            outputWriter118.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameB);
-                        exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
-                        exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-                        exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameB+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-                    /////////////////////////////////// C ///////////////////////////////////////////////
-                    String InputfileC = smiC.getText().toString();
-                    String InputfileName0C = iupacC.getText().toString();
-                    String MethodfileC = methodC.getText().toString();
-                    String KeywordsfileC = keywC.getText().toString();
-                    String FormulafileC = formulaC.getText().toString();
-
-                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
-                    outputWriter20.write(InputfileC);
-                    outputWriter20.close();
-                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
-                    outputWriter22.write(MethodfileC);
-                    outputWriter22.close();
-                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
-                    outputWriter23.write(InputfileName0C);
-                    outputWriter23.close();
-                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
-                    outputWriter28.write(FormulafileC);
-                    outputWriter28.close();
-                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
-                    outputWriter26.write(KeywordsfileC);
-                    outputWriter26.close();
-
-
-                    String InputfileNameC = InputfileName0C.replace(" ","_");
-                    exec("cp "+getFilesDir()+"/BiBi_smilesC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".smi");
-                    exec("cp "+getFilesDir()+"/BiBi_iupacC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".iupac");
-                    exec("cp "+getFilesDir()+"/BiBi_formulaC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".formula");
-                    exec("chmod 755 -R "+getFilesDir());
-                    String ObabelOutputC = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameC+".smi -oxyz --gen3d");
-                    FileOutputStream fileout24 = openFileOutput(InputfileNameC+".xyz", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter24 = new OutputStreamWriter(fileout24);
-                    outputWriter24.write(ObabelOutputC);
-                    outputWriter24.close();
-                    String KeyC = MethodfileC+" "+KeywordsfileC;
-
-                    try {
-                        String Sed22 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameC+".xyz");
-                        FileOutputStream fileout128 = openFileOutput(InputfileNameC+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter128 = new OutputStreamWriter(fileout128);
-                        outputWriter128.write(KeyC);
-                        outputWriter128.write("\n");
-                        outputWriter128.write("\n");
-                        outputWriter128.write("\n");
-                        outputWriter128.write(Sed22);
-                        outputWriter128.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameC);
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
-                    exec("mv "+getFilesDir()+"/"+InputfileNameC+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameC+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-                    /////////////////////////////////// D ///////////////////////////////////////////////
-                    String InputfileD = smiD.getText().toString();
-                    String InputfileName0D = iupacD.getText().toString();
-                    String MethodfileD = methodD.getText().toString();
-                    String KeywordsfileD = keywD.getText().toString();
-                    String FormulafileD = formulaD.getText().toString();
-
-                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
-                    outputWriter30.write(InputfileD);
-                    outputWriter30.close();
-                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
-                    outputWriter32.write(MethodfileD);
-                    outputWriter32.close();
-                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
-                    outputWriter33.write(InputfileName0D);
-                    outputWriter33.close();
-                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
-                    outputWriter38.write(FormulafileD);
-                    outputWriter38.close();
-                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
-                    outputWriter36.write(KeywordsfileD);
-                    outputWriter36.close();
-
-
-                    String InputfileNameD = InputfileName0D.replace(" ","_");
-                    exec("cp "+getFilesDir()+"/BiBi_smilesD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".smi");
-                    exec("cp "+getFilesDir()+"/BiBi_iupacD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".iupac");
-                    exec("cp "+getFilesDir()+"/BiBi_formulaD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".formula");
-                    exec("chmod 755 -R "+getFilesDir());
-                    String ObabelOutputD = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameD+".smi -oxyz --gen3d");
-                    FileOutputStream fileout34 = openFileOutput(InputfileNameD+".xyz", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter34 = new OutputStreamWriter(fileout34);
-                    outputWriter34.write(ObabelOutputD);
-                    outputWriter34.close();
-                    String KeyD = MethodfileD+" "+KeywordsfileD;
-
-                    try {
-                        String Sed32 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileNameD+".xyz");
-                        FileOutputStream fileout138 = openFileOutput(InputfileNameD+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter138 = new OutputStreamWriter(fileout138);
-                        outputWriter138.write(KeyD);
-                        outputWriter138.write("\n");
-                        outputWriter138.write("\n");
-                        outputWriter138.write("\n");
-                        outputWriter138.write(Sed32);
-                        outputWriter138.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameD);
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
-                    exec("mv "+getFilesDir()+"/"+InputfileNameD+".xyz "+getFilesDir()+File.separator+"openbabel/xyz");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameD+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-                    /////////////////////////////////// TS ///////////////////////////////////////////////
-                    String MethodfileTS = methodTS.getText().toString();
-                    String KeywordsfileTS = keywTS.getText().toString();
-
-                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
-                    outputWriter42.write(MethodfileTS);
-                    outputWriter42.close();
-                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
-                    outputWriter46.write(KeywordsfileTS);
-                    outputWriter46.close();
-
-
-                    String InputfileNameTS0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                    String InputfileNameTS = InputfileNameTS0+"_TS";
-                    exec("chmod 755 -R "+getFilesDir());
-                    String KeyTS = MethodfileTS+" "+KeywordsfileTS;
-
-                    try {
-                        String Sed42 = exec("sed -e 1,2d "+getFilesDir()+"/BiBi_TS.txt");
-                        FileOutputStream fileout148 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter148 = new OutputStreamWriter(fileout148);
-                        outputWriter148.write(KeyTS);
-                        outputWriter148.write("\n");
-                        outputWriter148.write("\n");
-                        outputWriter148.write("\n");
-                        outputWriter148.write(Sed42);
-                        outputWriter148.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameTS);
-                    exec("mv "+getFilesDir()+"/BiBi_TS.txt "+getFilesDir()+File.separator+"openbabel/xyz/"+InputfileNameTS+".xyz");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-                    /////////////////////////////////// Calculate A ///////////////////////////////////////////////
-
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameA+" "+getFilesDir()+"/"+InputfileNameA+".mop");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed10003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameA);
-                        String Sed10004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".arc");
-                        FileOutputStream fileout10009 = openFileOutput(InputfileNameA+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10009 = new OutputStreamWriter(fileout10009);
-                        outputWriter10009.write(Sed10004);
-                        outputWriter10009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameA+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed10005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".mops");
-                        FileOutputStream fileout10010 = openFileOutput(InputfileNameA+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10010 = new OutputStreamWriter(fileout10010);
-                        outputWriter10010.write("THERMO(298,298) LET "+Sed10003);
-                        outputWriter10010.write("\n");
-                        outputWriter10010.write("\n");
-                        outputWriter10010.write(Sed10005);
-                        outputWriter10010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameA+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameA+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameA+".arc");
-
-                        String Grep10002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameA+".out");
-                        FileOutputStream fileout10013 = openFileOutput(InputfileNameA+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10013 = new OutputStreamWriter(fileout10013);
-                        outputWriter10013.write(Grep10002);
-                        outputWriter10013.close();
-                        String Sed10006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameA+"_s.temp");
-                        String FormulaA = formulaA.getText().toString();
-                        String MethodA = methodA.getText().toString();
-                        FileOutputStream fileout10014 = openFileOutput(InputfileNameA+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter10014 = new OutputStreamWriter(fileout10014);
-                        outputWriter10014.write(InputfileNameA+" ");
-                        outputWriter10014.write(FormulaA+" ");
-                        outputWriter10014.write(MethodA+" ");
-                        outputWriter10014.write(Sed10006);
-                        outputWriter10014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameA+"_s.temp");
-
-                        String RawOutput_s = exec("cat "+getFilesDir()+"/"+InputfileNameA+"_s.txt");
-                        while (RawOutput_s.contains("  ")){  //2 spaces
-                            RawOutput_s = RawOutput_s.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout10016 = openFileOutput("thermo_s_R1.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10016 = new OutputStreamWriter(fileout10016);
-                        outputWriter10016.write(RawOutput_s);
-                        outputWriter10016.close();
-
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameA+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-
-                    /////////////////////////////////// Calculate B ///////////////////////////////////////////////
-
-
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameB+" "+getFilesDir()+"/"+InputfileNameB+".mop");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed11003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameB);
-                        String Sed11004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".arc");
-                        FileOutputStream fileout11009 = openFileOutput(InputfileNameB+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter11009 = new OutputStreamWriter(fileout11009);
-                        outputWriter11009.write(Sed11004);
-                        outputWriter11009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameB+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed11005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".mops");
-                        FileOutputStream fileout11010 = openFileOutput(InputfileNameB+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter11010 = new OutputStreamWriter(fileout11010);
-                        outputWriter11010.write("THERMO(298,298) LET "+Sed11003);
-                        outputWriter11010.write("\n");
-                        outputWriter11010.write("\n");
-                        outputWriter11010.write(Sed11005);
-                        outputWriter11010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameB+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".arc");
-
-                        String Grep11002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameB+".out");
-                        FileOutputStream fileout11013 = openFileOutput(InputfileNameB+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter11013 = new OutputStreamWriter(fileout11013);
-                        outputWriter11013.write(Grep11002);
-                        outputWriter11013.close();
-                        String Sed11006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameB+"_s.temp");
-                        String FormulaB = formulaB.getText().toString();
-                        String MethodB = methodB.getText().toString();
-                        FileOutputStream fileout11014 = openFileOutput(InputfileNameB+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter11014 = new OutputStreamWriter(fileout11014);
-                        outputWriter11014.write(InputfileNameB+" ");
-                        outputWriter11014.write(FormulaB+" ");
-                        outputWriter11014.write(MethodB+" ");
-                        outputWriter11014.write(Sed11006);
-                        outputWriter11014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameB+"_s.temp");
-
-                        String RawOutput_s2 = exec("cat "+getFilesDir()+"/"+InputfileNameB+"_s.txt");
-                        while (RawOutput_s2.contains("  ")){  //2 spaces
-                            RawOutput_s2 = RawOutput_s2.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout11016 = openFileOutput("thermo_s_R2.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter11016 = new OutputStreamWriter(fileout11016);
-                        outputWriter11016.write(RawOutput_s2);
-                        outputWriter11016.close();
-
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-
-                    /////////////////////////////////// Calculate C ///////////////////////////////////////////////
-
-
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameC+" "+getFilesDir()+"/"+InputfileNameC+".mop");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed12003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameC);
-                        String Sed12004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".arc");
-                        FileOutputStream fileout12009 = openFileOutput(InputfileNameC+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter12009 = new OutputStreamWriter(fileout12009);
-                        outputWriter12009.write(Sed12004);
-                        outputWriter12009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameC+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed12005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".mops");
-                        FileOutputStream fileout12010 = openFileOutput(InputfileNameC+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter12010 = new OutputStreamWriter(fileout12010);
-                        outputWriter12010.write("THERMO(298,298) LET "+Sed12003);
-                        outputWriter12010.write("\n");
-                        outputWriter12010.write("\n");
-                        outputWriter12010.write(Sed12005);
-                        outputWriter12010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameC+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".arc");
-
-                        String Grep12002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameC+".out");
-                        FileOutputStream fileout12013 = openFileOutput(InputfileNameC+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter12013 = new OutputStreamWriter(fileout12013);
-                        outputWriter12013.write(Grep12002);
-                        outputWriter12013.close();
-                        String Sed12006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameC+"_s.temp");
-                        String FormulaC = formulaC.getText().toString();
-                        String MethodC = methodC.getText().toString();
-                        FileOutputStream fileout12014 = openFileOutput(InputfileNameC+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter12014 = new OutputStreamWriter(fileout12014);
-                        outputWriter12014.write(InputfileNameC+" ");
-                        outputWriter12014.write(FormulaC+" ");
-                        outputWriter12014.write(MethodC+" ");
-                        outputWriter12014.write(Sed12006);
-                        outputWriter12014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameC+"_s.temp");
-
-                        String RawOutput_s2 = exec("cat "+getFilesDir()+"/"+InputfileNameC+"_s.txt");
-                        while (RawOutput_s2.contains("  ")){  //2 spaces
-                            RawOutput_s2 = RawOutput_s2.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout12016 = openFileOutput("thermo_s_P1.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter12016 = new OutputStreamWriter(fileout12016);
-                        outputWriter12016.write(RawOutput_s2);
-                        outputWriter12016.close();
-
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-
-                    /////////////////////////////////// Calculate D ///////////////////////////////////////////////
-
-
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameD+" "+getFilesDir()+"/"+InputfileNameD+".mop");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed13003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameD);
-                        String Sed13004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".arc");
-                        FileOutputStream fileout13009 = openFileOutput(InputfileNameD+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13009 = new OutputStreamWriter(fileout13009);
-                        outputWriter13009.write(Sed13004);
-                        outputWriter13009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameD+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed13005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".mops");
-                        FileOutputStream fileout13010 = openFileOutput(InputfileNameD+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13010 = new OutputStreamWriter(fileout13010);
-                        outputWriter13010.write("THERMO(298,298) LET "+Sed13003);
-                        outputWriter13010.write("\n");
-                        outputWriter13010.write("\n");
-                        outputWriter13010.write(Sed13005);
-                        outputWriter13010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameD+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".arc");
-
-                        String Grep13002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameD+".out");
-                        FileOutputStream fileout13013 = openFileOutput(InputfileNameD+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13013 = new OutputStreamWriter(fileout13013);
-                        outputWriter13013.write(Grep13002);
-                        outputWriter13013.close();
-                        String Sed13006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameD+"_s.temp");
-                        String FormulaD = formulaD.getText().toString();
-                        String MethodD = methodD.getText().toString();
-                        FileOutputStream fileout13014 = openFileOutput(InputfileNameD+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter13014 = new OutputStreamWriter(fileout13014);
-                        outputWriter13014.write(InputfileNameD+" ");
-                        outputWriter13014.write(FormulaD+" ");
-                        outputWriter13014.write(MethodD+" ");
-                        outputWriter13014.write(Sed13006);
-                        outputWriter13014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameD+"_s.temp");
-
-                        String RawOutput_s3 = exec("cat "+getFilesDir()+"/"+InputfileNameD+"_s.txt");
-                        while (RawOutput_s3.contains("  ")){  //2 spaces
-                            RawOutput_s3 = RawOutput_s3.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout13016 = openFileOutput("thermo_s_P2.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13016 = new OutputStreamWriter(fileout13016);
-                        outputWriter13016.write(RawOutput_s3);
-                        outputWriter13016.close();
-
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-
-                    /////////////////////////////////// Calculate TS ///////////////////////////////////////////////
-
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS+" "+getFilesDir()+"/"+InputfileNameTS+".mop");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed14003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS);
-                        String Sed14004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".arc");
-                        FileOutputStream fileout14009 = openFileOutput(InputfileNameTS+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14009 = new OutputStreamWriter(fileout14009);
-                        outputWriter14009.write(Sed14004);
-                        outputWriter14009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameTS+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed14005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
-                        FileOutputStream fileout14010 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14010 = new OutputStreamWriter(fileout14010);
-                        outputWriter14010.write("THERMO(298,298) LET "+Sed14003);
-                        outputWriter14010.write("\n");
-                        outputWriter14010.write("\n");
-                        outputWriter14010.write(Sed14005);
-                        outputWriter14010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameTS+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
-
-                        String Grep14002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        FileOutputStream fileout14013 = openFileOutput(InputfileNameTS+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14013 = new OutputStreamWriter(fileout14013);
-                        outputWriter14013.write(Grep14002);
-                        outputWriter14013.close();
-                        String Sed14006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
-                        String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                        String FormulaTS = DatasetName+"_TS";
-                        String MethodTS = methodTS.getText().toString();
-                        FileOutputStream fileout14014 = openFileOutput(InputfileNameTS+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter14014 = new OutputStreamWriter(fileout14014);
-                        outputWriter14014.write(InputfileNameTS+" ");
-                        outputWriter14014.write(FormulaTS+" ");
-                        outputWriter14014.write(MethodTS+" ");
-                        outputWriter14014.write(Sed14006);
-                        outputWriter14014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
-
-                        String RawOutput_s4 = exec("cat "+getFilesDir()+"/"+InputfileNameTS+"_s.txt");
-                        while (RawOutput_s4.contains("  ")){  //2 spaces
-                            RawOutput_s4 = RawOutput_s4.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout14016 = openFileOutput("thermo_s_TS.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14016 = new OutputStreamWriter(fileout14016);
-                        outputWriter14016.write(RawOutput_s4);
-                        outputWriter14016.close();
-
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-                    /////////////////////////////////// Process results ///////////////////////////////////////////////
-
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/BiBi.b "+getFilesDir()+"/BiBi.bas");
-                    exec("chmod -R 755 "+getFilesDir()+"/BiBi.b");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/BiBi.b");
-
-
-
-                    /////////////////////////////////// Export results ///////////////////////////////////////////////
-
-                    String DatasetName = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                    File filePathExt = new File(getFilesDir()+"/openbabel/kinetics");
-                        if (!filePathExt.exists()) {
-                            filePathExt.mkdirs();
-                        }
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_KINETICS.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_RATES.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SMS.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SS.txt");
+
+                            /////////////////////////////////// Calculate B ///////////////////////////////////////////////
+
+
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameB+" "+getFilesDir()+"/"+InputfileNameB+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed11003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameB);
+                                String Sed11004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".arc");
+                                FileOutputStream fileout11009 = openFileOutput(InputfileNameB+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter11009 = new OutputStreamWriter(fileout11009);
+                                outputWriter11009.write(Sed11004);
+                                outputWriter11009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameB+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed11005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".mops");
+                                FileOutputStream fileout11010 = openFileOutput(InputfileNameB+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter11010 = new OutputStreamWriter(fileout11010);
+                                outputWriter11010.write("THERMO(298,298) LET "+Sed11003);
+                                outputWriter11010.write("\n");
+                                outputWriter11010.write("\n");
+                                outputWriter11010.write(Sed11005);
+                                outputWriter11010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameB+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameB+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameB+".arc");
+
+                                String Grep11002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameB+".out");
+                                FileOutputStream fileout11013 = openFileOutput(InputfileNameB+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter11013 = new OutputStreamWriter(fileout11013);
+                                outputWriter11013.write(Grep11002);
+                                outputWriter11013.close();
+                                String Sed11006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameB+"_s.temp");
+                                String FormulaB = formulaB.getText().toString();
+                                String MethodB = methodB.getText().toString();
+                                FileOutputStream fileout11014 = openFileOutput(InputfileNameB+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter11014 = new OutputStreamWriter(fileout11014);
+                                outputWriter11014.write(InputfileNameB+" ");
+                                outputWriter11014.write(FormulaB+" ");
+                                outputWriter11014.write(MethodB+" ");
+                                outputWriter11014.write(Sed11006);
+                                outputWriter11014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameB+"_s.temp");
+
+                                String RawOutput_s2 = exec("cat "+getFilesDir()+"/"+InputfileNameB+"_s.txt");
+                                while (RawOutput_s2.contains("  ")){  //2 spaces
+                                    RawOutput_s2 = RawOutput_s2.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout11016 = openFileOutput("thermo_s_R2.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter11016 = new OutputStreamWriter(fileout11016);
+                                outputWriter11016.write(RawOutput_s2);
+                                outputWriter11016.close();
+
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameB+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+
+                            /////////////////////////////////// Calculate C ///////////////////////////////////////////////
+
+
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameC+" "+getFilesDir()+"/"+InputfileNameC+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed12003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameC);
+                                String Sed12004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".arc");
+                                FileOutputStream fileout12009 = openFileOutput(InputfileNameC+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter12009 = new OutputStreamWriter(fileout12009);
+                                outputWriter12009.write(Sed12004);
+                                outputWriter12009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameC+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed12005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".mops");
+                                FileOutputStream fileout12010 = openFileOutput(InputfileNameC+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter12010 = new OutputStreamWriter(fileout12010);
+                                outputWriter12010.write("THERMO(298,298) LET "+Sed12003);
+                                outputWriter12010.write("\n");
+                                outputWriter12010.write("\n");
+                                outputWriter12010.write(Sed12005);
+                                outputWriter12010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameC+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameC+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameC+".arc");
+
+                                String Grep12002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameC+".out");
+                                FileOutputStream fileout12013 = openFileOutput(InputfileNameC+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter12013 = new OutputStreamWriter(fileout12013);
+                                outputWriter12013.write(Grep12002);
+                                outputWriter12013.close();
+                                String Sed12006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameC+"_s.temp");
+                                String FormulaC = formulaC.getText().toString();
+                                String MethodC = methodC.getText().toString();
+                                FileOutputStream fileout12014 = openFileOutput(InputfileNameC+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter12014 = new OutputStreamWriter(fileout12014);
+                                outputWriter12014.write(InputfileNameC+" ");
+                                outputWriter12014.write(FormulaC+" ");
+                                outputWriter12014.write(MethodC+" ");
+                                outputWriter12014.write(Sed12006);
+                                outputWriter12014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameC+"_s.temp");
+
+                                String RawOutput_s2 = exec("cat "+getFilesDir()+"/"+InputfileNameC+"_s.txt");
+                                while (RawOutput_s2.contains("  ")){  //2 spaces
+                                    RawOutput_s2 = RawOutput_s2.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout12016 = openFileOutput("thermo_s_P1.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter12016 = new OutputStreamWriter(fileout12016);
+                                outputWriter12016.write(RawOutput_s2);
+                                outputWriter12016.close();
+
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameC+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+
+                            /////////////////////////////////// Calculate D ///////////////////////////////////////////////
+
+
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameD+" "+getFilesDir()+"/"+InputfileNameD+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed13003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameD);
+                                String Sed13004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".arc");
+                                FileOutputStream fileout13009 = openFileOutput(InputfileNameD+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13009 = new OutputStreamWriter(fileout13009);
+                                outputWriter13009.write(Sed13004);
+                                outputWriter13009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameD+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed13005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".mops");
+                                FileOutputStream fileout13010 = openFileOutput(InputfileNameD+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13010 = new OutputStreamWriter(fileout13010);
+                                outputWriter13010.write("THERMO(298,298) LET "+Sed13003);
+                                outputWriter13010.write("\n");
+                                outputWriter13010.write("\n");
+                                outputWriter13010.write(Sed13005);
+                                outputWriter13010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameD+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameD+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameD+".arc");
+
+                                String Grep13002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameD+".out");
+                                FileOutputStream fileout13013 = openFileOutput(InputfileNameD+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13013 = new OutputStreamWriter(fileout13013);
+                                outputWriter13013.write(Grep13002);
+                                outputWriter13013.close();
+                                String Sed13006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameD+"_s.temp");
+                                String FormulaD = formulaD.getText().toString();
+                                String MethodD = methodD.getText().toString();
+                                FileOutputStream fileout13014 = openFileOutput(InputfileNameD+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter13014 = new OutputStreamWriter(fileout13014);
+                                outputWriter13014.write(InputfileNameD+" ");
+                                outputWriter13014.write(FormulaD+" ");
+                                outputWriter13014.write(MethodD+" ");
+                                outputWriter13014.write(Sed13006);
+                                outputWriter13014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameD+"_s.temp");
+
+                                String RawOutput_s3 = exec("cat "+getFilesDir()+"/"+InputfileNameD+"_s.txt");
+                                while (RawOutput_s3.contains("  ")){  //2 spaces
+                                    RawOutput_s3 = RawOutput_s3.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout13016 = openFileOutput("thermo_s_P2.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13016 = new OutputStreamWriter(fileout13016);
+                                outputWriter13016.write(RawOutput_s3);
+                                outputWriter13016.close();
+
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameD+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+
+                            /////////////////////////////////// Calculate TS ///////////////////////////////////////////////
+
+
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS+" "+getFilesDir()+"/"+InputfileNameTS+".mop");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed14003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS);
+                                String Sed14004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".arc");
+                                FileOutputStream fileout14009 = openFileOutput(InputfileNameTS+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14009 = new OutputStreamWriter(fileout14009);
+                                outputWriter14009.write(Sed14004);
+                                outputWriter14009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameTS+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed14005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
+                                FileOutputStream fileout14010 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14010 = new OutputStreamWriter(fileout14010);
+                                outputWriter14010.write("THERMO(298,298) LET "+Sed14003);
+                                outputWriter14010.write("\n");
+                                outputWriter14010.write("\n");
+                                outputWriter14010.write(Sed14005);
+                                outputWriter14010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameTS+".mops");
+                                try {
+                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
+
+                                String Grep14002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                FileOutputStream fileout14013 = openFileOutput(InputfileNameTS+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14013 = new OutputStreamWriter(fileout14013);
+                                outputWriter14013.write(Grep14002);
+                                outputWriter14013.close();
+                                String Sed14006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
+                                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                                String DatasetName1 = DatasetName0.replace(" ","_");
+                                String DatasetName = DatasetName1.replace(",",".");
+                                String FormulaTS = DatasetName+"_TS";
+                                String MethodTS = methodTS.getText().toString();
+                                FileOutputStream fileout14014 = openFileOutput(InputfileNameTS+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter14014 = new OutputStreamWriter(fileout14014);
+                                outputWriter14014.write(InputfileNameTS+" ");
+                                outputWriter14014.write(FormulaTS+" ");
+                                outputWriter14014.write(MethodTS+" ");
+                                outputWriter14014.write(Sed14006);
+                                outputWriter14014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
+
+                                String RawOutput_s4 = exec("cat "+getFilesDir()+"/"+InputfileNameTS+"_s.txt");
+                                while (RawOutput_s4.contains("  ")){  //2 spaces
+                                    RawOutput_s4 = RawOutput_s4.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout14016 = openFileOutput("thermo_s_TS.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14016 = new OutputStreamWriter(fileout14016);
+                                outputWriter14016.write(RawOutput_s4);
+                                outputWriter14016.close();
+
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                            /////////////////////////////////// Process results ///////////////////////////////////////////////
+
+                            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/BiBi.b "+getFilesDir()+"/BiBi.bas");
+                            exec("chmod -R 755 "+getFilesDir()+"/BiBi.b");
+                            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/BiBi.b");
+
+
+
+                            /////////////////////////////////// Export results ///////////////////////////////////////////////
+
+                            String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                            String DatasetName1 = DatasetName0.replace(" ","_");
+                            String DatasetName = DatasetName1.replace(",",".");
+                            File filePathExt = new File(getFilesDir()+"/openbabel/kinetics");
+                            if (!filePathExt.exists()) {
+                                filePathExt.mkdirs();
+                            }
+
+                            String Dataset = DatasetName;
+
+                            exec("cp "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/thermo_s_RATES_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/thermo_s_SS_0.txt");
+
+                            String R = exec("cat "+getFilesDir()+"/thermo_s_RATES_0.txt");
+                            R = R.replace("[H2O]", "H2O");
+                            R = R.replace("[H+]+", "H+");
+                            R = R.replace("[OH-]-", "OH-");
+                            FileOutputStream R_stream = openFileOutput("thermo_s_RATES_w.txt", MODE_PRIVATE);
+                            OutputStreamWriter R_writer = new OutputStreamWriter(R_stream);
+                            R_writer.write(R);
+                            R_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_RATES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_RATES_0.txt");
+
+                            String K = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+                            K = K.replace("[H2O]", "H2O");
+                            K = K.replace("[H+]+", "H+");
+                            K = K.replace("[OH-]-", "OH-");
+                            FileOutputStream K_stream = openFileOutput("thermo_s_KINETICS_w.txt", MODE_PRIVATE);
+                            OutputStreamWriter K_writer = new OutputStreamWriter(K_stream);
+                            K_writer.write(K);
+                            K_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_KINETICS_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_KINETICS_0.txt");
+
+                            String SMS = exec("cat "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                            SMS = SMS.replace("[H2O]\t[H2O]\t0\t[H2O]\t1", "");
+                            SMS = SMS.replace("[H+]\t[H+]+\t0\t[H+]\t1", "");
+                            SMS = SMS.replace("[OH-]\t[OH-]-\t0\t[OH-]\t1", "");
+                            FileOutputStream SMS_stream = openFileOutput("thermo_s_SMS_w.txt", MODE_PRIVATE);
+                            OutputStreamWriter SMS_writer = new OutputStreamWriter(SMS_stream);
+                            SMS_writer.write(SMS);
+                            SMS_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_SMS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_MASTER_SPECIES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_SMS_0.txt");
+
+                            String SS = exec("cat "+getFilesDir()+"/thermo_s_SS_0.txt");
+                            SS = SS.replace("[H2O] = [H2O]", "");
+                            SS = SS.replace("[H+]+ = [H+]+", "");
+                            SS = SS.replace("[OH-]- = [OH-]-", "");
+                            FileOutputStream SS_stream = openFileOutput("thermo_s_SS_w.txt", MODE_PRIVATE);
+                            OutputStreamWriter SS_writer = new OutputStreamWriter(SS_stream);
+                            SS_writer.write(SS);
+                            SS_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_SS_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_SPECIES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_SS_0.txt");
+
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_KINETICS_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_RATES_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_MASTER_SPECIES_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_SPECIES_anhydr.txt");
 
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
@@ -1229,70 +2112,71 @@ public class KineticsBiBi extends MainActivity {
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+getFilesDir()+File.separator+"output");
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+getFilesDir()+File.separator+"output");
 
-                    /////////////////////////////////// Display fields ///////////////////////////////////////////////
+                            /////////////////////////////////// Display fields ///////////////////////////////////////////////
 
-                    MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
-                    MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
-                    MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
-                    MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
-                    MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
-                    KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
-                    KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
-                    KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
-                    KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
-                    KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
-                    IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
-                    IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
-                    IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
-                    IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
-                    FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
-                    FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
-                    FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
-                    FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
-                    SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
-                    SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
-                    SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
-                    SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+                            MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                            MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                            MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                            MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                            KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                            KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                            KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                            KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                            IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                            IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                            IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                            IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                            FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                            FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                            FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                            FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                            SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                            SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                            SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                            SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
 
-                    File filePathTS = new File(getFilesDir()+File.separator+"BiBi_TS.txt");
-                    if (!filePathTS.exists()) {
-                        try {
-                            FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
-                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                            outputWriterTS.write("Transition state XYZ coordinate file not selected.");
-                            outputWriterTS.close();
+                            File filePathTS = new File(getFilesDir()+File.separator+"BiBi_TS.txt");
+                            if (!filePathTS.exists()) {
+                                try {
+                                    FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                                    outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                                    outputWriterTS.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                                    outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                                    outputWriterTS.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+
+
                         } catch (Exception e) {
-                            e.printStackTrace();
                         }
-                    } else {
-                        try {
-                            FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
-                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
-                            outputWriterTS.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
+//here:
+                        Intent intent = new Intent(KineticsBiBi.this, ResumeActivityKin.class);
+                        startActivity(intent);
+                        onFinish();
                     }
+                    public void onFinish(){
+                        progressDialog.dismiss();
+                    }
+                }.start();
 
-                    TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
-
-
-                } catch (Exception e) {
-                }
-
-
-
-//                        onFinish();
-//                    }
-//                    public void onFinish(){
-//                        progressDialog.dismiss();
-//                    }
-//                }.start();
-
-
-                Intent intent = new Intent(KineticsBiBi.this, ResumeActivityKin.class);
-                startActivity(intent);
+//not here:
+//                Intent intent = new Intent(KineticsBiBi.this, ResumeActivityKin.class);
+//                startActivity(intent);
             }
         };
     }

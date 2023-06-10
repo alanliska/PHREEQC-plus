@@ -168,7 +168,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="Highlight the output" />
-
+        <Button
+            android:id="@+id/manual_fastchem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="OFFICIAL FASTCHEM MANUAL" />
         <Button
             android:id="@+id/quit"
             android:layout_width="match_parent"
