@@ -7,14 +7,14 @@ android {
             useLegacyPackaging = true
         }
     }
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "cz.p"
-        minSdk 24
-        targetSdk 33
-        versionCode 29
-        versionName '3.0'
+        minSdk 23
+        targetSdk 34
+        versionCode 32
+        versionName '3.1.3'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,74 +31,74 @@ android {
 //            resources.srcDirs = ['src/main/resources']
         }
     }
-    flavorDimensions "abi"
-    productFlavors {
-        /* removed in NDK r18
-        arm {
-            dimension "abi"
-            ndk {
-                abiFilters "armeabi"
-            }
-            versionCode computeVersionCode(1)
-            versionName computeVersionName("arm")
-        }*/
-        arm7 {
-            dimension "abi"
-            /* in NDK r18 minimal available platform is API 16
-            // Remark: in emulator native commands crash if build is for "armeabi-v7a"
-            // but work fine with "armeabi". Version 16(JELLY_BEAN) is lowest that
-            // work fine with "armeabi-v7a".
-            minSdkVersion 16
-            */
-            ndk {
-                abiFilters "armeabi-v7a"
-            }
-//            versionCode computeVersionCode(2)
-//            versionName computeVersionName("arm7")
-        }
-        i686 {
-            dimension "abi"
-            ndk {
-                abiFilters "x86"
-            }
-//            versionCode computeVersionCode(3)
-//            versionName computeVersionName("i686")
-        }
+//    flavorDimensions "abi"
+//    productFlavors {
 //        /* removed in NDK r18
-//        mips {
+//        arm {
 //            dimension "abi"
 //            ndk {
-//                abiFilters "mips"
+//                abiFilters "armeabi"
 //            }
-//            versionCode computeVersionCode(4)
-//            versionName computeVersionName("mips")
+//            versionCode computeVersionCode(1)
+//            versionName computeVersionName("arm")
 //        }*/
-        arm8 {
-            dimension "abi"
-            ndk {
-                abiFilters "arm64-v8a"
-            }
-//            versionCode computeVersionCode(5)
-//            versionName computeVersionName("arm8")
-        }
-        x86_64 {
-            dimension "abi"
-            ndk {
-                abiFilters "x86_64"
-            }
-//            versionCode computeVersionCode(6)
-//            versionName computeVersionName("x86_64")
-        }
-//        /* removed in NDK r18
-//        mips64 {
+//        arm7 {
+//            dimension "abi"
+//            /* in NDK r18 minimal available platform is API 16
+//            // Remark: in emulator native commands crash if build is for "armeabi-v7a"
+//            // but work fine with "armeabi". Version 16(JELLY_BEAN) is lowest that
+//            // work fine with "armeabi-v7a".
+//            minSdkVersion 16
+//            */
+//            ndk {
+//                abiFilters "armeabi-v7a"
+//            }
+////            versionCode computeVersionCode(2)
+////            versionName computeVersionName("arm7")
+//        }
+//        i686 {
 //            dimension "abi"
 //            ndk {
-//                abiFilters "mips64"
+//                abiFilters "x86"
 //            }
-//            versionCode computeVersionCode(7)
-//            versionName computeVersionName("mips64")
-//        }*/
-    }
+////            versionCode computeVersionCode(3)
+////            versionName computeVersionName("i686")
+//        }
+////        /* removed in NDK r18
+////        mips {
+////            dimension "abi"
+////            ndk {
+////                abiFilters "mips"
+////            }
+////            versionCode computeVersionCode(4)
+////            versionName computeVersionName("mips")
+////        }*/
+//        arm8 {
+//            dimension "abi"
+//            ndk {
+//                abiFilters "arm64-v8a"
+//            }
+////            versionCode computeVersionCode(5)
+////            versionName computeVersionName("arm8")
+//        }
+//        x86_64 {
+//            dimension "abi"
+//            ndk {
+//                abiFilters "x86_64"
+//            }
+////            versionCode computeVersionCode(6)
+////            versionName computeVersionName("x86_64")
+//        }
+////        /* removed in NDK r18
+////        mips64 {
+////            dimension "abi"
+////            ndk {
+////                abiFilters "mips64"
+////            }
+////            versionCode computeVersionCode(7)
+////            versionName computeVersionName("mips64")
+////        }*/
+//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

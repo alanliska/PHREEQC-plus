@@ -29,11 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-ANDROID-SHELL" />
+
         <Button
             android:id="@+id/license_arpack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-ARPACK" />
+
         <!---
         <Button
             android:id="@+id/license_busybox1"
@@ -63,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-CHEMSOL" />
+
         <Button
             android:id="@+id/lt_dftb"
             android:layout_width="match_parent"
@@ -73,6 +76,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-DFTB+" />
+
+        <Button
+            android:id="@+id/license1_dftd4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-DFTD4" />
+        <Button
+            android:id="@+id/license2_dftd4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-DFTD4" />
+        <!---
+        <Button
+            android:id="@+id/license_docsxtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-DOCS-XTB" />
+            -->
         <Button
             android:id="@+id/license2"
             android:layout_width="match_parent"
@@ -85,6 +106,11 @@
             android:layout_height="wrap_content"
             android:text="LICENSE-FFTW" />
             -->
+        <Button
+            android:id="@+id/license_gbsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-GBSA-PARAMETERS" />
         <Button
             android:id="@+id/license3"
             android:layout_width="match_parent"
@@ -105,6 +131,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-LAPACK" />
+        <Button
+            android:id="@+id/license_mctc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MCTC-LIB" />
         <!---
         <Button
             android:id="@+id/license13"
@@ -123,6 +154,16 @@
             android:layout_height="wrap_content"
             android:text="LICENSE-MOPAC" />
         <Button
+            android:id="@+id/license_mstore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MSTORE" />
+        <Button
+            android:id="@+id/license_multicharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MULTICHARGE" />
+        <Button
             android:id="@+id/license7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,6 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-OPSIN" />
+
         <Button
             android:id="@+id/lt_sk"
             android:layout_width="match_parent"
@@ -147,11 +189,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-SLATER-KOSTER-FILES" />
+
         <Button
             android:id="@+id/license8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSING TERMS-PHREEQC" />
+        <Button
+            android:id="@+id/license1_plotms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-PLOTMS" />
+        <Button
+            android:id="@+id/license2_plotms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-PLOTMS" />
+        <Button
+            android:id="@+id/license_python"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-PYTHON" />
+        <Button
+            android:id="@+id/license1_qcxms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-QCXMS" />
+        <Button
+            android:id="@+id/license2_qcxms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-QCXMS" />
+        <Button
+            android:id="@+id/license1_sdftd3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-S-DFTD3" />
+        <Button
+            android:id="@+id/license2_sdftd3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-S-DFTD3" />
+        <Button
+            android:id="@+id/license1_stda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-STDA" />
+        <Button
+            android:id="@+id/license2_stda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-STDA" />
+        <Button
+            android:id="@+id/license1_tblite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-TBLITE" />
+        <Button
+            android:id="@+id/license2_tblite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-TBLITE" />
+        <Button
+            android:id="@+id/license1_testdrive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-TEST-DRIVE" />
+        <Button
+            android:id="@+id/license2_testdrive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-TEST-DRIVE" />
+        <Button
+            android:id="@+id/license1_tomlf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-TOML-F" />
+        <Button
+            android:id="@+id/license2_tomlf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-TOML-F" />
         <Button
             android:id="@+id/license9"
             android:layout_width="match_parent"
@@ -167,6 +285,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSING TERMS-X11-BASIC" />
+        <Button
+            android:id="@+id/license1_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-XTB" />
+        <Button
+            android:id="@+id/license2_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-XTB" />
+        <Button
+            android:id="@+id/license1_xtb4stda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-XTB4STDA" />
+        <Button
+            android:id="@+id/license2_xtb4stda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-XTB4STDA" />
         <Button
             android:id="@+id/quit"
             android:layout_width="match_parent"

@@ -154,7 +154,7 @@
             android:id="@+id/Shell0Label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Execute custom single shell command:"
+            android:text="Execute custom single command (without shell, without modification):"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Shell0"
@@ -179,7 +179,7 @@
             android:id="@+id/ShellLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Execute custom (complex) shell command:"
+            android:text="Execute custom command in frame of Android shell (the binaries are called by their names without lib- and -.so, they are renamed automatically when at least one space before and after the name is present - e.g. command ' xtb ' is translated as full path of libxtb.so in the Android filesystem; available executables are buildwire, chemsol, dftb, fastchem, flux, makecube, modes, mopac, obabel, phonons, phreeqc, phreeqc-prepare, plotms, qcxms, setupgeom, stda, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda):"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Shell"
@@ -204,7 +204,7 @@
             android:id="@+id/NativeLibLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Path to the available binaries (call them as libdftb.so, libfastchem.so, libchemsol.so, libmopac.so, libobabel.so, libphreeqc.so, libphreeqc-prepare.so, libtranspose.so, libxbbc.so, libxbvm.so):"
+            android:text="Path to the available built-in executables (lib[NAME].so for convention):"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/NativeLibPath"

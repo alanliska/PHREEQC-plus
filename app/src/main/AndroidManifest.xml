@@ -175,10 +175,16 @@
         <activity android:name="cz.p.Cp2k1SelectRefs" />
         <activity android:name="cz.p.Cp2k1SelectRefss" />
         -->
+
         <activity android:name="cz.p.Dftb" />
         <activity android:name="cz.p.DftbWork" />
+        <activity android:name="cz.p.DftbWork1" />
         <activity android:name="cz.p.ManualDftb" />
         <activity android:name="cz.p.ManualDftbRecipes" />
+        <activity android:name="cz.p.ManualModes" />
+        <activity android:name="cz.p.DftbCommand" />
+        <activity android:name="cz.p.SpectrumDftb" />
+        <!---
         <activity android:name="cz.p.Dftb1" />
         <activity android:name="cz.p.CompgDftb" />
         <activity android:name="cz.p.CompsDftb" />
@@ -193,11 +199,38 @@
         <activity android:name="cz.p.Dftb1SelectRefg" />
         <activity android:name="cz.p.Dftb1SelectRefs" />
         <activity android:name="cz.p.Dftb1SelectRefss" />
+        -->
         <activity android:name="cz.p.Graph" />
         <activity android:name="cz.p.Scatter" />
+        <!---
         <activity android:name="cz.p.SpectrumDFTB" />
+        -->
         <activity android:name="cz.p.SpectrumMOPAC" />
+        <!---
         <activity android:name="cz.p.XBasic13" />
+        -->
         <activity android:name="cz.p.XBasic14" />
+        <activity android:name="cz.p.Xtb" />
+        <activity android:name="cz.p.Xtb1" />
+        <activity android:name="cz.p.XtbWork" />
+        <activity android:name="cz.p.XtbWork1" />
+        <activity android:name="cz.p.XtbCommand" />
+        <activity android:name="cz.p.ManualXtb" />
+        <activity android:name="cz.p.ManualStda" />
+        <activity android:name="cz.p.SolmakerXtb" />
+        <activity android:name="cz.p.GasmakerXtb" />
+        <activity android:name="cz.p.SSolmakerXtb" />
+        <activity android:name="cz.p.RefsXtb" />
+        <activity android:name="cz.p.RefgXtb" />
+        <activity android:name="cz.p.RefssXtb" />
+        <activity android:name="cz.p.CompsXtb" />
+        <activity android:name="cz.p.CompgXtb" />
+        <activity android:name="cz.p.CompssXtb" />
+        <activity android:name="cz.p.Xtb1SelectRef" />
+        <activity android:name="cz.p.Xtb1SelectRefg" />
+        <activity android:name="cz.p.Xtb1SelectRefs" />
+        <activity android:name="cz.p.Xtb1SelectRefss" />
+        <activity android:name="cz.p.SpectrumXTB" />
+        <activity android:name="cz.p.ProcessXtb" />
     </application>
 </manifest>

@@ -580,6 +580,7 @@
             android:layout_height="wrap_content"
             android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
 -->
+        <!---
         <TextView
             android:id="@+id/label38"
             android:layout_width="fill_parent"
@@ -605,6 +606,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+            -->
 
         <TextView
             android:id="@+id/label40"
@@ -615,6 +617,71 @@
 
         <Button
             android:id="@+id/references"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label41"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/xtb"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label42"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/xtb_commands"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xtb_commands"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label43"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/xtb_work"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xtb_work"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label44"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/xtb_comm"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xtb_comm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />
+
+        <TextView
+            android:id="@+id/label45"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n/data/data/cz.p/files/output/xtb_solv"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <Button
+            android:id="@+id/xtb_solv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DELETE FILE FROM THE SPECIFIED FOLDER" />

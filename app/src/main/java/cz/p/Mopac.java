@@ -524,6 +524,15 @@ public class Mopac extends MainActivity {
         saveExtInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write1(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
             }
@@ -535,6 +544,15 @@ public class Mopac extends MainActivity {
         saveExtOutputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write2(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
             }

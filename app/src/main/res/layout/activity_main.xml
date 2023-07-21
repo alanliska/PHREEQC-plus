@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
-
+<!---
         <TextView
             android:id="@+id/label_dftb_all"
             android:layout_width="fill_parent"
@@ -93,6 +93,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#CDE0FF"
             android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+-->
 <!---
         <TextView
             android:id="@+id/label_cp2k_all"
@@ -108,6 +109,20 @@
             android:backgroundTint="#CDEFFF"
             android:text="PREPARE PHREEQC DATASHEET FROM SMILES" />
 -->
+        <TextView
+            android:id="@+id/label_xtb_all"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n(d) XTB calculation = geometry optimization in vacuum + solvent (various models available)"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_xtb_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#CDE0FF"
+            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+
         <TextView
             android:id="@+id/label100"
             android:layout_width="fill_parent"
@@ -249,6 +264,7 @@
             android:backgroundTint="#AFC107"
             android:text="*** CP2K ***" />
 -->
+
         <Button
             android:id="@+id/start_dftb"
             android:layout_width="match_parent"
@@ -256,12 +272,20 @@
             android:backgroundTint="#FFC107"
             android:text="*** DFTB ***" />
 
+
         <Button
             android:id="@+id/start_mopac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFC107"
             android:text="*** MOPAC ***" />
+
+        <Button
+            android:id="@+id/start_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="*** XTB ***" />
 
         <Button
             android:id="@+id/start_chemsol"

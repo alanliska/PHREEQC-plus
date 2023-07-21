@@ -360,9 +360,9 @@ public class Scatter extends Phreeqc {
         }
 
         scatter.getViewport().setScalable(true);  // activate horizontal zooming and scrolling
-//        scatter.getViewport().setScrollable(true);  // activate horizontal scrolling
+        scatter.getViewport().setScrollable(true);  // activate horizontal scrolling
         scatter.getViewport().setScalableY(true);  // activate horizontal and vertical zooming and scrolling
-//        scatter.getViewport().setScrollableY(true);  // activate vertical scrolling
+        scatter.getViewport().setScrollableY(true);  // activate vertical scrolling
 
     }
 

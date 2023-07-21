@@ -1710,13 +1710,64 @@ public class Chemsol1 extends MainActivity {
 
         quit_click = new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    exec("rm -rf "+getFilesDir()+File.separator+"openbabel");
-                    exec("mkdir "+getFilesDir()+File.separator+"openbabel");
-                } catch (Exception e) {
-                    e.printStackTrace();
+//                try {
+//                //                     problematic, after that, new calculations do not terminate properly
+//                exec("rm -rf "+getFilesDir()+"/openbabel");
+//                exec("mkdir "+getFilesDir()+"/openbabel");
+//                exec("mkdir "+getFilesDir()+"/openbabel/formula");
+//                exec("mkdir "+getFilesDir()+"/openbabel/gas");
+//                exec("mkdir "+getFilesDir()+"/openbabel/gas/opt");
+//                exec("mkdir "+getFilesDir()+"/openbabel/gas/opt/results");
+//                exec("mkdir "+getFilesDir()+"/openbabel/gas/thermo");
+//                exec("mkdir "+getFilesDir()+"/openbabel/gas/thermo/results");
+//                exec("mkdir "+getFilesDir()+"/openbabel/iupac");
+//                exec("mkdir "+getFilesDir()+"/openbabel/smiles");
+//                exec("mkdir "+getFilesDir()+"/openbabel/solv");
+//                exec("mkdir "+getFilesDir()+"/openbabel/solv/opt");
+//                exec("mkdir "+getFilesDir()+"/openbabel/solv/opt/results");
+//                exec("mkdir "+getFilesDir()+"/openbabel/solv/thermo");
+//                exec("mkdir "+getFilesDir()+"/openbabel/solv/thermo/results");
+//                exec("mkdir "+getFilesDir()+"/openbabel/xyz");
+//                exec("mkdir "+getFilesDir()+"/openbabel/formula");
+//                exec("mkdir "+getFilesDir()+"/openbabel/xtb_comm");
+//                exec("mkdir "+getFilesDir()+"/openbabel/xtb_solv");
+//                exec("chmod 755 -R "+getFilesDir()+"/openbabel");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+
+                File[] files_gas = new File(getFilesDir()+"/openbabel/gas/opt").listFiles();
+                for (File file : files_gas) {
+                    if (!file.isFile()) continue;
+
+                    try{
+                        String InputfileName = file.getName();
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/formula/"+InputfileName+".formula");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/smiles/"+InputfileName+".smi");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/xyz/"+InputfileName+".xyz");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/iupac/"+InputfileName+".iupac");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
+
+                File[] files_solv = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
+                for (File file : files_solv) {
+                    if (!file.isFile()) continue;
+
+                    try{
+                        String InputfileName = file.getName();
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/formula/"+InputfileName+".formula");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/smiles/"+InputfileName+".smi");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/xyz/"+InputfileName+".xyz");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/iupac/"+InputfileName+".iupac");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 // TODO Auto-generated method stub //
                 openbabel_exit_click();
             }

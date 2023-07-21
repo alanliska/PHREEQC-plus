@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ContentLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Content of the HOME directory /data/data/cz.p/files/xtb:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/CommandLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Available programs are obabel, plotms, qcxms, stda, xbbc, xbvm, xtb, xtb4stda (with at least one blank space behind).\n\nFull command to be executed:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Command"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/openCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL COMMAND" />
+        <Button
+            android:id="@+id/openIntCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD INTERNAL COMMAND" />
+        <Button
+            android:id="@+id/saveCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO EXTERNAL STORAGE" />
+
+        <TextView
+            android:id="@+id/InLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nInput file (saved as /data/data/cz.p/files/xtb/Input-xtb.txt):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/InFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/openInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/openIntInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/saveInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
+
+
+        <TextView
+            android:id="@+id/InputLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCoordinate file (saved as /data/data/cz.p/files/xtb/Input-xtb.xyz):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/InputFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/openInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL COORDINATE FILE" />
+        <Button
+            android:id="@+id/openIntInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL COORDINATE FILE" />
+        <Button
+            android:id="@+id/saveInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COORDINATE FILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COORDINATE FILE TO EXTERNAL STORAGE" />
+
+        <Button
+            android:id="@+id/generateXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM SMILES" />
+
+        <Button
+            android:id="@+id/opsinXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
+        <!--
+        <Button
+            android:id="@+id/saveFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUT AS INPUT.TXT WITHOUT EXECUTION" />
+        -->
+        <Button
+            android:id="@+id/RunProgram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="SAVE THE INPUT AND RUN COMMAND" />
+        <Button
+            android:id="@+id/saveOutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtOutputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE OUTPUTFILE TO EXTERNAL STORAGE" />
+
+        <Button
+            android:id="@+id/Highlight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFEB3B"
+            android:text="Highlight the output" />
+
+        <Button
+            android:id="@+id/manual_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="XTB / QCxMS MANUAL" />
+        <Button
+            android:id="@+id/manual_stda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="STDA MANUAL" />
+
+        <Button
+            android:id="@+id/Graph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FF50"
+            android:text="PLOT CUSTOM LINE GRAPH" />
+
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+        <TextView
+            android:id="@+id/textViewX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n Program output: \n "
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorLink="#F5F5F5"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/outputView"
+            android:textIsSelectable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="false"
+            android:textColor="@android:color/holo_red_dark"></TextView>
+
+        <EditText
+            android:id="@+id/outputView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"></EditText>
+    </LinearLayout>
+</ScrollView>

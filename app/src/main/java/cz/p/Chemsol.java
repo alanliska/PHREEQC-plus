@@ -283,6 +283,15 @@ public class Chemsol extends MainActivity {
         saveExtInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = ChemsolInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-chemsol.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write1(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-chemsol.txt"));
             }
@@ -294,6 +303,15 @@ public class Chemsol extends MainActivity {
         saveExtOutputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = ChemsolInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-chemsol.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write2(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-chemsol.txt"));
             }

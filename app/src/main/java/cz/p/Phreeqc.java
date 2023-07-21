@@ -1622,6 +1622,15 @@ public class Phreeqc extends MainActivity {
         saveExtInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = PhreeqcInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write1(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                 output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
@@ -1645,6 +1654,15 @@ public class Phreeqc extends MainActivity {
         saveExtOutputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = PhreeqcInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write2(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
                 output4(exec("cat "+getFilesDir()+"/Keywords.phr"));

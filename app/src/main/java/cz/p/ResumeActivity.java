@@ -82,6 +82,8 @@ public class ResumeActivity extends MainActivity {
                 moveCryst();
                 moveLiq();
                 cleanDummyDatasets();
+                moveXtbComm();
+                moveXtbSolv();
 //                goBack();
 
                                         onFinish();
@@ -95,6 +97,44 @@ public class ResumeActivity extends MainActivity {
             }
 //        };
 //    }
+
+    public void moveXtbComm()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/xtb_comm").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()){
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/xtb_comm/"+fileName+" "+getFilesDir()+"/output/xtb_comm");
+//            Toast.makeText(getApplicationContext(), "Moving file: "+getFilesDir()+"/openbabel/formula/"+fileName, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                }
+
+            }
+        }
+    }
+
+    public void moveXtbSolv()
+    {
+        File[] inputfiles = new File(getFilesDir()+"/openbabel/xtb_solv").listFiles();
+        for (File file : inputfiles) {
+            if (!file.isFile()){
+                // do nothing
+            } else {
+
+                try {
+                    String fileName = file.getName();
+                    exec("mv "+getFilesDir()+"/openbabel/xtb_solv/"+fileName+" "+getFilesDir()+"/output/xtb_solv");
+//            Toast.makeText(getApplicationContext(), "Moving file: "+getFilesDir()+"/openbabel/formula/"+fileName, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                }
+
+            }
+        }
+    }
 
     public void moveFormula()
     {

@@ -12,21 +12,35 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/Description"
+            android:id="@+id/ContentLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="This panel is devoted to DFTB calculation."
-            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
-
-        <TextView
-            android:id="@+id/DftbLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="\nCP2K input file:"
+            android:text="Content of the HOME directory /data/data/cz.p/files/dftb:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
-            android:id="@+id/DftbInput"
+            android:id="@+id/Content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textIsSelectable="true"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/CommandLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Available programs are buildwire, dftb, flux, makecube, modes, obabel, phonons, setupgeom, waveplot, xbbc, xbvm (with at least one blank space behind).\n\nFull command to be executed:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Command"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:typeface="monospace"
@@ -36,7 +50,43 @@
             android:fastScrollAlwaysVisible="true"
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
-
+        <Button
+            android:id="@+id/openCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL COMMAND" />
+        <Button
+            android:id="@+id/openIntCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD INTERNAL COMMAND" />
+        <Button
+            android:id="@+id/saveCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO EXTERNAL STORAGE" />
+        <TextView
+            android:id="@+id/InputLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nInput file (saved as /data/data/cz.p/files/dftb/dftb_in.hsd):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/InputFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
         <Button
             android:id="@+id/openInputfile"
             android:layout_width="match_parent"
@@ -58,6 +108,46 @@
             android:layout_height="wrap_content"
             android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
 
+        <TextView
+            android:id="@+id/CoordLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCoordinate file (saved as /data/data/cz.p/files/dftb/Input.xyz):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <EditText
+            android:id="@+id/CoordFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/openCoordfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL COORDINATE FILE" />
+        <Button
+            android:id="@+id/openIntCoordfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL COORDINATE FILE" />
+        <Button
+            android:id="@+id/saveCoordfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COORDINATE FILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtCoordfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COORDINATE FILE TO EXTERNAL STORAGE" />
+
+
+
         <Button
             android:id="@+id/generateXYZ"
             android:layout_width="match_parent"
@@ -73,11 +163,11 @@
             android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
 
         <Button
-            android:id="@+id/RunDftb"
+            android:id="@+id/RunProgram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E91E63"
-            android:text="RUN DFTB" />
+            android:text="SAVE THE INPUT AND RUN COMMAND" />
         <Button
             android:id="@+id/saveOutputfile"
             android:layout_width="match_parent"
@@ -95,6 +185,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="Highlight the output" />
+
         <Button
             android:id="@+id/manual_dftb"
             android:layout_width="match_parent"
@@ -108,11 +199,18 @@
             android:backgroundTint="#00AABB"
             android:text="OFFICIAL DFTB+ RECIPES" />
         <Button
-            android:id="@+id/Spectrum"
+            android:id="@+id/manual_modes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="OFFICIAL MODES MANUAL" />
+        <Button
+            android:id="@+id/Graph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FF50"
-            android:text="PLOT SPECTRUM" />
+            android:text="PLOT CUSTOM LINE GRAPH" />
+
         <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"

@@ -359,9 +359,9 @@ public class Graph extends Phreeqc {
         }
 
         graph.getViewport().setScalable(true);  // activate horizontal zooming and scrolling
-//        graph.getViewport().setScrollable(true);  // activate horizontal scrolling
+        graph.getViewport().setScrollable(true);  // activate horizontal scrolling
         graph.getViewport().setScalableY(true);  // activate horizontal and vertical zooming and scrolling
-//        graph.getViewport().setScrollableY(true);  // activate vertical scrolling
+        graph.getViewport().setScrollableY(true);  // activate vertical scrolling
 
     }
 

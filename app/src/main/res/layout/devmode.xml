@@ -23,6 +23,7 @@
             android:id="@+id/start_shelltools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
             android:text="SHELL TOOLS" />
 
         <Button
@@ -37,11 +38,19 @@
             android:layout_height="wrap_content"
             android:text="MODIFY SOLUTION MAKER (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_xbasic0001"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLUTION MAKER (DFTB+)" />
+            -->
+
+        <Button
+            android:id="@+id/start_solmaker_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION MAKER (XTB)" />
 
         <Button
             android:id="@+id/start_xbasic1"
@@ -61,11 +70,19 @@
             android:layout_height="wrap_content"
             android:text="MODIFY GAS PHASE MAKER (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_xbasic0012"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY GAS PHASE MAKER (DFTB+)" />
+            -->
+
+        <Button
+            android:id="@+id/start_gasmaker_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PHASE MAKER (XTB)" />
 
         <Button
             android:id="@+id/start_xbasic2"
@@ -97,11 +114,19 @@
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID SOLUTION MAKER (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_xbasic0045"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID SOLUTION MAKER (DFTB+)" />
+            -->
+
+        <Button
+            android:id="@+id/start_ssolmaker_xtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION MAKER (XTB)" />
 
         <Button
             android:id="@+id/start_xbasic5"
@@ -169,11 +194,19 @@
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED SOLUTION REFERENCE (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_refsdftb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED SOLUTION REFERENCE (DFTB+)" />
+            -->
+
+        <Button
+            android:id="@+id/start_refsxtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLUTION REFERENCE (XTB)" />
 
         <Button
             android:id="@+id/start_refg"
@@ -187,11 +220,19 @@
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED GAS REFERENCE (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_refgdftb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED GAS REFERENCE (DFTB+)" />
+            -->
+
+        <Button
+            android:id="@+id/start_refgxtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED GAS REFERENCE (XTB)" />
 
         <Button
             android:id="@+id/start_refl"
@@ -217,11 +258,18 @@
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED SOLID SOLUTION REFERENCE (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_refssdftb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY LOADED SOLID SOLUTION REFERENCE (DFTB+)" />
+-->
+        <Button
+            android:id="@+id/start_refssxtb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY LOADED SOLID SOLUTION REFERENCE (XTB)" />
 
         <Button
             android:id="@+id/start_refgcm1"
@@ -259,11 +307,18 @@
             android:layout_height="wrap_content"
             android:text="MODIFY SOLUTION PARAMETERS (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_compsDFTB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLUTION PARAMETERS (DFTB)" />
+-->
+        <Button
+            android:id="@+id/start_compsXTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLUTION PARAMETERS (XTB)" />
 
         <Button
             android:id="@+id/start_comps"
@@ -283,11 +338,18 @@
             android:layout_height="wrap_content"
             android:text="MODIFY GAS PARAMETERS (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_compgDFTB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY GAS PARAMETERS (DFTB+)" />
+-->
+        <Button
+            android:id="@+id/start_compgXTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY GAS PARAMETERS (XTB)" />
 
         <Button
             android:id="@+id/start_compg"
@@ -319,11 +381,18 @@
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID SOLUTION PARAMETERS (CP2K)" />
 -->
+        <!---
         <Button
             android:id="@+id/start_compssDFTB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY SOLID SOLUTION PARAMETERS (DFTB+)" />
+-->
+        <Button
+            android:id="@+id/start_compssXTB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY SOLID SOLUTION PARAMETERS (XTB)" />
 
         <Button
             android:id="@+id/start_compss"
@@ -474,18 +543,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY GENERAL MOPAC KINETICS" />
-
+<!---
         <Button
             android:id="@+id/modify_dftbspectrum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY DFTB+ SPECTRUM GENERATOR" />
-
+-->
         <Button
             android:id="@+id/modify_mopacspectrum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY MOPAC SPECTRUM GENERATOR" />
+
+        <Button
+            android:id="@+id/modify_xtbcommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY XTB PROCESSING COMMAND" />
 
         <Button
             android:id="@+id/backup_restore"

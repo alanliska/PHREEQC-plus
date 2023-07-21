@@ -111,6 +111,7 @@
             android:id="@+id/A_opsin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
             android:text="NAME TO SMILES CONVERSION (OPSIN)" />
 
         <TextView
@@ -212,6 +213,7 @@
             android:id="@+id/B_opsin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
             android:text="NAME TO SMILES CONVERSION (OPSIN)" />
 
         <TextView
@@ -378,6 +380,7 @@
             android:id="@+id/C_opsin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
             android:text="NAME TO SMILES CONVERSION (OPSIN)" />
 
         <TextView
@@ -479,6 +482,7 @@
             android:id="@+id/D_opsin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
             android:text="NAME TO SMILES CONVERSION (OPSIN)" />
 
         <TextView
@@ -580,6 +584,7 @@
             android:id="@+id/E_opsin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
             android:text="NAME TO SMILES CONVERSION (OPSIN)" />
 
         <Button

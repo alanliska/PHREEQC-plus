@@ -1,76 +1,125 @@
 package cz.p;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.preference.PreferenceManager;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 
 import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
 import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
 import uk.ac.cam.ch.wwmm.opsin.OpsinResult;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.Vector;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.jrummyapps.android.shell.CommandResult;
+import com.jrummyapps.android.shell.Shell;
+
 public class Dftb extends MainActivity {
 
     private Handler handler = new Handler();
-
-
-    private TextView Description;
-    private TextView DftbLabel;
-    private EditText DftbInput;
+    private TextView ContentLabel;
+    private EditText Content;
+    private TextView CommandLabel;
+    private EditText Command;
+    Button openCommandfile;
+    Button openIntCommandfile;
+    Button saveCommandfile;
+    Button saveExtCommandfile;
+    private TextView InputLabel;
+    private EditText InputFile;
     Button openInputfile;
     Button openIntInputfile;
     Button saveInputfile;
     Button saveExtInputfile;
+    private TextView CoordLabel;
+    private EditText CoordFile;
+    Button openCoordfile;
+    Button openIntCoordfile;
+    Button saveCoordfile;
+    Button saveExtCoordfile;
     Button generateXYZ;
     Button opsinXYZ;
-    Button RunDftb;
+    Button RunProgram;
     Button saveOutputfile;
     Button saveExtOutputfile;
     Button Highlight;
-    Button Spectrum;
+    Button Graph;
     Button Quit;
+
     private TextView textViewX;
     private TextView outputView;
     private EditText outputView2;
-    private static final int READ_FILE5 = 5;
-    private Uri documentUri5;
-    private static final int CREATE_FILE40 = 40;
-    private Uri documentUri40;
-    private static final int CREATE_FILE41 = 41;
-    private Uri documentUri41;
+    private static final int READ_FILE6 = 6;
+    private Uri documentUri6;
+    private static final int READ_FILE26 = 26;
+    private Uri documentUri26;
+    private static final int CREATE_FILE20 = 20;
+    private Uri documentUri20;
+    private static final int CREATE_FILE01 = 1;
+    private Uri documentUri0;
+    private static final int CREATE_FILE21 = 21;
+    private Uri documentUri21;
+    private static final int READ_FILE60 = 60;
+    private Uri documentUri60;
+    private static final int CREATE_FILE200 = 200;
+    private Uri documentUri200;
     Button manual_dftb;
     Button recipes_dftb;
-
+    Button manual_modes;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -217,17 +266,25 @@ public class Dftb extends MainActivity {
         }
         return spannable;
     }
-    /**
-     * Called when the activity is first created.
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dftb);
 
-        DftbLabel = (TextView) findViewById(R.id.DftbLabel);
-        DftbInput = (EditText) findViewById(R.id.DftbInput);
+        ContentLabel = (TextView) findViewById(R.id.ContentLabel);
+        Content = (EditText) findViewById(R.id.Content);
+        CommandLabel = (TextView) findViewById(R.id.CommandLabel);
+        Command = (EditText) findViewById(R.id.Command);
+        openCommandfile = (Button) findViewById(R.id.openCommandfile);
+        openCommandfile.setOnClickListener(openCommandfileClick);
+        openIntCommandfile = (Button) findViewById(R.id.openIntCommandfile);
+        saveCommandfile = (Button) findViewById(R.id.saveCommandfile);
+        saveCommandfile.setOnClickListener(saveCommandfileClick);
+        saveExtCommandfile = (Button) findViewById(R.id.saveExtCommandfile);
+        saveExtCommandfile.setOnClickListener(saveExtCommandfileClick);
+        InputLabel = (TextView) findViewById(R.id.InputLabel);
+        InputFile = (EditText) findViewById(R.id.InputFile);
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -235,25 +292,44 @@ public class Dftb extends MainActivity {
         saveInputfile.setOnClickListener(saveInputfileClick);
         saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
         saveExtInputfile.setOnClickListener(saveExtInputfileClick);
+        CoordLabel = (TextView) findViewById(R.id.CoordLabel);
+        CoordFile = (EditText) findViewById(R.id.CoordFile);
+        openCoordfile = (Button) findViewById(R.id.openCoordfile);
+        openCoordfile.setOnClickListener(openCoordfileClick);
+        openIntCoordfile = (Button) findViewById(R.id.openIntCoordfile);
+        saveCoordfile = (Button) findViewById(R.id.saveCoordfile);
+        saveCoordfile.setOnClickListener(saveCoordfileClick);
+        saveExtCoordfile = (Button) findViewById(R.id.saveExtCoordfile);
+        saveExtCoordfile.setOnClickListener(saveExtCoordfileClick);
         generateXYZ = (Button) findViewById(R.id.generateXYZ);
         generateXYZ.setOnClickListener(GenerateXYZClick);
         opsinXYZ = (Button) findViewById(R.id.opsinXYZ);
         opsinXYZ.setOnClickListener(opsinXYZClick);
-        RunDftb = (Button) findViewById(R.id.RunDftb);
-        RunDftb.setOnClickListener(RunDftbClick);
+        RunProgram = (Button) findViewById(R.id.RunProgram);
+        RunProgram.setOnClickListener(RunProgramClick);
         saveOutputfile = (Button) findViewById(R.id.saveOutputfile);
         saveOutputfile.setOnClickListener(saveOutputfileClick);
         saveExtOutputfile = (Button) findViewById(R.id.saveExtOutputfile);
         saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
-        Quit = (Button) findViewById(R.id.Quit);
-        Quit.setOnClickListener(QuitClick);
-        Spectrum = (Button) findViewById(R.id.Spectrum);
-        Spectrum.setOnClickListener(SpectrumClick);
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        Graph = (Button) findViewById(R.id.Graph);
+        Graph.setOnClickListener(GraphClick);
+        Quit = (Button) findViewById(R.id.Quit);
+        Quit.setOnClickListener(QuitClick);
+
+        manual_modes = (Button) findViewById(R.id.manual_modes);
+        manual_modes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Dftb.this, ManualModes.class);
+                startActivity(intent);
+            }
+        });
 
         manual_dftb = (Button) findViewById(R.id.manual_dftb);
         manual_dftb.setOnClickListener(new View.OnClickListener() {
@@ -283,38 +359,32 @@ public class Dftb extends MainActivity {
             }
         });
 
-    }
+        openIntCoordfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dftb.this, DftbWork1.class);
+                startActivity(intent);
+            }
+        });
 
+        openIntCommandfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dftb.this, DftbCommand.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 
     public void onStart()
     {
         super.onStart();
 
-        output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
-    }
-
-    private View.OnClickListener SpectrumClick; {
-
-        SpectrumClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                String Inputfile = DftbInput.getText().toString();
-                try {
-                    FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(Inputfile);
-                    outputWriter.close();
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SpectrumDFTB.b "+getFilesDir()+"/SpectrumDFTB.bas");
-                    exec("chmod -R 755 "+getFilesDir()+"/SpectrumDFTB.b");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SpectrumDFTB.b");
-                    exec("rm "+getFilesDir()+"/dftb/EXC.DAT");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                Intent intent = new Intent(Dftb.this, SpectrumDFTB.class);
-                startActivity(intent);
-            }
-        };
+        output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+        output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+        output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+        output(exec("ls -la "+getFilesDir()+"/dftb/"));
     }
 
     private View.OnClickListener GenerateXYZClick; {
@@ -322,17 +392,33 @@ public class Dftb extends MainActivity {
         GenerateXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                String Inputfile = DftbInput.getText().toString();
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
                 try {
-                    FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(Inputfile);
                     outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                 alertGenerateXYZ();
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -343,7 +429,7 @@ public class Dftb extends MainActivity {
         EditText editText100 = new EditText(Dftb.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
-                .setMessage("Input the SMILES string and convert it to XYZ. The result will be appended to the actual input file.")
+                .setMessage("Please write the SMILES string to be converted to XYZ. ")
                 .setTitle("OpenBABEL conversion")
                 .setView(editText100)
 
@@ -352,7 +438,7 @@ public class Dftb extends MainActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         String SmilesString = editText100.getText().toString();
-//                        String InputFile = DftbInput.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
                         try {
                             FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -360,18 +446,29 @@ public class Dftb extends MainActivity {
                             outputWriter.close();
 
                             String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
-                            FileOutputStream fileout4 = openFileOutput("Input-dftb.txt", MODE_APPEND);
-                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
-//                            outputWriter4.write(InputFile);
-                            outputWriter4.write("\n");
-                            outputWriter4.write(ObabelOutput);
-                            outputWriter4.close();
+
+                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+
+//                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
+
+//                            FileOutputStream fileout4 = openFileOutput("dftb_in.hsd", MODE_APPEND);
+//                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+////                            outputWriter4.write(InputFile);
+//                            outputWriter4.write("\n");
+//                            outputWriter4.write(SedXyz);
+//                            outputWriter4.close();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                         exec("rm "+getFilesDir()+"/temp.smi");
                         // here it should be:
-                        output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                        output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
                     }
                 })
 
@@ -403,17 +500,33 @@ public class Dftb extends MainActivity {
         opsinXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                String Inputfile = DftbInput.getText().toString();
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
                 try {
-                    FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(Inputfile);
                     outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                 alertOpsinXYZ();
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -424,7 +537,7 @@ public class Dftb extends MainActivity {
         EditText editText100 = new EditText(Dftb.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
-                .setMessage("Input the IUPAC name and convert it to XYZ. The result will be appended to the actual input file.")
+                .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be appended to the actual input file.")
                 .setTitle("OPSIN+OpenBABEL conversion")
                 .setView(editText100)
 
@@ -433,7 +546,7 @@ public class Dftb extends MainActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         String SmilesString = editText100.getText().toString();
-//                        String InputFile = DftbInput.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
                         try {
                             ////////////////////////////////////
                             NameToStructure nts = NameToStructure.getInstance();
@@ -444,25 +557,37 @@ public class Dftb extends MainActivity {
                             OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
                             String smiles = result.getSmiles();
                             /////////////////////////////////////
-                            FileOutputStream fileout3 = openFileOutput("temp.smi", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
-                            outputWriter3.write(smiles);
-                            outputWriter3.close();
-
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
 
                             String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
-                            FileOutputStream fileout4 = openFileOutput("Input-dftb.txt", MODE_APPEND);
-                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
-//                            outputWriter4.write(InputFile);
-                            outputWriter4.write("\n");
-                            outputWriter4.write(ObabelOutput);
-                            outputWriter4.close();
+
+                            FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+//                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
+//
+//                            FileOutputStream fileout4 = openFileOutput("dftb_in.hsd", MODE_APPEND);
+//                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+////                            outputWriter4.write(InputFile);
+//                            outputWriter4.write("\n");
+//                            outputWriter4.write(SedXyz);
+//                            outputWriter4.close();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
                         exec("rm "+getFilesDir()+"/temp.smi");
                         // here it should be:
-                        output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                        output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                        output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                        output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                        output(exec("ls -la "+getFilesDir()+"/dftb/"));
                     }
                 })
 
@@ -489,14 +614,144 @@ public class Dftb extends MainActivity {
 
     }
 
+    private View.OnClickListener GraphClick; {
+
+        GraphClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                Intent intent = new Intent(Dftb.this, SpectrumDftb.class);
+                startActivity(intent);
+            }
+        };
+    }
+
 
     private View.OnClickListener openInputfileClick; {
 
         openInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                read5(getApplicationContext());
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                read6(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
+            }
+        };
+    }
+
+    private View.OnClickListener openCoordfileClick; {
+
+        openCoordfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                read26(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
+            }
+        };
+    }
+
+    private View.OnClickListener openCommandfileClick; {
+
+        openCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                read60(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -506,8 +761,105 @@ public class Dftb extends MainActivity {
         saveExtInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                 write1(getApplicationContext());
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtCoordfileClick; {
+
+        saveExtCoordfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                write01(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtCommandfileClick; {
+
+        saveExtCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                write10(getApplicationContext());
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -517,17 +869,49 @@ public class Dftb extends MainActivity {
         saveExtOutputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                 write2(getApplicationContext());
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
 
-    private void read5(Context context5) {
-        Intent intent5 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent5.addCategory(Intent.CATEGORY_OPENABLE);
-        intent5.setType("text/plain");
-        startActivityForResult(intent5, READ_FILE5);
+    private void read6(Context context6) {
+        Intent intent6 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent6.addCategory(Intent.CATEGORY_OPENABLE);
+        intent6.setType("text/plain");
+        startActivityForResult(intent6, READ_FILE6);
+    }
+
+    private void read26(Context context26) {
+        Intent intent26 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent26.addCategory(Intent.CATEGORY_OPENABLE);
+        intent26.setType("text/plain");
+        startActivityForResult(intent26, READ_FILE26);
     }
 
     private void write1(Context context1) {
@@ -535,7 +919,15 @@ public class Dftb extends MainActivity {
         intent1.addCategory(Intent.CATEGORY_OPENABLE);
         intent1.setType("text/plain");
         intent1.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
-        startActivityForResult(intent1, CREATE_FILE40);
+        startActivityForResult(intent1, CREATE_FILE20);
+    }
+
+    private void write01(Context context01) {
+        Intent intent01 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent01.addCategory(Intent.CATEGORY_OPENABLE);
+        intent01.setType("text/plain");
+        intent01.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent01, CREATE_FILE01);
     }
 
     private void write2(Context context2) {
@@ -543,33 +935,76 @@ public class Dftb extends MainActivity {
         intent2.addCategory(Intent.CATEGORY_OPENABLE);
         intent2.setType("text/plain");
         intent2.putExtra(Intent.EXTRA_TITLE,"MyOutputFile");
-        startActivityForResult(intent2, CREATE_FILE41);
+        startActivityForResult(intent2, CREATE_FILE21);
+    }
+
+    private void read60(Context context60) {
+        Intent intent60 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent60.addCategory(Intent.CATEGORY_OPENABLE);
+        intent60.setType("text/plain");
+        startActivityForResult(intent60, READ_FILE60);
+    }
+
+    private void write10(Context context10) {
+        Intent intent10 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent10.addCategory(Intent.CATEGORY_OPENABLE);
+        intent10.setType("text/plain");
+        intent10.putExtra(Intent.EXTRA_TITLE,"MyCommand");
+        startActivityForResult(intent10, CREATE_FILE200);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == READ_FILE5 && data != null) {
+        if (requestCode == READ_FILE6 && data != null) {
             try {
-                documentUri5 = data.getData();
-                String myData = "";
-                ParcelFileDescriptor pfd5 = getContentResolver().openFileDescriptor(data.getData(), "r");
-                FileInputStream fileInputStream = new FileInputStream(pfd5.getFileDescriptor());
-                DataInputStream inp = new DataInputStream(fileInputStream);
-                BufferedReader br = new BufferedReader(new InputStreamReader(inp));
-                String strLine;
-                while ((strLine = br.readLine()) != null) {
-                    myData = myData + strLine + "\n";
+                documentUri6 = data.getData();
+                String myData6 = "";
+                ParcelFileDescriptor pfd6 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream = new FileInputStream(pfd6.getFileDescriptor());
+                DataInputStream inp6 = new DataInputStream(fileInputStream);
+                BufferedReader br6 = new BufferedReader(new InputStreamReader(inp6));
+                String strLine6;
+                while ((strLine6 = br6.readLine()) != null) {
+                    myData6 = myData6 + strLine6 + "\n";
                 }
-                inp.close();
+                inp6.close();
 
-                FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
-                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                outputWriter.write(myData);
-                outputWriter.close();
+                FileOutputStream fileout6 = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                outputWriter6.write(myData6);
+                outputWriter6.close();
                 fileInputStream.close();
-                pfd5.close();
+                pfd6.close();
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == READ_FILE26 && data != null) {
+            try {
+                documentUri26 = data.getData();
+                String myData26 = "";
+                ParcelFileDescriptor pfd26 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream = new FileInputStream(pfd26.getFileDescriptor());
+                DataInputStream inp26 = new DataInputStream(fileInputStream);
+                BufferedReader br26 = new BufferedReader(new InputStreamReader(inp26));
+                String strLine26;
+                while ((strLine26 = br26.readLine()) != null) {
+                    myData26 = myData26 + strLine26 + "\n";
+                }
+                inp26.close();
+
+                FileOutputStream fileout26 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                outputWriter26.write(myData26);
+                outputWriter26.close();
+                fileInputStream.close();
+                pfd26.close();
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -577,42 +1012,122 @@ public class Dftb extends MainActivity {
             }
         }
 
-        if (requestCode == CREATE_FILE40 && data != null) {
+        if (requestCode == CREATE_FILE20 && data != null) {
             // save input file
             Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
             try {
-                documentUri40 = data.getData();
-                ParcelFileDescriptor pfd40 = getContentResolver().openFileDescriptor(data.getData(), "w");
-                FileOutputStream fileOutputStream = new FileOutputStream(pfd40.getFileDescriptor());
-                String fileContents = DftbInput.getText().toString();
-                fileOutputStream.write((fileContents + "\n").getBytes());
-                fileOutputStream.close();
-                pfd40.close();
-                FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
-                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                outputWriter.write(fileContents + "\n");
-                outputWriter.close();
+                String fileContents20X = InputFile.getText().toString();
+                FileOutputStream fileout20 = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                outputWriter20.write(fileContents20X + "\n");
+                outputWriter20.close();
+
+                documentUri20 = data.getData();
+                ParcelFileDescriptor pfd20 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream20 = new FileOutputStream(pfd20.getFileDescriptor());
+//                String fileContents20 = InputFile.getText().toString();
+                String fileContents20 = exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd");
+                fileOutputStream20.write((fileContents20 + "\n").getBytes());
+                fileOutputStream20.close();
+                pfd20.close();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
             }
         }
 
-        if (requestCode == CREATE_FILE41 && data != null) {
+        if (requestCode == CREATE_FILE01 && data != null) {
+            // save coordinate file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                String fileContents0X = CoordFile.getText().toString();
+                FileOutputStream fileout0 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                OutputStreamWriter outputWriter0 = new OutputStreamWriter(fileout0);
+                outputWriter0.write(fileContents0X + "\n");
+                outputWriter0.close();
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+
+                documentUri0 = data.getData();
+                ParcelFileDescriptor pfd0 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream0 = new FileOutputStream(pfd0.getFileDescriptor());
+//                String fileContents20 = InputFile.getText().toString();
+                String fileContents0 = exec("cat "+getFilesDir()+"/dftb/Input.xyz");
+                fileOutputStream0.write((fileContents0 + "\n").getBytes());
+                fileOutputStream0.close();
+                pfd0.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE21 && data != null) {
             // save output file
             Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
             try {
-                documentUri41 = data.getData();
-                ParcelFileDescriptor pfd41 = getContentResolver().openFileDescriptor(data.getData(), "w");
-                FileOutputStream fileOutputStream = new FileOutputStream(pfd41.getFileDescriptor());
-                String fileContents = outputView2.getText().toString();
-                fileOutputStream.write((fileContents + "\n").getBytes());
-                fileOutputStream.close();
-                pfd41.close();
-                FileOutputStream fileout = openFileOutput("Input.log", MODE_PRIVATE);
-                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                outputWriter.write(fileContents + "\n");
-                outputWriter.close();
+                documentUri21 = data.getData();
+                ParcelFileDescriptor pfd21 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream21 = new FileOutputStream(pfd21.getFileDescriptor());
+                String fileContents21 = outputView2.getText().toString();
+                fileOutputStream21.write((fileContents21 + "\n").getBytes());
+                fileOutputStream21.close();
+                pfd21.close();
+                FileOutputStream fileout21 = openFileOutput("Input.out", MODE_PRIVATE);
+                OutputStreamWriter outputWriter21 = new OutputStreamWriter(fileout21);
+                outputWriter21.write(fileContents21 + "\n");
+                outputWriter21.close();
+                exec("mv "+getFilesDir()+"/Input.out "+getFilesDir()+"/dftb/");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == READ_FILE60 && data != null) {
+            try {
+                documentUri60 = data.getData();
+                String myData60 = "";
+                ParcelFileDescriptor pfd60 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream60 = new FileInputStream(pfd60.getFileDescriptor());
+                DataInputStream inp60 = new DataInputStream(fileInputStream60);
+                BufferedReader br60 = new BufferedReader(new InputStreamReader(inp60));
+                String strLine60;
+                while ((strLine60 = br60.readLine()) != null) {
+                    myData60 = myData60 + strLine60 + "\n";
+                }
+                inp60.close();
+
+                FileOutputStream fileout60 = openFileOutput("Command.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter60 = new OutputStreamWriter(fileout60);
+                outputWriter60.write(myData60);
+                outputWriter60.close();
+                fileInputStream60.close();
+                pfd60.close();
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE200 && data != null) {
+            // save command file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri200 = data.getData();
+                ParcelFileDescriptor pfd200 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream200 = new FileOutputStream(pfd200.getFileDescriptor());
+                String fileContents200 = Command.getText().toString();
+                fileOutputStream200.write((fileContents200 + "\n").getBytes());
+                fileOutputStream200.close();
+                pfd200.close();
+                FileOutputStream fileout200 = openFileOutput("Command.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter200 = new OutputStreamWriter(fileout200);
+                outputWriter200.write(fileContents200);
+                outputWriter200.close();
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
@@ -626,17 +1141,33 @@ public class Dftb extends MainActivity {
         saveInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                String Inputfile = DftbInput.getText().toString();
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
                 try {
-                    FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(Inputfile);
                     outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
                 alertSaveInput();
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -647,7 +1178,7 @@ public class Dftb extends MainActivity {
         EditText editText10 = new EditText(Dftb.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
-                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb_work")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText10)
 
@@ -655,17 +1186,17 @@ public class Dftb extends MainActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String Inputfile = DftbInput.getText().toString();
+                        String Inputfile = InputFile.getText().toString();
                         String SaveInputName = editText10.getText().toString();
                         try {
                             FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                            outputWriter.write(Inputfile);
+                            outputWriter.write(Inputfile+"\n");
                             outputWriter.close();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/dftb");
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/dftb_work");
                     }
                 })
 
@@ -693,1293 +1224,323 @@ public class Dftb extends MainActivity {
     }
 
 
-    private View.OnClickListener RunDftbClick; {
+    private View.OnClickListener saveCoordfileClick; {
 
-        RunDftbClick = new View.OnClickListener() {
+        saveCoordfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                String Inputfile = DftbInput.getText().toString();
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
                 try {
-                    FileOutputStream fileout = openFileOutput("Input-dftb.txt", MODE_PRIVATE);
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(Inputfile);
                     outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                // TODO Auto-generated method stub //
-                openprogressdialog();
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                alertSaveCoord();
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
 
-    private void openprogressdialog() {
-        // TODO Auto-generated method stub //
-        progressDialog = new ProgressDialog(Dftb.this);
-        progressDialog.setTitle("Please wait...");
-        progressDialog.setMessage("Calculation is running...");
-        progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+
+    public void alertSaveCoord(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(Dftb.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb_work")
+                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String Inputfile = CoordFile.getText().toString();
+                        String SaveInputName = editText10.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(Inputfile+"\n");
+                            outputWriter.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/dftb_work");
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
             }
         });
-        progressDialog.show();
-        new Thread() {
-            public void run() {
+
+        dialog.show();
+
+    }
+
+
+    private View.OnClickListener saveCommandfileClick; {
+
+        saveCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
                 try {
-                    exec("chmod 755 -R "+getFilesDir());
-                    exec("cp "+getFilesDir()+"/Input-dftb.txt "+getFilesDir()+"/dftb/dftb_in.hsd");
-
-                    FileOutputStream fileout2 = openFileOutput("OUTPUTFILE", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                        // nevim, proc nejde:
-//                        outputWriter2.write(exec("env LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/"+getFilesDir()+"/ "+getApplicationInfo().nativeLibraryDir+"/libdftb.so"));
-                        outputWriter2.write(exec(getApplicationInfo().nativeLibraryDir+"/libdftb.so"));
-                        outputWriter2.close();
-
-//                    ProcessBuilder pb =
-//                            new ProcessBuilder(exec(getApplicationInfo().nativeLibraryDir+"/libdftb.so"));
-//                    Map<String, String> env = pb.environment();
-////                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/c");
-////                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/m");
-//                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/iconv");
-////                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/gfortran");
-//                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/gfortran.so.5");
-////                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/gfortran.so.5.0.0");
-////                    env.put("LD_LIBRARY_PATH", "$LD_LIBRARY_PATH:/"+getApplicationInfo().nativeLibraryDir+"/dl");
-////                    env.remove("OTHERVAR");
-////                    env.put("VAR2", env.get("VAR1") + "suffix");
-//                    pb.directory(new File(getFilesDir()+"/dftb"));
-//                    File log = new File(getFilesDir()+"/OUTPUTFILE");
-//                    pb.redirectErrorStream(true);
-//                    pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
-//                    Process p = pb.start();
-//                    assert pb.redirectInput() == ProcessBuilder.Redirect.PIPE;
-//                    assert pb.redirectOutput().file() == log;
-//                    assert p.getInputStream().read() == -1;
-
-//                    try {
-//                        FileOutputStream fileout2 = openFileOutput("OUTPUTFILE", MODE_PRIVATE);
-//                        OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-//                        // nevim, proc nejde:
-////                        outputWriter2.write(exec("env CP2K_DATA_DIR="+getFilesDir()+"/basis "+getApplicationInfo().nativeLibraryDir+"/cp2k "+getFilesDir()+"/temporary/Input"));
-//                        outputWriter2.write(exec(getApplicationInfo().nativeLibraryDir+"/cp2k "+getFilesDir()+"/temporary/Input"));
-//                        outputWriter2.close();
-//
-                        File file_orig = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file1 = new File(getFilesDir()+"/dftb/autotest.tag");
-                        if (file1.exists())  {
-                            FileWriter fw = new FileWriter(file_orig, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw = new BufferedWriter(fw);
-                            bw.write(" \n");
-                            bw.write(">> Reading from file autotest.tag: \n");
-                            bw.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line = br.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line != null)
-                            {
-                                pw.println(line);
-                                line = br.readLine();
-                            }
-                            br = new BufferedReader(new FileReader(file1));
-                            line = br.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line != null)
-                            {
-                                pw.println(line);
-                                line = br.readLine();
-                            }
-                            pw.flush();
-                            // closing resources
-                            br.close();
-                            pw.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-
-                        File file_orig2 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file2 = new File(getFilesDir()+"/dftb/band.out");
-                        if (file2.exists())  {
-                            FileWriter fw2 = new FileWriter(file_orig2, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw2 = new BufferedWriter(fw2);
-                            bw2.write(" \n");
-                            bw2.write(">> Reading from file band.out: \n");
-                            bw2.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw2.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw2 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br2 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line2 = br2.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line2 != null)
-                            {
-                                pw2.println(line2);
-                                line2 = br2.readLine();
-                            }
-                            br2 = new BufferedReader(new FileReader(file2));
-                            line2 = br2.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line2 != null)
-                            {
-                                pw2.println(line2);
-                                line2 = br2.readLine();
-                            }
-                            pw2.flush();
-                            // closing resources
-                            br2.close();
-                            pw2.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-
-
-                        File file_orig3 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file3 = new File(getFilesDir()+"/dftb/detailed.out");
-                        if (file3.exists())  {
-                            FileWriter fw3 = new FileWriter(file_orig3, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw3 = new BufferedWriter(fw3);
-                            bw3.write(" \n");
-                            bw3.write(">> Reading from file detailed.out: \n");
-                            bw3.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw3.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw3 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br3 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line3 = br3.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line3 != null)
-                            {
-                                pw3.println(line3);
-                                line3 = br3.readLine();
-                            }
-                            br3 = new BufferedReader(new FileReader(file3));
-                            line3 = br3.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line3 != null)
-                            {
-                                pw3.println(line3);
-                                line3 = br3.readLine();
-                            }
-                            pw3.flush();
-                            // closing resources
-                            br3.close();
-                            pw3.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig4 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file4 = new File(getFilesDir()+"/dftb/results.tag");
-                        if (file4.exists())  {
-                            FileWriter fw4 = new FileWriter(file_orig4, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw4 = new BufferedWriter(fw4);
-                            bw4.write(" \n");
-                            bw4.write(">> Reading from file results.tag: \n");
-                            bw4.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw4.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw4 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br4 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line4 = br4.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line4 != null)
-                            {
-                                pw4.println(line4);
-                                line4 = br4.readLine();
-                            }
-                            br4 = new BufferedReader(new FileReader(file4));
-                            line4 = br4.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line4 != null)
-                            {
-                                pw4.println(line4);
-                                line4 = br4.readLine();
-                            }
-                            pw4.flush();
-                            // closing resources
-                            br4.close();
-                            pw4.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-
-                        File file_orig5 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file5 = new File(getFilesDir()+"/dftb/hamsqrN.dat");
-                        if (file5.exists())  {
-                            FileWriter fw5 = new FileWriter(file_orig5, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw5 = new BufferedWriter(fw5);
-                            bw5.write(" \n");
-                            bw5.write(">> Reading from file hamsqrN.dat: \n");
-                            bw5.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw5.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw5 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br5 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line5 = br5.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line5 != null)
-                            {
-                                pw5.println(line5);
-                                line5 = br5.readLine();
-                            }
-                            br5 = new BufferedReader(new FileReader(file5));
-                            line5 = br5.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line5 != null)
-                            {
-                                pw5.println(line5);
-                                line5 = br5.readLine();
-                            }
-                            pw5.flush();
-                            // closing resources
-                            br5.close();
-                            pw5.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig6 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file6 = new File(getFilesDir()+"/dftb/oversqr.dat");
-                        if (file6.exists())  {
-                            FileWriter fw6 = new FileWriter(file_orig6, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw6 = new BufferedWriter(fw6);
-                            bw6.write(" \n");
-                            bw6.write(">> Reading from file oversqr.dat: \n");
-                            bw6.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw6.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw6 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br6 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line6 = br6.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line6 != null)
-                            {
-                                pw6.println(line6);
-                                line6 = br6.readLine();
-                            }
-                            br6 = new BufferedReader(new FileReader(file6));
-                            line6 = br6.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line6 != null)
-                            {
-                                pw6.println(line6);
-                                line6 = br6.readLine();
-                            }
-                            pw6.flush();
-                            // closing resources
-                            br6.close();
-                            pw6.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig7 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file7 = new File(getFilesDir()+"/dftb/hamrealN.dat");
-                        if (file7.exists())  {
-                            FileWriter fw7 = new FileWriter(file_orig7, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw7 = new BufferedWriter(fw7);
-                            bw7.write(" \n");
-                            bw7.write(">> Reading from file hamrealN.dat: \n");
-                            bw7.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw7.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw7 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br7 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line7 = br7.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line7 != null)
-                            {
-                                pw7.println(line7);
-                                line7 = br7.readLine();
-                            }
-                            br7 = new BufferedReader(new FileReader(file7));
-                            line7 = br7.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line7 != null)
-                            {
-                                pw7.println(line7);
-                                line7 = br7.readLine();
-                            }
-                            pw7.flush();
-                            // closing resources
-                            br7.close();
-                            pw7.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig8 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file8 = new File(getFilesDir()+"/dftb/overreal.dat");
-                        if (file8.exists())  {
-                            FileWriter fw8 = new FileWriter(file_orig8, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw8 = new BufferedWriter(fw8);
-                            bw8.write(" \n");
-                            bw8.write(">> Reading from file overreal.dat: \n");
-                            bw8.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw8.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw8 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br8 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line8 = br8.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line8 != null)
-                            {
-                                pw8.println(line8);
-                                line8 = br8.readLine();
-                            }
-                            br8 = new BufferedReader(new FileReader(file8));
-                            line8 = br8.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line8 != null)
-                            {
-                                pw8.println(line8);
-                                line8 = br8.readLine();
-                            }
-                            pw8.flush();
-                            // closing resources
-                            br8.close();
-                            pw8.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig9 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file9 = new File(getFilesDir()+"/dftb/eigenvec.out");
-                        if (file9.exists())  {
-                            FileWriter fw9 = new FileWriter(file_orig9, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw9 = new BufferedWriter(fw9);
-                            bw9.write(" \n");
-                            bw9.write(">> Reading from file eigenvec.out: \n");
-                            bw9.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw9.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw9 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br9 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line9 = br9.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line9 != null)
-                            {
-                                pw9.println(line9);
-                                line9 = br9.readLine();
-                            }
-                            br9 = new BufferedReader(new FileReader(file9));
-                            line9 = br9.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line9 != null)
-                            {
-                                pw9.println(line9);
-                                line9 = br9.readLine();
-                            }
-                            pw9.flush();
-                            // closing resources
-                            br9.close();
-                            pw9.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-
-                        }
-
-                        File file_orig10 = new File(getFilesDir()+"/OUTPUTFILE");
-                        File file10 = new File(getFilesDir()+"/dftb/eigenvec.bin");
-                        if (file10.exists())  {
-                            FileWriter fw10 = new FileWriter(file_orig10, true);
-                            //BufferedWriter writer give better performance
-                            BufferedWriter bw10 = new BufferedWriter(fw10);
-                            bw10.write(" \n");
-                            bw10.write(">> Reading from file eigenvec.bin: \n");
-                            bw10.write(" \n");
-                            //Closing BufferedWriter Stream
-                            bw10.close();
-
-                            // PrintWriter object for file3.txt
-                            PrintWriter pw10 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                            // BufferedReader object for file1.txt
-                            BufferedReader br10 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                            String line10 = br10.readLine();
-                            // loop to copy each line of
-                            // file1.txt to  file3.txt
-                            while (line10 != null)
-                            {
-                                pw10.println(line10);
-                                line10 = br10.readLine();
-                            }
-                            br10 = new BufferedReader(new FileReader(file10));
-                            line10 = br10.readLine();
-                            // loop to copy each line of
-                            // file2.txt to  file3.txt
-                            while(line10 != null)
-                            {
-                                pw10.println(line10);
-                                line10 = br10.readLine();
-                            }
-                            pw10.flush();
-                            // closing resources
-                            br10.close();
-                            pw10.close();
-
-                            exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                            exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                        }
-
-                    File file_orig10a = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file10a = new File(getFilesDir()+"/dftb/eigenvec.bin");
-                    if (file10a.exists())  {
-                        FileWriter fw10a = new FileWriter(file_orig10a, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw10a = new BufferedWriter(fw10a);
-                        bw10a.write(" \n");
-                        bw10a.write(">> Reading from file eigenvec.bin: \n");
-                        bw10a.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw10a.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw10a = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br10a = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line10a = br10a.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line10a != null)
-                        {
-                            pw10a.println(line10a);
-                            line10a = br10a.readLine();
-                        }
-                        br10a = new BufferedReader(new FileReader(file10a));
-                        line10a = br10a.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line10a != null)
-                        {
-                            pw10a.println(line10a);
-                            line10a = br10a.readLine();
-                        }
-                        pw10a.flush();
-                        // closing resources
-                        br10a.close();
-                        pw10a.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig11 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file11 = new File(getFilesDir()+"/dftb/charges.bin");
-                    if (file11.exists())  {
-                        FileWriter fw11 = new FileWriter(file_orig11, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw11 = new BufferedWriter(fw11);
-                        bw11.write(" \n");
-                        bw11.write(">> Reading from file charges.bin: \n");
-                        bw11.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw11.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw11 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br11 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line11 = br11.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line11 != null)
-                        {
-                            pw11.println(line11);
-                            line11 = br11.readLine();
-                        }
-                        br11 = new BufferedReader(new FileReader(file11));
-                        line11 = br11.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line11 != null)
-                        {
-                            pw11.println(line11);
-                            line11 = br11.readLine();
-                        }
-                        pw11.flush();
-                        // closing resources
-                        br11.close();
-                        pw11.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig12 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file12 = new File(getFilesDir()+"/dftb/charges.dat");
-                    if (file12.exists())  {
-                        FileWriter fw12 = new FileWriter(file_orig12, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw12 = new BufferedWriter(fw12);
-                        bw12.write(" \n");
-                        bw12.write(">> Reading from file charges.dat: \n");
-                        bw12.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw12.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw12 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br12 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line12 = br12.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line12 != null)
-                        {
-                            pw12.println(line12);
-                            line12 = br12.readLine();
-                        }
-                        br12 = new BufferedReader(new FileReader(file12));
-                        line12 = br12.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line12 != null)
-                        {
-                            pw12.println(line12);
-                            line12 = br12.readLine();
-                        }
-                        pw12.flush();
-                        // closing resources
-                        br12.close();
-                        pw12.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig13 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file13 = new File(getFilesDir()+"/dftb/md.out");
-                    if (file13.exists())  {
-                        FileWriter fw13 = new FileWriter(file_orig13, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw13 = new BufferedWriter(fw13);
-                        bw13.write(" \n");
-                        bw13.write(">> Reading from file md.out: \n");
-                        bw13.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw13.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw13 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br13 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line13 = br13.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line13 != null)
-                        {
-                            pw13.println(line13);
-                            line13 = br13.readLine();
-                        }
-                        br13 = new BufferedReader(new FileReader(file13));
-                        line13 = br13.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line13 != null)
-                        {
-                            pw13.println(line13);
-                            line13 = br13.readLine();
-                        }
-                        pw13.flush();
-                        // closing resources
-                        br13.close();
-                        pw13.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig14 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file14 = new File(getFilesDir()+"/dftb/ARPACK.DAT");
-                    if (file14.exists())  {
-                        FileWriter fw14 = new FileWriter(file_orig14, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw14 = new BufferedWriter(fw14);
-                        bw14.write(" \n");
-                        bw14.write(">> Reading from file ARPACK.DAT: \n");
-                        bw14.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw14.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw14 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br14 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line14 = br14.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line14 != null)
-                        {
-                            pw14.println(line14);
-                            line14 = br14.readLine();
-                        }
-                        br14 = new BufferedReader(new FileReader(file14));
-                        line14 = br14.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line14 != null)
-                        {
-                            pw14.println(line14);
-                            line14 = br14.readLine();
-                        }
-                        pw14.flush();
-                        // closing resources
-                        br14.close();
-                        pw14.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig15 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file15 = new File(getFilesDir()+"/dftb/COEF.DAT");
-                    if (file15.exists())  {
-                        FileWriter fw15 = new FileWriter(file_orig15, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw15 = new BufferedWriter(fw15);
-                        bw15.write(" \n");
-                        bw15.write(">> Reading from file COEF.DAT: \n");
-                        bw15.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw15.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw15 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br15 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line15 = br15.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line15 != null)
-                        {
-                            pw15.println(line15);
-                            line15 = br15.readLine();
-                        }
-                        br15 = new BufferedReader(new FileReader(file15));
-                        line15 = br15.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line15 != null)
-                        {
-                            pw15.println(line15);
-                            line15 = br15.readLine();
-                        }
-                        pw15.flush();
-                        // closing resources
-                        br15.close();
-                        pw15.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig16 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file16 = new File(getFilesDir()+"/dftb/EXC.DAT");
-                    if (file16.exists())  {
-                        FileWriter fw16 = new FileWriter(file_orig16, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw16 = new BufferedWriter(fw16);
-                        bw16.write(" \n");
-                        bw16.write(">> Reading from file EXC.DAT: \n");
-                        bw16.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw16.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw16 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br16 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line16 = br16.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line16 != null)
-                        {
-                            pw16.println(line16);
-                            line16 = br16.readLine();
-                        }
-                        br16 = new BufferedReader(new FileReader(file16));
-                        line16 = br16.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line16 != null)
-                        {
-                            pw16.println(line16);
-                            line16 = br16.readLine();
-                        }
-                        pw16.flush();
-                        // closing resources
-                        br16.close();
-                        pw16.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig17 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file17 = new File(getFilesDir()+"/dftb/SPX.DAT");
-                    if (file17.exists())  {
-                        FileWriter fw17 = new FileWriter(file_orig17, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw17 = new BufferedWriter(fw17);
-                        bw17.write(" \n");
-                        bw17.write(">> Reading from file SPX.DAT: \n");
-                        bw17.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw17.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw17 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br17 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line17 = br17.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line17 != null)
-                        {
-                            pw17.println(line17);
-                            line17 = br17.readLine();
-                        }
-                        br17 = new BufferedReader(new FileReader(file17));
-                        line17 = br17.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line17 != null)
-                        {
-                            pw17.println(line17);
-                            line17 = br17.readLine();
-                        }
-                        pw17.flush();
-                        // closing resources
-                        br17.close();
-                        pw17.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig18 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file18 = new File(getFilesDir()+"/dftb/TDP.DAT");
-                    if (file18.exists())  {
-                        FileWriter fw18 = new FileWriter(file_orig18, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw18 = new BufferedWriter(fw18);
-                        bw18.write(" \n");
-                        bw18.write(">> Reading from file TDP.DAT: \n");
-                        bw18.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw18.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw18 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br18 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line18 = br18.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line18 != null)
-                        {
-                            pw18.println(line18);
-                            line18 = br18.readLine();
-                        }
-                        br18 = new BufferedReader(new FileReader(file18));
-                        line18 = br18.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line18 != null)
-                        {
-                            pw18.println(line18);
-                            line18 = br18.readLine();
-                        }
-                        pw18.flush();
-                        // closing resources
-                        br18.close();
-                        pw18.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig19 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file19 = new File(getFilesDir()+"/dftb/TRA.DAT");
-                    if (file19.exists())  {
-                        FileWriter fw19 = new FileWriter(file_orig19, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw19 = new BufferedWriter(fw19);
-                        bw19.write(" \n");
-                        bw19.write(">> Reading from file TRA.DAT: \n");
-                        bw19.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw19.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw19 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br19 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line19 = br19.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line19 != null)
-                        {
-                            pw19.println(line19);
-                            line19 = br19.readLine();
-                        }
-                        br19 = new BufferedReader(new FileReader(file19));
-                        line19 = br19.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line19 != null)
-                        {
-                            pw19.println(line19);
-                            line19 = br19.readLine();
-                        }
-                        pw19.flush();
-                        // closing resources
-                        br19.close();
-                        pw19.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig20 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file20 = new File(getFilesDir()+"/dftb/TEST_ARPACK.DAT");
-                    if (file20.exists())  {
-                        FileWriter fw20 = new FileWriter(file_orig20, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw20 = new BufferedWriter(fw20);
-                        bw20.write(" \n");
-                        bw20.write(">> Reading from file TEST_ARPACK.DAT: \n");
-                        bw20.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw20.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw20 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br20 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line20 = br20.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line20 != null)
-                        {
-                            pw20.println(line20);
-                            line20 = br20.readLine();
-                        }
-                        br20 = new BufferedReader(new FileReader(file20));
-                        line20 = br20.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line20 != null)
-                        {
-                            pw20.println(line20);
-                            line20 = br20.readLine();
-                        }
-                        pw20.flush();
-                        // closing resources
-                        br20.close();
-                        pw20.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig21 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file21 = new File(getFilesDir()+"/dftb/XCH.DAT");
-                    if (file21.exists())  {
-                        FileWriter fw21 = new FileWriter(file_orig21, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw21 = new BufferedWriter(fw21);
-                        bw21.write(" \n");
-                        bw21.write(">> Reading from file XCH.DAT: \n");
-                        bw21.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw21.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw21 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br21 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line21 = br21.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line21 != null)
-                        {
-                            pw21.println(line21);
-                            line21 = br21.readLine();
-                        }
-                        br21 = new BufferedReader(new FileReader(file21));
-                        line21 = br21.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line21 != null)
-                        {
-                            pw21.println(line21);
-                            line21 = br21.readLine();
-                        }
-                        pw21.flush();
-                        // closing resources
-                        br21.close();
-                        pw21.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig22 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file22 = new File(getFilesDir()+"/dftb/XplusY.DAT");
-                    if (file22.exists())  {
-                        FileWriter fw22 = new FileWriter(file_orig22, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw22 = new BufferedWriter(fw22);
-                        bw22.write(" \n");
-                        bw22.write(">> Reading from file XplusY.DAT: \n");
-                        bw22.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw22.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw22 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br22 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line22 = br22.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line22 != null)
-                        {
-                            pw22.println(line22);
-                            line22 = br22.readLine();
-                        }
-                        br22 = new BufferedReader(new FileReader(file22));
-                        line22 = br22.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line22 != null)
-                        {
-                            pw22.println(line22);
-                            line22 = br22.readLine();
-                        }
-                        pw22.flush();
-                        // closing resources
-                        br22.close();
-                        pw22.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig23 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file23 = new File(getFilesDir()+"/dftb/XREST.DAT");
-                    if (file23.exists())  {
-                        FileWriter fw23 = new FileWriter(file_orig23, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw23 = new BufferedWriter(fw23);
-                        bw23.write(" \n");
-                        bw23.write(">> Reading from file XREST.DAT: \n");
-                        bw23.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw23.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw23 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br23 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line23 = br23.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line23 != null)
-                        {
-                            pw23.println(line23);
-                            line23 = br23.readLine();
-                        }
-                        br23 = new BufferedReader(new FileReader(file23));
-                        line23 = br23.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line23 != null)
-                        {
-                            pw23.println(line23);
-                            line23 = br23.readLine();
-                        }
-                        pw23.flush();
-                        // closing resources
-                        br23.close();
-                        pw23.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig24 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file24 = new File(getFilesDir()+"/dftb/geo_end.gen");
-                    if (file24.exists())  {
-                        FileWriter fw24 = new FileWriter(file_orig24, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw24 = new BufferedWriter(fw24);
-                        bw24.write(" \n");
-                        bw24.write(">> Reading from file geo_end.gen: \n");
-                        bw24.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw24.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw24 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br24 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line24 = br24.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line24 != null)
-                        {
-                            pw24.println(line24);
-                            line24 = br24.readLine();
-                        }
-                        br24 = new BufferedReader(new FileReader(file24));
-                        line24 = br24.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line24 != null)
-                        {
-                            pw24.println(line24);
-                            line24 = br24.readLine();
-                        }
-                        pw24.flush();
-                        // closing resources
-                        br24.close();
-                        pw24.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig25 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file25 = new File(getFilesDir()+"/dftb/geo_end.xyz");
-                    if (file25.exists())  {
-                        FileWriter fw25 = new FileWriter(file_orig25, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw25 = new BufferedWriter(fw25);
-                        bw25.write(" \n");
-                        bw25.write(">> Reading from file geo_end.xyz: \n");
-                        bw25.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw25.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw25 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br25 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line25 = br25.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line25 != null)
-                        {
-                            pw25.println(line25);
-                            line25 = br25.readLine();
-                        }
-                        br25 = new BufferedReader(new FileReader(file25));
-                        line25 = br25.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line25 != null)
-                        {
-                            pw25.println(line25);
-                            line25 = br25.readLine();
-                        }
-                        pw25.flush();
-                        // closing resources
-                        br25.close();
-                        pw25.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    File file_orig26 = new File(getFilesDir()+"/OUTPUTFILE");
-                    File file26 = new File(getFilesDir()+"/dftb/dftbp.cosmo");
-                    if (file26.exists())  {
-                        FileWriter fw26 = new FileWriter(file_orig26, true);
-                        //BufferedWriter writer give better performance
-                        BufferedWriter bw26 = new BufferedWriter(fw26);
-                        bw26.write(" \n");
-                        bw26.write(">> Reading from file dftbp.cosmo: \n");
-                        bw26.write(" \n");
-                        //Closing BufferedWriter Stream
-                        bw26.close();
-
-                        // PrintWriter object for file3.txt
-                        PrintWriter pw26 = new PrintWriter(getFilesDir()+"/OUTPUTFILE3");
-                        // BufferedReader object for file1.txt
-                        BufferedReader br26 = new BufferedReader(new FileReader(getFilesDir()+"/OUTPUTFILE"));
-                        String line26 = br26.readLine();
-                        // loop to copy each line of
-                        // file1.txt to  file3.txt
-                        while (line26 != null)
-                        {
-                            pw26.println(line26);
-                            line26 = br26.readLine();
-                        }
-                        br26 = new BufferedReader(new FileReader(file26));
-                        line26 = br26.readLine();
-                        // loop to copy each line of
-                        // file2.txt to  file3.txt
-                        while(line26 != null)
-                        {
-                            pw26.println(line26);
-                            line26 = br26.readLine();
-                        }
-                        pw26.flush();
-                        // closing resources
-                        br26.close();
-                        pw26.close();
-
-                        exec("rm "+getFilesDir()+"/OUTPUTFILE");
-                        exec("mv "+getFilesDir()+"/OUTPUTFILE3 "+getFilesDir()+"/OUTPUTFILE");
-//
-                    }
-
-                    exec("rm "+getFilesDir()+"/dftb/band.out");
-                    exec("rm "+getFilesDir()+"/dftb/detailed.out");
-                    exec("rm "+getFilesDir()+"/dftb/results.tag");
-                    exec("rm "+getFilesDir()+"/dftb/hamsqrN.dat");
-                    exec("rm "+getFilesDir()+"/dftb/oversqr.dat");
-                    exec("rm "+getFilesDir()+"/dftb/hamrealN.dat");
-                    exec("rm "+getFilesDir()+"/dftb/overreal.dat");
-                    exec("rm "+getFilesDir()+"/dftb/eigenvec.out");
-                    exec("rm "+getFilesDir()+"/dftb/eigenvec.bin");
-                    exec("rm "+getFilesDir()+"/dftb/charges.bin");
-                    exec("rm "+getFilesDir()+"/dftb/charges.dat");
-                    exec("rm "+getFilesDir()+"/dftb/md.out");
-                    exec("rm "+getFilesDir()+"/dftb/ARPACK.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/COEF.DAT");
-                    // do not delete - for plotting of the spectrum
-//                    exec("rm "+getFilesDir()+"/dftb/EXC.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/SPX.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/TDP.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/TRA.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/TEST_ARPACK.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/XCH.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/XplusY.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/XREST.DAT");
-                    exec("rm "+getFilesDir()+"/dftb/geo_end.gen");
-                    exec("rm "+getFilesDir()+"/dftb/geo_end.xyz");
-                    exec("rm "+getFilesDir()+"/dftb/dftb_pin.hsd");
-                    exec("rm "+getFilesDir()+"/dftb/autotest.tag");
-                    exec("rm "+getFilesDir()+"/dftb/dftbp.cosmo");
-
-
-//
-                        output2(exec("cat "+getFilesDir()+"/OUTPUTFILE"));
-//                    } catch (Exception e) {
-//                    }
-
-
-
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                onFinish();
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+                alertSaveCommand();
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
+        };
+    }
 
-            public void onFinish() {
-                progressDialog.dismiss();
+
+    public void alertSaveCommand(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(Dftb.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb_commands")
+                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String Inputfile = Command.getText().toString();
+                        String SaveInputName = editText10.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(Inputfile);
+                            outputWriter.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/dftb_commands");
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
             }
-        }.start();
+        });
+
+        dialog.show();
+
+    }
+
+
+    private View.OnClickListener RunProgramClick; {
+
+        RunProgramClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Coord = CoordFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("dftb_in.hsd", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Coord);
+                    outputWriter3.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                exec("mv "+getFilesDir()+"/dftb_in.hsd "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/dftb/");
+                exec("mv "+getFilesDir()+"/Input.xyz "+getFilesDir()+"/dftb/");
+
+                Arguments = Arguments.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
+                Arguments = Arguments.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
+                Arguments = Arguments.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
+                Arguments = Arguments.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
+                Arguments = Arguments.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
+                Arguments = Arguments.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
+                Arguments = Arguments.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
+                Arguments = Arguments.replace(" stda ", " "+getApplicationInfo().nativeLibraryDir+"/libstda.so ");
+                Arguments = Arguments.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
+                Arguments = Arguments.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
+                Arguments = Arguments.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
+                Arguments = Arguments.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+                Arguments = Arguments.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
+                Arguments = Arguments.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
+                Arguments = Arguments.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
+                Arguments = Arguments.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
+                Arguments = Arguments.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                Arguments = Arguments.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
+                Arguments = Arguments.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");
+                Arguments = Arguments.replace(" phreeqc ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so ");
+                Arguments = Arguments.replace(" phreeqc-prepare ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so ");
+                Arguments = Arguments.replace(" transpose ", " "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so ");
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(InputFile.getWindowToken(), 0);
+//                String command = ErgoInput.getText().toString();
+                String command = Arguments;
+//                String command = " export HOME="+getFilesDir()+"/ ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/"+NameOfProgram+" "+Arguments;
+
+                new RunCommandTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, command);
+
+                // TODO Auto-generated method stub //
+//                openprogressdialog();
+            }
+        };
+    }
+
+    // Ignore the bad AsyncTask usage.
+    final class RunCommandTask extends AsyncTask<String, Void, CommandResult> {
+
+        private ProgressDialog dialog;
+
+        @Override protected void onPreExecute() {
+
+            // this is cancellable progress dialog
+            dialog = new ProgressDialog(Dftb.this);
+            dialog.setTitle("Please wait...");
+            dialog.setMessage("Calculation is in progress.");
+            dialog.setCancelable(false);
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog2, int which) {
+                    dialog2.dismiss();
+                }
+            });
+            dialog.show();
+
+            // this was the original non-cancellable progress dialog
+//            dialog = ProgressDialog.show(MainActivity.this, "Please wait...", "Calculation is in progress.");
+//            dialog.setCancelable(false);
+        }
+
+        @Override protected CommandResult doInBackground(String... commands) {
+            return com.jrummyapps.android.shell.Shell.SH.run(commands);
+        }
+
+        @Override protected void onPostExecute(CommandResult result) {
+            if (!isFinishing()) {
+                dialog.dismiss();
+//                outputView2.setText(resultToHtml(result));
+                String OutputofExecution = resultToHtml(result).toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("LastExecutionOutput.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(OutputofExecution);
+                    outputWriter.close();
+                    exec("mv "+getFilesDir()+"/LastExecutionOutput.txt "+getFilesDir()+"/dftb/");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                outputView2.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                outputView2.setText(OutputofExecution);
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));}
+        }
+
+        private Spanned resultToHtml(CommandResult result) {
+            StringBuilder html = new StringBuilder();
+            // exit status
+            html.append("<p><strong>Exit Code:</strong> ");
+            if (result.isSuccessful()) {
+                html.append("<font color='green'>").append(result.exitCode).append("</font>");
+            } else {
+                html.append("<font color='red'>").append(result.exitCode).append("</font>");
+            }
+            html.append("</p>");
+            // stdout
+            if (result.stdout.size() > 0) {
+                html.append("<p><strong>STDOUT:</strong></p><p>")
+                        .append(result.getStdout().replaceAll("\n", "<br>"))
+                        .append("</p>");
+            }
+            // stderr
+            if (result.stderr.size() > 0) {
+                html.append("<p><strong>STDERR:</strong></p><p><font color='red'>")
+                        .append(result.getStderr().replaceAll("\n", "<br>"))
+                        .append("</font></p>");
+            }
+            return Html.fromHtml(html.toString());
+        }
+
     }
 
 
@@ -2012,7 +1573,10 @@ public class Dftb extends MainActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 alertSaveOutput();
-                output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/dftb/"));
             }
         };
     }
@@ -2026,7 +1590,7 @@ public class Dftb extends MainActivity {
         EditText editText15 = new EditText(Dftb.this);
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Dftb.this)
-                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb")
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/dftb_work")
                 .setTitle("Please write the desired filename (if already present, it will be overwritten)")
                 .setView(editText15)
 
@@ -2044,7 +1608,7 @@ public class Dftb extends MainActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/dftb");
+                        exec("mv "+getFilesDir()+"/"+SaveOutputName+" "+getFilesDir()+"/dftb_work");
                     }
                 })
 
@@ -2098,7 +1662,7 @@ public class Dftb extends MainActivity {
 
     private void openhighlightdialog() {
         // TODO Auto-generated method stub //
-        progressDialog = new ProgressDialog(Dftb.this);
+        ProgressDialog progressDialog = new ProgressDialog(Dftb.this);
         progressDialog.setTitle("Please wait...");
         progressDialog.setMessage("Highlighting numbers is in progress...");
         progressDialog.setCancelable(false);
@@ -2113,8 +1677,11 @@ public class Dftb extends MainActivity {
         new Thread() {
             public void run() {
                 try {
-                    outputX(exec("cat "+getFilesDir()+"/OUTPUTFILE"));
-                    output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+                    outputX(exec("cat "+getFilesDir()+"/dftb/LastExecutionOutput.txt"));
+                    output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+                    output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+                    output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+                    output(exec("ls -la "+getFilesDir()+"/dftb/"));
                     Toast.makeText(getApplicationContext(), "Numbers highlighted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                 }
@@ -2139,59 +1706,47 @@ public class Dftb extends MainActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private View.OnClickListener QuitClick; {
-
-        QuitClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                Intent intent = new Intent(Dftb.this, MainActivity.class);
-                startActivity(intent);
-            }
-        };
-    }
-
-
     @Override
     protected void onResume() {
         super.onResume();
-        output3(exec("cat "+getFilesDir()+"/Input-dftb.txt"));
+        output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
+        output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
+        output5(exec("cat "+getFilesDir()+"/dftb/Command.txt"));
+        output(exec("ls -la "+getFilesDir()+"/dftb/"));
     }
 
     // for displaying the output in the second TextView there must be different output3 than output, including the str3/proc3 variables
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                DftbInput.setText(str3);
+                InputFile.setText(str3);
             }
         };
         handler.post(proc3);
+    }
+    public void output4(final String str4) {
+        Runnable proc4 = new Runnable() {
+            public void run() {
+                CoordFile.setText(str4);
+            }
+        };
+        handler.post(proc4);
+    }
+    public void output5(final String str5) {
+        Runnable proc5 = new Runnable() {
+            public void run() {
+                Command.setText(str5);
+            }
+        };
+        handler.post(proc5);
+    }
+    public void output(final String str) {
+        Runnable proc = new Runnable() {
+            public void run() {
+                Content.setText(colorized(str, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+            }
+        };
+        handler.post(proc);
     }
 
     // Executes UNIX command.
@@ -2215,5 +1770,17 @@ public class Dftb extends MainActivity {
             throw new RuntimeException(e);
         }
     }
+
+    private View.OnClickListener QuitClick; {
+
+        QuitClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                Intent intent = new Intent(Dftb.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+    }
+
 
 }

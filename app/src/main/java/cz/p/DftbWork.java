@@ -1,29 +1,22 @@
 package cz.p;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import cz.p.MainActivity;
 
 public class DftbWork extends Dftb {
 
@@ -37,7 +30,7 @@ public class DftbWork extends Dftb {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generallayout);
-        final String rootPath = getFilesDir()+"/dftb";
+        final String rootPath = getFilesDir()+"/dftb_work";
         final File dir = new File(rootPath);
         files = dir.listFiles();
         final TextView pathOutput = findViewById(R.id.pathOutput);
@@ -187,7 +180,7 @@ public class DftbWork extends Dftb {
     public void selectFileOrFolder(File fileOrFolder){
 
         final String SelectedFile = fileOrFolder.getAbsolutePath();
-        exec("cp "+SelectedFile+" "+getFilesDir()+"/Input-dftb.txt");
+        exec("cp "+SelectedFile+" "+getFilesDir()+"/dftb/dftb_in.hsd");
     }
 
     private void returnBackToMainActivity() {
@@ -214,4 +207,5 @@ public class DftbWork extends Dftb {
             fileOrFolder.delete();
         }
     }
+
 }

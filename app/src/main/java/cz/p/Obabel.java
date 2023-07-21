@@ -294,6 +294,33 @@ public class Obabel extends MainActivity {
         saveExtInputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = ObabelInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-openbabel.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String InputSwitch = ITypeSwitch.getText().toString();
+                try {
+                    FileOutputStream fileoutI = openFileOutput("InputSwitch.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterI = new OutputStreamWriter(fileoutI);
+                    outputWriterI.write(InputSwitch);
+                    outputWriterI.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String OutputSwitch = OTypeSwitch.getText().toString();
+                try {
+                    FileOutputStream fileoutO = openFileOutput("OutputSwitch.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterO = new OutputStreamWriter(fileoutO);
+                    outputWriterO.write(OutputSwitch);
+                    outputWriterO.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write1(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-openbabel.txt"));
                 outputI(exec("cat "+getFilesDir()+"/InputSwitch.txt"));
@@ -307,6 +334,33 @@ public class Obabel extends MainActivity {
         saveExtOutputfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Inputfile = ObabelInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-openbabel.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String InputSwitch = ITypeSwitch.getText().toString();
+                try {
+                    FileOutputStream fileoutI = openFileOutput("InputSwitch.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterI = new OutputStreamWriter(fileoutI);
+                    outputWriterI.write(InputSwitch);
+                    outputWriterI.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String OutputSwitch = OTypeSwitch.getText().toString();
+                try {
+                    FileOutputStream fileoutO = openFileOutput("OutputSwitch.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterO = new OutputStreamWriter(fileoutO);
+                    outputWriterO.write(OutputSwitch);
+                    outputWriterO.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write2(getApplicationContext());
                 output3(exec("cat "+getFilesDir()+"/Input-openbabel.txt"));
                 outputI(exec("cat "+getFilesDir()+"/InputSwitch.txt"));

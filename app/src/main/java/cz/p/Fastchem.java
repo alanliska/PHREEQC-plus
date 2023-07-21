@@ -606,6 +606,33 @@ public class Fastchem extends MainActivity {
         saveatmofile2Click = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String configfile = config.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("config.input", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(configfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String atmofile = atmospheric_profile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("atmospheric-profile.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(atmofile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String abundfile = abundance.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("abundances.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(abundfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write1(getApplicationContext());
             }
         };
@@ -676,6 +703,33 @@ public class Fastchem extends MainActivity {
         saveabundfile2Click = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String configfile = config.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("config.input", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(configfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String atmofile = atmospheric_profile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("atmospheric-profile.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(atmofile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String abundfile = abundance.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("abundances.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(abundfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write2(getApplicationContext());
             }
         };
@@ -932,6 +986,33 @@ public class Fastchem extends MainActivity {
         saveoutputfile2Click = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String configfile = config.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("config.input", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(configfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String atmofile = atmospheric_profile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("atmospheric-profile.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(atmofile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String abundfile = abundance.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("abundances.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(abundfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 write3(getApplicationContext());
             }
         };

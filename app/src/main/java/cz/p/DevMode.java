@@ -17,17 +17,17 @@ public class DevMode extends MainActivity {
 
     Button start_shelltools;
 
-    Button start_xbasic0001;
+//    Button start_xbasic0001;
 //    Button start_xbasic001;
     Button start_xbasic01;
     Button start_xbasic1;
-    Button start_xbasic0012;
+//    Button start_xbasic0012;
 //    Button start_xbasic012;
     Button start_xbasic12;
     Button start_xbasic2;
     Button start_xbasic3;
     Button start_xbasic4;
-    Button start_xbasic0045;
+//    Button start_xbasic0045;
 //    Button start_xbasic045;
     Button start_xbasic45;
     Button start_xbasic5;
@@ -41,17 +41,17 @@ public class DevMode extends MainActivity {
     Button start_gcm3;
     Button start_compg;
 //    Button start_compgCP2K;
-    Button start_compgDFTB;
+//    Button start_compgDFTB;
     Button start_compgMOPAC;
     Button start_compl;
     Button start_compc;
     Button start_comps;
 //    Button start_compsCP2K;
-    Button start_compsDFTB;
+//    Button start_compsDFTB;
     Button start_compsMOPAC;
     Button start_compss;
 //    Button start_compssCP2K;
-    Button start_compssDFTB;
+//    Button start_compssDFTB;
     Button start_compssMOPAC;
     Button start_compgcm1;
     Button start_compgcm2;
@@ -90,12 +90,22 @@ public class DevMode extends MainActivity {
 //    Button start_refgcp2k;
 //    Button start_refscp2k;
 //    Button start_refsscp2k;
-    Button start_refgdftb;
-    Button start_refsdftb;
-    Button start_refssdftb;
-    Button modify_dftbspectrum;
+//    Button start_refgdftb;
+//    Button start_refsdftb;
+//    Button start_refssdftb;
+//    Button modify_dftbspectrum;
     Button modify_mopacspectrum;
     Button Quit;
+    Button start_solmaker_xtb;
+    Button start_gasmaker_xtb;
+    Button start_ssolmaker_xtb;
+    Button start_refsxtb;
+    Button start_refgxtb;
+    Button start_refssxtb;
+    Button start_compsXTB;
+    Button start_compgXTB;
+    Button start_compssXTB;
+    Button modify_xtbcommand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,19 +114,19 @@ public class DevMode extends MainActivity {
 
         Quit = (Button) findViewById(R.id.Quit);
         Quit.setOnClickListener(QuitClick);
-        start_xbasic0001 = (Button) findViewById(R.id.start_xbasic0001);
+//        start_xbasic0001 = (Button) findViewById(R.id.start_xbasic0001);
 //        start_xbasic001 = (Button) findViewById(R.id.start_xbasic001);
         start_xbasic01 = (Button) findViewById(R.id.start_xbasic01);
         start_xbasic1 = (Button) findViewById(R.id.start_xbasic1);
         start_xbasic12 = (Button) findViewById(R.id.start_xbasic12);
 //        start_xbasic012 = (Button) findViewById(R.id.start_xbasic012);
-        start_xbasic0012 = (Button) findViewById(R.id.start_xbasic0012);
+//        start_xbasic0012 = (Button) findViewById(R.id.start_xbasic0012);
         start_xbasic2 = (Button) findViewById(R.id.start_xbasic2);
         start_xbasic3 = (Button) findViewById(R.id.start_xbasic3);
         start_xbasic4 = (Button) findViewById(R.id.start_xbasic4);
         start_xbasic45 = (Button) findViewById(R.id.start_xbasic45);
 //        start_xbasic045 = (Button) findViewById(R.id.start_xbasic045);
-        start_xbasic0045 = (Button) findViewById(R.id.start_xbasic0045);
+//        start_xbasic0045 = (Button) findViewById(R.id.start_xbasic0045);
         start_xbasic5 = (Button) findViewById(R.id.start_xbasic5);
         start_xbasic6 = (Button) findViewById(R.id.start_xbasic6);
         start_xbasic7 = (Button) findViewById(R.id.start_xbasic7);
@@ -129,17 +139,17 @@ public class DevMode extends MainActivity {
         start_compg = (Button) findViewById(R.id.start_compg);
         start_compgMOPAC = (Button) findViewById(R.id.start_compgMOPAC);
 //        start_compgCP2K = (Button) findViewById(R.id.start_compgCP2K);
-        start_compgDFTB = (Button) findViewById(R.id.start_compgDFTB);
+//        start_compgDFTB = (Button) findViewById(R.id.start_compgDFTB);
         start_compl = (Button) findViewById(R.id.start_compl);
         start_compc = (Button) findViewById(R.id.start_compc);
         start_comps = (Button) findViewById(R.id.start_comps);
         start_compsMOPAC = (Button) findViewById(R.id.start_compsMOPAC);
 //        start_compsCP2K = (Button) findViewById(R.id.start_compsCP2K);
-        start_compsDFTB = (Button) findViewById(R.id.start_compsDFTB);
+//        start_compsDFTB = (Button) findViewById(R.id.start_compsDFTB);
         start_compss = (Button) findViewById(R.id.start_compss);
         start_compssMOPAC = (Button) findViewById(R.id.start_compssMOPAC);
 //        start_compssCP2K = (Button) findViewById(R.id.start_compssCP2K);
-        start_compssDFTB = (Button) findViewById(R.id.start_compssDFTB);
+//        start_compssDFTB = (Button) findViewById(R.id.start_compssDFTB);
         start_compgcm1 = (Button) findViewById(R.id.start_compgcm1);
         start_compgcm2 = (Button) findViewById(R.id.start_compgcm2);
         start_compgcm3 = (Button) findViewById(R.id.start_compgcm3);
@@ -155,9 +165,9 @@ public class DevMode extends MainActivity {
 //        start_refgcp2k = (Button) findViewById(R.id.start_refgcp2k);
 //        start_refscp2k = (Button) findViewById(R.id.start_refscp2k);
 //        start_refsscp2k = (Button) findViewById(R.id.start_refsscp2k);
-        start_refgdftb = (Button) findViewById(R.id.start_refgdftb);
-        start_refsdftb = (Button) findViewById(R.id.start_refsdftb);
-        start_refssdftb = (Button) findViewById(R.id.start_refssdftb);
+//        start_refgdftb = (Button) findViewById(R.id.start_refgdftb);
+//        start_refsdftb = (Button) findViewById(R.id.start_refsdftb);
+//        start_refssdftb = (Button) findViewById(R.id.start_refssdftb);
         start_refgcm1 = (Button) findViewById(R.id.start_refgcm1);
         start_refgcm2 = (Button) findViewById(R.id.start_refgcm2);
         start_refgcm3 = (Button) findViewById(R.id.start_refgcm3);
@@ -168,6 +178,96 @@ public class DevMode extends MainActivity {
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
 
+        modify_xtbcommand = (Button) findViewById(R.id.modify_xtbcommand);
+        modify_xtbcommand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ProcessXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_solmaker_xtb = (Button) findViewById(R.id.start_solmaker_xtb);
+        start_solmaker_xtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, SolmakerXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_gasmaker_xtb = (Button) findViewById(R.id.start_gasmaker_xtb);
+        start_gasmaker_xtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, GasmakerXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_ssolmaker_xtb = (Button) findViewById(R.id.start_ssolmaker_xtb);
+        start_ssolmaker_xtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, SSolmakerXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_refsxtb = (Button) findViewById(R.id.start_refsxtb);
+        start_refsxtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, RefsXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_refgxtb = (Button) findViewById(R.id.start_refgxtb);
+        start_refgxtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, RefgXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_refssxtb = (Button) findViewById(R.id.start_refssxtb);
+        start_refssxtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, RefssXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_compsXTB = (Button) findViewById(R.id.start_compsXTB);
+        start_compsXTB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, CompsXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_compgXTB = (Button) findViewById(R.id.start_compgXTB);
+        start_compgXTB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, CompgXtb.class);
+                startActivity(intent);
+            }
+        });
+
+        start_compssXTB = (Button) findViewById(R.id.start_compssXTB);
+        start_compssXTB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, CompssXtb.class);
+                startActivity(intent);
+            }
+        });
+
         modify_mopacspectrum = (Button) findViewById(R.id.modify_mopacspectrum);
         modify_mopacspectrum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,14 +277,14 @@ public class DevMode extends MainActivity {
             }
         });
 
-        modify_dftbspectrum = (Button) findViewById(R.id.modify_dftbspectrum);
-        modify_dftbspectrum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, XBasic13.class);
-                startActivity(intent);
-            }
-        });
+//        modify_dftbspectrum = (Button) findViewById(R.id.modify_dftbspectrum);
+//        modify_dftbspectrum.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, XBasic13.class);
+//                startActivity(intent);
+//            }
+//        });
 
         backup_restore = (Button) findViewById(R.id.backup_restore);
         backup_restore.setOnClickListener(new View.OnClickListener() {
@@ -204,14 +304,14 @@ public class DevMode extends MainActivity {
             }
         });
 
-        start_xbasic0001 = (Button) findViewById(R.id.start_xbasic0001);
-        start_xbasic0001.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, XBasic0001.class);
-                startActivity(intent);
-            }
-        });
+//        start_xbasic0001 = (Button) findViewById(R.id.start_xbasic0001);
+//        start_xbasic0001.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, XBasic0001.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        start_xbasic001 = (Button) findViewById(R.id.start_xbasic001);
 //        start_xbasic001.setOnClickListener(new View.OnClickListener() {
@@ -241,14 +341,14 @@ public class DevMode extends MainActivity {
             }
         });
 
-        start_xbasic0012 = (Button) findViewById(R.id.start_xbasic0012);
-        start_xbasic0012.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, XBasic0012.class);
-                startActivity(intent);
-            }
-        });
+//        start_xbasic0012 = (Button) findViewById(R.id.start_xbasic0012);
+//        start_xbasic0012.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, XBasic0012.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        start_xbasic012 = (Button) findViewById(R.id.start_xbasic012);
 //        start_xbasic012.setOnClickListener(new View.OnClickListener() {
@@ -295,14 +395,14 @@ public class DevMode extends MainActivity {
             }
         });
 
-        start_xbasic0045 = (Button) findViewById(R.id.start_xbasic0045);
-        start_xbasic0045.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, XBasic0045.class);
-                startActivity(intent);
-            }
-        });
+//        start_xbasic0045 = (Button) findViewById(R.id.start_xbasic0045);
+//        start_xbasic0045.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, XBasic0045.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        start_xbasic045 = (Button) findViewById(R.id.start_xbasic045);
 //        start_xbasic045.setOnClickListener(new View.OnClickListener() {
@@ -421,14 +521,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_refgdftb = (Button) findViewById(R.id.start_refgdftb);
-        start_refgdftb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, RefgDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_refgdftb = (Button) findViewById(R.id.start_refgdftb);
+//        start_refgdftb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, RefgDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_refl = (Button) findViewById(R.id.start_refl);
         start_refl.setOnClickListener(new View.OnClickListener() {
@@ -466,14 +566,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_refsdftb = (Button) findViewById(R.id.start_refsdftb);
-        start_refsdftb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, RefsDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_refsdftb = (Button) findViewById(R.id.start_refsdftb);
+//        start_refsdftb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, RefsDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_refss = (Button) findViewById(R.id.start_refss);
         start_refss.setOnClickListener(new View.OnClickListener() {
@@ -493,14 +593,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_refssdftb = (Button) findViewById(R.id.start_refssdftb);
-        start_refssdftb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, RefssDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_refssdftb = (Button) findViewById(R.id.start_refssdftb);
+//        start_refssdftb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, RefssDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_refgcm1 = (Button) findViewById(R.id.start_refgcm1);
         start_refgcm1.setOnClickListener(new View.OnClickListener() {
@@ -565,14 +665,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_compgDFTB = (Button) findViewById(R.id.start_compgDFTB);
-        start_compgDFTB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, CompgDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_compgDFTB = (Button) findViewById(R.id.start_compgDFTB);
+//        start_compgDFTB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, CompgDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_compl = (Button) findViewById(R.id.start_compl);
         start_compl.setOnClickListener(new View.OnClickListener() {
@@ -619,14 +719,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_compsDFTB = (Button) findViewById(R.id.start_compsDFTB);
-        start_compsDFTB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, CompsDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_compsDFTB = (Button) findViewById(R.id.start_compsDFTB);
+//        start_compsDFTB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, CompsDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_compss = (Button) findViewById(R.id.start_compss);
         start_compss.setOnClickListener(new View.OnClickListener() {
@@ -655,14 +755,14 @@ public class DevMode extends MainActivity {
 //            }
 //        });
 
-        start_compssDFTB = (Button) findViewById(R.id.start_compssDFTB);
-        start_compssDFTB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, CompssDftb.class);
-                startActivity(intent);
-            }
-        });
+//        start_compssDFTB = (Button) findViewById(R.id.start_compssDFTB);
+//        start_compssDFTB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DevMode.this, CompssDftb.class);
+//                startActivity(intent);
+//            }
+//        });
 
         start_compgcm1 = (Button) findViewById(R.id.start_compgcm1);
         start_compgcm1.setOnClickListener(new View.OnClickListener() {

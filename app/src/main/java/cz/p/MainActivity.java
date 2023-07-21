@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     Button Manual;
     Button start_devmode;
     Button start_bulk;
-    Button start_cp2k;
+//    Button start_cp2k;
     TextView label0;
     TextView label1;
     TextView label2;
@@ -143,9 +143,12 @@ public class MainActivity extends AppCompatActivity {
     Button manual_phreeqc_plus;
 //    TextView label_cp2k_all;
 //    Button start_cp2k_all;
-    TextView label_dftb_all;
-    Button start_dftb_all;
+//    TextView label_dftb_all;
+//    Button start_dftb_all;
     Button start_dftb;
+    TextView label_xtb_all;
+    Button start_xtb_all;
+    Button start_xtb;
 
 
     /**
@@ -346,7 +349,8 @@ public class MainActivity extends AppCompatActivity {
         start_kin = (Button) findViewById(R.id.start_kin);
         manual_phreeqc_plus = (Button) findViewById(R.id.manual_phreeqc_plus);
 //        label_cp2k_all = (TextView) findViewById(R.id.label_cp2k_all);
-        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
+//        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
+        label_xtb_all = (TextView) findViewById(R.id.label_xtb_all);
 
         start_opsin = (Button) findViewById(R.id.start_opsin);
         start_opsin.setOnClickListener(new View.OnClickListener() {
@@ -392,6 +396,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        start_xtb = (Button) findViewById(R.id.start_xtb);
+        start_xtb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String DatasetName0 = dataset.getText().toString();
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(DatasetName);
+                    outputWriter.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Intent intent = new Intent(MainActivity.this, Xtb.class);
+                startActivity(intent);
+            }
+        });
+
 //        start_cp2k_all = (Button) findViewById(R.id.start_cp2k_all);
 //        start_cp2k_all.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -414,8 +440,30 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        start_dftb_all = (Button) findViewById(R.id.start_dftb_all);
-        start_dftb_all.setOnClickListener(new View.OnClickListener() {
+//        start_dftb_all = (Button) findViewById(R.id.start_dftb_all);
+//        start_dftb_all.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String DatasetName0 = dataset.getText().toString();
+//                String DatasetName1 = DatasetName0.replace(" ","_");
+//                String DatasetName = DatasetName1.replace(",",".");
+//                try {
+//                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(DatasetName);
+//                    outputWriter.close();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Intent intent = new Intent(MainActivity.this, Dftb1.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        start_xtb_all = (Button) findViewById(R.id.start_xtb_all);
+        start_xtb_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String DatasetName0 = dataset.getText().toString();
@@ -431,7 +479,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Intent intent = new Intent(MainActivity.this, Dftb1.class);
+                Intent intent = new Intent(MainActivity.this, Xtb1.class);
                 startActivity(intent);
             }
         });
@@ -945,6 +993,15 @@ public class MainActivity extends AppCompatActivity {
             // without this file the kinetics calculations would not work
             copyFromAssetsToInternalStorage("temperature.txt");
 
+            try {
+                FileOutputStream fileout = openFileOutput("BinaryPath.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(getApplicationInfo().nativeLibraryDir);
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             progressDialog = new ProgressDialog(MainActivity.this);
             progressDialog.setTitle("Please wait...");
             progressDialog.setMessage("Installing PHREEQC plus. It may take a while.");
@@ -1037,6 +1094,10 @@ public class MainActivity extends AppCompatActivity {
                     File Path68 = new File(getFilesDir()+"/dftb");
                     File Path69 = new File(getFilesDir()+"/sk_files");
                     File Path70 = new File(getFilesDir()+"/reference");
+                    File Path71 = new File(getFilesDir()+"/openbabel/xtb_comm");
+                    File Path72 = new File(getFilesDir()+"/openbabel/xtb_solv");
+                    File Path73 = new File(getFilesDir()+"/output/xtb_comm");
+                    File Path74 = new File(getFilesDir()+"/output/xtb_solv");
                     try {
                         if (!Path00.exists()) {
                             Path00.mkdirs();
@@ -1253,6 +1314,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if (!Path70.exists()) {
                             Path70.mkdirs();
+                        }
+                        if (!Path71.exists()) {
+                            Path71.mkdirs();
+                        }
+                        if (!Path72.exists()) {
+                            Path72.mkdirs();
+                        }
+                        if (!Path73.exists()) {
+                            Path73.mkdirs();
+                        }
+                        if (!Path74.exists()) {
+                            Path74.mkdirs();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -794,252 +794,252 @@ public class OpenBabel extends MainActivity {
 
 
                 File[] files_solv = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
-                for (File file : files_solv) {
-                    if (!file.isFile()) continue;
+                    for (File file : files_solv) {
+                        if (!file.isFile()) continue;
 
 
-                    String InputfileName = file.getName();
-                    String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
-                    String Method = exec("cat "+getFilesDir()+"/method.txt");
+                        String InputfileName = file.getName();
+                        String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
+                        String Method = exec("cat "+getFilesDir()+"/method.txt");
 
-                    Formula = Formula.replace(",", ".");
+                        Formula = Formula.replace(",", ".");
 
-                    ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                        ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
 //                    try {
 //                    while (Formula.contains("C")){
-                    Formula = Formula.replace("C", "[C]");
-                    Formula = Formula.replace("[C]a", "Ca");
-                    Formula = Formula.replace("[C]b", "Cb");
-                    Formula = Formula.replace("[C]c", "Cc");
-                    Formula = Formula.replace("[C]d", "Cd");
-                    Formula = Formula.replace("[C]e", "Ce");
-                    Formula = Formula.replace("[C]f", "Cf");
-                    Formula = Formula.replace("[C]g", "Cg");
-                    Formula = Formula.replace("[C]h", "Ch");
-                    Formula = Formula.replace("[C]i", "Ci");
-                    Formula = Formula.replace("[C]j", "Cj");
-                    Formula = Formula.replace("[C]k", "Ck");
-                    Formula = Formula.replace("[C]l", "Cl");
-                    Formula = Formula.replace("[C]m", "Cm");
-                    Formula = Formula.replace("[C]n", "Cn");
-                    Formula = Formula.replace("[C]o", "Co");
-                    Formula = Formula.replace("[C]p", "Cp");
-                    Formula = Formula.replace("[C]q", "Cq");
-                    Formula = Formula.replace("[C]r", "Cr");
-                    Formula = Formula.replace("[C]s", "Cs");
-                    Formula = Formula.replace("[C]t", "Ct");
-                    Formula = Formula.replace("[C]u", "Cu");
-                    Formula = Formula.replace("[C]v", "Cv");
-                    Formula = Formula.replace("[C]w", "Cw");
-                    Formula = Formula.replace("[C]x", "Cx");
-                    Formula = Formula.replace("[C]y", "Cy");
-                    Formula = Formula.replace("[C]z", "Cz");
+                        Formula = Formula.replace("C", "[C]");
+                        Formula = Formula.replace("[C]a", "Ca");
+                        Formula = Formula.replace("[C]b", "Cb");
+                        Formula = Formula.replace("[C]c", "Cc");
+                        Formula = Formula.replace("[C]d", "Cd");
+                        Formula = Formula.replace("[C]e", "Ce");
+                        Formula = Formula.replace("[C]f", "Cf");
+                        Formula = Formula.replace("[C]g", "Cg");
+                        Formula = Formula.replace("[C]h", "Ch");
+                        Formula = Formula.replace("[C]i", "Ci");
+                        Formula = Formula.replace("[C]j", "Cj");
+                        Formula = Formula.replace("[C]k", "Ck");
+                        Formula = Formula.replace("[C]l", "Cl");
+                        Formula = Formula.replace("[C]m", "Cm");
+                        Formula = Formula.replace("[C]n", "Cn");
+                        Formula = Formula.replace("[C]o", "Co");
+                        Formula = Formula.replace("[C]p", "Cp");
+                        Formula = Formula.replace("[C]q", "Cq");
+                        Formula = Formula.replace("[C]r", "Cr");
+                        Formula = Formula.replace("[C]s", "Cs");
+                        Formula = Formula.replace("[C]t", "Ct");
+                        Formula = Formula.replace("[C]u", "Cu");
+                        Formula = Formula.replace("[C]v", "Cv");
+                        Formula = Formula.replace("[C]w", "Cw");
+                        Formula = Formula.replace("[C]x", "Cx");
+                        Formula = Formula.replace("[C]y", "Cy");
+                        Formula = Formula.replace("[C]z", "Cz");
 //                    }
 //                    while (Formula.contains("H")){
-                    Formula = Formula.replace("H", "[H]");
-                    Formula = Formula.replace("[H]a", "Ha");
-                    Formula = Formula.replace("[H]b", "Hb");
-                    Formula = Formula.replace("[H]c", "Hc");
-                    Formula = Formula.replace("[H]d", "Hd");
-                    Formula = Formula.replace("[H]e", "He");
-                    Formula = Formula.replace("[H]f", "Hf");
-                    Formula = Formula.replace("[H]g", "Hg");
-                    Formula = Formula.replace("[H]h", "Hh");
-                    Formula = Formula.replace("[H]i", "Hi");
-                    Formula = Formula.replace("[H]j", "Hj");
-                    Formula = Formula.replace("[H]k", "Hk");
-                    Formula = Formula.replace("[H]l", "Hl");
-                    Formula = Formula.replace("[H]m", "Hm");
-                    Formula = Formula.replace("[H]n", "Hn");
-                    Formula = Formula.replace("[H]o", "Ho");
-                    Formula = Formula.replace("[H]p", "Hp");
-                    Formula = Formula.replace("[H]q", "Hq");
-                    Formula = Formula.replace("[H]r", "Hr");
-                    Formula = Formula.replace("[H]s", "Hs");
-                    Formula = Formula.replace("[H]t", "Ht");
-                    Formula = Formula.replace("[H]u", "Hu");
-                    Formula = Formula.replace("[H]v", "Hv");
-                    Formula = Formula.replace("[H]w", "Hw");
-                    Formula = Formula.replace("[H]x", "Hx");
-                    Formula = Formula.replace("[H]y", "Hy");
-                    Formula = Formula.replace("[H]z", "Hz");
+                        Formula = Formula.replace("H", "[H]");
+                        Formula = Formula.replace("[H]a", "Ha");
+                        Formula = Formula.replace("[H]b", "Hb");
+                        Formula = Formula.replace("[H]c", "Hc");
+                        Formula = Formula.replace("[H]d", "Hd");
+                        Formula = Formula.replace("[H]e", "He");
+                        Formula = Formula.replace("[H]f", "Hf");
+                        Formula = Formula.replace("[H]g", "Hg");
+                        Formula = Formula.replace("[H]h", "Hh");
+                        Formula = Formula.replace("[H]i", "Hi");
+                        Formula = Formula.replace("[H]j", "Hj");
+                        Formula = Formula.replace("[H]k", "Hk");
+                        Formula = Formula.replace("[H]l", "Hl");
+                        Formula = Formula.replace("[H]m", "Hm");
+                        Formula = Formula.replace("[H]n", "Hn");
+                        Formula = Formula.replace("[H]o", "Ho");
+                        Formula = Formula.replace("[H]p", "Hp");
+                        Formula = Formula.replace("[H]q", "Hq");
+                        Formula = Formula.replace("[H]r", "Hr");
+                        Formula = Formula.replace("[H]s", "Hs");
+                        Formula = Formula.replace("[H]t", "Ht");
+                        Formula = Formula.replace("[H]u", "Hu");
+                        Formula = Formula.replace("[H]v", "Hv");
+                        Formula = Formula.replace("[H]w", "Hw");
+                        Formula = Formula.replace("[H]x", "Hx");
+                        Formula = Formula.replace("[H]y", "Hy");
+                        Formula = Formula.replace("[H]z", "Hz");
 //                    }
 //                    while (Formula.contains("N")){
-                    Formula = Formula.replace("N", "[N]");
-                    Formula = Formula.replace("[N]a", "Na");
-                    Formula = Formula.replace("[N]b", "Nb");
-                    Formula = Formula.replace("[N]c", "Nc");
-                    Formula = Formula.replace("[N]d", "Nd");
-                    Formula = Formula.replace("[N]e", "Ne");
-                    Formula = Formula.replace("[N]f", "Nf");
-                    Formula = Formula.replace("[N]g", "Ng");
-                    Formula = Formula.replace("[N]h", "Nh");
-                    Formula = Formula.replace("[N]i", "Ni");
-                    Formula = Formula.replace("[N]j", "Nj");
-                    Formula = Formula.replace("[N]k", "Nk");
-                    Formula = Formula.replace("[N]l", "Nl");
-                    Formula = Formula.replace("[N]m", "Nm");
-                    Formula = Formula.replace("[N]n", "Nn");
-                    Formula = Formula.replace("[N]o", "No");
-                    Formula = Formula.replace("[N]p", "Np");
-                    Formula = Formula.replace("[N]q", "Nq");
-                    Formula = Formula.replace("[N]r", "Nr");
-                    Formula = Formula.replace("[N]s", "Ns");
-                    Formula = Formula.replace("[N]t", "Nt");
-                    Formula = Formula.replace("[N]u", "Nu");
-                    Formula = Formula.replace("[N]v", "Nv");
-                    Formula = Formula.replace("[N]w", "Nw");
-                    Formula = Formula.replace("[N]x", "Nx");
-                    Formula = Formula.replace("[N]y", "Ny");
-                    Formula = Formula.replace("[N]z", "Nz");
+                        Formula = Formula.replace("N", "[N]");
+                        Formula = Formula.replace("[N]a", "Na");
+                        Formula = Formula.replace("[N]b", "Nb");
+                        Formula = Formula.replace("[N]c", "Nc");
+                        Formula = Formula.replace("[N]d", "Nd");
+                        Formula = Formula.replace("[N]e", "Ne");
+                        Formula = Formula.replace("[N]f", "Nf");
+                        Formula = Formula.replace("[N]g", "Ng");
+                        Formula = Formula.replace("[N]h", "Nh");
+                        Formula = Formula.replace("[N]i", "Ni");
+                        Formula = Formula.replace("[N]j", "Nj");
+                        Formula = Formula.replace("[N]k", "Nk");
+                        Formula = Formula.replace("[N]l", "Nl");
+                        Formula = Formula.replace("[N]m", "Nm");
+                        Formula = Formula.replace("[N]n", "Nn");
+                        Formula = Formula.replace("[N]o", "No");
+                        Formula = Formula.replace("[N]p", "Np");
+                        Formula = Formula.replace("[N]q", "Nq");
+                        Formula = Formula.replace("[N]r", "Nr");
+                        Formula = Formula.replace("[N]s", "Ns");
+                        Formula = Formula.replace("[N]t", "Nt");
+                        Formula = Formula.replace("[N]u", "Nu");
+                        Formula = Formula.replace("[N]v", "Nv");
+                        Formula = Formula.replace("[N]w", "Nw");
+                        Formula = Formula.replace("[N]x", "Nx");
+                        Formula = Formula.replace("[N]y", "Ny");
+                        Formula = Formula.replace("[N]z", "Nz");
 //                    }
 //                    while (Formula.contains("O")){
-                    Formula = Formula.replace("O", "[O]");
-                    Formula = Formula.replace("[O]a", "Oa");
-                    Formula = Formula.replace("[O]b", "Ob");
-                    Formula = Formula.replace("[O]c", "Oc");
-                    Formula = Formula.replace("[O]d", "Od");
-                    Formula = Formula.replace("[O]e", "Oe");
-                    Formula = Formula.replace("[O]f", "Of");
-                    Formula = Formula.replace("[O]g", "Og");
-                    Formula = Formula.replace("[O]h", "Oh");
-                    Formula = Formula.replace("[O]i", "Oi");
-                    Formula = Formula.replace("[O]j", "Oj");
-                    Formula = Formula.replace("[O]k", "Ok");
-                    Formula = Formula.replace("[O]l", "Ol");
-                    Formula = Formula.replace("[O]m", "Om");
-                    Formula = Formula.replace("[O]n", "On");
-                    Formula = Formula.replace("[O]o", "Oo");
-                    Formula = Formula.replace("[O]p", "Op");
-                    Formula = Formula.replace("[O]q", "Oq");
-                    Formula = Formula.replace("[O]r", "Or");
-                    Formula = Formula.replace("[O]s", "Os");
-                    Formula = Formula.replace("[O]t", "Ot");
-                    Formula = Formula.replace("[O]u", "Ou");
-                    Formula = Formula.replace("[O]v", "Ov");
-                    Formula = Formula.replace("[O]w", "Ow");
-                    Formula = Formula.replace("[O]x", "Ox");
-                    Formula = Formula.replace("[O]y", "Oy");
-                    Formula = Formula.replace("[O]z", "Oz");
+                        Formula = Formula.replace("O", "[O]");
+                        Formula = Formula.replace("[O]a", "Oa");
+                        Formula = Formula.replace("[O]b", "Ob");
+                        Formula = Formula.replace("[O]c", "Oc");
+                        Formula = Formula.replace("[O]d", "Od");
+                        Formula = Formula.replace("[O]e", "Oe");
+                        Formula = Formula.replace("[O]f", "Of");
+                        Formula = Formula.replace("[O]g", "Og");
+                        Formula = Formula.replace("[O]h", "Oh");
+                        Formula = Formula.replace("[O]i", "Oi");
+                        Formula = Formula.replace("[O]j", "Oj");
+                        Formula = Formula.replace("[O]k", "Ok");
+                        Formula = Formula.replace("[O]l", "Ol");
+                        Formula = Formula.replace("[O]m", "Om");
+                        Formula = Formula.replace("[O]n", "On");
+                        Formula = Formula.replace("[O]o", "Oo");
+                        Formula = Formula.replace("[O]p", "Op");
+                        Formula = Formula.replace("[O]q", "Oq");
+                        Formula = Formula.replace("[O]r", "Or");
+                        Formula = Formula.replace("[O]s", "Os");
+                        Formula = Formula.replace("[O]t", "Ot");
+                        Formula = Formula.replace("[O]u", "Ou");
+                        Formula = Formula.replace("[O]v", "Ov");
+                        Formula = Formula.replace("[O]w", "Ow");
+                        Formula = Formula.replace("[O]x", "Ox");
+                        Formula = Formula.replace("[O]y", "Oy");
+                        Formula = Formula.replace("[O]z", "Oz");
 //                    }
 //                    while (Formula.contains("S")){
-                    Formula = Formula.replace("S", "[S]");
-                    Formula = Formula.replace("[S]a", "Sa");
-                    Formula = Formula.replace("[S]b", "Sb");
-                    Formula = Formula.replace("[S]c", "Sc");
-                    Formula = Formula.replace("[S]d", "Sd");
-                    Formula = Formula.replace("[S]e", "Se");
-                    Formula = Formula.replace("[S]f", "Sf");
-                    Formula = Formula.replace("[S]g", "Sg");
-                    Formula = Formula.replace("[S]h", "Sh");
-                    Formula = Formula.replace("[S]i", "Si");
-                    Formula = Formula.replace("[S]j", "Sj");
-                    Formula = Formula.replace("[S]k", "Sk");
-                    Formula = Formula.replace("[S]l", "Sl");
-                    Formula = Formula.replace("[S]m", "Sm");
-                    Formula = Formula.replace("[S]n", "Sn");
-                    Formula = Formula.replace("[S]o", "So");
-                    Formula = Formula.replace("[S]p", "Sp");
-                    Formula = Formula.replace("[S]q", "Sq");
-                    Formula = Formula.replace("[S]r", "Sr");
-                    Formula = Formula.replace("[S]s", "Ss");
-                    Formula = Formula.replace("[S]t", "St");
-                    Formula = Formula.replace("[S]u", "Su");
-                    Formula = Formula.replace("[S]v", "Sv");
-                    Formula = Formula.replace("[S]w", "Sw");
-                    Formula = Formula.replace("[S]x", "Sx");
-                    Formula = Formula.replace("[S]y", "Sy");
-                    Formula = Formula.replace("[S]z", "Sz");
+                        Formula = Formula.replace("S", "[S]");
+                        Formula = Formula.replace("[S]a", "Sa");
+                        Formula = Formula.replace("[S]b", "Sb");
+                        Formula = Formula.replace("[S]c", "Sc");
+                        Formula = Formula.replace("[S]d", "Sd");
+                        Formula = Formula.replace("[S]e", "Se");
+                        Formula = Formula.replace("[S]f", "Sf");
+                        Formula = Formula.replace("[S]g", "Sg");
+                        Formula = Formula.replace("[S]h", "Sh");
+                        Formula = Formula.replace("[S]i", "Si");
+                        Formula = Formula.replace("[S]j", "Sj");
+                        Formula = Formula.replace("[S]k", "Sk");
+                        Formula = Formula.replace("[S]l", "Sl");
+                        Formula = Formula.replace("[S]m", "Sm");
+                        Formula = Formula.replace("[S]n", "Sn");
+                        Formula = Formula.replace("[S]o", "So");
+                        Formula = Formula.replace("[S]p", "Sp");
+                        Formula = Formula.replace("[S]q", "Sq");
+                        Formula = Formula.replace("[S]r", "Sr");
+                        Formula = Formula.replace("[S]s", "Ss");
+                        Formula = Formula.replace("[S]t", "St");
+                        Formula = Formula.replace("[S]u", "Su");
+                        Formula = Formula.replace("[S]v", "Sv");
+                        Formula = Formula.replace("[S]w", "Sw");
+                        Formula = Formula.replace("[S]x", "Sx");
+                        Formula = Formula.replace("[S]y", "Sy");
+                        Formula = Formula.replace("[S]z", "Sz");
 //                    }
 //                    while (Formula.contains("F")){
-                    Formula = Formula.replace("F", "[F]");
-                    Formula = Formula.replace("[F]a", "Fa");
-                    Formula = Formula.replace("[F]b", "Fb");
-                    Formula = Formula.replace("[F]c", "Fc");
-                    Formula = Formula.replace("[F]d", "Fd");
-                    Formula = Formula.replace("[F]e", "Fe");
-                    Formula = Formula.replace("[F]f", "Ff");
-                    Formula = Formula.replace("[F]g", "Fg");
-                    Formula = Formula.replace("[F]h", "Fh");
-                    Formula = Formula.replace("[F]i", "Fi");
-                    Formula = Formula.replace("[F]j", "Fj");
-                    Formula = Formula.replace("[F]k", "Fk");
-                    Formula = Formula.replace("[F]l", "Fl");
-                    Formula = Formula.replace("[F]m", "Fm");
-                    Formula = Formula.replace("[F]n", "Fn");
-                    Formula = Formula.replace("[F]o", "Fo");
-                    Formula = Formula.replace("[F]p", "Fp");
-                    Formula = Formula.replace("[F]q", "Fq");
-                    Formula = Formula.replace("[F]r", "Fr");
-                    Formula = Formula.replace("[F]s", "Fs");
-                    Formula = Formula.replace("[F]t", "Ft");
-                    Formula = Formula.replace("[F]u", "Fu");
-                    Formula = Formula.replace("[F]v", "Fv");
-                    Formula = Formula.replace("[F]w", "Fw");
-                    Formula = Formula.replace("[F]x", "Fx");
-                    Formula = Formula.replace("[F]y", "Fy");
-                    Formula = Formula.replace("[F]z", "Fz");
+                        Formula = Formula.replace("F", "[F]");
+                        Formula = Formula.replace("[F]a", "Fa");
+                        Formula = Formula.replace("[F]b", "Fb");
+                        Formula = Formula.replace("[F]c", "Fc");
+                        Formula = Formula.replace("[F]d", "Fd");
+                        Formula = Formula.replace("[F]e", "Fe");
+                        Formula = Formula.replace("[F]f", "Ff");
+                        Formula = Formula.replace("[F]g", "Fg");
+                        Formula = Formula.replace("[F]h", "Fh");
+                        Formula = Formula.replace("[F]i", "Fi");
+                        Formula = Formula.replace("[F]j", "Fj");
+                        Formula = Formula.replace("[F]k", "Fk");
+                        Formula = Formula.replace("[F]l", "Fl");
+                        Formula = Formula.replace("[F]m", "Fm");
+                        Formula = Formula.replace("[F]n", "Fn");
+                        Formula = Formula.replace("[F]o", "Fo");
+                        Formula = Formula.replace("[F]p", "Fp");
+                        Formula = Formula.replace("[F]q", "Fq");
+                        Formula = Formula.replace("[F]r", "Fr");
+                        Formula = Formula.replace("[F]s", "Fs");
+                        Formula = Formula.replace("[F]t", "Ft");
+                        Formula = Formula.replace("[F]u", "Fu");
+                        Formula = Formula.replace("[F]v", "Fv");
+                        Formula = Formula.replace("[F]w", "Fw");
+                        Formula = Formula.replace("[F]x", "Fx");
+                        Formula = Formula.replace("[F]y", "Fy");
+                        Formula = Formula.replace("[F]z", "Fz");
 //                    }
 //                    } catch (Exception e) {
 //                        e.printStackTrace();
 //                    }
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                         try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                            exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
+                            try {
+                                exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/opt/results");
+                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                            exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/opt/results");
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/opt/results");
+                            String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
+                            String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".arc");
+                            FileOutputStream fileout9 = openFileOutput(InputfileName+".mops", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
+                            outputWriter9.write(Sed4);
+                            outputWriter9.close();
+                            exec("cp "+getFilesDir()+"/"+InputfileName+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                            String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                            FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                            outputWriter10.write("THERMO(298,298) LET "+Sed3);
+                            outputWriter10.write("\n");
+                            outputWriter10.write("\n");
+                            outputWriter10.write(Sed5);
+                            outputWriter10.close();
+                            exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                            exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
+                            try {
+                                exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/thermo/results");
+                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                            String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
+                            FileOutputStream fileout13 = openFileOutput(InputfileName+"_s.temp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                            outputWriter13.write(Grep2);
+                            outputWriter13.close();
+                            String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s.temp");
+                            FileOutputStream fileout14 = openFileOutput(DatasetName+"_s.txt",MODE_APPEND);
+                            OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
+                            outputWriter14.write(InputfileName+" ");
+                            outputWriter14.write(Formula+" ");
+                            outputWriter14.write(Method+" ");
+                            outputWriter14.write(Sed6);
+                            outputWriter14.close();
+                            exec("rm "+getFilesDir()+"/"+InputfileName+"_s.temp");
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/thermo/results");
+                            exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
                         } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/opt/results");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/opt/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/opt/results");
-                        String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
-                        String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".arc");
-                        FileOutputStream fileout9 = openFileOutput(InputfileName+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
-                        outputWriter9.write(Sed4);
-                        outputWriter9.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileName+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
-                        FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
-                        outputWriter10.write("THERMO(298,298) LET "+Sed3);
-                        outputWriter10.write("\n");
-                        outputWriter10.write("\n");
-                        outputWriter10.write(Sed5);
-                        outputWriter10.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
-                        try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/thermo/results");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                        String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
-                        FileOutputStream fileout13 = openFileOutput(InputfileName+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
-                        outputWriter13.write(Grep2);
-                        outputWriter13.close();
-                        String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s.temp");
-                        FileOutputStream fileout14 = openFileOutput(DatasetName+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
-                        outputWriter14.write(InputfileName+" ");
-                        outputWriter14.write(Formula+" ");
-                        outputWriter14.write(Method+" ");
-                        outputWriter14.write(Sed6);
-                        outputWriter14.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileName+"_s.temp");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/thermo/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
-                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -1323,12 +1323,70 @@ public class OpenBabel extends MainActivity {
 
         quit_click = new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    exec("rm -rf "+getFilesDir()+File.separator+"openbabel");
-                    exec("mkdir "+getFilesDir()+File.separator+"openbabel");
-                } catch (Exception e) {
-                    e.printStackTrace();
+//                try {
+////                     problematic, after that, new calculations do not terminate properly
+//                    exec("rm -rf "+getFilesDir()+"/openbabel");
+//                    exec("mkdir "+getFilesDir()+"/openbabel");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/formula");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/gas");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/gas/opt");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/gas/opt/results");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/gas/thermo");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/gas/thermo/results");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/iupac");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/smiles");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/solv");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/solv/opt");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/solv/opt/results");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/solv/thermo");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/solv/thermo/results");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/xyz");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/formula");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/xtb_comm");
+//                    exec("mkdir "+getFilesDir()+"/openbabel/xtb_solv");
+//                    exec("chmod 755 -R "+getFilesDir()+"/openbabel");
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+
+
+                File[] files_gas = new File(getFilesDir()+"/openbabel/gas/opt").listFiles();
+                for (File file : files_gas) {
+                    if (!file.isFile()) continue;
+
+                    try{
+                        String InputfileName = file.getName();
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/formula/"+InputfileName+".formula");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/smiles/"+InputfileName+".smi");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/xyz/"+InputfileName+".xyz");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/iupac/"+InputfileName+".iupac");
+                        exec("rm "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+
+
+                File[] files_solv = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
+                for (File file : files_solv) {
+                    if (!file.isFile()) continue;
+
+                    try{
+                    String InputfileName = file.getName();
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/formula/"+InputfileName+".formula");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/smiles/"+InputfileName+".smi");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/xyz/"+InputfileName+".xyz");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/iupac/"+InputfileName+".iupac");
+                        exec("rm "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+
+
+
 
                 // TODO Auto-generated method stub //
                 openbabel_exit_click();
