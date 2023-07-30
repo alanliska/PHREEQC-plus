@@ -30,7 +30,7 @@ More info on licenses & references - please refer to the licensing information i
 Licenses and references to used third-party software:
 
  * ACPDFVIEW
- Author: Bhuvaneshw (Github)
+ Author: Bhuvaneshwaran (Github)
  Source code: https://github.com/Bhuvaneshw/acpdfview
  License: GNU GPL-3.0
 
@@ -207,7 +207,7 @@ Licenses and references to used third-party software:
  License: Apache v2, MIT
 
  * TRANSPOSE
- Author: Dr. Alex Sheppard
+ Author: Dr. Alex Sheppard (alex@das-computer.co.uk)
  Source code: https://sourceforge.net/projects/transpose/
  License: This software is released under the GPL license (GNU General Public License version 2.0 (GPLv2)). 
 
