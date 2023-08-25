@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         android:extractNativeLibs="true">
         <activity   android:name="cz.p.MainActivity"
-                    android:exported="true">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -156,25 +156,25 @@
         <activity android:name="cz.p.ManualOpenbabel" />
         <activity android:name="cz.p.BackupRestore" />
         <activity android:name="cz.p.BackupRestoreDialog" />
-<!---
-        <activity android:name="cz.p.Cp2k" />
-        <activity android:name="cz.p.Cp2kWork" />
-        <activity android:name="cz.p.ManualCp2k" />
-        <activity android:name="cz.p.Cp2k1" />
-        <activity android:name="cz.p.CompgCP2K" />
-        <activity android:name="cz.p.CompsCP2K" />
-        <activity android:name="cz.p.CompssCP2K" />
-        <activity android:name="cz.p.XBasic001" />
-        <activity android:name="cz.p.XBasic012" />
-        <activity android:name="cz.p.XBasic045" />
-        <activity android:name="cz.p.RefgCP2K" />
-        <activity android:name="cz.p.RefsCP2K" />
-        <activity android:name="cz.p.RefssCP2K" />
-        <activity android:name="cz.p.Cp2k1SelectRef" />
-        <activity android:name="cz.p.Cp2k1SelectRefg" />
-        <activity android:name="cz.p.Cp2k1SelectRefs" />
-        <activity android:name="cz.p.Cp2k1SelectRefss" />
-        -->
+        <!---
+                <activity android:name="cz.p.Cp2k" />
+                <activity android:name="cz.p.Cp2kWork" />
+                <activity android:name="cz.p.ManualCp2k" />
+                <activity android:name="cz.p.Cp2k1" />
+                <activity android:name="cz.p.CompgCP2K" />
+                <activity android:name="cz.p.CompsCP2K" />
+                <activity android:name="cz.p.CompssCP2K" />
+                <activity android:name="cz.p.XBasic001" />
+                <activity android:name="cz.p.XBasic012" />
+                <activity android:name="cz.p.XBasic045" />
+                <activity android:name="cz.p.RefgCP2K" />
+                <activity android:name="cz.p.RefsCP2K" />
+                <activity android:name="cz.p.RefssCP2K" />
+                <activity android:name="cz.p.Cp2k1SelectRef" />
+                <activity android:name="cz.p.Cp2k1SelectRefg" />
+                <activity android:name="cz.p.Cp2k1SelectRefs" />
+                <activity android:name="cz.p.Cp2k1SelectRefss" />
+                -->
 
         <activity android:name="cz.p.Dftb" />
         <activity android:name="cz.p.DftbWork" />

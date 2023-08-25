@@ -34,6 +34,7 @@ public class Licenses extends MainActivity {
     Button license4;
     Button license5;
     Button license6;
+    Button license_6;
     Button license7;
     Button license8;
     Button license9;
@@ -104,6 +105,8 @@ public class Licenses extends MainActivity {
         license5.setOnClickListener(license5Click);
         license6 = (Button) findViewById(R.id.license6);
         license6.setOnClickListener(license6Click);
+        license_6 = (Button) findViewById(R.id.license_6);
+        license_6.setOnClickListener(license_6Click);
         license7 = (Button) findViewById(R.id.license7);
         license7.setOnClickListener(license7Click);
         license8 = (Button) findViewById(R.id.license8);
@@ -981,8 +984,28 @@ public class Licenses extends MainActivity {
 
     public void alert6() {
         new AlertDialog.Builder(Licenses.this)
-                .setTitle("LICENSE-MOPAC")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-MOPAC.txt"))
+                .setTitle("LICENSE1-MOPAC")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-MOPAC.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license_6Click; {
+        license_6Click = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert_6();
+            }
+        };
+    }
+
+    public void alert_6() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE2-MOPAC")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-MOPAC.txt"))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

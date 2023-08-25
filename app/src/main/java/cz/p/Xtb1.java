@@ -518,7 +518,10 @@ public class Xtb1 extends MainActivity {
                     exec("cp "+getFilesDir()+"/xtb-comm.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".comm");
                     exec("cp "+getFilesDir()+"/xtb-solv.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".solv");
                     exec("chmod 755 -R "+getFilesDir());
-                    String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
+                    // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
+		    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
+		    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+		    
                     FileOutputStream fileout4 = openFileOutput(InputfileName+".xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                     outputWriter4.write(ObabelOutput);

@@ -620,7 +620,10 @@ public class Obabel extends MainActivity {
                     exec("chmod 755 -R "+getFilesDir());
                     String InputSwitch = ITypeSwitch.getText().toString();
                     String OutputSwitch = OTypeSwitch.getText().toString();
-                    String ObabelOutput123 = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -i"+InputSwitch+" "+getFilesDir()+"/Input-openbabel.txt -o"+OutputSwitch);
+                    // String ObabelOutput123 = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -i"+InputSwitch+" "+getFilesDir()+"/Input-openbabel.txt -o"+OutputSwitch);
+		    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -i"+InputSwitch+" Input-openbabel.txt -o"+OutputSwitch+" > ObabelOutput123.txt");
+		    String ObabelOutput123 = exec("cat "+getFilesDir()+"/ObabelOutput123.txt");
+		    
                     FileOutputStream fileout123 = openFileOutput("Input.obabel", MODE_PRIVATE);
                     OutputStreamWriter outputWriter123 = new OutputStreamWriter(fileout123);
                     outputWriter123.write(ObabelOutput123);

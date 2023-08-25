@@ -264,7 +264,10 @@ public class OpenBabel extends MainActivity {
                 exec("cp "+getFilesDir()+"/iupac.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".iupac");
                 exec("cp "+getFilesDir()+"/formula.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".formula");
                 exec("chmod 755 -R "+getFilesDir());
-                String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
+                // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
+		com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
+		    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+		    
                     FileOutputStream fileout4 = openFileOutput(InputfileName+".xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                     outputWriter4.write(ObabelOutput);
@@ -714,7 +717,8 @@ public class OpenBabel extends MainActivity {
                     try {
                         exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                         try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -742,7 +746,8 @@ public class OpenBabel extends MainActivity {
                         exec("rm "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
                         exec("rm "+getFilesDir()+"/"+InputfileName+".mopg");
                         try {
-                            exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -988,7 +993,8 @@ public class OpenBabel extends MainActivity {
                         try {
                             exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                             try {
-                                exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -1016,7 +1022,8 @@ public class OpenBabel extends MainActivity {
                             exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
                             exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
                             try {
-                                exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

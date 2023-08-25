@@ -318,7 +318,9 @@ public class Mopac extends MainActivity {
                             outputWriter.write(SmilesString);
                             outputWriter.close();
 
-                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+		            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
 
                             FileOutputStream fileout3 = openFileOutput("temp.xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -417,7 +419,9 @@ public class Mopac extends MainActivity {
                             outputWriter2.write(smiles);
                             outputWriter2.close();
 
-                            String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+		            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
 
                             FileOutputStream fileout3 = openFileOutput("temp.xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -768,7 +772,8 @@ public class Mopac extends MainActivity {
                 try {
                     exec("cp "+getFilesDir()+"/Input-mopac.txt "+getFilesDir()+"/Input.mop");
                     exec("chmod 755 -R "+getFilesDir());
-                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/Input");
+                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/Input");
+		    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so Input");
                     exec("chmod 755 "+getFilesDir()+"/Input.out");
                     try {
                         output2(exec("cat "+getFilesDir()+"/Input.out"));

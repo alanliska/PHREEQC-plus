@@ -1,5 +1,5 @@
 # PHREEQC-plus
-PHREEQC + MOPAC + CHEMSOL + XTB + DFTB+ + FastChem and more
+PHREEQC + OpenMOPAC + CHEMSOL + XTB + DFTB+ + FastChem and more
 
 Description & Use:
 PHREEQC (authors: David L. Parkhurst, C.A.J. Appelo) is a favourite geochemical code used for speciation modelling. Our application brings the users the experience of extending capabilities due to integration of MOPAC (author: James JP Stewart), CHEMSOL (authors: Jan Florián, Arieh Warshel), XTB (authors: C. Bannwarth, E. Caldeweyher, S. Ehlert, A. Hansen, P. Pracht, J. Seibert, S. Spicher, S. Grimme, P. Shushkov, M. Stahn, H. Neugebauer, J.-M. Mewes, V. Asgeirsson, C. Bauer, J. Koopman) and DFTB+ (authors: B. Hourahine, B. Aradi, V. Blum, F. Bonafé, A. Buccheri, C. Camacho, C. Cevallos, M. Y. Deshaye, T. Dumitrică, A. Dominguez, S. Ehlert, M. Elstner, T. van der Heide, J. Hermann, S. Irle, J. J. Kranz, C. Köhler, T. Kowalczyk, T. Kubař, I. S. Lee, V. Lutsker, R. J. Maurer, S. K. Min, I. Mitchell, C. Negre, T. A. Niehaus, A. M. N. Niklasson, A. J. Page, A. Pecchia, G. Penazzi, M. P. Persson, J. Řezáč, C. G. Sánchez, M. Sternberg, M. Stöhr, F. Stuckenberg, A. Tkatchenko, V. W.-z. Yu, T. Frauenheim). Any custom species not present in the built-in databases can be now calculated directly within the app and the results used in the model (in other words, a new, specific database can be constructed in each run separately). Furthermore, the current package contains numerous non-conventional databases utilizing both experimental as well as predicted / calculated data from big databases such as CHNOSZ, ModelSEED, Alexandria library, KEGG and other literal sources.
@@ -30,7 +30,7 @@ More info on licenses & references - please refer to the licensing information i
 Licenses and references to used third-party software:
 
  * ACPDFVIEW
- Author: Bhuvaneshwaran (Github)
+ Author: Bhuvaneshw (Github)
  Source code: https://github.com/Bhuvaneshw/acpdfview
  License: GNU GPL-3.0
 
@@ -116,7 +116,7 @@ Licenses and references to used third-party software:
  Author: James JP Stewart
  Ref.: Stewart, James J.P., Journal of computer-aided molecular design 4(1) (1990) 1-103.
  Source code: http://openmopac.net/
- License: open-source LGPL license
+ License: LGPL3 license, GPL3 license
 
  * MSTORE
  Authors/contributors: Sebastian Ehlert, Kjell Jorner, Eisuke Kawashima
@@ -130,8 +130,7 @@ Licenses and references to used third-party software:
 
  * OPENBABEL
  Ref.: N M O'Boyle, M Banck, C A James, C Morley, T Vandermeersch, and G R Hutchison. "Open Babel: An open chemical toolbox." J. Cheminf. (2011), 3, 33. DOI:10.1186/1758-2946-3-33
-       The Open Babel Package, version 2.3.1 http://openbabel.org (accessed Oct 2011)
- Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel, https://sourceforge.net/projects/openbabel/
+ Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel
 
  * OPENBLAS
  Authors: Zhang Xianyi, Wang Qian, Zaheer Chothia
@@ -167,6 +166,7 @@ Licenses and references to used third-party software:
 
  * QCXMS
  Authors/contributors: Jeroen Koopman, Sebastian Ehlert, Johannes Gorges
+ Ref.: S. Grimme, Towards First Principles Calculation of Electron Impact Mass Spectra of Molecules. Angew. Chem. Int. Ed., 52, 6306-6312 DOI:10.1002/anie.201300158
  Source code: https://github.com/qcxms/QCxMS
  License: GNU GPL v3 and GNU LGPL v3
 
@@ -219,8 +219,9 @@ Licenses and references to used third-party software:
  * XTB
  Authors: C. Bannwarth, E. Caldeweyher, S. Ehlert, A. Hansen, P. Pracht, J. Seibert, S. Spicher, S. Grimme, P. Shushkov, M. Stahn, H. Neugebauer, J.-M. Mewes, V. Asgeirsson, C. Bauer, J. Koopman
  Ref.: 
-   -General Reference to xtb and the implemented GFN methods:
+   -General References to xtb and the implemented GFN methods:
     C. Bannwarth, E. Caldeweyher, S. Ehlert, A. Hansen, P. Pracht, J. Seibert, S. Spicher, S. Grimme WIREs Comput. Mol. Sci., 2020, 11, e01493. DOI: 10.1002/wcms.1493
+    M. de Wergifosse, P. Beaujean, S. Grimme, Ultrafast evaluation of two-photon absorption with simplified time-dependent density functional theory, J. Phys. Chem. A 2022, 126, 41, 7534–7547. DOI: 10.1021/acs.jpca.2c02395
    -for GFN-xTB:
     S. Grimme, C. Bannwarth, P. Shushkov, J. Chem. Theory Comput., 2017, 13, 1989-2009. DOI: 10.1021/acs.jctc.7b00118
     C. Bannwarth, S. Ehlert and S. Grimme., J. Chem. Theory Comput., 2019, 15, 1652-1671. DOI: 10.1021/acs.jctc.8b01176

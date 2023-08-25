@@ -152,7 +152,12 @@
             android:id="@+id/license6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LICENSE-MOPAC" />
+            android:text="LICENSE1-MOPAC" />
+        <Button
+            android:id="@+id/license_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-MOPAC" />
         <Button
             android:id="@+id/license_mstore"
             android:layout_width="match_parent"

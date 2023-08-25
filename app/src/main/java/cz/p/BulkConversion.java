@@ -622,7 +622,8 @@ public class BulkConversion extends MainActivity {
                             try {
                                 exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                                 try {
-                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -650,7 +651,8 @@ public class BulkConversion extends MainActivity {
                                 exec("rm "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
                                 exec("rm "+getFilesDir()+"/"+InputfileName+".mopg");
                                 try {
-                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -875,7 +877,8 @@ public class BulkConversion extends MainActivity {
                             try {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                                 try {
-                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -903,7 +906,8 @@ public class BulkConversion extends MainActivity {
                                 exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
                                 exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
                                 try {
-                                    exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
