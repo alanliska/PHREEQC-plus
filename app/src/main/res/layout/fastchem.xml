@@ -121,20 +121,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E99963"
-            android:text="LOAD AND APPEND INTERNAL DATABASE" />
+            android:text="LOAD AND APPEND INTERNAL GAS DATABASE" />
 
         <Button
             android:id="@+id/database2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#E99963"
-            android:text="LOAD AND APPEND EXTERNAL DATABASE" />
+            android:text="LOAD AND APPEND EXTERNAL GAS DATABASE" />
 
         <Button
             android:id="@+id/reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RESET (DELETE APPENDED DATABASES)" />
+            android:text="RESET (DELETE APPENDED GAS DATABASES)" />
+
+        <Button
+            android:id="@+id/database1cond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E99963"
+            android:text="LOAD AND APPEND INTERNAL LIQUID/SOLID DATABASE" />
+
+        <Button
+            android:id="@+id/database2cond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E99963"
+            android:text="LOAD AND APPEND EXTERNAL LIQUID/SOLID DATABASE" />
+
+        <Button
+            android:id="@+id/resetcond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RESET (DELETE APPENDED LIQUID/SOLID DATABASES)" />
 
         <Button
             android:id="@+id/run"
@@ -154,13 +174,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SAVE OUTPUTFILE AS (external)" />
-
+<!---
         <Button
             android:id="@+id/transpose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#AAEB3B"
             android:text="Transpose the output" />
+            -->
 
         <Button
             android:id="@+id/highlight"
@@ -184,11 +205,18 @@
         android:id="@+id/DataLabel"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="\nStatus of the database:"
+        android:text="\nStatus of the databases:"
         android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <TextView
             android:id="@+id/Data"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/DataCond"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title"

@@ -81,6 +81,8 @@ public class Licenses extends MainActivity {
     Button license2_xtb;
     Button license1_xtb4stda;
     Button license2_xtb4stda;
+    Button eigen3;
+    Button eigen3_lt;
     Button quit;
 
     @Override
@@ -199,6 +201,10 @@ public class Licenses extends MainActivity {
         license1_xtb4stda.setOnClickListener(license1_xtb4stdaClick);
         license2_xtb4stda = (Button) findViewById(R.id.license2_xtb4stda);
         license2_xtb4stda.setOnClickListener(license2_xtb4stdaClick);
+        eigen3 = (Button) findViewById(R.id.eigen3);
+        eigen3.setOnClickListener(eigen3Click);
+        eigen3_lt = (Button) findViewById(R.id.eigen3_lt);
+        eigen3_lt.setOnClickListener(eigen3_ltClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -270,6 +276,46 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener eigen3Click; {
+        eigen3Click = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1eigen3();
+            }
+        };
+    }
+
+    public void alert1eigen3() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-EIGEN3")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-EIGEN3.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener eigen3_ltClick; {
+        eigen3_ltClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert2eigen3();
+            }
+        };
+    }
+
+    public void alert2eigen3() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSING-TERMS-EIGEN3")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSING-TERMS-EIGEN3.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private View.OnClickListener license_pythonClick; {
         license_pythonClick = new View.OnClickListener() {

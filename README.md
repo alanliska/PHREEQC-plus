@@ -21,7 +21,7 @@ Compilation of the source code for Android as well as the Android app developmen
 Website: http://www.jh-inst.cas.cz/~liska/MobileChemistry.htm
 
 List of used third-party software:
-ACPDFVIEW, ANDROID SHELL, BLAS, CHEMSOL, DFTB+, DFTD4, FASTCHEM, GMP,  GRAPHVIEW, LAPACK, MCTC-LIB, MOPAC, MSTORE, MULTICHARGE, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STDA, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB, XTB4STDA.  
+ACPDFVIEW, ANDROID SHELL, BLAS, CHEMSOL, DFTB+, DFTD4, FASTCHEM Cond, GMP,  GRAPHVIEW, LAPACK, MCTC-LIB, MOPAC, MSTORE, MULTICHARGE, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STDA, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB, XTB4STDA.  
 
 More info on licenses & references - please refer to the licensing information inside of the app.
 
@@ -81,12 +81,18 @@ Licenses and references to used third-party software:
  Taken from: https://xtb-docs.readthedocs.io/en/latest/contents.html
  License: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). To view a copy of this license, visit creative commons or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
+ * EIGEN3
+ Authors: Benoît Jacob, Gaël Guennebaud and many others (please check the homepage https://eigen.tuxfamily.org/index.php?title=Main_Page)
+ Source code: https://eigen.tuxfamily.org/index.php?title=Main_Page
+ License: MPL2, earlier versions LGPL3+
+
  * FASTCHEM
  Authors: Daniel Kitzmann, Joachim Stock
  References: Stock, J. W., Kitzmann, D., Patzer, A. B. C., Sedlmayr, E.: FastChem: A computer program for efficient complex chemical equilibrium calculations in the neutral/ionized gas phase with applications to stellar and planetary atmospheres. Monthly Notices of the Royal Astronomical Society, 479(1) (2018) 865-874.
              Stock, J. W., Kitzmann, D., & Patzer, A. B. C.: FastChem 2: An improved computer program to determine the gas-phase chemical equilibrium composition for arbitrary element distributions. Monthly Notices of the Royal Astronomical Society, 517(3) (2022) 4070-4080.
+             Kitzmann, D., Stock, J.W., Patzer, A.B.: FastChem Cond: Equilibrium chemistry with condensation and rainout for cool planetary and stellar environments. arXiv preprint arXiv:2309.02337. 2023 Sep 5.
  Source code: https://github.com/exoclime/FastChem
- License: This project is Copyright (c) Daniel Kitzmann and Joachim Stock. FastChem is released under the GNU Public Licence (GPL) 3.0. That means, it can be freely copied, edited, and re-distributed. If the code is re-distributed it has to be released under at least a GPL 3.0 licence as well. The full licence of FastChem can be found in the repository licence.md file or under https://www.gnu.org/licenses/gpl-3.0.html. The user guide is released under the Creative Commons Licence (CC BY SA). Licensees may copy and distribute the work and make derivative works based on it only if they give the authors (Daniel Kitzmann & Joachim Stock) the credits by providing a reference to the original guide and this GitHub repository. Licensees may also distribute derivative works only under a license identical to ("not more restrictive than") the license that governs the original work.
+ License: This project is Copyright (c) Daniel Kitzmann and Joachim Stock. FastChem is released under the GNU Public Licence (GPL) 3.0. That means, it can be freely copied, edited, and re-distributed. If the code is re-distributed it has to be released under at least a GPL 3.0 licence as well. The full licence of FastChem can be found in the repository *licence.md* file or under https://www.gnu.org/licenses/gpl-3.0.html. The user guide is released under the Creative Commons Licence (CC BY SA). Licensees may copy and distribute the work and make derivative works based on it only if they give the authors (Daniel Kitzmann & Joachim Stock) the credits by providing a reference to the original guide and this GitHub repository. Licensees may also distribute derivative works only under a license identical to ("not more restrictive than") the license that governs the original work.
 
  * GBSA parameters
  Authors/contributors: please see XTB for authors and references

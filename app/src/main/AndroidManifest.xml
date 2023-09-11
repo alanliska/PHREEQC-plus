@@ -85,6 +85,7 @@
         <activity android:name="cz.p.SelectAtmoFile" />
         <activity android:name="cz.p.SelectAbundFile" />
         <activity android:name="cz.p.SelectDataFile" />
+        <activity android:name="cz.p.SelectDataFileCond" />
         <activity android:name="cz.p.Licenses" />
         <activity android:name="cz.p.AddSolutionSpecies" />
         <activity android:name="cz.p.AddPhases" />

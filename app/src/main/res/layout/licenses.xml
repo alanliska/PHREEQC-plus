@@ -95,6 +95,17 @@
             android:text="LICENSE-DOCS-XTB" />
             -->
         <Button
+            android:id="@+id/eigen3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-EIGEN3" />
+        <Button
+            android:id="@+id/eigen3_lt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSING-TERMS-EIGEN3" />
+
+        <Button
             android:id="@+id/license2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
