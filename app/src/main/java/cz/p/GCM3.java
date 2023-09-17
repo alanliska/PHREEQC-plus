@@ -3528,6 +3528,9 @@ public class GCM3 extends MainActivity {
                         exec("mv "+getFilesDir()+"/Database_l4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_l.txt");
                         exec("mv "+getFilesDir()+"/Database_c2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_c.txt");
                         exec("mv "+getFilesDir()+"/Database_c4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_c.txt");
+                        exec("mv "+getFilesDir()+"/GCM3/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_g.txt");
+                        exec("mv "+getFilesDir()+"/GCM3/Fastchem_l.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_l.txt");
+                        exec("mv "+getFilesDir()+"/GCM3/Fastchem_c.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_c.txt");
                         //                        exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
 //                        exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
 //                        exec("mv "+getFilesDir()+File.separator+"openbabel/gas "+getFilesDir()+File.separator+"output");

@@ -16,7 +16,7 @@
             android:id="@+id/dataset_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="I. Prepare PHREEQC (solution + gas) and FASTCHEM (for gaseous species only) databases from calculated data\n\nDataset name:"
+            android:text="I. Prepare PHREEQC and FASTCHEM databases from calculated data\n\nDataset name:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -43,14 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+            android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
 
         <Button
             android:id="@+id/start_bulk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#70FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM BULK INPUT FILES" />
+            android:text="PREPARE DATASHEETS FROM BULK INPUT FILES" />
 
         <TextView
             android:id="@+id/label1"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+            android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
 
         <TextView
             android:id="@+id/label2"
@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+            android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
 <!---
         <TextView
             android:id="@+id/label_dftb_all"
@@ -121,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#CDE0FF"
-            android:text="PREPARE PHREEQC DATASHEET FROM NAME OR SMILES" />
+            android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
 
         <TextView
             android:id="@+id/label100"
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#70FFEB3B"
-            android:text="PREPARE PHREEQC DATASHEET FROM DATA" />
+            android:text="PREPARE DATASHEETS FROM DATA" />
 
         <TextView
             android:id="@+id/labelKin"

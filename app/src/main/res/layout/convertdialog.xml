@@ -16,7 +16,7 @@
             android:id="@+id/convert_info"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nWARNING: the database file will be produced and saved later than the progress dialog finishes.\n"
+            android:text="This panel is devoted to preorganized data conversion to the format of PHREEQC and FASTCHEM databases, respectively.\n"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button

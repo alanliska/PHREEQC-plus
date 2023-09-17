@@ -508,7 +508,8 @@ public class ConvertG extends MainActivity {
 
                         makeDatabase_g();
                         modifyOutput_g();
-                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+                        postActivity();
                         onFinishG();
                     }
                     public void onFinishG(){
@@ -562,6 +563,17 @@ public class ConvertG extends MainActivity {
         exec("rm "+getFilesDir()+"/Database_g2.dat");
         exec("chmod -R 755 "+getFilesDir()+"/PHASES");
         exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_g.txt");
+    }
+
+    public void postActivity() {
+
+        // TODO Auto-generated method stub //
+        try {
+            Intent intent = new Intent(ConvertG.this, ResumeActivity.class);
+            startActivity(intent);
+            onResume();
+        } catch (Exception e) {
+        }
     }
 
     private void read8(Context context8) {

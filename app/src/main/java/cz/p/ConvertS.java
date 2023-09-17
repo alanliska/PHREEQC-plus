@@ -510,7 +510,8 @@ public class ConvertS extends MainActivity {
 
                         makeDatabase_solv();
                         modifyOutput_solv();
-                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+                        postActivity();
                         onFinishS();
                     }
                     public void onFinishS(){
@@ -589,6 +590,17 @@ public class ConvertS extends MainActivity {
         exec("cp "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_solid_sol.txt");
         exec("rm "+getFilesDir()+"/Database_s2.dat");
         exec("rm "+getFilesDir()+"/Database_solid_sol2.dat");
+    }
+
+    public void postActivity() {
+
+        // TODO Auto-generated method stub //
+        try {
+            Intent intent = new Intent(ConvertS.this, ResumeActivity.class);
+            startActivity(intent);
+            onResume();
+        } catch (Exception e) {
+        }
     }
 
     private void read11(Context context11) {

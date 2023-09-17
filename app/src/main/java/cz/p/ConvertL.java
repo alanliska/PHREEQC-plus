@@ -508,7 +508,8 @@ public class ConvertL extends MainActivity {
 
                         makeDatabase_l();
                         modifyOutput_l();
-                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+                        postActivity();
                         onFinishL();
                     }
                     public void onFinishL(){
@@ -560,8 +561,20 @@ public class ConvertL extends MainActivity {
         }
         String SaveOutputName = SaveName.getText().toString();
         exec("cp "+getFilesDir()+"/Database_l2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_l.txt");
+        exec("mv "+getFilesDir()+"/LIQUIDS/Fastchem_l.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_l.txt");
         exec("rm "+getFilesDir()+"/Database_l2.dat");
 
+    }
+
+    public void postActivity() {
+
+        // TODO Auto-generated method stub //
+        try {
+            Intent intent = new Intent(ConvertL.this, ResumeActivity.class);
+            startActivity(intent);
+            onResume();
+        } catch (Exception e) {
+        }
     }
 
     private void read10(Context context10) {

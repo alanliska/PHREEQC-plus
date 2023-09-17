@@ -508,7 +508,8 @@ public class ConvertC extends MainActivity {
 
                         makeDatabase_c();
                         modifyOutput_c();
-                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), "Conversion has finished.", Toast.LENGTH_SHORT).show();
+                        postActivity();
                         onFinishC();
                     }
                     public void onFinishC(){
@@ -517,7 +518,7 @@ public class ConvertC extends MainActivity {
                 }.start();
 //                Intent intent = new Intent(ConvertC.this, ResumeActivity.class);
 //                startActivity(intent);
-                onStart();
+//                onStart();
             }
         };
     }
@@ -559,7 +560,19 @@ public class ConvertC extends MainActivity {
         }
         String SaveOutputName = SaveName.getText().toString();
         exec("cp "+getFilesDir()+"/Database_c2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_c.txt");
+        exec("mv "+getFilesDir()+"/SOLIDS/Fastchem_c.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_c.txt");
         exec("rm "+getFilesDir()+"/Database_c2.dat");
+    }
+
+    public void postActivity() {
+
+        // TODO Auto-generated method stub //
+        try {
+            Intent intent = new Intent(ConvertC.this, ResumeActivity.class);
+            startActivity(intent);
+            onResume();
+        } catch (Exception e) {
+        }
     }
 
     private void read9(Context context9) {

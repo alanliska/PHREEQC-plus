@@ -15,7 +15,7 @@
             android:id="@+id/Description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="This panel is devoted to conversion of tabulated data on solid species to PHREEQC dataset.\n\nThe output file will be saved in the location\n/data/data/cz.p/files/output/phreeqc_datasets\nunder following file name:"
+            android:text="This panel is devoted to conversion of tabulated data on solid species to PHREEQC and FASTCHEM datasets.\n\nThe output file will be saved in the locations\n/data/data/cz.p/files/output/phreeqc_datasets\nand\n/data/data/cz.p/files/output/fastchem_datasets\nunder following file name:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
