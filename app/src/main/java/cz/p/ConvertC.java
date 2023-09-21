@@ -558,6 +558,28 @@ public class ConvertC extends MainActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            String Fastchem_database_content = exec("cat "+getFilesDir()+"/SOLIDS/Fastchem_c.dat");
+
+            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+            FileOutputStream fileoutFCH = openFileOutput("Fastchem_c.tmp",MODE_PRIVATE);
+            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+            outputWriterFCH.write(Fastchem_database_content);
+            outputWriterFCH.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        exec("rm "+getFilesDir()+"/SOLIDS/Fastchem_c.dat");
+        exec("mv "+getFilesDir()+"/Fastchem_c.tmp "+getFilesDir()+"/SOLIDS/Fastchem_c.dat");
+
+
         String SaveOutputName = SaveName.getText().toString();
         exec("cp "+getFilesDir()+"/Database_c2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_c.txt");
         exec("mv "+getFilesDir()+"/SOLIDS/Fastchem_c.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_c.txt");

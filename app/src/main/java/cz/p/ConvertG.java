@@ -558,6 +558,27 @@ public class ConvertG extends MainActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            String Fastchem_database_content = exec("cat "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+
+            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+            outputWriterFCH.write(Fastchem_database_content);
+            outputWriterFCH.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+
         String SaveOutputName = SaveName.getText().toString();
         exec("cp "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_g.txt");
         exec("rm "+getFilesDir()+"/Database_g2.dat");

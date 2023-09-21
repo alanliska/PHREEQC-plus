@@ -3518,6 +3518,68 @@ public class GCM3 extends MainActivity {
 //                        }
 //                        convertData();
 //                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+
+                        try {
+                            String Fastchem_database_content = exec("cat "+getFilesDir()+"/GCM3/Fastchem_g.dat");
+
+                            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                            outputWriterFCH.write(Fastchem_database_content);
+                            outputWriterFCH.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/GCM3/Fastchem_g.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/GCM3/Fastchem_g.dat");
+
+                        try {
+                            String Fastchem_database_content = exec("cat "+getFilesDir()+"/GCM3/Fastchem_l.dat");
+
+                            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH = openFileOutput("Fastchem_l.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                            outputWriterFCH.write(Fastchem_database_content);
+                            outputWriterFCH.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/GCM3/Fastchem_l.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_l.tmp "+getFilesDir()+"/GCM3/Fastchem_l.dat");
+
+                        try {
+                            String Fastchem_database_content = exec("cat "+getFilesDir()+"/GCM3/Fastchem_c.dat");
+
+                            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH = openFileOutput("Fastchem_c.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                            outputWriterFCH.write(Fastchem_database_content);
+                            outputWriterFCH.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/GCM3/Fastchem_c.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_c.tmp "+getFilesDir()+"/GCM3/Fastchem_c.dat");
+
+
 		String DatasetName1 = DatasetName0.replace(" ","_");
 		String DatasetName = DatasetName1.replace(",",".");
 

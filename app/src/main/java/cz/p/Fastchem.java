@@ -633,12 +633,12 @@ public class Fastchem extends MainActivity {
                     try {
                         com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat");
 //                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
-                        output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
-                        output("Staying idle.");
                     } catch (Exception e) {
                     }
                 } catch (Exception e) {
                 }
+                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                output("Staying idle.");
                 onFinish();
             }
             // Executes UNIX command.
@@ -990,13 +990,13 @@ public class Fastchem extends MainActivity {
             public void run() {
 
                 try {
-                    String Results = outputView2.getText().toString();
-                    FileOutputStream fileout = openFileOutput("Output.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                    outputWriter.write(Results);
-                    outputWriter.close();
+//                    String Results = outputView2.getText().toString();
+//                    FileOutputStream fileout = openFileOutput("Output.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(Results);
+//                    outputWriter.close();
 
-                    outputX(exec("cat "+getFilesDir()+"/Output.txt"));
+                    outputX(exec("cat "+getFilesDir()+"/chemistry.dat"));
                     output_conf(exec("cat "+getFilesDir()+"/config.input"));
                     output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
                     output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
@@ -1009,15 +1009,7 @@ public class Fastchem extends MainActivity {
                 onFinish();
             }
 
-            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
-            public void outputX(final String strX) {
-                Runnable procX = new Runnable() {
-                    public void run() {
-                        outputView2.setText(colorized(strX, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
-                    }
-                };
-                handler.post(procX);
-            }
+
 
             public void onFinish() {
                 progressDialog.dismiss();
@@ -1557,6 +1549,15 @@ public class Fastchem extends MainActivity {
             }
         };
         handler.post(procDataCond);
+    }
+    // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+    public void outputX(final String strX) {
+        Runnable procX = new Runnable() {
+            public void run() {
+                outputView2.setText(colorized(strX, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+            }
+        };
+        handler.post(procX);
     }
     // Executes UNIX command.
     private String exec(String command) {

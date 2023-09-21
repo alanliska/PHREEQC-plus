@@ -1797,6 +1797,27 @@ public class GCM2 extends MainActivity {
 //                        }
 //                        convertData();
 //                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+
+                        try {
+                            String Fastchem_database_content = exec("cat "+getFilesDir()+"/GCM2/Fastchem_g.dat");
+
+                            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                            outputWriterFCH.write(Fastchem_database_content);
+                            outputWriterFCH.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/GCM2/Fastchem_g.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/GCM2/Fastchem_g.dat");
+
 		String DatasetName1 = DatasetName0.replace(" ","_");
 		String DatasetName = DatasetName1.replace(",",".");
 

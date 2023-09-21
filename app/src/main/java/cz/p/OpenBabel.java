@@ -1248,6 +1248,26 @@ public class OpenBabel extends MainActivity {
                             e.printStackTrace();
                         }
 
+                        try {
+                            String Fastchem_database_content = exec("cat "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+
+                            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                            outputWriterFCH.write(Fastchem_database_content);
+                            outputWriterFCH.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+
                         String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
 		String DatasetName1 = DatasetName0.replace(" ","_");
 		String DatasetName = DatasetName1.replace(",",".");

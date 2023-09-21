@@ -779,11 +779,14 @@ public class Xtb1 extends MainActivity {
     private ProgressDialog dialog;
 
     @Override protected void onPreExecute() {
+        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+        String DatasetName1 = DatasetName0.replace(" ","_");
+        String DatasetName = DatasetName1.replace(",",".");
 
         // this is cancellable progress dialog
         dialog = new ProgressDialog(Xtb1.this);
         dialog.setTitle("Please wait...");
-        dialog.setMessage("Calculation is in progress.");
+        dialog.setMessage("Performing XTB calculations on species contained in dataset: "+DatasetName0);
         dialog.setCancelable(false);
         dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -1001,6 +1004,26 @@ public class Xtb1 extends MainActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            String Fastchem_database_content = exec("cat "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+
+            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+            outputWriterFCH.write(Fastchem_database_content);
+            outputWriterFCH.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
 
         exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
         exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
