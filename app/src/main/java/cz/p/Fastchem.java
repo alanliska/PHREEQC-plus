@@ -433,9 +433,9 @@ public class Fastchem extends MainActivity {
         }
 
         exec("chmod 755 "+getFilesDir()+"/Input.txt");
-        exec("rm "+getFilesDir()+"/Output.txt");
-        exec("rm "+getFilesDir()+"/chemistry.dat");
-        exec("rm "+getFilesDir()+"/monitor.dat");
+//        exec("rm "+getFilesDir()+"/Output.txt");
+//        exec("rm "+getFilesDir()+"/chemistry.dat");
+//        exec("rm "+getFilesDir()+"/monitor.dat");
         output_conf(exec("cat "+getFilesDir()+"/config.input"));
         output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
         output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
