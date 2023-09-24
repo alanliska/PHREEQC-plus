@@ -585,11 +585,33 @@ public class ConvertS extends MainActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            String Fastchem_database_content = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+
+            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
+            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
+            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
+            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+
+            FileOutputStream fileoutFCH = openFileOutput("Fastchem_solid_sol.tmp",MODE_PRIVATE);
+            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+            outputWriterFCH.write(Fastchem_database_content);
+            outputWriterFCH.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        exec("rm "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+        exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+
         String SaveOutputName = SaveName.getText().toString();
         exec("cp "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_s.txt");
         exec("cp "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_solid_sol.txt");
         exec("rm "+getFilesDir()+"/Database_s2.dat");
         exec("rm "+getFilesDir()+"/Database_solid_sol2.dat");
+        exec("mv "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_solid_sol.txt");
     }
 
     public void postActivity() {

@@ -1268,6 +1268,26 @@ public class OpenBabel extends MainActivity {
                         exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
                         exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
 
+                        try {
+                            String Fastchem_database_content2 = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[H]", "H");
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[O]", "O");
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[C]", "C");
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[N]", "N");
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[S]", "S");
+                            Fastchem_database_content2 = Fastchem_database_content2.replace("[F]", "F");
+
+                            FileOutputStream fileoutFCH2 = openFileOutput("Fastchem_solid_sol.tmp",MODE_PRIVATE);
+                            OutputStreamWriter outputWriterFCH2 = new OutputStreamWriter(fileoutFCH2);
+                            outputWriterFCH2.write(Fastchem_database_content2);
+                            outputWriterFCH2.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("rm "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+                        exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+
                         String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
 		String DatasetName1 = DatasetName0.replace(" ","_");
 		String DatasetName = DatasetName1.replace(",",".");
@@ -1275,6 +1295,7 @@ public class OpenBabel extends MainActivity {
                         exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
                         exec("chmod -R 755 "+getFilesDir()+"/PHASES");
                         exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_g.txt");
+                        exec("mv "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_solid_sol.txt");
                         // temporary solution:
 //                        exec("chmod -R 755 "+getFilesDir()+"/PHASES");
 //                        exec("mv "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_solid_sol.txt");
