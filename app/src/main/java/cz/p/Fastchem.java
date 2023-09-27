@@ -89,6 +89,14 @@ public class Fastchem extends MainActivity {
     private TextView Data;
     private TextView DataCond;
     Button manual_fastchem;
+    private TextView filter_gas_label;
+    private EditText filter_gas;
+    private Button filter_gas_button;
+    private TextView filter_cond_label;
+    private EditText filter_cond;
+    private Button filter_cond_button;
+    private Button reset_gas_button;
+    private Button reset_cond_button;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -292,6 +300,19 @@ public class Fastchem extends MainActivity {
         DataLabel = (TextView) findViewById(R.id.DataLabel);
         Data = (TextView) findViewById(R.id.Data);
         DataCond = (TextView) findViewById(R.id.DataCond);
+        filter_gas_label = (TextView) findViewById(R.id.filter_gas_label);
+        filter_cond_label = (TextView) findViewById(R.id.filter_cond_label);
+        filter_gas = (EditText) findViewById(R.id.filter_gas);
+        filter_cond = (EditText) findViewById(R.id.filter_cond);
+        filter_gas_button = (Button) findViewById(R.id.filter_gas_button);
+        filter_gas_button.setOnClickListener(filter_gasClick);
+        filter_cond_button = (Button) findViewById(R.id.filter_cond_button);
+        filter_cond_button.setOnClickListener(filter_condClick);
+        reset_gas_button = (Button) findViewById(R.id.reset_gas_button);
+        reset_gas_button.setOnClickListener(reset_gas_buttonClick);
+        reset_cond_button = (Button) findViewById(R.id.reset_cond_button);
+        reset_cond_button.setOnClickListener(reset_cond_buttonClick);
+
         manual_fastchem = (Button) findViewById(R.id.manual_fastchem);
         manual_fastchem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -441,6 +462,8 @@ public class Fastchem extends MainActivity {
         output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
         dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
         dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
+        filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+        filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
         output("App prepared.");
     }
 
@@ -503,7 +526,9 @@ public class Fastchem extends MainActivity {
                 dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
                 dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
                 output("Database deleted.");
-                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
             }
         };
     }
@@ -567,9 +592,349 @@ public class Fastchem extends MainActivity {
                 dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
                 dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
                 output("Database deleted.");
-                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
             }
         };
+    }
+
+    private View.OnClickListener reset_gas_buttonClick; {
+
+        reset_gas_buttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // TODO Auto-generated method stub //
+                exec("rm "+getFilesDir()+"/fastchem_database_fragment.dat");
+
+                File Database_check = new File(getFilesDir()+"/fastchem_database.dat");
+
+                if (!Database_check.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchem.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for gaseous species not present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchem.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for gaseous species present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File Database_checkCond = new File(getFilesDir()+"/fastchem_database_cond.dat");
+
+                if (!Database_checkCond.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchemCond.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for condensed species not present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchemCond.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for condensed species present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                output_conf(exec("cat "+getFilesDir()+"/config.input"));
+                output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
+                output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
+                dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
+                dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
+                output("Database deleted.");
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener reset_cond_buttonClick; {
+
+        reset_cond_buttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                // TODO Auto-generated method stub //
+                exec("rm "+getFilesDir()+"/fastchem_database_cond_fragment.dat");
+
+                File Database_check = new File(getFilesDir()+"/fastchem_database.dat");
+
+                if (!Database_check.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchem.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for gaseous species not present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchem.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for gaseous species present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File Database_checkCond = new File(getFilesDir()+"/fastchem_database_cond.dat");
+
+                if (!Database_checkCond.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchemCond.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for condensed species not present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("StatusFastchemCond.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("database for condensed species present");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                output_conf(exec("cat "+getFilesDir()+"/config.input"));
+                output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
+                output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
+                dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
+                dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
+                output("Database deleted.");
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener filter_gasClick; {
+
+        filter_gasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                String configfile = config.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("config.input", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(configfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String atmofile = atmospheric_profile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("atmospheric-profile.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(atmofile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String abundfile = abundance.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("abundances.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(abundfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String filtergasfile = filter_gas.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("filter-gas.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(filtergasfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String filtercondfile = filter_cond.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("filter-cond.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(filtercondfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                // TODO Auto-generated method stub //
+                openfiltergasdialog();
+            }
+        };
+    }
+
+    private void openfiltergasdialog() {
+        // TODO Auto-generated method stub //
+        ProgressDialog progressDialog = new ProgressDialog(Fastchem.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Filtering the selected database...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+
+                File filterGasFile = new File(getFilesDir()+"/fastchem_database_fragment.dat");
+                try {
+                    if (!filterGasFile.exists()) {
+                        filterGasFile.createNewFile();
+                        FileOutputStream fileout = openFileOutput("fastchem_database_fragment.dat", MODE_PRIVATE);
+                        OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                        outputWriter.write("#\n");
+                        outputWriter.write("#\n");
+                        outputWriter.write("#\n");
+                        outputWriter.close();
+                    }
+                    try {
+                        com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; echo '' >> filter-gas.txt ; cat filter-gas.txt | while read line ; do grep $line -A 2 fastchem_database.dat | sed /^--$/d >> fastchem_database_fragment.dat ; done");
+//                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                output2(exec("cat "+getFilesDir()+"/fastchem_database_fragment.dat"));
+                output("Staying idle.");
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                onFinish();
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+    }
+
+    private View.OnClickListener filter_condClick; {
+
+        filter_condClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                String configfile = config.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("config.input", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(configfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String atmofile = atmospheric_profile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("atmospheric-profile.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(atmofile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String abundfile = abundance.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("abundances.dat", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(abundfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String filtergasfile = filter_gas.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("filter-gas.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(filtergasfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String filtercondfile = filter_cond.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("filter-cond.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(filtercondfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+                // TODO Auto-generated method stub //
+                openfilterconddialog();
+            }
+        };
+    }
+
+    private void openfilterconddialog() {
+        // TODO Auto-generated method stub //
+        ProgressDialog progressDialog = new ProgressDialog(Fastchem.this);
+        progressDialog.setTitle("Please wait...");
+        progressDialog.setMessage("Filtering the selected database...");
+        progressDialog.setCancelable(false);
+        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        progressDialog.show();
+        new Thread() {
+            public void run() {
+
+                File filterCondFile = new File(getFilesDir()+"/fastchem_database_cond_fragment.dat");
+                try {
+                    if (!filterCondFile.exists()) {
+                        filterCondFile.createNewFile();
+                        FileOutputStream fileout = openFileOutput("fastchem_database_cond_fragment.dat", MODE_PRIVATE);
+                        OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                        outputWriter.write("#\n");
+                        outputWriter.write("#\n");
+                        outputWriter.write("#\n");
+                        outputWriter.close();
+                    }
+                    try {
+                        com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; echo '' >> filter-cond.txt ; cat filter-cond.txt | while read line ; do grep $line -A 4 fastchem_database_cond.dat | sed /^--$/d >> fastchem_database_cond_fragment.dat ; done");
+//                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
+                output2(exec("cat "+getFilesDir()+"/fastchem_database_cond_fragment.dat"));
+                output("Staying idle.");
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                onFinish();
+            }
+
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
     }
 
     private View.OnClickListener runClick; {
@@ -630,47 +995,18 @@ public class Fastchem extends MainActivity {
                     exec("rm "+getFilesDir()+"/Output.txt");
                     exec("rm "+getFilesDir()+"/chemistry.dat");
                     exec("rm "+getFilesDir()+"/monitor.dat");
-                    try {
+//                    try {
                         com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat");
 //                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
-                    } catch (Exception e) {
-                    }
+//                    } catch (Exception e) {
+//                    }
                 } catch (Exception e) {
                 }
                 output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
                 output("Staying idle.");
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
                 onFinish();
-            }
-            // Executes UNIX command.
-            private String exec(String command) {
-                try {
-                    Process process = Runtime.getRuntime().exec(command);
-                    BufferedReader reader = new BufferedReader(
-                            new InputStreamReader(process.getInputStream()));
-                    int read;
-                    char[] buffer = new char[4096];
-                    StringBuffer output = new StringBuffer();
-                    while ((read = reader.read(buffer)) > 0) {
-                        output.append(buffer, 0, read);
-                    }
-                    reader.close();
-                    process.waitFor();
-                    return output.toString();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
-            public void output2(final String str2) {
-                Runnable proc2 = new Runnable() {
-                    public void run() {
-                        outputView2.setText(str2);
-                    }
-                };
-                handler.post(proc2);
             }
 
             public void onFinish() {
@@ -1001,6 +1337,8 @@ public class Fastchem extends MainActivity {
                     output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
                     output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
                     output("Staying idle.");
+                    filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                    filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
 
                     Toast.makeText(getApplicationContext(), "Numbers highlighted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -1212,6 +1550,8 @@ public class Fastchem extends MainActivity {
         dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
         output("Staying idle.");
         output2(exec("cat "+getFilesDir()+"/Output.txt"));
+        filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+        filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
     }
 
 
@@ -1549,6 +1889,22 @@ public class Fastchem extends MainActivity {
             }
         };
         handler.post(procDataCond);
+    }
+    public void filterGasView(final String strFilterGas) {
+        Runnable procFilterGas = new Runnable() {
+            public void run() {
+                filter_gas.setText(strFilterGas);
+            }
+        };
+        handler.post(procFilterGas);
+    }
+    public void filterCondView(final String strFilterCond) {
+        Runnable procFilterCond = new Runnable() {
+            public void run() {
+                filter_cond.setText(strFilterCond);
+            }
+        };
+        handler.post(procFilterCond);
     }
     // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
     public void outputX(final String strX) {

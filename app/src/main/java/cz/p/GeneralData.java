@@ -117,9 +117,10 @@ public class GeneralData extends KineticsQuery {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+		    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/thermo_s_General.txt");
 

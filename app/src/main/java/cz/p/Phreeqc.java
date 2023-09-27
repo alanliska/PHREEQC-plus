@@ -2319,9 +2319,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/Solution0.dat");
 
@@ -2468,9 +2469,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/Solution0.dat");
                     // (from the PHREEQC database - tnow it is needed to add it to Solution.dat from MOPAC calculation:
@@ -2605,9 +2607,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SMS_kin.txt");
 
@@ -2734,9 +2737,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SS_kin.txt");
 
@@ -2862,9 +2866,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/R_kin.txt");
 
@@ -2990,9 +2995,10 @@ public class Phreeqc extends MainActivity {
             public void run() {
                 try {
                     exec("chmod 755 -R "+getFilesDir());
-                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
+//                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/K_kin.txt");
 

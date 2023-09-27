@@ -116,6 +116,38 @@
             android:layout_height="wrap_content"
             android:text="SAVE ELEMENT ABUNDANCES FILE AS (external)" />
 
+        <TextView
+            android:id="@+id/filter_gas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nFilter the following species from the selected gas phase database and append to the new file /data/data/cz.p/files/fastchem_database_fragment.dat (if desired to be used in the calculation, please update the configuration file appropriately):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/filter_gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/filter_gas_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7703A9F4"
+            android:text="FILTER THE GAS PHASE DATABASE" />
+
+        <Button
+            android:id="@+id/reset_gas_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REMOVE THE APPENDED FRAGMENTS (GAS)" />
+
         <Button
             android:id="@+id/database1"
             android:layout_width="match_parent"
@@ -135,6 +167,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RESET (DELETE APPENDED GAS DATABASES)" />
+
+        <TextView
+            android:id="@+id/filter_cond_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nFilter the following species from the selected condensed phase database and append to the new file /data/data/cz.p/files/fastchem_database_cond_fragment.dat (if desired to be used in the calculation, please update the configuration file appropriately):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/filter_cond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/filter_cond_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#7703A9F4"
+            android:text="FILTER THE CONDENSED PHASE DATABASE" />
+
+        <Button
+            android:id="@+id/reset_cond_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REMOVE THE APPENDED FRAGMENTS (COND)" />
 
         <Button
             android:id="@+id/database1cond"
