@@ -21,6 +21,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -323,6 +324,8 @@ public class Xtb extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setMovementMethod(new ScrollingMovementMethod());
         Graph = (Button) findViewById(R.id.Graph);
         Graph.setOnClickListener(GraphClick);
         Quit = (Button) findViewById(R.id.Quit);

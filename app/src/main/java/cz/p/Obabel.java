@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -245,6 +246,8 @@ public class Obabel extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setMovementMethod(new ScrollingMovementMethod());
         manual_openbabel = (Button) findViewById(R.id.manual_openbabel);
         manual_openbabel.setOnClickListener(new View.OnClickListener() {
             @Override

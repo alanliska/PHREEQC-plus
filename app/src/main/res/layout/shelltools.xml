@@ -85,6 +85,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:typeface="monospace" />
 
+
         <TextView
             android:id="@+id/CatOutputLabel"
             android:layout_width="fill_parent"
@@ -225,19 +226,22 @@
             android:layout_height="wrap_content"
             android:text="Response:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-        <TextView
-            android:id="@+id/ExecuteOutput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fadeScrollbars="false"
-            android:fastScrollAlwaysVisible="true"
-            android:fastScrollEnabled="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:scrollbarSize="5dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:typeface="monospace" />
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px" >
+
+            <EditText
+                android:id="@+id/ExecuteOutput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars = "horizontal"
+                android:textColor="@android:color/black"
+                android:textIsSelectable="true"
+                android:textSize="12sp"
+                android:typeface="monospace"></EditText>
+        </HorizontalScrollView>
 
 <!---
         <TextView

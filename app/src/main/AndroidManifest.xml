@@ -150,6 +150,7 @@
         <activity android:name="cz.p.ManualPHREEQCplus" />
         <activity android:name="cz.p.ManualPHREEQC3" />
         <activity android:name="cz.p.ManualPHREEQC2" />
+        <activity android:name="cz.p.ManualPHREEQCisotopes" />
         <activity android:name="cz.p.ManualChemsol" />
         <activity android:name="cz.p.ManualFastchem" />
         <activity android:name="cz.p.ManualMOPAC" />
@@ -233,5 +234,7 @@
         <activity android:name="cz.p.Xtb1SelectRefss" />
         <activity android:name="cz.p.SpectrumXTB" />
         <activity android:name="cz.p.ProcessXtb" />
+        <activity android:name="cz.p.ProcessFastchem" />
+        <activity android:name="cz.p.ChangeSize" />
     </application>
 </manifest>

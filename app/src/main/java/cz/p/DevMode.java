@@ -106,6 +106,8 @@ public class DevMode extends MainActivity {
     Button start_compgXTB;
     Button start_compssXTB;
     Button modify_xtbcommand;
+    Button modify_fastchemcommand;
+    Button change_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +179,24 @@ public class DevMode extends MainActivity {
         modify_mulliken = (Button) findViewById(R.id.modify_mulliken);
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
+
+        change_size = (Button) findViewById(R.id.change_size);
+        change_size.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ChangeSize.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_fastchemcommand = (Button) findViewById(R.id.modify_fastchemcommand);
+        modify_fastchemcommand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ProcessFastchem.class);
+                startActivity(intent);
+            }
+        });
 
         modify_xtbcommand = (Button) findViewById(R.id.modify_xtbcommand);
         modify_xtbcommand.setOnClickListener(new View.OnClickListener() {

@@ -1,21 +1,22 @@
 package cz.p;
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,8 +26,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
+import com.jrummyapps.android.shell.CommandResult;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -34,9 +35,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 public class Fastchem extends MainActivity {
@@ -297,6 +296,8 @@ public class Fastchem extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setMovementMethod(new ScrollingMovementMethod());
         DataLabel = (TextView) findViewById(R.id.DataLabel);
         Data = (TextView) findViewById(R.id.Data);
         DataCond = (TextView) findViewById(R.id.DataCond);
@@ -969,50 +970,195 @@ public class Fastchem extends MainActivity {
                     e.printStackTrace();
                 }
 
-                // TODO Auto-generated method stub //
-                openprogressdialog();
+//                // TODO Auto-generated method stub //
+//                openprogressdialog();
+                // substitution - much faster:
+//                String FastChemCommand = "export HOME=/data/data/cz.p/files ; cd $HOME ; rm Output.txt chemistry.dat monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat ; cat chemistry.dat";
+                String FastChemCommand = exec("cat "+getFilesDir()+"/ProcessFastchem.txt");
+
+                FastChemCommand = FastChemCommand.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
+                FastChemCommand = FastChemCommand.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
+                FastChemCommand = FastChemCommand.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
+                FastChemCommand = FastChemCommand.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
+                FastChemCommand = FastChemCommand.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
+                FastChemCommand = FastChemCommand.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
+                FastChemCommand = FastChemCommand.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
+                FastChemCommand = FastChemCommand.replace(" stda ", " "+getApplicationInfo().nativeLibraryDir+"/libstda.so ");
+                FastChemCommand = FastChemCommand.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
+                FastChemCommand = FastChemCommand.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
+                FastChemCommand = FastChemCommand.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
+                FastChemCommand = FastChemCommand.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+                FastChemCommand = FastChemCommand.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
+                FastChemCommand = FastChemCommand.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
+                FastChemCommand = FastChemCommand.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
+                FastChemCommand = FastChemCommand.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
+                FastChemCommand = FastChemCommand.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                FastChemCommand = FastChemCommand.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
+                FastChemCommand = FastChemCommand.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");
+                FastChemCommand = FastChemCommand.replace(" mopac-makpol ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-makpol.so ");
+                FastChemCommand = FastChemCommand.replace(" mopac-param ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-param.so ");
+                FastChemCommand = FastChemCommand.replace(" phreeqc ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so ");
+//                FastChemCommand = FastChemCommand.replace(" phreeqc-prepare ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so ");
+                FastChemCommand = FastChemCommand.replace(" transpose ", " "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so ");
+
+                new RunCommandTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, FastChemCommand);
             }
         };
     }
 
-    private void openprogressdialog() {
-        // TODO Auto-generated method stub //
-        ProgressDialog progressDialog = new ProgressDialog(Fastchem.this);
-        progressDialog.setTitle("Please wait...");
-        progressDialog.setMessage("Calculation is running...");
-        progressDialog.setCancelable(false);
-        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        progressDialog.show();
-        new Thread() {
-            public void run() {
-                try {
-                    exec("chmod 755 -R "+getFilesDir());
-                    exec("rm "+getFilesDir()+"/Output.txt");
-                    exec("rm "+getFilesDir()+"/chemistry.dat");
-                    exec("rm "+getFilesDir()+"/monitor.dat");
+    // extremely slow: (?!)
+//    private void openprogressdialog() {
+//        // TODO Auto-generated method stub //
+//        ProgressDialog progressDialog = new ProgressDialog(Fastchem.this);
+//        progressDialog.setTitle("Please wait...");
+//        progressDialog.setMessage("Calculation is running...");
+//        progressDialog.setCancelable(false);
+//        progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        progressDialog.show();
+//        new Thread() {
+//            public void run() {
+//                try {
+//                    exec("chmod 755 -R "+getFilesDir());
+//                    exec("rm "+getFilesDir()+"/Output.txt");
+//                    exec("rm "+getFilesDir()+"/chemistry.dat");
+//                    exec("rm "+getFilesDir()+"/monitor.dat");
+//
+//                        com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat");
+////                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
+//
 //                    try {
-                        com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat");
-//                        exec(getApplicationInfo().nativeLibraryDir+"/libfastchem.so "+getFilesDir()+"/config.input");
+//                    output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+//                    output("Staying idle.");
+//                    filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+//                    filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
 //                    } catch (Exception e) {
 //                    }
-                } catch (Exception e) {
-                }
-                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
-                output("Staying idle.");
-                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
-                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
-                onFinish();
-            }
+//                } catch (Exception e) {
+//                }
+//
+//                onFinish();
+//            }
+//
+//            // Executes UNIX command.
+//            private String exec(String command) {
+//                try {
+//                    Process process = Runtime.getRuntime().exec(command);
+//                    BufferedReader reader = new BufferedReader(
+//                            new InputStreamReader(process.getInputStream()));
+//                    int read;
+//                    char[] buffer = new char[4096];
+//                    StringBuffer output = new StringBuffer();
+//                    while ((read = reader.read(buffer)) > 0) {
+//                        output.append(buffer, 0, read);
+//                    }
+//                    reader.close();
+//                    process.waitFor();
+//                    return output.toString();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//
+//            // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
+//            public void output2(final String str2) {
+//                Runnable proc2 = new Runnable() {
+//                    public void run() {
+//                        outputView2.setText(str2);
+//                    }
+//                };
+//                handler.post(proc2);
+//            }
+//
+//            public void onFinish() {
+//                progressDialog.dismiss();
+//            }
+//        }.start();
+//    }
 
-            public void onFinish() {
+    // Ignore the bad AsyncTask usage.
+    final class RunCommandTask extends AsyncTask<String, Void, CommandResult> {
+
+//        private ProgressDialog dialog;
+        private ProgressDialog progressDialog = new ProgressDialog(Fastchem.this);
+
+        @Override protected void onPreExecute() {
+//            dialog = ProgressDialog.show(Fastchem.this, "Please wait...", "Calculation is running...");
+//            dialog.setCancelable(false);
+//            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog2, int which) {
+//                    dialog2.dismiss();
+//                }
+//            });
+
+            progressDialog.setTitle("Please wait...");
+            progressDialog.setMessage("Calculation is running...");
+            progressDialog.setCancelable(false);
+            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            progressDialog.show();
+        }
+
+        @Override protected CommandResult doInBackground(String... commands) {
+            return com.jrummyapps.android.shell.Shell.SH.run(commands);
+        }
+
+        @Override protected void onPostExecute(CommandResult result) {
+            if (!isFinishing()) {
+//                dialog.dissmiss();
                 progressDialog.dismiss();
+//                ExecuteOutput.setText(resultToHtml(result));
+                String OutputofExecution = resultToHtml(result).toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("LastExecutionOutput.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(OutputofExecution);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+//                outputView2.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                outputView2.setText(OutputofExecution);
+
             }
-        }.start();
+        }
+
+        private Spanned resultToHtml(CommandResult result) {
+            StringBuilder html = new StringBuilder();
+            // exit status
+            html.append("<p><strong>Exit Code:</strong> ");
+            if (result.isSuccessful()) {
+                html.append("<font color='green'>").append(result.exitCode).append("</font>");
+            } else {
+                html.append("<font color='red'>").append(result.exitCode).append("</font>");
+            }
+            html.append("</p>");
+            // stdout
+            if (result.stdout.size() > 0) {
+                html.append("<p><strong>STDOUT:</strong></p><p>")
+                        .append(result.getStdout().replaceAll("\n", "<br>"))
+                        .append("</p>");
+            }
+            // stderr
+            if (result.stderr.size() > 0) {
+                html.append("<p><strong>STDERR:</strong></p><p><font color='red'>")
+                        .append(result.getStderr().replaceAll("\n", "<br>"))
+                        .append("</font></p>");
+            }
+            return Html.fromHtml(html.toString());
+        }
+
     }
 
     private View.OnClickListener saveatmofileClick; {
@@ -1301,6 +1447,12 @@ public class Fastchem extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                // alternative - faster(?)
+                // anyway - use LastExecutionOutput.txt instead of chemistry.dat - extremely slow (why?!)
+//                String strX = exec("cat "+getFilesDir()+"/LastExecutionOutput.txt");
+//                outputView2.setText(colorized(strX, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+
                 // TODO Auto-generated method stub //
                 openhighlightdialog();
             }
@@ -1332,7 +1484,7 @@ public class Fastchem extends MainActivity {
 //                    outputWriter.write(Results);
 //                    outputWriter.close();
 
-                    outputX(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                    outputX(exec("cat "+getFilesDir()+"/LastExecutionOutput.txt"));
                     output_conf(exec("cat "+getFilesDir()+"/config.input"));
                     output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
                     output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));

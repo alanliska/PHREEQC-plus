@@ -15,6 +15,7 @@ import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -138,6 +139,7 @@ public class Phreeqc extends MainActivity {
     private TextView ModifyLabelK;
     private EditText ModifyEditK;
     private Button modifybuttonK;
+    Button manual_phreeqc_isotopes;
     Button manual_phreeqc2;
     Button manual_phreeqc3;
     Button Graph;
@@ -355,6 +357,8 @@ public class Phreeqc extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setMovementMethod(new ScrollingMovementMethod());
 
         AddSMS_kin = (Button) findViewById(R.id.AddSMS_kin);
         AddSMS_kin.setOnClickListener(AddSMS_kinClick);
@@ -1257,6 +1261,16 @@ public class Phreeqc extends MainActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Phreeqc.this, ManualPHREEQC3.class);
+                startActivity(intent);
+            }
+        });
+
+        manual_phreeqc_isotopes = (Button) findViewById(R.id.manual_phreeqc_isotopes);
+        manual_phreeqc_isotopes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Phreeqc.this, ManualPHREEQCisotopes.class);
                 startActivity(intent);
             }
         });

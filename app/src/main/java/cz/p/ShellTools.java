@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -62,7 +63,7 @@ public class ShellTools extends DevMode {
     private EditText Shell;
     private Button ShellButton;
     private TextView ExecuteOutputLabel;
-    private TextView ExecuteOutput;
+    private EditText ExecuteOutput;
     private Button Quit;
     Button manual_x11basic;
     private TextView NativeLibLabel;
@@ -108,7 +109,9 @@ public class ShellTools extends DevMode {
         ShellButton = (Button) findViewById(R.id.ShellButton);
         ShellButton.setOnClickListener(ShellButtonClick);
         ExecuteOutputLabel = (TextView) findViewById(R.id.ExecuteOutputLabel);
-        ExecuteOutput = (TextView) findViewById(R.id.ExecuteOutput);
+        ExecuteOutput = (EditText) findViewById(R.id.ExecuteOutput);
+        ExecuteOutput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        ExecuteOutput.setMovementMethod(new ScrollingMovementMethod());
         Quit = (Button) findViewById(R.id.Quit);
         Quit.setOnClickListener(QuitClick);
         NativeLibLabel = (TextView) findViewById(R.id.NativeLibLabel);
@@ -479,11 +482,28 @@ public class ShellTools extends DevMode {
     // Ignore the bad AsyncTask usage.
     final class RunCommandTask extends AsyncTask<String, Void, CommandResult> {
 
-        private ProgressDialog dialog;
+//        private ProgressDialog dialog;
+        private ProgressDialog progressDialog = new ProgressDialog(ShellTools.this);
 
         @Override protected void onPreExecute() {
-            dialog = ProgressDialog.show(ShellTools.this, "Running Command", "Please Wait...");
-            dialog.setCancelable(false);
+//            dialog = ProgressDialog.show(ShellTools.this, "Running Command", "Please Wait...");
+//            dialog.setCancelable(false);
+//            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog2, int which) {
+//                    dialog2.dismiss();
+//                }
+//            });
+            progressDialog.setTitle("Please wait...");
+            progressDialog.setMessage("Running command...");
+            progressDialog.setCancelable(false);
+            progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            progressDialog.show();
         }
 
         @Override protected CommandResult doInBackground(String... commands) {
@@ -492,7 +512,8 @@ public class ShellTools extends DevMode {
 
         @Override protected void onPostExecute(CommandResult result) {
             if (!isFinishing()) {
-                dialog.dismiss();
+//                dialog.dismiss();
+                progressDialog.dismiss();
 //                ExecuteOutput.setText(resultToHtml(result));
                 String OutputofExecution = resultToHtml(result).toString();
                 try {

@@ -562,6 +562,26 @@ public class ConvertS extends MainActivity {
             outputWriter215.write(Raw_g2);
             outputWriter215.close();
 
+            /// new piece of code:
+            String Raw_s3 = exec("cat "+getFilesDir()+"/Database_s2.dat");
+            while (Raw_s3.contains("[H]")){
+                Raw_s3 = Raw_s3.replace("[H]", "H");
+            }
+            FileOutputStream fileout4155 = openFileOutput("Database_s3.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter4155 = new OutputStreamWriter(fileout4155);
+            outputWriter4155.write(Raw_s3);
+            outputWriter4155.close();
+
+            String Raw_s4 = exec("cat "+getFilesDir()+"/Database_s3.dat");
+            while (Raw_s4.contains("[O]")){
+                Raw_s4 = Raw_s4.replace("[O]", "O");
+            }
+            FileOutputStream fileout4156 = openFileOutput("Database_s4.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter4156 = new OutputStreamWriter(fileout4156);
+            outputWriter4156.write(Raw_s4);
+            outputWriter4156.close();
+            ///
+
             String Raw_ss = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
             while (Raw_ss.contains("= + e- =")){  //2 spaces
                 Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
@@ -582,6 +602,27 @@ public class ConvertS extends MainActivity {
             OutputStreamWriter outputWriter217 = new OutputStreamWriter(fileout217);
             outputWriter217.write(Raw_ss2);
             outputWriter217.close();
+
+
+        /// new piece of code:
+        String Raw_ss03 = exec("cat "+getFilesDir()+"/Database_solid_sol2.dat");
+        while (Raw_ss03.contains("[H]")){
+            Raw_ss03 = Raw_ss03.replace("[H]", "H");
+        }
+        FileOutputStream fileout6155 = openFileOutput("Database_solid_sol3.dat",MODE_PRIVATE);
+        OutputStreamWriter outputWriter6155 = new OutputStreamWriter(fileout6155);
+        outputWriter6155.write(Raw_ss03);
+        outputWriter6155.close();
+
+        String Raw_ss04 = exec("cat "+getFilesDir()+"/Database_solid_sol3.dat");
+        while (Raw_ss04.contains("[O]")){
+            Raw_ss04 = Raw_ss04.replace("[O]", "O");
+        }
+        FileOutputStream fileout6156 = openFileOutput("Database_solid_sol4.dat",MODE_PRIVATE);
+        OutputStreamWriter outputWriter6156 = new OutputStreamWriter(fileout6156);
+        outputWriter6156.write(Raw_ss04);
+        outputWriter6156.close();
+        ///
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -607,10 +648,16 @@ public class ConvertS extends MainActivity {
         exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
 
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_s.txt");
-        exec("cp "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_solid_sol.txt");
-        exec("rm "+getFilesDir()+"/Database_s2.dat");
-        exec("rm "+getFilesDir()+"/Database_solid_sol2.dat");
+        exec("mv "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_anhydr_s.txt");
+        exec("mv "+getFilesDir()+"/Database_s4.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_water_s.txt");
+        exec("mv "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_anhydr_solid_sol.txt");
+        exec("mv "+getFilesDir()+"/Database_solid_sol4.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_water_solid_sol.txt");
+        exec("rm "+getFilesDir()+"/Database_s.dat");
+        exec("rm "+getFilesDir()+"/Database_s1.dat");
+        exec("rm "+getFilesDir()+"/Database_s3.dat");
+        exec("rm "+getFilesDir()+"/Database_solid_sol.dat");
+        exec("rm "+getFilesDir()+"/Database_solid_sol1.dat");
+        exec("rm "+getFilesDir()+"/Database_solid_sol3.dat");
         exec("mv "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_solid_sol.txt");
     }
 

@@ -555,6 +555,27 @@ public class ConvertG extends MainActivity {
             OutputStreamWriter outputWriter215 = new OutputStreamWriter(fileout215);
             outputWriter215.write(Raw_g2);
             outputWriter215.close();
+
+            /// new piece of code:
+            String Raw_g3 = exec("cat "+getFilesDir()+"/Database_g2.dat");
+            while (Raw_g3.contains("[H]")){
+                Raw_g3 = Raw_g3.replace("[H]", "H");
+            }
+            FileOutputStream fileout2155 = openFileOutput("Database_g3.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter2155 = new OutputStreamWriter(fileout2155);
+            outputWriter2155.write(Raw_g3);
+            outputWriter2155.close();
+
+            String Raw_g4 = exec("cat "+getFilesDir()+"/Database_g3.dat");
+            while (Raw_g4.contains("[O]")){
+                Raw_g4 = Raw_g4.replace("[O]", "O");
+            }
+            FileOutputStream fileout2156 = openFileOutput("Database_g4.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter2156 = new OutputStreamWriter(fileout2156);
+            outputWriter2156.write(Raw_g4);
+            outputWriter2156.close();
+            ///
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -580,8 +601,11 @@ public class ConvertG extends MainActivity {
         exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
 
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_g.txt");
-        exec("rm "+getFilesDir()+"/Database_g2.dat");
+        exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_anhydr_g.txt");
+        exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+SaveOutputName+"_water_g.txt");
+        exec("rm "+getFilesDir()+"/Database_g.dat");
+        exec("rm "+getFilesDir()+"/Database_g1.dat");
+        exec("rm "+getFilesDir()+"/Database_g3.dat");
         exec("chmod -R 755 "+getFilesDir()+"/PHASES");
         exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_g.txt");
     }

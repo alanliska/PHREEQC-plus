@@ -12,8 +12,9 @@ IMPORTANT !!!
 Although this app is composed of open-source codes and resources, licenses for some components require the users to cite the original references when publishing the results. Please check all the licensing information under the buttons 'License' and 'About the app'.
 All the users of the PHREEQC PLUS app comply by downloading, installing and using it with all the licensing conditions of the individual software components and take the responsibility for keeping them. 
 
+The software has not received any approval by the U.S. Geological Survey (USGS). No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. The software is provided on the condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the software.
 
-License: GNU Lesser General Public License v3.0
+License: The PHREEQC plus app repository (except from the binary content in /app/src/main/jniLibs/) itself is covered by GPL3 license. However, the included third-party software as well as the corresponding documentation retains the original licenses - please see the individual entries below. 
 App source code: https://github.com/alanliska/PHREEQC-plus
 
 Contact:
@@ -259,11 +260,90 @@ Licenses and references to used third-party software:
  Source code: https://github.com/grimme-lab/xtb4stda
  License: GNU GPL v3 and GNU LGPL v3
 
+Manuals:
+
+ * PHREEQC 3 reference manual: https://github.com/usgs-coupled/phreeqc3/blob/master/doc/Phreeqc_3_2013_manual.pdf (public domain)
+
+ * PHREEQC 2 equations: https://github.com/usgs-coupled/phreeqc3/blob/master/doc/Phreeqc_2_1999_manual.pdf (public domain)
+
+ * PHREEQC isotopes: https://github.com/usgs-coupled/phreeqc3/blob/master/doc/wrir02-4172.pdf (public domain)
+
+ * FastChem: https://github.com/exoclime/FastChem/blob/master/manual/fastchem_manual.pdf (GPL v3)
+
+ * MOPAC: https://github.com/openmopac/openmopac.github.io/tree/main (BSD 3-Clause)
+
+ * DFTB+: https://github.com/dftbplus/dftbplus/releases/download/23.1/manual.pdf (public domain)
+
+ * DFTB+ recipes: https://dftbplus-recipes.readthedocs.io/en/latest/ (CC BY-SA 4.0)
+
+ * MODES: https://dftbplus.org/fileadmin/DFTB-Plus/public/dftb/current/manual-modes.pdf (public domain)
+
+ * XTB: https://xtb-docs.readthedocs.io/en/latest/ (CC BY-SA 4.0)
+
+ * STDA: https://www.chemiebn.uni-bonn.de/pctc/mulliken-center/software/stda/stda_manual.pdf (public domain)
+
+ * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (public domain)
+
+ * Chemsol: https://github.com/jborden/ChemSol/blob/master/documentation/cs21_manual.pdf (public domain)
+
+ * X11-BASIC: https://x11-basic.sourceforge.net/X11-Basic-manual.pdf (GNU Free Documentation License)
+
+Sources of the pre-compiled binaries:
+
+ * buildwire: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * dftb: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * fastchem: https://github.com/alanliska/FastChem-Cond-for-PHREEQC-plus
+
+ * flux: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * chemsol: https://github.com/alanliska/CHEMSOL-for-phreeqc-plus
+
+ * makecube: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * modes: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * mopac: https://github.com/alanliska/mopac-for-phreeqc-plus
+
+ * mopac-makpol: https://github.com/alanliska/mopac-for-phreeqc-plus
+
+ * mopac-param: https://github.com/alanliska/mopac-for-phreeqc-plus
+
+ * obabel: https://github.com/alanliska/openbabel-for-phreeqc-plus
+
+ * phonons: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * phreeqc: https://github.com/alanliska/phreeqc3-for-phreeqc-plus
+
+ * plotms: https://github.com/alanliska/PlotMS-for-phreeqc-plus
+
+ * qcxms: https://github.com/alanliska/QCxMS-for-phreeqc-plus
+
+ * setupgeom: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * stda: https://github.com/alanliska/stda-for-phreeqc-plus
+
+ * transpose: https://sourceforge.net/projects/transpose/
+
+ * waveplot: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * xbbc: https://github.com/alanliska/X11-Basic-for-Android
+
+ * xbvm: https://github.com/alanliska/X11-Basic-for-Android
+
+ * xtb: https://github.com/alanliska/xtb-for-phreeqc-plus
+
+ * xtb4stda: https://github.com/alanliska/xtb4stda-for-phreeqc-plus
 
 Other references:
 
  * Alexandria library
  Ghahremanpour, M., van Maaren, P. & van der Spoel, D. The Alexandria library, a quantum-chemical database of molecular properties for force field development. Sci Data 5, 180062 (2018). https://doi.org/10.1038/sdata.2018.62
+
+ * Analchem database
+ Kotrlý, S., Šůcha, L., Chemické rovnováhy v analytické chemii: Tabulky a diagramy, SNTL 1988.
+ next sources - in footnotes at the individual entries 
 
  * Basic series of PHREEQC databases
  Alberty R.A., Thermodynamics of Biochemical Reactions (1st ed.), John Wiley & Sons, Hoboken, New Jersey 2003.
@@ -289,20 +369,16 @@ Other references:
  Van Krevelen, D.W., Te Nijenhuis, K., Properties of polymers: their correlation with chemical structure; their numerical estimation and prediction from additive group contributions, Elsevier, Amsterdam, Oxford 2009.
  Wagman D., Evans W., Parker V., Schumm R., Halow I., Bailey S., Churney K., Nuttall R., The NBS Tables of Chemical Thermodynamic Properties, J. Phys. Chem. Ref. Data 11, (Supplement No. 2).
 
- * Binneweis-Milke datasets
- Binnewies, M., Milke, E., Thermochemical data of elements and compounds (Vol. 168), Wiley-VCH, Weinheim 2002.
-
  * Blank databases (Database_anhydr, Database_water)
  Bard, A. J., Parsons, R., Jordan, J. (editors), Standard potentials in aqueous solution, Marcel Dekker, New York 1985.
  Florián, J., Warshel, A., ChemSol, version 2.1, University of Southern California, Los Angeles (1999).
 
- * CHNOSZ+ModelSEED database
+ * Datasets I series, CHNOSZ+ModelSEED database
  Dick, J. M., CHNOSZ: Thermodynamic calculations and diagrams for geochemistry, Frontiers in Earth Science, 7 (2019) 180.
  Henry, C.S., DeJongh, M., Best, A.B., Frybarger, P.M., Linsay, B., R.L. Stevens, High-throughput Generation and Optimization of Genome-scale Metabolic Models, Nature Biotechnology (2010).
 
- * Kotrly-Sucha database
- Kotrlý, S., Šůcha, L., Chemické rovnováhy v analytické chemii: Tabulky a diagramy, SNTL 1988.
- next sources - in footnotes at the individual entries 
+ * Datasets II series
+ Binnewies, M., Milke, E., Thermochemical data of elements and compounds (Vol. 168), Wiley-VCH, Weinheim 2002.
 
  * MOPAC resources: manuals and reference data dowloaded from the OPENMOPAC Github page (https://github.com/openmopac/mopac-archive).
 
@@ -528,3 +604,9 @@ Literature and other sources of data in inorganic and organic kinetics datasheet
  Denisov, E.: Handbook of Antioxidants. CRC Press, Boca Raton, London, New York 2018.
 
 Info on licenses: please see the full-text licenses under the button Licenses. 
+
+ACKNOWLEDGEMENTS: 
+
+Special thanks to Alice Jarošíková and Vojtěch Ettler (Charles University in Prague, Faculty of Science, Institute of geochemistry, mineralogy and mineral resources). 
+
+The authors appreciate the financial support from the GACR projects 18-12150S, 19-22806S, 21-23261S, and internal (institutional) support RVO: 61388955. 

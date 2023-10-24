@@ -149,19 +149,20 @@
             android:scrollHorizontally="false"
             android:textColor="@android:color/holo_red_dark"></TextView>
 
-        <EditText
-            android:id="@+id/outputView2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textIsSelectable="true"
-            android:textSize="12sp"
-            android:typeface="monospace"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:fastScrollAlwaysVisible="true"
-            android:scrollbarSize="5dp"
-            android:fastScrollEnabled="true"></EditText>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px" >
+
+            <EditText
+                android:id="@+id/outputView2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars = "horizontal"
+                android:textColor="@android:color/black"
+                android:textIsSelectable="true"
+                android:textSize="12sp"
+                android:typeface="monospace"></EditText>
+        </HorizontalScrollView>
     </LinearLayout>
 </ScrollView>

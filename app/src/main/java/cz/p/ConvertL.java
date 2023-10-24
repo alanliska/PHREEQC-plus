@@ -556,6 +556,26 @@ public class ConvertL extends MainActivity {
             OutputStreamWriter outputWriter215 = new OutputStreamWriter(fileout215);
             outputWriter215.write(Raw_g2);
             outputWriter215.close();
+
+            /// new piece of code:
+            String Raw_g3 = exec("cat "+getFilesDir()+"/Database_l2.dat");
+            while (Raw_g3.contains("[H]")){
+                Raw_g3 = Raw_g3.replace("[H]", "H");
+            }
+            FileOutputStream fileout2155 = openFileOutput("Database_l3.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter2155 = new OutputStreamWriter(fileout2155);
+            outputWriter2155.write(Raw_g3);
+            outputWriter2155.close();
+
+            String Raw_g4 = exec("cat "+getFilesDir()+"/Database_l3.dat");
+            while (Raw_g4.contains("[O]")){
+                Raw_g4 = Raw_g4.replace("[O]", "O");
+            }
+            FileOutputStream fileout2156 = openFileOutput("Database_l4.dat",MODE_PRIVATE);
+            OutputStreamWriter outputWriter2156 = new OutputStreamWriter(fileout2156);
+            outputWriter2156.write(Raw_g4);
+            outputWriter2156.close();
+            ///
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -582,9 +602,12 @@ public class ConvertL extends MainActivity {
 
 
         String SaveOutputName = SaveName.getText().toString();
-        exec("cp "+getFilesDir()+"/Database_l2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_l.txt");
+        exec("mv "+getFilesDir()+"/Database_l2.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_anhydr_l.txt");
+        exec("mv "+getFilesDir()+"/Database_l4.dat "+getFilesDir()+"/output/phreeqc_datasets/"+File.separator+SaveOutputName+"_water_l.txt");
         exec("mv "+getFilesDir()+"/LIQUIDS/Fastchem_l.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+SaveOutputName+"_l.txt");
-        exec("rm "+getFilesDir()+"/Database_l2.dat");
+        exec("rm "+getFilesDir()+"/Database_l.dat");
+        exec("rm "+getFilesDir()+"/Database_l1.dat");
+        exec("rm "+getFilesDir()+"/Database_l3.dat");
 
     }
 

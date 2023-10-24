@@ -557,10 +557,22 @@
             android:text="MODIFY MOPAC SPECTRUM GENERATOR" />
 
         <Button
+            android:id="@+id/modify_fastchemcommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFY FASTCHEM COMMAND" />
+
+        <Button
             android:id="@+id/modify_xtbcommand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY XTB PROCESSING COMMAND" />
+
+        <Button
+            android:id="@+id/change_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHANGE OUTPUT TEXT SIZE" />
 
         <Button
             android:id="@+id/backup_restore"
