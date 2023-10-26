@@ -236,5 +236,6 @@
         <activity android:name="cz.p.ProcessXtb" />
         <activity android:name="cz.p.ProcessFastchem" />
         <activity android:name="cz.p.ChangeSize" />
+        <activity android:name="cz.p.PrivacyPolicy" />
     </application>
 </manifest>

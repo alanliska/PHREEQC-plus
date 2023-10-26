@@ -376,5 +376,11 @@
             android:layout_height="wrap_content"
             android:text="LICENSES INFO" />
 
+        <Button
+            android:id="@+id/PrivacyPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PRIVACY POLICY" />
+
     </LinearLayout>
 </ScrollView>

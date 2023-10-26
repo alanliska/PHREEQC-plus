@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PHREEQC plus</string>
+    <string name="hyperlink"><a href="https://www.jh-inst.cas.cz/~liska/Download.htm">https://www.jh-inst.cas.cz/~liska/Download.htm</a></string>
 </resources>

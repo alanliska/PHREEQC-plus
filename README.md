@@ -282,7 +282,7 @@ Manuals:
 
  * STDA: https://www.chemiebn.uni-bonn.de/pctc/mulliken-center/software/stda/stda_manual.pdf (public domain)
 
- * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (public domain)
+ * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (CC0)
 
  * Chemsol: https://github.com/jborden/ChemSol/blob/master/documentation/cs21_manual.pdf (public domain)
 

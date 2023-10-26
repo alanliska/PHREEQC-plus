@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
     TextView label_xtb_all;
     Button start_xtb_all;
     Button start_xtb;
+    Button PrivacyPolicy;
 
 
     /**
@@ -352,6 +353,28 @@ public class MainActivity extends AppCompatActivity {
 //        label_cp2k_all = (TextView) findViewById(R.id.label_cp2k_all);
 //        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
         label_xtb_all = (TextView) findViewById(R.id.label_xtb_all);
+
+        PrivacyPolicy = (Button) findViewById(R.id.PrivacyPolicy);
+        PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String DatasetName0 = dataset.getText().toString();
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(DatasetName);
+                    outputWriter.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Intent intent = new Intent(MainActivity.this, PrivacyPolicy.class);
+                startActivity(intent);
+            }
+        });
 
         start_opsin = (Button) findViewById(R.id.start_opsin);
         start_opsin.setOnClickListener(new View.OnClickListener() {
