@@ -264,6 +264,18 @@
             android:backgroundTint="#03A9F4"
             android:text="SELECT INTERNAL XYZ FILE CONTAINING THE TRANSITION STATE" />
         <Button
+            android:id="@+id/generateXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="GUESS TRANSITION STATE XYZ COORDINATES FROM SMILES" />
+        <Button
+            android:id="@+id/opsinXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="GUESS TRANSITION STATE XYZ COORDINATES FROM CHEMICAL NAME" />
+        <Button
             android:id="@+id/ResetTS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

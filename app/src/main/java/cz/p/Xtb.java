@@ -1529,7 +1529,7 @@ public class Xtb extends MainActivity {
             // this is cancellable progress dialog
             dialog = new ProgressDialog(Xtb.this);
             dialog.setTitle("Please wait...");
-            dialog.setMessage("Calculation is in progress.");
+            dialog.setMessage("Calculation is in progress...");
             dialog.setCancelable(false);
             dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                 @Override

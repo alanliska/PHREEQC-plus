@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -102,6 +103,9 @@ public class KineticsBiBi extends MainActivity {
     private TextView TSLabel;
     private TextView TS;
 
+    private Button generateXYZ;
+    private Button opsinXYZ;
+
     private Handler handler = new Handler();
 
     private static final int READ_FILE1 = 1;
@@ -189,6 +193,11 @@ public class KineticsBiBi extends MainActivity {
         D_opsin = (Button) findViewById(R.id.D_opsin);
         D_opsin.setOnClickListener(D_opsin_click);
 
+        generateXYZ = (Button) findViewById(R.id.generateXYZ);
+        generateXYZ.setOnClickListener(GenerateXYZClick);
+        opsinXYZ = (Button) findViewById(R.id.opsinXYZ);
+        opsinXYZ.setOnClickListener(opsinXYZClick);
+
     }
 
     public void onStart()
@@ -222,7 +231,7 @@ public class KineticsBiBi extends MainActivity {
             try {
                 FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
                 OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                outputWriterTS.write("Transition state XYZ coordinate file is not present.");
                 outputWriterTS.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -239,6 +248,473 @@ public class KineticsBiBi extends MainActivity {
         }
 
         TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+    }
+
+    private View.OnClickListener GenerateXYZClick; {
+
+        GenerateXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+                alertGenerateXYZ();
+                MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+                TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+            }
+        };
+    }
+
+
+    public void alertGenerateXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(KineticsBiBi.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(KineticsBiBi.this)
+                .setMessage("Please write the SMILES string to be converted to XYZ. ")
+                .setTitle("OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(SmilesString);
+                            outputWriter.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("BiBi_TS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                            outputWriterTS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener opsinXYZClick; {
+
+        opsinXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String InputfileA = smiA.getText().toString();
+                String InputfileName0A = iupacA.getText().toString();
+                String MethodfileA = methodA.getText().toString();
+                String KeywordsfileA = keywA.getText().toString();
+                String FormulafileA = formulaA.getText().toString();
+
+                String InputfileB = smiB.getText().toString();
+                String InputfileName0B = iupacB.getText().toString();
+                String MethodfileB = methodB.getText().toString();
+                String KeywordsfileB = keywB.getText().toString();
+                String FormulafileB = formulaB.getText().toString();
+
+                String InputfileC = smiC.getText().toString();
+                String InputfileName0C = iupacC.getText().toString();
+                String MethodfileC = methodC.getText().toString();
+                String KeywordsfileC = keywC.getText().toString();
+                String FormulafileC = formulaC.getText().toString();
+
+                String InputfileD = smiD.getText().toString();
+                String InputfileName0D = iupacD.getText().toString();
+                String MethodfileD = methodD.getText().toString();
+                String KeywordsfileD = keywD.getText().toString();
+                String FormulafileD = formulaD.getText().toString();
+
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("BiBi_smilesA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(InputfileA);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("BiBi_methodA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(MethodfileA);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("BiBi_iupacA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(InputfileName0A);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("BiBi_formulaA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulafileA);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("BiBi_keywA.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(KeywordsfileA);
+                    outputWriter6.close();
+
+                    FileOutputStream fileout10 = openFileOutput("BiBi_smilesB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(InputfileB);
+                    outputWriter10.close();
+                    FileOutputStream fileout12 = openFileOutput("BiBi_methodB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                    outputWriter12.write(MethodfileB);
+                    outputWriter12.close();
+                    FileOutputStream fileout13 = openFileOutput("BiBi_iupacB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                    outputWriter13.write(InputfileName0B);
+                    outputWriter13.close();
+                    FileOutputStream fileout18 = openFileOutput("BiBi_formulaB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter18 = new OutputStreamWriter(fileout18);
+                    outputWriter18.write(FormulafileB);
+                    outputWriter18.close();
+                    FileOutputStream fileout16 = openFileOutput("BiBi_keywB.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                    outputWriter16.write(KeywordsfileB);
+                    outputWriter16.close();
+
+                    FileOutputStream fileout20 = openFileOutput("BiBi_smilesC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter20 = new OutputStreamWriter(fileout20);
+                    outputWriter20.write(InputfileC);
+                    outputWriter20.close();
+                    FileOutputStream fileout22 = openFileOutput("BiBi_methodC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter22 = new OutputStreamWriter(fileout22);
+                    outputWriter22.write(MethodfileC);
+                    outputWriter22.close();
+                    FileOutputStream fileout23 = openFileOutput("BiBi_iupacC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter23 = new OutputStreamWriter(fileout23);
+                    outputWriter23.write(InputfileName0C);
+                    outputWriter23.close();
+                    FileOutputStream fileout28 = openFileOutput("BiBi_formulaC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter28 = new OutputStreamWriter(fileout28);
+                    outputWriter28.write(FormulafileC);
+                    outputWriter28.close();
+                    FileOutputStream fileout26 = openFileOutput("BiBi_keywC.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter26 = new OutputStreamWriter(fileout26);
+                    outputWriter26.write(KeywordsfileC);
+                    outputWriter26.close();
+
+                    FileOutputStream fileout30 = openFileOutput("BiBi_smilesD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter30 = new OutputStreamWriter(fileout30);
+                    outputWriter30.write(InputfileD);
+                    outputWriter30.close();
+                    FileOutputStream fileout32 = openFileOutput("BiBi_methodD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter32 = new OutputStreamWriter(fileout32);
+                    outputWriter32.write(MethodfileD);
+                    outputWriter32.close();
+                    FileOutputStream fileout33 = openFileOutput("BiBi_iupacD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter33 = new OutputStreamWriter(fileout33);
+                    outputWriter33.write(InputfileName0D);
+                    outputWriter33.close();
+                    FileOutputStream fileout38 = openFileOutput("BiBi_formulaD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter38 = new OutputStreamWriter(fileout38);
+                    outputWriter38.write(FormulafileD);
+                    outputWriter38.close();
+                    FileOutputStream fileout36 = openFileOutput("BiBi_keywD.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter36 = new OutputStreamWriter(fileout36);
+                    outputWriter36.write(KeywordsfileD);
+                    outputWriter36.close();
+
+                    FileOutputStream fileout42 = openFileOutput("BiBi_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("BiBi_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN CONTINUE ////////////////////////////////
+                alertOpsinXYZ();
+                MethodADisplay(exec("cat "+getFilesDir()+"/BiBi_methodA.txt"));
+                MethodBDisplay(exec("cat "+getFilesDir()+"/BiBi_methodB.txt"));
+                MethodCDisplay(exec("cat "+getFilesDir()+"/BiBi_methodC.txt"));
+                MethodDDisplay(exec("cat "+getFilesDir()+"/BiBi_methodD.txt"));
+                MethodTSDisplay(exec("cat "+getFilesDir()+"/BiBi_methodTS.txt"));
+                KeywADisplay(exec("cat "+getFilesDir()+"/BiBi_keywA.txt"));
+                KeywBDisplay(exec("cat "+getFilesDir()+"/BiBi_keywB.txt"));
+                KeywCDisplay(exec("cat "+getFilesDir()+"/BiBi_keywC.txt"));
+                KeywDDisplay(exec("cat "+getFilesDir()+"/BiBi_keywD.txt"));
+                KeywTSDisplay(exec("cat "+getFilesDir()+"/BiBi_keywTS.txt"));
+                IupacADisplay(exec("cat "+getFilesDir()+"/BiBi_iupacA.txt"));
+                IupacBDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacB.txt"));
+                IupacCDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacC.txt"));
+                IupacDDisplay(exec("cat "+getFilesDir()+"/BiBi_iupacD.txt"));
+                FormulaADisplay(exec("cat "+getFilesDir()+"/BiBi_formulaA.txt"));
+                FormulaBDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaB.txt"));
+                FormulaCDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaC.txt"));
+                FormulaDDisplay(exec("cat "+getFilesDir()+"/BiBi_formulaD.txt"));
+                SmilesADisplay(exec("cat "+getFilesDir()+"/BiBi_smilesA.txt"));
+                SmilesBDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesB.txt"));
+                SmilesCDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesC.txt"));
+                SmilesDDisplay(exec("cat "+getFilesDir()+"/BiBi_smilesD.txt"));
+                TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+            }
+        };
+    }
+
+
+    public void alertOpsinXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(KineticsBiBi.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(KineticsBiBi.this)
+                .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be appended to the actual input file.")
+                .setTitle("OPSIN+OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("BiBi_TS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                            outputWriterTS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        TS_StatusDisplay(exec("cat "+getFilesDir()+"/BiBi_TS_status.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
     }
 
     private View.OnClickListener A_opsin_click; {
@@ -1257,7 +1733,7 @@ public class KineticsBiBi extends MainActivity {
                     try {
                         FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
                         OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                        outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                        outputWriterTS.write("Transition state XYZ coordinate file is not present.");
                         outputWriterTS.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -1344,9 +1820,9 @@ public class KineticsBiBi extends MainActivity {
                             exec("cp "+getFilesDir()+"/BiBi_formulaA.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameA+".formula");
                             exec("chmod 755 -R "+getFilesDir());
                             // String ObabelOutputA = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameA+".smi -oxyz --gen3d");
-			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameA+".smi -oxyz --gen3d > ObabelOutputA.txt");
-			    String ObabelOutputA = exec("cat "+getFilesDir()+"/ObabelOutputA.txt");
-		    
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameA+".smi -oxyz --gen3d > ObabelOutputA.txt");
+                            String ObabelOutputA = exec("cat "+getFilesDir()+"/ObabelOutputA.txt");
+
                             FileOutputStream fileout4 = openFileOutput(InputfileNameA+".xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                             outputWriter4.write(ObabelOutputA);
@@ -1461,9 +1937,9 @@ public class KineticsBiBi extends MainActivity {
                             exec("cp "+getFilesDir()+"/BiBi_formulaB.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameB+".formula");
                             exec("chmod 755 -R "+getFilesDir());
                             // String ObabelOutputB = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameB+".smi -oxyz --gen3d");
-			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameB+".smi -oxyz --gen3d > ObabelOutputB.txt");
-		            String ObabelOutputB = exec("cat "+getFilesDir()+"/ObabelOutputB.txt");
-		    
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameB+".smi -oxyz --gen3d > ObabelOutputB.txt");
+                            String ObabelOutputB = exec("cat "+getFilesDir()+"/ObabelOutputB.txt");
+
                             FileOutputStream fileout14 = openFileOutput(InputfileNameB+".xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
                             outputWriter14.write(ObabelOutputB);
@@ -1525,9 +2001,9 @@ public class KineticsBiBi extends MainActivity {
                             exec("cp "+getFilesDir()+"/BiBi_formulaC.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameC+".formula");
                             exec("chmod 755 -R "+getFilesDir());
                             // String ObabelOutputC = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameC+".smi -oxyz --gen3d");
-			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameC+".smi -oxyz --gen3d > ObabelOutputC.txt");
-		            String ObabelOutputC = exec("cat "+getFilesDir()+"/ObabelOutputC.txt");
-		    
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameC+".smi -oxyz --gen3d > ObabelOutputC.txt");
+                            String ObabelOutputC = exec("cat "+getFilesDir()+"/ObabelOutputC.txt");
+
                             FileOutputStream fileout24 = openFileOutput(InputfileNameC+".xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter24 = new OutputStreamWriter(fileout24);
                             outputWriter24.write(ObabelOutputC);
@@ -1589,9 +2065,9 @@ public class KineticsBiBi extends MainActivity {
                             exec("cp "+getFilesDir()+"/BiBi_formulaD.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileNameD+".formula");
                             exec("chmod 755 -R "+getFilesDir());
                             // String ObabelOutputD = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileNameD+".smi -oxyz --gen3d");
-			    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameD+".smi -oxyz --gen3d > ObabelOutputD.txt");
-		            String ObabelOutputD = exec("cat "+getFilesDir()+"/ObabelOutputD.txt");
-		    
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileNameD+".smi -oxyz --gen3d > ObabelOutputD.txt");
+                            String ObabelOutputD = exec("cat "+getFilesDir()+"/ObabelOutputD.txt");
+
                             FileOutputStream fileout34 = openFileOutput(InputfileNameD+".xyz", MODE_PRIVATE);
                             OutputStreamWriter outputWriter34 = new OutputStreamWriter(fileout34);
                             outputWriter34.write(ObabelOutputD);
@@ -1661,7 +2137,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameA+" "+getFilesDir()+"/"+InputfileNameA+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameA);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameA);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1690,7 +2166,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileNameA+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameA);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameA);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameA);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1741,7 +2217,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameB+" "+getFilesDir()+"/"+InputfileNameB+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameB);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameB);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1770,7 +2246,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileNameB+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameB);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameB);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameB);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1820,7 +2296,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameC+" "+getFilesDir()+"/"+InputfileNameC+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameC);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameC);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1849,7 +2325,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileNameC+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameC);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameC);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameC);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1899,7 +2375,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameD+" "+getFilesDir()+"/"+InputfileNameD+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameD);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameD);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1928,7 +2404,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileNameD+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameD);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameD);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameD);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1977,7 +2453,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS+" "+getFilesDir()+"/"+InputfileNameTS+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -2006,7 +2482,7 @@ public class KineticsBiBi extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileNameTS+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -2164,7 +2640,7 @@ public class KineticsBiBi extends MainActivity {
                                 try {
                                     FileOutputStream fileoutTS = openFileOutput("BiBi_TS_status.txt", MODE_PRIVATE);
                                     OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                                    outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                                    outputWriterTS.write("Transition state XYZ coordinate file is not present.");
                                     outputWriterTS.close();
                                 } catch (Exception e) {
                                     e.printStackTrace();

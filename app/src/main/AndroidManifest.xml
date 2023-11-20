@@ -9,7 +9,7 @@
         android:icon="@drawable/icon"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.Light"
         android:extractNativeLibs="true">
         <activity   android:name="cz.p.MainActivity"
             android:exported="true">

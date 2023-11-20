@@ -146,6 +146,10 @@ public class Phreeqc extends MainActivity {
     Button Scatter;
     Button ResetGraphs;
 
+    private TextView delete_label;
+    private EditText delete;
+    private Button delete_button;
+
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
      * textView.setText(
@@ -421,6 +425,11 @@ public class Phreeqc extends MainActivity {
         modifybuttonK = (Button) findViewById(R.id.modifybuttonK);
         modifybuttonK.setOnClickListener(modifybuttonKClick);
 
+        delete_label = (TextView) findViewById(R.id.delete_label);
+        delete = (EditText) findViewById(R.id.delete);
+        delete_button = (Button) findViewById(R.id.delete_button);
+        delete_button.setOnClickListener(delete_buttonClick);
+
 
         ResetGraphs = (Button) findViewById(R.id.ResetGraphs);
         ResetGraphs.setOnClickListener(new View.OnClickListener() {
@@ -594,6 +603,7 @@ public class Phreeqc extends MainActivity {
                     ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                     r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                     k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                    delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                 }
         });
 
@@ -1445,6 +1455,7 @@ public class Phreeqc extends MainActivity {
         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
     }
 
     private View.OnClickListener AddSSClick; {
@@ -1469,6 +1480,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1495,6 +1507,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1532,6 +1545,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1556,6 +1570,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1580,6 +1595,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1604,6 +1620,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1627,6 +1644,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1659,6 +1677,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -1691,6 +1710,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -2288,6 +2308,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -2389,6 +2410,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -2436,7 +2458,174 @@ public class Phreeqc extends MainActivity {
 
 
 
+    private View.OnClickListener delete_buttonClick; {
 
+        delete_buttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String Delete = delete.getText().toString();
+                try {
+                    FileOutputStream fileoutDel = openFileOutput("Delete.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterDel = new OutputStreamWriter(fileoutDel);
+                    outputWriterDel.write(Delete);
+                    outputWriterDel.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                File filePathP = new File(getFilesDir()+File.separator+"Gas.dat");
+
+                if (!filePathP.exists()) {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat does not exist.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutP = openFileOutput("P.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterP = new OutputStreamWriter(fileoutP);
+                        outputWriterP.write("Phases fragment Gas.dat is available.");
+                        outputWriterP.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS = new File(getFilesDir()+File.separator+"Solution.dat");
+                if (!filePathSS.exists()) {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat does not exist.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS = openFileOutput("SS.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS = new OutputStreamWriter(fileoutSS);
+                        outputWriterSS.write("Solution species fragment Solution.dat is available.");
+                        outputWriterSS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSMS_kin = new File(getFilesDir()+"/SMS_kin.txt");
+
+                if (!filePathSMS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt does not exist.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSMS_kin = openFileOutput("SMS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSMS_kin = new OutputStreamWriter(fileoutSMS_kin);
+                        outputWriterSMS_kin.write("Solution master species fragment SMS_kin.txt is available.");
+                        outputWriterSMS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathSS_kin = new File(getFilesDir()+"/SS_kin.txt");
+                if (!filePathSS_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt does not exist.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutSS_kin = openFileOutput("SS_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterSS_kin = new OutputStreamWriter(fileoutSS_kin);
+                        outputWriterSS_kin.write("Solution species fragment SS_kin.txt is available.");
+                        outputWriterSS_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathR_kin = new File(getFilesDir()+"/R_kin.txt");
+                if (!filePathR_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt does not exist.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutR_kin = openFileOutput("R_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterR_kin = new OutputStreamWriter(fileoutR_kin);
+                        outputWriterR_kin.write("Rates fragment R_kin.txt is available.");
+                        outputWriterR_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                File filePathK_kin = new File(getFilesDir()+"/K_kin.txt");
+                if (!filePathK_kin.exists()) {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt does not exist.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutK_kin = openFileOutput("K_kin_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterK_kin = new OutputStreamWriter(fileoutK_kin);
+                        outputWriterK_kin.write("Kinetics fragment K_kin.txt is available.");
+                        outputWriterK_kin.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Delete = Delete.replace("[", "\\[");
+                Delete = Delete.replace("]", "\\]");
+
+                // TODO Auto-generated method stub //
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; sed -i -e '/"+Delete+"/d' Database.dat ");
+
+                output2("Entry deleted from the working database.");
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
+            }
+        };
+    }
 
 
 
@@ -2536,6 +2725,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -2666,6 +2856,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -2795,6 +2986,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -2924,6 +3116,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -3053,6 +3246,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         Toast.makeText(getApplicationContext(), "External include file /data/data/cz.p/files/Solution.dat generated successfully.", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
@@ -3253,6 +3447,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -3412,6 +3607,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -3571,6 +3767,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -3730,6 +3927,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -3889,6 +4087,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -3922,6 +4121,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -4038,6 +4238,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
                         Toast.makeText(getApplicationContext(), "Calculation finished", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
@@ -4157,6 +4358,7 @@ public class Phreeqc extends MainActivity {
                         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                         exec("rm "+getFilesDir()+"/DisplayCurrentFile.txt");
                         Toast.makeText(getApplicationContext(), "Calculation finished", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
@@ -4223,6 +4425,7 @@ public class Phreeqc extends MainActivity {
                 ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                 r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                 k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
             }
         };
     }
@@ -4326,6 +4529,7 @@ public class Phreeqc extends MainActivity {
                     ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
                     r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
                     k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                    delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
                     Toast.makeText(getApplicationContext(), "Numbers highlighted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                 }
@@ -4619,7 +4823,7 @@ public class Phreeqc extends MainActivity {
         ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
         r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
         k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
-
+        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
     }
 
     // for displaying the output in the second TextView there must be different output3 than output, including the str3/proc3 variables
@@ -4734,6 +4938,14 @@ public class Phreeqc extends MainActivity {
             }
         };
         handler.post(prock_filter);
+    }
+    public void delete_View(final String delete_Data) {
+        Runnable procdelete = new Runnable() {
+            public void run() {
+                delete.setText(delete_Data);
+            }
+        };
+        handler.post(procdelete);
     }
 
     // Executes UNIX command.

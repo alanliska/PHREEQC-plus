@@ -47,7 +47,7 @@ public class ShellTools extends DevMode {
     private EditText X11Name;
     private Button RunX11Button;
     private TextView RunX11OutputLabel;
-    private TextView RunX11Output;
+    private EditText RunX11Output;
     private TextView CatOutputLabel;
     private EditText CatOutput;
     private Button CatOutputButton;
@@ -89,7 +89,9 @@ public class ShellTools extends DevMode {
         RunX11Button = (Button) findViewById(R.id.RunX11Button);
         RunX11Button.setOnClickListener(RunX11ButtonClick);
         RunX11OutputLabel = (TextView) findViewById(R.id.RunX11OutputLabel);
-        RunX11Output = (TextView) findViewById(R.id.RunX11Output);
+        RunX11Output = (EditText) findViewById(R.id.RunX11Output);
+        RunX11Output.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        RunX11Output.setMovementMethod(new ScrollingMovementMethod());
         CatOutputLabel = (TextView) findViewById(R.id.CatOutputLabel);
         CatOutput = (EditText) findViewById(R.id.CatOutput);
         CatOutputButton = (Button) findViewById(R.id.CatOutputButton);

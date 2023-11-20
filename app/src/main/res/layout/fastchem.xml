@@ -162,6 +162,32 @@
             android:backgroundTint="#E99963"
             android:text="LOAD AND APPEND EXTERNAL GAS DATABASE" />
 
+        <TextView
+            android:id="@+id/delete_gas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDelete the following species from the selected gas phase database:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/delete_gas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/delete_gas_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DDFB8484"
+            android:text="DELETE THE ENTRY FROM THE GAS PHASE DATABASE" />
+
         <Button
             android:id="@+id/reset"
             android:layout_width="match_parent"
@@ -213,6 +239,32 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#E99963"
             android:text="LOAD AND APPEND EXTERNAL LIQUID/SOLID DATABASE" />
+
+        <TextView
+            android:id="@+id/delete_cond_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDelete the following species from the selected liquid/solid phase database:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/delete_cond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/delete_cond_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DDFB8484"
+            android:text="DELETE THE ENTRY FROM THE LIQUID/SOLID PHASE DATABASE" />
 
         <Button
             android:id="@+id/resetcond"

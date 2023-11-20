@@ -96,6 +96,12 @@ public class Fastchem extends MainActivity {
     private Button filter_cond_button;
     private Button reset_gas_button;
     private Button reset_cond_button;
+    private TextView delete_gas_label;
+    private TextView delete_cond_label;
+    private EditText delete_gas;
+    private EditText delete_cond;
+    private Button delete_gas_button;
+    private Button delete_cond_button;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -313,6 +319,14 @@ public class Fastchem extends MainActivity {
         reset_gas_button.setOnClickListener(reset_gas_buttonClick);
         reset_cond_button = (Button) findViewById(R.id.reset_cond_button);
         reset_cond_button.setOnClickListener(reset_cond_buttonClick);
+        delete_gas_label = (TextView) findViewById(R.id.delete_gas_label);
+        delete_cond_label = (TextView) findViewById(R.id.delete_cond_label);
+        delete_gas = (EditText) findViewById(R.id.delete_gas);
+        delete_cond = (EditText) findViewById(R.id.delete_cond);
+        delete_gas_button = (Button) findViewById(R.id.delete_gas_button);
+        delete_gas_button.setOnClickListener(delete_gas_buttonClick);
+        delete_cond_button = (Button) findViewById(R.id.delete_cond_button);
+        delete_cond_button.setOnClickListener(delete_cond_buttonClick);
 
         manual_fastchem = (Button) findViewById(R.id.manual_fastchem);
         manual_fastchem.setOnClickListener(new View.OnClickListener() {
@@ -465,6 +479,8 @@ public class Fastchem extends MainActivity {
         dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
         filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
         filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+        deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+        deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
         output("App prepared.");
     }
 
@@ -530,6 +546,8 @@ public class Fastchem extends MainActivity {
 //                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
                 filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
                 filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
             }
         };
     }
@@ -596,6 +614,8 @@ public class Fastchem extends MainActivity {
 //                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
                 filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
                 filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
             }
         };
     }
@@ -661,6 +681,8 @@ public class Fastchem extends MainActivity {
 //                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
                 filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
                 filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
             }
         };
     }
@@ -726,6 +748,80 @@ public class Fastchem extends MainActivity {
 //                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
                 filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
                 filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener delete_gas_buttonClick; {
+
+        delete_gas_buttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String GasDelete = delete_gas.getText().toString();
+                try {
+                    FileOutputStream fileoutGasDel = openFileOutput("DeleteGas.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterGasDel = new OutputStreamWriter(fileoutGasDel);
+                    outputWriterGasDel.write(GasDelete);
+                    outputWriterGasDel.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                GasDelete = GasDelete.replace("[", "\\[");
+                GasDelete = GasDelete.replace("]", "\\]");
+
+                // TODO Auto-generated method stub //
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; sed -i -e '/"+GasDelete+"/{N;N;d}' fastchem_database.dat ");
+
+                output_conf(exec("cat "+getFilesDir()+"/config.input"));
+                output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
+                output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
+                dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
+                dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
+                output("Entry deleted from the working database.");
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
+            }
+        };
+    }
+
+    private View.OnClickListener delete_cond_buttonClick; {
+
+        delete_cond_buttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String CondDelete = delete_cond.getText().toString();
+                try {
+                    FileOutputStream fileoutCondDel = openFileOutput("DeleteCond.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriterCondDel = new OutputStreamWriter(fileoutCondDel);
+                    outputWriterCondDel.write(CondDelete);
+                    outputWriterCondDel.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                CondDelete = CondDelete.replace("[", "\\[");
+                CondDelete = CondDelete.replace("]", "\\]");
+
+                // TODO Auto-generated method stub //
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; sed -i -e '/"+CondDelete+"/{N;N;N;N;d}' fastchem_database_cond.dat ");
+
+                output_conf(exec("cat "+getFilesDir()+"/config.input"));
+                output_elem(exec("cat "+getFilesDir()+"/abundances.dat"));
+                output_atmo(exec("cat "+getFilesDir()+"/atmospheric-profile.dat"));
+                dataView(exec("cat "+getFilesDir()+"/StatusFastchem.txt"));
+                dataViewCond(exec("cat "+getFilesDir()+"/StatusFastchemCond.txt"));
+                output("Entry deleted from the working database.");
+//                output2(exec("cat "+getFilesDir()+"/chemistry.dat"));
+                filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
+                filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
             }
         };
     }
@@ -1491,6 +1587,8 @@ public class Fastchem extends MainActivity {
                     output("Staying idle.");
                     filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
                     filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+                    deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+                    deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
 
                     Toast.makeText(getApplicationContext(), "Numbers highlighted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -1704,6 +1802,8 @@ public class Fastchem extends MainActivity {
         output2(exec("cat "+getFilesDir()+"/Output.txt"));
         filterGasView(exec("cat "+getFilesDir()+"/filter-gas.txt"));
         filterCondView(exec("cat "+getFilesDir()+"/filter-cond.txt"));
+        deleteGasView(exec("cat "+getFilesDir()+"/DeleteGas.txt"));
+        deleteCondView(exec("cat "+getFilesDir()+"/DeleteCond.txt"));
     }
 
 
@@ -2057,6 +2157,22 @@ public class Fastchem extends MainActivity {
             }
         };
         handler.post(procFilterCond);
+    }
+    public void deleteGasView(final String strDeleteGas) {
+        Runnable procDeleteGas = new Runnable() {
+            public void run() {
+                delete_gas.setText(strDeleteGas);
+            }
+        };
+        handler.post(procDeleteGas);
+    }
+    public void deleteCondView(final String strDeleteCond) {
+        Runnable procDeleteCond = new Runnable() {
+            public void run() {
+                delete_cond.setText(strDeleteCond);
+            }
+        };
+        handler.post(procDeleteCond);
     }
     // for displaying the output in the second TextView there must be different output2 than output, including the str2/proc2 variables
     public void outputX(final String strX) {

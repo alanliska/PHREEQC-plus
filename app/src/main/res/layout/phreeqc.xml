@@ -115,6 +115,33 @@
             android:backgroundTint="#7703A9F4"
             android:text="(3) SEARCH IN SELECTED DATABASE, EXPORT AND APPEND TO THE FILE MODIFIED IN STEP (2)" />
 
+        <TextView
+            android:id="@+id/delete_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDelete the following species (line containing the expression) from the selected PHREEQC database:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DDFB8484"
+            android:text="DELETE THE ENTRY FROM THE PHREEQC DATABASE" />
+
+
         <Button
             android:id="@+id/AddP"
             android:layout_width="match_parent"

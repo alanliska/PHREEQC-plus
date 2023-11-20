@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,6 +30,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
+import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
+import uk.ac.cam.ch.wwmm.opsin.OpsinResult;
+
 public class GeneralTS extends KineticsQuery {
 
     private EditText methodTS;
@@ -41,6 +46,8 @@ public class GeneralTS extends KineticsQuery {
     private Button quit;
     private TextView TSLabel;
     private TextView TS;
+    private Button generateXYZ;
+    private Button opsinXYZ;
 
     private Handler handler = new Handler();
 
@@ -67,6 +74,10 @@ public class GeneralTS extends KineticsQuery {
         process.setOnClickListener(processClick);
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(QuitClick);
+        generateXYZ = (Button) findViewById(R.id.generateXYZ);
+        generateXYZ.setOnClickListener(GenerateXYZClick);
+        opsinXYZ = (Button) findViewById(R.id.opsinXYZ);
+        opsinXYZ.setOnClickListener(opsinXYZClick);
 
     }
 
@@ -81,7 +92,7 @@ public class GeneralTS extends KineticsQuery {
             try {
                 FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
                 OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                outputWriterTS.write("Transition state XYZ coordinate file is not present.");
                 outputWriterTS.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -98,6 +109,260 @@ public class GeneralTS extends KineticsQuery {
         }
 
         TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+    }
+
+    private View.OnClickListener GenerateXYZClick; {
+
+        GenerateXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+                    FileOutputStream fileout42 = openFileOutput("General_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("General_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN READ THE TS-FILE ////////////////////////////////
+                alertGenerateXYZ();
+                MethodTSDisplay(exec("cat "+getFilesDir()+"/General_methodTS.txt"));
+                KeywTSDisplay(exec("cat "+getFilesDir()+"/General_keywTS.txt"));
+
+                File filePathTS = new File(getFilesDir()+File.separator+"General_TS.txt");
+                if (!filePathTS.exists()) {
+                    try {
+                        FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                        outputWriterTS.write("Transition state XYZ coordinate file is not present.");
+                        outputWriterTS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                        outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                        outputWriterTS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+            }
+        };
+    }
+
+
+    public void alertGenerateXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(GeneralTS.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(GeneralTS.this)
+                .setMessage("Please write the SMILES string to be converted to XYZ. ")
+                .setTitle("OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(SmilesString);
+                            outputWriter.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("General_TS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                            outputWriterTS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener opsinXYZClick; {
+
+        opsinXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                String MethodfileTS = methodTS.getText().toString();
+                String KeywordsfileTS = keywTS.getText().toString();
+
+                try {
+                    FileOutputStream fileout42 = openFileOutput("General_methodTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                    outputWriter42.write(MethodfileTS);
+                    outputWriter42.close();
+                    FileOutputStream fileout46 = openFileOutput("General_keywTS.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                    outputWriter46.write(KeywordsfileTS);
+                    outputWriter46.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                /////////////////////////// THEN READ THE TS-FILE ////////////////////////////////
+                alertOpsinXYZ();
+                MethodTSDisplay(exec("cat "+getFilesDir()+"/General_methodTS.txt"));
+                KeywTSDisplay(exec("cat "+getFilesDir()+"/General_keywTS.txt"));
+                TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+
+                File filePathTS = new File(getFilesDir()+File.separator+"General_TS.txt");
+                if (!filePathTS.exists()) {
+                    try {
+                        FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                        outputWriterTS.write("Transition state XYZ coordinate file is not present.");
+                        outputWriterTS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                        OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                        outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                        outputWriterTS.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+            }
+        };
+    }
+
+
+    public void alertOpsinXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(GeneralTS.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(GeneralTS.this)
+                .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be appended to the actual input file.")
+                .setTitle("OPSIN+OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("General_TS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                            outputWriterTS.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
     }
 
     private View.OnClickListener AddTSClick; {
@@ -183,7 +448,7 @@ public class GeneralTS extends KineticsQuery {
                     try {
                         FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
                         OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                        outputWriterTS.write("Transition state XYZ coordinate file not selected.");
+                        outputWriterTS.write("Transition state XYZ coordinate file is not present.");
                         outputWriterTS.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -210,8 +475,8 @@ public class GeneralTS extends KineticsQuery {
             public void onClick(View v) {
 
                 String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
                 progressDialog = new ProgressDialog(GeneralTS.this);
                 progressDialog.setTitle("Please wait...");
                 progressDialog.setMessage("Performing MOPAC calculations on transition state in dataset: "+DatasetName);
@@ -228,224 +493,224 @@ public class GeneralTS extends KineticsQuery {
 
 
 
-                try {
-                    /////////////////////////////////// TS ///////////////////////////////////////////////
-                    String MethodfileTS = methodTS.getText().toString();
-                    String KeywordsfileTS = keywTS.getText().toString();
-
-                    FileOutputStream fileout42 = openFileOutput("General_methodTS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
-                    outputWriter42.write(MethodfileTS);
-                    outputWriter42.close();
-                    FileOutputStream fileout46 = openFileOutput("General_keywTS.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
-                    outputWriter46.write(KeywordsfileTS);
-                    outputWriter46.close();
-
-
-                    String InputfileNameTS0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-                    String InputfileNameTS = InputfileNameTS0+"_TS";
-                    exec("chmod 755 -R "+getFilesDir());
-                    String KeyTS = MethodfileTS+" "+KeywordsfileTS;
-
-                    try {
-                        String Sed42 = exec("sed -e 1,2d "+getFilesDir()+"/General_TS.txt");
-                        FileOutputStream fileout148 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter148 = new OutputStreamWriter(fileout148);
-                        outputWriter148.write(KeyTS);
-                        outputWriter148.write("\n");
-                        outputWriter148.write("\n");
-                        outputWriter148.write("\n");
-                        outputWriter148.write(Sed42);
-                        outputWriter148.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameTS);
-                    exec("mv "+getFilesDir()+"/General_TS.txt "+getFilesDir()+File.separator+"openbabel/xyz/"+InputfileNameTS+".xyz");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
-                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".formula "+getFilesDir()+File.separator+"openbabel/formula");
-
-
-                    /////////////////////////////////// Calculate TS ///////////////////////////////////////////////
-
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS+" "+getFilesDir()+"/"+InputfileNameTS+".mop");
                         try {
-                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
-                        String Sed14003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS);
-                        String Sed14004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".arc");
-                        FileOutputStream fileout14009 = openFileOutput(InputfileNameTS+".mops", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14009 = new OutputStreamWriter(fileout14009);
-                        outputWriter14009.write(Sed14004);
-                        outputWriter14009.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileNameTS+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                        String Sed14005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
-                        FileOutputStream fileout14010 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14010 = new OutputStreamWriter(fileout14010);
-                        outputWriter14010.write("THERMO(298,298) LET "+Sed14003);
-                        outputWriter14010.write("\n");
-                        outputWriter14010.write("\n");
-                        outputWriter14010.write(Sed14005);
-                        outputWriter14010.close();
-                        exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
-                        exec("rm "+getFilesDir()+"/"+InputfileNameTS+".mops");
-                        try {
-                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
-			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
+                            /////////////////////////////////// TS ///////////////////////////////////////////////
+                            String MethodfileTS = methodTS.getText().toString();
+                            String KeywordsfileTS = keywTS.getText().toString();
 
-                        String Grep14002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameTS+".out");
-                        FileOutputStream fileout14013 = openFileOutput(InputfileNameTS+"_s.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14013 = new OutputStreamWriter(fileout14013);
-                        outputWriter14013.write(Grep14002);
-                        outputWriter14013.close();
-                        String Sed14006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
-                        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
-                        String FormulaTS = DatasetName+"_TS";
-                        String MethodTS = methodTS.getText().toString();
-                        FileOutputStream fileout14014 = openFileOutput(InputfileNameTS+"_s.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter14014 = new OutputStreamWriter(fileout14014);
-                        outputWriter14014.write(InputfileNameTS+" ");
-                        outputWriter14014.write(FormulaTS+" ");
-                        outputWriter14014.write(MethodTS+" ");
-                        outputWriter14014.write(Sed14006);
-                        outputWriter14014.close();
-                        exec("rm "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
+                            FileOutputStream fileout42 = openFileOutput("General_methodTS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter42 = new OutputStreamWriter(fileout42);
+                            outputWriter42.write(MethodfileTS);
+                            outputWriter42.close();
+                            FileOutputStream fileout46 = openFileOutput("General_keywTS.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter46 = new OutputStreamWriter(fileout46);
+                            outputWriter46.write(KeywordsfileTS);
+                            outputWriter46.close();
 
-                        String RawOutput_s4 = exec("cat "+getFilesDir()+"/"+InputfileNameTS+"_s.txt");
-                        while (RawOutput_s4.contains("  ")){  //2 spaces
-                            RawOutput_s4 = RawOutput_s4.replace("  ", " "); //(2 spaces, 1 space)
-                        }
-                        FileOutputStream fileout14016 = openFileOutput("thermo_s_TS.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter14016 = new OutputStreamWriter(fileout14016);
-                        outputWriter14016.write(RawOutput_s4);
-                        outputWriter14016.close();
 
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                        exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                            String InputfileNameTS0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                            String InputfileNameTS = InputfileNameTS0+"_TS";
+                            exec("chmod 755 -R "+getFilesDir());
+                            String KeyTS = MethodfileTS+" "+KeywordsfileTS;
 
-                    /////////////////////////////////// Process results ///////////////////////////////////////////////
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/GeneralTS.b "+getFilesDir()+"/GeneralTS.bas");
-                    exec("chmod -R 755 "+getFilesDir()+"/GeneralTS.b");
-                    exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/GeneralTS.b");
+                            try {
+                                String Sed42 = exec("sed -e 1,2d "+getFilesDir()+"/General_TS.txt");
+                                FileOutputStream fileout148 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter148 = new OutputStreamWriter(fileout148);
+                                outputWriter148.write(KeyTS);
+                                outputWriter148.write("\n");
+                                outputWriter148.write("\n");
+                                outputWriter148.write("\n");
+                                outputWriter148.write(Sed42);
+                                outputWriter148.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+File.separator+"openbabel/solv/opt/"+InputfileNameTS);
+                            exec("mv "+getFilesDir()+"/General_TS.txt "+getFilesDir()+File.separator+"openbabel/xyz/"+InputfileNameTS+".xyz");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".iupac "+getFilesDir()+File.separator+"openbabel/iupac");
+                            exec("mv "+getFilesDir()+"/openbabel/"+InputfileNameTS+".formula "+getFilesDir()+File.separator+"openbabel/formula");
 
-                    /////////////////////////////////// Export results ///////////////////////////////////////////////
 
-                    String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
-                    File filePathExt = new File(getFilesDir()+"/openbabel/kinetics");
-                    if (!filePathExt.exists()) {
-                        filePathExt.mkdirs();
-                    }
+                            /////////////////////////////////// Calculate TS ///////////////////////////////////////////////
 
-                    String Dataset = DatasetName;
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS+" "+getFilesDir()+"/"+InputfileNameTS+".mop");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/opt/results/");
+                                String Sed14003 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileNameTS);
+                                String Sed14004 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".arc");
+                                FileOutputStream fileout14009 = openFileOutput(InputfileNameTS+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14009 = new OutputStreamWriter(fileout14009);
+                                outputWriter14009.write(Sed14004);
+                                outputWriter14009.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileNameTS+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed14005 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
+                                FileOutputStream fileout14010 = openFileOutput(InputfileNameTS+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14010 = new OutputStreamWriter(fileout14010);
+                                outputWriter14010.write("THERMO(298,298) LET "+Sed14003);
+                                outputWriter14010.write("\n");
+                                outputWriter14010.write("\n");
+                                outputWriter14010.write(Sed14005);
+                                outputWriter14010.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileNameTS+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileNameTS+".mops");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileNameTS);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileNameTS);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".mop "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileNameTS+".arc");
 
-                    exec("cp "+getFilesDir()+"/thermo_s_RATES_f.txt "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
-                    exec("cp "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
-                    exec("cp "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
-                    exec("cp "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
-                    exec("cp "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/thermo_s_SMS_0.txt");
-                    exec("cp "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/thermo_s_SS_0.txt");
+                                String Grep14002 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileNameTS+".out");
+                                FileOutputStream fileout14013 = openFileOutput(InputfileNameTS+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14013 = new OutputStreamWriter(fileout14013);
+                                outputWriter14013.write(Grep14002);
+                                outputWriter14013.close();
+                                String Sed14006 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
+                                String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                                String DatasetName1 = DatasetName0.replace(" ","_");
+                                String DatasetName = DatasetName1.replace(",",".");
+                                String FormulaTS = DatasetName+"_TS";
+                                String MethodTS = methodTS.getText().toString();
+                                FileOutputStream fileout14014 = openFileOutput(InputfileNameTS+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter14014 = new OutputStreamWriter(fileout14014);
+                                outputWriter14014.write(InputfileNameTS+" ");
+                                outputWriter14014.write(FormulaTS+" ");
+                                outputWriter14014.write(MethodTS+" ");
+                                outputWriter14014.write(Sed14006);
+                                outputWriter14014.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileNameTS+"_s.temp");
 
-                    String Rf = exec("cat "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
-                    Rf = Rf.replace("[H2O]", "H2O");
-                    Rf = Rf.replace("[H+]+", "H+");
-                    Rf = Rf.replace("[OH-]-", "OH-");
-                    FileOutputStream Rf_stream = openFileOutput("thermo_s_RATES_f_w.txt", MODE_PRIVATE);
-                    OutputStreamWriter Rf_writer = new OutputStreamWriter(Rf_stream);
-                    Rf_writer.write(Rf);
-                    Rf_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES_f_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_forward_RATES_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
+                                String RawOutput_s4 = exec("cat "+getFilesDir()+"/"+InputfileNameTS+"_s.txt");
+                                while (RawOutput_s4.contains("  ")){  //2 spaces
+                                    RawOutput_s4 = RawOutput_s4.replace("  ", " "); //(2 spaces, 1 space)
+                                }
+                                FileOutputStream fileout14016 = openFileOutput("thermo_s_TS.txt",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter14016 = new OutputStreamWriter(fileout14016);
+                                outputWriter14016.write(RawOutput_s4);
+                                outputWriter14016.close();
 
-                    String Rb = exec("cat "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
-                    Rb = Rb.replace("[H2O]", "H2O");
-                    Rb = Rb.replace("[H+]+", "H+");
-                    Rb = Rb.replace("[OH-]-", "OH-");
-                    FileOutputStream Rb_stream = openFileOutput("thermo_s_RATES_b.txt", MODE_PRIVATE);
-                    OutputStreamWriter Rb_writer = new OutputStreamWriter(Rb_stream);
-                    Rb_writer.write(Rb);
-                    Rb_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_backward_RATES_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".out "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                                exec("mv "+getFilesDir()+"/"+InputfileNameTS+".arc "+getFilesDir()+"/openbabel/solv/thermo/results/");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
-                    String Kf = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
-                    Kf = Kf.replace("[H2O]", "H2O");
-                    Kf = Kf.replace("[H+]+", "H+");
-                    Kf = Kf.replace("[OH-]-", "OH-");
-                    FileOutputStream Kf_stream = openFileOutput("thermo_s_KINETICS_f.txt", MODE_PRIVATE);
-                    OutputStreamWriter Kf_writer = new OutputStreamWriter(Kf_stream);
-                    Kf_writer.write(Kf);
-                    Kf_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_forward_KINETICS_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
+                            /////////////////////////////////// Process results ///////////////////////////////////////////////
+                            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/GeneralTS.b "+getFilesDir()+"/GeneralTS.bas");
+                            exec("chmod -R 755 "+getFilesDir()+"/GeneralTS.b");
+                            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/GeneralTS.b");
 
-                    String Kb = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
-                    Kb = Kb.replace("[H2O]", "H2O");
-                    Kb = Kb.replace("[H+]+", "H+");
-                    Kb = Kb.replace("[OH-]-", "OH-");
-                    FileOutputStream Kb_stream = openFileOutput("thermo_s_KINETICS_b.txt", MODE_PRIVATE);
-                    OutputStreamWriter Kb_writer = new OutputStreamWriter(Kb_stream);
-                    Kb_writer.write(Kb);
-                    Kb_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_backward_KINETICS_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
+                            /////////////////////////////////// Export results ///////////////////////////////////////////////
 
-                    String SMS = exec("cat "+getFilesDir()+"/thermo_s_SMS_0.txt");
-                    SMS = SMS.replace("[H2O]\t[H2O]\t0\t[H2O]\t1", "");
-                    SMS = SMS.replace("[H+]\t[H+]+\t0\t[H+]\t1", "");
-                    SMS = SMS.replace("[OH-]\t[OH-]-\t0\t[OH-]\t1", "");
-                    FileOutputStream SMS_stream = openFileOutput("thermo_s_SMS.txt", MODE_PRIVATE);
-                    OutputStreamWriter SMS_writer = new OutputStreamWriter(SMS_stream);
-                    SMS_writer.write(SMS);
-                    SMS_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_MASTER_SPECIES_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                            String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+                            String DatasetName1 = DatasetName0.replace(" ","_");
+                            String DatasetName = DatasetName1.replace(",",".");
+                            File filePathExt = new File(getFilesDir()+"/openbabel/kinetics");
+                            if (!filePathExt.exists()) {
+                                filePathExt.mkdirs();
+                            }
 
-                    String SS = exec("cat "+getFilesDir()+"/thermo_s_SS_0.txt");
-                    SS = SS.replace("[H2O] = [H2O]", "");
-                    SS = SS.replace("[H+]+ = [H+]+", "");
-                    SS = SS.replace("[OH-]- = [OH-]-", "");
-                    FileOutputStream SS_stream = openFileOutput("thermo_s_SS.txt", MODE_PRIVATE);
-                    OutputStreamWriter SS_writer = new OutputStreamWriter(SS_stream);
-                    SS_writer.write(SS);
-                    SS_writer.close();
-                    exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_SPECIES_w.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_SS_0.txt");
+                            String Dataset = DatasetName;
 
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_forward_KINETICS_anhydr.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_backward_KINETICS_anhydr.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES_f.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_forward_RATES_anhydr.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_backward_RATES_anhydr.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_MASTER_SPECIES.txt");
-                    exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_SPECIES.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_RATES_f.txt "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                            exec("cp "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/thermo_s_SS_0.txt");
 
-                    exec("rm "+getFilesDir()+"/thermo_s_TS.txt");
-                    exec("rm "+getFilesDir()+"/thermo_s_General.txt");
-                    exec("rm "+getFilesDir()+"/GeneralResults_R.txt");
-                    exec("rm "+getFilesDir()+"/GeneralResults_P.txt");
+                            String Rf = exec("cat "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
+                            Rf = Rf.replace("[H2O]", "H2O");
+                            Rf = Rf.replace("[H+]+", "H+");
+                            Rf = Rf.replace("[OH-]-", "OH-");
+                            FileOutputStream Rf_stream = openFileOutput("thermo_s_RATES_f_w.txt", MODE_PRIVATE);
+                            OutputStreamWriter Rf_writer = new OutputStreamWriter(Rf_stream);
+                            Rf_writer.write(Rf);
+                            Rf_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES_f_w.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_forward_RATES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_RATES_f_0.txt");
+
+                            String Rb = exec("cat "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
+                            Rb = Rb.replace("[H2O]", "H2O");
+                            Rb = Rb.replace("[H+]+", "H+");
+                            Rb = Rb.replace("[OH-]-", "OH-");
+                            FileOutputStream Rb_stream = openFileOutput("thermo_s_RATES_b.txt", MODE_PRIVATE);
+                            OutputStreamWriter Rb_writer = new OutputStreamWriter(Rb_stream);
+                            Rb_writer.write(Rb);
+                            Rb_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_backward_RATES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_RATES_b_0.txt");
+
+                            String Kf = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
+                            Kf = Kf.replace("[H2O]", "H2O");
+                            Kf = Kf.replace("[H+]+", "H+");
+                            Kf = Kf.replace("[OH-]-", "OH-");
+                            FileOutputStream Kf_stream = openFileOutput("thermo_s_KINETICS_f.txt", MODE_PRIVATE);
+                            OutputStreamWriter Kf_writer = new OutputStreamWriter(Kf_stream);
+                            Kf_writer.write(Kf);
+                            Kf_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_forward_KINETICS_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_KINETICS_f_0.txt");
+
+                            String Kb = exec("cat "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
+                            Kb = Kb.replace("[H2O]", "H2O");
+                            Kb = Kb.replace("[H+]+", "H+");
+                            Kb = Kb.replace("[OH-]-", "OH-");
+                            FileOutputStream Kb_stream = openFileOutput("thermo_s_KINETICS_b.txt", MODE_PRIVATE);
+                            OutputStreamWriter Kb_writer = new OutputStreamWriter(Kb_stream);
+                            Kb_writer.write(Kb);
+                            Kb_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_backward_KINETICS_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_KINETICS_b_0.txt");
+
+                            String SMS = exec("cat "+getFilesDir()+"/thermo_s_SMS_0.txt");
+                            SMS = SMS.replace("[H2O]\t[H2O]\t0\t[H2O]\t1", "");
+                            SMS = SMS.replace("[H+]\t[H+]+\t0\t[H+]\t1", "");
+                            SMS = SMS.replace("[OH-]\t[OH-]-\t0\t[OH-]\t1", "");
+                            FileOutputStream SMS_stream = openFileOutput("thermo_s_SMS.txt", MODE_PRIVATE);
+                            OutputStreamWriter SMS_writer = new OutputStreamWriter(SMS_stream);
+                            SMS_writer.write(SMS);
+                            SMS_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_MASTER_SPECIES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_SMS_0.txt");
+
+                            String SS = exec("cat "+getFilesDir()+"/thermo_s_SS_0.txt");
+                            SS = SS.replace("[H2O] = [H2O]", "");
+                            SS = SS.replace("[H+]+ = [H+]+", "");
+                            SS = SS.replace("[OH-]- = [OH-]-", "");
+                            FileOutputStream SS_stream = openFileOutput("thermo_s_SS.txt", MODE_PRIVATE);
+                            OutputStreamWriter SS_writer = new OutputStreamWriter(SS_stream);
+                            SS_writer.write(SS);
+                            SS_writer.close();
+                            exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+Dataset+"_SOLUTION_SPECIES_w.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_SS_0.txt");
+
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS_f.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_forward_KINETICS_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_KINETICS_b.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_backward_KINETICS_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES_f.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_forward_RATES_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_RATES_b.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_backward_RATES_anhydr.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_SMS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_MASTER_SPECIES.txt");
+                            exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_SPECIES.txt");
+
+                            exec("rm "+getFilesDir()+"/thermo_s_TS.txt");
+                            exec("rm "+getFilesDir()+"/thermo_s_General.txt");
+                            exec("rm "+getFilesDir()+"/GeneralResults_R.txt");
+                            exec("rm "+getFilesDir()+"/GeneralResults_P.txt");
 
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/xyz "+getFilesDir()+File.separator+"output");
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/smiles "+getFilesDir()+File.separator+"output");
@@ -457,40 +722,40 @@ public class GeneralTS extends KineticsQuery {
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/kinetics "+getFilesDir()+File.separator+"output");
 //                    exec("mv "+getFilesDir()+File.separator+"openbabel/tautomers "+getFilesDir()+File.separator+"output");
 
-                    /////////////////////////////////// Display fields ///////////////////////////////////////////////
+                            /////////////////////////////////// Display fields ///////////////////////////////////////////////
 
-                    MethodTSDisplay(exec("cat "+getFilesDir()+"/General_methodTS.txt"));
-                    KeywTSDisplay(exec("cat "+getFilesDir()+"/General_keywTS.txt"));
+                            MethodTSDisplay(exec("cat "+getFilesDir()+"/General_methodTS.txt"));
+                            KeywTSDisplay(exec("cat "+getFilesDir()+"/General_keywTS.txt"));
 
-                    File filePathTS = new File(getFilesDir()+File.separator+"General_TS.txt");
-                    if (!filePathTS.exists()) {
-                        try {
-                            FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
-                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                            outputWriterTS.write("Transition state XYZ coordinate file not selected.");
-                            outputWriterTS.close();
+                            File filePathTS = new File(getFilesDir()+File.separator+"General_TS.txt");
+                            if (!filePathTS.exists()) {
+                                try {
+                                    FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                                    outputWriterTS.write("Transition state XYZ coordinate file is not present.");
+                                    outputWriterTS.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
+                                    outputWriterTS.write("Transition state XYZ coordinate file is available.");
+                                    outputWriterTS.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
+
+
+
+
+
                         } catch (Exception e) {
-                            e.printStackTrace();
                         }
-                    } else {
-                        try {
-                            FileOutputStream fileoutTS = openFileOutput("General_TS_status.txt", MODE_PRIVATE);
-                            OutputStreamWriter outputWriterTS = new OutputStreamWriter(fileoutTS);
-                            outputWriterTS.write("Transition state XYZ coordinate file is available.");
-                            outputWriterTS.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    TS_StatusDisplay(exec("cat "+getFilesDir()+"/General_TS_status.txt"));
-
-
-
-
-
-                } catch (Exception e) {
-                }
 
 //here:
                         Intent intent = new Intent(GeneralTS.this, ResumeActivityKin.class);
