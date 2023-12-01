@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="fill_parent"
+            android:layout_height="50mm"
+            android:id="@+id/graph" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/rightX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="►►► X ►►►" />
+            <Button
+                android:id="@+id/leftX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="◄◄◄ X ◄◄◄" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/rightY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="►►► Y ►►►" />
+            <Button
+                android:id="@+id/leftY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="◄◄◄ Y ◄◄◄" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/upZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="▲▲▲ Z ▲▲▲" />
+            <Button
+                android:id="@+id/downZ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:text="▼▼▼ Z ▼▼▼" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/openExtXyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL XYZ FILE" />
+        <Button
+            android:id="@+id/openIntXyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL XYZ FILE" />
+
+        <TextView
+            android:id="@+id/contentXyzLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Content of the XYZ file:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/contentXyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/desc_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to XTB reaction path calculation with PHREEQC compatible output.\n\nWhen creating SMILES representations, please take care that the (heavy) atom range in both input and output structure must be the same.\n\nEach entered formula must neither contain square brackets [] nor brackets inside of brackets."
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/reactant_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nReacting structure (SMILES):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/reactant_smiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/reactant_formulas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nReactants formulas (one per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/reactant_formulas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/product_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nStructure to be produced (SMILES):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+
+        <EditText
+            android:id="@+id/product_smiles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/product_formulas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nProducts formulas (one per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/product_formulas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/process_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCommand to be executed (edit/check the solvation model, solvent, overall charge):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/details_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDetailed conditions for the calculation (if needed, please add --input /data/data/cz.p/files/XtbKin.inp):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/runbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CALCULATE THE REACTION PATH WITH XTB" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+</ScrollView>

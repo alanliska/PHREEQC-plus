@@ -237,5 +237,16 @@
         <activity android:name="cz.p.ProcessFastchem" />
         <activity android:name="cz.p.ChangeSize" />
         <activity android:name="cz.p.PrivacyPolicy" />
+        <activity android:name="cz.p.ModifyXtbKinetics" />
+        <activity android:name="cz.p.XtbKinetics" />
+        <activity android:name="cz.p.ModifyXtbSolid" />
+        <activity android:name="cz.p.ProjectionGraph" />
+        <activity android:name="cz.p.ProjectionGraphSelector" />
+        <activity android:name="cz.p.ModifyXright" />
+        <activity android:name="cz.p.ModifyXleft" />
+        <activity android:name="cz.p.ModifyYright" />
+        <activity android:name="cz.p.ModifyYleft" />
+        <activity android:name="cz.p.ModifyZup" />
+        <activity android:name="cz.p.ModifyZdown" />
     </application>
 </manifest>

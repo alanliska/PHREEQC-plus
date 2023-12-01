@@ -38,6 +38,11 @@
             android:fastScrollAlwaysVisible="true"
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
-
+        <TextView
+            android:id="@+id/Warning"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Warning: Text size must be an integer. Otherwise the app will crash!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
     </LinearLayout>
 </ScrollView>

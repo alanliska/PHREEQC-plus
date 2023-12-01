@@ -120,6 +120,7 @@ public class Xtb extends MainActivity {
     private Uri documentUri200;
     Button manual_xtb;
     Button manual_stda;
+    Button write_cell;
     //    Button manual_crest;
 //    Button manual_python;
 
@@ -276,6 +277,8 @@ public class Xtb extends MainActivity {
 
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
+        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        Content.setMovementMethod(new ScrollingMovementMethod());
         CommandLabel = (TextView) findViewById(R.id.CommandLabel);
         Command = (EditText) findViewById(R.id.Command);
         openCommandfile = (Button) findViewById(R.id.openCommandfile);
@@ -317,6 +320,8 @@ public class Xtb extends MainActivity {
         saveExtOutputfile.setOnClickListener(saveExtOutputfileClick);
         Highlight = (Button) findViewById(R.id.Highlight);
         Highlight.setOnClickListener(HighlightClick);
+        write_cell = (Button) findViewById(R.id.write_cell);
+        write_cell.setOnClickListener(write_cellClick);
 //        About = (Button) findViewById(R.id.About);
 //        About.setOnClickListener(AboutClick);
 //        License = (Button) findViewById(R.id.License);
@@ -405,6 +410,109 @@ public class Xtb extends MainActivity {
         output4(exec("cat "+getFilesDir()+"/xtb/Input-xtb.txt"));
         output5(exec("cat "+getFilesDir()+"/xtb/Command.txt"));
         output(exec("ls -la "+getFilesDir()+"/xtb/"));
+    }
+
+    private View.OnClickListener write_cellClick; {
+
+        write_cellClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = InputFile.getText().toString();
+                String Arguments = Command.getText().toString();
+                String Infile = InFile.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-xtb.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Command.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(Arguments);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Input-xtb.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(Infile);
+                    outputWriter3.close();
+                    exec("mv "+getFilesDir()+"/Input-xtb.xyz "+getFilesDir()+"/xtb/");
+                    exec("mv "+getFilesDir()+"/Command.txt "+getFilesDir()+"/xtb/");
+                    exec("mv "+getFilesDir()+"/Input-xtb.txt "+getFilesDir()+"/xtb/");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertCell();
+                output3(exec("cat "+getFilesDir()+"/xtb/Input-xtb.xyz"));
+                output4(exec("cat "+getFilesDir()+"/xtb/Input-xtb.txt"));
+                output5(exec("cat "+getFilesDir()+"/xtb/Command.txt"));
+                output(exec("ls -la "+getFilesDir()+"/xtb/"));
+            }
+        };
+    }
+
+
+    public void alertCell(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(Xtb.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Xtb.this)
+                .setMessage("Please write the cell parameters. Example: 6.0 6.0 6.0 60.0 60.0 60.0 (A B C alpha beta gamma).")
+                .setTitle("Cell generation")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String CellString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("XtbSolid.inp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(CellString);
+                            outputWriter.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; sed '1,2d' ./xtb/Input-xtb.xyz > ./xtb/Input-xtb2.xyz ; "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o XtbSolid.b XtbSolid.bas ; chmod -R 755 XtbSolid.b ; "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so XtbSolid.b ; mv reorder.xyz Input-xtb.txt ; mv Input-xtb.txt ./xtb/");
+
+//                            String SedXyz = exec("sed -e 1,2d "+getFilesDir()+"/temp.xyz");
+
+//                            FileOutputStream fileout4 = openFileOutput("Input-xtb.xyz", MODE_APPEND);
+//                            OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
+////                            outputWriter4.write(InputFile);
+//                            outputWriter4.write("\n");
+//                            outputWriter4.write(SedXyz);
+//                            outputWriter4.close();
+//                            exec("mv "+getFilesDir()+"/Input-xtb.xyz "+getFilesDir()+"/xtb/");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        // here it should be:
+                        output3(exec("cat "+getFilesDir()+"/xtb/Input-xtb.xyz"));
+                        output4(exec("cat "+getFilesDir()+"/xtb/Input-xtb.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
     }
 
     private View.OnClickListener GenerateXYZClick; {

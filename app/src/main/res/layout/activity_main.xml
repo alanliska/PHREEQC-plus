@@ -220,6 +220,20 @@
             android:text="MODEL GENERAL REACTION" />
 
         <TextView
+            android:id="@+id/label_xtbkin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nGeneral case - use of XTB calculated data"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_xtbkin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#D7FF24"
+            android:text="MODEL GENERAL REACTION" />
+
+        <TextView
             android:id="@+id/label101"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

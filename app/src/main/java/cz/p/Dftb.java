@@ -275,6 +275,8 @@ public class Dftb extends MainActivity {
 
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
+        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        Content.setMovementMethod(new ScrollingMovementMethod());
         CommandLabel = (TextView) findViewById(R.id.CommandLabel);
         Command = (EditText) findViewById(R.id.Command);
         openCommandfile = (Button) findViewById(R.id.openCommandfile);

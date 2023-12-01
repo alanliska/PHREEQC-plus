@@ -30,6 +30,7 @@ public class ChangeSize extends DevMode {
     private TextView ContentLabel;
     private EditText Content;
     private Handler handler = new Handler();
+    private TextView Warning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class ChangeSize extends DevMode {
         CompileButton.setOnClickListener(CompileClick);
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
-
+        Warning = (TextView) findViewById(R.id.Warning);
     }
 
 

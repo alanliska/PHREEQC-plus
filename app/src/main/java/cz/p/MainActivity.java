@@ -151,7 +151,8 @@ public class MainActivity extends AppCompatActivity {
     Button start_xtb_all;
     Button start_xtb;
     Button PrivacyPolicy;
-
+    TextView label_xtbkin;
+    Button start_xtbkin;
 
     /**
      * Colorize a specific substring in a string for TextView. Use it like this: <pre>
@@ -332,6 +333,7 @@ public class MainActivity extends AppCompatActivity {
         label100 = (TextView) findViewById(R.id.label100);
         label101 = (TextView) findViewById(R.id.label101);
         label_kin = (TextView) findViewById(R.id.label_kin);
+        label_xtbkin = (TextView) findViewById(R.id.label_xtbkin);
 
         custom_export = (Button) findViewById(R.id.custom_export);
 
@@ -349,6 +351,7 @@ public class MainActivity extends AppCompatActivity {
         start_kin22 = (Button) findViewById(R.id.start_kin22);
         start_kin23 = (Button) findViewById(R.id.start_kin23);
         start_kin = (Button) findViewById(R.id.start_kin);
+        start_xtbkin = (Button) findViewById(R.id.start_xtbkin);
         manual_phreeqc_plus = (Button) findViewById(R.id.manual_phreeqc_plus);
 //        label_cp2k_all = (TextView) findViewById(R.id.label_cp2k_all);
 //        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
@@ -574,6 +577,28 @@ public class MainActivity extends AppCompatActivity {
                 exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/GeneralInit.b");
 
                 Intent intent = new Intent(MainActivity.this, KineticsQuery.class);
+                startActivity(intent);
+            }
+        });
+
+        start_xtbkin = (Button) findViewById(R.id.start_xtbkin);
+        start_xtbkin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String DatasetName0 = dataset.getText().toString();
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(DatasetName);
+                    outputWriter.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                Intent intent = new Intent(MainActivity.this, XtbKinetics.class);
                 startActivity(intent);
             }
         });

@@ -108,6 +108,15 @@ public class DevMode extends MainActivity {
     Button modify_xtbcommand;
     Button modify_fastchemcommand;
     Button change_size;
+    Button modify_xtbkin;
+    Button modify_xtbsolid;
+    Button start_projectiongraph;
+    Button modify_x_right;
+    Button modify_x_left;
+    Button modify_y_right;
+    Button modify_y_left;
+    Button modify_z_up;
+    Button modify_z_down;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,11 +189,92 @@ public class DevMode extends MainActivity {
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
 
+        modify_x_right = (Button) findViewById(R.id.modify_x_right);
+        modify_x_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyXright.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_x_left = (Button) findViewById(R.id.modify_x_left);
+        modify_x_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyXleft.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_y_right = (Button) findViewById(R.id.modify_y_right);
+        modify_y_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyYright.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_y_left = (Button) findViewById(R.id.modify_y_left);
+        modify_y_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyYleft.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_z_up = (Button) findViewById(R.id.modify_z_up);
+        modify_z_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyZup.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_z_down = (Button) findViewById(R.id.modify_z_down);
+        modify_z_down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyZdown.class);
+                startActivity(intent);
+            }
+        });
+
+        start_projectiongraph = (Button) findViewById(R.id.start_projectiongraph);
+        start_projectiongraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ProjectionGraph.class);
+                startActivity(intent);
+            }
+        });
+
         change_size = (Button) findViewById(R.id.change_size);
         change_size.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DevMode.this, ChangeSize.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_xtbkin = (Button) findViewById(R.id.modify_xtbkin);
+        modify_xtbkin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyXtbKinetics.class);
+                startActivity(intent);
+            }
+        });
+
+        modify_xtbsolid = (Button) findViewById(R.id.modify_xtbsolid);
+        modify_xtbsolid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, ModifyXtbSolid.class);
                 startActivity(intent);
             }
         });
