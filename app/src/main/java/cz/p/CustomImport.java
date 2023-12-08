@@ -130,6 +130,7 @@ public class CustomImport extends MainActivity {
 
         name_label = (TextView) findViewById(R.id.name_label);
         name_of_the_file = (EditText) findViewById(R.id.name_of_the_file);
+        name_of_the_file.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         label00 = (TextView) findViewById(R.id.label00);
         label000 = (TextView) findViewById(R.id.label000);
         label01 = (TextView) findViewById(R.id.label01);

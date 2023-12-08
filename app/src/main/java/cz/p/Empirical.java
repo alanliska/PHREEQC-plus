@@ -211,6 +211,7 @@ public class Empirical extends MainActivity {
 
         dataset_label = (TextView) findViewById(R.id.dataset_label);
         dataset = (EditText) findViewById(R.id.dataset);
+        dataset.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         label21 = (TextView) findViewById(R.id.label21);
         label22 = (TextView) findViewById(R.id.label22);
         label23 = (TextView) findViewById(R.id.label23);
@@ -352,5 +353,27 @@ public class Empirical extends MainActivity {
             }
         };
         handler.post(dataset_proc);
+    }
+
+    // Executes UNIX command.
+    private String exec(String command) {
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+            int read;
+            char[] buffer = new char[4096];
+            StringBuffer output = new StringBuffer();
+            while ((read = reader.read(buffer)) > 0) {
+                output.append(buffer, 0, read);
+            }
+            reader.close();
+            process.waitFor();
+            return output.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

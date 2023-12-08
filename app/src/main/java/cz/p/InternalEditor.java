@@ -58,6 +58,7 @@ public class InternalEditor extends EditInternalFile {
 
         fileLabel = (TextView) findViewById(R.id.fileLabel);
         fileInput = (EditText) findViewById(R.id.fileInput);
+        fileInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         savefile = (Button) findViewById(R.id.savefile);
         savefile.setOnClickListener(savefileClick);
 

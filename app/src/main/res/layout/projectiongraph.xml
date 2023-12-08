@@ -114,6 +114,17 @@
             android:fastScrollEnabled="true"/>
 
         <Button
+            android:id="@+id/saveInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE CURRENT XYZ STRUCTURE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInputfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE CURRENT XYZ STRUCTURE TO EXTERNAL STORAGE" />
+
+        <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

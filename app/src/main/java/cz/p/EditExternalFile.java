@@ -64,6 +64,7 @@ public class EditExternalFile extends MainActivity {
 
         fileLabel = (TextView) findViewById(R.id.fileLabel);
         fileInput = (EditText) findViewById(R.id.fileInput);
+        fileInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openfile = (Button) findViewById(R.id.openfile);
         openfile.setOnClickListener(openfileClick);
         savefile = (Button) findViewById(R.id.savefile);

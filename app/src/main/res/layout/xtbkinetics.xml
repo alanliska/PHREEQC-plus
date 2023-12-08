@@ -115,6 +115,27 @@
             android:scrollbarSize="5dp"
             android:typeface="monospace" />
 
+        <Button
+            android:id="@+id/openCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL COMMAND" />
+        <Button
+            android:id="@+id/openIntCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD INTERNAL COMMAND" />
+        <Button
+            android:id="@+id/saveCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO EXTERNAL STORAGE" />
+
         <TextView
             android:id="@+id/details_label"
             android:layout_width="fill_parent"
@@ -133,6 +154,27 @@
             android:scrollbarFadeDuration="50000"
             android:scrollbarSize="5dp"
             android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/openIntInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/saveInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
 
         <Button
             android:id="@+id/runbutton"

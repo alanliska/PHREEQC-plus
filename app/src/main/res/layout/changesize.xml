@@ -11,38 +11,61 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/Label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Preferences\n"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+        <TextView
+            android:id="@+id/ChangeInputSize"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change input field text size:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <Spinner
+            android:id="@+id/InputSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/ChangeOutputSize"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change output field text size:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <Spinner
+            android:id="@+id/OutputSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/ChangePointSize"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change point size in molecular viewer:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <Spinner
+            android:id="@+id/PointSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:id="@+id/ChangePointColour"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change point colour in molecular viewer:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <Spinner
+            android:id="@+id/ColourSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
         <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="QUIT" />
-        <Button
-            android:id="@+id/CompileButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SAVE AS TEXTSIZE.TXT" />
-        <TextView
-            android:id="@+id/ContentLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Content of the file /data/data/cz.p/files/TextSize.txt:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-        <EditText
-            android:id="@+id/Content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="monospace"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:fastScrollAlwaysVisible="true"
-            android:scrollbarSize="5dp"
-            android:fastScrollEnabled="true"/>
-        <TextView
-            android:id="@+id/Warning"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Warning: Text size must be an integer. Otherwise the app will crash!"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:text="BACK" />
     </LinearLayout>
 </ScrollView>

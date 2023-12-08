@@ -223,6 +223,7 @@ public class Mopac extends MainActivity {
 
         MopacLabel = (TextView) findViewById(R.id.MopacLabel);
         MopacInput = (EditText) findViewById(R.id.MopacInput);
+        MopacInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -247,7 +248,7 @@ public class Mopac extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
         Spectrum = (Button) findViewById(R.id.Spectrum);
         Spectrum.setOnClickListener(SpectrumClick);

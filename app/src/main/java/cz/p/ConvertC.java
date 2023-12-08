@@ -207,7 +207,9 @@ public class ConvertC extends MainActivity {
 
         TabDataLabel = (TextView) findViewById(R.id.TabDataLabel);
         TabData = (EditText) findViewById(R.id.TabData);
+        TabData.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         SaveName = (EditText) findViewById(R.id.SaveName);
+        SaveName.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openInputfile2 = (Button) findViewById(R.id.openInputfile2);
@@ -245,6 +247,7 @@ public class ConvertC extends MainActivity {
         Quit.setOnClickListener(QuitClick);
         ConvertedDataLabel = (TextView) findViewById(R.id.ConvertedDataLabel);
         ConvertedData = (EditText) findViewById(R.id.ConvertedData);
+        ConvertedData.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
     }
 

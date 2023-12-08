@@ -57,10 +57,12 @@ public class GeneralData extends KineticsQuery {
         data = (TextView) findViewById(R.id.data);
         modifylabel = (TextView) findViewById(R.id.modifylabel);
         modifyedit = (EditText) findViewById(R.id.modifyedit);
+        modifyedit.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybutton = (Button) findViewById(R.id.modifybutton);
         modifybutton.setOnClickListener(modifybuttonClick);
         previewlabel = (TextView) findViewById(R.id.previewlabel);
         preview = (EditText) findViewById(R.id.preview);
+        preview.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         reset = (Button) findViewById(R.id.reset);
         reset.setOnClickListener(resetClick);
         process = (Button) findViewById(R.id.process);

@@ -627,7 +627,8 @@
             android:id="@+id/change_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CHANGE OUTPUT TEXT SIZE" />
+            android:backgroundTint="#EE1EEE"
+            android:text="TEXT AND POINT PREFERENCES" />
 
         <Button
             android:id="@+id/backup_restore"

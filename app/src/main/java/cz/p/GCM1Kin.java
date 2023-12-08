@@ -203,8 +203,11 @@ public class GCM1Kin extends EmpiricalKin {
         Reactant2Label = (TextView) findViewById(R.id.Reactant2Label);
         DistanceLabel = (TextView) findViewById(R.id.DistanceLabel);
         Reactant1 = (EditText) findViewById(R.id.Reactant1);
+        Reactant1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Reactant2 = (EditText) findViewById(R.id.Reactant2);
+        Reactant2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Distance = (EditText) findViewById(R.id.Distance);
+        Distance.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Run = (Button) findViewById(R.id.Run);
         Run.setOnClickListener(RunClick);
         Quit = (Button) findViewById(R.id.Quit);

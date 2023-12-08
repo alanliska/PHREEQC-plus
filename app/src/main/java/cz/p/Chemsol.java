@@ -218,6 +218,7 @@ public class Chemsol extends MainActivity {
 
         ChemsolLabel = (TextView) findViewById(R.id.ChemsolLabel);
         ChemsolInput = (EditText) findViewById(R.id.ChemsolInput);
+        ChemsolInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -238,7 +239,7 @@ public class Chemsol extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
 
         manual_chemsol = (Button) findViewById(R.id.manual_chemsol);

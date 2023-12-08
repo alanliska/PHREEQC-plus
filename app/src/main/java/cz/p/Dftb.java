@@ -275,10 +275,11 @@ public class Dftb extends MainActivity {
 
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
-        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         Content.setMovementMethod(new ScrollingMovementMethod());
         CommandLabel = (TextView) findViewById(R.id.CommandLabel);
         Command = (EditText) findViewById(R.id.Command);
+        Command.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openCommandfile = (Button) findViewById(R.id.openCommandfile);
         openCommandfile.setOnClickListener(openCommandfileClick);
         openIntCommandfile = (Button) findViewById(R.id.openIntCommandfile);
@@ -288,6 +289,7 @@ public class Dftb extends MainActivity {
         saveExtCommandfile.setOnClickListener(saveExtCommandfileClick);
         InputLabel = (TextView) findViewById(R.id.InputLabel);
         InputFile = (EditText) findViewById(R.id.InputFile);
+        InputFile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -297,6 +299,7 @@ public class Dftb extends MainActivity {
         saveExtInputfile.setOnClickListener(saveExtInputfileClick);
         CoordLabel = (TextView) findViewById(R.id.CoordLabel);
         CoordFile = (EditText) findViewById(R.id.CoordFile);
+        CoordFile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openCoordfile = (Button) findViewById(R.id.openCoordfile);
         openCoordfile.setOnClickListener(openCoordfileClick);
         openIntCoordfile = (Button) findViewById(R.id.openIntCoordfile);
@@ -319,7 +322,7 @@ public class Dftb extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
         Graph = (Button) findViewById(R.id.Graph);
         Graph.setOnClickListener(GraphClick);

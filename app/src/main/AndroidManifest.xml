@@ -248,5 +248,7 @@
         <activity android:name="cz.p.ModifyYleft" />
         <activity android:name="cz.p.ModifyZup" />
         <activity android:name="cz.p.ModifyZdown" />
+        <activity android:name="cz.p.XtbKinWork1" />
+        <activity android:name="cz.p.XtbKinCommand" />
     </application>
 </manifest>

@@ -310,10 +310,12 @@ public class Phreeqc extends MainActivity {
         ResetSS.setOnClickListener(ResetSSClick);
         ModifyLabel = (TextView) findViewById(R.id.ModifyLabel);
         ModifyEdit = (EditText) findViewById(R.id.ModifyEdit);
+        ModifyEdit.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybutton = (Button) findViewById(R.id.modifybutton);
         modifybutton.setOnClickListener(modifybuttonClick);
         ModifyLabel2 = (TextView) findViewById(R.id.ModifyLabel2);
         ModifyEdit12 = (EditText) findViewById(R.id.ModifyEdit12);
+        ModifyEdit12.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybutton12 = (Button) findViewById(R.id.modifybutton12);
         modifybutton12.setOnClickListener(modifybutton12Click);
         ModifyLabel12 = (TextView) findViewById(R.id.ModifyLabel12);
@@ -339,6 +341,7 @@ public class Phreeqc extends MainActivity {
         ResetKKin.setOnClickListener(ResetKKinClick);
         PhreeqcLabel = (TextView) findViewById(R.id.PhreeqcLabel);
         PhreeqcInput = (EditText) findViewById(R.id.PhreeqcInput);
+        PhreeqcInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -361,7 +364,7 @@ public class Phreeqc extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
 
         AddSMS_kin = (Button) findViewById(R.id.AddSMS_kin);
@@ -407,26 +410,31 @@ public class Phreeqc extends MainActivity {
 
         ModifyLabelSMS = (TextView) findViewById(R.id.ModifyLabelSMS);
         ModifyEditSMS = (EditText) findViewById(R.id.ModifyEditSMS);
+        ModifyEditSMS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybuttonSMS = (Button) findViewById(R.id.modifybuttonSMS);
         modifybuttonSMS.setOnClickListener(modifybuttonSMSClick);
 
         ModifyLabelSS = (TextView) findViewById(R.id.ModifyLabelSS);
         ModifyEditSS = (EditText) findViewById(R.id.ModifyEditSS);
+        ModifyEditSS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybuttonSS = (Button) findViewById(R.id.modifybuttonSS);
         modifybuttonSS.setOnClickListener(modifybuttonSSClick);
 
         ModifyLabelR = (TextView) findViewById(R.id.ModifyLabelR);
         ModifyEditR = (EditText) findViewById(R.id.ModifyEditR);
+        ModifyEditR.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybuttonR = (Button) findViewById(R.id.modifybuttonR);
         modifybuttonR.setOnClickListener(modifybuttonRClick);
 
         ModifyLabelK = (TextView) findViewById(R.id.ModifyLabelK);
         ModifyEditK = (EditText) findViewById(R.id.ModifyEditK);
+        ModifyEditK.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         modifybuttonK = (Button) findViewById(R.id.modifybuttonK);
         modifybuttonK.setOnClickListener(modifybuttonKClick);
 
         delete_label = (TextView) findViewById(R.id.delete_label);
         delete = (EditText) findViewById(R.id.delete);
+        delete.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         delete_button = (Button) findViewById(R.id.delete_button);
         delete_button.setOnClickListener(delete_buttonClick);
 

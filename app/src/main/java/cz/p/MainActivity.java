@@ -311,6 +311,13 @@ public class MainActivity extends AppCompatActivity {
 
         dataset_label = (TextView) findViewById(R.id.dataset_label);
         dataset = (EditText) findViewById(R.id.dataset);
+        // prevent crash in the beginning, when the file is not already unzipped
+        File TextSize = new File(getFilesDir()+"/InputTextSize.txt");
+        if (TextSize.exists()) {
+            dataset.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        } else {
+            dataset.setTextSize(16);
+        }
 
         start_openbabel = (Button) findViewById(R.id.start_openbabel);
 
@@ -346,6 +353,11 @@ public class MainActivity extends AppCompatActivity {
         labelKin = (TextView) findViewById(R.id.labelKin);
         temperature_label = (TextView) findViewById(R.id.temperature_label);
         temperature = (EditText) findViewById((R.id.temperature));
+        if (TextSize.exists()) {
+            temperature.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        } else {
+            temperature.setTextSize(16);
+        }
         start_kin11 = (Button) findViewById(R.id.start_kin11);
         start_kin12 = (Button) findViewById(R.id.start_kin12);
         start_kin22 = (Button) findViewById(R.id.start_kin22);
@@ -1041,6 +1053,8 @@ public class MainActivity extends AppCompatActivity {
             copyFromAssetsToInternalStorage("dataset-name.txt");
             // without this file the kinetics calculations would not work
             copyFromAssetsToInternalStorage("temperature.txt");
+
+            copyFromAssetsToInternalStorage("InputTextSize.txt");
 
             try {
                 FileOutputStream fileout = openFileOutput("BinaryPath.txt", MODE_PRIVATE);

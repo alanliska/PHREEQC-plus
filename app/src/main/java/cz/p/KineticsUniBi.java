@@ -111,9 +111,13 @@ public class KineticsUniBi extends MainActivity {
         methodTS_label = (TextView) findViewById(R.id.methodTS_label);
 
         methodA = (EditText) findViewById(R.id.methodA);
+        methodA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         methodB = (EditText) findViewById(R.id.methodB);
+        methodB.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         methodC = (EditText) findViewById(R.id.methodC);
+        methodC.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         methodTS = (EditText) findViewById(R.id.methodTS);
+        methodTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         keywA_label = (TextView) findViewById(R.id.keywA_label);
         keywB_label = (TextView) findViewById(R.id.keywB_label);
@@ -121,33 +125,46 @@ public class KineticsUniBi extends MainActivity {
         keywTS_label = (TextView) findViewById(R.id.keywTS_label);
 
         keywA = (EditText) findViewById(R.id.keywA);
+        keywA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywB = (EditText) findViewById(R.id.keywB);
+        keywB.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywC = (EditText) findViewById(R.id.keywC);
+        keywC.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywTS = (EditText) findViewById(R.id.keywTS);
+        keywTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         iupacA_label = (TextView) findViewById(R.id.iupacA_label);
         iupacB_label = (TextView) findViewById(R.id.iupacB_label);
         iupacC_label = (TextView) findViewById(R.id.iupacC_label);
 
         iupacA = (EditText) findViewById(R.id.iupacA);
+        iupacA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         iupacB = (EditText) findViewById(R.id.iupacB);
+        iupacB.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         iupacC = (EditText) findViewById(R.id.iupacC);
+        iupacC.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         formulaA_label = (TextView) findViewById(R.id.formulaA_label);
         formulaB_label = (TextView) findViewById(R.id.formulaB_label);
         formulaC_label = (TextView) findViewById(R.id.formulaC_label);
 
         formulaA = (EditText) findViewById(R.id.formulaA);
+        formulaA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         formulaB = (EditText) findViewById(R.id.formulaB);
+        formulaB.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         formulaC = (EditText) findViewById(R.id.formulaC);
+        formulaC.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         smiA_label = (TextView) findViewById(R.id.smiA_label);
         smiB_label = (TextView) findViewById(R.id.smiB_label);
         smiC_label = (TextView) findViewById(R.id.smiC_label);
 
         smiA = (EditText) findViewById(R.id.smiA);
+        smiA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         smiB = (EditText) findViewById(R.id.smiB);
+        smiB.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         smiC = (EditText) findViewById(R.id.smiC);
+        smiC.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         TSLabel = (TextView) findViewById(R.id.TSLabel);
         TS = (TextView) findViewById(R.id.TS);

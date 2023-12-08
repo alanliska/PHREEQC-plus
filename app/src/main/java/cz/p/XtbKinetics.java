@@ -54,7 +54,26 @@ public class XtbKinetics extends MainActivity {
     private Button runbutton;
     private Button quit;
 
+    Button openCommandfile;
+    Button openIntCommandfile;
+    Button saveCommandfile;
+    Button saveExtCommandfile;
+
+    Button openInfile;
+    Button openIntInfile;
+    Button saveInfile;
+    Button saveExtInfile;
+
     private Handler handler = new Handler();
+
+    private static final int READ_FILE26 = 26;
+    private Uri documentUri26;
+    private static final int CREATE_FILE01 = 1;
+    private Uri documentUri1;
+    private static final int READ_FILE60 = 60;
+    private Uri documentUri60;
+    private static final int CREATE_FILE200 = 200;
+    private Uri documentUri200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +89,54 @@ public class XtbKinetics extends MainActivity {
         product_formulas_label = (TextView) findViewById(R.id.product_formulas_label);
 
         product_formulas = (EditText) findViewById(R.id.product_formulas);
+        product_formulas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         process = (EditText) findViewById(R.id.process);
+        process.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         details = (EditText) findViewById(R.id.details);
+        details.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         reactant_smiles = (EditText) findViewById(R.id.reactant_smiles);
+        reactant_smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         reactant_formulas = (EditText) findViewById(R.id.reactant_formulas);
+        reactant_formulas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         product_smiles = (EditText) findViewById(R.id.product_smiles);
+        product_smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         runbutton = (Button) findViewById(R.id.runbutton);
         runbutton.setOnClickListener(runbuttonClick);
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(QuitClick);
+
+        openCommandfile = (Button) findViewById(R.id.openCommandfile);
+        openCommandfile.setOnClickListener(openCommandfileClick);
+        openIntCommandfile = (Button) findViewById(R.id.openIntCommandfile);
+        saveCommandfile = (Button) findViewById(R.id.saveCommandfile);
+        saveCommandfile.setOnClickListener(saveCommandfileClick);
+        saveExtCommandfile = (Button) findViewById(R.id.saveExtCommandfile);
+        saveExtCommandfile.setOnClickListener(saveExtCommandfileClick);
+
+        openInfile = (Button) findViewById(R.id.openInfile);
+        openInfile.setOnClickListener(openInfileClick);
+        openIntInfile = (Button) findViewById(R.id.openIntInfile);
+        saveInfile = (Button) findViewById(R.id.saveInfile);
+        saveInfile.setOnClickListener(saveInfileClick);
+        saveExtInfile = (Button) findViewById(R.id.saveExtInfile);
+        saveExtInfile.setOnClickListener(saveExtInfileClick);
+
+        openIntInfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(XtbKinetics.this, XtbKinWork1.class);
+                startActivity(intent);
+            }
+        });
+
+        openIntCommandfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(XtbKinetics.this, XtbKinCommand.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -92,6 +149,557 @@ public class XtbKinetics extends MainActivity {
         FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
         ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
         DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+
+    }
+
+    private View.OnClickListener openInfileClick; {
+
+        openInfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                read26(getApplicationContext());
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+    private View.OnClickListener openCommandfileClick; {
+
+        openCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                read60(getApplicationContext());
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtInfileClick; {
+
+        saveExtInfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                write0(getApplicationContext());
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveExtCommandfileClick; {
+
+        saveExtCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                write10(getApplicationContext());
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+    private void read26(Context context26) {
+        Intent intent26 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent26.addCategory(Intent.CATEGORY_OPENABLE);
+        intent26.setType("text/plain");
+        startActivityForResult(intent26, READ_FILE26);
+    }
+
+    private void write0(Context context0) {
+        Intent intent0 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent0.addCategory(Intent.CATEGORY_OPENABLE);
+        intent0.setType("text/plain");
+        intent0.putExtra(Intent.EXTRA_TITLE,"MyInputFile");
+        startActivityForResult(intent0, CREATE_FILE01);
+    }
+
+    private void read60(Context context60) {
+        Intent intent60 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent60.addCategory(Intent.CATEGORY_OPENABLE);
+        intent60.setType("text/plain");
+        startActivityForResult(intent60, READ_FILE60);
+    }
+
+    private void write10(Context context10) {
+        Intent intent10 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent10.addCategory(Intent.CATEGORY_OPENABLE);
+        intent10.setType("text/plain");
+        intent10.putExtra(Intent.EXTRA_TITLE,"MyCommand");
+        startActivityForResult(intent10, CREATE_FILE200);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == READ_FILE26 && data != null) {
+            try {
+                documentUri26 = data.getData();
+                String myData = "";
+                ParcelFileDescriptor pfd26 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream = new FileInputStream(pfd26.getFileDescriptor());
+                DataInputStream inp = new DataInputStream(fileInputStream);
+                BufferedReader br = new BufferedReader(new InputStreamReader(inp));
+                String strLine;
+                while ((strLine = br.readLine()) != null) {
+                    myData = myData + strLine + "\n";
+                }
+                inp.close();
+
+                FileOutputStream fileout = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(myData);
+                outputWriter.close();
+                fileInputStream.close();
+                pfd26.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE01 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+
+                String fileContentsX = details.getText().toString();
+                FileOutputStream fileout = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContentsX + "\n");
+                outputWriter.close();
+
+                documentUri1 = data.getData();
+                ParcelFileDescriptor pfd0 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd0.getFileDescriptor());
+//                String fileContents = InputFile.getText().toString();
+                String fileContents0 = exec("cat "+getFilesDir()+"/XtbKin.inp");
+                fileOutputStream.write((fileContents0 + "\n").getBytes());
+                fileOutputStream.close();
+                pfd0.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == READ_FILE60 && data != null) {
+            try {
+                documentUri60 = data.getData();
+                String myData = "";
+                ParcelFileDescriptor pfd60 = getContentResolver().openFileDescriptor(data.getData(), "r");
+                FileInputStream fileInputStream = new FileInputStream(pfd60.getFileDescriptor());
+                DataInputStream inp = new DataInputStream(fileInputStream);
+                BufferedReader br = new BufferedReader(new InputStreamReader(inp));
+                String strLine;
+                while ((strLine = br.readLine()) != null) {
+                    myData = myData + strLine + "\n";
+                }
+                inp.close();
+
+                FileOutputStream fileout = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(myData);
+                outputWriter.close();
+                fileInputStream.close();
+                pfd60.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE200 && data != null) {
+            // save command file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+                documentUri200 = data.getData();
+                ParcelFileDescriptor pfd200 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd200.getFileDescriptor());
+                String fileContents = process.getText().toString();
+                fileOutputStream.write((fileContents + "\n").getBytes());
+                fileOutputStream.close();
+                pfd200.close();
+                FileOutputStream fileout = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContents);
+                outputWriter.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
+    private View.OnClickListener saveInfileClick; {
+
+        saveInfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertSaveIn();
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void alertSaveIn(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(XtbKinetics.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics.this)
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/xtb_kin_work")
+                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String Inputfile = details.getText().toString();
+                        String SaveInputName = editText10.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(Inputfile+"\n");
+                            outputWriter.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/xtb_kin_work");
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+
+    private View.OnClickListener saveCommandfileClick; {
+
+        saveCommandfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String SmilesR = reactant_smiles.getText().toString();
+                String SmilesP = product_smiles.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                try {
+
+                    FileOutputStream fileout = openFileOutput("Xtb_smilesR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(SmilesR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_smilesP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(SmilesP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertSaveCommand();
+                SmilesRDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesR.txt"));
+                SmilesPDisplay(exec("cat "+getFilesDir()+"/Xtb_smilesP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void alertSaveCommand(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(XtbKinetics.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics.this)
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/xtb_kin_commands")
+                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String Inputfile = process.getText().toString();
+                        String SaveInputName = editText10.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(Inputfile);
+                            outputWriter.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/xtb_kin_commands");
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
 
     }
 
@@ -256,6 +864,8 @@ public class XtbKinetics extends MainActivity {
                             exec("mv "+getFilesDir()+"/thermo_s_SS.txt "+getFilesDir()+"/openbabel/kinetics/"+DatasetName+"_SOLUTION_SPECIES_anhydr.txt");
                             exec("cp "+getFilesDir()+"/XtbKin.inp "+getFilesDir()+"/openbabel/solv/thermo/results/"+DatasetName+".inp");
                             exec("mv "+getFilesDir()+"/XtbKin.out "+getFilesDir()+"/openbabel/solv/thermo/results/"+DatasetName+".out");
+                            exec("mv "+getFilesDir()+"/XtbR.out "+getFilesDir()+"/openbabel/solv/thermo/results/"+DatasetName+"_R.out");
+                            exec("mv "+getFilesDir()+"/XtbP.out "+getFilesDir()+"/openbabel/solv/thermo/results/"+DatasetName+"_P.out");
                             exec("mv "+getFilesDir()+"/XtbR.xyz "+getFilesDir()+"/openbabel/xyz/"+DatasetName+"_R.xyz");
                             exec("mv "+getFilesDir()+"/XtbP.xyz "+getFilesDir()+"/openbabel/xyz/"+DatasetName+"_P.xyz");
                             exec("mv "+getFilesDir()+"/xtbpath_ts.xyz "+getFilesDir()+"/openbabel/xyz/"+DatasetName+"_TS.xyz");

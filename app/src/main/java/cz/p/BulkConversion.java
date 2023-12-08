@@ -65,10 +65,13 @@ public class BulkConversion extends MainActivity {
 
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
+        method.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         solvation_label = (TextView) findViewById(R.id.solvation_label);
         solvation = (EditText) findViewById(R.id.solvation);
+        solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
+        keywords.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openbabel_select = (Button) findViewById(R.id.openbabel_select);
         openbabel_select.setOnClickListener(openbabel_select_click);
         openbabel_exit = (Button) findViewById(R.id.openbabel_exit);
@@ -76,6 +79,7 @@ public class BulkConversion extends MainActivity {
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(quit_click);
         BulkView = (EditText) findViewById(R.id.BulkView);
+        BulkView.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         help_bulk = (Button) findViewById(R.id.help_bulk);
         help_bulk.setOnClickListener(help_bulkClick);
 

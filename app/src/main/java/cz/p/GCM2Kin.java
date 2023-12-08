@@ -209,10 +209,15 @@ public class GCM2Kin extends EmpiricalKin {
         Product1Label = (TextView) findViewById(R.id.Product1Label);
         Product2Label = (TextView) findViewById(R.id.Product2Label);
         Reactant1 = (EditText) findViewById(R.id.Reactant1);
+        Reactant1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Reactant2 = (EditText) findViewById(R.id.Reactant2);
+        Reactant2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Distance = (EditText) findViewById(R.id.Distance);
+        Distance.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Product1 = (EditText) findViewById(R.id.Product1);
+        Product1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Product2 = (EditText) findViewById(R.id.Product2);
+        Product2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         Run = (Button) findViewById(R.id.Run);
         Run.setOnClickListener(RunClick);
         Quit = (Button) findViewById(R.id.Quit);

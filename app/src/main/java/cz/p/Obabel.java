@@ -222,10 +222,13 @@ public class Obabel extends MainActivity {
 
         ObabelLabel = (TextView) findViewById(R.id.ObabelLabel);
         ObabelInput = (EditText) findViewById(R.id.ObabelInput);
+        ObabelInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         ITypeSwitchLabel = (TextView) findViewById(R.id.ITypeSwitchLabel);
         ITypeSwitch = (EditText) findViewById(R.id.ITypeSwitch);
+        ITypeSwitch.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         OTypeSwitchLabel = (TextView) findViewById(R.id.OTypeSwitchLabel);
         OTypeSwitch = (EditText) findViewById(R.id.OTypeSwitch);
+        OTypeSwitch.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -246,7 +249,7 @@ public class Obabel extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
         manual_openbabel = (Button) findViewById(R.id.manual_openbabel);
         manual_openbabel.setOnClickListener(new View.OnClickListener() {

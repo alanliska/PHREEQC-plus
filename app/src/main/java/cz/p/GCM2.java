@@ -266,6 +266,7 @@ public class GCM2 extends MainActivity {
 
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
+        iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (TextView) findViewById(R.id.formula);
         next_structure = (Button) findViewById(R.id.next_structure);

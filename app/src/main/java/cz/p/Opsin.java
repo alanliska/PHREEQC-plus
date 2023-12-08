@@ -210,6 +210,7 @@ public class Opsin extends MainActivity {
 
         OpsinLabel = (TextView) findViewById(R.id.OpsinLabel);
         OpsinInput = (EditText) findViewById(R.id.OpsinInput);
+        OpsinInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         RunOpsin = (Button) findViewById(R.id.RunOpsin);
         RunOpsin.setOnClickListener(RunOpsinClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -217,7 +218,7 @@ public class Opsin extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
 
     }

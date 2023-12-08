@@ -48,12 +48,16 @@ public class CompGCM3 extends DevMode {
         CompileButton.setOnClickListener(CompileClick);
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
+        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         ContentLabel2 = (TextView) findViewById(R.id.ContentLabel2);
         Content2 = (EditText) findViewById(R.id.Content2);
+        Content2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         ContentLabel3 = (TextView) findViewById(R.id.ContentLabel3);
         Content3 = (EditText) findViewById(R.id.Content3);
+        Content3.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         ContentLabel4 = (TextView) findViewById(R.id.ContentLabel4);
         Content4 = (EditText) findViewById(R.id.Content4);
+        Content4.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
     }
 
 

@@ -93,6 +93,10 @@ public class ProjectionGraph extends MainActivity {
     String valXY[];
     Double Xval;
     Double Yval;
+    Button saveInputfile;
+    Button saveExtInputfile;
+    private static final int CREATE_FILE20 = 20;
+    private Uri documentUri20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +105,7 @@ public class ProjectionGraph extends MainActivity {
 
         contentXyzLabel = (TextView) findViewById(R.id.contentXyzLabel);
         contentXyz = (EditText) findViewById(R.id.contentXyz);
+        contentXyz.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
         openExtXyz = (Button) findViewById(R.id.openExtXyz);
         openExtXyz.setOnClickListener(openExtXyzClick);
@@ -119,6 +124,13 @@ public class ProjectionGraph extends MainActivity {
         downZ.setOnClickListener(downZClick);
         Quit = (Button) findViewById(R.id.Quit);
         Quit.setOnClickListener(QuitClick);
+        saveInputfile = (Button) findViewById(R.id.saveInputfile);
+        saveInputfile.setOnClickListener(saveInputfileClick);
+        saveExtInputfile = (Button) findViewById(R.id.saveExtInputfile);
+        saveExtInputfile.setOnClickListener(saveExtInputfileClick);
+
+        String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+        String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
 
         openIntXyz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +146,105 @@ public class ProjectionGraph extends MainActivity {
     {
         super.onStart();
         output(exec("cat "+getFilesDir()+"/XYZ_view.xyz"));
+    }
+
+    private View.OnClickListener saveExtInputfileClick; {
+
+        saveExtInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XYZcontent = contentXyz.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("XYZ_view.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XYZcontent);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                write1(getApplicationContext());
+                output(exec("cat "+getFilesDir()+"/XYZ_view.xyz"));
+            }
+        };
+    }
+
+    private View.OnClickListener saveInputfileClick; {
+
+        saveInputfileClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XYZcontent = contentXyz.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("XYZ_view.xyz", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XYZcontent);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertSaveInput();
+                output(exec("cat "+getFilesDir()+"/XYZ_view.xyz"));
+            }
+        };
+    }
+
+
+    public void alertSaveInput(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(ProjectionGraph.this);
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(ProjectionGraph.this)
+                .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/xyz")
+                .setTitle("Please write the desired filename (if already present, it will be overwritten)")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String Inputfile = contentXyz.getText().toString();
+                        String SaveInputName = editText10.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput(SaveInputName, MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(Inputfile+"\n");
+                            outputWriter.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        exec("mv "+getFilesDir()+"/"+SaveInputName+" "+getFilesDir()+"/output/xyz/");
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private void write1(Context context1) {
+        Intent intent1 = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent1.addCategory(Intent.CATEGORY_OPENABLE);
+        intent1.setType("text/plain");
+        intent1.putExtra(Intent.EXTRA_TITLE,"MyXyzStructure");
+        startActivityForResult(intent1, CREATE_FILE20);
     }
 
     private View.OnClickListener rightXClick; {
@@ -195,8 +306,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -270,8 +383,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -345,8 +460,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -420,8 +537,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -495,8 +614,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -570,8 +691,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -642,8 +765,10 @@ public class ProjectionGraph extends MainActivity {
                     }
                     PointsGraphSeries<DataPoint> series = new PointsGraphSeries<>(listDp);
                     graph.addSeries(series);
-                    series.setColor(Color.GRAY);
-                    series.setSize(65);
+                    String PointSize = exec("cat "+getFilesDir()+"/PointSize.txt");
+                    String PointColour = exec("cat "+getFilesDir()+"/Colour.txt");
+                    series.setColor(Integer.valueOf(PointColour));
+                    series.setSize(Integer.valueOf(PointSize));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -693,6 +818,32 @@ public class ProjectionGraph extends MainActivity {
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if (requestCode == CREATE_FILE20 && data != null) {
+            // save input file
+            Toast.makeText(getApplicationContext(), "File successfully created", Toast.LENGTH_SHORT).show();
+            try {
+
+                String fileContentsX = contentXyz.getText().toString();
+                FileOutputStream fileout = openFileOutput("XYZ_view.xyz", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                outputWriter.write(fileContentsX + "\n");
+                outputWriter.close();
+
+                documentUri20 = data.getData();
+                ParcelFileDescriptor pfd20 = getContentResolver().openFileDescriptor(data.getData(), "w");
+                FileOutputStream fileOutputStream = new FileOutputStream(pfd20.getFileDescriptor());
+//                String fileContents = InputFile.getText().toString();
+                String fileContents20 = exec("cat "+getFilesDir()+"/XYZ_view.xyz");
+                fileOutputStream.write((fileContents20 + "\n").getBytes());
+                fileOutputStream.close();
+                pfd20.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
             }
         }
 

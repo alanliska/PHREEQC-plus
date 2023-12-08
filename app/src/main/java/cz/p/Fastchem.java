@@ -259,8 +259,10 @@ public class Fastchem extends MainActivity {
 
         config_label = (TextView) findViewById(R.id.config_label);
         config = (EditText) findViewById(R.id.config);
+        config.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         atmospheric_profile_label = (TextView) findViewById(R.id.atmospheric_profile_label);
         atmospheric_profile = (EditText) findViewById(R.id.atmospheric_profile);
+        atmospheric_profile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openatmofile = (Button) findViewById(R.id.openatmofile);
 //        openatmofile.setOnClickListener(openatmofileClick);
         openatmofile2 = (Button) findViewById(R.id.openatmofile2);
@@ -271,6 +273,7 @@ public class Fastchem extends MainActivity {
         saveatmofile2.setOnClickListener(saveatmofile2Click);
         abundance_label = (TextView) findViewById(R.id.abundance_label);
         abundance = (EditText) findViewById(R.id.abundance);
+        abundance.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openabundfile = (Button) findViewById(R.id.openabundfile);
 //        openabundfile.setOnClickListener(openabundfileClick);
         openabundfile2 = (Button) findViewById(R.id.openabundfile2);
@@ -302,7 +305,7 @@ public class Fastchem extends MainActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
-        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/TextSize.txt")).intValue());
+        outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
         DataLabel = (TextView) findViewById(R.id.DataLabel);
         Data = (TextView) findViewById(R.id.Data);
@@ -310,7 +313,9 @@ public class Fastchem extends MainActivity {
         filter_gas_label = (TextView) findViewById(R.id.filter_gas_label);
         filter_cond_label = (TextView) findViewById(R.id.filter_cond_label);
         filter_gas = (EditText) findViewById(R.id.filter_gas);
+        filter_gas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         filter_cond = (EditText) findViewById(R.id.filter_cond);
+        filter_cond.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         filter_gas_button = (Button) findViewById(R.id.filter_gas_button);
         filter_gas_button.setOnClickListener(filter_gasClick);
         filter_cond_button = (Button) findViewById(R.id.filter_cond_button);
@@ -322,7 +327,9 @@ public class Fastchem extends MainActivity {
         delete_gas_label = (TextView) findViewById(R.id.delete_gas_label);
         delete_cond_label = (TextView) findViewById(R.id.delete_cond_label);
         delete_gas = (EditText) findViewById(R.id.delete_gas);
+        delete_gas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         delete_cond = (EditText) findViewById(R.id.delete_cond);
+        delete_cond.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         delete_gas_button = (Button) findViewById(R.id.delete_gas_button);
         delete_gas_button.setOnClickListener(delete_gas_buttonClick);
         delete_cond_button = (Button) findViewById(R.id.delete_cond_button);

@@ -60,8 +60,10 @@ public class GeneralTS extends KineticsQuery {
         setContentView(R.layout.generalts);
 
         methodTS = (EditText) findViewById(R.id.methodTS);
+        methodTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywTS_label = (TextView) findViewById(R.id.keywTS_label);
         keywTS = (EditText) findViewById(R.id.keywTS);
+        keywTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         TSLabel = (TextView) findViewById(R.id.TSLabel);
         TS = (TextView) findViewById(R.id.TS);
         AddTS = (Button) findViewById(R.id.AddTS);

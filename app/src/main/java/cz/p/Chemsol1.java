@@ -58,20 +58,28 @@ public class Chemsol1 extends MainActivity {
 
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
+        method.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         solvation_label = (TextView) findViewById(R.id.solvation_label);
         solvation = (EditText) findViewById(R.id.solvation);
+        solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
+        keywords.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         tautomers_label = (TextView) findViewById(R.id.tautomers_label);
         tautomers = (EditText) findViewById(R.id.tautomers);
+        tautomers.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         damp_label = (TextView) findViewById(R.id.damp_label);
         damping_factor = (EditText) findViewById(R.id.damping_factor);
+        damping_factor.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
+        iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (EditText) findViewById(R.id.formula);
+        formula.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         smiles_label = (TextView) findViewById(R.id.smiles_label);
         smiles = (EditText) findViewById(R.id.smiles);
+        smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         openbabel_opsin = (Button) findViewById(R.id.openbabel_opsin);
         openbabel_opsin.setOnClickListener(openbabel_opsin_click);
         openbabel_continue = (Button) findViewById(R.id.openbabel_continue);

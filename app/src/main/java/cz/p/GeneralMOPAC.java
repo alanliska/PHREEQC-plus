@@ -58,14 +58,19 @@ public class GeneralMOPAC extends KineticsQuery {
 
         methodA_label = (TextView) findViewById(R.id.methodA_label);
         methodA = (EditText) findViewById(R.id.methodA);
+        methodA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         keywA_label = (TextView) findViewById(R.id.keywA_label);
         keywA = (EditText) findViewById(R.id.keywA);
+        keywA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         iupacA_label = (TextView) findViewById(R.id.iupacA_label);
         iupacA = (EditText) findViewById(R.id.iupacA);
+        iupacA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         formulaA_label = (TextView) findViewById(R.id.formulaA_label);
         formulaA = (EditText) findViewById(R.id.formulaA);
+        formulaA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         smiA_label = (TextView) findViewById(R.id.smiA_label);
         smiA = (EditText) findViewById(R.id.smiA);
+        smiA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         process = (Button) findViewById(R.id.process);
         process.setOnClickListener(processClick);
         quit = (Button) findViewById(R.id.quit);

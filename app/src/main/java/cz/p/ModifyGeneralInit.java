@@ -36,6 +36,7 @@ public class ModifyGeneralInit extends DevMode {
         CompileButton.setOnClickListener(CompileClick);
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
+        Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
 
     }
 
