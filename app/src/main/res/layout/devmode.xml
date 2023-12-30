@@ -624,6 +624,12 @@
             android:text="MODIFY Z DOWN MOTION" />
 
         <Button
+            android:id="@+id/DebugPhreeqc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEBUG PHREEQC DATABASE/INPUT" />
+
+        <Button
             android:id="@+id/change_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

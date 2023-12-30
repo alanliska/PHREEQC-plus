@@ -10,8 +10,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -211,6 +213,26 @@ public class Opsin extends MainActivity {
         OpsinLabel = (TextView) findViewById(R.id.OpsinLabel);
         OpsinInput = (EditText) findViewById(R.id.OpsinInput);
         OpsinInput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        OpsinInput.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                OpsinInput.removeTextChangedListener(this);
+                String text = OpsinInput.getText().toString();
+                OpsinInput.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                OpsinInput.setSelection(startChanged+countChanged);
+                OpsinInput.addTextChangedListener(this);
+            }
+        });
         RunOpsin = (Button) findViewById(R.id.RunOpsin);
         RunOpsin.setOnClickListener(RunOpsinClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -343,7 +365,7 @@ public class Opsin extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                OpsinInput.setText(str3);
+                OpsinInput.setText(colorized(str3, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc3);
@@ -356,7 +378,7 @@ public class Opsin extends MainActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

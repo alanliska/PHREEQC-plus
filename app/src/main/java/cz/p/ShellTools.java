@@ -13,8 +13,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.AndroidRuntimeException;
 import android.view.View;
@@ -85,6 +87,26 @@ public class ShellTools extends DevMode {
         RunX11Label = (TextView) findViewById(R.id.RunX11Label);
         RunX11 = (EditText) findViewById(R.id.RunX11);
         RunX11.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        RunX11.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                RunX11.removeTextChangedListener(this);
+                String text = RunX11.getText().toString();
+                RunX11.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                RunX11.setSelection(startChanged+countChanged);
+                RunX11.addTextChangedListener(this);
+            }
+        });
         X11Content = (TextView) findViewById(R.id.X11Content);
         X11Name = (EditText) findViewById(R.id.X11Name);
         X11Name.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
@@ -575,7 +597,7 @@ public class ShellTools extends DevMode {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);
@@ -605,7 +627,7 @@ public class ShellTools extends DevMode {
     private void X11ContentDisplay(final String str997) {
         Runnable proc997 = new Runnable() {
             public void run() {
-                RunX11.setText(str997);
+                RunX11.setText(colorized(str997, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc997);

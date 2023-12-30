@@ -1161,6 +1161,7 @@ public class MainActivity extends AppCompatActivity {
                     File Path72 = new File(getFilesDir()+"/openbabel/xtb_solv");
                     File Path73 = new File(getFilesDir()+"/output/xtb_comm");
                     File Path74 = new File(getFilesDir()+"/output/xtb_solv");
+                    File Path75 = new File(getFilesDir()+"/debug");
                     try {
                         if (!Path00.exists()) {
                             Path00.mkdirs();
@@ -1390,6 +1391,9 @@ public class MainActivity extends AppCompatActivity {
                         if (!Path74.exists()) {
                             Path74.mkdirs();
                         }
+                        if (!Path75.exists()) {
+                            Path75.mkdirs();
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -1568,7 +1572,7 @@ public class MainActivity extends AppCompatActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

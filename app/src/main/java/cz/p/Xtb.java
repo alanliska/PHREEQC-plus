@@ -17,10 +17,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -282,6 +284,26 @@ public class Xtb extends MainActivity {
         CommandLabel = (TextView) findViewById(R.id.CommandLabel);
         Command = (EditText) findViewById(R.id.Command);
         Command.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Command.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Command.removeTextChangedListener(this);
+                String text = Command.getText().toString();
+                Command.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                Command.setSelection(startChanged+countChanged);
+                Command.addTextChangedListener(this);
+            }
+        });
         openCommandfile = (Button) findViewById(R.id.openCommandfile);
         openCommandfile.setOnClickListener(openCommandfileClick);
         openIntCommandfile = (Button) findViewById(R.id.openIntCommandfile);
@@ -292,6 +314,26 @@ public class Xtb extends MainActivity {
         InLabel = (TextView) findViewById(R.id.InLabel);
         InFile = (EditText) findViewById(R.id.InFile);
         InFile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        InFile.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                InFile.removeTextChangedListener(this);
+                String text = InFile.getText().toString();
+                InFile.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                InFile.setSelection(startChanged+countChanged);
+                InFile.addTextChangedListener(this);
+            }
+        });
         openInfile = (Button) findViewById(R.id.openInfile);
         openInfile.setOnClickListener(openInfileClick);
         openIntInfile = (Button) findViewById(R.id.openIntInfile);
@@ -302,6 +344,26 @@ public class Xtb extends MainActivity {
         InputLabel = (TextView) findViewById(R.id.InputLabel);
         InputFile = (EditText) findViewById(R.id.InputFile);
         InputFile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        InputFile.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                InputFile.removeTextChangedListener(this);
+                String text = InputFile.getText().toString();
+                InputFile.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                InputFile.setSelection(startChanged+countChanged);
+                InputFile.addTextChangedListener(this);
+            }
+        });
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -1919,7 +1981,7 @@ public class Xtb extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                InputFile.setText(str3);
+                InputFile.setText(colorized(str3, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc3);
@@ -1927,7 +1989,7 @@ public class Xtb extends MainActivity {
     public void output4(final String str4) {
         Runnable proc4 = new Runnable() {
             public void run() {
-                InFile.setText(str4);
+                InFile.setText(colorized(str4, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc4);
@@ -1935,7 +1997,7 @@ public class Xtb extends MainActivity {
     public void output5(final String str5) {
         Runnable proc5 = new Runnable() {
             public void run() {
-                Command.setText(str5);
+                Command.setText(colorized(str5, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc5);
@@ -1956,7 +2018,7 @@ public class Xtb extends MainActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

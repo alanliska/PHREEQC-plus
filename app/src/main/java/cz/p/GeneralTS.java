@@ -813,7 +813,7 @@ public class GeneralTS extends KineticsQuery {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

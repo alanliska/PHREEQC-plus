@@ -117,6 +117,7 @@ public class DevMode extends MainActivity {
     Button modify_y_left;
     Button modify_z_up;
     Button modify_z_down;
+    Button DebugPhreeqc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,6 +189,15 @@ public class DevMode extends MainActivity {
         modify_mulliken = (Button) findViewById(R.id.modify_mulliken);
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
+
+        DebugPhreeqc = (Button) findViewById(R.id.DebugPhreeqc);
+        DebugPhreeqc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, PhreeqcDebug.class);
+                startActivity(intent);
+            }
+        });
 
         modify_x_right = (Button) findViewById(R.id.modify_x_right);
         modify_x_right.setOnClickListener(new View.OnClickListener() {
@@ -1121,7 +1131,7 @@ public class DevMode extends MainActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

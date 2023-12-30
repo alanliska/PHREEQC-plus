@@ -10,10 +10,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
@@ -260,9 +262,49 @@ public class Fastchem extends MainActivity {
         config_label = (TextView) findViewById(R.id.config_label);
         config = (EditText) findViewById(R.id.config);
         config.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        config.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                config.removeTextChangedListener(this);
+                String text = config.getText().toString();
+                config.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                config.setSelection(startChanged+countChanged);
+                config.addTextChangedListener(this);
+            }
+        });
         atmospheric_profile_label = (TextView) findViewById(R.id.atmospheric_profile_label);
         atmospheric_profile = (EditText) findViewById(R.id.atmospheric_profile);
         atmospheric_profile.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        atmospheric_profile.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                atmospheric_profile.removeTextChangedListener(this);
+                String text = atmospheric_profile.getText().toString();
+                atmospheric_profile.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                atmospheric_profile.setSelection(startChanged+countChanged);
+                atmospheric_profile.addTextChangedListener(this);
+            }
+        });
         openatmofile = (Button) findViewById(R.id.openatmofile);
 //        openatmofile.setOnClickListener(openatmofileClick);
         openatmofile2 = (Button) findViewById(R.id.openatmofile2);
@@ -274,6 +316,26 @@ public class Fastchem extends MainActivity {
         abundance_label = (TextView) findViewById(R.id.abundance_label);
         abundance = (EditText) findViewById(R.id.abundance);
         abundance.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        abundance.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                abundance.removeTextChangedListener(this);
+                String text = abundance.getText().toString();
+                abundance.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                abundance.setSelection(startChanged+countChanged);
+                abundance.addTextChangedListener(this);
+            }
+        });
         openabundfile = (Button) findViewById(R.id.openabundfile);
 //        openabundfile.setOnClickListener(openabundfileClick);
         openabundfile2 = (Button) findViewById(R.id.openabundfile2);
@@ -1154,7 +1216,7 @@ public class Fastchem extends MainActivity {
 //                    BufferedReader reader = new BufferedReader(
 //                            new InputStreamReader(process.getInputStream()));
 //                    int read;
-//                    char[] buffer = new char[4096];
+//                    char[] buffer = new char[65536];
 //                    StringBuffer output = new StringBuffer();
 //                    while ((read = reader.read(buffer)) > 0) {
 //                        output.append(buffer, 0, read);
@@ -2096,7 +2158,8 @@ public class Fastchem extends MainActivity {
     public void output_conf(final String str_conf) {
         Runnable proc_conf = new Runnable() {
             public void run() {
-                config.setText(str_conf);
+                config.setText(colorized(str_conf, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+
             }
         };
         handler.post(proc_conf);
@@ -2104,7 +2167,7 @@ public class Fastchem extends MainActivity {
     public void output_atmo(final String str_atmo) {
         Runnable proc_atmo = new Runnable() {
             public void run() {
-                atmospheric_profile.setText(str_atmo);
+                atmospheric_profile.setText(colorized(str_atmo, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc_atmo);
@@ -2112,7 +2175,7 @@ public class Fastchem extends MainActivity {
     public void output_elem(final String str_elem) {
         Runnable proc_elem = new Runnable() {
             public void run() {
-                abundance.setText(str_elem);
+                abundance.setText(colorized(str_elem, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
             }
         };
         handler.post(proc_elem);
@@ -2197,7 +2260,7 @@ public class Fastchem extends MainActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);

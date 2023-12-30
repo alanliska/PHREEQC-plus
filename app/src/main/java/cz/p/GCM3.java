@@ -588,7 +588,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]3");
+                    outputWriter2.write("C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -617,7 +617,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]2");
+                    outputWriter2.write("C[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -646,7 +646,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]");
+                    outputWriter2.write("C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -675,7 +675,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -704,7 +704,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]5[H]9");
+                    outputWriter2.write("C5[H]9");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -733,7 +733,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]11");
+                    outputWriter2.write("C6[H]11");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -762,7 +762,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]10");
+                    outputWriter2.write("C6[H]10");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -791,7 +791,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]");
+                    outputWriter2.write("C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -820,7 +820,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]2");
+                    outputWriter2.write("C[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -849,7 +849,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]");
+                    outputWriter2.write("C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -878,7 +878,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -907,7 +907,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]");
+                    outputWriter2.write("C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -936,7 +936,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -965,7 +965,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -994,7 +994,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1023,7 +1023,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H][C][H]");
+                    outputWriter2.write("C[H]C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1052,7 +1052,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]");
+                    outputWriter2.write("C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1081,7 +1081,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]5");
+                    outputWriter2.write("C6[H]5");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1110,7 +1110,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4");
+                    outputWriter2.write("C6[H]4");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1139,7 +1139,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4");
+                    outputWriter2.write("C6[H]4");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1168,7 +1168,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4");
+                    outputWriter2.write("C6[H]4");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1197,7 +1197,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]3");
+                    outputWriter2.write("C6[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1226,7 +1226,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]2");
+                    outputWriter2.write("C6[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1255,7 +1255,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]3[C][H]3");
+                    outputWriter2.write("C6[H]3C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1284,7 +1284,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]3[C]6[H]2[C][H]3");
+                    outputWriter2.write("C[H]3C6[H]2C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1313,7 +1313,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[C][H]2");
+                    outputWriter2.write("C6[H]4C[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1342,7 +1342,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[C][H]");
+                    outputWriter2.write("C6[H]4C[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1371,7 +1371,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[C]");
+                    outputWriter2.write("C6[H]4C");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1400,7 +1400,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H][O]");
+                    outputWriter2.write("C[H][O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1429,7 +1429,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O][H]");
+                    outputWriter2.write("C[O][O][H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1545,7 +1545,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][H]3");
+                    outputWriter2.write("[O]C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1574,7 +1574,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][C][H]3");
+                    outputWriter2.write("C[O]C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1603,7 +1603,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O][C][H]3");
+                    outputWriter2.write("C[O][O]C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1632,7 +1632,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O][C][H]2[C][H]3");
+                    outputWriter2.write("C[O][O]C[H]2C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1661,7 +1661,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][O][C][H]3");
+                    outputWriter2.write("[O]C[O]C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1690,7 +1690,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][O][O][C][H]3");
+                    outputWriter2.write("[O]C[O][O]C[H]3");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1719,7 +1719,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[O][H]");
+                    outputWriter2.write("C6[H]4[O][H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1835,7 +1835,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][H]2[O]");
+                    outputWriter2.write("[O]C[H]2[O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1864,7 +1864,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O]");
+                    outputWriter2.write("C[O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1893,7 +1893,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O]");
+                    outputWriter2.write("C[O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1922,7 +1922,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O]");
+                    outputWriter2.write("C[O][O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1951,7 +1951,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O]");
+                    outputWriter2.write("C[O][O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -1980,7 +1980,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][O]");
+                    outputWriter2.write("C[O][O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2009,7 +2009,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][O][O]");
+                    outputWriter2.write("[O]C[O][O]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2038,7 +2038,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[N][H]2");
+                    outputWriter2.write("N[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2067,7 +2067,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[N][O]2");
+                    outputWriter2.write("N[O]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2096,7 +2096,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][N]");
+                    outputWriter2.write("CN");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2125,7 +2125,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[N][H]2");
+                    outputWriter2.write("C6[H]4N[H]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2154,7 +2154,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][O][N][H]");
+                    outputWriter2.write("C[O]N[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2183,7 +2183,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[O][C][O][N][H]");
+                    outputWriter2.write("[O]C[O]N[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2212,7 +2212,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[N][H]");
+                    outputWriter2.write("N[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2241,7 +2241,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[N]");
+                    outputWriter2.write("N");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2270,7 +2270,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[N]");
+                    outputWriter2.write("N");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2299,7 +2299,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[N][H]");
+                    outputWriter2.write("C6[H]4N[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2328,7 +2328,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[N]");
+                    outputWriter2.write("C6[H]4N");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2357,7 +2357,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4[C][O][N][H]");
+                    outputWriter2.write("C6[H]4C[O]N[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2386,7 +2386,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S][H]");
+                    outputWriter2.write("S[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2415,7 +2415,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S][H]");
+                    outputWriter2.write("S[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2444,7 +2444,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S][H]");
+                    outputWriter2.write("S[H]");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2473,7 +2473,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S][O]2");
+                    outputWriter2.write("S[O]2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2502,7 +2502,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S]");
+                    outputWriter2.write("S");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2531,7 +2531,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[S][S]");
+                    outputWriter2.write("SS");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2560,7 +2560,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[F]");
+                    outputWriter2.write("F");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2589,7 +2589,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[F]");
+                    outputWriter2.write("F");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2821,7 +2821,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H][F]");
+                    outputWriter2.write("C[H]F");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2850,7 +2850,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][F]2");
+                    outputWriter2.write("CF2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2879,7 +2879,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][F]Cl");
+                    outputWriter2.write("CFCl");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2908,7 +2908,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]Cl");
+                    outputWriter2.write("C[H]Cl");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2937,7 +2937,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]Cl2");
+                    outputWriter2.write("CCl2");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2966,7 +2966,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C][H]Br");
+                    outputWriter2.write("C[H]Br");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -2995,7 +2995,7 @@ public class GCM3 extends MainActivity {
                     outputWriter.close();
                     FileOutputStream fileout2 = openFileOutput("gcm3formula.txt", MODE_APPEND);
                     OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                    outputWriter2.write("[C]6[H]4Cl");
+                    outputWriter2.write("C6[H]4Cl");
                     outputWriter2.close();
                     FileOutputStream fileout3 = openFileOutput("iupac-polymer.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
@@ -3211,7 +3211,7 @@ public class GCM3 extends MainActivity {
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()));
             int read;
-            char[] buffer = new char[4096];
+            char[] buffer = new char[65536];
             StringBuffer output = new StringBuffer();
             while ((read = reader.read(buffer)) > 0) {
                 output.append(buffer, 0, read);
@@ -3525,10 +3525,10 @@ public class GCM3 extends MainActivity {
 
                             Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
                             Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
-                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
-                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
-                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
-                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+                            Fastchem_database_content = Fastchem_database_content.replace("C", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("N", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("S", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("F", "F");
 
                             FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
                             OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
@@ -3545,10 +3545,10 @@ public class GCM3 extends MainActivity {
 
                             Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
                             Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
-                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
-                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
-                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
-                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+                            Fastchem_database_content = Fastchem_database_content.replace("C", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("N", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("S", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("F", "F");
 
                             FileOutputStream fileoutFCH = openFileOutput("Fastchem_l.tmp",MODE_PRIVATE);
                             OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
@@ -3565,10 +3565,10 @@ public class GCM3 extends MainActivity {
 
                             Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
                             Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
-                            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
-                            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
-                            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
-                            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
+                            Fastchem_database_content = Fastchem_database_content.replace("C", "C");
+                            Fastchem_database_content = Fastchem_database_content.replace("N", "N");
+                            Fastchem_database_content = Fastchem_database_content.replace("S", "S");
+                            Fastchem_database_content = Fastchem_database_content.replace("F", "F");
 
                             FileOutputStream fileoutFCH = openFileOutput("Fastchem_c.tmp",MODE_PRIVATE);
                             OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
