@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -15,9 +17,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -102,7 +107,10 @@ public class ShellTools extends DevMode {
             public void afterTextChanged(Editable s) {
                 RunX11.removeTextChangedListener(this);
                 String text = RunX11.getText().toString();
-                RunX11.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                RunX11.getText().clear();
+                RunX11.append(colorized_numbers(text));
+                // place the cursor at the original position
                 RunX11.setSelection(startChanged+countChanged);
                 RunX11.addTextChangedListener(this);
             }
@@ -406,7 +414,7 @@ public class ShellTools extends DevMode {
                     exec("chmod -R 755 "+getFilesDir());
                     try {
                         String OutputExec = exec(Shell0.getText().toString());
-                        ExecuteOutput.setText(colorized(OutputExec, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                        ExecuteOutput.setText(colorized_numbers(OutputExec), EditText.BufferType.SPANNABLE);
                         String Filename = X11Name.getText().toString();
                         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
                     } catch (Exception e) {
@@ -555,8 +563,7 @@ public class ShellTools extends DevMode {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ExecuteOutput.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
-
+                ExecuteOutput.setText(colorized_numbers(OutputofExecution), EditText.BufferType.SPANNABLE);
             }
         }
 
@@ -627,7 +634,7 @@ public class ShellTools extends DevMode {
     private void X11ContentDisplay(final String str997) {
         Runnable proc997 = new Runnable() {
             public void run() {
-                RunX11.setText(colorized(str997, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                RunX11.setText(colorized_numbers(str997), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc997);

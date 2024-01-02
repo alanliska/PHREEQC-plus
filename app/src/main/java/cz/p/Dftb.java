@@ -1,5 +1,8 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+import static cz.p.Spannables.colorized_phreeqc;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -124,152 +127,6 @@ public class Dftb extends MainActivity {
     Button recipes_dftb;
     Button manual_modes;
 
-    /**
-     * Colorize a specific substring in a string for TextView. Use it like this: <pre>
-     * textView.setText(
-     *     Strings.colorized("The some words are black some are the default.","black", Color.BLACK),
-     *     TextView.BufferType.SPANNABLE
-     * );
-     * </pre>
-     * @param text Text that contains a substring to colorize
-     * @param word0 The substring to colorize
-     * @param word1 The substring to colorize
-     * @param word2 The substring to colorize
-     * @param word3 The substring to colorize
-     * @param word4 The substring to colorize
-     * @param word5 The substring to colorize
-     * @param word6 The substring to colorize
-     * @param word7 The substring to colorize
-     * @param word8 The substring to colorize
-     * @param word9 The substring to colorize
-     * @param word10 The substring to colorize
-     * @param word11 The substring to colorize
-     * @param word12 The substring to colorize
-     * @param argb The color
-     * @return the Spannable for TextView's consumption
-     */
-    public static Spannable colorized(final String text, final String word0, final String word1, final String word2, final String word3, final String word4, final String word5, final String word6, final String word7, final String word8, final String word9, final String word10, final String word11, final String word12, final int argb) {
-        final Spannable spannable = new SpannableString(text);
-        int substringStart0=0;
-        int substringStart1=0;
-        int substringStart2=0;
-        int substringStart3=0;
-        int substringStart4=0;
-        int substringStart5=0;
-        int substringStart6=0;
-        int substringStart7=0;
-        int substringStart8=0;
-        int substringStart9=0;
-        int substringStart10=0;
-        int substringStart11=0;
-        int substringStart12=0;
-        int start0;
-        int start1;
-        int start2;
-        int start3;
-        int start4;
-        int start5;
-        int start6;
-        int start7;
-        int start8;
-        int start9;
-        int start10;
-        int start11;
-        int start12;
-        while((start0=text.indexOf(word0,substringStart0))>=0){
-            spannable.setSpan(
-                    new ForegroundColorSpan(argb),start0,start0+word0.length(),
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-            );
-            while((start1=text.indexOf(word1,substringStart1))>=0) {
-                spannable.setSpan(
-                        new ForegroundColorSpan(argb), start1, start1 + word1.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                );
-                while((start2=text.indexOf(word2,substringStart2))>=0) {
-                    spannable.setSpan(
-                            new ForegroundColorSpan(argb), start2, start2 + word2.length(),
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    );
-                    while((start3=text.indexOf(word3,substringStart3))>=0) {
-                        spannable.setSpan(
-                                new ForegroundColorSpan(argb), start3, start3 + word3.length(),
-                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                        );
-                        while((start4=text.indexOf(word4,substringStart4))>=0) {
-                            spannable.setSpan(
-                                    new ForegroundColorSpan(argb), start4, start4 + word4.length(),
-                                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                            );
-                            while((start5=text.indexOf(word5,substringStart5))>=0) {
-                                spannable.setSpan(
-                                        new ForegroundColorSpan(argb), start5, start5 + word5.length(),
-                                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                );
-                                while((start6=text.indexOf(word6,substringStart6))>=0) {
-                                    spannable.setSpan(
-                                            new ForegroundColorSpan(argb), start6, start6 + word6.length(),
-                                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                    );
-                                    while((start7=text.indexOf(word7,substringStart7))>=0) {
-                                        spannable.setSpan(
-                                                new ForegroundColorSpan(argb), start7, start7 + word7.length(),
-                                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                        );
-                                        while((start8=text.indexOf(word8,substringStart8))>=0) {
-                                            spannable.setSpan(
-                                                    new ForegroundColorSpan(argb), start8, start8 + word8.length(),
-                                                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                            );
-                                            while((start9=text.indexOf(word9,substringStart9))>=0) {
-                                                spannable.setSpan(
-                                                        new ForegroundColorSpan(argb), start9, start9 + word9.length(),
-                                                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                                );
-                                                while((start10=text.indexOf(word10,substringStart10))>=0) {
-                                                    spannable.setSpan(
-                                                            new ForegroundColorSpan(argb), start10, start10 + word10.length(),
-                                                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                                    );
-                                                    while((start11=text.indexOf(word11,substringStart11))>=0) {
-                                                        spannable.setSpan(
-                                                                new ForegroundColorSpan(argb), start11, start11 + word11.length(),
-                                                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                                        );
-                                                        while((start12=text.indexOf(word12,substringStart12))>=0) {
-                                                            spannable.setSpan(
-                                                                    new ForegroundColorSpan(argb), start12, start12 + word12.length(),
-                                                                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                                            );
-                                                            substringStart12 = start12 + word12.length();
-                                                        }
-                                                        substringStart11 = start11 + word11.length();
-                                                    }
-                                                    substringStart10 = start10 + word10.length();
-                                                }
-                                                substringStart9 = start9 + word9.length();
-                                            }
-                                            substringStart8 = start8+word8.length();
-                                        }
-                                        substringStart7 = start7+word7.length();
-                                    }
-                                    substringStart6 = start6+word6.length();
-                                }
-                                substringStart5 = start5+word5.length();
-                            }
-                            substringStart4 = start4+word4.length();
-                        }
-                        substringStart3 = start3+word3.length();
-                    }
-                    substringStart2 = start2+word2.length();
-                }
-                substringStart1 = start1+word1.length();
-            }
-            substringStart0 = start0+word0.length();
-        }
-        return spannable;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -297,7 +154,10 @@ public class Dftb extends MainActivity {
             public void afterTextChanged(Editable s) {
                 Command.removeTextChangedListener(this);
                 String text = Command.getText().toString();
-                Command.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Command.getText().clear();
+                Command.append(colorized_numbers(text));
+                // place the cursor at the original position
                 Command.setSelection(startChanged+countChanged);
                 Command.addTextChangedListener(this);
             }
@@ -327,7 +187,10 @@ public class Dftb extends MainActivity {
             public void afterTextChanged(Editable s) {
                 InputFile.removeTextChangedListener(this);
                 String text = InputFile.getText().toString();
-                InputFile.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                InputFile.getText().clear();
+                InputFile.append(colorized_numbers(text));
+                // place the cursor at the original position
                 InputFile.setSelection(startChanged+countChanged);
                 InputFile.addTextChangedListener(this);
             }
@@ -357,7 +220,10 @@ public class Dftb extends MainActivity {
             public void afterTextChanged(Editable s) {
                 CoordFile.removeTextChangedListener(this);
                 String text = CoordFile.getText().toString();
-                CoordFile.setText(colorized(text, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                CoordFile.getText().clear();
+                CoordFile.append(colorized_numbers(text));
+                // place the cursor at the original position
                 CoordFile.setSelection(startChanged+countChanged);
                 CoordFile.addTextChangedListener(this);
             }
@@ -1584,7 +1450,6 @@ public class Dftb extends MainActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-//                outputView2.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
                 outputView2.setText(OutputofExecution);
                 output3(exec("cat "+getFilesDir()+"/dftb/dftb_in.hsd"));
                 output4(exec("cat "+getFilesDir()+"/dftb/Input.xyz"));
@@ -1769,7 +1634,7 @@ public class Dftb extends MainActivity {
             public void outputX(final String strX) {
                 Runnable procX = new Runnable() {
                     public void run() {
-                        outputView2.setText(colorized(strX, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                        outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(procX);
@@ -1795,7 +1660,7 @@ public class Dftb extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                InputFile.setText(colorized(str3, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                InputFile.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);
@@ -1803,7 +1668,7 @@ public class Dftb extends MainActivity {
     public void output4(final String str4) {
         Runnable proc4 = new Runnable() {
             public void run() {
-                CoordFile.setText(colorized(str4, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                CoordFile.setText(colorized_numbers(str4), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc4);
@@ -1811,7 +1676,7 @@ public class Dftb extends MainActivity {
     public void output5(final String str5) {
         Runnable proc5 = new Runnable() {
             public void run() {
-                Command.setText(colorized(str5, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                Command.setText(colorized_numbers(str5), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc5);
@@ -1819,7 +1684,7 @@ public class Dftb extends MainActivity {
     public void output(final String str) {
         Runnable proc = new Runnable() {
             public void run() {
-                Content.setText(colorized(str, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                Content.setText(colorized_numbers(str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc);

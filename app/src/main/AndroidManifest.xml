@@ -251,5 +251,6 @@
         <activity android:name="cz.p.XtbKinWork1" />
         <activity android:name="cz.p.XtbKinCommand" />
         <activity android:name="cz.p.PhreeqcDebug" />
+        <activity android:name="cz.p.Spannables" />
     </application>
 </manifest>

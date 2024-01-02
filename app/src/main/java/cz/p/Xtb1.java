@@ -1085,7 +1085,6 @@ public class Xtb1 extends MainActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-//                outputView2.setText(colorized(OutputofExecution, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
 //            Intent intent = new Intent(Xtb1.this, MainActivity.class);
 //            startActivity(intent);
         }

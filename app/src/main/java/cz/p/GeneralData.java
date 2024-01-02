@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -164,7 +166,7 @@ public class GeneralData extends KineticsQuery {
             public void output2highlighted(final String str2) {
                 Runnable proc2 = new Runnable() {
                     public void run() {
-                        preview.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                        preview.setText(colorized_numbers(str2), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(proc2);
@@ -250,7 +252,7 @@ public class GeneralData extends KineticsQuery {
             public void output2highlighted(final String str2) {
                 Runnable proc2 = new Runnable() {
                     public void run() {
-                        preview.setText(colorized(str2, "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", Color.RED));
+                        preview.setText(colorized_numbers(str2), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(proc2);
