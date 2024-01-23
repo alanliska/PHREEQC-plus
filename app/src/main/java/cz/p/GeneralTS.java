@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_mopac;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -61,9 +65,55 @@ public class GeneralTS extends KineticsQuery {
 
         methodTS = (EditText) findViewById(R.id.methodTS);
         methodTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        methodTS.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                methodTS.removeTextChangedListener(this);
+                String text = methodTS.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                methodTS.getText().clear();
+                methodTS.append(colorized_mopac(text));
+                // place the cursor at the original position
+                methodTS.setSelection(startChanged+countChanged);
+                methodTS.addTextChangedListener(this);
+            }
+        });
         keywTS_label = (TextView) findViewById(R.id.keywTS_label);
         keywTS = (EditText) findViewById(R.id.keywTS);
         keywTS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        keywTS.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                keywTS.removeTextChangedListener(this);
+                String text = keywTS.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                keywTS.getText().clear();
+                keywTS.append(colorized_mopac(text));
+                // place the cursor at the original position
+                keywTS.setSelection(startChanged+countChanged);
+                keywTS.addTextChangedListener(this);
+            }
+        });
         TSLabel = (TextView) findViewById(R.id.TSLabel);
         TS = (TextView) findViewById(R.id.TS);
         AddTS = (Button) findViewById(R.id.AddTS);
@@ -832,7 +882,7 @@ public class GeneralTS extends KineticsQuery {
     private void MethodTSDisplay(final String strMTS) {
         Runnable procMTS = new Runnable() {
             public void run() {
-                methodTS.setText(strMTS);
+                methodTS.setText(colorized_mopac(strMTS), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procMTS);
@@ -840,7 +890,7 @@ public class GeneralTS extends KineticsQuery {
     private void KeywTSDisplay(final String strKTS) {
         Runnable procKTS = new Runnable() {
             public void run() {
-                keywTS.setText(strKTS);
+                keywTS.setText(colorized_mopac(strKTS), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procKTS);

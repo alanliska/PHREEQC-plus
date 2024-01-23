@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,8 +13,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -89,30 +93,329 @@ public class GCM3Kin extends EmpiricalKin {
         ElectronLabel = (TextView) findViewById(R.id.ElectronLabel);
         Reactant1 = (EditText) findViewById(R.id.Reactant1);
         Reactant1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Reactant1.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Reactant1.removeTextChangedListener(this);
+                String text = Reactant1.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Reactant1.getText().clear();
+                Reactant1.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Reactant1.setSelection(startChanged+countChanged);
+                Reactant1.addTextChangedListener(this);
+            }
+        });
         Reactant2 = (EditText) findViewById(R.id.Reactant2);
         Reactant2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Reactant2.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Reactant2.removeTextChangedListener(this);
+                String text = Reactant2.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Reactant2.getText().clear();
+                Reactant2.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Reactant2.setSelection(startChanged+countChanged);
+                Reactant2.addTextChangedListener(this);
+            }
+        });
         Reactant3 = (EditText) findViewById(R.id.Reactant3);
         Reactant3.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Reactant3.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Reactant3.removeTextChangedListener(this);
+                String text = Reactant3.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Reactant3.getText().clear();
+                Reactant3.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Reactant3.setSelection(startChanged+countChanged);
+                Reactant3.addTextChangedListener(this);
+            }
+        });
         Product1 = (EditText) findViewById(R.id.Product1);
         Product1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Product1.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Product1.removeTextChangedListener(this);
+                String text = Product1.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Product1.getText().clear();
+                Product1.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Product1.setSelection(startChanged+countChanged);
+                Product1.addTextChangedListener(this);
+            }
+        });
         Product2 = (EditText) findViewById(R.id.Product2);
         Product2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Product2.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Product2.removeTextChangedListener(this);
+                String text = Product2.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Product2.getText().clear();
+                Product2.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Product2.setSelection(startChanged+countChanged);
+                Product2.addTextChangedListener(this);
+            }
+        });
         Product3 = (EditText) findViewById(R.id.Product3);
         Product3.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Product3.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Product3.removeTextChangedListener(this);
+                String text = Product3.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Product3.getText().clear();
+                Product3.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Product3.setSelection(startChanged+countChanged);
+                Product3.addTextChangedListener(this);
+            }
+        });
         StoichR1 = (EditText) findViewById(R.id.StoichR1);
         StoichR1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichR1.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichR1.removeTextChangedListener(this);
+                String text = StoichR1.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichR1.getText().clear();
+                StoichR1.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichR1.setSelection(startChanged+countChanged);
+                StoichR1.addTextChangedListener(this);
+            }
+        });
         StoichR2 = (EditText) findViewById(R.id.StoichR2);
         StoichR2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichR2.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichR2.removeTextChangedListener(this);
+                String text = StoichR2.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichR2.getText().clear();
+                StoichR2.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichR2.setSelection(startChanged+countChanged);
+                StoichR2.addTextChangedListener(this);
+            }
+        });
         StoichR3 = (EditText) findViewById(R.id.StoichR3);
         StoichR3.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichR3.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichR3.removeTextChangedListener(this);
+                String text = StoichR3.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichR3.getText().clear();
+                StoichR3.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichR3.setSelection(startChanged+countChanged);
+                StoichR3.addTextChangedListener(this);
+            }
+        });
         StoichP1 = (EditText) findViewById(R.id.StoichP1);
         StoichP1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichP1.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichP1.removeTextChangedListener(this);
+                String text = StoichP1.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichP1.getText().clear();
+                StoichP1.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichP1.setSelection(startChanged+countChanged);
+                StoichP1.addTextChangedListener(this);
+            }
+        });
         StoichP2 = (EditText) findViewById(R.id.StoichP2);
         StoichP2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichP2.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichP2.removeTextChangedListener(this);
+                String text = StoichP2.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichP2.getText().clear();
+                StoichP2.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichP2.setSelection(startChanged+countChanged);
+                StoichP2.addTextChangedListener(this);
+            }
+        });
         StoichP3 = (EditText) findViewById(R.id.StoichP3);
         StoichP3.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        StoichP3.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                StoichP3.removeTextChangedListener(this);
+                String text = StoichP3.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                StoichP3.getText().clear();
+                StoichP3.append(colorized_numbers(text));
+                // place the cursor at the original position
+                StoichP3.setSelection(startChanged+countChanged);
+                StoichP3.addTextChangedListener(this);
+            }
+        });
         Electron = (EditText) findViewById(R.id.Electron);
         Electron.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Electron.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Electron.removeTextChangedListener(this);
+                String text = Electron.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Electron.getText().clear();
+                Electron.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Electron.setSelection(startChanged+countChanged);
+                Electron.addTextChangedListener(this);
+            }
+        });
         Run = (Button) findViewById(R.id.Run);
         Run.setOnClickListener(RunClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -379,7 +682,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void R1(final String str1) {
         Runnable proc1 = new Runnable() {
             public void run() {
-                Reactant1.setText(str1);
+                Reactant1.setText(colorized_numbers(str1), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1);
@@ -387,7 +690,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void R2(final String str2) {
         Runnable proc2 = new Runnable() {
             public void run() {
-                Reactant2.setText(str2);
+                Reactant2.setText(colorized_numbers(str2), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc2);
@@ -395,7 +698,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void R3(final String str5) {
         Runnable proc5 = new Runnable() {
             public void run() {
-                Reactant3.setText(str5);
+                Reactant3.setText(colorized_numbers(str5), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc5);
@@ -403,7 +706,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void P1(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                Product1.setText(str3);
+                Product1.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);
@@ -411,7 +714,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void P2(final String str4) {
         Runnable proc4 = new Runnable() {
             public void run() {
-                Product2.setText(str4);
+                Product2.setText(colorized_numbers(str4), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc4);
@@ -419,7 +722,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void P3(final String str6) {
         Runnable proc6 = new Runnable() {
             public void run() {
-                Product3.setText(str6);
+                Product3.setText(colorized_numbers(str6), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc6);
@@ -427,7 +730,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SR1(final String str7) {
         Runnable proc7 = new Runnable() {
             public void run() {
-                StoichR1.setText(str7);
+                StoichR1.setText(colorized_numbers(str7), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc7);
@@ -435,7 +738,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SR2(final String str8) {
         Runnable proc8 = new Runnable() {
             public void run() {
-                StoichR2.setText(str8);
+                StoichR2.setText(colorized_numbers(str8), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc8);
@@ -443,7 +746,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SR3(final String str9) {
         Runnable proc9 = new Runnable() {
             public void run() {
-                StoichR3.setText(str9);
+                StoichR3.setText(colorized_numbers(str9), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc9);
@@ -451,7 +754,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SP1(final String str10) {
         Runnable proc10 = new Runnable() {
             public void run() {
-                StoichP1.setText(str10);
+                StoichP1.setText(colorized_numbers(str10), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc10);
@@ -459,7 +762,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SP2(final String str11) {
         Runnable proc11 = new Runnable() {
             public void run() {
-                StoichP2.setText(str11);
+                StoichP2.setText(colorized_numbers(str11), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc11);
@@ -467,7 +770,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void SP3(final String str12) {
         Runnable proc12 = new Runnable() {
             public void run() {
-                StoichP3.setText(str12);
+                StoichP3.setText(colorized_numbers(str12), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc12);
@@ -475,7 +778,7 @@ public class GCM3Kin extends EmpiricalKin {
     public void E(final String str13) {
         Runnable proc13 = new Runnable() {
             public void run() {
-                Electron.setText(str13);
+                Electron.setText(colorized_numbers(str13), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc13);

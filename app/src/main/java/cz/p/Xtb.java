@@ -2,6 +2,7 @@ package cz.p;
 
 import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_phreeqc;
+import static cz.p.Spannables.colorized_xtb;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -138,6 +139,29 @@ public class Xtb extends MainActivity {
         Content = (EditText) findViewById(R.id.Content);
         Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         Content.setMovementMethod(new ScrollingMovementMethod());
+        Content.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Content.removeTextChangedListener(this);
+                String text = Content.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Content.getText().clear();
+                Content.append(colorized_xtb(text));
+                // place the cursor at the original position
+                Content.setSelection(startChanged+countChanged);
+                Content.addTextChangedListener(this);
+            }
+        });
         CommandLabel = (TextView) findViewById(R.id.CommandLabel);
         Command = (EditText) findViewById(R.id.Command);
         Command.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
@@ -158,7 +182,7 @@ public class Xtb extends MainActivity {
                 String text = Command.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 Command.getText().clear();
-                Command.append(colorized_numbers(text));
+                Command.append(colorized_xtb(text));
                 // place the cursor at the original position
                 Command.setSelection(startChanged+countChanged);
                 Command.addTextChangedListener(this);
@@ -191,7 +215,7 @@ public class Xtb extends MainActivity {
                 String text = InFile.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 InFile.getText().clear();
-                InFile.append(colorized_numbers(text));
+                InFile.append(colorized_xtb(text));
                 // place the cursor at the original position
                 InFile.setSelection(startChanged+countChanged);
                 InFile.addTextChangedListener(this);
@@ -224,7 +248,7 @@ public class Xtb extends MainActivity {
                 String text = InputFile.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 InputFile.getText().clear();
-                InputFile.append(colorized_numbers(text));
+                InputFile.append(colorized_xtb(text));
                 // place the cursor at the original position
                 InputFile.setSelection(startChanged+countChanged);
                 InputFile.addTextChangedListener(this);
@@ -262,6 +286,30 @@ public class Xtb extends MainActivity {
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // otherwise every time is spanned
+//        outputView2.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                outputView2.removeTextChangedListener(this);
+//                String text = outputView2.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                outputView2.getText().clear();
+//                outputView2.append(colorized_xtb(text));
+//                // place the cursor at the original position
+//                outputView2.setSelection(startChanged+countChanged);
+//                outputView2.addTextChangedListener(this);
+//            }
+//        });
         Graph = (Button) findViewById(R.id.Graph);
         Graph.setOnClickListener(GraphClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -1785,7 +1833,7 @@ public class Xtb extends MainActivity {
             public void outputX(final String strX) {
                 Runnable procX = new Runnable() {
                     public void run() {
-                        outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
+                        outputView2.setText(colorized_xtb(strX), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(procX);
@@ -1846,7 +1894,7 @@ public class Xtb extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                InputFile.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
+                InputFile.setText(colorized_xtb(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);
@@ -1854,7 +1902,7 @@ public class Xtb extends MainActivity {
     public void output4(final String str4) {
         Runnable proc4 = new Runnable() {
             public void run() {
-                InFile.setText(colorized_numbers(str4), EditText.BufferType.SPANNABLE);
+                InFile.setText(colorized_xtb(str4), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc4);
@@ -1862,7 +1910,7 @@ public class Xtb extends MainActivity {
     public void output5(final String str5) {
         Runnable proc5 = new Runnable() {
             public void run() {
-                Command.setText(colorized_numbers(str5), EditText.BufferType.SPANNABLE);
+                Command.setText(colorized_xtb(str5), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc5);
@@ -1870,7 +1918,7 @@ public class Xtb extends MainActivity {
     public void output(final String str) {
         Runnable proc = new Runnable() {
             public void run() {
-                Content.setText(colorized_numbers(str), EditText.BufferType.SPANNABLE);
+                Content.setText(colorized_xtb(str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc);

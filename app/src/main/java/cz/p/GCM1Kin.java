@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,8 +13,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -59,10 +63,79 @@ public class GCM1Kin extends EmpiricalKin {
         DistanceLabel = (TextView) findViewById(R.id.DistanceLabel);
         Reactant1 = (EditText) findViewById(R.id.Reactant1);
         Reactant1.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Reactant1.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Reactant1.removeTextChangedListener(this);
+                String text = Reactant1.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Reactant1.getText().clear();
+                Reactant1.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Reactant1.setSelection(startChanged+countChanged);
+                Reactant1.addTextChangedListener(this);
+            }
+        });
         Reactant2 = (EditText) findViewById(R.id.Reactant2);
         Reactant2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Reactant2.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Reactant2.removeTextChangedListener(this);
+                String text = Reactant2.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Reactant2.getText().clear();
+                Reactant2.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Reactant2.setSelection(startChanged+countChanged);
+                Reactant2.addTextChangedListener(this);
+            }
+        });
         Distance = (EditText) findViewById(R.id.Distance);
         Distance.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Distance.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Distance.removeTextChangedListener(this);
+                String text = Distance.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Distance.getText().clear();
+                Distance.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Distance.setSelection(startChanged+countChanged);
+                Distance.addTextChangedListener(this);
+            }
+        });
         Run = (Button) findViewById(R.id.Run);
         Run.setOnClickListener(RunClick);
         Quit = (Button) findViewById(R.id.Quit);
@@ -267,7 +340,7 @@ public class GCM1Kin extends EmpiricalKin {
     public void R1(final String str1) {
         Runnable proc1 = new Runnable() {
             public void run() {
-                Reactant1.setText(str1);
+                Reactant1.setText(colorized_numbers(str1), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1);
@@ -275,7 +348,7 @@ public class GCM1Kin extends EmpiricalKin {
     public void R2(final String str2) {
         Runnable proc2 = new Runnable() {
             public void run() {
-                Reactant2.setText(str2);
+                Reactant2.setText(colorized_numbers(str2), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc2);
@@ -283,7 +356,7 @@ public class GCM1Kin extends EmpiricalKin {
     public void D(final String strD) {
         Runnable procD = new Runnable() {
             public void run() {
-                Distance.setText(strD);
+                Distance.setText(colorized_numbers(strD), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procD);

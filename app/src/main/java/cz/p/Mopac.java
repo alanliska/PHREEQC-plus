@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_mopac;
 import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_phreeqc;
 
@@ -100,7 +101,7 @@ public class Mopac extends MainActivity {
                 String text = MopacInput.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 MopacInput.getText().clear();
-                MopacInput.append(colorized_numbers(text));
+                MopacInput.append(colorized_mopac(text));
                 // place the cursor at the original position
                 MopacInput.setSelection(startChanged+countChanged);
                 MopacInput.addTextChangedListener(this);
@@ -855,7 +856,7 @@ public class Mopac extends MainActivity {
             public void outputX(final String strX) {
                 Runnable procX = new Runnable() {
                     public void run() {
-                        outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
+                        outputView2.setText(colorized_mopac(strX), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(procX);
@@ -915,7 +916,7 @@ public class Mopac extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                MopacInput.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
+                MopacInput.setText(colorized_mopac(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);

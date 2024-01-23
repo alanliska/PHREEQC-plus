@@ -34,7 +34,7 @@ public class Vdw extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.refc);
+        setContentView(R.layout.vdw);
 
         Quit = (Button) findViewById(R.id.Quit);
         Quit.setOnClickListener(QuitClick);

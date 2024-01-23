@@ -1,5 +1,8 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
+import static cz.p.Spannables.colorized_numbers;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,6 +13,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,12 +71,81 @@ public class BulkConversion extends MainActivity {
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
         method.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        method.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                method.removeTextChangedListener(this);
+                String text = method.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                method.getText().clear();
+                method.append(colorized_numbers(text));
+                // place the cursor at the original position
+                method.setSelection(startChanged+countChanged);
+                method.addTextChangedListener(this);
+            }
+        });
         solvation_label = (TextView) findViewById(R.id.solvation_label);
         solvation = (EditText) findViewById(R.id.solvation);
         solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        solvation.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                solvation.removeTextChangedListener(this);
+                String text = solvation.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                solvation.getText().clear();
+                solvation.append(colorized_numbers(text));
+                // place the cursor at the original position
+                solvation.setSelection(startChanged+countChanged);
+                solvation.addTextChangedListener(this);
+            }
+        });
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
         keywords.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        keywords.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                keywords.removeTextChangedListener(this);
+                String text = keywords.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                keywords.getText().clear();
+                keywords.append(colorized_numbers(text));
+                // place the cursor at the original position
+                keywords.setSelection(startChanged+countChanged);
+                keywords.addTextChangedListener(this);
+            }
+        });
         openbabel_select = (Button) findViewById(R.id.openbabel_select);
         openbabel_select.setOnClickListener(openbabel_select_click);
         openbabel_exit = (Button) findViewById(R.id.openbabel_exit);
@@ -80,6 +154,29 @@ public class BulkConversion extends MainActivity {
         quit.setOnClickListener(quit_click);
         BulkView = (EditText) findViewById(R.id.BulkView);
         BulkView.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
+        BulkView.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                BulkView.removeTextChangedListener(this);
+                String text = BulkView.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                BulkView.getText().clear();
+                BulkView.append(colorized_numbers(text));
+                // place the cursor at the original position
+                BulkView.setSelection(startChanged+countChanged);
+                BulkView.addTextChangedListener(this);
+            }
+        });
         help_bulk = (Button) findViewById(R.id.help_bulk);
         help_bulk.setOnClickListener(help_bulkClick);
 
@@ -190,7 +287,7 @@ public class BulkConversion extends MainActivity {
     public void method_view(final String method_str) {
         Runnable method_proc = new Runnable() {
             public void run() {
-                method.setText(method_str);
+                method.setText(colorized_numbers(method_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(method_proc);
@@ -199,7 +296,7 @@ public class BulkConversion extends MainActivity {
     public void solvation_view(final String solvation_str) {
         Runnable solvation_proc = new Runnable() {
             public void run() {
-                solvation.setText(solvation_str);
+                solvation.setText(colorized_numbers(solvation_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(solvation_proc);
@@ -208,7 +305,7 @@ public class BulkConversion extends MainActivity {
     public void keywords_view(final String keywords_str) {
         Runnable keywords_proc = new Runnable() {
             public void run() {
-                keywords.setText(keywords_str);
+                keywords.setText(colorized_numbers(keywords_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(keywords_proc);
@@ -1268,7 +1365,7 @@ public class BulkConversion extends MainActivity {
     public void output100(final String str100) {
         Runnable proc100 = new Runnable() {
             public void run() {
-                BulkView.setText(str100);
+                BulkView.setText(colorized_numbers(str100), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc100);

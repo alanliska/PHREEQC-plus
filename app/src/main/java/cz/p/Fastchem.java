@@ -1,7 +1,6 @@
 package cz.p;
 
-import static cz.p.Spannables.colorized_numbers;
-import static cz.p.Spannables.colorized_phreeqc;
+import static cz.p.Spannables.colorized_fastchem;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -137,7 +136,7 @@ public class Fastchem extends MainActivity {
                 String text = config.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 config.getText().clear();
-                config.append(colorized_numbers(text));
+                config.append(colorized_fastchem(text));
                 // place the cursor at the original position
                 config.setSelection(startChanged+countChanged);
                 config.addTextChangedListener(this);
@@ -163,7 +162,7 @@ public class Fastchem extends MainActivity {
                 String text = atmospheric_profile.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 atmospheric_profile.getText().clear();
-                atmospheric_profile.append(colorized_numbers(text));
+                atmospheric_profile.append(colorized_fastchem(text));
                 // place the cursor at the original position
                 atmospheric_profile.setSelection(startChanged+countChanged);
                 atmospheric_profile.addTextChangedListener(this);
@@ -197,7 +196,7 @@ public class Fastchem extends MainActivity {
                 String text = abundance.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 abundance.getText().clear();
-                abundance.append(colorized_numbers(text));
+                abundance.append(colorized_fastchem(text));
                 // place the cursor at the original position
                 abundance.setSelection(startChanged+countChanged);
                 abundance.addTextChangedListener(this);
@@ -243,8 +242,54 @@ public class Fastchem extends MainActivity {
         filter_cond_label = (TextView) findViewById(R.id.filter_cond_label);
         filter_gas = (EditText) findViewById(R.id.filter_gas);
         filter_gas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        filter_gas.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter_gas.removeTextChangedListener(this);
+                String text = filter_gas.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                filter_gas.getText().clear();
+                filter_gas.append(colorized_fastchem(text));
+                // place the cursor at the original position
+                filter_gas.setSelection(startChanged+countChanged);
+                filter_gas.addTextChangedListener(this);
+            }
+        });
         filter_cond = (EditText) findViewById(R.id.filter_cond);
         filter_cond.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        filter_cond.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter_cond.removeTextChangedListener(this);
+                String text = filter_cond.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                filter_cond.getText().clear();
+                filter_cond.append(colorized_fastchem(text));
+                // place the cursor at the original position
+                filter_cond.setSelection(startChanged+countChanged);
+                filter_cond.addTextChangedListener(this);
+            }
+        });
         filter_gas_button = (Button) findViewById(R.id.filter_gas_button);
         filter_gas_button.setOnClickListener(filter_gasClick);
         filter_cond_button = (Button) findViewById(R.id.filter_cond_button);
@@ -257,8 +302,54 @@ public class Fastchem extends MainActivity {
         delete_cond_label = (TextView) findViewById(R.id.delete_cond_label);
         delete_gas = (EditText) findViewById(R.id.delete_gas);
         delete_gas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        delete_gas.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                delete_gas.removeTextChangedListener(this);
+                String text = delete_gas.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                delete_gas.getText().clear();
+                delete_gas.append(colorized_fastchem(text));
+                // place the cursor at the original position
+                delete_gas.setSelection(startChanged+countChanged);
+                delete_gas.addTextChangedListener(this);
+            }
+        });
         delete_cond = (EditText) findViewById(R.id.delete_cond);
         delete_cond.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        delete_cond.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                delete_cond.removeTextChangedListener(this);
+                String text = delete_cond.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                delete_cond.getText().clear();
+                delete_cond.append(colorized_fastchem(text));
+                // place the cursor at the original position
+                delete_cond.setSelection(startChanged+countChanged);
+                delete_cond.addTextChangedListener(this);
+            }
+        });
         delete_gas_button = (Button) findViewById(R.id.delete_gas_button);
         delete_gas_button.setOnClickListener(delete_gas_buttonClick);
         delete_cond_button = (Button) findViewById(R.id.delete_cond_button);
@@ -1929,7 +2020,7 @@ public class Fastchem extends MainActivity {
     public void output_conf(final String str_conf) {
         Runnable proc_conf = new Runnable() {
             public void run() {
-                config.setText(colorized_numbers(str_conf), EditText.BufferType.SPANNABLE);
+                config.setText(colorized_fastchem(str_conf), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc_conf);
@@ -1937,7 +2028,7 @@ public class Fastchem extends MainActivity {
     public void output_atmo(final String str_atmo) {
         Runnable proc_atmo = new Runnable() {
             public void run() {
-                atmospheric_profile.setText(colorized_numbers(str_atmo), EditText.BufferType.SPANNABLE);
+                atmospheric_profile.setText(colorized_fastchem(str_atmo), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc_atmo);
@@ -1945,7 +2036,7 @@ public class Fastchem extends MainActivity {
     public void output_elem(final String str_elem) {
         Runnable proc_elem = new Runnable() {
             public void run() {
-                abundance.setText(colorized_numbers(str_elem), EditText.BufferType.SPANNABLE);
+                abundance.setText(colorized_fastchem(str_elem), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc_elem);
@@ -1985,7 +2076,7 @@ public class Fastchem extends MainActivity {
     public void filterGasView(final String strFilterGas) {
         Runnable procFilterGas = new Runnable() {
             public void run() {
-                filter_gas.setText(strFilterGas);
+                filter_gas.setText(colorized_fastchem(strFilterGas), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procFilterGas);
@@ -1993,7 +2084,7 @@ public class Fastchem extends MainActivity {
     public void filterCondView(final String strFilterCond) {
         Runnable procFilterCond = new Runnable() {
             public void run() {
-                filter_cond.setText(strFilterCond);
+                filter_cond.setText(colorized_fastchem(strFilterCond), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procFilterCond);
@@ -2001,7 +2092,7 @@ public class Fastchem extends MainActivity {
     public void deleteGasView(final String strDeleteGas) {
         Runnable procDeleteGas = new Runnable() {
             public void run() {
-                delete_gas.setText(strDeleteGas);
+                delete_gas.setText(colorized_fastchem(strDeleteGas), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procDeleteGas);
@@ -2009,7 +2100,7 @@ public class Fastchem extends MainActivity {
     public void deleteCondView(final String strDeleteCond) {
         Runnable procDeleteCond = new Runnable() {
             public void run() {
-                delete_cond.setText(strDeleteCond);
+                delete_cond.setText(colorized_fastchem(strDeleteCond), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procDeleteCond);
@@ -2018,7 +2109,7 @@ public class Fastchem extends MainActivity {
     public void outputX(final String strX) {
         Runnable procX = new Runnable() {
             public void run() {
-                outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
+                outputView2.setText(colorized_fastchem(strX), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procX);

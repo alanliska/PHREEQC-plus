@@ -170,11 +170,57 @@ public class Phreeqc extends MainActivity {
         ModifyLabel = (TextView) findViewById(R.id.ModifyLabel);
         ModifyEdit = (EditText) findViewById(R.id.ModifyEdit);
         ModifyEdit.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEdit.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEdit.removeTextChangedListener(this);
+                String text = ModifyEdit.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEdit.getText().clear();
+                ModifyEdit.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEdit.setSelection(startChanged+countChanged);
+                ModifyEdit.addTextChangedListener(this);
+            }
+        });
         modifybutton = (Button) findViewById(R.id.modifybutton);
         modifybutton.setOnClickListener(modifybuttonClick);
         ModifyLabel2 = (TextView) findViewById(R.id.ModifyLabel2);
         ModifyEdit12 = (EditText) findViewById(R.id.ModifyEdit12);
         ModifyEdit12.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEdit12.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEdit12.removeTextChangedListener(this);
+                String text = ModifyEdit12.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEdit12.getText().clear();
+                ModifyEdit12.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEdit12.setSelection(startChanged+countChanged);
+                ModifyEdit12.addTextChangedListener(this);
+            }
+        });
         modifybutton12 = (Button) findViewById(R.id.modifybutton12);
         modifybutton12.setOnClickListener(modifybutton12Click);
         ModifyLabel12 = (TextView) findViewById(R.id.ModifyLabel12);
@@ -248,6 +294,30 @@ public class Phreeqc extends MainActivity {
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // otherwise every time is spanned
+//        outputView2.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                outputView2.removeTextChangedListener(this);
+//                String text = outputView2.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                outputView2.getText().clear();
+//                outputView2.append(colorized_phreeqc(text));
+//                // place the cursor at the original position
+//                outputView2.setSelection(startChanged+countChanged);
+//                outputView2.addTextChangedListener(this);
+//            }
+//        });
 
         AddSMS_kin = (Button) findViewById(R.id.AddSMS_kin);
         AddSMS_kin.setOnClickListener(AddSMS_kinClick);
@@ -293,30 +363,145 @@ public class Phreeqc extends MainActivity {
         ModifyLabelSMS = (TextView) findViewById(R.id.ModifyLabelSMS);
         ModifyEditSMS = (EditText) findViewById(R.id.ModifyEditSMS);
         ModifyEditSMS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEditSMS.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEditSMS.removeTextChangedListener(this);
+                String text = ModifyEditSMS.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEditSMS.getText().clear();
+                ModifyEditSMS.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEditSMS.setSelection(startChanged+countChanged);
+                ModifyEditSMS.addTextChangedListener(this);
+            }
+        });
         modifybuttonSMS = (Button) findViewById(R.id.modifybuttonSMS);
         modifybuttonSMS.setOnClickListener(modifybuttonSMSClick);
 
         ModifyLabelSS = (TextView) findViewById(R.id.ModifyLabelSS);
         ModifyEditSS = (EditText) findViewById(R.id.ModifyEditSS);
         ModifyEditSS.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEditSS.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEditSS.removeTextChangedListener(this);
+                String text = ModifyEditSS.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEditSS.getText().clear();
+                ModifyEditSS.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEditSS.setSelection(startChanged+countChanged);
+                ModifyEditSS.addTextChangedListener(this);
+            }
+        });
         modifybuttonSS = (Button) findViewById(R.id.modifybuttonSS);
         modifybuttonSS.setOnClickListener(modifybuttonSSClick);
 
         ModifyLabelR = (TextView) findViewById(R.id.ModifyLabelR);
         ModifyEditR = (EditText) findViewById(R.id.ModifyEditR);
         ModifyEditR.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEditR.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEditR.removeTextChangedListener(this);
+                String text = ModifyEditR.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEditR.getText().clear();
+                ModifyEditR.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEditR.setSelection(startChanged+countChanged);
+                ModifyEditR.addTextChangedListener(this);
+            }
+        });
         modifybuttonR = (Button) findViewById(R.id.modifybuttonR);
         modifybuttonR.setOnClickListener(modifybuttonRClick);
 
         ModifyLabelK = (TextView) findViewById(R.id.ModifyLabelK);
         ModifyEditK = (EditText) findViewById(R.id.ModifyEditK);
         ModifyEditK.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ModifyEditK.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ModifyEditK.removeTextChangedListener(this);
+                String text = ModifyEditK.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ModifyEditK.getText().clear();
+                ModifyEditK.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                ModifyEditK.setSelection(startChanged+countChanged);
+                ModifyEditK.addTextChangedListener(this);
+            }
+        });
         modifybuttonK = (Button) findViewById(R.id.modifybuttonK);
         modifybuttonK.setOnClickListener(modifybuttonKClick);
 
         delete_label = (TextView) findViewById(R.id.delete_label);
         delete = (EditText) findViewById(R.id.delete);
         delete.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        delete.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                delete.removeTextChangedListener(this);
+                String text = delete.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                delete.getText().clear();
+                delete.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                delete.setSelection(startChanged+countChanged);
+                delete.addTextChangedListener(this);
+            }
+        });
         delete_button = (Button) findViewById(R.id.delete_button);
         delete_button.setOnClickListener(delete_buttonClick);
 
@@ -4727,7 +4912,7 @@ public class Phreeqc extends MainActivity {
     public void output4(final String str4) {
         Runnable proc4 = new Runnable() {
             public void run() {
-                ModifyEdit.setText(str4);
+                ModifyEdit.setText(colorized_phreeqc(str4), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc4);
@@ -4735,7 +4920,7 @@ public class Phreeqc extends MainActivity {
     public void output42(final String str42) {
         Runnable proc42 = new Runnable() {
             public void run() {
-                ModifyEdit12.setText(str42);
+                ModifyEdit12.setText(colorized_phreeqc(str42), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc42);
@@ -4799,7 +4984,7 @@ public class Phreeqc extends MainActivity {
     public void sms_filter_View(final String sms_filter_Data) {
         Runnable procsms_filter = new Runnable() {
             public void run() {
-                ModifyEditSMS.setText(sms_filter_Data);
+                ModifyEditSMS.setText(colorized_phreeqc(sms_filter_Data), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procsms_filter);
@@ -4807,7 +4992,7 @@ public class Phreeqc extends MainActivity {
     public void ss_filter_View(final String ss_filter_Data) {
         Runnable procss_filter = new Runnable() {
             public void run() {
-                ModifyEditSS.setText(ss_filter_Data);
+                ModifyEditSS.setText(colorized_phreeqc(ss_filter_Data), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procss_filter);
@@ -4815,7 +5000,7 @@ public class Phreeqc extends MainActivity {
     public void r_filter_View(final String r_filter_Data) {
         Runnable procr_filter = new Runnable() {
             public void run() {
-                ModifyEditR.setText(r_filter_Data);
+                ModifyEditR.setText(colorized_phreeqc(r_filter_Data), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procr_filter);
@@ -4823,7 +5008,7 @@ public class Phreeqc extends MainActivity {
     public void k_filter_View(final String k_filter_Data) {
         Runnable prock_filter = new Runnable() {
             public void run() {
-                ModifyEditK.setText(k_filter_Data);
+                ModifyEditK.setText(colorized_phreeqc(k_filter_Data), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(prock_filter);
@@ -4831,7 +5016,7 @@ public class Phreeqc extends MainActivity {
     public void delete_View(final String delete_Data) {
         Runnable procdelete = new Runnable() {
             public void run() {
-                delete.setText(delete_Data);
+                delete.setText(colorized_phreeqc(delete_Data), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procdelete);

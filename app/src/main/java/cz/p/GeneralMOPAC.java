@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,18 +63,133 @@ public class GeneralMOPAC extends KineticsQuery {
         methodA_label = (TextView) findViewById(R.id.methodA_label);
         methodA = (EditText) findViewById(R.id.methodA);
         methodA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        methodA.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                methodA.removeTextChangedListener(this);
+                String text = methodA.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                methodA.getText().clear();
+                methodA.append(colorized_numbers(text));
+                // place the cursor at the original position
+                methodA.setSelection(startChanged+countChanged);
+                methodA.addTextChangedListener(this);
+            }
+        });
         keywA_label = (TextView) findViewById(R.id.keywA_label);
         keywA = (EditText) findViewById(R.id.keywA);
         keywA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        keywA.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                keywA.removeTextChangedListener(this);
+                String text = keywA.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                keywA.getText().clear();
+                keywA.append(colorized_numbers(text));
+                // place the cursor at the original position
+                keywA.setSelection(startChanged+countChanged);
+                keywA.addTextChangedListener(this);
+            }
+        });
         iupacA_label = (TextView) findViewById(R.id.iupacA_label);
         iupacA = (EditText) findViewById(R.id.iupacA);
         iupacA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        iupacA.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                iupacA.removeTextChangedListener(this);
+                String text = iupacA.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                iupacA.getText().clear();
+                iupacA.append(colorized_numbers(text));
+                // place the cursor at the original position
+                iupacA.setSelection(startChanged+countChanged);
+                iupacA.addTextChangedListener(this);
+            }
+        });
         formulaA_label = (TextView) findViewById(R.id.formulaA_label);
         formulaA = (EditText) findViewById(R.id.formulaA);
         formulaA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        formulaA.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                formulaA.removeTextChangedListener(this);
+                String text = formulaA.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                formulaA.getText().clear();
+                formulaA.append(colorized_numbers(text));
+                // place the cursor at the original position
+                formulaA.setSelection(startChanged+countChanged);
+                formulaA.addTextChangedListener(this);
+            }
+        });
         smiA_label = (TextView) findViewById(R.id.smiA_label);
         smiA = (EditText) findViewById(R.id.smiA);
         smiA.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        smiA.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                smiA.removeTextChangedListener(this);
+                String text = smiA.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                smiA.getText().clear();
+                smiA.append(colorized_numbers(text));
+                // place the cursor at the original position
+                smiA.setSelection(startChanged+countChanged);
+                smiA.addTextChangedListener(this);
+            }
+        });
         process = (Button) findViewById(R.id.process);
         process.setOnClickListener(processClick);
         quit = (Button) findViewById(R.id.quit);
@@ -484,7 +603,7 @@ public class GeneralMOPAC extends KineticsQuery {
     private void MethodADisplay(final String strMA) {
         Runnable procMA = new Runnable() {
             public void run() {
-                methodA.setText(strMA);
+                methodA.setText(colorized_numbers(strMA), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procMA);
@@ -492,7 +611,7 @@ public class GeneralMOPAC extends KineticsQuery {
     private void KeywADisplay(final String strKA) {
         Runnable procKA = new Runnable() {
             public void run() {
-                keywA.setText(strKA);
+                keywA.setText(colorized_numbers(strKA), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procKA);
@@ -500,7 +619,7 @@ public class GeneralMOPAC extends KineticsQuery {
     private void IupacADisplay(final String strIA) {
         Runnable procIA = new Runnable() {
             public void run() {
-                iupacA.setText(strIA);
+                iupacA.setText(colorized_numbers(strIA), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procIA);
@@ -508,7 +627,7 @@ public class GeneralMOPAC extends KineticsQuery {
     private void FormulaADisplay(final String strFA) {
         Runnable procFA = new Runnable() {
             public void run() {
-                formulaA.setText(strFA);
+                formulaA.setText(colorized_numbers(strFA), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procFA);
@@ -516,7 +635,7 @@ public class GeneralMOPAC extends KineticsQuery {
     private void SmilesADisplay(final String strSA) {
         Runnable procSA = new Runnable() {
             public void run() {
-                smiA.setText(strSA);
+                smiA.setText(colorized_numbers(strSA), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procSA);

@@ -1,10 +1,14 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_mopac;
+
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,27 +63,211 @@ public class Chemsol2 extends MainActivity {
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
         method.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        method.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                method.removeTextChangedListener(this);
+                String text = method.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                method.getText().clear();
+                method.append(colorized_mopac(text));
+                // place the cursor at the original position
+                method.setSelection(startChanged+countChanged);
+                method.addTextChangedListener(this);
+            }
+        });
         solvation_label = (TextView) findViewById(R.id.solvation_label);
         solvation = (EditText) findViewById(R.id.solvation);
         solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        solvation.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                solvation.removeTextChangedListener(this);
+                String text = solvation.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                solvation.getText().clear();
+                solvation.append(colorized_mopac(text));
+                // place the cursor at the original position
+                solvation.setSelection(startChanged+countChanged);
+                solvation.addTextChangedListener(this);
+            }
+        });
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
         keywords.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        keywords.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                keywords.removeTextChangedListener(this);
+                String text = keywords.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                keywords.getText().clear();
+                keywords.append(colorized_mopac(text));
+                // place the cursor at the original position
+                keywords.setSelection(startChanged+countChanged);
+                keywords.addTextChangedListener(this);
+            }
+        });
         tautomers_label = (TextView) findViewById(R.id.tautomers_label);
         tautomers = (EditText) findViewById(R.id.tautomers);
         tautomers.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        tautomers.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                tautomers.removeTextChangedListener(this);
+                String text = tautomers.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                tautomers.getText().clear();
+                tautomers.append(colorized_mopac(text));
+                // place the cursor at the original position
+                tautomers.setSelection(startChanged+countChanged);
+                tautomers.addTextChangedListener(this);
+            }
+        });
         damp_label = (TextView) findViewById(R.id.damp_label);
         damping_factor = (EditText) findViewById(R.id.damping_factor);
         damping_factor.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        damping_factor.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                damping_factor.removeTextChangedListener(this);
+                String text = damping_factor.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                damping_factor.getText().clear();
+                damping_factor.append(colorized_mopac(text));
+                // place the cursor at the original position
+                damping_factor.setSelection(startChanged+countChanged);
+                damping_factor.addTextChangedListener(this);
+            }
+        });
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
         iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        iupac.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                iupac.removeTextChangedListener(this);
+                String text = iupac.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                iupac.getText().clear();
+                iupac.append(colorized_mopac(text));
+                // place the cursor at the original position
+                iupac.setSelection(startChanged+countChanged);
+                iupac.addTextChangedListener(this);
+            }
+        });
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (EditText) findViewById(R.id.formula);
         formula.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        formula.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                formula.removeTextChangedListener(this);
+                String text = formula.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                formula.getText().clear();
+                formula.append(colorized_mopac(text));
+                // place the cursor at the original position
+                formula.setSelection(startChanged+countChanged);
+                formula.addTextChangedListener(this);
+            }
+        });
         smiles_label = (TextView) findViewById(R.id.smiles_label);
         smiles = (EditText) findViewById(R.id.smiles);
         smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        smiles.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                smiles.removeTextChangedListener(this);
+                String text = smiles.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                smiles.getText().clear();
+                smiles.append(colorized_mopac(text));
+                // place the cursor at the original position
+                smiles.setSelection(startChanged+countChanged);
+                smiles.addTextChangedListener(this);
+            }
+        });
         openbabel_opsin = (Button) findViewById(R.id.openbabel_opsin);
         openbabel_opsin.setOnClickListener(openbabel_opsin_click);
         openbabel_continue = (Button) findViewById(R.id.openbabel_continue);
@@ -281,7 +469,7 @@ public class Chemsol2 extends MainActivity {
                 try {
 
                     String InputfileName1 = InputfileName0.replace(" ","_");
-		    String InputfileName = InputfileName1.replace(",",".");
+                    String InputfileName = InputfileName1.replace(",",".");
                     exec("cp "+getFilesDir()+"/smiles.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".smi");
                     exec("cp "+getFilesDir()+"/iupac.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".iupac");
                     exec("cp "+getFilesDir()+"/formula.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".formula");
@@ -289,9 +477,9 @@ public class Chemsol2 extends MainActivity {
                     exec("cp "+getFilesDir()+"/damping-factor.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".damp");
                     exec("chmod 755 -R "+getFilesDir());
                     // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
-		    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
-		    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
-		    
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
+                    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
                     FileOutputStream fileout4 = openFileOutput(InputfileName+".xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                     outputWriter4.write(ObabelOutput);
@@ -426,7 +614,7 @@ public class Chemsol2 extends MainActivity {
     public void method_view(final String method_str) {
         Runnable method_proc = new Runnable() {
             public void run() {
-                method.setText(method_str);
+                method.setText(colorized_mopac(method_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(method_proc);
@@ -435,7 +623,7 @@ public class Chemsol2 extends MainActivity {
     public void solvation_view(final String solvation_str) {
         Runnable solvation_proc = new Runnable() {
             public void run() {
-                solvation.setText(solvation_str);
+                solvation.setText(colorized_mopac(solvation_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(solvation_proc);
@@ -444,7 +632,7 @@ public class Chemsol2 extends MainActivity {
     public void keywords_view(final String keywords_str) {
         Runnable keywords_proc = new Runnable() {
             public void run() {
-                keywords.setText(keywords_str);
+                keywords.setText(colorized_mopac(keywords_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(keywords_proc);
@@ -453,7 +641,7 @@ public class Chemsol2 extends MainActivity {
     public void iupac_view(final String iupac_str) {
         Runnable iupac_proc = new Runnable() {
             public void run() {
-                iupac.setText(iupac_str);
+                iupac.setText(colorized_mopac(iupac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(iupac_proc);
@@ -462,7 +650,7 @@ public class Chemsol2 extends MainActivity {
     public void formula_view(final String formula_str) {
         Runnable formula_proc = new Runnable() {
             public void run() {
-                formula.setText(formula_str);
+                formula.setText(colorized_mopac(formula_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(formula_proc);
@@ -471,7 +659,7 @@ public class Chemsol2 extends MainActivity {
     public void smiles_view(final String smiles_str) {
         Runnable smiles_proc = new Runnable() {
             public void run() {
-                smiles.setText(smiles_str);
+                smiles.setText(colorized_mopac(smiles_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(smiles_proc);
@@ -480,7 +668,7 @@ public class Chemsol2 extends MainActivity {
     public void mopac_view(final String mopac_str) {
         Runnable mopac_proc = new Runnable() {
             public void run() {
-                mopac_input.setText(mopac_str);
+                mopac_input.setText(colorized_mopac(mopac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(mopac_proc);
@@ -489,7 +677,7 @@ public class Chemsol2 extends MainActivity {
     public void mopac_filelist_view(final String mopac_filelist_str) {
         Runnable mopac_filelist_proc = new Runnable() {
             public void run() {
-                mopac_filelist.setText(mopac_filelist_str);
+                mopac_filelist.setText(colorized_mopac(mopac_filelist_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(mopac_filelist_proc);
@@ -498,7 +686,7 @@ public class Chemsol2 extends MainActivity {
     public void tautomers_view(final String tautomers_str) {
         Runnable tautomers_proc = new Runnable() {
             public void run() {
-                tautomers.setText(tautomers_str);
+                tautomers.setText(colorized_mopac(tautomers_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(tautomers_proc);
@@ -507,7 +695,7 @@ public class Chemsol2 extends MainActivity {
     public void damp_view(final String damp_str) {
         Runnable damp_proc = new Runnable() {
             public void run() {
-                damping_factor.setText(damp_str);
+                damping_factor.setText(colorized_mopac(damp_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(damp_proc);
@@ -541,8 +729,8 @@ public class Chemsol2 extends MainActivity {
             public void onClick(View v) {
 
                 String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
 
                 progressDialog = new ProgressDialog(Chemsol2.this);
                 progressDialog.setTitle("Please wait...");
@@ -791,7 +979,7 @@ public class Chemsol2 extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -821,7 +1009,7 @@ public class Chemsol2 extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileName+".mopg");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1049,7 +1237,7 @@ public class Chemsol2 extends MainActivity {
                                 exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1082,7 +1270,7 @@ public class Chemsol2 extends MainActivity {
                                 exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
                                 try {
                                     // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -1553,7 +1741,7 @@ public class Chemsol2 extends MainActivity {
                             while (Raw_g.contains("= + e- =")){  //2 spaces
                                 Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_g.contains("=  + e- =")){  //2 spaces
+                            while (Raw_g.contains("=  + e- =")){  //2 spaces
                                 Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout115 = openFileOutput("Database_g1.dat",MODE_PRIVATE);
@@ -1594,7 +1782,7 @@ public class Chemsol2 extends MainActivity {
                             while (Raw_ss.contains("= + e- =")){  //2 spaces
                                 Raw_ss = Raw_ss.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_ss.contains("=  + e- =")){  //2 spaces
+                            while (Raw_ss.contains("=  + e- =")){  //2 spaces
                                 Raw_ss = Raw_ss.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
@@ -1635,7 +1823,7 @@ public class Chemsol2 extends MainActivity {
                             while (Raw_s.contains("= + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_s.contains("=  + e- =")){  //2 spaces
+                            while (Raw_s.contains("=  + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
@@ -1717,8 +1905,8 @@ public class Chemsol2 extends MainActivity {
                         exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
 
                         String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
+                        String DatasetName1 = DatasetName0.replace(" ","_");
+                        String DatasetName = DatasetName1.replace(",",".");
                         exec("mv "+getFilesDir()+"/Database_g2.dat "+ getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
                         exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
                         exec("chmod -R 755 "+getFilesDir()+"/PHASES");

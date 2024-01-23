@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,11 +62,57 @@ public class GeneralData extends KineticsQuery {
         modifylabel = (TextView) findViewById(R.id.modifylabel);
         modifyedit = (EditText) findViewById(R.id.modifyedit);
         modifyedit.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        modifyedit.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                modifyedit.removeTextChangedListener(this);
+                String text = modifyedit.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                modifyedit.getText().clear();
+                modifyedit.append(colorized_numbers(text));
+                // place the cursor at the original position
+                modifyedit.setSelection(startChanged+countChanged);
+                modifyedit.addTextChangedListener(this);
+            }
+        });
         modifybutton = (Button) findViewById(R.id.modifybutton);
         modifybutton.setOnClickListener(modifybuttonClick);
         previewlabel = (TextView) findViewById(R.id.previewlabel);
         preview = (EditText) findViewById(R.id.preview);
         preview.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        preview.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                preview.removeTextChangedListener(this);
+                String text = preview.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                preview.getText().clear();
+                preview.append(colorized_numbers(text));
+                // place the cursor at the original position
+                preview.setSelection(startChanged+countChanged);
+                preview.addTextChangedListener(this);
+            }
+        });
         reset = (Button) findViewById(R.id.reset);
         reset.setOnClickListener(resetClick);
         process = (Button) findViewById(R.id.process);
@@ -306,7 +354,7 @@ public class GeneralData extends KineticsQuery {
     public void modifyView(final String modifyData) {
         Runnable procData = new Runnable() {
             public void run() {
-                modifyedit.setText(modifyData);
+                modifyedit.setText(colorized_numbers(modifyData), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procData);

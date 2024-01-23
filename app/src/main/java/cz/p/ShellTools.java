@@ -1,6 +1,8 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_bash;
 import static cz.p.Spannables.colorized_numbers;
+import static cz.p.Spannables.colorized_x11basic;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -59,7 +61,7 @@ public class ShellTools extends DevMode {
     private EditText CatOutput;
     private Button CatOutputButton;
     private TextView CatResponseLabel;
-    private TextView CatResponse;
+    private EditText CatResponse;
     private TextView DeleteLabel;
     private EditText Delete;
     private Button DeleteButton;
@@ -109,7 +111,7 @@ public class ShellTools extends DevMode {
                 String text = RunX11.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 RunX11.getText().clear();
-                RunX11.append(colorized_numbers(text));
+                RunX11.append(colorized_x11basic(text));
                 // place the cursor at the original position
                 RunX11.setSelection(startChanged+countChanged);
                 RunX11.addTextChangedListener(this);
@@ -118,43 +120,251 @@ public class ShellTools extends DevMode {
         X11Content = (TextView) findViewById(R.id.X11Content);
         X11Name = (EditText) findViewById(R.id.X11Name);
         X11Name.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        X11Name.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                X11Name.removeTextChangedListener(this);
+                String text = X11Name.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                X11Name.getText().clear();
+                X11Name.append(colorized_numbers(text));
+                // place the cursor at the original position
+                X11Name.setSelection(startChanged+countChanged);
+                X11Name.addTextChangedListener(this);
+            }
+        });
         RunX11Button = (Button) findViewById(R.id.RunX11Button);
         RunX11Button.setOnClickListener(RunX11ButtonClick);
         RunX11OutputLabel = (TextView) findViewById(R.id.RunX11OutputLabel);
         RunX11Output = (EditText) findViewById(R.id.RunX11Output);
         RunX11Output.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         RunX11Output.setMovementMethod(new ScrollingMovementMethod());
+        RunX11Output.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                RunX11Output.removeTextChangedListener(this);
+                String text = RunX11Output.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                RunX11Output.getText().clear();
+                RunX11Output.append(colorized_numbers(text));
+                // place the cursor at the original position
+                RunX11Output.setSelection(startChanged+countChanged);
+                RunX11Output.addTextChangedListener(this);
+            }
+        });
         CatOutputLabel = (TextView) findViewById(R.id.CatOutputLabel);
         CatOutput = (EditText) findViewById(R.id.CatOutput);
         CatOutput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        CatOutput.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                CatOutput.removeTextChangedListener(this);
+                String text = CatOutput.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                CatOutput.getText().clear();
+                CatOutput.append(colorized_numbers(text));
+                // place the cursor at the original position
+                CatOutput.setSelection(startChanged+countChanged);
+                CatOutput.addTextChangedListener(this);
+            }
+        });
         CatOutputButton = (Button) findViewById(R.id.CatOutputButton);
         CatOutputButton.setOnClickListener(CatButtonClick);
         CatResponseLabel = (TextView) findViewById(R.id.CatResponseLabel);
-        CatResponse = (TextView) findViewById(R.id.CatResponse);
+        CatResponse = (EditText) findViewById(R.id.CatResponse);
+        CatResponse.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
+        CatResponse.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                CatResponse.removeTextChangedListener(this);
+                String text = CatResponse.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                CatResponse.getText().clear();
+                CatResponse.append(colorized_numbers(text));
+                // place the cursor at the original position
+                CatResponse.setSelection(startChanged+countChanged);
+                CatResponse.addTextChangedListener(this);
+            }
+        });
         DeleteLabel = (TextView) findViewById(R.id.DeleteLabel);
         Delete = (EditText) findViewById(R.id.Delete);
         Delete.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Delete.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Delete.removeTextChangedListener(this);
+                String text = Delete.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Delete.getText().clear();
+                Delete.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Delete.setSelection(startChanged+countChanged);
+                Delete.addTextChangedListener(this);
+            }
+        });
         DeleteButton = (Button) findViewById(R.id.DeleteButton);
         DeleteButton.setOnClickListener(DeleteButtonClick);
         Shell0Label = (TextView) findViewById(R.id.Shell0Label);
         Shell0 = (EditText) findViewById(R.id.Shell0);
         Shell0.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Shell0.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Shell0.removeTextChangedListener(this);
+                String text = Shell0.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Shell0.getText().clear();
+                Shell0.append(colorized_bash(text));
+                // place the cursor at the original position
+                Shell0.setSelection(startChanged+countChanged);
+                Shell0.addTextChangedListener(this);
+            }
+        });
         Shell0Button = (Button) findViewById(R.id.Shell0Button);
         Shell0Button.setOnClickListener(Shell0ButtonClick);
         ShellLabel = (TextView) findViewById(R.id.ShellLabel);
         Shell = (EditText) findViewById(R.id.Shell);
         Shell.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        Shell.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Shell.removeTextChangedListener(this);
+                String text = Shell.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Shell.getText().clear();
+                Shell.append(colorized_bash(text));
+                // place the cursor at the original position
+                Shell.setSelection(startChanged+countChanged);
+                Shell.addTextChangedListener(this);
+            }
+        });
         ShellButton = (Button) findViewById(R.id.ShellButton);
         ShellButton.setOnClickListener(ShellButtonClick);
         ExecuteOutputLabel = (TextView) findViewById(R.id.ExecuteOutputLabel);
         ExecuteOutput = (EditText) findViewById(R.id.ExecuteOutput);
         ExecuteOutput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         ExecuteOutput.setMovementMethod(new ScrollingMovementMethod());
+        ExecuteOutput.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ExecuteOutput.removeTextChangedListener(this);
+                String text = ExecuteOutput.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ExecuteOutput.getText().clear();
+                ExecuteOutput.append(colorized_numbers(text));
+                // place the cursor at the original position
+                ExecuteOutput.setSelection(startChanged+countChanged);
+                ExecuteOutput.addTextChangedListener(this);
+            }
+        });
         Quit = (Button) findViewById(R.id.Quit);
         Quit.setOnClickListener(QuitClick);
         NativeLibLabel = (TextView) findViewById(R.id.NativeLibLabel);
         NativeLibPath = (EditText) findViewById(R.id.NativeLibPath);
         NativeLibPath.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        NativeLibPath.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                NativeLibPath.removeTextChangedListener(this);
+                String text = NativeLibPath.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                NativeLibPath.getText().clear();
+                NativeLibPath.append(colorized_numbers(text));
+                // place the cursor at the original position
+                NativeLibPath.setSelection(startChanged+countChanged);
+                NativeLibPath.addTextChangedListener(this);
+            }
+        });
         manual_x11basic = (Button) findViewById(R.id.manual_x11basic);
         manual_x11basic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -414,7 +624,7 @@ public class ShellTools extends DevMode {
                     exec("chmod -R 755 "+getFilesDir());
                     try {
                         String OutputExec = exec(Shell0.getText().toString());
-                        ExecuteOutput.setText(colorized_numbers(OutputExec), EditText.BufferType.SPANNABLE);
+                        ExecuteOutput.setText(colorized_bash(OutputExec), EditText.BufferType.SPANNABLE);
                         String Filename = X11Name.getText().toString();
                         RunX11Display(exec("cat "+getFilesDir()+"/"+Filename+".bas"));
                     } catch (Exception e) {
@@ -563,7 +773,7 @@ public class ShellTools extends DevMode {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ExecuteOutput.setText(colorized_numbers(OutputofExecution), EditText.BufferType.SPANNABLE);
+                ExecuteOutput.setText(colorized_bash(OutputofExecution), EditText.BufferType.SPANNABLE);
             }
         }
 
@@ -625,7 +835,7 @@ public class ShellTools extends DevMode {
     private void X11NameDisplay(final String str996) {
         Runnable proc996 = new Runnable() {
             public void run() {
-                X11Name.setText(str996);
+                X11Name.setText(colorized_numbers(str996), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc996);
@@ -643,7 +853,7 @@ public class ShellTools extends DevMode {
     private void CatDisplay1(final String str998) {
         Runnable proc998 = new Runnable() {
             public void run() {
-                CatOutput.setText(str998);
+                CatOutput.setText(colorized_numbers(str998), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc998);
@@ -652,7 +862,7 @@ public class ShellTools extends DevMode {
     private void DeleteDisplay(final String str999) {
         Runnable proc999 = new Runnable() {
             public void run() {
-                Delete.setText(str999);
+                Delete.setText(colorized_numbers(str999), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc999);
@@ -661,7 +871,7 @@ public class ShellTools extends DevMode {
     private void Shell0Display(final String str1001) {
         Runnable proc1001 = new Runnable() {
             public void run() {
-                Shell0.setText(str1001);
+                Shell0.setText(colorized_bash(str1001), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1001);
@@ -670,7 +880,7 @@ public class ShellTools extends DevMode {
     private void ShellDisplay(final String str1002) {
         Runnable proc1002 = new Runnable() {
             public void run() {
-                Shell.setText(str1002);
+                Shell.setText(colorized_bash(str1002), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1002);
@@ -679,7 +889,7 @@ public class ShellTools extends DevMode {
     private void LibDisplay(final String str1003) {
         Runnable proc1003 = new Runnable() {
             public void run() {
-                NativeLibPath.setText(str1003);
+                NativeLibPath.setText(colorized_numbers(str1003), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1003);
@@ -688,7 +898,7 @@ public class ShellTools extends DevMode {
     private void CatDisplay(final String str1004) {
         Runnable proc1004 = new Runnable() {
             public void run() {
-                CatResponse.setText(str1004);
+                CatResponse.setText(colorized_numbers(str1004), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1004);
@@ -697,7 +907,7 @@ public class ShellTools extends DevMode {
     private void X11Display(final String str1006) {
         Runnable proc1006 = new Runnable() {
             public void run() {
-                RunX11Output.setText(str1006);
+                RunX11Output.setText(colorized_numbers(str1006), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1006);
@@ -706,7 +916,7 @@ public class ShellTools extends DevMode {
     private void RunX11Display(final String str1007) {
         Runnable proc1007 = new Runnable() {
             public void run() {
-                RunX11.setText(str1007);
+                RunX11.setText(colorized_x11basic(str1007), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc1007);

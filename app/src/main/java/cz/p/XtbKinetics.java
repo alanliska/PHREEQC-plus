@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_xtb;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -90,16 +94,154 @@ public class XtbKinetics extends MainActivity {
 
         product_formulas = (EditText) findViewById(R.id.product_formulas);
         product_formulas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        product_formulas.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                product_formulas.removeTextChangedListener(this);
+                String text = product_formulas.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                product_formulas.getText().clear();
+                product_formulas.append(colorized_xtb(text));
+                // place the cursor at the original position
+                product_formulas.setSelection(startChanged+countChanged);
+                product_formulas.addTextChangedListener(this);
+            }
+        });
         process = (EditText) findViewById(R.id.process);
         process.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        process.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                process.removeTextChangedListener(this);
+                String text = process.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                process.getText().clear();
+                process.append(colorized_xtb(text));
+                // place the cursor at the original position
+                process.setSelection(startChanged+countChanged);
+                process.addTextChangedListener(this);
+            }
+        });
         details = (EditText) findViewById(R.id.details);
         details.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        details.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                details.removeTextChangedListener(this);
+                String text = details.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                details.getText().clear();
+                details.append(colorized_xtb(text));
+                // place the cursor at the original position
+                details.setSelection(startChanged+countChanged);
+                details.addTextChangedListener(this);
+            }
+        });
         reactant_smiles = (EditText) findViewById(R.id.reactant_smiles);
         reactant_smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        reactant_smiles.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                reactant_smiles.removeTextChangedListener(this);
+                String text = reactant_smiles.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                reactant_smiles.getText().clear();
+                reactant_smiles.append(colorized_xtb(text));
+                // place the cursor at the original position
+                reactant_smiles.setSelection(startChanged+countChanged);
+                reactant_smiles.addTextChangedListener(this);
+            }
+        });
         reactant_formulas = (EditText) findViewById(R.id.reactant_formulas);
         reactant_formulas.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        reactant_formulas.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                reactant_formulas.removeTextChangedListener(this);
+                String text = reactant_formulas.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                reactant_formulas.getText().clear();
+                reactant_formulas.append(colorized_xtb(text));
+                // place the cursor at the original position
+                reactant_formulas.setSelection(startChanged+countChanged);
+                reactant_formulas.addTextChangedListener(this);
+            }
+        });
         product_smiles = (EditText) findViewById(R.id.product_smiles);
         product_smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        product_smiles.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                product_smiles.removeTextChangedListener(this);
+                String text = product_smiles.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                product_smiles.getText().clear();
+                product_smiles.append(colorized_xtb(text));
+                // place the cursor at the original position
+                product_smiles.setSelection(startChanged+countChanged);
+                product_smiles.addTextChangedListener(this);
+            }
+        });
 
         runbutton = (Button) findViewById(R.id.runbutton);
         runbutton.setOnClickListener(runbuttonClick);
@@ -935,7 +1077,7 @@ public class XtbKinetics extends MainActivity {
     private void SmilesRDisplay(final String strSR) {
         Runnable procSR = new Runnable() {
             public void run() {
-                reactant_smiles.setText(strSR);
+                reactant_smiles.setText(colorized_xtb(strSR), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procSR);
@@ -943,7 +1085,7 @@ public class XtbKinetics extends MainActivity {
     private void FormulasRDisplay(final String strFR) {
         Runnable procFR = new Runnable() {
             public void run() {
-                reactant_formulas.setText(strFR);
+                reactant_formulas.setText(colorized_xtb(strFR), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procFR);
@@ -951,7 +1093,7 @@ public class XtbKinetics extends MainActivity {
     private void SmilesPDisplay(final String strSP) {
         Runnable procSP = new Runnable() {
             public void run() {
-                product_smiles.setText(strSP);
+                product_smiles.setText(colorized_xtb(strSP), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procSP);
@@ -959,7 +1101,7 @@ public class XtbKinetics extends MainActivity {
     private void FormulasPDisplay(final String strFP) {
         Runnable procFP = new Runnable() {
             public void run() {
-                product_formulas.setText(strFP);
+                product_formulas.setText(colorized_xtb(strFP), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procFP);
@@ -967,7 +1109,7 @@ public class XtbKinetics extends MainActivity {
     private void ProcessDisplay(final String strP) {
         Runnable procP = new Runnable() {
             public void run() {
-                process.setText(strP);
+                process.setText(colorized_xtb(strP), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procP);
@@ -975,7 +1117,7 @@ public class XtbKinetics extends MainActivity {
     private void DetailsDisplay(final String strD) {
         Runnable procD = new Runnable() {
             public void run() {
-                details.setText(strD);
+                details.setText(colorized_xtb(strD), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procD);

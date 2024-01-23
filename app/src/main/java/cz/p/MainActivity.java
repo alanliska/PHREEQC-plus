@@ -15,8 +15,10 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -64,6 +66,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import static android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION;
+import static cz.p.Spannables.colorized_numbers;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -172,6 +175,29 @@ public class MainActivity extends AppCompatActivity {
         } else {
             dataset.setTextSize(16);
         }
+        dataset.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                dataset.removeTextChangedListener(this);
+                String text = dataset.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                dataset.getText().clear();
+                dataset.append(colorized_numbers(text));
+                // place the cursor at the original position
+                dataset.setSelection(startChanged+countChanged);
+                dataset.addTextChangedListener(this);
+            }
+        });
 
         start_openbabel = (Button) findViewById(R.id.start_openbabel);
 
@@ -212,6 +238,29 @@ public class MainActivity extends AppCompatActivity {
         } else {
             temperature.setTextSize(16);
         }
+        temperature.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                temperature.removeTextChangedListener(this);
+                String text = temperature.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                temperature.getText().clear();
+                temperature.append(colorized_numbers(text));
+                // place the cursor at the original position
+                temperature.setSelection(startChanged+countChanged);
+                temperature.addTextChangedListener(this);
+            }
+        });
         start_kin11 = (Button) findViewById(R.id.start_kin11);
         start_kin12 = (Button) findViewById(R.id.start_kin12);
         start_kin22 = (Button) findViewById(R.id.start_kin22);
@@ -1446,7 +1495,7 @@ public class MainActivity extends AppCompatActivity {
     public void dataset_view(final String dataset_str) {
         Runnable dataset_proc = new Runnable() {
             public void run() {
-                dataset.setText(dataset_str);
+                dataset.setText(colorized_numbers(dataset_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(dataset_proc);
@@ -1455,7 +1504,7 @@ public class MainActivity extends AppCompatActivity {
     public void temperature_view(final String temperature_str) {
         Runnable temperature_proc = new Runnable() {
             public void run() {
-                temperature.setText(temperature_str);
+                temperature.setText(colorized_numbers(temperature_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(temperature_proc);

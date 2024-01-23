@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -15,8 +17,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
@@ -66,6 +70,29 @@ public class Empirical extends MainActivity {
         dataset_label = (TextView) findViewById(R.id.dataset_label);
         dataset = (EditText) findViewById(R.id.dataset);
         dataset.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        dataset.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                dataset.removeTextChangedListener(this);
+                String text = dataset.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                dataset.getText().clear();
+                dataset.append(colorized_numbers(text));
+                // place the cursor at the original position
+                dataset.setSelection(startChanged+countChanged);
+                dataset.addTextChangedListener(this);
+            }
+        });
         label21 = (TextView) findViewById(R.id.label21);
         label22 = (TextView) findViewById(R.id.label22);
         label23 = (TextView) findViewById(R.id.label23);
@@ -203,7 +230,7 @@ public class Empirical extends MainActivity {
     public void dataset_view(final String dataset_str) {
         Runnable dataset_proc = new Runnable() {
             public void run() {
-                dataset.setText(dataset_str);
+                dataset.setText(colorized_numbers(dataset_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(dataset_proc);

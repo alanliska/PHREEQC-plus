@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -180,6 +182,29 @@ public class GCM3 extends MainActivity {
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
         iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        iupac.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                iupac.removeTextChangedListener(this);
+                String text = iupac.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                iupac.getText().clear();
+                iupac.append(colorized_numbers(text));
+                // place the cursor at the original position
+                iupac.setSelection(startChanged+countChanged);
+                iupac.addTextChangedListener(this);
+            }
+        });
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (TextView) findViewById(R.id.formula);
         next_structure = (Button) findViewById(R.id.next_structure);
@@ -3045,7 +3070,7 @@ public class GCM3 extends MainActivity {
     public void iupac_view(final String iupac_str) {
         Runnable iupac_proc = new Runnable() {
             public void run() {
-                iupac.setText(iupac_str);
+                iupac.setText(colorized_numbers(iupac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(iupac_proc);
@@ -3054,7 +3079,7 @@ public class GCM3 extends MainActivity {
     public void formula_view(final String formula_str) {
         Runnable formula_proc = new Runnable() {
             public void run() {
-                formula.setText(colorized_numbers(formula_str), EditText.BufferType.SPANNABLE);
+                formula.setText(formula_str);
             }
         };
         handler.post(formula_proc);

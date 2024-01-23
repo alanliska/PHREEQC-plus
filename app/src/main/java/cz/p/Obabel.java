@@ -1,6 +1,7 @@
 package cz.p;
 
 import static cz.p.Spannables.colorized_numbers;
+import static cz.p.Spannables.colorized_openbabel;
 import static cz.p.Spannables.colorized_phreeqc;
 
 import android.app.AlertDialog;
@@ -99,7 +100,7 @@ public class Obabel extends MainActivity {
                 String text = ObabelInput.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 ObabelInput.getText().clear();
-                ObabelInput.append(colorized_numbers(text));
+                ObabelInput.append(colorized_openbabel(text));
                 // place the cursor at the original position
                 ObabelInput.setSelection(startChanged+countChanged);
                 ObabelInput.addTextChangedListener(this);
@@ -108,9 +109,55 @@ public class Obabel extends MainActivity {
         ITypeSwitchLabel = (TextView) findViewById(R.id.ITypeSwitchLabel);
         ITypeSwitch = (EditText) findViewById(R.id.ITypeSwitch);
         ITypeSwitch.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        ITypeSwitch.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ITypeSwitch.removeTextChangedListener(this);
+                String text = ITypeSwitch.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ITypeSwitch.getText().clear();
+                ITypeSwitch.append(colorized_openbabel(text));
+                // place the cursor at the original position
+                ITypeSwitch.setSelection(startChanged+countChanged);
+                ITypeSwitch.addTextChangedListener(this);
+            }
+        });
         OTypeSwitchLabel = (TextView) findViewById(R.id.OTypeSwitchLabel);
         OTypeSwitch = (EditText) findViewById(R.id.OTypeSwitch);
         OTypeSwitch.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        OTypeSwitch.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                OTypeSwitch.removeTextChangedListener(this);
+                String text = OTypeSwitch.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                OTypeSwitch.getText().clear();
+                OTypeSwitch.append(colorized_openbabel(text));
+                // place the cursor at the original position
+                OTypeSwitch.setSelection(startChanged+countChanged);
+                OTypeSwitch.addTextChangedListener(this);
+            }
+        });
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openIntInputfile = (Button) findViewById(R.id.openIntInputfile);
@@ -133,6 +180,30 @@ public class Obabel extends MainActivity {
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // otherwise every time is spanned
+//        outputView2.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                outputView2.removeTextChangedListener(this);
+//                String text = outputView2.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                outputView2.getText().clear();
+//                outputView2.append(colorized_openbabel(text));
+//                // place the cursor at the original position
+//                outputView2.setSelection(startChanged+countChanged);
+//                outputView2.addTextChangedListener(this);
+//            }
+//        });
         manual_openbabel = (Button) findViewById(R.id.manual_openbabel);
         manual_openbabel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -715,7 +786,7 @@ public class Obabel extends MainActivity {
             public void outputX(final String strX) {
                 Runnable procX = new Runnable() {
                     public void run() {
-                        outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
+                        outputView2.setText(colorized_openbabel(strX), EditText.BufferType.SPANNABLE);
                     }
                 };
                 handler.post(procX);
@@ -777,7 +848,7 @@ public class Obabel extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                ObabelInput.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
+                ObabelInput.setText(colorized_openbabel(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);
@@ -786,7 +857,7 @@ public class Obabel extends MainActivity {
     public void outputI(final String strI) {
         Runnable procI = new Runnable() {
             public void run() {
-                ITypeSwitch.setText(strI);
+                ITypeSwitch.setText(colorized_openbabel(strI), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procI);
@@ -795,7 +866,7 @@ public class Obabel extends MainActivity {
     public void outputO(final String strO) {
         Runnable procO = new Runnable() {
             public void run() {
-                OTypeSwitch.setText(strO);
+                OTypeSwitch.setText(colorized_openbabel(strO), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procO);

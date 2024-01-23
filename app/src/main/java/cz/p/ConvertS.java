@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.view.WindowManager;
@@ -66,6 +68,29 @@ public class ConvertS extends MainActivity {
         TabData.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
         SaveName = (EditText) findViewById(R.id.SaveName);
         SaveName.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        SaveName.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                SaveName.removeTextChangedListener(this);
+                String text = SaveName.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                SaveName.getText().clear();
+                SaveName.append(colorized_numbers(text));
+                // place the cursor at the original position
+                SaveName.setSelection(startChanged+countChanged);
+                SaveName.addTextChangedListener(this);
+            }
+        });
         openInputfile = (Button) findViewById(R.id.openInputfile);
         openInputfile.setOnClickListener(openInputfileClick);
         openInputfile2 = (Button) findViewById(R.id.openInputfile2);
@@ -594,7 +619,7 @@ public class ConvertS extends MainActivity {
     public void output2(final String str2) {
         Runnable proc2 = new Runnable() {
             public void run() {
-                SaveName.setText(str2);
+                SaveName.setText(colorized_numbers(str2), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc2);

@@ -123,6 +123,30 @@ public class Chemsol extends MainActivity {
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
         outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // otherwise every time is spanned
+//        outputView2.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                outputView2.removeTextChangedListener(this);
+//                String text = outputView2.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                outputView2.getText().clear();
+//                outputView2.append(colorized_numbers(text));
+//                // place the cursor at the original position
+//                outputView2.setSelection(startChanged+countChanged);
+//                outputView2.addTextChangedListener(this);
+//            }
+//        });
 
         manual_chemsol = (Button) findViewById(R.id.manual_chemsol);
         manual_chemsol.setOnClickListener(new View.OnClickListener() {

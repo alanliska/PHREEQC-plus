@@ -1,11 +1,15 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_mopac;
+
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,21 +76,159 @@ public class OpenBabel extends MainActivity {
         method_label = (TextView) findViewById(R.id.method_label);
         method = (EditText) findViewById(R.id.method);
         method.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        method.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                method.removeTextChangedListener(this);
+                String text = method.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                method.getText().clear();
+                method.append(colorized_mopac(text));
+                // place the cursor at the original position
+                method.setSelection(startChanged+countChanged);
+                method.addTextChangedListener(this);
+            }
+        });
         solvation_label = (TextView) findViewById(R.id.solvation_label);
         solvation = (EditText) findViewById(R.id.solvation);
         solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        solvation.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                solvation.removeTextChangedListener(this);
+                String text = solvation.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                solvation.getText().clear();
+                solvation.append(colorized_mopac(text));
+                // place the cursor at the original position
+                solvation.setSelection(startChanged+countChanged);
+                solvation.addTextChangedListener(this);
+            }
+        });
         keywords_label = (TextView) findViewById(R.id.keywords_label);
         keywords = (EditText) findViewById(R.id.keywords);
         keywords.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        keywords.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                keywords.removeTextChangedListener(this);
+                String text = keywords.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                keywords.getText().clear();
+                keywords.append(colorized_mopac(text));
+                // place the cursor at the original position
+                keywords.setSelection(startChanged+countChanged);
+                keywords.addTextChangedListener(this);
+            }
+        });
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
         iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        iupac.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                iupac.removeTextChangedListener(this);
+                String text = iupac.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                iupac.getText().clear();
+                iupac.append(colorized_mopac(text));
+                // place the cursor at the original position
+                iupac.setSelection(startChanged+countChanged);
+                iupac.addTextChangedListener(this);
+            }
+        });
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (EditText) findViewById(R.id.formula);
         formula.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        formula.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                formula.removeTextChangedListener(this);
+                String text = formula.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                formula.getText().clear();
+                formula.append(colorized_mopac(text));
+                // place the cursor at the original position
+                formula.setSelection(startChanged+countChanged);
+                formula.addTextChangedListener(this);
+            }
+        });
         smiles_label = (TextView) findViewById(R.id.smiles_label);
         smiles = (EditText) findViewById(R.id.smiles);
         smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        smiles.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                smiles.removeTextChangedListener(this);
+                String text = smiles.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                smiles.getText().clear();
+                smiles.append(colorized_mopac(text));
+                // place the cursor at the original position
+                smiles.setSelection(startChanged+countChanged);
+                smiles.addTextChangedListener(this);
+            }
+        });
         openbabel_opsin = (Button) findViewById(R.id.openbabel_opsin);
         openbabel_opsin.setOnClickListener(openbabel_opsin_click);
         openbabel_continue = (Button) findViewById(R.id.openbabel_continue);
@@ -265,39 +407,39 @@ public class OpenBabel extends MainActivity {
                 try {
 
                     String InputfileName1 = InputfileName0.replace(" ","_");
-		    String InputfileName = InputfileName1.replace(",",".");
-                exec("cp "+getFilesDir()+"/smiles.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".smi");
-                exec("cp "+getFilesDir()+"/iupac.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".iupac");
-                exec("cp "+getFilesDir()+"/formula.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".formula");
-                exec("chmod 755 -R "+getFilesDir());
-                // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
-		com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
-		    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
-		    
+                    String InputfileName = InputfileName1.replace(",",".");
+                    exec("cp "+getFilesDir()+"/smiles.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".smi");
+                    exec("cp "+getFilesDir()+"/iupac.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".iupac");
+                    exec("cp "+getFilesDir()+"/formula.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".formula");
+                    exec("chmod 755 -R "+getFilesDir());
+                    // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
+                    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
                     FileOutputStream fileout4 = openFileOutput(InputfileName+".xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                     outputWriter4.write(ObabelOutput);
                     outputWriter4.close();
                     String KeyWithoutSolv = Methodfile+" "+Keywordsfile;
                     String KeyWithSolv = Methodfile+" "+Keywordsfile+" "+Solvationfile;
-                File filePath1 = new File(getFilesDir()+File.separator+"openbabel/gas/opt");
+                    File filePath1 = new File(getFilesDir()+File.separator+"openbabel/gas/opt");
                     try {
                         if (!filePath1.exists()) {
                             filePath1.mkdirs();
                         }
-                String Sed1 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileName+".xyz");
-                FileOutputStream fileout7 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
-                OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
-                outputWriter7.write(KeyWithoutSolv);
-                outputWriter7.write("\n");
-                outputWriter7.write("\n");
-                outputWriter7.write("\n");
-                outputWriter7.write(Sed1);
-                outputWriter7.close();
+                        String Sed1 = exec("sed -e 1,2d "+getFilesDir()+"/"+InputfileName+".xyz");
+                        FileOutputStream fileout7 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                        OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+                        outputWriter7.write(KeyWithoutSolv);
+                        outputWriter7.write("\n");
+                        outputWriter7.write("\n");
+                        outputWriter7.write("\n");
+                        outputWriter7.write(Sed1);
+                        outputWriter7.close();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName);
+                    exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName);
 
                     File filePath2 = new File(getFilesDir()+File.separator+"openbabel/solv/opt");
                     try {
@@ -326,7 +468,7 @@ public class OpenBabel extends MainActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                exec("mv "+getFilesDir()+"/openbabel/"+InputfileName+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
+                    exec("mv "+getFilesDir()+"/openbabel/"+InputfileName+".smi "+getFilesDir()+File.separator+"openbabel/smiles");
 
                     File filePath4 = new File(getFilesDir()+File.separator+"openbabel/xyz");
                     try {
@@ -358,14 +500,14 @@ public class OpenBabel extends MainActivity {
                     }
                     exec("mv "+getFilesDir()+"/openbabel/"+InputfileName+".formula "+getFilesDir()+File.separator+"openbabel/formula");
 
-                method_view(exec("cat "+getFilesDir()+"/method.txt"));
-                solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
-                keywords_view(exec("cat "+getFilesDir()+"/keywords.txt"));
-                iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
-                formula_view(exec("cat "+getFilesDir()+"/formula.txt"));
-                smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
-                mopac_view(exec("cat "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName));
-                mopac_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+                    method_view(exec("cat "+getFilesDir()+"/method.txt"));
+                    solvation_view(exec("cat "+getFilesDir()+"/solvation.txt"));
+                    keywords_view(exec("cat "+getFilesDir()+"/keywords.txt"));
+                    iupac_view(exec("cat "+getFilesDir()+"/iupac.txt"));
+                    formula_view(exec("cat "+getFilesDir()+"/formula.txt"));
+                    smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
+                    mopac_view(exec("cat "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName));
+                    mopac_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
 
                 } catch (Exception e) {
                 }
@@ -376,7 +518,7 @@ public class OpenBabel extends MainActivity {
     public void method_view(final String method_str) {
         Runnable method_proc = new Runnable() {
             public void run() {
-                method.setText(method_str);
+                method.setText(colorized_mopac(method_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(method_proc);
@@ -385,7 +527,7 @@ public class OpenBabel extends MainActivity {
     public void solvation_view(final String solvation_str) {
         Runnable solvation_proc = new Runnable() {
             public void run() {
-                solvation.setText(solvation_str);
+                solvation.setText(colorized_mopac(solvation_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(solvation_proc);
@@ -394,7 +536,7 @@ public class OpenBabel extends MainActivity {
     public void keywords_view(final String keywords_str) {
         Runnable keywords_proc = new Runnable() {
             public void run() {
-                keywords.setText(keywords_str);
+                keywords.setText(colorized_mopac(keywords_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(keywords_proc);
@@ -403,7 +545,7 @@ public class OpenBabel extends MainActivity {
     public void iupac_view(final String iupac_str) {
         Runnable iupac_proc = new Runnable() {
             public void run() {
-                iupac.setText(iupac_str);
+                iupac.setText(colorized_mopac(iupac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(iupac_proc);
@@ -412,7 +554,7 @@ public class OpenBabel extends MainActivity {
     public void formula_view(final String formula_str) {
         Runnable formula_proc = new Runnable() {
             public void run() {
-                formula.setText(formula_str);
+                formula.setText(colorized_mopac(formula_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(formula_proc);
@@ -421,7 +563,7 @@ public class OpenBabel extends MainActivity {
     public void smiles_view(final String smiles_str) {
         Runnable smiles_proc = new Runnable() {
             public void run() {
-                smiles.setText(smiles_str);
+                smiles.setText(colorized_mopac(smiles_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(smiles_proc);
@@ -430,7 +572,7 @@ public class OpenBabel extends MainActivity {
     public void mopac_view(final String mopac_str) {
         Runnable mopac_proc = new Runnable() {
             public void run() {
-                mopac_input.setText(mopac_str);
+                mopac_input.setText(colorized_mopac(mopac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(mopac_proc);
@@ -439,7 +581,7 @@ public class OpenBabel extends MainActivity {
     public void mopac_filelist_view(final String mopac_filelist_str) {
         Runnable mopac_filelist_proc = new Runnable() {
             public void run() {
-                mopac_filelist.setText(mopac_filelist_str);
+                mopac_filelist.setText(colorized_mopac(mopac_filelist_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(mopac_filelist_proc);
@@ -473,8 +615,8 @@ public class OpenBabel extends MainActivity {
             public void onClick(View v) {
 
                 String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
 
                 progressDialog = new ProgressDialog(OpenBabel.this);
                 progressDialog.setTitle("Please wait...");
@@ -492,54 +634,54 @@ public class OpenBabel extends MainActivity {
 
 
 
-                File filePath6 = new File(getFilesDir()+File.separator+"openbabel/gas/opt/results");
-                try {
-                    if (!filePath6.exists()) {
-                        filePath6.mkdirs();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        File filePath6 = new File(getFilesDir()+File.separator+"openbabel/gas/opt/results");
+                        try {
+                            if (!filePath6.exists()) {
+                                filePath6.mkdirs();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                File filePath8 = new File(getFilesDir()+File.separator+"openbabel/gas/thermo/results");
-                try {
-                    if (!filePath8.exists()) {
-                        filePath8.mkdirs();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        File filePath8 = new File(getFilesDir()+File.separator+"openbabel/gas/thermo/results");
+                        try {
+                            if (!filePath8.exists()) {
+                                filePath8.mkdirs();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                File filePath9 = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
-                try {
-                    if (!filePath9.exists()) {
-                        filePath9.mkdirs();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        File filePath9 = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
+                        try {
+                            if (!filePath9.exists()) {
+                                filePath9.mkdirs();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                File filePath10 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
-                try {
-                    if (!filePath10.exists()) {
-                        filePath10.mkdirs();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        File filePath10 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
+                        try {
+                            if (!filePath10.exists()) {
+                                filePath10.mkdirs();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                File[] files = new File(getFilesDir()+"/openbabel/gas/opt").listFiles();
-                for (File file : files) {
-                    if (!file.isFile()) continue;
+                        File[] files = new File(getFilesDir()+"/openbabel/gas/opt").listFiles();
+                        for (File file : files) {
+                            if (!file.isFile()) continue;
 
 
-                    String InputfileName = file.getName();
-                    String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
-                    String Method = exec("cat "+getFilesDir()+"/method.txt");
+                            String InputfileName = file.getName();
+                            String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
+                            String Method = exec("cat "+getFilesDir()+"/method.txt");
 
-                    Formula = Formula.replace(",", ".");
+                            Formula = Formula.replace(",", ".");
 
-                    ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                            ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
 //                    try {
 //                    while (Formula.contains("C")){
 //                        Formula = Formula.replace("C", "[C]");
@@ -571,33 +713,33 @@ public class OpenBabel extends MainActivity {
 //                        Formula = Formula.replace("[C]z", "Cz");
 //                    }
 //                    while (Formula.contains("H")){
-                        Formula = Formula.replace("H", "[H]");
-                        Formula = Formula.replace("[H]a", "Ha");
-                        Formula = Formula.replace("[H]b", "Hb");
-                        Formula = Formula.replace("[H]c", "Hc");
-                        Formula = Formula.replace("[H]d", "Hd");
-                        Formula = Formula.replace("[H]e", "He");
-                        Formula = Formula.replace("[H]f", "Hf");
-                        Formula = Formula.replace("[H]g", "Hg");
-                        Formula = Formula.replace("[H]h", "Hh");
-                        Formula = Formula.replace("[H]i", "Hi");
-                        Formula = Formula.replace("[H]j", "Hj");
-                        Formula = Formula.replace("[H]k", "Hk");
-                        Formula = Formula.replace("[H]l", "Hl");
-                        Formula = Formula.replace("[H]m", "Hm");
-                        Formula = Formula.replace("[H]n", "Hn");
-                        Formula = Formula.replace("[H]o", "Ho");
-                        Formula = Formula.replace("[H]p", "Hp");
-                        Formula = Formula.replace("[H]q", "Hq");
-                        Formula = Formula.replace("[H]r", "Hr");
-                        Formula = Formula.replace("[H]s", "Hs");
-                        Formula = Formula.replace("[H]t", "Ht");
-                        Formula = Formula.replace("[H]u", "Hu");
-                        Formula = Formula.replace("[H]v", "Hv");
-                        Formula = Formula.replace("[H]w", "Hw");
-                        Formula = Formula.replace("[H]x", "Hx");
-                        Formula = Formula.replace("[H]y", "Hy");
-                        Formula = Formula.replace("[H]z", "Hz");
+                            Formula = Formula.replace("H", "[H]");
+                            Formula = Formula.replace("[H]a", "Ha");
+                            Formula = Formula.replace("[H]b", "Hb");
+                            Formula = Formula.replace("[H]c", "Hc");
+                            Formula = Formula.replace("[H]d", "Hd");
+                            Formula = Formula.replace("[H]e", "He");
+                            Formula = Formula.replace("[H]f", "Hf");
+                            Formula = Formula.replace("[H]g", "Hg");
+                            Formula = Formula.replace("[H]h", "Hh");
+                            Formula = Formula.replace("[H]i", "Hi");
+                            Formula = Formula.replace("[H]j", "Hj");
+                            Formula = Formula.replace("[H]k", "Hk");
+                            Formula = Formula.replace("[H]l", "Hl");
+                            Formula = Formula.replace("[H]m", "Hm");
+                            Formula = Formula.replace("[H]n", "Hn");
+                            Formula = Formula.replace("[H]o", "Ho");
+                            Formula = Formula.replace("[H]p", "Hp");
+                            Formula = Formula.replace("[H]q", "Hq");
+                            Formula = Formula.replace("[H]r", "Hr");
+                            Formula = Formula.replace("[H]s", "Hs");
+                            Formula = Formula.replace("[H]t", "Ht");
+                            Formula = Formula.replace("[H]u", "Hu");
+                            Formula = Formula.replace("[H]v", "Hv");
+                            Formula = Formula.replace("[H]w", "Hw");
+                            Formula = Formula.replace("[H]x", "Hx");
+                            Formula = Formula.replace("[H]y", "Hy");
+                            Formula = Formula.replace("[H]z", "Hz");
 //                    }
 //                    while (Formula.contains("N")){
 //                        Formula = Formula.replace("N", "[N]");
@@ -629,33 +771,33 @@ public class OpenBabel extends MainActivity {
 //                        Formula = Formula.replace("[N]z", "Nz");
 //                    }
 //                    while (Formula.contains("O")){
-                        Formula = Formula.replace("O", "[O]");
-                        Formula = Formula.replace("[O]a", "Oa");
-                        Formula = Formula.replace("[O]b", "Ob");
-                        Formula = Formula.replace("[O]c", "Oc");
-                        Formula = Formula.replace("[O]d", "Od");
-                        Formula = Formula.replace("[O]e", "Oe");
-                        Formula = Formula.replace("[O]f", "Of");
-                        Formula = Formula.replace("[O]g", "Og");
-                        Formula = Formula.replace("[O]h", "Oh");
-                        Formula = Formula.replace("[O]i", "Oi");
-                        Formula = Formula.replace("[O]j", "Oj");
-                        Formula = Formula.replace("[O]k", "Ok");
-                        Formula = Formula.replace("[O]l", "Ol");
-                        Formula = Formula.replace("[O]m", "Om");
-                        Formula = Formula.replace("[O]n", "On");
-                        Formula = Formula.replace("[O]o", "Oo");
-                        Formula = Formula.replace("[O]p", "Op");
-                        Formula = Formula.replace("[O]q", "Oq");
-                        Formula = Formula.replace("[O]r", "Or");
-                        Formula = Formula.replace("[O]s", "Os");
-                        Formula = Formula.replace("[O]t", "Ot");
-                        Formula = Formula.replace("[O]u", "Ou");
-                        Formula = Formula.replace("[O]v", "Ov");
-                        Formula = Formula.replace("[O]w", "Ow");
-                        Formula = Formula.replace("[O]x", "Ox");
-                        Formula = Formula.replace("[O]y", "Oy");
-                        Formula = Formula.replace("[O]z", "Oz");
+                            Formula = Formula.replace("O", "[O]");
+                            Formula = Formula.replace("[O]a", "Oa");
+                            Formula = Formula.replace("[O]b", "Ob");
+                            Formula = Formula.replace("[O]c", "Oc");
+                            Formula = Formula.replace("[O]d", "Od");
+                            Formula = Formula.replace("[O]e", "Oe");
+                            Formula = Formula.replace("[O]f", "Of");
+                            Formula = Formula.replace("[O]g", "Og");
+                            Formula = Formula.replace("[O]h", "Oh");
+                            Formula = Formula.replace("[O]i", "Oi");
+                            Formula = Formula.replace("[O]j", "Oj");
+                            Formula = Formula.replace("[O]k", "Ok");
+                            Formula = Formula.replace("[O]l", "Ol");
+                            Formula = Formula.replace("[O]m", "Om");
+                            Formula = Formula.replace("[O]n", "On");
+                            Formula = Formula.replace("[O]o", "Oo");
+                            Formula = Formula.replace("[O]p", "Op");
+                            Formula = Formula.replace("[O]q", "Oq");
+                            Formula = Formula.replace("[O]r", "Or");
+                            Formula = Formula.replace("[O]s", "Os");
+                            Formula = Formula.replace("[O]t", "Ot");
+                            Formula = Formula.replace("[O]u", "Ou");
+                            Formula = Formula.replace("[O]v", "Ov");
+                            Formula = Formula.replace("[O]w", "Ow");
+                            Formula = Formula.replace("[O]x", "Ox");
+                            Formula = Formula.replace("[O]y", "Oy");
+                            Formula = Formula.replace("[O]z", "Oz");
 //                    }
 //                    while (Formula.contains("S")){
 //                        Formula = Formula.replace("S", "[S]");
@@ -718,70 +860,70 @@ public class OpenBabel extends MainActivity {
 //                    } catch (Exception e) {
 //                        e.printStackTrace();
 //                    }
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                    try {
-                        exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
-                        try {
-                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            try {
+                                exec("cp "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/gas/opt/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/opt/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/opt/results");
+                                String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName);
+                                String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/gas/thermo/results/"+InputfileName+".arc");
+                                FileOutputStream fileout9 = openFileOutput(InputfileName+".mopg", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
+                                outputWriter9.write(Sed4);
+                                outputWriter9.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".mopg "+getFilesDir()+"/openbabel/gas/thermo");
+                                String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
+                                FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                                outputWriter10.write("THERMO(298,298) LET "+Sed3);
+                                outputWriter10.write("\n");
+                                outputWriter10.write("\n");
+                                outputWriter10.write(Sed5);
+                                outputWriter10.close();
+                                exec("rm "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
+                                exec("rm "+getFilesDir()+"/"+InputfileName+".mopg");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/gas/thermo/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                                String Grep1 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
+                                FileOutputStream fileout11 = openFileOutput(InputfileName+"_g.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter11 = new OutputStreamWriter(fileout11);
+                                outputWriter11.write(Grep1);
+                                outputWriter11.close();
+                                String Sed7 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_g.temp");
+                                FileOutputStream fileout12 = openFileOutput(DatasetName+"_g.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
+                                outputWriter12.write(InputfileName+" ");
+                                outputWriter12.write(Formula+" ");
+                                outputWriter12.write(Method+" ");
+                                outputWriter12.write(Sed7);
+                                outputWriter12.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileName+"_g.temp");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
                         }
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/gas/opt/results");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                        exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/opt/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/opt/results");
-                        String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/gas/opt/"+InputfileName);
-                        String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/gas/thermo/results/"+InputfileName+".arc");
-                        FileOutputStream fileout9 = openFileOutput(InputfileName+".mopg", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
-                        outputWriter9.write(Sed4);
-                        outputWriter9.close();
-                        exec("cp "+getFilesDir()+"/"+InputfileName+".mopg "+getFilesDir()+"/openbabel/gas/thermo");
-                        String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
-                        FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
-                        outputWriter10.write("THERMO(298,298) LET "+Sed3);
-                        outputWriter10.write("\n");
-                        outputWriter10.write("\n");
-                        outputWriter10.write(Sed5);
-                        outputWriter10.close();
-                        exec("rm "+getFilesDir()+"/openbabel/gas/thermo/"+InputfileName+".mopg");
-                        exec("rm "+getFilesDir()+"/"+InputfileName+".mopg");
-                        try {
-                            // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-			    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/gas/thermo/results");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                        exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                        String Grep1 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
-                        FileOutputStream fileout11 = openFileOutput(InputfileName+"_g.temp",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter11 = new OutputStreamWriter(fileout11);
-                        outputWriter11.write(Grep1);
-                        outputWriter11.close();
-                        String Sed7 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_g.temp");
-                        FileOutputStream fileout12 = openFileOutput(DatasetName+"_g.txt",MODE_APPEND);
-                        OutputStreamWriter outputWriter12 = new OutputStreamWriter(fileout12);
-                        outputWriter12.write(InputfileName+" ");
-                        outputWriter12.write(Formula+" ");
-                        outputWriter12.write(Method+" ");
-                        outputWriter12.write(Sed7);
-                        outputWriter12.close();
-			exec("rm "+getFilesDir()+"/"+InputfileName+"_g.temp");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/gas/thermo/results");
-                        exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/gas/thermo/results");
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                }
 
 
 
@@ -804,18 +946,18 @@ public class OpenBabel extends MainActivity {
 
 
 
-                File[] files_solv = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
-                    for (File file : files_solv) {
-                        if (!file.isFile()) continue;
+                        File[] files_solv = new File(getFilesDir()+"/openbabel/solv/opt").listFiles();
+                        for (File file : files_solv) {
+                            if (!file.isFile()) continue;
 
 
-                        String InputfileName = file.getName();
-                        String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
-                        String Method = exec("cat "+getFilesDir()+"/method.txt");
+                            String InputfileName = file.getName();
+                            String Formula = exec("cat "+getFilesDir()+"/openbabel/formula/"+InputfileName+".formula");
+                            String Method = exec("cat "+getFilesDir()+"/method.txt");
 
-                        Formula = Formula.replace(",", ".");
+                            Formula = Formula.replace(",", ".");
 
-                        ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
+                            ///////////////// introduce [C], [H], [N], [O], [S], [F] to formula programatically /////////////////////////
 //                    try {
 //                    while (Formula.contains("C")){
 //                        Formula = Formula.replace("C", "[C]");
@@ -847,33 +989,33 @@ public class OpenBabel extends MainActivity {
 //                        Formula = Formula.replace("[C]z", "Cz");
 //                    }
 //                    while (Formula.contains("H")){
-                        Formula = Formula.replace("H", "[H]");
-                        Formula = Formula.replace("[H]a", "Ha");
-                        Formula = Formula.replace("[H]b", "Hb");
-                        Formula = Formula.replace("[H]c", "Hc");
-                        Formula = Formula.replace("[H]d", "Hd");
-                        Formula = Formula.replace("[H]e", "He");
-                        Formula = Formula.replace("[H]f", "Hf");
-                        Formula = Formula.replace("[H]g", "Hg");
-                        Formula = Formula.replace("[H]h", "Hh");
-                        Formula = Formula.replace("[H]i", "Hi");
-                        Formula = Formula.replace("[H]j", "Hj");
-                        Formula = Formula.replace("[H]k", "Hk");
-                        Formula = Formula.replace("[H]l", "Hl");
-                        Formula = Formula.replace("[H]m", "Hm");
-                        Formula = Formula.replace("[H]n", "Hn");
-                        Formula = Formula.replace("[H]o", "Ho");
-                        Formula = Formula.replace("[H]p", "Hp");
-                        Formula = Formula.replace("[H]q", "Hq");
-                        Formula = Formula.replace("[H]r", "Hr");
-                        Formula = Formula.replace("[H]s", "Hs");
-                        Formula = Formula.replace("[H]t", "Ht");
-                        Formula = Formula.replace("[H]u", "Hu");
-                        Formula = Formula.replace("[H]v", "Hv");
-                        Formula = Formula.replace("[H]w", "Hw");
-                        Formula = Formula.replace("[H]x", "Hx");
-                        Formula = Formula.replace("[H]y", "Hy");
-                        Formula = Formula.replace("[H]z", "Hz");
+                            Formula = Formula.replace("H", "[H]");
+                            Formula = Formula.replace("[H]a", "Ha");
+                            Formula = Formula.replace("[H]b", "Hb");
+                            Formula = Formula.replace("[H]c", "Hc");
+                            Formula = Formula.replace("[H]d", "Hd");
+                            Formula = Formula.replace("[H]e", "He");
+                            Formula = Formula.replace("[H]f", "Hf");
+                            Formula = Formula.replace("[H]g", "Hg");
+                            Formula = Formula.replace("[H]h", "Hh");
+                            Formula = Formula.replace("[H]i", "Hi");
+                            Formula = Formula.replace("[H]j", "Hj");
+                            Formula = Formula.replace("[H]k", "Hk");
+                            Formula = Formula.replace("[H]l", "Hl");
+                            Formula = Formula.replace("[H]m", "Hm");
+                            Formula = Formula.replace("[H]n", "Hn");
+                            Formula = Formula.replace("[H]o", "Ho");
+                            Formula = Formula.replace("[H]p", "Hp");
+                            Formula = Formula.replace("[H]q", "Hq");
+                            Formula = Formula.replace("[H]r", "Hr");
+                            Formula = Formula.replace("[H]s", "Hs");
+                            Formula = Formula.replace("[H]t", "Ht");
+                            Formula = Formula.replace("[H]u", "Hu");
+                            Formula = Formula.replace("[H]v", "Hv");
+                            Formula = Formula.replace("[H]w", "Hw");
+                            Formula = Formula.replace("[H]x", "Hx");
+                            Formula = Formula.replace("[H]y", "Hy");
+                            Formula = Formula.replace("[H]z", "Hz");
 //                    }
 //                    while (Formula.contains("N")){
 //                        Formula = Formula.replace("N", "[N]");
@@ -905,33 +1047,33 @@ public class OpenBabel extends MainActivity {
 //                        Formula = Formula.replace("[N]z", "Nz");
 //                    }
 //                    while (Formula.contains("O")){
-                        Formula = Formula.replace("O", "[O]");
-                        Formula = Formula.replace("[O]a", "Oa");
-                        Formula = Formula.replace("[O]b", "Ob");
-                        Formula = Formula.replace("[O]c", "Oc");
-                        Formula = Formula.replace("[O]d", "Od");
-                        Formula = Formula.replace("[O]e", "Oe");
-                        Formula = Formula.replace("[O]f", "Of");
-                        Formula = Formula.replace("[O]g", "Og");
-                        Formula = Formula.replace("[O]h", "Oh");
-                        Formula = Formula.replace("[O]i", "Oi");
-                        Formula = Formula.replace("[O]j", "Oj");
-                        Formula = Formula.replace("[O]k", "Ok");
-                        Formula = Formula.replace("[O]l", "Ol");
-                        Formula = Formula.replace("[O]m", "Om");
-                        Formula = Formula.replace("[O]n", "On");
-                        Formula = Formula.replace("[O]o", "Oo");
-                        Formula = Formula.replace("[O]p", "Op");
-                        Formula = Formula.replace("[O]q", "Oq");
-                        Formula = Formula.replace("[O]r", "Or");
-                        Formula = Formula.replace("[O]s", "Os");
-                        Formula = Formula.replace("[O]t", "Ot");
-                        Formula = Formula.replace("[O]u", "Ou");
-                        Formula = Formula.replace("[O]v", "Ov");
-                        Formula = Formula.replace("[O]w", "Ow");
-                        Formula = Formula.replace("[O]x", "Ox");
-                        Formula = Formula.replace("[O]y", "Oy");
-                        Formula = Formula.replace("[O]z", "Oz");
+                            Formula = Formula.replace("O", "[O]");
+                            Formula = Formula.replace("[O]a", "Oa");
+                            Formula = Formula.replace("[O]b", "Ob");
+                            Formula = Formula.replace("[O]c", "Oc");
+                            Formula = Formula.replace("[O]d", "Od");
+                            Formula = Formula.replace("[O]e", "Oe");
+                            Formula = Formula.replace("[O]f", "Of");
+                            Formula = Formula.replace("[O]g", "Og");
+                            Formula = Formula.replace("[O]h", "Oh");
+                            Formula = Formula.replace("[O]i", "Oi");
+                            Formula = Formula.replace("[O]j", "Oj");
+                            Formula = Formula.replace("[O]k", "Ok");
+                            Formula = Formula.replace("[O]l", "Ol");
+                            Formula = Formula.replace("[O]m", "Om");
+                            Formula = Formula.replace("[O]n", "On");
+                            Formula = Formula.replace("[O]o", "Oo");
+                            Formula = Formula.replace("[O]p", "Op");
+                            Formula = Formula.replace("[O]q", "Oq");
+                            Formula = Formula.replace("[O]r", "Or");
+                            Formula = Formula.replace("[O]s", "Os");
+                            Formula = Formula.replace("[O]t", "Ot");
+                            Formula = Formula.replace("[O]u", "Ou");
+                            Formula = Formula.replace("[O]v", "Ov");
+                            Formula = Formula.replace("[O]w", "Ow");
+                            Formula = Formula.replace("[O]x", "Ox");
+                            Formula = Formula.replace("[O]y", "Oy");
+                            Formula = Formula.replace("[O]z", "Oz");
 //                    }
 //                    while (Formula.contains("S")){
 //                        Formula = Formula.replace("S", "[S]");
@@ -994,68 +1136,68 @@ public class OpenBabel extends MainActivity {
 //                    } catch (Exception e) {
 //                        e.printStackTrace();
 //                    }
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        try {
-                            exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
                             try {
-                                // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                exec("cp "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName+" "+getFilesDir()+"/"+InputfileName+".mop");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/opt/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/opt/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/opt/results");
+                                String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
+                                String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".arc");
+                                FileOutputStream fileout9 = openFileOutput(InputfileName+".mops", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
+                                outputWriter9.write(Sed4);
+                                outputWriter9.close();
+                                exec("cp "+getFilesDir()+"/"+InputfileName+".mops "+getFilesDir()+"/openbabel/solv/thermo");
+                                String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                                FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
+                                OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                                outputWriter10.write("THERMO(298,298) LET "+Sed3);
+                                outputWriter10.write("\n");
+                                outputWriter10.write("\n");
+                                outputWriter10.write(Sed5);
+                                outputWriter10.close();
+                                exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
+                                exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
+                                try {
+                                    // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
+                                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
+                                exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
+                                String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
+                                FileOutputStream fileout13 = openFileOutput(InputfileName+"_s.temp",MODE_PRIVATE);
+                                OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
+                                outputWriter13.write(Grep2);
+                                outputWriter13.close();
+                                String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s.temp");
+                                FileOutputStream fileout14 = openFileOutput(DatasetName+"_s.txt",MODE_APPEND);
+                                OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
+                                outputWriter14.write(InputfileName+" ");
+                                outputWriter14.write(Formula+" ");
+                                outputWriter14.write(Method+" ");
+                                outputWriter14.write(Sed6);
+                                outputWriter14.close();
+                                exec("rm "+getFilesDir()+"/"+InputfileName+"_s.temp");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/thermo/results");
+                                exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/opt/results");
-                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                            exec("cp "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/opt/results");
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/opt/results");
-                            String Sed3 = exec("sed -n 1p "+getFilesDir()+"/openbabel/solv/opt/"+InputfileName);
-                            String Sed4 = exec("sed -e 1,/FINAL/d "+getFilesDir()+"/openbabel/solv/thermo/results/"+InputfileName+".arc");
-                            FileOutputStream fileout9 = openFileOutput(InputfileName+".mops", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter9 = new OutputStreamWriter(fileout9);
-                            outputWriter9.write(Sed4);
-                            outputWriter9.close();
-                            exec("cp "+getFilesDir()+"/"+InputfileName+".mops "+getFilesDir()+"/openbabel/solv/thermo");
-                            String Sed5 = exec("sed -e 1,3d "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
-                            FileOutputStream fileout10 = openFileOutput(InputfileName+".mop", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
-                            outputWriter10.write("THERMO(298,298) LET "+Sed3);
-                            outputWriter10.write("\n");
-                            outputWriter10.write("\n");
-                            outputWriter10.write(Sed5);
-                            outputWriter10.close();
-                            exec("rm "+getFilesDir()+"/openbabel/solv/thermo/"+InputfileName+".mops");
-                            exec("rm "+getFilesDir()+"/"+InputfileName+".mops");
-                            try {
-                                // exec(getApplicationInfo().nativeLibraryDir+"/libmopac.so "+getFilesDir()+"/"+InputfileName);
-				com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; "+getApplicationInfo().nativeLibraryDir+"/libmopac.so "+InputfileName);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".mop "+getFilesDir()+"/openbabel/solv/thermo/results");
-                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".out");
-                            exec("chmod 755 "+getFilesDir()+"/"+InputfileName+".arc");
-                            String Grep2 = exec("grep -e TOT. "+getFilesDir()+"/"+InputfileName+".out");
-                            FileOutputStream fileout13 = openFileOutput(InputfileName+"_s.temp",MODE_PRIVATE);
-                            OutputStreamWriter outputWriter13 = new OutputStreamWriter(fileout13);
-                            outputWriter13.write(Grep2);
-                            outputWriter13.close();
-                            String Sed6 = exec("sed -e 2d "+getFilesDir()+"/"+InputfileName+"_s.temp");
-                            FileOutputStream fileout14 = openFileOutput(DatasetName+"_s.txt",MODE_APPEND);
-                            OutputStreamWriter outputWriter14 = new OutputStreamWriter(fileout14);
-                            outputWriter14.write(InputfileName+" ");
-                            outputWriter14.write(Formula+" ");
-                            outputWriter14.write(Method+" ");
-                            outputWriter14.write(Sed6);
-                            outputWriter14.close();
-                            exec("rm "+getFilesDir()+"/"+InputfileName+"_s.temp");
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".out "+getFilesDir()+"/openbabel/solv/thermo/results");
-                            exec("mv "+getFilesDir()+"/"+InputfileName+".arc "+getFilesDir()+"/openbabel/solv/thermo/results");
-                        } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+                        }
 
 
                         try {
@@ -1069,32 +1211,32 @@ public class OpenBabel extends MainActivity {
                             outputWriter15.write(RawOutput_g);
                             outputWriter15.close();
 
-                        String RawOutput_s = exec("cat "+getFilesDir()+"/"+DatasetName+"_s.txt");
+                            String RawOutput_s = exec("cat "+getFilesDir()+"/"+DatasetName+"_s.txt");
                             while (RawOutput_s.contains("  ")){  //2 spaces
                                 RawOutput_s = RawOutput_s.replace("  ", " "); //(2 spaces, 1 space)
                             }
-                        FileOutputStream fileout16 = openFileOutput(DatasetName+"_thermochemistry_s.txt",MODE_PRIVATE);
-                        OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                            FileOutputStream fileout16 = openFileOutput(DatasetName+"_thermochemistry_s.txt",MODE_PRIVATE);
+                            OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
                             outputWriter16.write(RawOutput_s);
-                        outputWriter16.close();
+                            outputWriter16.close();
 
                         } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                            e.printStackTrace();
+                        }
 
-                exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
-                exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
-                exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
+                        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
+                        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
+                        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
 
-                try {
+                        try {
 
-                    exec("chmod -R 755 "+getFilesDir());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                            exec("chmod -R 755 "+getFilesDir());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                exec("mv "+getFilesDir()+"/"+DatasetName+"_g.dat "+getFilesDir()+"/openbabel/gas");
-                exec("mv "+getFilesDir()+"/"+DatasetName+"_s.dat "+getFilesDir()+"/openbabel/solv");
+                        exec("mv "+getFilesDir()+"/"+DatasetName+"_g.dat "+getFilesDir()+"/openbabel/gas");
+                        exec("mv "+getFilesDir()+"/"+DatasetName+"_s.dat "+getFilesDir()+"/openbabel/solv");
 
                         exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/openbabel/gas");
                         exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/openbabel/solv");
@@ -1123,7 +1265,7 @@ public class OpenBabel extends MainActivity {
                             while (Raw_g.contains("= + e- =")){  //2 spaces
                                 Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_g.contains("=  + e- =")){  //2 spaces
+                            while (Raw_g.contains("=  + e- =")){  //2 spaces
                                 Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout115 = openFileOutput("Database_g1.dat",MODE_PRIVATE);
@@ -1170,7 +1312,7 @@ public class OpenBabel extends MainActivity {
                             while (Raw_s.contains("= + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_s.contains("=  + e- =")){  //2 spaces
+                            while (Raw_s.contains("=  + e- =")){  //2 spaces
                                 Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
@@ -1213,7 +1355,7 @@ public class OpenBabel extends MainActivity {
                             while (Raw_ss01.contains("= + e- =")){  //2 spaces
                                 Raw_ss01 = Raw_ss01.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
-			    while (Raw_ss01.contains("=  + e- =")){  //2 spaces
+                            while (Raw_ss01.contains("=  + e- =")){  //2 spaces
                                 Raw_ss01 = Raw_ss01.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
                             }
                             FileOutputStream fileout2216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
@@ -1295,8 +1437,8 @@ public class OpenBabel extends MainActivity {
                         exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
 
                         String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-		String DatasetName1 = DatasetName0.replace(" ","_");
-		String DatasetName = DatasetName1.replace(",",".");
+                        String DatasetName1 = DatasetName0.replace(" ","_");
+                        String DatasetName = DatasetName1.replace(",",".");
                         exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
                         exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
                         exec("chmod -R 755 "+getFilesDir()+"/PHASES");
@@ -1337,12 +1479,12 @@ public class OpenBabel extends MainActivity {
 
 
 //                        exec("rm -rf "+getFilesDir()+"/openbabel");
-                onFinish();
+                        onFinish();
                     }
-                public void onFinish(){
-                progressDialog.dismiss();
-            }
-        }.start();
+                    public void onFinish(){
+                        progressDialog.dismiss();
+                    }
+                }.start();
 
             }
         };
@@ -1426,7 +1568,7 @@ public class OpenBabel extends MainActivity {
                     if (!file.isFile()) continue;
 
                     try{
-                    String InputfileName = file.getName();
+                        String InputfileName = file.getName();
                         exec("rm "+getFilesDir()+"/openbabel/solv/opt/formula/"+InputfileName+".formula");
                         exec("rm "+getFilesDir()+"/openbabel/solv/opt/smiles/"+InputfileName+".smi");
                         exec("rm "+getFilesDir()+"/openbabel/solv/opt/xyz/"+InputfileName+".xyz");

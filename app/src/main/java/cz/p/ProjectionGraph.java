@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -17,10 +19,12 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -106,6 +110,29 @@ public class ProjectionGraph extends MainActivity {
         contentXyzLabel = (TextView) findViewById(R.id.contentXyzLabel);
         contentXyz = (EditText) findViewById(R.id.contentXyz);
         contentXyz.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        contentXyz.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                contentXyz.removeTextChangedListener(this);
+                String text = contentXyz.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                contentXyz.getText().clear();
+                contentXyz.append(colorized_numbers(text));
+                // place the cursor at the original position
+                contentXyz.setSelection(startChanged+countChanged);
+                contentXyz.addTextChangedListener(this);
+            }
+        });
 
         openExtXyz = (Button) findViewById(R.id.openExtXyz);
         openExtXyz.setOnClickListener(openExtXyzClick);
@@ -869,7 +896,7 @@ public class ProjectionGraph extends MainActivity {
     public void output(final String str) {
         Runnable proc = new Runnable() {
             public void run() {
-                contentXyz.setText(str);
+                contentXyz.setText(colorized_numbers(str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc);

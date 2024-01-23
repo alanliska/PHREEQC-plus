@@ -1,5 +1,7 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_xtb;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,8 +10,10 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,18 +84,133 @@ public class Xtb1 extends MainActivity {
         xtb_cmd_label = (TextView) findViewById(R.id.xtb_cmd_label);
         xtb_cmd_begin = (EditText) findViewById(R.id.xtb_cmd_begin);
         xtb_cmd_begin.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        xtb_cmd_begin.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                xtb_cmd_begin.removeTextChangedListener(this);
+                String text = xtb_cmd_begin.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                xtb_cmd_begin.getText().clear();
+                xtb_cmd_begin.append(colorized_xtb(text));
+                // place the cursor at the original position
+                xtb_cmd_begin.setSelection(startChanged+countChanged);
+                xtb_cmd_begin.addTextChangedListener(this);
+            }
+        });
         xtb_solvation_label = (TextView) findViewById(R.id.xtb_solvation_label);
         xtb_solvation = (EditText) findViewById(R.id.xtb_solvation);
         xtb_solvation.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        xtb_solvation.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                xtb_solvation.removeTextChangedListener(this);
+                String text = xtb_solvation.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                xtb_solvation.getText().clear();
+                xtb_solvation.append(colorized_xtb(text));
+                // place the cursor at the original position
+                xtb_solvation.setSelection(startChanged+countChanged);
+                xtb_solvation.addTextChangedListener(this);
+            }
+        });
         iupac_label = (TextView) findViewById(R.id.iupac_label);
         iupac = (EditText) findViewById(R.id.iupac);
         iupac.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        iupac.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                iupac.removeTextChangedListener(this);
+                String text = iupac.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                iupac.getText().clear();
+                iupac.append(colorized_xtb(text));
+                // place the cursor at the original position
+                iupac.setSelection(startChanged+countChanged);
+                iupac.addTextChangedListener(this);
+            }
+        });
         formula_label = (TextView) findViewById(R.id.formula_label);
         formula = (EditText) findViewById(R.id.formula);
         formula.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        formula.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                formula.removeTextChangedListener(this);
+                String text = formula.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                formula.getText().clear();
+                formula.append(colorized_xtb(text));
+                // place the cursor at the original position
+                formula.setSelection(startChanged+countChanged);
+                formula.addTextChangedListener(this);
+            }
+        });
         smiles_label = (TextView) findViewById(R.id.smiles_label);
         smiles = (EditText) findViewById(R.id.smiles);
         smiles.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        smiles.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                smiles.removeTextChangedListener(this);
+                String text = smiles.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                smiles.getText().clear();
+                smiles.append(colorized_xtb(text));
+                // place the cursor at the original position
+                smiles.setSelection(startChanged+countChanged);
+                smiles.addTextChangedListener(this);
+            }
+        });
         xtb_opsin = (Button) findViewById(R.id.xtb_opsin);
         xtb_opsin.setOnClickListener(xtb_opsin_click);
         xtb_continue = (Button) findViewById(R.id.xtb_continue);
@@ -473,13 +592,13 @@ public class Xtb1 extends MainActivity {
                 String InputfileName1 = InputfileName0.replace(" ","_");
                 String InputfileName = InputfileName1.replace(",",".");
                 try {
-                FileOutputStream fileout2 = openFileOutput("Input.iupac", MODE_PRIVATE);
-                OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
-                outputWriter2.write(InputfileName);
-                outputWriter2.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                    FileOutputStream fileout2 = openFileOutput("Input.iupac", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(InputfileName);
+                    outputWriter2.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 File filePath = new File(getFilesDir()+File.separator+"openbabel");
                 try {
@@ -524,9 +643,9 @@ public class Xtb1 extends MainActivity {
                     exec("cp "+getFilesDir()+"/xtb-solv.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".solv");
                     exec("chmod 755 -R "+getFilesDir());
                     // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+File.separator+"openbabel"+File.separator+InputfileName+".smi -oxyz --gen3d");
-		    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
-		    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
-		    
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi ./openbabel/"+InputfileName+".smi -oxyz --gen3d > ObabelOutput.txt");
+                    String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
                     FileOutputStream fileout4 = openFileOutput(InputfileName+".xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter4 = new OutputStreamWriter(fileout4);
                     outputWriter4.write(ObabelOutput);
@@ -615,7 +734,7 @@ public class Xtb1 extends MainActivity {
     public void view_comm(final String view_comm_str) {
         Runnable view_comm_proc = new Runnable() {
             public void run() {
-                xtb_cmd_begin.setText(view_comm_str);
+                xtb_cmd_begin.setText(colorized_xtb(view_comm_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(view_comm_proc);
@@ -624,7 +743,7 @@ public class Xtb1 extends MainActivity {
     public void view_solv(final String view_solv_str) {
         Runnable view_solv_proc = new Runnable() {
             public void run() {
-                xtb_solvation.setText(view_solv_str);
+                xtb_solvation.setText(colorized_xtb(view_solv_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(view_solv_proc);
@@ -633,7 +752,7 @@ public class Xtb1 extends MainActivity {
     public void iupac_view(final String iupac_str) {
         Runnable iupac_proc = new Runnable() {
             public void run() {
-                iupac.setText(iupac_str);
+                iupac.setText(colorized_xtb(iupac_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(iupac_proc);
@@ -642,7 +761,7 @@ public class Xtb1 extends MainActivity {
     public void formula_view(final String formula_str) {
         Runnable formula_proc = new Runnable() {
             public void run() {
-                formula.setText(formula_str);
+                formula.setText(colorized_xtb(formula_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(formula_proc);
@@ -651,7 +770,7 @@ public class Xtb1 extends MainActivity {
     public void smiles_view(final String smiles_str) {
         Runnable smiles_proc = new Runnable() {
             public void run() {
-                smiles.setText(smiles_str);
+                smiles.setText(colorized_xtb(smiles_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(smiles_proc);
@@ -660,7 +779,7 @@ public class Xtb1 extends MainActivity {
     public void xtb_view(final String xtb_view_str) {
         Runnable xtb_view_proc = new Runnable() {
             public void run() {
-                xtb_input.setText(xtb_view_str);
+                xtb_input.setText(colorized_xtb(xtb_view_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(xtb_view_proc);
@@ -669,7 +788,7 @@ public class Xtb1 extends MainActivity {
     public void xtb_filelist_view(final String xtb_filelist_str) {
         Runnable xtb_filelist_proc = new Runnable() {
             public void run() {
-                xtb_filelist.setText(xtb_filelist_str);
+                xtb_filelist.setText(colorized_xtb(xtb_filelist_str), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(xtb_filelist_proc);
@@ -711,41 +830,41 @@ public class Xtb1 extends MainActivity {
         xtb_exit_click = new View.OnClickListener() {
             public void onClick(View v) {
 
-                        File filePath6 = new File(getFilesDir()+File.separator+"openbabel/gas/opt/results");
-                        try {
-                            if (!filePath6.exists()) {
-                                filePath6.mkdirs();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                File filePath6 = new File(getFilesDir()+File.separator+"openbabel/gas/opt/results");
+                try {
+                    if (!filePath6.exists()) {
+                        filePath6.mkdirs();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                        File filePath8 = new File(getFilesDir()+File.separator+"openbabel/gas/thermo/results");
-                        try {
-                            if (!filePath8.exists()) {
-                                filePath8.mkdirs();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                File filePath8 = new File(getFilesDir()+File.separator+"openbabel/gas/thermo/results");
+                try {
+                    if (!filePath8.exists()) {
+                        filePath8.mkdirs();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                        File filePath9 = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
-                        try {
-                            if (!filePath9.exists()) {
-                                filePath9.mkdirs();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                File filePath9 = new File(getFilesDir()+File.separator+"openbabel/solv/opt/results");
+                try {
+                    if (!filePath9.exists()) {
+                        filePath9.mkdirs();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                        File filePath10 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
-                        try {
-                            if (!filePath10.exists()) {
-                                filePath10.mkdirs();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                File filePath10 = new File(getFilesDir()+File.separator+"openbabel/solv/thermo/results");
+                try {
+                    if (!filePath10.exists()) {
+                        filePath10.mkdirs();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 exec("chmod 755 -R "+getFilesDir());
 
@@ -781,341 +900,341 @@ public class Xtb1 extends MainActivity {
 
     // Ignore the bad AsyncTask usage.
     final class RunCommandTask extends AsyncTask<String, Void, CommandResult> {
-    private ProgressDialog dialog;
+        private ProgressDialog dialog;
 
-    @Override protected void onPreExecute() {
-        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-        String DatasetName1 = DatasetName0.replace(" ","_");
-        String DatasetName = DatasetName1.replace(",",".");
+        @Override protected void onPreExecute() {
+            String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+            String DatasetName1 = DatasetName0.replace(" ","_");
+            String DatasetName = DatasetName1.replace(",",".");
 
-        // this is cancellable progress dialog
-        dialog = new ProgressDialog(Xtb1.this);
-        dialog.setTitle("Please wait...");
-        dialog.setMessage("Performing XTB calculations on species contained in dataset: "+DatasetName0);
-        dialog.setCancelable(false);
-        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog2, int which) {
-                dialog2.dismiss();
-            }
-        });
-        dialog.show();
+            // this is cancellable progress dialog
+            dialog = new ProgressDialog(Xtb1.this);
+            dialog.setTitle("Please wait...");
+            dialog.setMessage("Performing XTB calculations on species contained in dataset: "+DatasetName0);
+            dialog.setCancelable(false);
+            dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog2, int which) {
+                    dialog2.dismiss();
+                }
+            });
+            dialog.show();
 
-        // this was the original non-cancellable progress dialog
+            // this was the original non-cancellable progress dialog
 //        dialog = ProgressDialog.show(Xtb1.this, "Please wait...", "Calculation is in progress.");
 //        dialog.setCancelable(true);
 //        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", (dialog2, which) -> dialog2.dismiss());
 
-    }
-
-    @Override protected CommandResult doInBackground(String... commands) {
-        return com.jrummyapps.android.shell.Shell.SH.run(commands);
-    }
-
-    @Override protected void onPostExecute(CommandResult result) {
-        String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
-        String DatasetName1 = DatasetName0.replace(" ","_");
-        String DatasetName = DatasetName1.replace(",",".");
-
-        exec("mv "+getFilesDir()+"/DatasetName_g.txt "+getFilesDir()+"/"+DatasetName+"_g.txt");
-        exec("mv "+getFilesDir()+"/DatasetName_s.txt "+getFilesDir()+"/"+DatasetName+"_s.txt");
-
-        try {
-            String RawOutput_g = exec("cat "+getFilesDir()+"/"+DatasetName+"_g.txt");
-            while (RawOutput_g.contains("  ")){  //2 spaces
-                RawOutput_g = RawOutput_g.replace("  ", " "); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout15 = openFileOutput(DatasetName+"_thermochemistry_g.txt",MODE_PRIVATE);
-            OutputStreamWriter outputWriter15 = new OutputStreamWriter(fileout15);
-            outputWriter15.write(RawOutput_g);
-            outputWriter15.close();
-
-            String RawOutput_s = exec("cat "+getFilesDir()+"/"+DatasetName+"_s.txt");
-            while (RawOutput_s.contains("  ")){  //2 spaces
-                RawOutput_s = RawOutput_s.replace("  ", " "); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout16 = openFileOutput(DatasetName+"_thermochemistry_s.txt",MODE_PRIVATE);
-            OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
-            outputWriter16.write(RawOutput_s);
-            outputWriter16.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
-        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
-        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
-        exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
-
-        try {
-
-            exec("chmod -R 755 "+getFilesDir());
-        } catch (Exception e) {
-            e.printStackTrace();
+        @Override protected CommandResult doInBackground(String... commands) {
+            return com.jrummyapps.android.shell.Shell.SH.run(commands);
         }
 
-        exec("mv "+getFilesDir()+"/"+DatasetName+"_g.dat "+getFilesDir()+"/openbabel/gas");
-        exec("mv "+getFilesDir()+"/"+DatasetName+"_s.dat "+getFilesDir()+"/openbabel/solv");
+        @Override protected void onPostExecute(CommandResult result) {
+            String DatasetName0 = exec("cat "+getFilesDir()+"/dataset-name.txt");
+            String DatasetName1 = DatasetName0.replace(" ","_");
+            String DatasetName = DatasetName1.replace(",",".");
 
-        exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/openbabel/gas");
-        exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/openbabel/solv");
+            exec("mv "+getFilesDir()+"/DatasetName_g.txt "+getFilesDir()+"/"+DatasetName+"_g.txt");
+            exec("mv "+getFilesDir()+"/DatasetName_s.txt "+getFilesDir()+"/"+DatasetName+"_s.txt");
+
+            try {
+                String RawOutput_g = exec("cat "+getFilesDir()+"/"+DatasetName+"_g.txt");
+                while (RawOutput_g.contains("  ")){  //2 spaces
+                    RawOutput_g = RawOutput_g.replace("  ", " "); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout15 = openFileOutput(DatasetName+"_thermochemistry_g.txt",MODE_PRIVATE);
+                OutputStreamWriter outputWriter15 = new OutputStreamWriter(fileout15);
+                outputWriter15.write(RawOutput_g);
+                outputWriter15.close();
+
+                String RawOutput_s = exec("cat "+getFilesDir()+"/"+DatasetName+"_s.txt");
+                while (RawOutput_s.contains("  ")){  //2 spaces
+                    RawOutput_s = RawOutput_s.replace("  ", " "); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout16 = openFileOutput(DatasetName+"_thermochemistry_s.txt",MODE_PRIVATE);
+                OutputStreamWriter outputWriter16 = new OutputStreamWriter(fileout16);
+                outputWriter16.write(RawOutput_s);
+                outputWriter16.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/PHASES/Thermochemistry_g.txt");
+            exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/SOLUTION_SPECIES/Thermochemistry_s.txt");
+            exec("cp "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/PSEUDOPHASES/Thermochemistry_s.txt");
+
+            try {
+
+                exec("chmod -R 755 "+getFilesDir());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            exec("mv "+getFilesDir()+"/"+DatasetName+"_g.dat "+getFilesDir()+"/openbabel/gas");
+            exec("mv "+getFilesDir()+"/"+DatasetName+"_s.dat "+getFilesDir()+"/openbabel/solv");
+
+            exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_g.txt "+getFilesDir()+"/openbabel/gas");
+            exec("mv "+getFilesDir()+"/"+DatasetName+"_thermochemistry_s.txt "+getFilesDir()+"/openbabel/solv");
 
 //for sure:
-        exec("rm "+getFilesDir()+"/"+DatasetName+"_g.txt");
-        exec("rm "+getFilesDir()+"/"+DatasetName+"_s.txt");
+            exec("rm "+getFilesDir()+"/"+DatasetName+"_g.txt");
+            exec("rm "+getFilesDir()+"/"+DatasetName+"_s.txt");
 //for case of fall down - the same as in MainActivity.java in OnResume:
 //                        exec("chmod 755 "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
 
 
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.bas");
-        exec("chmod -R 755 "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b");
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b");
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.b "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.bas");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.bas");
+            exec("chmod -R 755 "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PHASES/DatabaseMakerPseudoPhasesXTB.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.b "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.bas");
 //            exec("chmod -R 755 "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_sol.b");
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.b");
-        exec("chmod 755 "+getFilesDir()+"/PSEUDOPHASES/Database_solid_solXTB.dat");
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.bas");
-        exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b");
-        exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/PSEUDOPHASES/DatabaseMakerPseudoPhases_solid_solXTB.b");
+            exec("chmod 755 "+getFilesDir()+"/PSEUDOPHASES/Database_solid_solXTB.dat");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbbc.so -o "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.bas");
+            exec("chmod -R 755 "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b");
+            exec(getApplicationInfo().nativeLibraryDir+"/libxbvm.so "+getFilesDir()+"/SOLUTION_SPECIES/DatabaseMakerSolutionPhaseXTB.b");
 
 
-        try {
-            String Raw_g = exec("cat "+getFilesDir()+"/PHASES/Database_g.dat");
-            while (Raw_g.contains("= + e- =")){  //2 spaces
-                Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+            try {
+                String Raw_g = exec("cat "+getFilesDir()+"/PHASES/Database_g.dat");
+                while (Raw_g.contains("= + e- =")){  //2 spaces
+                    Raw_g = Raw_g.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                while (Raw_g.contains("=  + e- =")){  //2 spaces
+                    Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout115 = openFileOutput("Database_g1.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter115 = new OutputStreamWriter(fileout115);
+                outputWriter115.write(Raw_g);
+                outputWriter115.close();
+
+                String Raw_g2 = exec("cat "+getFilesDir()+"/Database_g1.dat");
+                while (Raw_g2.contains("(g) ;  = ")){  //2 spaces
+                    Raw_g2 = Raw_g2.replace("(g) ;  = ", ""); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout215 = openFileOutput("Database_g2.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter215 = new OutputStreamWriter(fileout215);
+                outputWriter215.write(Raw_g2);
+                outputWriter215.close();
+
+                /// new piece of code:
+                String Raw_g3 = exec("cat "+getFilesDir()+"/Database_g2.dat");
+                while (Raw_g3.contains("[H]")){
+                    Raw_g3 = Raw_g3.replace("[H]", "H");
+                }
+                FileOutputStream fileout2155 = openFileOutput("Database_g3.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter2155 = new OutputStreamWriter(fileout2155);
+                outputWriter2155.write(Raw_g3);
+                outputWriter2155.close();
+
+                String Raw_g4 = exec("cat "+getFilesDir()+"/Database_g3.dat");
+                while (Raw_g4.contains("[O]")){
+                    Raw_g4 = Raw_g4.replace("[O]", "O");
+                }
+                FileOutputStream fileout2156 = openFileOutput("Database_g4.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter2156 = new OutputStreamWriter(fileout2156);
+                outputWriter2156.write(Raw_g4);
+                outputWriter2156.close();
+                ///
+
+
+                String Raw_s = exec("cat "+getFilesDir()+"/SOLUTION_SPECIES/Database_s.dat");
+                while (Raw_s.contains("= + e- =")){  //2 spaces
+                    Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                while (Raw_s.contains("=  + e- =")){  //2 spaces
+                    Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter315 = new OutputStreamWriter(fileout315);
+                outputWriter315.write(Raw_s);
+                outputWriter315.close();
+
+                String Raw_s2 = exec("cat "+getFilesDir()+"/Database_s1.dat");
+                while (Raw_s2.contains("(g) ;  = ")){  //2 spaces
+                    Raw_s2 = Raw_s2.replace("(g) ;  = ", ""); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout415 = openFileOutput("Database_s2.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter415 = new OutputStreamWriter(fileout415);
+                outputWriter415.write(Raw_s2);
+                outputWriter415.close();
+
+                /// new piece of code:
+                String Raw_s3 = exec("cat "+getFilesDir()+"/Database_s2.dat");
+                while (Raw_s3.contains("[H]")){
+                    Raw_s3 = Raw_s3.replace("[H]", "H");
+                }
+                FileOutputStream fileout4155 = openFileOutput("Database_s3.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter4155 = new OutputStreamWriter(fileout4155);
+                outputWriter4155.write(Raw_s3);
+                outputWriter4155.close();
+
+                String Raw_s4 = exec("cat "+getFilesDir()+"/Database_s3.dat");
+                while (Raw_s4.contains("[O]")){
+                    Raw_s4 = Raw_s4.replace("[O]", "O");
+                }
+                FileOutputStream fileout4156 = openFileOutput("Database_s4.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter4156 = new OutputStreamWriter(fileout4156);
+                outputWriter4156.write(Raw_s4);
+                outputWriter4156.close();
+                ///
+
+                exec("chmod 755 "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
+
+                String Raw_ss01 = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
+                while (Raw_ss01.contains("= + e- =")){  //2 spaces
+                    Raw_ss01 = Raw_ss01.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                while (Raw_ss01.contains("=  + e- =")){  //2 spaces
+                    Raw_ss01 = Raw_ss01.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout2216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter2216 = new OutputStreamWriter(fileout2216);
+                outputWriter2216.write(Raw_ss01);
+                outputWriter2216.close();
+
+                String Raw_ss02 = exec("cat "+getFilesDir()+"/Database_solid_sol1.dat");
+                while (Raw_ss02.contains("(solv) ;  = ")){  //2 spaces
+                    Raw_ss02 = Raw_ss02.replace("(solv) ;  = ", ""); //(2 spaces, 1 space)
+                }
+                FileOutputStream fileout2217 = openFileOutput("Database_solid_sol2.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter2217 = new OutputStreamWriter(fileout2217);
+                outputWriter2217.write(Raw_ss02);
+                outputWriter2217.close();
+
+                /// new piece of code:
+                String Raw_ss03 = exec("cat "+getFilesDir()+"/Database_solid_sol2.dat");
+                while (Raw_ss03.contains("[H]")){
+                    Raw_ss03 = Raw_ss03.replace("[H]", "H");
+                }
+                FileOutputStream fileout6155 = openFileOutput("Database_solid_sol3.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter6155 = new OutputStreamWriter(fileout6155);
+                outputWriter6155.write(Raw_ss03);
+                outputWriter6155.close();
+
+                String Raw_ss04 = exec("cat "+getFilesDir()+"/Database_solid_sol3.dat");
+                while (Raw_ss04.contains("[O]")){
+                    Raw_ss04 = Raw_ss04.replace("[O]", "O");
+                }
+                FileOutputStream fileout6156 = openFileOutput("Database_solid_sol4.dat",MODE_PRIVATE);
+                OutputStreamWriter outputWriter6156 = new OutputStreamWriter(fileout6156);
+                outputWriter6156.write(Raw_ss04);
+                outputWriter6156.close();
+                ///
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            while (Raw_g.contains("=  + e- =")){  //2 spaces
-                Raw_g = Raw_g.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout115 = openFileOutput("Database_g1.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter115 = new OutputStreamWriter(fileout115);
-            outputWriter115.write(Raw_g);
-            outputWriter115.close();
 
-            String Raw_g2 = exec("cat "+getFilesDir()+"/Database_g1.dat");
-            while (Raw_g2.contains("(g) ;  = ")){  //2 spaces
-                Raw_g2 = Raw_g2.replace("(g) ;  = ", ""); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout215 = openFileOutput("Database_g2.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter215 = new OutputStreamWriter(fileout215);
-            outputWriter215.write(Raw_g2);
-            outputWriter215.close();
+            try {
+                String Fastchem_database_content = exec("cat "+getFilesDir()+"/PHASES/Fastchem_g.dat");
 
-            /// new piece of code:
-            String Raw_g3 = exec("cat "+getFilesDir()+"/Database_g2.dat");
-            while (Raw_g3.contains("[H]")){
-                Raw_g3 = Raw_g3.replace("[H]", "H");
-            }
-            FileOutputStream fileout2155 = openFileOutput("Database_g3.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter2155 = new OutputStreamWriter(fileout2155);
-            outputWriter2155.write(Raw_g3);
-            outputWriter2155.close();
-
-            String Raw_g4 = exec("cat "+getFilesDir()+"/Database_g3.dat");
-            while (Raw_g4.contains("[O]")){
-                Raw_g4 = Raw_g4.replace("[O]", "O");
-            }
-            FileOutputStream fileout2156 = openFileOutput("Database_g4.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter2156 = new OutputStreamWriter(fileout2156);
-            outputWriter2156.write(Raw_g4);
-            outputWriter2156.close();
-            ///
-
-
-            String Raw_s = exec("cat "+getFilesDir()+"/SOLUTION_SPECIES/Database_s.dat");
-            while (Raw_s.contains("= + e- =")){  //2 spaces
-                Raw_s = Raw_s.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
-            }
-            while (Raw_s.contains("=  + e- =")){  //2 spaces
-                Raw_s = Raw_s.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout315 = openFileOutput("Database_s1.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter315 = new OutputStreamWriter(fileout315);
-            outputWriter315.write(Raw_s);
-            outputWriter315.close();
-
-            String Raw_s2 = exec("cat "+getFilesDir()+"/Database_s1.dat");
-            while (Raw_s2.contains("(g) ;  = ")){  //2 spaces
-                Raw_s2 = Raw_s2.replace("(g) ;  = ", ""); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout415 = openFileOutput("Database_s2.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter415 = new OutputStreamWriter(fileout415);
-            outputWriter415.write(Raw_s2);
-            outputWriter415.close();
-
-            /// new piece of code:
-            String Raw_s3 = exec("cat "+getFilesDir()+"/Database_s2.dat");
-            while (Raw_s3.contains("[H]")){
-                Raw_s3 = Raw_s3.replace("[H]", "H");
-            }
-            FileOutputStream fileout4155 = openFileOutput("Database_s3.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter4155 = new OutputStreamWriter(fileout4155);
-            outputWriter4155.write(Raw_s3);
-            outputWriter4155.close();
-
-            String Raw_s4 = exec("cat "+getFilesDir()+"/Database_s3.dat");
-            while (Raw_s4.contains("[O]")){
-                Raw_s4 = Raw_s4.replace("[O]", "O");
-            }
-            FileOutputStream fileout4156 = openFileOutput("Database_s4.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter4156 = new OutputStreamWriter(fileout4156);
-            outputWriter4156.write(Raw_s4);
-            outputWriter4156.close();
-            ///
-
-            exec("chmod 755 "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
-
-            String Raw_ss01 = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Database_solid_sol.dat");
-            while (Raw_ss01.contains("= + e- =")){  //2 spaces
-                Raw_ss01 = Raw_ss01.replace("= + e- =", "+ e- ="); //(2 spaces, 1 space)
-            }
-            while (Raw_ss01.contains("=  + e- =")){  //2 spaces
-                Raw_ss01 = Raw_ss01.replace("=  + e- =", "+ e- ="); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout2216 = openFileOutput("Database_solid_sol1.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter2216 = new OutputStreamWriter(fileout2216);
-            outputWriter2216.write(Raw_ss01);
-            outputWriter2216.close();
-
-            String Raw_ss02 = exec("cat "+getFilesDir()+"/Database_solid_sol1.dat");
-            while (Raw_ss02.contains("(solv) ;  = ")){  //2 spaces
-                Raw_ss02 = Raw_ss02.replace("(solv) ;  = ", ""); //(2 spaces, 1 space)
-            }
-            FileOutputStream fileout2217 = openFileOutput("Database_solid_sol2.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter2217 = new OutputStreamWriter(fileout2217);
-            outputWriter2217.write(Raw_ss02);
-            outputWriter2217.close();
-
-            /// new piece of code:
-            String Raw_ss03 = exec("cat "+getFilesDir()+"/Database_solid_sol2.dat");
-            while (Raw_ss03.contains("[H]")){
-                Raw_ss03 = Raw_ss03.replace("[H]", "H");
-            }
-            FileOutputStream fileout6155 = openFileOutput("Database_solid_sol3.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter6155 = new OutputStreamWriter(fileout6155);
-            outputWriter6155.write(Raw_ss03);
-            outputWriter6155.close();
-
-            String Raw_ss04 = exec("cat "+getFilesDir()+"/Database_solid_sol3.dat");
-            while (Raw_ss04.contains("[O]")){
-                Raw_ss04 = Raw_ss04.replace("[O]", "O");
-            }
-            FileOutputStream fileout6156 = openFileOutput("Database_solid_sol4.dat",MODE_PRIVATE);
-            OutputStreamWriter outputWriter6156 = new OutputStreamWriter(fileout6156);
-            outputWriter6156.write(Raw_ss04);
-            outputWriter6156.close();
-            ///
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        try {
-            String Fastchem_database_content = exec("cat "+getFilesDir()+"/PHASES/Fastchem_g.dat");
-
-            Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
-            Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
+                Fastchem_database_content = Fastchem_database_content.replace("[H]", "H");
+                Fastchem_database_content = Fastchem_database_content.replace("[O]", "O");
 //            Fastchem_database_content = Fastchem_database_content.replace("[C]", "C");
 //            Fastchem_database_content = Fastchem_database_content.replace("[N]", "N");
 //            Fastchem_database_content = Fastchem_database_content.replace("[S]", "S");
 //            Fastchem_database_content = Fastchem_database_content.replace("[F]", "F");
 
-            FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
-            OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
-            outputWriterFCH.write(Fastchem_database_content);
-            outputWriterFCH.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
-        exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+                FileOutputStream fileoutFCH = openFileOutput("Fastchem_g.tmp",MODE_PRIVATE);
+                OutputStreamWriter outputWriterFCH = new OutputStreamWriter(fileoutFCH);
+                outputWriterFCH.write(Fastchem_database_content);
+                outputWriterFCH.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            exec("rm "+getFilesDir()+"/PHASES/Fastchem_g.dat");
+            exec("mv "+getFilesDir()+"/Fastchem_g.tmp "+getFilesDir()+"/PHASES/Fastchem_g.dat");
 
-        try {
-            String Fastchem_database_content2 = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+            try {
+                String Fastchem_database_content2 = exec("cat "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
 
-            Fastchem_database_content2 = Fastchem_database_content2.replace("[H]", "H");
-            Fastchem_database_content2 = Fastchem_database_content2.replace("[O]", "O");
+                Fastchem_database_content2 = Fastchem_database_content2.replace("[H]", "H");
+                Fastchem_database_content2 = Fastchem_database_content2.replace("[O]", "O");
 //            Fastchem_database_content2 = Fastchem_database_content2.replace("[C]", "C");
 //            Fastchem_database_content2 = Fastchem_database_content2.replace("[N]", "N");
 //            Fastchem_database_content2 = Fastchem_database_content2.replace("[S]", "S");
 //            Fastchem_database_content2 = Fastchem_database_content2.replace("[F]", "F");
 
-            FileOutputStream fileoutFCH2 = openFileOutput("Fastchem_solid_sol.tmp",MODE_PRIVATE);
-            OutputStreamWriter outputWriterFCH2 = new OutputStreamWriter(fileoutFCH2);
-            outputWriterFCH2.write(Fastchem_database_content2);
-            outputWriterFCH2.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        exec("rm "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
-        exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
-
-        exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
-        exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
-        exec("chmod -R 755 "+getFilesDir()+"/PHASES");
-        exec("mv "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_solid_sol.txt");
-        exec("mv "+getFilesDir()+"/Database_solid_sol4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_solid_sol.txt");
-        exec("mv "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_s.txt");
-        exec("mv "+getFilesDir()+"/Database_s4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_s.txt");
-        exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_g.txt");
-        exec("mv "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_solid_sol.txt");
-        exec("rm "+getFilesDir()+"/Database_g.dat");
-        exec("rm "+getFilesDir()+"/Database_g1.dat");
-        exec("rm "+getFilesDir()+"/Database_g3.dat");
-        exec("rm "+getFilesDir()+"/Database_s.dat");
-        exec("rm "+getFilesDir()+"/Database_s1.dat");
-        exec("rm "+getFilesDir()+"/Database_s3.dat");
-        exec("rm "+getFilesDir()+"/Database_solid_sol.dat");
-        exec("rm "+getFilesDir()+"/Database_solid_sol1.dat");
-        exec("rm "+getFilesDir()+"/Database_solid_sol3.dat");
-// must not occur - otherwise it crashes:
-//        exec("rm -rf "+getFilesDir()+"/openbabel");
-        // this must be inside of ProgressDialog, otherwise the produced database will not be copied outside and the calculation ends unexpectedly
-                        postActivity();
-        if (!isFinishing()) {
-            dialog.dismiss();
-//                outputView2.setText(resultToHtml(result));
-            String OutputofExecution = resultToHtml(result).toString();
-            try {
-                FileOutputStream fileout = openFileOutput("LastExecutionOutput.txt", MODE_PRIVATE);
-                OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                outputWriter.write(OutputofExecution);
-                outputWriter.close();
-                exec("mv "+getFilesDir()+"/LastExecutionOutput.txt "+getFilesDir()+"/xtb/");
+                FileOutputStream fileoutFCH2 = openFileOutput("Fastchem_solid_sol.tmp",MODE_PRIVATE);
+                OutputStreamWriter outputWriterFCH2 = new OutputStreamWriter(fileoutFCH2);
+                outputWriterFCH2.write(Fastchem_database_content2);
+                outputWriterFCH2.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            exec("rm "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+            exec("mv "+getFilesDir()+"/Fastchem_solid_sol.tmp "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat");
+
+            exec("mv "+getFilesDir()+"/Database_g2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_g.txt");
+            exec("mv "+getFilesDir()+"/Database_g4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_g.txt");
+            exec("chmod -R 755 "+getFilesDir()+"/PHASES");
+            exec("mv "+getFilesDir()+"/Database_solid_sol2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_solid_sol.txt");
+            exec("mv "+getFilesDir()+"/Database_solid_sol4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_solid_sol.txt");
+            exec("mv "+getFilesDir()+"/Database_s2.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_anhydr_s.txt");
+            exec("mv "+getFilesDir()+"/Database_s4.dat "+getFilesDir()+File.separator+"output"+File.separator+"phreeqc_datasets"+File.separator+DatasetName+"_water_s.txt");
+            exec("mv "+getFilesDir()+"/PHASES/Fastchem_g.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_g.txt");
+            exec("mv "+getFilesDir()+"/PSEUDOPHASES/Fastchem_solid_sol.dat "+getFilesDir()+File.separator+"output"+File.separator+"fastchem_datasets"+File.separator+DatasetName+"_solid_sol.txt");
+            exec("rm "+getFilesDir()+"/Database_g.dat");
+            exec("rm "+getFilesDir()+"/Database_g1.dat");
+            exec("rm "+getFilesDir()+"/Database_g3.dat");
+            exec("rm "+getFilesDir()+"/Database_s.dat");
+            exec("rm "+getFilesDir()+"/Database_s1.dat");
+            exec("rm "+getFilesDir()+"/Database_s3.dat");
+            exec("rm "+getFilesDir()+"/Database_solid_sol.dat");
+            exec("rm "+getFilesDir()+"/Database_solid_sol1.dat");
+            exec("rm "+getFilesDir()+"/Database_solid_sol3.dat");
+// must not occur - otherwise it crashes:
+//        exec("rm -rf "+getFilesDir()+"/openbabel");
+            // this must be inside of ProgressDialog, otherwise the produced database will not be copied outside and the calculation ends unexpectedly
+            postActivity();
+            if (!isFinishing()) {
+                dialog.dismiss();
+//                outputView2.setText(resultToHtml(result));
+                String OutputofExecution = resultToHtml(result).toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("LastExecutionOutput.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(OutputofExecution);
+                    outputWriter.close();
+                    exec("mv "+getFilesDir()+"/LastExecutionOutput.txt "+getFilesDir()+"/xtb/");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 //            Intent intent = new Intent(Xtb1.this, MainActivity.class);
 //            startActivity(intent);
+            }
         }
-    }
 
-    private Spanned resultToHtml(CommandResult result) {
-        StringBuilder html = new StringBuilder();
-        // exit status
-        html.append("<p><strong>Exit Code:</strong> ");
-        if (result.isSuccessful()) {
-            html.append("<font color='green'>").append(result.exitCode).append("</font>");
-        } else {
-            html.append("<font color='red'>").append(result.exitCode).append("</font>");
+        private Spanned resultToHtml(CommandResult result) {
+            StringBuilder html = new StringBuilder();
+            // exit status
+            html.append("<p><strong>Exit Code:</strong> ");
+            if (result.isSuccessful()) {
+                html.append("<font color='green'>").append(result.exitCode).append("</font>");
+            } else {
+                html.append("<font color='red'>").append(result.exitCode).append("</font>");
+            }
+            html.append("</p>");
+            // stdout
+            if (result.stdout.size() > 0) {
+                html.append("<p><strong>STDOUT:</strong></p><p>")
+                        .append(result.getStdout().replaceAll("\n", "<br>"))
+                        .append("</p>");
+            }
+            // stderr
+            if (result.stderr.size() > 0) {
+                html.append("<p><strong>STDERR:</strong></p><p><font color='red'>")
+                        .append(result.getStderr().replaceAll("\n", "<br>"))
+                        .append("</font></p>");
+            }
+            return Html.fromHtml(html.toString());
         }
-        html.append("</p>");
-        // stdout
-        if (result.stdout.size() > 0) {
-            html.append("<p><strong>STDOUT:</strong></p><p>")
-                    .append(result.getStdout().replaceAll("\n", "<br>"))
-                    .append("</p>");
-        }
-        // stderr
-        if (result.stderr.size() > 0) {
-            html.append("<p><strong>STDERR:</strong></p><p><font color='red'>")
-                    .append(result.getStderr().replaceAll("\n", "<br>"))
-                    .append("</font></p>");
-        }
-        return Html.fromHtml(html.toString());
-    }
 
-}
+    }
 
     private View.OnClickListener quit_click; {
 
