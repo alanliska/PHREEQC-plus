@@ -13,8 +13,8 @@ android {
         applicationId "cz.p"
         minSdk 23
         targetSdk 34
-        versionCode 48
-        versionName '3.3.6'
+        versionCode 49
+        versionName '3.3.7'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -105,15 +105,16 @@ android {
     }
     ndkVersion '22.1.7171670'
     namespace 'cz.p'
+    buildToolsVersion '33.0.2'
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.github.Bhuvaneshw:acpdfview:1.1.3'
     implementation 'com.jjoe64:graphview:4.2.2'
     implementation 'com.jrummyapps:android-shell:1.0.1'

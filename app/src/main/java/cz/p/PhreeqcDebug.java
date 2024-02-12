@@ -306,7 +306,7 @@ public class PhreeqcDebug extends DevMode {
         super.onResume();
         output3(exec("cat "+getFilesDir()+"/debug/Input.phr"));
         output4(exec("cat "+getFilesDir()+"/debug/Input.dat"));
-        output(exec("cat "+getFilesDir()+"/debug/Input.phr.out"));
+        output2(exec("cat "+getFilesDir()+"/debug/Input.phr.out"));
     }
     public void output2(final String str2) {
         Runnable proc2 = new Runnable() {

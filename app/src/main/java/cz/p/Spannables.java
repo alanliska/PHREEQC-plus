@@ -155,15 +155,85 @@ public class Spannables extends MainActivity {
             }
         }
 
+        // currently not working - not perfect analogy with words_comments
+        //
+//        String[] words_quotations = {"\'"};
+//        Integer argb_quotations = Color.MAGENTA;
+//        for (String word : words_quotations) {
+//            int substringStart = 0;
+//            int start;
+//            int i = 0;
+//            int prevQuot = 0;
+//            int nextQuot = 0;
+//            while ((start = text.indexOf(word, substringStart)) >= 0) {
+//                i++;
+//                if (i == 1){
+//                    prevQuot = text.indexOf(word,start);
+//                    substringStart = prevQuot;
+//                } else if (i > 1){
+//                    nextQuot = text.indexOf(word,prevQuot);
+//                    if (nextQuot != -1) {
+//                        spannable.setSpan(
+//                                new ForegroundColorSpan(argb_quotations), prevQuot, nextQuot,
+//                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                        );
+//                        substringStart = nextQuot+1;
+//                        prevQuot = nextQuot+1;
+//                    } else {
+//                        spannable.setSpan(
+//                                new ForegroundColorSpan(argb_quotations), prevQuot, text.length(),
+//                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                        );
+//                        substringStart = start+word.length();
+//                    }
+//                }
+//            }
+//        }
+
+        String[] words_quotations1 = {"\\'(.*?)\\'"};
+        Integer argb_quotations1 = Color.MAGENTA;
+        for (String word : words_quotations1) {
+            int substringStart = 0;
+            int start;
+            while ((start = text.indexOf(word, substringStart)) >= 0) {
+                int neqtQuot1 = text.indexOf(word,start);
+                // endOfLine = -1 in the last line, since there is no more line break until the ond of the file
+                if (neqtQuot1 != -1) {
+                    spannable.setSpan(
+                            new ForegroundColorSpan(argb_quotations1), start, neqtQuot1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    );
+//                    spannable.setSpan(
+//                            new BackgroundColorSpan(argb_back),start,endOfLine,
+//                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                                );
+                    substringStart = neqtQuot1;
+                } else {
+                    spannable.setSpan(
+                            // in the last line, only the "#" character would be colorized by green, the following characters would be either black or colorized by previous
+//                            new ForegroundColorSpan(argb_comment), start, start+word.length(),
+                            // text.length() is the position of the end of whole text, better (it works as should)
+                            new ForegroundColorSpan(argb_quotations1), start, text.length(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                    );
+//                    spannable.setSpan(
+//                            new BackgroundColorSpan(argb_back),start,text.length(),
+//                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                                );
+                    substringStart = start+word.length();
+                }
+            }
+        }
+
         String[] words_comment = {"#", "REM"};
         Integer argb_comment = Color.parseColor("#66BB6A");
-            for (String word : words_comment) {
-                int substringStart = 0;
-                int start;
-                while ((start = text.indexOf(word, substringStart)) >= 0) {
-                    int endOfLine = text.indexOf("\n",start);
-                    // endOfLine = -1 in the last line, since there is no more line break until the ond of the file
-                            if (endOfLine != -1) {
+        for (String word : words_comment) {
+            int substringStart = 0;
+            int start;
+            while ((start = text.indexOf(word, substringStart)) >= 0) {
+                int endOfLine = text.indexOf("\n",start);
+                // endOfLine = -1 in the last line, since there is no more line break until the ond of the file
+                if (endOfLine != -1) {
                     spannable.setSpan(
                             new ForegroundColorSpan(argb_comment), start, endOfLine,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -173,22 +243,22 @@ public class Spannables extends MainActivity {
 //                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
 //                                );
                     substringStart = endOfLine;
-                            } else {
+                } else {
                     spannable.setSpan(
                             // in the last line, only the "#" character would be colorized by green, the following characters would be either black or colorized by previous
 //                            new ForegroundColorSpan(argb_comment), start, start+word.length(),
                             // text.length() is the position of the end of whole text, better (it works as should)
                             new ForegroundColorSpan(argb_comment), start, text.length(),
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                                );
+                    );
 //                    spannable.setSpan(
 //                            new BackgroundColorSpan(argb_back),start,text.length(),
 //                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
 //                                );
                     substringStart = start+word.length();
-                            }
                 }
             }
+        }
 
         return spannable;
     }
@@ -730,7 +800,7 @@ public class Spannables extends MainActivity {
             }
         }
 
-        String[] words_blue = {"§coord", "§end", "§periodic", "§cell", "§coord frac", "§fix", "§constrain", "§write", "§wall", "§cmd", "§date", "§chrg", "§spin", "§pairpar", "§opt", "§scan", "§gbsa", "§thermo", "§hess", "§metadyn", "§md", "§external", "§oniom", "§path", "§embedding", "§dock", "§directed"};
+        String[] words_blue = {"$coord", "$end", "$periodic", "$cell", "$coord frac", "$fix", "$constrain", "$write", "$wall", "$cmd", "$date", "$chrg", "$spin", "$pairpar", "$opt", "$scan", "$gbsa", "$thermo", "$hess", "$metadyn", "$md", "$external", "$oniom", "$path", "$embedding", "$dock", "$directed"};
         Integer argb_blue = Color.BLUE;
         for (String word : words_blue) {
             int substringStart=0;
