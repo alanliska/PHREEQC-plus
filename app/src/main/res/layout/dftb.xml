@@ -163,7 +163,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FAAAAA"
             android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
-
+        <Button
+            android:id="@+id/inToCanvas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BF5695"
+            android:text="VIEW/EDIT/CREATE THE INPUT IN CANVAS3D (SLOW)" />
         <Button
             android:id="@+id/RunProgram"
             android:layout_width="match_parent"
@@ -218,6 +223,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="QUIT" />
+        <Button
+            android:id="@+id/outToCanvas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BF5695"
+            android:text="VIEW/EDIT THE OUTPUT IN CANVAS3D (SLOW)" />
 
         <TextView
             android:id="@+id/textViewX"

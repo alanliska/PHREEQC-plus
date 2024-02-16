@@ -34,10 +34,12 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
 import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
@@ -71,6 +73,8 @@ public class Mopac extends MainActivity {
     private static final int CREATE_FILE21 = 21;
     private Uri documentUri21;
     Button manual_mopac;
+    Button inToCanvas;
+    Button outToCanvas;
 
     /**
      * Called when the activity is first created.
@@ -153,14 +157,266 @@ public class Mopac extends MainActivity {
             }
         });
 
+        inToCanvas = (Button) findViewById(R.id.inToCanvas);
+        inToCanvas.setOnClickListener(inToCanvasClick);
+        outToCanvas = (Button) findViewById(R.id.outToCanvas);
+        outToCanvas.setOnClickListener(outToCanvasClick);
     }
-
 
     public void onStart()
     {
         super.onStart();
 
         output3(exec("cat "+getFilesDir()+"/Input-mopac.txt"));
+    }
+
+    private View.OnClickListener inToCanvasClick; {
+
+        inToCanvasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent intent = new Intent(Mopac.this, Canvas3d_main.class);
+                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener outToCanvasClick; {
+
+        outToCanvasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = MopacInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -imopout Input.out -oxyz > MopacOut.xyz");
+
+                String XYZfile = exec("cat "+getFilesDir()+"/MopacOut.xyz");
+                try {
+                    while (XYZfile.contains("\t")){  //2 spaces
+                        XYZfile = XYZfile.replace("\t", " "); //(2 spaces, 1 space)
+                    }
+                    while (XYZfile.contains("  ")){  //2 spaces
+                        XYZfile = XYZfile.replace("  ", " "); //(2 spaces, 1 space)
+                    }
+                    while (XYZfile.contains("\n ")){  //2 spaces
+                        XYZfile = XYZfile.replace("\n ", "\n"); //(2 spaces, 1 space)
+                    }
+
+                    FileOutputStream fileout = openFileOutput("Coordinates.xyz.tmp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XYZfile);
+                    outputWriter.close();
+
+
+                    exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                    exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                    exec("rm "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+                    exec("touch "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+                    // in Angstroms, in 0;0, without zoom
+                    exec("mv "+getFilesDir()+"/Coordinates.xyz.tmp "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                    exec("sed -i 1,2d "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                    try {
+                        Scanner scan = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp"));
+                        double radius = 0;
+                        int atom_color = 0;
+                        int text_color = 0;
+                        int atom_number = 0;
+                        int atomNumber = 0;
+                        // now in Angstroms
+                        double radius_Ang = 0;
+
+                        while (scan.hasNext()) {
+                            atomNumber++;
+
+                            String curLine = scan.nextLine();
+                            String[] splitted = curLine.split(" ");
+                            String atom = splitted[0].trim();
+                            String x_coord = splitted[1].trim();
+                            String y_coord = splitted[2].trim();
+                            String z_coord = splitted[3].trim();
+
+                            atom_number = atomNumber;
+
+//                        Log.println(Log.INFO, "atom = ", atom);
+
+                            try {
+                                Scanner scanElmnt = new Scanner(new File(getFilesDir()+"/canvas3d/Elmnts.dat"));
+                                while (scanElmnt.hasNext()) {
+                                    String curLineElmnt = scanElmnt.nextLine();
+                                    String[] splittedElmnt = curLineElmnt.split(" ");
+                                    String elementElmnt = splittedElmnt[0].trim();
+                                    String radiusElmnt = splittedElmnt[1].trim();
+                                    String atom_colorElmnt = splittedElmnt[2].trim();
+                                    String text_colorElmnt = splittedElmnt[3].trim();
+
+                                    radius = Double.valueOf(radiusElmnt);
+                                    atom_color = Integer.valueOf(atom_colorElmnt);
+                                    text_color = Integer.valueOf(text_colorElmnt);
+                                    radius_Ang = radius/100;
+
+                                    if (atom.equals(elementElmnt)) {
+
+                                        // write in Angstroms, in 0;0, without zoom
+                                        FileOutputStream fileout3 = openFileOutput("Coordinates.x.tmp", MODE_APPEND);
+                                        OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                                        outputWriter3.write(elementElmnt +"\t"+x_coord+"\t"+y_coord+"\t"+z_coord+"\t"+radius_Ang+"\t"+atom_color+"\t"+text_color+"\t"+atom_number+"\n");
+                                        outputWriter3.close();
+                                    }
+                                }
+                                scanElmnt.close();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        // až tady: (za smyčkou)
+                        scan.close();
+                        exec("rm "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                        exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                        exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                        double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
+                        try {
+                            Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                            while (scanX.hasNext()) {
+                                String curLineX = scanX.nextLine();
+                                String[] splittedX = curLineX.split("\\s");
+                                String atomX = splittedX[0].trim();
+                                String x_coordX = splittedX[1].trim();
+                                String y_coordX = splittedX[2].trim();
+                                String z_coordX = splittedX[3].trim();
+                                String radiusX = splittedX[4].trim();
+                                String atom_colorX = splittedX[5].trim();
+                                String atom_numberX = splittedX[6].trim();
+                                int radius_pixX = (int) (Double.valueOf(radiusX)*100);
+                                // project 3D geometry to z = 0
+                                double A = 0;
+                                double B = 0;
+                                double C = 1;
+                                double D = 0;
+                                double x_projX = Double.valueOf(x_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                double y_projX = Double.valueOf(y_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                double z_projX = Double.valueOf(z_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                // because of canvas - input variables x&y have to be integers, not doubles
+                                int x_projection = (int) (x_projX*100);
+                                int y_projection = (int) (y_projX*100);
+                                int z_projection = (int) (z_projX*100);
+                                // text in front of circles = with less negative z coord
+//                        double z_text = 100*(Double.valueOf(z_coord)+0.01);
+                                double z_textX = Double.valueOf(z_coordX)+0.01;
+                                int text_colorX;
+                                if(Integer.valueOf(atom_colorX) != -1){
+                                    text_colorX = Color.BLACK;
+                                } else {
+                                    text_colorX = Color.WHITE;
+                                }
+                                // write the file
+                                FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
+                                outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
+                                outputWriter_atoms.close();
+
+                                // second loop - to reveal the bonds
+                                Scanner scan2 = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                                while (scan2.hasNext()) {
+                                    String curLine2 = scan2.nextLine();
+                                    String[] splitted2 = curLine2.split("\\s");
+                                    String atom2 = splitted2[0].trim();
+                                    String x_coord2 = splitted2[1].trim();
+                                    String y_coord2 = splitted2[2].trim();
+                                    String z_coord2 = splitted2[3].trim();
+                                    String radius2 = splitted2[4].trim();
+                                    String atom_color2 = splitted2[5].trim();
+                                    String text_color2 = splitted2[6].trim();
+                                    String atom_number2 = splitted2[7].trim();
+
+                                    // investigate all distances
+                                    double dist_scan1_scan2 = Math.sqrt(Math.pow((Double.valueOf(x_coordX)-Double.valueOf(x_coord2)),2)+Math.pow((Double.valueOf(y_coordX)-Double.valueOf(y_coord2)),2)+Math.pow((Double.valueOf(z_coordX)-Double.valueOf(z_coord2)),2));
+                                    double BondingDistance = BondScale * (Double.valueOf(radiusX) + Double.valueOf(radius2));
+                                    if((dist_scan1_scan2 < BondingDistance)&&(dist_scan1_scan2 > 0)){
+
+                                        double A2 = 0;
+                                        double B2 = 0;
+                                        double C2 = 1;
+                                        double D2 = 0;
+                                        double x_proj1 = Double.valueOf(x_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double y_proj1 = Double.valueOf(y_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double z_proj1 = Double.valueOf(z_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double x_proj2 = Double.valueOf(x_coord2) - A*(Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double y_proj2 = Double.valueOf(y_coord2) - A*(Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double z_proj2 = Double.valueOf(z_coord2) - A*(Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+
+                                        double x_bond1 = 100*x_proj1;
+                                        double y_bond1 = 100*y_proj1;
+                                        double x_bond2 = 100*x_proj2;
+                                        double y_bond2 = 100*y_proj2;
+
+//                                int bond_color = Color.GRAY;
+                                        int bond_color1 = Integer.valueOf(atom_colorX);
+                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                        double z_bond_average = 0.5*(Double.valueOf(z_coordX) + Double.valueOf(z_coord2))-0.01;
+
+                                        // write the file
+                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                        outputWriter_bonds.write(atomX+"\t"+atom2+"\t"+x_bond1+"\t"+y_bond1+"\t"+x_bond2+"\t"+y_bond2+"\t"+z_bond_average+"\t"+bond_color1+"\t"+bond_color2+"\t"+"0"+"\t"+"L"+"\n");
+                                        outputWriter_bonds.close();
+                                    }
+                                }
+                                scan2.close();
+                            }
+                            scan.close();
+                            exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        // at the moment, the file Coordinates.tmp has to be sorted by the z_coord value:
+                        try {
+                            String Z_sort = exec("sort -g -k7 "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                            FileOutputStream fileout_sort = openFileOutput("Coordinates.tmp_", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter_sort = new OutputStreamWriter(fileout_sort);
+                            outputWriter_sort.write(Z_sort);
+                            outputWriter_sort.close();
+                            exec("mv "+getFilesDir()+"/Coordinates.tmp_ "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+                }
+                Intent intent = new Intent(Mopac.this, Canvas3d_main.class);
+                startActivity(intent);
+            }
+        };
     }
 
     private View.OnClickListener GenerateXYZClick; {

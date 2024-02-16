@@ -13,8 +13,8 @@ android {
         applicationId "cz.p"
         minSdk 23
         targetSdk 34
-        versionCode 49
-        versionName '3.3.7'
+        versionCode 50
+        versionName '3.3.8'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -103,9 +103,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    ndkVersion '22.1.7171670'
+    ndkVersion '26.2.11394342'
     namespace 'cz.p'
-    buildToolsVersion '33.0.2'
+    buildToolsVersion '34.0.0'
 }
 
 dependencies {

@@ -800,7 +800,7 @@ public class Spannables extends MainActivity {
             }
         }
 
-        String[] words_blue = {"$coord", "$end", "$periodic", "$cell", "$coord frac", "$fix", "$constrain", "$write", "$wall", "$cmd", "$date", "$chrg", "$spin", "$pairpar", "$opt", "$scan", "$gbsa", "$thermo", "$hess", "$metadyn", "$md", "$external", "$oniom", "$path", "$embedding", "$dock", "$directed"};
+        String[] words_blue = {"$coord", "$end", "$periodic", "$cell", "$coord frac", "$lattice", "$lattice bohr", "$fix", "$constrain", "$write", "$wall", "$cmd", "$date", "$chrg", "$spin", "$pairpar", "$opt", "$scan", "$gbsa", "$thermo", "$hess", "$metadyn", "$md", "$external", "$oniom", "$path", "$embedding", "$dock", "$directed"};
         Integer argb_blue = Color.BLUE;
         for (String word : words_blue) {
             int substringStart=0;

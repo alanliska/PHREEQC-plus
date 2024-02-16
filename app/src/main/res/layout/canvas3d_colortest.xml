@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/colorLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Color.INT number code:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/colorCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <Button
+            android:id="@+id/colorButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SHOW COLOR" />
+        <Button
+            android:id="@+id/quitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+</ScrollView>

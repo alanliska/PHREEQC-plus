@@ -118,6 +118,7 @@ public class DevMode extends MainActivity {
     Button modify_z_up;
     Button modify_z_down;
     Button DebugPhreeqc;
+    Button start_canvas3d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,6 +190,15 @@ public class DevMode extends MainActivity {
         modify_mulliken = (Button) findViewById(R.id.modify_mulliken);
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
+
+        start_canvas3d = (Button) findViewById(R.id.start_canvas3d);
+        start_canvas3d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DevMode.this, Canvas3d_main.class);
+                startActivity(intent);
+            }
+        });
 
         DebugPhreeqc = (Button) findViewById(R.id.DebugPhreeqc);
         DebugPhreeqc.setOnClickListener(new View.OnClickListener() {
