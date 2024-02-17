@@ -159,6 +159,7 @@ public class Canvas3d_CanvasView extends View {
                     float x_proj_pix = (float) (((Float.valueOf(x1_proj))*ZoomExtent) + width_pix*0.5);
                     float y_proj_pix = (float) ((-(Float.valueOf(y1_proj))*ZoomExtent) + height_pix*0.5);
                     Atomsymbols.setTextSize(TextSize*z_perspective);
+                    Atomsymbols.setColor(Integer.parseInt(color));
                     canvas.drawText(atom1+atom_number, x_proj_pix, y_proj_pix, Atomsymbols);
                     }
                 } else if (type.equals("L")){
@@ -309,6 +310,8 @@ public class Canvas3d_CanvasView extends View {
         exec("rm "+getContext().getFilesDir()+"/canvas3d/Coordinates.tmp");
         exec("touch "+getContext().getFilesDir()+"/canvas3d/Coordinates.tmp");
         double BondScale = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/BondScale.tmp"));
+        double ForegroundShiftBonds = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+        double ForegroundShiftText = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
         try {
             Scanner scan = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
 
@@ -339,7 +342,7 @@ public class Canvas3d_CanvasView extends View {
                 int y_projection = (int) (y_proj*100);
                 int z_projection = (int) (z_proj*100);
 
-                double z_text = (Double.valueOf(z_coord)+0.01);
+                double z_text = (Double.valueOf(z_coord)+ForegroundShiftText);
                 // write the file
                 FileOutputStream fileout_atoms = getContext().openFileOutput("Coordinates.tmp", MODE_APPEND);
                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
@@ -389,7 +392,7 @@ public class Canvas3d_CanvasView extends View {
 
                         // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
 
-                        double z_bond_average = 0.5*(Double.valueOf(z_coord) + Double.valueOf(z_coord2))-0.01;
+                        double z_bond_average = 0.5*(Double.valueOf(z_coord) + Double.valueOf(z_coord2))+ForegroundShiftBonds;
 
                         // write the file
                         FileOutputStream fileout_bonds = getContext().openFileOutput("Coordinates.tmp", MODE_APPEND);

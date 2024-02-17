@@ -50,6 +50,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText Elmnt;
     private TextView ElmntsLabel;
     private EditText Elmnts;
+    private TextView ForegroundShiftBondsLabel;
+    private EditText ForegroundShiftBonds;
+    private TextView ForegroundShiftTextLabel;
+    private EditText ForegroundShiftText;
     private TextView ModeLabel;
     private EditText Mode;
     private TextView PerspScaleLabel;
@@ -380,6 +384,56 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 Elmnts.addTextChangedListener(this);
             }
         });
+        ForegroundShiftBondsLabel = (TextView) findViewById(R.id.ForegroundShiftBondsLabel);
+        ForegroundShiftBonds = (EditText) findViewById(R.id.ForegroundShiftBonds);
+        ForegroundShiftBonds.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ForegroundShiftBonds.removeTextChangedListener(this);
+                String text = ForegroundShiftBonds.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ForegroundShiftBonds.getText().clear();
+                ForegroundShiftBonds.append(colorized_numbers(text));
+                // place the cursor at the original position
+                ForegroundShiftBonds.setSelection(startChanged+countChanged);
+                ForegroundShiftBonds.addTextChangedListener(this);
+            }
+        });
+        ForegroundShiftTextLabel = (TextView) findViewById(R.id.ForegroundShiftTextLabel);
+        ForegroundShiftText = (EditText) findViewById(R.id.ForegroundShiftText);
+        ForegroundShiftText.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ForegroundShiftText.removeTextChangedListener(this);
+                String text = ForegroundShiftText.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ForegroundShiftText.getText().clear();
+                ForegroundShiftText.append(colorized_numbers(text));
+                // place the cursor at the original position
+                ForegroundShiftText.setSelection(startChanged+countChanged);
+                ForegroundShiftText.addTextChangedListener(this);
+            }
+        });
         ModeLabel = (TextView) findViewById(R.id.ModeLabel);
         Mode = (EditText) findViewById(R.id.Mode);
         Mode.addTextChangedListener(new TextWatcher() {
@@ -628,6 +682,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         CursorPosDisplay(exec("cat "+getFilesDir()+"/canvas3d/CursorPos.tmp"));
         ElmntDisplay(exec("cat "+getFilesDir()+"/canvas3d/Elmnt.tmp"));
         ElmntsDisplay(exec("cat "+getFilesDir()+"/canvas3d/Elmnts.dat"));
+        ForegroundShiftBondsDisplay(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+        ForegroundShiftTextDisplay(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
         ModeDisplay(exec("cat "+getFilesDir()+"/canvas3d/Mode.tmp"));
         PerspScaleDisplay(exec("cat "+getFilesDir()+"/canvas3d/PerspScale.tmp"));
         RadDisplay(exec("cat "+getFilesDir()+"/canvas3d/Rad.tmp"));
@@ -663,6 +719,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 String F21 = Zoom.getText().toString();
                 String F22 = ZoomStep.getText().toString();
                 String F23 = ColorCanvas.getText().toString();
+                String F24 = ForegroundShiftBonds.getText().toString();
+                String F25 = ForegroundShiftText.getText().toString();
                 // TODO Auto-generated method stub //
                 try {
                     FileOutputStream Fos1 = openFileOutput("AtomBorder.tmp", MODE_PRIVATE);
@@ -749,6 +807,14 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow23 = new OutputStreamWriter(Fos23);
                     Fow23.write(F23);
                     Fow23.close();
+                    FileOutputStream Fos24 = openFileOutput("ForegroundShiftBonds.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow24 = new OutputStreamWriter(Fos24);
+                    Fow24.write(F24);
+                    Fow24.close();
+                    FileOutputStream Fos25 = openFileOutput("ForegroundShiftText.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow25 = new OutputStreamWriter(Fos25);
+                    Fow25.write(F25);
+                    Fow25.close();
                 } catch (Exception e) {
                 }
                 exec("mv "+getFilesDir()+"/AtomBorder.tmp "+getFilesDir()+"/canvas3d/");
@@ -772,6 +838,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 exec("mv "+getFilesDir()+"/Transl.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Zoom.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ZoomStep.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/ForegroundShiftBonds.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/ForegroundShiftText.tmp "+getFilesDir()+"/canvas3d/");
             }
         };
     }
@@ -976,5 +1044,21 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
         };
         handler.post(proc23);
+    }
+    private void ForegroundShiftBondsDisplay(final String str24) {
+        Runnable proc24 = new Runnable() {
+            public void run() {
+                ForegroundShiftBonds.setText(colorized_numbers(str24));
+            }
+        };
+        handler.post(proc24);
+    }
+    private void ForegroundShiftTextDisplay(final String str25) {
+        Runnable proc25 = new Runnable() {
+            public void run() {
+                ForegroundShiftText.setText(colorized_numbers(str25));
+            }
+        };
+        handler.post(proc25);
     }
 }

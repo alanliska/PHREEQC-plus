@@ -216,6 +216,40 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
+            android:id="@+id/ForegroundShiftBondsLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="ForegroundShiftBonds:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/ForegroundShiftBonds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/ForegroundShiftTextLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="ForegroundShiftText:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/ForegroundShiftText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/ModeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

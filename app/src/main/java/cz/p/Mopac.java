@@ -294,6 +294,8 @@ public class Mopac extends MainActivity {
                         exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
                         exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
                         double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
+                        double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+                        double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
                         try {
                             Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
                             while (scanX.hasNext()) {
@@ -305,7 +307,8 @@ public class Mopac extends MainActivity {
                                 String z_coordX = splittedX[3].trim();
                                 String radiusX = splittedX[4].trim();
                                 String atom_colorX = splittedX[5].trim();
-                                String atom_numberX = splittedX[6].trim();
+                                String text_colorX = splittedX[6].trim();
+                                String atom_numberX = splittedX[7].trim();
                                 int radius_pixX = (int) (Double.valueOf(radiusX)*100);
                                 // project 3D geometry to z = 0
                                 double A = 0;
@@ -321,13 +324,7 @@ public class Mopac extends MainActivity {
                                 int z_projection = (int) (z_projX*100);
                                 // text in front of circles = with less negative z coord
 //                        double z_text = 100*(Double.valueOf(z_coord)+0.01);
-                                double z_textX = Double.valueOf(z_coordX)+0.01;
-                                int text_colorX;
-                                if(Integer.valueOf(atom_colorX) != -1){
-                                    text_colorX = Color.BLACK;
-                                } else {
-                                    text_colorX = Color.WHITE;
-                                }
+                                double z_textX = Double.valueOf(z_coordX)+ForegroundShiftText;
                                 // write the file
                                 FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
                                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
@@ -376,7 +373,7 @@ public class Mopac extends MainActivity {
 
                                         // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
 
-                                        double z_bond_average = 0.5*(Double.valueOf(z_coordX) + Double.valueOf(z_coord2))-0.01;
+                                        double z_bond_average = 0.5*(Double.valueOf(z_coordX) + Double.valueOf(z_coord2))+ForegroundShiftBonds;
 
                                         // write the file
                                         FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);

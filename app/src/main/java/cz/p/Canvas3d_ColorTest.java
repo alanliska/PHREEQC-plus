@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,7 +46,29 @@ public class Canvas3d_ColorTest extends Canvas3d_main {
         colorButton.setOnClickListener(colorButtonClick);
         colorLabel = (TextView) findViewById(R.id.colorLabel);
         colorCode = (EditText) findViewById(R.id.colorCode);
-
+        colorCode.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                colorCode.removeTextChangedListener(this);
+                String text = colorCode.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                colorCode.getText().clear();
+                colorCode.append(colorized_numbers(text));
+                // place the cursor at the original position
+                colorCode.setSelection(startChanged+countChanged);
+                colorCode.addTextChangedListener(this);
+            }
+        });
     }
 
 

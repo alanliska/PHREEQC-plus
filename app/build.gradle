@@ -13,8 +13,8 @@ android {
         applicationId "cz.p"
         minSdk 23
         targetSdk 34
-        versionCode 50
-        versionName '3.3.8'
+        versionCode 51
+        versionName '3.4'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
