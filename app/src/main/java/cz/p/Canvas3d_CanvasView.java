@@ -11,7 +11,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -29,7 +31,10 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -39,10 +44,9 @@ public class Canvas3d_CanvasView extends View {
     public Paint Bonds2;
     public Paint Atomsymbols;
     public Paint Atomborder;
-    public Paint AllPaint;
     public static Canvas molCanvas;
-    private List<Point> points = new ArrayList<Point>();
-
+    public static final int FALSE = 0, TRUE = 1, NOT_SET = 2;
+    private int renderMolecule;
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
@@ -62,7 +66,6 @@ public class Canvas3d_CanvasView extends View {
         Bonds2 = new Paint();
         Atomsymbols = new Paint();
         Atomborder = new Paint();
-        AllPaint = new Paint();
 
         File width_file = new File(getContext().getFilesDir()+"/canvas3d/.width");
         if (width_file.exists()) {
@@ -97,90 +100,108 @@ public class Canvas3d_CanvasView extends View {
             }
             exec("mv "+getContext().getFilesDir()+"/.height "+getContext().getFilesDir()+"/canvas3d/");
         }
+// to display the canvas (once)
+        setMoleculeRenderer(TRUE);
     }
 
     //what I want to draw is here
-    protected void onDraw(Canvas canvas) {
+        protected void onDraw(Canvas canvas) {
         molCanvas = canvas;
         super.onDraw(molCanvas);
+            if (renderMolecule != NOT_SET) {
+                if (renderMolecule == TRUE) {
 
-    int ColorCanvas = Integer.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorCanvas.tmp"));
-    float PerspScale = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/PerspScale.tmp"));
-    float RadiusScale = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/RadiusScale.tmp"));
-    float AtomBorder = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomBorder.tmp"));
-    float TextSize = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/TextSize.tmp"));
-    float BondSize = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/BondSize.tmp"));
+                    int ColorCanvas = Integer.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorCanvas.tmp"));
+                    float PerspScale = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/PerspScale.tmp"));
+                    float RadiusScale = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/RadiusScale.tmp"));
+                    float AtomBorder = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomBorder.tmp"));
+                    float TextSize = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/TextSize.tmp"));
+                    float BondSize = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/BondSize.tmp"));
+                    float AtomLabelShiftX = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomLabelShiftX.tmp"));
+                    float AtomLabelShiftY = Float.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomLabelShiftY.tmp"));
 
-        // canvas background
-        canvas.drawColor(ColorCanvas);
-        // atoms depiction
-        Atoms.setStyle(Paint.Style.FILL);
-        Atoms.setAntiAlias(true);
-        // atom borders depiction
-        Atomborder.setStyle(Paint.Style.STROKE);
+                    // canvas background
+                    canvas.drawColor(ColorCanvas);
+                    // atoms depiction
+                    Atoms.setStyle(Paint.Style.FILL);
+                    Atoms.setAntiAlias(true);
+                    // atom borders depiction
+                    Atomborder.setStyle(Paint.Style.STROKE);
 
-        try {
-            Scanner scan = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.tmp"));
-            float z_perspective = 1;
-            while (scan.hasNext()) {
-                String curLine = scan.nextLine();
-                String[] splitted = curLine.split("\\s");
-                String atom1 = splitted[0].trim();
-                String atom2 = splitted[1].trim();
-                String x1_proj = splitted[2].trim();
-                String y1_proj = splitted[3].trim();
-                String x2_proj = splitted[4].trim();
-                String y2_proj = splitted[5].trim();
-                String z_abs = splitted[6].trim();
-                String radius = splitted[7].trim();
-                String color = splitted[8].trim();
-                String atom_number = splitted[9].trim();
-                String type = splitted[10].trim();
+                    try {
+                        Scanner scan = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.tmp"));
+                        float z_perspective = 1;
+                        while (scan.hasNext()) {
+                            String curLine = scan.nextLine();
+                            String[] splitted = curLine.split("\\s");
+                            String atom1 = splitted[0].trim();
+                            String atom2 = splitted[1].trim();
+                            String x1_proj = splitted[2].trim();
+                            String y1_proj = splitted[3].trim();
+                            String x2_proj = splitted[4].trim();
+                            String y2_proj = splitted[5].trim();
+                            String z_abs = splitted[6].trim();
+                            String radius = splitted[7].trim();
+                            String color = splitted[8].trim();
+                            String atom_number = splitted[9].trim();
+                            String type = splitted[10].trim();
 
-                if (Float.valueOf(z_abs) == 0){
-                    z_perspective = 1;
-                } else if (Float.valueOf(z_abs) > 0){
-                    z_perspective = 1+((float) PerspScale)*Float.valueOf(z_abs);
-                } else if (Float.valueOf(z_abs) < 0){
-                    z_perspective = 1/(1-((float) PerspScale)*Float.valueOf(z_abs));
-                }
-                double ZoomExtent = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/Zoom.tmp"));
-                String AtomLabelState = exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomLabel.tmp");
-                if (type.equals("C")){
-                float x_proj_pix = (float) (((Float.valueOf(x1_proj))*ZoomExtent) + width_pix*0.5);
-                float y_proj_pix = (float) ((-(Float.valueOf(y1_proj))*ZoomExtent) + height_pix*0.5);
-                float corrRadius = (float) (RadiusScale*(Float.valueOf(radius)*ZoomExtent)*z_perspective);
-                Atoms.setColor(Integer.parseInt(color));
-                Atomborder.setStrokeWidth(AtomBorder*z_perspective);
-                canvas.drawCircle(x_proj_pix, y_proj_pix, corrRadius, Atoms);
-                canvas.drawCircle(x_proj_pix, y_proj_pix, corrRadius, Atomborder);
-                } else if (type.equals("T")){
-                    if (Integer.valueOf(AtomLabelState) > 0){
-                    float x_proj_pix = (float) (((Float.valueOf(x1_proj))*ZoomExtent) + width_pix*0.5);
-                    float y_proj_pix = (float) ((-(Float.valueOf(y1_proj))*ZoomExtent) + height_pix*0.5);
-                    Atomsymbols.setTextSize(TextSize*z_perspective);
-                    Atomsymbols.setColor(Integer.parseInt(color));
-                    canvas.drawText(atom1+atom_number, x_proj_pix, y_proj_pix, Atomsymbols);
+                            if (Float.valueOf(z_abs) == 0){
+                                z_perspective = 1;
+                            } else if (Float.valueOf(z_abs) > 0){
+                                z_perspective = 1+((float) PerspScale)*Float.valueOf(z_abs);
+                            } else if (Float.valueOf(z_abs) < 0){
+                                z_perspective = 1/(1-((float) PerspScale)*Float.valueOf(z_abs));
+                            }
+                            double ZoomExtent = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/Zoom.tmp"));
+                            String AtomLabelState = exec("cat "+getContext().getFilesDir()+"/canvas3d/AtomLabel.tmp");
+                            if (type.equals("C")){
+                                float x_proj_pix = (float) (((Float.valueOf(x1_proj))*ZoomExtent) + width_pix*0.5);
+                                float y_proj_pix = (float) ((-(Float.valueOf(y1_proj))*ZoomExtent) + height_pix*0.5);
+                                float corrRadius = (float) (RadiusScale*(Float.valueOf(radius)*ZoomExtent)*z_perspective);
+                                Atoms.setColor(Integer.valueOf(color));
+                                Atomborder.setStrokeWidth(AtomBorder*z_perspective);
+                                Atomborder.setColor(Integer.valueOf(atom2));
+                                canvas.drawCircle(x_proj_pix, y_proj_pix, corrRadius, Atoms);
+                                canvas.drawCircle(x_proj_pix, y_proj_pix, corrRadius, Atomborder);
+                            } else if (type.equals("T")){
+                                if (Integer.valueOf(AtomLabelState) > 0){
+                                    float x_proj_pix = (float) (((Float.valueOf(x1_proj)+Float.valueOf(AtomLabelShiftX))*ZoomExtent) + width_pix*0.5);
+                                    float y_proj_pix = (float) ((-(Float.valueOf(y1_proj)+Float.valueOf(AtomLabelShiftY))*ZoomExtent) + height_pix*0.5);
+                                    Atomsymbols.setTextSize(TextSize*z_perspective);
+                                    Atomsymbols.setColor(Integer.valueOf(color));
+                                    canvas.drawText(atom1+atom_number, x_proj_pix, y_proj_pix, Atomsymbols);
+                                }
+                            } else if (type.equals("L")){
+                                Bonds1.setColor(Integer.valueOf(radius));
+                                Bonds2.setColor(Integer.valueOf(color));
+                                Bonds1.setStrokeWidth(BondSize * z_perspective);
+                                Bonds2.setStrokeWidth(BondSize * z_perspective);
+                                float x1_proj_pix = (float) (((Float.valueOf(x1_proj)) * ZoomExtent) + width_pix * 0.5);
+                                float y1_proj_pix = (float) ((-(Float.valueOf(y1_proj)) * ZoomExtent) + height_pix * 0.5);
+                                float x2_proj_pix = (float) (((Float.valueOf(x2_proj)) * ZoomExtent) + width_pix * 0.5);
+                                float y2_proj_pix = (float) ((-(Float.valueOf(y2_proj)) * ZoomExtent) + height_pix * 0.5);
+                                float x_proj_pix = (float) 0.5 * (x1_proj_pix + x2_proj_pix);
+                                float y_proj_pix = (float) 0.5 * (y1_proj_pix + y2_proj_pix);
+                                canvas.drawLine(x1_proj_pix, y1_proj_pix, x_proj_pix, y_proj_pix, Bonds1);
+                                canvas.drawLine(x_proj_pix, y_proj_pix, x2_proj_pix, y2_proj_pix, Bonds2);
+                            }
+                        }
+                        scan.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } else if (type.equals("L")){
-                    Bonds1.setColor(Integer.parseInt(radius));
-                    Bonds2.setColor(Integer.parseInt(color));
-                    Bonds1.setStrokeWidth(BondSize * z_perspective);
-                    Bonds2.setStrokeWidth(BondSize * z_perspective);
-                    float x1_proj_pix = (float) (((Float.valueOf(x1_proj)) * ZoomExtent) + width_pix * 0.5);
-                    float y1_proj_pix = (float) ((-(Float.valueOf(y1_proj)) * ZoomExtent) + height_pix * 0.5);
-                    float x2_proj_pix = (float) (((Float.valueOf(x2_proj)) * ZoomExtent) + width_pix * 0.5);
-                    float y2_proj_pix = (float) ((-(Float.valueOf(y2_proj)) * ZoomExtent) + height_pix * 0.5);
-                    float x_proj_pix = (float) 0.5 * (x1_proj_pix + x2_proj_pix);
-                    float y_proj_pix = (float) 0.5 * (y1_proj_pix + y2_proj_pix);
-                    canvas.drawLine(x1_proj_pix, y1_proj_pix, x_proj_pix, y_proj_pix, Bonds1);
-                    canvas.drawLine(x_proj_pix, y_proj_pix, x2_proj_pix, y2_proj_pix, Bonds2);
+                    // do not put here - otherwise the picture will be overdrawn continuously
+//        invalidate();
+            } else {
+               // nothing
+                    setMoleculeRenderer(FALSE);
                 }
             }
-            scan.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void setMoleculeRenderer(int renderMolecule) {
+        this.renderMolecule = renderMolecule;
         invalidate();
     }
 
@@ -191,13 +212,13 @@ public class Canvas3d_CanvasView extends View {
         String TextColor = exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorText.tmp");
         String AtomColor = exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorAtom.tmp");
         String ModeState = exec("cat "+getContext().getFilesDir()+"/canvas3d/Mode.tmp");
+        // drawing mode
         if (Integer.valueOf(ModeState) > 0) {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN: {
                     Point p = new Point();
                     p.x = (int) event.getX();
                     p.y = (int) event.getY();
-                    points.add(p);
 
                     int width_pix = getScreenWidth();
                     int heigth_pix = getScreenHeight();
@@ -232,26 +253,36 @@ public class Canvas3d_CanvasView extends View {
                     }
                     exec("mv "+getContext().getFilesDir()+"/Coordinates.x.tmp "+getContext().getFilesDir()+"/canvas3d/");
                     update13();
-                    // extrémně důležité - aby se po spuštění i po vymazání struktury začaly hned objevovat atomy po klikání
-                    invalidate();
+//                    canvasBitmap.drawBitmap(getBitmap(),0,0,Atoms);
+//                    myDraw(molCanvas);
+                    // here is the appropriate position - invalidate the screen just once upon the click
+//                    invalidate();
+                    setMoleculeRenderer(TRUE);
                     break;
                 }
                 case MotionEvent.ACTION_MOVE: {
                     break;
                 }
             }
+            // selection / measurement mode
         } else {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN: {
                     Point p = new Point();
                     p.x = (int) event.getX();
                     p.y = (int) event.getY();
-                    points.add(p);
 
                     int width_pix = getScreenWidth();
                     int heigth_pix = getScreenHeight();
 
                     double ZoomExtent = Double.valueOf(exec("cat " + getContext().getFilesDir() + "/canvas3d/Zoom.tmp"));
+                    double BondScale = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/BondScale.tmp"));
+                    double ForegroundShiftBonds = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+                    double ForegroundShiftText = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                    int ColorAtomBorderSelected = Integer.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorAtomBorderSelected.tmp"));
+                    int ColorAtomBorder = Integer.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+                    double TouchDistanceLimit = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/TouchDistanceLimit.tmp"));
+                    HashMap<Integer,Double> distanceMap = new HashMap<Integer,Double>();
 
                     double x_coord_Ang = (1/ZoomExtent) * 0.01 * (p.x - width_pix * 0.5);
                     double y_coord_Ang = -(1/ZoomExtent) * 0.01 * (p.y - heigth_pix * 0.5);
@@ -259,16 +290,87 @@ public class Canvas3d_CanvasView extends View {
 
                     double radius_Ang = Double.valueOf(AtomRadius) * 0.01;
 
-                    try {
-                        FileOutputStream fileout = getContext().openFileOutput("CursorPos.tmp", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
-                        outputWriter.write("X = "+p.x+" pix / "+x_coord_Ang+" A | Y = "+p.y+" pix / "+y_coord_Ang+" A");
-                        outputWriter.close();
-                    } catch (Exception e) {
-                    }
-                    exec("mv "+getContext().getFilesDir()+"/CursorPos.tmp "+getContext().getFilesDir()+"/canvas3d/");
-                    alertPos();
+//                    Long timeStamp = System.currentTimeMillis()/1000;
+//                    int time = Integer.valueOf(String.valueOf(timeStamp));
 
+                    // not like above - otherwise the timestamp would be rounded off too much - when selecting the atoms too quickly, the range may be incorrect (the angles and dihedral angles would be estimated randomly incorrectly - different angle from an triangle than the selected one
+                    Long time = System.currentTimeMillis();
+
+//                    exec("rm "+getContext().getFilesDir()+"/canvas3d/Coordinates.tmp");
+//                    exec("touch "+getContext().getFilesDir()+"/canvas3d/Coordinates.tmp");
+
+                    try {
+                        Scanner scan = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                        while (scan.hasNext()) {
+                            String curLine = scan.nextLine();
+                            String[] splitted = curLine.split("\\s");
+                            String atom = splitted[0].trim();
+                            String x_coord = splitted[1].trim();
+                            String y_coord = splitted[2].trim();
+                            String z_coord = splitted[3].trim();
+                            String radius = splitted[4].trim();
+                            String atom_color = splitted[5].trim();
+                            String text_color = splitted[6].trim();
+                            String atom_number = splitted[7].trim();
+                            int radius_pix = (int) (Double.valueOf(radius)*100);
+                            // project 3D geometry to z = 0
+                            double A = 0;
+                            double B = 0;
+                            double C = 1;
+                            double D = 0;
+                            double x_proj = Double.valueOf(x_coord) - A*(Double.valueOf(x_coord) * A + Double.valueOf(y_coord) * B + Double.valueOf(z_coord) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                            double y_proj = Double.valueOf(y_coord) - A*(Double.valueOf(x_coord) * A + Double.valueOf(y_coord) * B + Double.valueOf(z_coord) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                            double z_proj = Double.valueOf(z_coord) - A*(Double.valueOf(x_coord) * A + Double.valueOf(y_coord) * B + Double.valueOf(z_coord) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+
+                            // calculate the click distance of the projected circle
+                            double dist_click_atom = Math.sqrt(Math.pow((Double.valueOf(x_proj)-Double.valueOf(x_coord_Ang)),2)+Math.pow((Double.valueOf(y_proj)-Double.valueOf(y_coord_Ang)),2));
+                            distanceMap.put(Integer.valueOf(atom_number),dist_click_atom);
+                        }
+                        scan.close();
+                        // find out the atom to which the click was performed // for this function, coreLibraryDesugaring in build.gradle is required (for API 23) // when attempting to move the minimumSDK from 23 to 24, the build gets stuck in the DexBuilderRelease stage
+                        Optional<Map.Entry<Integer, Double>> minEntry = distanceMap.entrySet().stream().min(Map.Entry.comparingByValue());
+                        double minValue = minEntry.get().getValue();
+                        int minAtom = minEntry.get().getKey();
+                        // write the file No. 1 accordingly
+                        Scanner scanC = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.tmp"));
+                        while (scanC.hasNext()) {
+                            String curLineC = scanC.nextLine();
+                            String[] splittedC = curLineC.split("\\s");
+                            String atom1C = splittedC[0].trim();
+                            String atom2C = splittedC[1].trim();
+                            String x1_projC = splittedC[2].trim();
+                            String y1_projC = splittedC[3].trim();
+                            String x2_projC = splittedC[4].trim();
+                            String y2_projC = splittedC[5].trim();
+                            String z_coordC = splittedC[6].trim();
+                            String radiusC = splittedC[7].trim();
+                            String atom_colorC = splittedC[8].trim();
+                            String atom_numberC = splittedC[9].trim();
+                            String typeC = splittedC[10].trim();
+
+                            // write the file
+                            FileOutputStream fileout_atoms = getContext().openFileOutput("Coordinates.tmp", MODE_APPEND);
+                            OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
+
+                            if ((minAtom == Integer.valueOf(atom_numberC))&&(minValue < TouchDistanceLimit)&&(typeC.equals("C"))) {
+                                // select atom(s)
+                                if (Integer.valueOf(atom2C) == ColorAtomBorder) {
+                                    outputWriter_atoms.write(atom1C + "\t" + ColorAtomBorderSelected + "\t" + x1_projC + "\t" + y1_projC + "\t" + time + "\t" + y2_projC + "\t" + z_coordC + "\t" + radiusC + "\t" + atom_colorC + "\t" + atom_numberC + "\t" + typeC + "\n");
+                                // unselect atom(s)
+                                } else if (Integer.valueOf(atom2C) == ColorAtomBorderSelected) {
+                                    outputWriter_atoms.write(atom1C + "\t" + ColorAtomBorder + "\t" + x1_projC + "\t" + y1_projC + "\t" + "0" + "\t" + y2_projC + "\t" + z_coordC + "\t" + radiusC + "\t" + atom_colorC + "\t" + atom_numberC + "\t" + typeC + "\n");
+                                }
+                            } else {
+                                outputWriter_atoms.write(atom1C+"\t"+atom2C+"\t"+x1_projC+"\t"+y1_projC+"\t"+x2_projC+"\t"+y2_projC+"\t"+z_coordC+"\t"+radiusC+"\t"+atom_colorC+"\t"+atom_numberC+"\t"+typeC+"\n");
+                            }
+                            outputWriter_atoms.close();
+                        }
+                        scanC.close();
+                        exec("mv "+getContext().getFilesDir()+"/Coordinates.tmp "+getContext().getFilesDir()+"/canvas3d/");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    setMoleculeRenderer(TRUE);
                     break;
                 }
                 case MotionEvent.ACTION_MOVE: {
@@ -312,6 +414,7 @@ public class Canvas3d_CanvasView extends View {
         double BondScale = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/BondScale.tmp"));
         double ForegroundShiftBonds = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
         double ForegroundShiftText = Double.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+        int ColorAtomBorder = Integer.valueOf(exec("cat "+getContext().getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
         try {
             Scanner scan = new Scanner(new File(getContext().getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
 
@@ -346,7 +449,7 @@ public class Canvas3d_CanvasView extends View {
                 // write the file
                 FileOutputStream fileout_atoms = getContext().openFileOutput("Coordinates.tmp", MODE_APPEND);
                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
-                outputWriter_atoms.write(atom+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coord+"\t"+radius_pix+"\t"+atom_color+"\t"+atom_number+"\t"+"C"+"\n");
+                outputWriter_atoms.write(atom+"\t"+ColorAtomBorder+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coord+"\t"+radius_pix+"\t"+atom_color+"\t"+atom_number+"\t"+"C"+"\n");
                 outputWriter_atoms.write(atom+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_text+"\t"+"0"+"\t"+text_color+"\t"+atom_number+"\t"+"T"+"\n");
                 outputWriter_atoms.close();
 
@@ -471,19 +574,19 @@ public class Canvas3d_CanvasView extends View {
         exec("mv "+getContext().getFilesDir()+"/Coordinates.xyz.tmp "+getContext().getFilesDir()+"/canvas3d/");
     }
 
-    public void alertPos(){
-        final AlertDialog dialog = new AlertDialog.Builder(getContext())
-                .setMessage(exec("cat "+getContext().getFilesDir()+"/canvas3d/CursorPos.tmp"))
-                .setTitle("XY position")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-
-                    }
-                })
-                .create();
-        dialog.show();
-
-    }
+//    public void alertPos(){
+//        final AlertDialog dialog = new AlertDialog.Builder(getContext())
+//                .setMessage(exec("cat "+getContext().getFilesDir()+"/canvas3d/CursorPos.tmp"))
+//                .setTitle("XY position")
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int id) {
+//
+//                    }
+//                })
+//                .create();
+//        dialog.show();
+//
+//    }
 }
 

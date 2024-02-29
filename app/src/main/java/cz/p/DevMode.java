@@ -118,7 +118,7 @@ public class DevMode extends MainActivity {
     Button modify_z_up;
     Button modify_z_down;
     Button DebugPhreeqc;
-    Button start_canvas3d;
+    Button XtbKin1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,11 +191,13 @@ public class DevMode extends MainActivity {
         modify_esp = (Button) findViewById(R.id.modify_esp);
         modify_solvation = (Button) findViewById(R.id.modify_solvation);
 
-        start_canvas3d = (Button) findViewById(R.id.start_canvas3d);
-        start_canvas3d.setOnClickListener(new View.OnClickListener() {
+
+
+        XtbKin1 = (Button) findViewById(R.id.XtbKin1);
+        XtbKin1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DevMode.this, Canvas3d_main.class);
+                Intent intent = new Intent(DevMode.this, XtbKinetics.class);
                 startActivity(intent);
             }
         });

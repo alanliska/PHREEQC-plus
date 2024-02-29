@@ -156,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
     Button PrivacyPolicy;
     TextView label_xtbkin;
     Button start_xtbkin;
+    Button start_canvas3d;
+    TextView labelCanvas;
 
     /**
      * Called when the activity is first created.
@@ -271,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
 //        label_cp2k_all = (TextView) findViewById(R.id.label_cp2k_all);
 //        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
         label_xtb_all = (TextView) findViewById(R.id.label_xtb_all);
+        labelCanvas = (TextView) findViewById(R.id.labelCanvas);
 
         PrivacyPolicy = (Button) findViewById(R.id.PrivacyPolicy);
         PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
@@ -513,7 +516,16 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Intent intent = new Intent(MainActivity.this, XtbKinetics.class);
+                Intent intent = new Intent(MainActivity.this, XtbKinetics2.class);
+                startActivity(intent);
+            }
+        });
+
+        start_canvas3d = (Button) findViewById(R.id.start_canvas3d);
+        start_canvas3d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Canvas3d_main.class);
                 startActivity(intent);
             }
         });
@@ -647,6 +659,19 @@ public class MainActivity extends AppCompatActivity {
         start_devmode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String DatasetName0 = dataset.getText().toString();
+                String DatasetName1 = DatasetName0.replace(" ","_");
+                String DatasetName = DatasetName1.replace(",",".");
+                try {
+                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(DatasetName);
+                    outputWriter.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(MainActivity.this, DevMode.class);
                 startActivity(intent);
             }

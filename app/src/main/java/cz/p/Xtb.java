@@ -130,6 +130,7 @@ public class Xtb extends MainActivity {
     Button write_cell;
     Button inToCanvas;
     Button outToCanvas;
+    Canvas3d_CanvasView molCanvasView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -404,6 +405,22 @@ public class Xtb extends MainActivity {
                 String Inputfile = InputFile.getText().toString();
                 String Arguments = Command.getText().toString();
                 String Infile = InFile.getText().toString();
+
+                ProgressDialog progressDialog = new ProgressDialog(Xtb.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Exporting the structure...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+
+                new Thread() {
+                    public void run() {
+
                 try {
                     FileOutputStream fileout = openFileOutput("Input-xtb.xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -513,6 +530,7 @@ public class Xtb extends MainActivity {
                         double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
                         double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
                         double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                        int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
                         try {
                             Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
                             while (scanX.hasNext()) {
@@ -545,7 +563,7 @@ public class Xtb extends MainActivity {
                                 // write the file
                                 FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
                                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
-                                outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                outputWriter_atoms.write(atomX+"\t"+ColorAtomBorder+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
                                 outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
                                 outputWriter_atoms.close();
 
@@ -601,7 +619,7 @@ public class Xtb extends MainActivity {
                                 }
                                 scan2.close();
                             }
-                            scan.close();
+                            scanX.close();
                             exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -629,6 +647,15 @@ public class Xtb extends MainActivity {
                 }
                 Intent intent = new Intent(Xtb.this, Canvas3d_main.class);
                 startActivity(intent);
+
+//                        molCanvasView.setMoleculeRenderer(Canvas3d_CanvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+
             }
         };
     }
@@ -641,6 +668,22 @@ public class Xtb extends MainActivity {
                 String Inputfile = InputFile.getText().toString();
                 String Arguments = Command.getText().toString();
                 String Infile = InFile.getText().toString();
+
+                ProgressDialog progressDialog = new ProgressDialog(Xtb.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Exporting the structure...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+
+                new Thread() {
+                    public void run() {
+
                 try {
                     FileOutputStream fileout = openFileOutput("Input-xtb.xyz", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -750,6 +793,7 @@ public class Xtb extends MainActivity {
                         double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
                         double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
                         double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                        int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
                         try {
                             Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
                             while (scanX.hasNext()) {
@@ -782,7 +826,7 @@ public class Xtb extends MainActivity {
                                 // write the file
                                 FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
                                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
-                                outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                outputWriter_atoms.write(atomX+"\t"+ColorAtomBorder+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
                                 outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
                                 outputWriter_atoms.close();
 
@@ -838,7 +882,7 @@ public class Xtb extends MainActivity {
                                 }
                                 scan2.close();
                             }
-                            scan.close();
+                            scanX.close();
                             exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -866,6 +910,15 @@ public class Xtb extends MainActivity {
                 }
                 Intent intent = new Intent(Xtb.this, Canvas3d_main.class);
                 startActivity(intent);
+
+//                        molCanvasView.setMoleculeRenderer(Canvas3d_CanvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+
             }
         };
     }

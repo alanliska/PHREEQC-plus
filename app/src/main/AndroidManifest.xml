@@ -242,6 +242,7 @@
         <activity android:name="cz.p.PrivacyPolicy" />
         <activity android:name="cz.p.ModifyXtbKinetics" />
         <activity android:name="cz.p.XtbKinetics" />
+        <activity android:name="cz.p.XtbKinetics2" />
         <activity android:name="cz.p.ModifyXtbSolid" />
         <activity android:name="cz.p.ProjectionGraph" />
         <activity android:name="cz.p.ProjectionGraphSelector" />

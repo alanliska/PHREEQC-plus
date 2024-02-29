@@ -89,7 +89,8 @@
                     android:textAllCaps="false"
                     android:layout_weight="1"
                     android:minHeight="0dp"
-                    android:minWidth="0dp" />
+                    android:minWidth="0dp"
+                    android:backgroundTint="#FFA500"/>
                 <Button
                     android:id="@+id/mode"
                     android:layout_width="wrap_content"
@@ -98,7 +99,8 @@
                     android:textAllCaps="false"
                     android:layout_weight="1"
                     android:minHeight="0dp"
-                    android:minWidth="0dp" />
+                    android:minWidth="0dp"
+                    android:backgroundTint="#FFA500"/>
                 <Button
                     android:id="@+id/colorTest"
                     android:layout_width="wrap_content"
@@ -304,6 +306,86 @@
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="Z-t" />
+                <Button
+                    android:id="@+id/undoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Undo" />
+                <Button
+                    android:id="@+id/deleteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Delete" />
+                <Button
+                    android:id="@+id/replaceButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Replace" />
+                <Button
+                    android:id="@+id/unselectButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Unselect" />
+                <Button
+                    android:id="@+id/distanceButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Distance" />
+                <Button
+                    android:id="@+id/angleButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Angle" />
+                <Button
+                    android:id="@+id/dihedralButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Dihedral" />
+                <Button
+                    android:id="@+id/reorderButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="Reorder" />
             </LinearLayout>
             <!--        <LinearLayout-->
             <!--            android:layout_width="wrap_content"-->

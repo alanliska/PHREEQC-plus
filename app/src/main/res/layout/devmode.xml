@@ -35,13 +35,6 @@
             android:text="VIEW XYZ AS PROJECTED 2D GRAPH" />
 
         <Button
-            android:id="@+id/start_canvas3d"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#BF5695"
-            android:text="CREATE/VIEW/EDIT XYZ IN CANVAS3D (SLOW)" />
-
-        <Button
             android:id="@+id/start_xbasic01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -630,6 +623,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFY Z DOWN MOTION" />
+
+        <Button
+            android:id="@+id/XtbKin1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XTB KINETICS FROM SMILES" />
 
         <Button
             android:id="@+id/DebugPhreeqc"

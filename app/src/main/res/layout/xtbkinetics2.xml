@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/desc_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to XTB reaction path calculation with PHREEQC compatible output.\n\nWhen creating the XYZ structures, please pay attention to atom numberings - the same atoms has to correspond to each other in both reactant and product structures. To ensure this, please use the function Reorder in the Canvas 3D editor/viewer.\n\nEach entered formula must neither contain square brackets [] nor brackets inside of brackets."
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <TextView
+            android:id="@+id/reactant_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nReacting structure (XYZ), file path /data/data/cz.p/files/Xtb_xyzR.txt:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/reactant_xyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+        <Button
+            android:id="@+id/reactant_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL REACTANT STRUCTURE" />
+
+        <TextView
+            android:id="@+id/reactant_formulas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nReactants formulas (one per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/reactant_formulas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/product_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\nStructure to be produced (XYZ), file path /data/data/cz.p/files/Xtb_xyzP.txt:"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+
+        <EditText
+            android:id="@+id/product_xyz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+        <Button
+            android:id="@+id/product_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL PRODUCT STRUCTURE" />
+        <TextView
+            android:id="@+id/product_formulas_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nProducts formulas (one per line):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/product_formulas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/process_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCommand to be executed (edit/check the solvation model, solvent, overall charge, paths to the XYZ files):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/process"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD EXTERNAL COMMAND" />
+        <Button
+            android:id="@+id/openIntCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOAD INTERNAL COMMAND" />
+        <Button
+            android:id="@+id/saveCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtCommandfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE COMMAND TO EXTERNAL STORAGE" />
+
+        <TextView
+            android:id="@+id/details_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nDetailed conditions for the calculation (if needed, please add --input /data/data/cz.p/files/XtbKin.inp):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/openIntInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL INPUTFILE" />
+        <Button
+            android:id="@+id/saveInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO INTERNAL STORAGE" />
+        <Button
+            android:id="@+id/saveExtInfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
+
+        <Button
+            android:id="@+id/runbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CALCULATE THE REACTION PATH WITH XTB" />
+
+        <Button
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+    </LinearLayout>
+</ScrollView>

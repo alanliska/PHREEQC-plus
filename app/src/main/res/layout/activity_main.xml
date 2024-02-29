@@ -325,10 +325,24 @@
             android:text="*** OPENBABEL ***" />
 
         <TextView
+            android:id="@+id/labelCanvas"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nV. Molecule editor / viewer"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <Button
+            android:id="@+id/start_canvas3d"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BF5695"
+            android:text="CREATE/VIEW/EDIT XYZ IN CANVAS3D (SLOW)" />
+
+        <TextView
             android:id="@+id/label5"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nV. Scoped storage tools"
+            android:text="\nVI. Scoped storage tools"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button

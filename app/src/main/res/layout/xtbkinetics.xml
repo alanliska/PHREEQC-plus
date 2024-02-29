@@ -101,7 +101,7 @@
             android:id="@+id/process_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\nCommand to be executed (edit/check the solvation model, solvent, overall charge):"
+            android:text="\nCommand to be executed (edit/check the solvation model, solvent, overall charge, paths to the SMILES files):"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText

@@ -30,6 +30,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText AtomBorder;
     private TextView AtomLabelLabel;
     private EditText AtomLabel;
+    private TextView AtomLabelShiftXLabel;
+    private EditText AtomLabelShiftX;
+    private TextView AtomLabelShiftYLabel;
+    private EditText AtomLabelShiftY;
     private TextView BondScaleLabel;
     private EditText BondScale;
     private TextView BondSizeLabel;
@@ -38,14 +42,14 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText ColorAtom;
     private TextView ColorAtomBorderLabel;
     private EditText ColorAtomBorder;
+    private TextView ColorAtomBorderSelectedLabel;
+    private EditText ColorAtomBorderSelected;
     private TextView ColorCanvasLabel;
     private EditText ColorCanvas;
     private TextView ColorTestLabel;
     private EditText ColorTest;
     private TextView ColorTextLabel;
     private EditText ColorText;
-    private TextView CursorPosLabel;
-    private EditText CursorPos;
     private TextView ElmntLabel;
     private EditText Elmnt;
     private TextView ElmntsLabel;
@@ -66,6 +70,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText RotAngle;
     private TextView TextSizeLabel;
     private EditText TextSize;
+    private TextView TouchDistanceLimitLabel;
+    private EditText TouchDistanceLimit;
     private TextView TranslLabel;
     private EditText Transl;
     private TextView ZoomLabel;
@@ -132,6 +138,56 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 // place the cursor at the original position
                 AtomLabel.setSelection(startChanged+countChanged);
                 AtomLabel.addTextChangedListener(this);
+            }
+        });
+        AtomLabelShiftXLabel = (TextView) findViewById(R.id.AtomLabelShiftXLabel);
+        AtomLabelShiftX = (EditText) findViewById(R.id.AtomLabelShiftX);
+        AtomLabelShiftX.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                AtomLabelShiftX.removeTextChangedListener(this);
+                String text = AtomLabelShiftX.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                AtomLabelShiftX.getText().clear();
+                AtomLabelShiftX.append(colorized_numbers(text));
+                // place the cursor at the original position
+                AtomLabelShiftX.setSelection(startChanged+countChanged);
+                AtomLabelShiftX.addTextChangedListener(this);
+            }
+        });
+        AtomLabelShiftYLabel = (TextView) findViewById(R.id.AtomLabelShiftYLabel);
+        AtomLabelShiftY = (EditText) findViewById(R.id.AtomLabelShiftY);
+        AtomLabelShiftY.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                AtomLabelShiftY.removeTextChangedListener(this);
+                String text = AtomLabelShiftY.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                AtomLabelShiftY.getText().clear();
+                AtomLabelShiftY.append(colorized_numbers(text));
+                // place the cursor at the original position
+                AtomLabelShiftY.setSelection(startChanged+countChanged);
+                AtomLabelShiftY.addTextChangedListener(this);
             }
         });
         BondScaleLabel = (TextView) findViewById(R.id.BondScaleLabel);
@@ -234,6 +290,31 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 ColorAtomBorder.addTextChangedListener(this);
             }
         });
+        ColorAtomBorderSelectedLabel = (TextView) findViewById(R.id.ColorAtomBorderSelectedLabel);
+        ColorAtomBorderSelected = (EditText) findViewById(R.id.ColorAtomBorderSelected);
+        ColorAtomBorderSelected.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                ColorAtomBorderSelected.removeTextChangedListener(this);
+                String text = ColorAtomBorderSelected.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                ColorAtomBorderSelected.getText().clear();
+                ColorAtomBorderSelected.append(colorized_numbers(text));
+                // place the cursor at the original position
+                ColorAtomBorderSelected.setSelection(startChanged+countChanged);
+                ColorAtomBorderSelected.addTextChangedListener(this);
+            }
+        });
         ColorCanvasLabel = (TextView) findViewById(R.id.ColorCanvasLabel);
         ColorCanvas = (EditText) findViewById(R.id.ColorCanvas);
         ColorCanvas.addTextChangedListener(new TextWatcher() {
@@ -307,31 +388,6 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 // place the cursor at the original position
                 ColorText.setSelection(startChanged+countChanged);
                 ColorText.addTextChangedListener(this);
-            }
-        });
-        CursorPosLabel = (TextView) findViewById(R.id.CursorPosLabel);
-        CursorPos = (EditText) findViewById(R.id.CursorPos);
-        CursorPos.addTextChangedListener(new TextWatcher() {
-            int startChanged,beforeChanged,countChanged;
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                startChanged = start;
-                beforeChanged = before;
-                countChanged = count;
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                CursorPos.removeTextChangedListener(this);
-                String text = CursorPos.getText().toString();
-                // important - not setText() - otherwise the keyboard would be reset after each type
-                CursorPos.getText().clear();
-                CursorPos.append(colorized_numbers(text));
-                // place the cursor at the original position
-                CursorPos.setSelection(startChanged+countChanged);
-                CursorPos.addTextChangedListener(this);
             }
         });
         ElmntLabel = (TextView) findViewById(R.id.ElmntLabel);
@@ -584,6 +640,31 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 TextSize.addTextChangedListener(this);
             }
         });
+        TouchDistanceLimitLabel = (TextView) findViewById(R.id.TouchDistanceLimitLabel);
+        TouchDistanceLimit = (EditText) findViewById(R.id.TouchDistanceLimit);
+        TouchDistanceLimit.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                TouchDistanceLimit.removeTextChangedListener(this);
+                String text = TouchDistanceLimit.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                TouchDistanceLimit.getText().clear();
+                TouchDistanceLimit.append(colorized_numbers(text));
+                // place the cursor at the original position
+                TouchDistanceLimit.setSelection(startChanged+countChanged);
+                TouchDistanceLimit.addTextChangedListener(this);
+            }
+        });
         TranslLabel = (TextView) findViewById(R.id.TranslLabel);
         Transl = (EditText) findViewById(R.id.Transl);
         Transl.addTextChangedListener(new TextWatcher() {
@@ -672,14 +753,16 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         super.onStart();
         AtomBorderDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomBorder.tmp"));
         AtomLabelDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomLabel.tmp"));
+        AtomLabelShiftXDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomLabelShiftX.tmp"));
+        AtomLabelShiftYDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomLabelShiftY.tmp"));
         BondScaleDisplay(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
         BondSizeDisplay(exec("cat "+getFilesDir()+"/canvas3d/BondSize.tmp"));
         ColorAtomDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorAtom.tmp"));
         ColorAtomBorderDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+        ColorAtomBorderSelectedDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorderSelected.tmp"));
         ColorCanvasDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorCanvas.tmp"));
         ColorTestDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorTest.tmp"));
         ColorTextDisplay(exec("cat "+getFilesDir()+"/canvas3d/ColorText.tmp"));
-        CursorPosDisplay(exec("cat "+getFilesDir()+"/canvas3d/CursorPos.tmp"));
         ElmntDisplay(exec("cat "+getFilesDir()+"/canvas3d/Elmnt.tmp"));
         ElmntsDisplay(exec("cat "+getFilesDir()+"/canvas3d/Elmnts.dat"));
         ForegroundShiftBondsDisplay(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
@@ -690,6 +773,7 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         RadiusScaleDisplay(exec("cat "+getFilesDir()+"/canvas3d/RadiusScale.tmp"));
         RotAngleDisplay(exec("cat "+getFilesDir()+"/canvas3d/RotAngle.tmp"));
         TextSizeDisplay(exec("cat "+getFilesDir()+"/canvas3d/TextSize.tmp"));
+        TouchDistanceLimitDisplay(exec("cat "+getFilesDir()+"/canvas3d/TouchDistanceLimit.tmp"));
         TranslDisplay(exec("cat "+getFilesDir()+"/canvas3d/Transl.tmp"));
         ZoomDisplay(exec("cat "+getFilesDir()+"/canvas3d/Zoom.tmp"));
         ZoomStepDisplay(exec("cat "+getFilesDir()+"/canvas3d/ZoomStep.tmp"));
@@ -706,7 +790,6 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 String F7 = ColorAtomBorder.getText().toString();
                 String F8 = ColorTest.getText().toString();
                 String F9 = ColorText.getText().toString();
-                String F10 = CursorPos.getText().toString();
                 String F11 = Elmnt.getText().toString();
                 String F12 = Elmnts.getText().toString();
                 String F13 = Mode.getText().toString();
@@ -721,6 +804,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 String F23 = ColorCanvas.getText().toString();
                 String F24 = ForegroundShiftBonds.getText().toString();
                 String F25 = ForegroundShiftText.getText().toString();
+                String F26 = AtomLabelShiftX.getText().toString();
+                String F27 = AtomLabelShiftY.getText().toString();
+                String F28 = ColorAtomBorderSelected.getText().toString();
+                String F29 = TouchDistanceLimit.getText().toString();
                 // TODO Auto-generated method stub //
                 try {
                     FileOutputStream Fos1 = openFileOutput("AtomBorder.tmp", MODE_PRIVATE);
@@ -755,10 +842,6 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow9 = new OutputStreamWriter(Fos9);
                     Fow9.write(F9);
                     Fow9.close();
-                    FileOutputStream Fos10 = openFileOutput("CursorPos.tmp", MODE_PRIVATE);
-                    OutputStreamWriter Fow10 = new OutputStreamWriter(Fos10);
-                    Fow10.write(F10);
-                    Fow10.close();
                     FileOutputStream Fos11 = openFileOutput("Elmnt.tmp", MODE_PRIVATE);
                     OutputStreamWriter Fow11 = new OutputStreamWriter(Fos11);
                     Fow11.write(F11);
@@ -815,6 +898,22 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow25 = new OutputStreamWriter(Fos25);
                     Fow25.write(F25);
                     Fow25.close();
+                    FileOutputStream Fos26 = openFileOutput("AtomLabelShiftX.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow26 = new OutputStreamWriter(Fos26);
+                    Fow26.write(F26);
+                    Fow26.close();
+                    FileOutputStream Fos27 = openFileOutput("AtomLabelShiftY.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow27 = new OutputStreamWriter(Fos27);
+                    Fow27.write(F27);
+                    Fow27.close();
+                    FileOutputStream Fos28 = openFileOutput("ColorAtomBorderSelected.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow28 = new OutputStreamWriter(Fos28);
+                    Fow28.write(F28);
+                    Fow28.close();
+                    FileOutputStream Fos29 = openFileOutput("TouchDistanceLimit.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow29 = new OutputStreamWriter(Fos29);
+                    Fow29.write(F29);
+                    Fow29.close();
                 } catch (Exception e) {
                 }
                 exec("mv "+getFilesDir()+"/AtomBorder.tmp "+getFilesDir()+"/canvas3d/");
@@ -826,7 +925,6 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 exec("mv "+getFilesDir()+"/ColorCanvas.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ColorTest.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ColorText.tmp "+getFilesDir()+"/canvas3d/");
-                exec("mv "+getFilesDir()+"/CursorPos.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Elmnt.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Elmnts.dat "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Mode.tmp "+getFilesDir()+"/canvas3d/");
@@ -840,6 +938,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 exec("mv "+getFilesDir()+"/ZoomStep.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ForegroundShiftBonds.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ForegroundShiftText.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/AtomLabelShiftX.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/AtomLabelShiftY.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/ColorAtomBorderSelected.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/TouchDistanceLimit.tmp "+getFilesDir()+"/canvas3d/");
             }
         };
     }
@@ -940,14 +1042,6 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
         };
         handler.post(proc9);
-    }
-    private void CursorPosDisplay(final String str10) {
-        Runnable proc10 = new Runnable() {
-            public void run() {
-                CursorPos.setText(colorized_numbers(str10));
-            }
-        };
-        handler.post(proc10);
     }
     private void ElmntDisplay(final String str11) {
         Runnable proc11 = new Runnable() {
@@ -1060,5 +1154,37 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
         };
         handler.post(proc25);
+    }
+    private void AtomLabelShiftXDisplay(final String str26) {
+        Runnable proc26 = new Runnable() {
+            public void run() {
+                AtomLabelShiftX.setText(colorized_numbers(str26));
+            }
+        };
+        handler.post(proc26);
+    }
+    private void AtomLabelShiftYDisplay(final String str27) {
+        Runnable proc27 = new Runnable() {
+            public void run() {
+                AtomLabelShiftY.setText(colorized_numbers(str27));
+            }
+        };
+        handler.post(proc27);
+    }
+    private void ColorAtomBorderSelectedDisplay(final String str28) {
+        Runnable proc28 = new Runnable() {
+            public void run() {
+                ColorAtomBorderSelected.setText(colorized_numbers(str28));
+            }
+        };
+        handler.post(proc28);
+    }
+    private void TouchDistanceLimitDisplay(final String str29) {
+        Runnable proc29 = new Runnable() {
+            public void run() {
+                TouchDistanceLimit.setText(colorized_numbers(str29));
+            }
+        };
+        handler.post(proc29);
     }
 }

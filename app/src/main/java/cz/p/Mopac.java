@@ -75,6 +75,7 @@ public class Mopac extends MainActivity {
     Button manual_mopac;
     Button inToCanvas;
     Button outToCanvas;
+    Canvas3d_CanvasView molCanvasView;
 
     /**
      * Called when the activity is first created.
@@ -196,6 +197,22 @@ public class Mopac extends MainActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 String Inputfile = MopacInput.getText().toString();
+
+                ProgressDialog progressDialog = new ProgressDialog(Mopac.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Exporting the structure...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+
+                new Thread() {
+                    public void run() {
+
                 try {
                     FileOutputStream fileout = openFileOutput("Input-mopac.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
@@ -288,14 +305,15 @@ public class Mopac extends MainActivity {
                         // až tady: (za smyčkou)
                         scan.close();
                         exec("rm "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
-                        exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+                        exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/");
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
-                        exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                        exec("touch "+getFilesDir()+"/Coordinates.tmp");
                         double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
                         double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
                         double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                        int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
                         try {
                             Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
                             while (scanX.hasNext()) {
@@ -328,7 +346,7 @@ public class Mopac extends MainActivity {
                                 // write the file
                                 FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
                                 OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
-                                outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                outputWriter_atoms.write(atomX+"\t"+ColorAtomBorder+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
                                 outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
                                 outputWriter_atoms.close();
 
@@ -384,7 +402,7 @@ public class Mopac extends MainActivity {
                                 }
                                 scan2.close();
                             }
-                            scan.close();
+                            scanX.close();
                             exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -412,6 +430,15 @@ public class Mopac extends MainActivity {
                 }
                 Intent intent = new Intent(Mopac.this, Canvas3d_main.class);
                 startActivity(intent);
+
+//                        molCanvasView.setMoleculeRenderer(Canvas3d_CanvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+
             }
         };
     }

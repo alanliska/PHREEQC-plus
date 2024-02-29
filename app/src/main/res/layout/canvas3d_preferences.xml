@@ -15,7 +15,7 @@
             android:id="@+id/AtomBorderLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="AtomBorder:"
+            android:text="AtomBorder (int) [pix]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/AtomBorder"
@@ -32,7 +32,7 @@
             android:id="@+id/AtomLabelLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="AtomLabel:"
+            android:text="AtomLabel (str) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/AtomLabel"
@@ -46,10 +46,44 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
+            android:id="@+id/AtomLabelShiftXLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="AtomLabelShiftX (int) [pix]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/AtomLabelShiftX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/AtomLabelShiftYLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="AtomLabelShiftY (int) [pix]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/AtomLabelShiftY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/BondScaleLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="BondScale:"
+            android:text="BondScale (double) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/BondScale"
@@ -66,7 +100,7 @@
             android:id="@+id/BondSizeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="BondSize:"
+            android:text="BondSize (int) [pix]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/BondSize"
@@ -83,7 +117,7 @@
             android:id="@+id/ColorAtomLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ColorAtom:"
+            android:text="ColorAtom (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ColorAtom"
@@ -100,7 +134,7 @@
             android:id="@+id/ColorAtomBorderLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ColorAtomBorder:"
+            android:text="ColorAtomBorder (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ColorAtomBorder"
@@ -114,10 +148,27 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
+            android:id="@+id/ColorAtomBorderSelectedLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="ColorAtomBorderSelected (int) [ ]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/ColorAtomBorderSelected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/ColorCanvasLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ColorCanvas:"
+            android:text="ColorCanvas (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ColorCanvas"
@@ -134,7 +185,7 @@
             android:id="@+id/ColorTestLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ColorTest:"
+            android:text="ColorTest (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ColorTest"
@@ -151,7 +202,7 @@
             android:id="@+id/ColorTextLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ColorText:"
+            android:text="ColorText (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ColorText"
@@ -165,27 +216,10 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
-            android:id="@+id/CursorPosLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="CursorPos:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-        <EditText
-            android:id="@+id/CursorPos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="monospace"
-            android:fadeScrollbars="false"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarFadeDuration="50000"
-            android:fastScrollAlwaysVisible="true"
-            android:scrollbarSize="5dp"
-            android:fastScrollEnabled="true"/>
-        <TextView
             android:id="@+id/ElmntLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Elmnt:"
+            android:text="Elmnt (str) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Elmnt"
@@ -202,7 +236,7 @@
             android:id="@+id/ElmntsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Elmnts:"
+            android:text="Elmnts (str,int,int,int) [ ],[pm],[ ],[ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Elmnts"
@@ -219,7 +253,7 @@
             android:id="@+id/ForegroundShiftBondsLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ForegroundShiftBonds:"
+            android:text="ForegroundShiftBonds (double) [Ang]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ForegroundShiftBonds"
@@ -236,7 +270,7 @@
             android:id="@+id/ForegroundShiftTextLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ForegroundShiftText:"
+            android:text="ForegroundShiftText (double) [Ang]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ForegroundShiftText"
@@ -253,7 +287,7 @@
             android:id="@+id/ModeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Mode:"
+            android:text="Mode (int) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Mode"
@@ -270,7 +304,7 @@
             android:id="@+id/PerspScaleLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="PerspScale:"
+            android:text="PerspScale (double) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/PerspScale"
@@ -287,7 +321,7 @@
             android:id="@+id/RadLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Rad:"
+            android:text="Rad (double) [pm]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Rad"
@@ -304,7 +338,7 @@
             android:id="@+id/RadiusScaleLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="RadiusScale:"
+            android:text="RadiusScale (double) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/RadiusScale"
@@ -321,7 +355,7 @@
             android:id="@+id/RotAngleLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="RotAngle:"
+            android:text="RotAngle (double) [rad]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/RotAngle"
@@ -338,7 +372,7 @@
             android:id="@+id/TextSizeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="TextSize:"
+            android:text="TextSize (int) [pix]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/TextSize"
@@ -352,10 +386,27 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
+            android:id="@+id/TouchDistanceLimitLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="TouchDistanceLimit (double) [Ang]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/TouchDistanceLimit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/TranslLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Transl:"
+            android:text="Transl (double) [Ang]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Transl"
@@ -372,7 +423,7 @@
             android:id="@+id/ZoomLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Zoom:"
+            android:text="Zoom (double) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Zoom"
@@ -389,7 +440,7 @@
             android:id="@+id/ZoomStepLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ZoomStep:"
+            android:text="ZoomStep (double) [ ]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ZoomStep"

@@ -81,9 +81,9 @@ public class ResumeActivity extends MainActivity {
                 moveTautomers();
                 moveCryst();
                 moveLiq();
-                cleanDummyDatasets();
                 moveXtbComm();
                 moveXtbSolv();
+                cleanDummyDatasets();
 //                goBack();
 
                                         onFinish();
