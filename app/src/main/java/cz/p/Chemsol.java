@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_phreeqc;
 
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -350,6 +352,31 @@ public class Chemsol extends MainActivity {
     public void alertSaveInput(){
         // creating the EditText widget programatically
         EditText editText10 = new EditText(Chemsol.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Chemsol.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/chemsol")
@@ -536,6 +563,31 @@ public class Chemsol extends MainActivity {
     public void alertSaveOutput(){
         // creating the EditText widget programatically
         EditText editText15 = new EditText(Chemsol.this);
+        editText15.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText15.setTypeface(Typeface.MONOSPACE);
+        editText15.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText15.removeTextChangedListener(this);
+                String text = editText15.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText15.getText().clear();
+                editText15.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText15.setSelection(startChanged+countChanged);
+                editText15.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Chemsol.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/chemsol")

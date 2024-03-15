@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_fastchem;
 
 import android.app.ProgressDialog;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -1099,6 +1101,12 @@ public class Fastchem extends MainActivity {
 //                String FastChemCommand = "export HOME=/data/data/cz.p/files ; cd $HOME ; rm Output.txt chemistry.dat monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so config.input > monitor.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t condensates.dat > condensates_trans.dat ; "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so -t chemistry.dat > chemistry_trans.dat ; rm condensates.dat ; rm chemistry.dat ; mv chemistry_trans.dat chemistry.dat ; cat condensates_trans.dat >> chemistry.dat ; cat monitor.dat >> chemistry.dat ; rm condensates_trans.dat ; cat chemistry.dat";
                 String FastChemCommand = exec("cat "+getFilesDir()+"/ProcessFastchem.txt");
 
+                FastChemCommand = FastChemCommand.replace(" cpx ", " "+getApplicationInfo().nativeLibraryDir+"/libcpx.so ");
+                FastChemCommand = FastChemCommand.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
+                FastChemCommand = FastChemCommand.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
+                FastChemCommand = FastChemCommand.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
+                FastChemCommand = FastChemCommand.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
+                FastChemCommand = FastChemCommand.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
                 FastChemCommand = FastChemCommand.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
                 FastChemCommand = FastChemCommand.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
                 FastChemCommand = FastChemCommand.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
@@ -1296,6 +1304,31 @@ public class Fastchem extends MainActivity {
     public void alertSaveInput(){
         // creating the EditText widget programatically
         EditText editText10 = new EditText(Fastchem.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Fastchem.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/atmospheric-profiles")
@@ -1393,6 +1426,31 @@ public class Fastchem extends MainActivity {
     public void alertSaveInput2(){
         // creating the EditText widget programatically
         EditText editText10 = new EditText(Fastchem.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Fastchem.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/element-abundances")
@@ -1490,6 +1548,31 @@ public class Fastchem extends MainActivity {
     public void alertSaveOutput(){
         // creating the EditText widget programatically
         EditText editText15 = new EditText(Fastchem.this);
+        editText15.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText15.setTypeface(Typeface.MONOSPACE);
+        editText15.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText15.removeTextChangedListener(this);
+                String text = editText15.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText15.getText().clear();
+                editText15.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText15.setSelection(startChanged+countChanged);
+                editText15.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Fastchem.this)
                 .setMessage("The file will be saved in the folder /work")

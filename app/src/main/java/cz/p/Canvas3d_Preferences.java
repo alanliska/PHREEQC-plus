@@ -24,6 +24,15 @@ public class Canvas3d_Preferences extends Canvas3d_main {
 
 
 
+
+
+
+
+
+
+
+
+
     private Button Quit;
     private Button saveButton;
     private TextView AtomBorderLabel;
@@ -58,6 +67,14 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText ForegroundShiftBonds;
     private TextView ForegroundShiftTextLabel;
     private EditText ForegroundShiftText;
+    private TextView HNLabel;
+    private EditText HN;
+    private TextView HOLabel;
+    private EditText HO;
+    private TextView HFLabel;
+    private EditText HF;
+    private TextView HClLabel;
+    private EditText HCl;
     private TextView ModeLabel;
     private EditText Mode;
     private TextView PerspScaleLabel;
@@ -78,6 +95,19 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText Zoom;
     private TextView ZoomStepLabel;
     private EditText ZoomStep;
+    private TextView HBondColLabel;
+    private EditText HBondCol;
+    private TextView coordLabel;
+    private EditText coord;
+    private TextView coordXLabel;
+    private EditText coordX;
+    private TextView coordXYZLabel;
+    private EditText coordXYZ;
+    private TextView coordGJFLabel;
+    private EditText coordGJF;
+
+
+
 
     private Handler handler = new Handler();
 
@@ -490,6 +520,131 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 ForegroundShiftText.addTextChangedListener(this);
             }
         });
+        HNLabel = (TextView) findViewById(R.id.HNLabel);
+        HN = (EditText) findViewById(R.id.HN);
+        HN.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                HN.removeTextChangedListener(this);
+                String text = HN.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                HN.getText().clear();
+                HN.append(colorized_numbers(text));
+                // place the cursor at the original position
+                HN.setSelection(startChanged+countChanged);
+                HN.addTextChangedListener(this);
+            }
+        });
+        HOLabel = (TextView) findViewById(R.id.HOLabel);
+        HO = (EditText) findViewById(R.id.HO);
+        HO.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                HO.removeTextChangedListener(this);
+                String text = HO.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                HO.getText().clear();
+                HO.append(colorized_numbers(text));
+                // place the cursor at the original position
+                HO.setSelection(startChanged+countChanged);
+                HO.addTextChangedListener(this);
+            }
+        });
+        HFLabel = (TextView) findViewById(R.id.HFLabel);
+        HF = (EditText) findViewById(R.id.HF);
+        HF.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                HF.removeTextChangedListener(this);
+                String text = HF.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                HF.getText().clear();
+                HF.append(colorized_numbers(text));
+                // place the cursor at the original position
+                HF.setSelection(startChanged+countChanged);
+                HF.addTextChangedListener(this);
+            }
+        });
+        HClLabel = (TextView) findViewById(R.id.HClLabel);
+        HCl = (EditText) findViewById(R.id.HCl);
+        HCl.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                HCl.removeTextChangedListener(this);
+                String text = HCl.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                HCl.getText().clear();
+                HCl.append(colorized_numbers(text));
+                // place the cursor at the original position
+                HCl.setSelection(startChanged+countChanged);
+                HCl.addTextChangedListener(this);
+            }
+        });
+        HBondColLabel = (TextView) findViewById(R.id.HBondColLabel);
+        HBondCol = (EditText) findViewById(R.id.HBondCol);
+        HBondCol.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                HBondCol.removeTextChangedListener(this);
+                String text = HBondCol.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                HBondCol.getText().clear();
+                HBondCol.append(colorized_numbers(text));
+                // place the cursor at the original position
+                HBondCol.setSelection(startChanged+countChanged);
+                HBondCol.addTextChangedListener(this);
+            }
+        });
         ModeLabel = (TextView) findViewById(R.id.ModeLabel);
         Mode = (EditText) findViewById(R.id.Mode);
         Mode.addTextChangedListener(new TextWatcher() {
@@ -740,6 +895,106 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 ZoomStep.addTextChangedListener(this);
             }
         });
+        coordLabel = (TextView) findViewById(R.id.coordLabel);
+        coord = (EditText) findViewById(R.id.coord);
+        coord.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                coord.removeTextChangedListener(this);
+                String text = coord.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                coord.getText().clear();
+                coord.append(colorized_numbers(text));
+                // place the cursor at the original position
+                coord.setSelection(startChanged+countChanged);
+                coord.addTextChangedListener(this);
+            }
+        });
+        coordXLabel = (TextView) findViewById(R.id.coordXLabel);
+        coordX = (EditText) findViewById(R.id.coordX);
+        coordX.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                coordX.removeTextChangedListener(this);
+                String text = coordX.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                coordX.getText().clear();
+                coordX.append(colorized_numbers(text));
+                // place the cursor at the original position
+                coordX.setSelection(startChanged+countChanged);
+                coordX.addTextChangedListener(this);
+            }
+        });
+        coordXYZLabel = (TextView) findViewById(R.id.coordXYZLabel);
+        coordXYZ = (EditText) findViewById(R.id.coordXYZ);
+        coordXYZ.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                coordXYZ.removeTextChangedListener(this);
+                String text = coordXYZ.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                coordXYZ.getText().clear();
+                coordXYZ.append(colorized_numbers(text));
+                // place the cursor at the original position
+                coordXYZ.setSelection(startChanged+countChanged);
+                coordXYZ.addTextChangedListener(this);
+            }
+        });
+        coordGJFLabel = (TextView) findViewById(R.id.coordGJFLabel);
+        coordGJF = (EditText) findViewById(R.id.coordGJF);
+        coordGJF.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                coordGJF.removeTextChangedListener(this);
+                String text = coordGJF.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                coordGJF.getText().clear();
+                coordGJF.append(colorized_numbers(text));
+                // place the cursor at the original position
+                coordGJF.setSelection(startChanged+countChanged);
+                coordGJF.addTextChangedListener(this);
+            }
+        });
 
     }
 
@@ -767,6 +1022,11 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         ElmntsDisplay(exec("cat "+getFilesDir()+"/canvas3d/Elmnts.dat"));
         ForegroundShiftBondsDisplay(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
         ForegroundShiftTextDisplay(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+        HNDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHN.tmp"));
+        HODisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHO.tmp"));
+        HFDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHF.tmp"));
+        HClDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHCl.tmp"));
+        HBondColDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondCol.tmp"));
         ModeDisplay(exec("cat "+getFilesDir()+"/canvas3d/Mode.tmp"));
         PerspScaleDisplay(exec("cat "+getFilesDir()+"/canvas3d/PerspScale.tmp"));
         RadDisplay(exec("cat "+getFilesDir()+"/canvas3d/Rad.tmp"));
@@ -777,6 +1037,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         TranslDisplay(exec("cat "+getFilesDir()+"/canvas3d/Transl.tmp"));
         ZoomDisplay(exec("cat "+getFilesDir()+"/canvas3d/Zoom.tmp"));
         ZoomStepDisplay(exec("cat "+getFilesDir()+"/canvas3d/ZoomStep.tmp"));
+        CoordDisplay(exec("cat "+getFilesDir()+"/canvas3d/Coordinates.tmp"));
+        CoordXDisplay(exec("cat "+getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+        CoordXYZDisplay(exec("cat "+getFilesDir()+"/canvas3d/Coordinates.xyz.tmp"));
+        CoordGJFDisplay(exec("cat "+getFilesDir()+"/canvas3d/Coordinates.gjf.tmp"));
     }
 
     private View.OnClickListener saveClick; {
@@ -808,6 +1072,15 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 String F27 = AtomLabelShiftY.getText().toString();
                 String F28 = ColorAtomBorderSelected.getText().toString();
                 String F29 = TouchDistanceLimit.getText().toString();
+                String F30 = HN.getText().toString();
+                String F31 = HO.getText().toString();
+                String F32 = HF.getText().toString();
+                String F33 = HCl.getText().toString();
+                String F34 = HBondCol.getText().toString();
+                String F35 = coord.getText().toString();
+                String F36 = coordX.getText().toString();
+                String F37 = coordXYZ.getText().toString();
+                String F38 = coordGJF.getText().toString();
                 // TODO Auto-generated method stub //
                 try {
                     FileOutputStream Fos1 = openFileOutput("AtomBorder.tmp", MODE_PRIVATE);
@@ -914,6 +1187,42 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow29 = new OutputStreamWriter(Fos29);
                     Fow29.write(F29);
                     Fow29.close();
+                    FileOutputStream Fos30 = openFileOutput("HBondHN.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow30 = new OutputStreamWriter(Fos30);
+                    Fow30.write(F30);
+                    Fow30.close();
+                    FileOutputStream Fos31 = openFileOutput("HBondHO.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow31 = new OutputStreamWriter(Fos31);
+                    Fow31.write(F31);
+                    Fow31.close();
+                    FileOutputStream Fos32 = openFileOutput("HBondHF.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow32 = new OutputStreamWriter(Fos32);
+                    Fow32.write(F32);
+                    Fow32.close();
+                    FileOutputStream Fos33 = openFileOutput("HBondHCl.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow33 = new OutputStreamWriter(Fos33);
+                    Fow33.write(F33);
+                    Fow33.close();
+                    FileOutputStream Fos34 = openFileOutput("HBondCol.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow34 = new OutputStreamWriter(Fos34);
+                    Fow34.write(F34);
+                    Fow34.close();
+                    FileOutputStream Fos35 = openFileOutput("Coordinates.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow35 = new OutputStreamWriter(Fos35);
+                    Fow35.write(F35);
+                    Fow35.close();
+                    FileOutputStream Fos36 = openFileOutput("Coordinates.x.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow36 = new OutputStreamWriter(Fos36);
+                    Fow36.write(F36);
+                    Fow36.close();
+                    FileOutputStream Fos37 = openFileOutput("Coordinates.xyz.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow37 = new OutputStreamWriter(Fos37);
+                    Fow37.write(F37);
+                    Fow37.close();
+                    FileOutputStream Fos38 = openFileOutput("Coordinates.gjf.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow38 = new OutputStreamWriter(Fos38);
+                    Fow38.write(F38);
+                    Fow38.close();
                 } catch (Exception e) {
                 }
                 exec("mv "+getFilesDir()+"/AtomBorder.tmp "+getFilesDir()+"/canvas3d/");
@@ -942,6 +1251,15 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 exec("mv "+getFilesDir()+"/AtomLabelShiftY.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/ColorAtomBorderSelected.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/TouchDistanceLimit.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondHN.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondHO.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondHF.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondHCl.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondCol.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/Coordinates.xyz.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/Coordinates.gjf.tmp "+getFilesDir()+"/canvas3d/");
             }
         };
     }
@@ -1186,5 +1504,77 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
         };
         handler.post(proc29);
+    }
+    private void HNDisplay(final String str30) {
+        Runnable proc30 = new Runnable() {
+            public void run() {
+                HN.setText(colorized_numbers(str30));
+            }
+        };
+        handler.post(proc30);
+    }
+    private void HODisplay(final String str31) {
+        Runnable proc31 = new Runnable() {
+            public void run() {
+                HO.setText(colorized_numbers(str31));
+            }
+        };
+        handler.post(proc31);
+    }
+    private void HFDisplay(final String str32) {
+        Runnable proc32 = new Runnable() {
+            public void run() {
+                HF.setText(colorized_numbers(str32));
+            }
+        };
+        handler.post(proc32);
+    }
+    private void HClDisplay(final String str33) {
+        Runnable proc33 = new Runnable() {
+            public void run() {
+                HCl.setText(colorized_numbers(str33));
+            }
+        };
+        handler.post(proc33);
+    }
+    private void HBondColDisplay(final String str34) {
+        Runnable proc34 = new Runnable() {
+            public void run() {
+                HBondCol.setText(colorized_numbers(str34));
+            }
+        };
+        handler.post(proc34);
+    }
+    private void CoordDisplay(final String str35) {
+        Runnable proc35 = new Runnable() {
+            public void run() {
+                coord.setText(colorized_numbers(str35));
+            }
+        };
+        handler.post(proc35);
+    }
+    private void CoordXDisplay(final String str36) {
+        Runnable proc36 = new Runnable() {
+            public void run() {
+                coordX.setText(colorized_numbers(str36));
+            }
+        };
+        handler.post(proc36);
+    }
+    private void CoordXYZDisplay(final String str37) {
+        Runnable proc37 = new Runnable() {
+            public void run() {
+                coordXYZ.setText(colorized_numbers(str37));
+            }
+        };
+        handler.post(proc37);
+    }
+    private void CoordGJFDisplay(final String str38) {
+        Runnable proc38 = new Runnable() {
+            public void run() {
+                coordGJF.setText(colorized_numbers(str38));
+            }
+        };
+        handler.post(proc38);
     }
 }

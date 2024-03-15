@@ -50,6 +50,11 @@ Licenses and references to used third-party software:
  Source code: https://github.com/jborden/ChemSol
  License: The Android binary distribution is published as freeware at Mobile Chemistry Portal and Google Play Store with kind permission of Jan Florián.
 
+ * CPCM-X
+ Authors/contributors: Marcel Stahn, Sebastian Ehlert, "Albkat" (GitHub)
+ Source code: https://github.com/grimme-lab/CPCM-X
+ License: GNU GPL-3.0
+
  * DFTB+
  Authors: B. Hourahine, B. Aradi, V. Blum, F. Bonafé, A. Buccheri, C. Camacho, C. Cevallos, M. Y. Deshaye, T. Dumitrică, A. Dominguez, S. Ehlert, M. Elstner, T. van der Heide, J. Hermann, S. Irle, J. J. Kranz, C. Köhler, T. Kowalczyk, T. Kubař, I. S. Lee, V. Lutsker, R. J. Maurer, S. K. Min, I. Mitchell, C. Negre, T. A. Niehaus, A. M. N. Niklasson, A. J. Page, A. Pecchia, G. Penazzi, M. P. Persson, J. Řezáč, C. G. Sánchez, M. Sternberg, M. Stöhr, F. Stuckenberg, A. Tkatchenko, V. W.-z. Yu, T. Frauenheim
  Ref.: DFTB+, a software package for efficient approximate density functional theory based atomistic simulations; J. Chem. Phys. 152, 124101 (2020).
@@ -107,7 +112,7 @@ Licenses and references to used third-party software:
 
  * GRAPHVIEW
  Author: Jonas Gehring
- Source code: https://github.com/jjoe64
+ Source code: https://github.com/jjoe64/GraphView
  License: Apache License, Version 2.0
 
  * LAPACK
@@ -135,9 +140,19 @@ Licenses and references to used third-party software:
  Source code: https://github.com/grimme-lab/multicharge
  License: Apache v2
 
+ * NUMSA
+ Authors/contributors: Marcel Stahn, Sebastian Ehlert
+ References: Angular integration grids: V.I. Lebedev, and D.N. Laikov, A quadrature formula for the sphere of the 131st algebraic order of accuracy, Doklady Mathematics, Vol. 59, No. 3, 1999, pp. 477–481.
+             Smooth numerical integration: W. Im, M.S. Lee, and C.L. Brooks III, Generalized Born model with a simple smoothing function, J. Comput. Chem., Vol. 24, No. 14, 2003, pp. 1691–1702.
+             DFT-D3 van-der-Waals radii: S. Grimme, J. Antony, S. Ehrlich, and H. Krieg, A consistent and accurate ab initio parametrization of density functional dispersion correction (DFT-D) for the 94 elements H-Pu, J. Chem. Phys., Vol. 132, 2010, p. 154104.
+             Bondi van-der-Waals radii: M. Mantina, A.C. Chamberlin, R. Valero, C.J. Cramer, and D.G. Truhlar, Consistent van der Waals Radii for the Whole Main Group, J. Phys. Chem. A, Vol. 113, No. 19, 2009, pp.. 5806–5812.
+ Source code: https://github.com/grimme-lab/numsa
+ License: LGPL3 license, GPL3 license
+
  * OPENBABEL
  Ref.: N M O'Boyle, M Banck, C A James, C Morley, T Vandermeersch, and G R Hutchison. "Open Babel: An open chemical toolbox." J. Cheminf. (2011), 3, 33. DOI:10.1186/1758-2946-3-33
  Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel
+ License: GPL-2.0
 
  * OPENBLAS
  Authors: Zhang Xianyi, Wang Qian, Zaheer Chothia

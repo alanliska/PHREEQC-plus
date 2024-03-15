@@ -284,6 +284,91 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
+            android:id="@+id/HNLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Limit for H-N hydrogen bond (double) [Ang]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/HN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/HOLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Limit for H-N hydrogen bond (double) [Ang]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/HO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/HFLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Limit for H-N hydrogen bond (double) [Ang]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/HF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/HClLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Limit for H-N hydrogen bond (double) [Ang]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/HCl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/HBondColLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Hydrogen bond color (int) [ ]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/HBondCol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/ModeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -444,6 +529,74 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/ZoomStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/coordLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\nContent of the temporary structure files\n(1) /data/data/cz.p/files/canvas3d/Coordinates.tmp:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/coord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/coordXLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="(2) /data/data/cz.p/files/canvas3d/Coordinates.x.tmp:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/coordX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/coordXYZLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="(2) /data/data/cz.p/files/canvas3d/Coordinates.xyz.tmp:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/coordXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
+            android:id="@+id/coordGJFLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="(2) /data/data/cz.p/files/canvas3d/Coordinates.gjf.tmp:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/coordGJF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:typeface="monospace"

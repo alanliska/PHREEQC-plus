@@ -191,7 +191,8 @@ public class PhreeqcDebug extends DevMode {
                 try {
                     exec("chmod 755 -R "+getFilesDir()+"/debug");
                     exec("chmod 755 -R "+getFilesDir());
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/debug/Input.phr "+getFilesDir()+"/debug/Input.phr.out "+getFilesDir()+"/debug/Input.dat");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/debug/Input.phr "+getFilesDir()+"/debug/Input.phr.out "+getFilesDir()+"/debug/Input.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME/debug ; "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so Input.phr Input.phr.out Input.dat");
                     exec("chmod 755 "+getFilesDir()+"/debug/Input.phr.out");
 
                     try {

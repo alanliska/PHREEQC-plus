@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_phreeqc;
 
 import android.app.AlertDialog;
@@ -9,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -4205,6 +4207,31 @@ public class Phreeqc extends MainActivity {
     public void alertSaveInput(){
         // creating the EditText widget programatically
         EditText editText10 = new EditText(Phreeqc.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Phreeqc.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/phreeqc_work")
@@ -4294,7 +4321,8 @@ public class Phreeqc extends MainActivity {
                 try {
                     exec("chmod 755 -R "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir());
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so Input-phreeqc.txt Input.phr.out Database.dat");
                     exec("chmod 755 "+getFilesDir()+"/Input.phr.out");
 
                     try {
@@ -4414,7 +4442,8 @@ public class Phreeqc extends MainActivity {
                 try {
                     exec("chmod 755 -R "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir());
-                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
+//                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc.so "+getFilesDir()+"/Input-phreeqc.txt "+getFilesDir()+"/Input.phr.out "+getFilesDir()+"/Database.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so Input-phreeqc.txt Input.phr.out Database.dat");
                     exec("chmod 755 "+getFilesDir()+"/Input.phr.out");
 
                     try {
@@ -4512,6 +4541,31 @@ public class Phreeqc extends MainActivity {
     public void alertSaveOutput(){
         // creating the EditText widget programatically
         EditText editText15 = new EditText(Phreeqc.this);
+        editText15.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText15.setTypeface(Typeface.MONOSPACE);
+        editText15.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText15.removeTextChangedListener(this);
+                String text = editText15.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText15.getText().clear();
+                editText15.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText15.setSelection(startChanged+countChanged);
+                editText15.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(Phreeqc.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/phreeqc_work")

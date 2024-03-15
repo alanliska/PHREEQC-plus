@@ -83,6 +83,9 @@ public class Licenses extends MainActivity {
     Button license2_xtb4stda;
     Button eigen3;
     Button eigen3_lt;
+    Button license_cpcmx;
+    Button license1_numsa;
+    Button license2_numsa;
     Button quit;
 
     @Override
@@ -205,6 +208,12 @@ public class Licenses extends MainActivity {
         eigen3.setOnClickListener(eigen3Click);
         eigen3_lt = (Button) findViewById(R.id.eigen3_lt);
         eigen3_lt.setOnClickListener(eigen3_ltClick);
+        license_cpcmx = (Button) findViewById(R.id.license_cpcmx);
+        license_cpcmx.setOnClickListener(license_cpcmxClick);
+        license1_numsa = (Button) findViewById(R.id.license1_numsa);
+        license1_numsa.setOnClickListener(license1_numsaClick);
+        license2_numsa = (Button) findViewById(R.id.license2_numsa);
+        license2_numsa.setOnClickListener(license2_numsaClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -276,6 +285,66 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener license_cpcmxClick; {
+        license_cpcmxClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1cpcmx();
+            }
+        };
+    }
+
+    public void alert1cpcmx() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-CPCM-X")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-CPCMX.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license1_numsaClick; {
+        license1_numsaClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1numsa();
+            }
+        };
+    }
+
+    public void alert1numsa() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE1-NUMSA")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-NUMSA.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license2_numsaClick; {
+        license2_numsaClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert2numsa();
+            }
+        };
+    }
+
+    public void alert2numsa() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE2-NUMSA")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-NUMSA.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private View.OnClickListener eigen3Click; {
         eigen3Click = new View.OnClickListener() {

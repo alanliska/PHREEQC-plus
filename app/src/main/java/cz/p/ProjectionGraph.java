@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_numbers;
 
 import android.Manifest;
@@ -12,6 +13,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -219,6 +221,31 @@ public class ProjectionGraph extends MainActivity {
     public void alertSaveInput(){
         // creating the EditText widget programatically
         EditText editText10 = new EditText(ProjectionGraph.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(ProjectionGraph.this)
                 .setMessage("The file will be saved in the folder /data/data/cz.p/files/output/xyz")

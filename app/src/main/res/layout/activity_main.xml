@@ -114,7 +114,7 @@
             android:id="@+id/label_xtb_all"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="\n(d) XTB calculation = geometry optimization in vacuum + solvent (various models available)"
+            android:text="\n(d) XTB calculation = geometry optimization in vacuum + solvent (GBSA, ALPB, COSMO, CPCM-X)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <Button

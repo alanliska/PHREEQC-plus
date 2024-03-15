@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_mopac;
 
 import android.app.AlertDialog;
@@ -7,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -218,6 +220,31 @@ public class GeneralTS extends KineticsQuery {
     public void alertGenerateXYZ(){
         // creating the EditText widget programatically
         EditText editText100 = new EditText(GeneralTS.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(GeneralTS.this)
                 .setMessage("Please write the SMILES string to be converted to XYZ. ")
@@ -341,6 +368,31 @@ public class GeneralTS extends KineticsQuery {
     public void alertOpsinXYZ(){
         // creating the EditText widget programatically
         EditText editText100 = new EditText(GeneralTS.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_dftb(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
         // create the AlertDialog as final
         final AlertDialog dialog = new AlertDialog.Builder(GeneralTS.this)
                 .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be appended to the actual input file.")

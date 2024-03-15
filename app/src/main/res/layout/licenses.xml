@@ -62,6 +62,11 @@
             android:text="LICENSE-CP2K" />
             -->
         <Button
+            android:id="@+id/license_cpcmx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-CPCM-X" />
+        <Button
             android:id="@+id/license1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,6 +185,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-MULTICHARGE" />
+        <Button
+            android:id="@+id/license1_numsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-NUMSA" />
+        <Button
+            android:id="@+id/license2_numsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-NUMSA" />
         <Button
             android:id="@+id/license7"
             android:layout_width="match_parent"

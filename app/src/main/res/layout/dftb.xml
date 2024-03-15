@@ -38,7 +38,7 @@
             android:id="@+id/CommandLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Available programs are buildwire, dftb, flux, makecube, modes, obabel, phonons, setupgeom, waveplot, xbbc, xbvm (with at least one blank space behind).\n\nFull command to be executed:"
+            android:text="Available programs are buildwire, chemsol, cpx, dftd4, dftb, fastchem, flux, makecube, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phonons, phreeqc, plotms, qcxms, s-dftd3, setupgeom, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda (with at least one blank space behind).\n\nFull command to be executed:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
