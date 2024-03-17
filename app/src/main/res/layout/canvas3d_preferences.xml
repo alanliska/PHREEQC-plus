@@ -12,6 +12,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/AlertLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Maximum lines displayed in Z-matrix alert dialog (int) [ ]:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <EditText
+            android:id="@+id/Alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+        <TextView
             android:id="@+id/AtomBorderLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -352,13 +369,13 @@
             android:scrollbarSize="5dp"
             android:fastScrollEnabled="true"/>
         <TextView
-            android:id="@+id/HBondColLabel"
+            android:id="@+id/HBondSizeLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Hydrogen bond color (int) [ ]:"
+            android:text="Hydrogen bond size (int) [pix]:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
-            android:id="@+id/HBondCol"
+            android:id="@+id/HBondSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:typeface="monospace"
@@ -576,7 +593,7 @@
             android:id="@+id/coordXYZLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="(2) /data/data/cz.p/files/canvas3d/Coordinates.xyz.tmp:"
+            android:text="(3) /data/data/cz.p/files/canvas3d/Coordinates.xyz.tmp:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/coordXYZ"
@@ -593,7 +610,7 @@
             android:id="@+id/coordGJFLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="(2) /data/data/cz.p/files/canvas3d/Coordinates.gjf.tmp:"
+            android:text="(4) /data/data/cz.p/files/canvas3d/Coordinates.gjf.tmp:"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/coordGJF"

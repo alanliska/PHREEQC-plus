@@ -35,6 +35,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
 
     private Button Quit;
     private Button saveButton;
+    private TextView AlertLabel;
+    private EditText Alert;
     private TextView AtomBorderLabel;
     private EditText AtomBorder;
     private TextView AtomLabelLabel;
@@ -95,8 +97,8 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     private EditText Zoom;
     private TextView ZoomStepLabel;
     private EditText ZoomStep;
-    private TextView HBondColLabel;
-    private EditText HBondCol;
+    private TextView HBondSizeLabel;
+    private EditText HBondSize;
     private TextView coordLabel;
     private EditText coord;
     private TextView coordXLabel;
@@ -120,6 +122,31 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         Quit.setOnClickListener(QuitClick);
         saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(saveClick);
+        AlertLabel = (TextView) findViewById(R.id.AlertLabel);
+        Alert = (EditText) findViewById(R.id.Alert);
+        Alert.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                Alert.removeTextChangedListener(this);
+                String text = Alert.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                Alert.getText().clear();
+                Alert.append(colorized_numbers(text));
+                // place the cursor at the original position
+                Alert.setSelection(startChanged+countChanged);
+                Alert.addTextChangedListener(this);
+            }
+        });
         AtomBorderLabel = (TextView) findViewById(R.id.AtomBorderLabel);
         AtomBorder = (EditText) findViewById(R.id.AtomBorder);
         AtomBorder.addTextChangedListener(new TextWatcher() {
@@ -620,9 +647,9 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 HCl.addTextChangedListener(this);
             }
         });
-        HBondColLabel = (TextView) findViewById(R.id.HBondColLabel);
-        HBondCol = (EditText) findViewById(R.id.HBondCol);
-        HBondCol.addTextChangedListener(new TextWatcher() {
+        HBondSizeLabel = (TextView) findViewById(R.id.HBondSizeLabel);
+        HBondSize = (EditText) findViewById(R.id.HBondSize);
+        HBondSize.addTextChangedListener(new TextWatcher() {
             int startChanged,beforeChanged,countChanged;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -635,14 +662,14 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
             @Override
             public void afterTextChanged(Editable s) {
-                HBondCol.removeTextChangedListener(this);
-                String text = HBondCol.getText().toString();
+                HBondSize.removeTextChangedListener(this);
+                String text = HBondSize.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
-                HBondCol.getText().clear();
-                HBondCol.append(colorized_numbers(text));
+                HBondSize.getText().clear();
+                HBondSize.append(colorized_numbers(text));
                 // place the cursor at the original position
-                HBondCol.setSelection(startChanged+countChanged);
-                HBondCol.addTextChangedListener(this);
+                HBondSize.setSelection(startChanged+countChanged);
+                HBondSize.addTextChangedListener(this);
             }
         });
         ModeLabel = (TextView) findViewById(R.id.ModeLabel);
@@ -1006,6 +1033,7 @@ public class Canvas3d_Preferences extends Canvas3d_main {
     public void onStart()
     {
         super.onStart();
+        AlertDisplay(exec("cat "+getFilesDir()+"/canvas3d/AlertDialogMaxLines.tmp"));
         AtomBorderDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomBorder.tmp"));
         AtomLabelDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomLabel.tmp"));
         AtomLabelShiftXDisplay(exec("cat "+getFilesDir()+"/canvas3d/AtomLabelShiftX.tmp"));
@@ -1026,7 +1054,7 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         HODisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHO.tmp"));
         HFDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHF.tmp"));
         HClDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondHCl.tmp"));
-        HBondColDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondCol.tmp"));
+        HBondSizeDisplay(exec("cat "+getFilesDir()+"/canvas3d/HBondSize.tmp"));
         ModeDisplay(exec("cat "+getFilesDir()+"/canvas3d/Mode.tmp"));
         PerspScaleDisplay(exec("cat "+getFilesDir()+"/canvas3d/PerspScale.tmp"));
         RadDisplay(exec("cat "+getFilesDir()+"/canvas3d/Rad.tmp"));
@@ -1076,11 +1104,12 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 String F31 = HO.getText().toString();
                 String F32 = HF.getText().toString();
                 String F33 = HCl.getText().toString();
-                String F34 = HBondCol.getText().toString();
+                String F34 = HBondSize.getText().toString();
                 String F35 = coord.getText().toString();
                 String F36 = coordX.getText().toString();
                 String F37 = coordXYZ.getText().toString();
                 String F38 = coordGJF.getText().toString();
+                String F39 = Alert.getText().toString();
                 // TODO Auto-generated method stub //
                 try {
                     FileOutputStream Fos1 = openFileOutput("AtomBorder.tmp", MODE_PRIVATE);
@@ -1203,7 +1232,7 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow33 = new OutputStreamWriter(Fos33);
                     Fow33.write(F33);
                     Fow33.close();
-                    FileOutputStream Fos34 = openFileOutput("HBondCol.tmp", MODE_PRIVATE);
+                    FileOutputStream Fos34 = openFileOutput("HBondSize.tmp", MODE_PRIVATE);
                     OutputStreamWriter Fow34 = new OutputStreamWriter(Fos34);
                     Fow34.write(F34);
                     Fow34.close();
@@ -1223,8 +1252,13 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                     OutputStreamWriter Fow38 = new OutputStreamWriter(Fos38);
                     Fow38.write(F38);
                     Fow38.close();
+                    FileOutputStream Fos39 = openFileOutput("AlertDialogMaxLines.tmp", MODE_PRIVATE);
+                    OutputStreamWriter Fow39 = new OutputStreamWriter(Fos39);
+                    Fow39.write(F39);
+                    Fow39.close();
                 } catch (Exception e) {
                 }
+                exec("mv "+getFilesDir()+"/AlertDialogMaxLines.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/AtomBorder.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/AtomLabel.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/BondScale.tmp "+getFilesDir()+"/canvas3d/");
@@ -1255,7 +1289,7 @@ public class Canvas3d_Preferences extends Canvas3d_main {
                 exec("mv "+getFilesDir()+"/HBondHO.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/HBondHF.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/HBondHCl.tmp "+getFilesDir()+"/canvas3d/");
-                exec("mv "+getFilesDir()+"/HBondCol.tmp "+getFilesDir()+"/canvas3d/");
+                exec("mv "+getFilesDir()+"/HBondSize.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/");
                 exec("mv "+getFilesDir()+"/Coordinates.xyz.tmp "+getFilesDir()+"/canvas3d/");
@@ -1537,10 +1571,10 @@ public class Canvas3d_Preferences extends Canvas3d_main {
         };
         handler.post(proc33);
     }
-    private void HBondColDisplay(final String str34) {
+    private void HBondSizeDisplay(final String str34) {
         Runnable proc34 = new Runnable() {
             public void run() {
-                HBondCol.setText(colorized_numbers(str34));
+                HBondSize.setText(colorized_numbers(str34));
             }
         };
         handler.post(proc34);
@@ -1576,5 +1610,13 @@ public class Canvas3d_Preferences extends Canvas3d_main {
             }
         };
         handler.post(proc38);
+    }
+    private void AlertDisplay(final String str39) {
+        Runnable proc39 = new Runnable() {
+            public void run() {
+                Alert.setText(colorized_numbers(str39));
+            }
+        };
+        handler.post(proc39);
     }
 }

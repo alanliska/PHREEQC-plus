@@ -52,6 +52,7 @@ Licenses and references to used third-party software:
 
  * CPCM-X
  Authors/contributors: Marcel Stahn, Sebastian Ehlert, "Albkat" (GitHub)
+ Ref.: M. Stahn, S. Ehlert, S. Grimme, J. Phys. Chem. A, 2023, XX, XXXX-XXXX. DOI: 10.1021/acs.jpca.3c04382
  Source code: https://github.com/grimme-lab/CPCM-X
  License: GNU GPL-3.0
 
@@ -252,6 +253,8 @@ Licenses and references to used third-party software:
     S. Spicher and S. Grimme, Angew. Chem. Int. Ed., 2020, 59, 15665–15673 DOI: 10.1002/anie.202004239
    -for GBSA and ALPB implicit solvation:
     S. Ehlert, M. Stahn, S. Spicher, S. Grimme, J. Chem. Theory Comput., 2021, 17, 4250-4261 DOI: 10.1021/acs.jctc.1c00471
+   -for ddCOSMO and CPCM-X implicit solvation:
+    M. Stahn, S. Ehlert, S. Grimme, J. Phys. Chem. A, 2023, XX, XXXX-XXXX. DOI: 10.1021/acs.jpca.3c04382
    -for DFT-D4:
     E. Caldeweyher, C. Bannwarth and S. Grimme, J. Chem. Phys., 2017, 147, 034112. DOI: 10.1063/1.4993215
     E. Caldeweyher, S. Ehlert, A. Hansen, H. Neugebauer, S. Spicher, C. Bannwarth and S. Grimme, J. Chem. Phys., 2019, 150, 154122. DOI: 10.1063/1.5090222
@@ -266,6 +269,19 @@ Licenses and references to used third-party software:
     S. Grimme, J. Chem. Theory Comput., 2019, 155, 2847-2862. DOI: 10.1021/acs.jctc.9b00143
    -for SPH calculations refer to:
     S. Spicher and S. Grimme, J. Chem. Theory Comput., 2021, 17, 1701–1714. DOI: 10.1021/acs.jctc.0c01306
+   -for ONIOM refer to:
+    C. Plett, A. Katbashev, S. Ehlert, S. Grimme, M. Bursch, Phys. Chem. Chem. Phys., 2023, 25, 17860-17868. DOI: 10.1039/D3CP02178E
+   -for DIPRO refer to:
+    J. Kohn, N. Gildemeister, S. Grimme, D. Fazzi, A. Hansen, J. Chem. Phys., 2023, just accepted.
+   -for PTB refer to:
+    S. Grimme, M. Mueller, A. Hansen, J. Chem. Phys., 2023, 158, 124111. DOI: 10.1063/5.0137838
+   -with help from (in alphabetical order)
+    P. Atkinson, C. Bannwarth, F. Bohle, G. Brandenburg, E. Caldeweyher,
+    M. Checinski, S. Dohm, S. Ehlert, S. Ehrlich, I. Gerasimov, C. Hölzer,
+    A. Katbashev, J. Kohn, J. Koopman, C. Lavigne, S. Lehtola, F. März, M. Müller,
+    F. Musil, H. Neugebauer, J. Pisarek, C. Plett, P. Pracht, F. Pultar,
+    J. Seibert, P. Shushkov, S. Spicher, M. Stahn, M. Steiner, T. Strunk,
+    J. Stückrath, T. Rose, and J. Unsleber
  Source code: https://github.com/grimme-lab/xtb
  License: GNU GPL v3 and GNU LGPL v3
 
