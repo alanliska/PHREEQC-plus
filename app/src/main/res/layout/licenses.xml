@@ -61,16 +61,22 @@
             android:layout_height="wrap_content"
             android:text="LICENSE-CP2K" />
             -->
-        <Button
-            android:id="@+id/license_cpcmx"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LICENSE-CPCM-X" />
+
         <Button
             android:id="@+id/license1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-CHEMSOL" />
+        <Button
+            android:id="@+id/license_chimescalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-CHIMESCALC" />
+        <Button
+            android:id="@+id/license_cpcmx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-CPCM-X" />
 
         <Button
             android:id="@+id/lt_dftb"
@@ -148,6 +154,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-LAPACK" />
+        <Button
+            android:id="@+id/license_mbd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MBD" />
         <Button
             android:id="@+id/license_mctc"
             android:layout_width="match_parent"

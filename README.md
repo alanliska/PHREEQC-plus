@@ -40,6 +40,11 @@ Licenses and references to used third-party software:
  Source code: https://github.com/aa668086/android-shell-master
  License: Apache License, Version 2.0
 
+ * ARPACK
+ Authors: D.C. Sorensen, R.B. Lehoucq, C. Yang, and K. Maschhoff; Allan Cornet, Sylvestre Ledru; Jordi Gutiérrez Hermoso; Sébastien Fabbro
+ Source code: https://github.com/opencollab/arpack-ng
+ License: BSD Software License
+
  * BLAS
  Source code: https://netlib.org/blas/
  License: freely-available software package
@@ -49,6 +54,22 @@ Licenses and references to used third-party software:
  Ref.: Florián, J., and A. Warshel. "ChemSol, version 2.1." University of Southern California, Los Angeles (1999).
  Source code: https://github.com/jborden/ChemSol
  License: The Android binary distribution is published as freeware at Mobile Chemistry Portal and Google Play Store with kind permission of Jan Florián.
+
+ * CHIMESCALC
+ Authors: Rebecca K. Lindsey, Nir Goldman, Laurence E. Fried
+ References: 
+ -Carbon-1: R.K. Lindsey*, L.E. Fried, N. Goldman, J. Chem. Theory Comput., 13 6222 (2017).
+ -PuH-DFTB: Goldman*, B. Aradi, R.K. Lindsey, L.E. Fried, J. Chem. Theory Comput. 14 2652 (2018).
+ -Water-1: R.K. Lindsey*, L.E. Fried, N. Goldman, J. Chem. Theory Comput. 15 436 (2019).
+ -CO-1: R.K. Lindsey*, N. Goldman, L.E. Fried, S. Bastea, J. Chem. Phys. 153 054103 (2020).
+ -CO-2: R.K. Lindsey*, L.E. Fried, N. Goldman, S. Bastea, J. Chem. Phys. 153 134117 (2020).
+ -COND-1: M.R. Armstrong*, R.K. Lindsey*, N. Goldman, M.H. Nielsen, E. Stavrou, L.E. Fried, J.M. Zaug, S. Bastea*, Nat, Commun. 11 353 (2020).
+ -HN-1: Pham*, R.K. Lindsey, L.E. Fried, N. Goldman, J. Chem. Phys. 153 224102 (2020).
+ -DNTF-DFTB: R.K. Lindsey*, S. Bastea*, N. Goldman, L. Fried, J. Chem. Phys. 154 164115 (2021).
+ -TiH-DFTB: Goldman*, K. Kweon, R.K. Lindsey, L.E. Fried, T.W. Heo, B. Sadigh, P. Soderlind, A. Landa, A. Perron, J. Jeffries, B. Wood, J. Chem. Theory Comput. 17 4435 (2021).
+ -QMD-DFTB: C.H. Pham*, R.K. Lindsey, L.E. Fried, N. Goldman, J. Phys. Chem. Lett. 13 2934 (2022).
+ Source code: https://github.com/rk-lindsey/chimes_calculator
+ License: LGPL-3.0
 
  * CPCM-X
  Authors/contributors: Marcel Stahn, Sebastian Ehlert, "Albkat" (GitHub)
@@ -119,6 +140,12 @@ Licenses and references to used third-party software:
  * LAPACK
  Source code: https://netlib.org/lapack/
  License: freely-available software package, modified BSD license
+
+ * MBD
+ Authors: J. Hermann, M. Stöhr, S. Góger, S. Chaudhuri, B. Aradi, R. J. Maurer, A. Tkatchenko
+ Ref.: J. Hermann, M. Stöhr, S. Góger, S. Chaudhuri, B. Aradi, R. J. Maurer & A. Tkatchenko. J. Chem. Phys. 159, 174802 (2023). 
+ Source code: https://github.com/libmbd/libmbd
+ License: MPL-2.0
 
  * MCTC-LIB
  Authors/contributors: Sebastian Ehlert, Eisuke Kawashima, Marcel Stahn, Kjell Jorner and others (please see the source code page)

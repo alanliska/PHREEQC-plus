@@ -86,6 +86,8 @@ public class Licenses extends MainActivity {
     Button license_cpcmx;
     Button license1_numsa;
     Button license2_numsa;
+    Button license_chimescalc;
+    Button license_mbd;
     Button quit;
 
     @Override
@@ -214,6 +216,10 @@ public class Licenses extends MainActivity {
         license1_numsa.setOnClickListener(license1_numsaClick);
         license2_numsa = (Button) findViewById(R.id.license2_numsa);
         license2_numsa.setOnClickListener(license2_numsaClick);
+        license_chimescalc = (Button) findViewById(R.id.license_chimescalc);
+        license_chimescalc.setOnClickListener(license_chimescalcClick);
+        license_mbd = (Button) findViewById(R.id.license_mbd);
+        license_mbd.setOnClickListener(license_mbdClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -285,6 +291,46 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener license_chimescalcClick; {
+        license_chimescalcClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1chim();
+            }
+        };
+    }
+
+    public void alert1chim() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-CHIMESCALC")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-CHIMESCALC.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license_mbdClick; {
+        license_mbdClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1mbd();
+            }
+        };
+    }
+
+    public void alert1mbd() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-MBD")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-MBD.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private View.OnClickListener license_cpcmxClick; {
         license_cpcmxClick = new View.OnClickListener() {

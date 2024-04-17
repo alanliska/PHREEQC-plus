@@ -1118,11 +1118,12 @@ public class Fastchem extends MainActivity {
                 FastChemCommand = FastChemCommand.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
                 FastChemCommand = FastChemCommand.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
                 FastChemCommand = FastChemCommand.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
-                FastChemCommand = FastChemCommand.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
-                FastChemCommand = FastChemCommand.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
-                FastChemCommand = FastChemCommand.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
-                FastChemCommand = FastChemCommand.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
-                FastChemCommand = FastChemCommand.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
+                FastChemCommand = FastChemCommand.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
+//                FastChemCommand = FastChemCommand.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+//                FastChemCommand = FastChemCommand.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
+//                FastChemCommand = FastChemCommand.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
+//                FastChemCommand = FastChemCommand.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
+//                FastChemCommand = FastChemCommand.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
                 FastChemCommand = FastChemCommand.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
                 FastChemCommand = FastChemCommand.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
                 FastChemCommand = FastChemCommand.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");

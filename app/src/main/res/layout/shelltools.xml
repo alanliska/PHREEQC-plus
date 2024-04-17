@@ -200,7 +200,7 @@
             android:id="@+id/ShellLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Execute custom command in frame of Android shell (the binaries are called by their names without lib- and -.so, they are renamed automatically when at least one space before and after the name is present - e.g. command ' xtb ' is translated as full path of libxtb.so in the Android filesystem; available executables are buildwire, chemsol, cpx, dftd4, dftb, fastchem, flux, makecube, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phonons, phreeqc, plotms, qcxms, s-dftd3, setupgeom, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda):"
+            android:text="Execute custom command in frame of Android shell (the binaries are called by their names without lib- and -.so, they are renamed automatically when at least one space before and after the name is present - e.g. command ' xtb ' is translated as full path of libxtb.so in the Android filesystem; available executables are chemsol, chimescalc, cpx, dftd4, dftb, fastchem, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phreeqc, plotms, qcxms, s-dftd3, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda):"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
         <EditText
             android:id="@+id/Shell"
