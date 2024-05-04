@@ -319,8 +319,9 @@ public class Canvas3d_main extends MainActivity {
 //                        progressDialog.dismiss();
 //                    }
 //                }.start();
-                // convert XYZ to GJF
-                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME/canvas3d ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ixyz Coordinates.xyz.tmp -ogzmat > Coordinates.gjf.tmp ; sed -i 1,6d Coordinates.gjf.tmp ; sed /Variables/Q Coordinates.gjf.tmp > Coordinates1.gjf.tmp ; sed 1,/^Variables/d Coordinates.gjf.tmp > Coordinates2.gjf.tmp ; cd .. ; touch Coordinates3.gjf.tmp");
+                // convert XYZ to GJF ; edited - to maintain the compatibility also for Android 9 and Android 8 devices, it is not possible to use the sed /XYZ/Q command
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME/canvas3d ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ixyz Coordinates.xyz.tmp -ogzmat > Coordinates.gjf.tmp ; sed -i 1,6d Coordinates.gjf.tmp ; sed /Variables/q Coordinates.gjf.tmp > Coordinates1.gjf.tmp ; sed -i '$d' Coordinates1.gjf.tmp ; sed 1,/^Variables/d Coordinates.gjf.tmp > Coordinates2.gjf.tmp ; cd .. ; touch Coordinates3.gjf.tmp");
+                //com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME/canvas3d ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ixyz Coordinates.xyz.tmp -ogzmat > Coordinates.gjf.tmp ; sed -i 1,6d Coordinates.gjf.tmp ; sed /Variables/Q Coordinates.gjf.tmp > Coordinates1.gjf.tmp ; sed 1,/^Variables/d Coordinates.gjf.tmp > Coordinates2.gjf.tmp ; cd .. ; touch Coordinates3.gjf.tmp");
                 // replace the string variables by the corresponding values
                 String Coordinates1 = exec("cat "+getFilesDir()+"/canvas3d/Coordinates1.gjf.tmp");
                 String Coordinates2 = exec("cat "+getFilesDir()+"/canvas3d/Coordinates2.gjf.tmp");
