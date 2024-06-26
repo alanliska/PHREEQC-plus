@@ -65,11 +65,11 @@ public class Obabel extends MainActivity {
     private TextView textViewX;
     private TextView outputView;
     private EditText outputView2;
-    private static final int READ_FILE7 = 7;
+    private static final int READ_FILE7 = 307;
     private Uri documentUri7;
-    private static final int CREATE_FILE30 = 30;
+    private static final int CREATE_FILE30 = 3030;
     private Uri documentUri30;
-    private static final int CREATE_FILE31 = 31;
+    private static final int CREATE_FILE31 = 3031;
     private Uri documentUri31;
     Button manual_openbabel;
 

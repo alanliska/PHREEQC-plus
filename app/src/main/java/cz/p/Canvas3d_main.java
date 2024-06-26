@@ -88,9 +88,9 @@ public class Canvas3d_main extends MainActivity {
     Button atomLabel;
     Button mode;
     Button preferences;
-    private static final int READ_FILE = 1;
+    private static final int READ_FILE = 121;
     private Uri documentUri1;
-    private static final int CREATE_FILE = 2;
+    private static final int CREATE_FILE = 122;
     private Uri documentUri2;
     Button toMOPAC;
     Button toDFTB;

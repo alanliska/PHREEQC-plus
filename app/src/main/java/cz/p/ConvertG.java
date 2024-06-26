@@ -51,7 +51,7 @@ public class ConvertG extends MainActivity {
     Button Quit;
     private TextView ConvertedDataLabel;
     private EditText ConvertedData;
-    private static final int READ_FILE8 = 8;
+    private static final int READ_FILE8 = 168;
     private Uri documentUri8;
 
     /**

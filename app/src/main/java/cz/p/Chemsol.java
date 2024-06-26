@@ -60,11 +60,11 @@ public class Chemsol extends MainActivity {
     private TextView textViewX;
     private TextView outputView;
     private EditText outputView2;
-    private static final int READ_FILE5 = 5;
+    private static final int READ_FILE5 = 135;
     private Uri documentUri5;
-    private static final int CREATE_FILE40 = 40;
+    private static final int CREATE_FILE40 = 1340;
     private Uri documentUri40;
-    private static final int CREATE_FILE41 = 41;
+    private static final int CREATE_FILE41 = 1341;
     private Uri documentUri41;
     Button manual_chemsol;
 

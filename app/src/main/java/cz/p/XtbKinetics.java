@@ -72,13 +72,13 @@ public class XtbKinetics extends MainActivity {
 
     private Handler handler = new Handler();
 
-    private static final int READ_FILE26 = 26;
+    private static final int READ_FILE26 = 3426;
     private Uri documentUri26;
-    private static final int CREATE_FILE01 = 1;
+    private static final int CREATE_FILE01 = 341;
     private Uri documentUri1;
-    private static final int READ_FILE60 = 60;
+    private static final int READ_FILE60 = 3460;
     private Uri documentUri60;
-    private static final int CREATE_FILE200 = 200;
+    private static final int CREATE_FILE200 = 34200;
     private Uri documentUri200;
 
     @Override

@@ -94,14 +94,14 @@ public class ProjectionGraph extends MainActivity {
     Button upZ;
     Button downZ;
     Button Quit;
-    private static final int READ_FILE169 = 169;
+    private static final int READ_FILE169 = 32169;
     private Uri documentUri169;
     String valXY[];
     Double Xval;
     Double Yval;
     Button saveInputfile;
     Button saveExtInputfile;
-    private static final int CREATE_FILE20 = 20;
+    private static final int CREATE_FILE20 = 3220;
     private Uri documentUri20;
 
     @Override

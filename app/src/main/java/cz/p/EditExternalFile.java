@@ -46,8 +46,8 @@ public class EditExternalFile extends MainActivity {
     Button openfile;
     Button savefile;
     Button quit;
-    private static final int READ_FILE101 = 101;
-    private static final int CREATE_FILE102 = 102;
+    private static final int READ_FILE101 = 20101;
+    private static final int CREATE_FILE102 = 20102;
     private Uri documentUri101;
     private Uri documentUri102;
 

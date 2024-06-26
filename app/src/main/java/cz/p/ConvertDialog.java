@@ -47,10 +47,10 @@ public class ConvertDialog extends MainActivity {
         Button start_conversion_l;
         Button start_conversion_solv;
         Button Quit;
-    private static final int READ_FILE8 = 8;
-    private static final int READ_FILE9 = 9;
-    private static final int READ_FILE10 = 10;
-    private static final int READ_FILE11 = 11;
+    private static final int READ_FILE8 = 158;
+    private static final int READ_FILE9 = 159;
+    private static final int READ_FILE10 = 1510;
+    private static final int READ_FILE11 = 1511;
     private Uri documentUri8;
     private Uri documentUri9;
     private Uri documentUri10;

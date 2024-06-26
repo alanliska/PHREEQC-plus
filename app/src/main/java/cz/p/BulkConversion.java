@@ -59,7 +59,7 @@ public class BulkConversion extends MainActivity {
     public Button openbabel_select;
     public Button quit;
     public EditText BulkView;
-    private static final int READ_FILE100 = 100;
+    private static final int READ_FILE100 = 11100;
     private Uri documentUri100;
     public Button help_bulk;
 

@@ -74,18 +74,18 @@ public class XtbKinetics2 extends MainActivity {
 
     private Handler handler = new Handler();
 
-    private static final int READ_FILE26 = 26;
+    private static final int READ_FILE26 = 3526;
     private Uri documentUri26;
-    private static final int CREATE_FILE01 = 1;
+    private static final int CREATE_FILE01 = 351;
     private Uri documentUri1;
-    private static final int READ_FILE60 = 60;
+    private static final int READ_FILE60 = 3560;
     private Uri documentUri60;
-    private static final int CREATE_FILE200 = 200;
+    private static final int CREATE_FILE200 = 35200;
     private Uri documentUri200;
 
-    private static final int READ_FILE888 = 888;
+    private static final int READ_FILE888 = 35888;
     private Uri documentUri888;
-    private static final int READ_FILE999 = 999;
+    private static final int READ_FILE999 = 35999;
     private Uri documentUri999;
 
     @Override
@@ -660,7 +660,7 @@ public class XtbKinetics2 extends MainActivity {
         Intent intent999 = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent999.addCategory(Intent.CATEGORY_OPENABLE);
         intent999.setType("text/plain");
-        startActivityForResult(intent999, READ_FILE60);
+        startActivityForResult(intent999, READ_FILE999);
     }
 
     @Override

@@ -46,13 +46,13 @@ import java.io.OutputStreamWriter;
 
 public class Fastchem extends MainActivity {
 
-    private static final int CREATE_FILE1 = 1;
-    private static final int CREATE_FILE2 = 2;
-    private static final int CREATE_FILE3 = 3;
-    private static final int READ_FILE1 = 4;
-    private static final int READ_FILE2 = 5;
-    private static final int READ_FILE3 = 6;
-    private static final int READ_FILE30 = 60;
+    private static final int CREATE_FILE1 = 221;
+    private static final int CREATE_FILE2 = 222;
+    private static final int CREATE_FILE3 = 223;
+    private static final int READ_FILE1 = 224;
+    private static final int READ_FILE2 = 225;
+    private static final int READ_FILE3 = 226;
+    private static final int READ_FILE30 = 2260;
     private Uri documentUri1;
     private Uri documentUri2;
     private Uri documentUri3;

@@ -68,11 +68,11 @@ public class Mopac extends MainActivity {
     private TextView textViewX;
     private TextView outputView;
     private EditText outputView2;
-    private static final int READ_FILE6 = 6;
+    private static final int READ_FILE6 = 296;
     private Uri documentUri6;
-    private static final int CREATE_FILE20 = 20;
+    private static final int CREATE_FILE20 = 2920;
     private Uri documentUri20;
-    private static final int CREATE_FILE21 = 21;
+    private static final int CREATE_FILE21 = 2921;
     private Uri documentUri21;
     Button manual_mopac;
     Button inToCanvas;

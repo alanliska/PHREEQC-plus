@@ -125,7 +125,7 @@ public class KineticsBiTri extends MainActivity {
 
     private Handler handler = new Handler();
 
-    private static final int READ_FILE1 = 1;
+    private static final int READ_FILE1 = 251;
     private Uri documentUri1;
 
     @Override

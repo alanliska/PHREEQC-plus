@@ -46,16 +46,16 @@ import java.io.OutputStreamWriter;
 public class Phreeqc extends MainActivity {
 
     // very important - each code must be different!!!
-    private static final int READ_FILE1 = 1;
-    private static final int READ_FILE2 = 2;
-    private static final int READ_FILE3 = 3;
-    private static final int READ_FILE4 = 4;
-    private static final int READ_FILE5 = 5;
-    private static final int READ_FILE6 = 6;
-    private static final int READ_FILE7 = 7;
-    private static final int READ_FILE8 = 8;
-    private static final int CREATE_FILE1250 = 1250;
-    private static final int CREATE_FILE1260 = 1260;
+    private static final int READ_FILE1 = 311;
+    private static final int READ_FILE2 = 312;
+    private static final int READ_FILE3 = 313;
+    private static final int READ_FILE4 = 314;
+    private static final int READ_FILE5 = 315;
+    private static final int READ_FILE6 = 316;
+    private static final int READ_FILE7 = 317;
+    private static final int READ_FILE8 = 318;
+    private static final int CREATE_FILE1250 = 311250;
+    private static final int CREATE_FILE1260 = 311260;
     private Uri documentUri01;
     private Uri documentUri02;
     private Uri documentUri1;

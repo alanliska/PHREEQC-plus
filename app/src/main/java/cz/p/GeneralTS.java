@@ -57,7 +57,7 @@ public class GeneralTS extends KineticsQuery {
 
     private Handler handler = new Handler();
 
-    private static final int READ_FILE1 = 1;
+    private static final int READ_FILE1 = 231;
     private Uri documentUri1;
 
     @Override

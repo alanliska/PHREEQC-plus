@@ -27,7 +27,7 @@ private TextView export_label;
 private TextView export_description;
 private Button start_export;
 private Button quit;
-private static final int CREATE_FILE100 = 100;
+private static final int CREATE_FILE100 = 21100;
 private Uri documentUri100;
 private Handler handler = new Handler();
 
