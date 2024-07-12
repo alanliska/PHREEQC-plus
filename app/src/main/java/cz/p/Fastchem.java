@@ -236,7 +236,8 @@ public class Fastchem extends MainActivity {
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        outputView2.setMovementMethod(new ScrollingMovementMethod());
         DataLabel = (TextView) findViewById(R.id.DataLabel);
         Data = (TextView) findViewById(R.id.Data);
         DataCond = (TextView) findViewById(R.id.DataCond);

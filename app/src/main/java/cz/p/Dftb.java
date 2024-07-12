@@ -142,7 +142,8 @@ public class Dftb extends MainActivity {
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
         Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        Content.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        Content.setMovementMethod(new ScrollingMovementMethod());
         Content.addTextChangedListener(new TextWatcher() {
             int startChanged,beforeChanged,countChanged;
             @Override

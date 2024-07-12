@@ -148,7 +148,8 @@ public class ShellTools extends DevMode {
         RunX11OutputLabel = (TextView) findViewById(R.id.RunX11OutputLabel);
         RunX11Output = (EditText) findViewById(R.id.RunX11Output);
         RunX11Output.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        RunX11Output.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        RunX11Output.setMovementMethod(new ScrollingMovementMethod());
         RunX11Output.addTextChangedListener(new TextWatcher() {
             int startChanged,beforeChanged,countChanged;
             @Override
@@ -313,7 +314,8 @@ public class ShellTools extends DevMode {
         ExecuteOutputLabel = (TextView) findViewById(R.id.ExecuteOutputLabel);
         ExecuteOutput = (EditText) findViewById(R.id.ExecuteOutput);
         ExecuteOutput.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        ExecuteOutput.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        ExecuteOutput.setMovementMethod(new ScrollingMovementMethod());
         ExecuteOutput.addTextChangedListener(new TextWatcher() {
             int startChanged,beforeChanged,countChanged;
             @Override

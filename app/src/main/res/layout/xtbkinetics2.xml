@@ -43,6 +43,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOAD EXTERNAL REACTANT STRUCTURE" />
+        <Button
+            android:id="@+id/reactant_generateXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM SMILES" />
+        <Button
+            android:id="@+id/reactant_opsinXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
+        <Button
+            android:id="@+id/reactant_ToCanvas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BF5695"
+            android:text="VIEW/EDIT/CREATE THE REACTANT STRUCTURE IN CANVAS3D (SLOW)" />
 
         <TextView
             android:id="@+id/reactant_formulas_label"
@@ -87,6 +105,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LOAD EXTERNAL PRODUCT STRUCTURE" />
+        <Button
+            android:id="@+id/product_generateXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM SMILES" />
+        <Button
+            android:id="@+id/product_opsinXYZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FAAAAA"
+            android:text="WRITE XYZ COORDINATES FROM CHEMICAL NAME" />
+        <Button
+            android:id="@+id/product_ToCanvas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#BF5695"
+            android:text="VIEW/EDIT/CREATE THE PRODUCT STRUCTURE IN CANVAS3D (SLOW)" />
         <TextView
             android:id="@+id/product_formulas_label"
             android:layout_width="fill_parent"
@@ -185,7 +221,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SAVE INPUTFILE TO EXTERNAL STORAGE" />
-
+        <Button
+            android:id="@+id/execbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#03A9F4"
+            android:text="EXECUTE CUSTOM COMMAND LOCALLY" />
         <Button
             android:id="@+id/runbutton"
             android:layout_width="match_parent"

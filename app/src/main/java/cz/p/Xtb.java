@@ -1,8 +1,6 @@
 package cz.p;
 
-import static cz.p.Spannables.colorized_dftb;
 import static cz.p.Spannables.colorized_numbers;
-import static cz.p.Spannables.colorized_phreeqc;
 import static cz.p.Spannables.colorized_xtb;
 
 import android.Manifest;
@@ -142,7 +140,8 @@ public class Xtb extends MainActivity {
         ContentLabel = (TextView) findViewById(R.id.ContentLabel);
         Content = (EditText) findViewById(R.id.Content);
         Content.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        Content.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        Content.setMovementMethod(new ScrollingMovementMethod());
         Content.addTextChangedListener(new TextWatcher() {
             int startChanged,beforeChanged,countChanged;
             @Override
@@ -289,7 +288,8 @@ public class Xtb extends MainActivity {
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        outputView2.setMovementMethod(new ScrollingMovementMethod());
         // otherwise every time is spanned
 //        outputView2.addTextChangedListener(new TextWatcher() {
 //            int startChanged,beforeChanged,countChanged;
@@ -1250,7 +1250,7 @@ public class Xtb extends MainActivity {
                 String text = editText100.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText100.getText().clear();
-                editText100.append(colorized_dftb(text));
+                editText100.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText100.setSelection(startChanged+countChanged);
                 editText100.addTextChangedListener(this);
@@ -1378,7 +1378,7 @@ public class Xtb extends MainActivity {
                 String text = editText100.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText100.getText().clear();
-                editText100.append(colorized_dftb(text));
+                editText100.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText100.setSelection(startChanged+countChanged);
                 editText100.addTextChangedListener(this);
@@ -1512,7 +1512,7 @@ public class Xtb extends MainActivity {
                 String text = editText100.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText100.getText().clear();
-                editText100.append(colorized_dftb(text));
+                editText100.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText100.setSelection(startChanged+countChanged);
                 editText100.addTextChangedListener(this);
@@ -2209,7 +2209,7 @@ public class Xtb extends MainActivity {
                 String text = editText10.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText10.getText().clear();
-                editText10.append(colorized_dftb(text));
+                editText10.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText10.setSelection(startChanged+countChanged);
                 editText10.addTextChangedListener(this);
@@ -2322,7 +2322,7 @@ public class Xtb extends MainActivity {
                 String text = editText10.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText10.getText().clear();
-                editText10.append(colorized_dftb(text));
+                editText10.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText10.setSelection(startChanged+countChanged);
                 editText10.addTextChangedListener(this);
@@ -2435,7 +2435,7 @@ public class Xtb extends MainActivity {
                 String text = editText10.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText10.getText().clear();
-                editText10.append(colorized_dftb(text));
+                editText10.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText10.setSelection(startChanged+countChanged);
                 editText10.addTextChangedListener(this);
@@ -2704,7 +2704,7 @@ public class Xtb extends MainActivity {
                 String text = editText15.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText15.getText().clear();
-                editText15.append(colorized_dftb(text));
+                editText15.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText15.setSelection(startChanged+countChanged);
                 editText15.addTextChangedListener(this);

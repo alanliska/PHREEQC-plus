@@ -295,7 +295,8 @@ public class Phreeqc extends MainActivity {
         outputView = (TextView) findViewById(R.id.outputView);
         outputView2 = (EditText) findViewById(R.id.outputView2);
         outputView2.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/OutputTextSize.txt")).intValue());
-        outputView2.setMovementMethod(new ScrollingMovementMethod());
+        // disable - otherwise the text could not be selected
+//        outputView2.setMovementMethod(new ScrollingMovementMethod());
         // otherwise every time is spanned
 //        outputView2.addTextChangedListener(new TextWatcher() {
 //            int startChanged,beforeChanged,countChanged;

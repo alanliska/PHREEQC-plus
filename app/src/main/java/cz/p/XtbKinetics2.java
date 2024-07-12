@@ -1,6 +1,6 @@
 package cz.p;
 
-import static cz.p.Spannables.colorized_dftb;
+import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_xtb;
 
 import android.app.AlertDialog;
@@ -31,10 +31,12 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Scanner;
 
 import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
 import uk.ac.cam.ch.wwmm.opsin.NameToStructureConfig;
@@ -58,6 +60,7 @@ public class XtbKinetics2 extends MainActivity {
     private EditText product_xyz;
 
     private Button runbutton;
+    private Button execbutton;
     private Button quit;
     private Button reactant_Button;
     private Button product_Button;
@@ -71,6 +74,12 @@ public class XtbKinetics2 extends MainActivity {
     Button openIntInfile;
     Button saveInfile;
     Button saveExtInfile;
+    Button reactant_generateXYZ;
+    Button reactant_opsinXYZ;
+    Button reactant_ToCanvas;
+    Button product_generateXYZ;
+    Button product_opsinXYZ;
+    Button product_ToCanvas;
 
     private Handler handler = new Handler();
 
@@ -254,6 +263,8 @@ public class XtbKinetics2 extends MainActivity {
 
         runbutton = (Button) findViewById(R.id.runbutton);
         runbutton.setOnClickListener(runbuttonClick);
+        execbutton = (Button) findViewById(R.id.execbutton);
+        execbutton.setOnClickListener(execbuttonClick);
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(QuitClick);
 
@@ -276,7 +287,7 @@ public class XtbKinetics2 extends MainActivity {
         openIntInfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(XtbKinetics2.this, XtbKinWork1.class);
+                Intent intent = new Intent(XtbKinetics2.this, XtbKin2Work1.class);
                 startActivity(intent);
             }
         });
@@ -284,7 +295,7 @@ public class XtbKinetics2 extends MainActivity {
         openIntCommandfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(XtbKinetics2.this, XtbKinCommand.class);
+                Intent intent = new Intent(XtbKinetics2.this, XtbKin2Command.class);
                 startActivity(intent);
             }
         });
@@ -293,6 +304,20 @@ public class XtbKinetics2 extends MainActivity {
         reactant_Button.setOnClickListener(reactant_ButtonClick);
         product_Button = (Button) findViewById(R.id.product_Button);
         product_Button.setOnClickListener(product_ButtonClick);
+
+        reactant_generateXYZ = (Button) findViewById(R.id.reactant_generateXYZ);
+        reactant_generateXYZ.setOnClickListener(reactant_generateXYZClick);
+        reactant_opsinXYZ = (Button) findViewById(R.id.reactant_opsinXYZ);
+        reactant_opsinXYZ.setOnClickListener(reactant_opsinXYZClick);
+        reactant_ToCanvas = (Button) findViewById(R.id.reactant_ToCanvas);
+        reactant_ToCanvas.setOnClickListener(reactant_ToCanvasClick);
+
+        product_generateXYZ = (Button) findViewById(R.id.product_generateXYZ);
+        product_generateXYZ.setOnClickListener(product_generateXYZClick);
+        product_opsinXYZ = (Button) findViewById(R.id.product_opsinXYZ);
+        product_opsinXYZ.setOnClickListener(product_opsinXYZClick);
+        product_ToCanvas = (Button) findViewById(R.id.product_ToCanvas);
+        product_ToCanvas.setOnClickListener(product_ToCanvasClick);
     }
 
     public void onStart()
@@ -304,6 +329,1395 @@ public class XtbKinetics2 extends MainActivity {
         FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
         ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
         DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+
+    }
+
+    private View.OnClickListener reactant_ToCanvasClick; {
+
+        reactant_ToCanvasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+
+                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Exporting the structure...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+
+                new Thread() {
+                    public void run() {
+
+                        try {
+                            FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(XyzR);
+                            outputWriter.close();
+                            FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(XyzP);
+                            outputWriter2.close();
+                            FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(FormulaR);
+                            outputWriter3.close();
+                            FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                            outputWriter8.write(FormulaP);
+                            outputWriter8.close();
+                            FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                            outputWriter6.write(Process);
+                            outputWriter6.close();
+                            FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                            outputWriter10.write(Details);
+                            outputWriter10.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        String XYZfile = exec("cat "+getFilesDir()+"/Xtb_xyzR.txt");
+                        try {
+                            while (XYZfile.contains("\t")){  //2 spaces
+                                XYZfile = XYZfile.replace("\t", " "); //(2 spaces, 1 space)
+                            }
+                            while (XYZfile.contains("  ")){  //2 spaces
+                                XYZfile = XYZfile.replace("  ", " "); //(2 spaces, 1 space)
+                            }
+                            while (XYZfile.contains("\n ")){  //2 spaces
+                                XYZfile = XYZfile.replace("\n ", "\n"); //(2 spaces, 1 space)
+                            }
+
+                            FileOutputStream fileout = openFileOutput("Coordinates.xyz.tmp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(XYZfile);
+                            outputWriter.close();
+
+
+                            exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                            exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                            exec("rm "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+                            exec("touch "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+                            // in Angstroms, in 0;0, without zoom
+                            exec("mv "+getFilesDir()+"/Coordinates.xyz.tmp "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                            exec("sed -i 1,2d "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                            try {
+                                Scanner scan = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp"));
+                                double radius = 0;
+                                int atom_color = 0;
+                                int text_color = 0;
+                                int atom_number = 0;
+                                int atomNumber = 0;
+                                // now in Angstroms
+                                double radius_Ang = 0;
+
+                                while (scan.hasNext()) {
+                                    atomNumber++;
+
+                                    String curLine = scan.nextLine();
+                                    String[] splitted = curLine.split(" ");
+                                    String atom = splitted[0].trim();
+                                    String x_coord = splitted[1].trim();
+                                    String y_coord = splitted[2].trim();
+                                    String z_coord = splitted[3].trim();
+
+                                    atom_number = atomNumber;
+
+//                        Log.println(Log.INFO, "atom = ", atom);
+
+                                    try {
+                                        Scanner scanElmnt = new Scanner(new File(getFilesDir()+"/canvas3d/Elmnts.dat"));
+                                        while (scanElmnt.hasNext()) {
+                                            String curLineElmnt = scanElmnt.nextLine();
+                                            String[] splittedElmnt = curLineElmnt.split(" ");
+                                            String elementElmnt = splittedElmnt[0].trim();
+                                            String radiusElmnt = splittedElmnt[1].trim();
+                                            String atom_colorElmnt = splittedElmnt[2].trim();
+                                            String text_colorElmnt = splittedElmnt[3].trim();
+
+                                            radius = Double.valueOf(radiusElmnt);
+                                            atom_color = Integer.valueOf(atom_colorElmnt);
+                                            text_color = Integer.valueOf(text_colorElmnt);
+                                            radius_Ang = radius/100;
+
+                                            if (atom.equals(elementElmnt)) {
+
+                                                // write in Angstroms, in 0;0, without zoom
+                                                FileOutputStream fileout3 = openFileOutput("Coordinates.x.tmp", MODE_APPEND);
+                                                OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                                                outputWriter3.write(elementElmnt +"\t"+x_coord+"\t"+y_coord+"\t"+z_coord+"\t"+radius_Ang+"\t"+atom_color+"\t"+text_color+"\t"+atom_number+"\t"+ColorAtomBorder+"\t"+"0"+"\n");
+                                                outputWriter3.close();
+                                            }
+                                        }
+                                        scanElmnt.close();
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                // až tady: (za smyčkou)
+                                scan.close();
+                                exec("rm "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                                exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
+                                double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+                                double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                                int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+                                double h_bond_limit_HN = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHN.tmp"));
+                                double h_bond_limit_HO = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHO.tmp"));
+                                double h_bond_limit_HF = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHF.tmp"));
+                                double h_bond_limit_HCl = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHCl.tmp"));
+                                try {
+                                    Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                                    int lineNo1 = 0;
+                                    while (scanX.hasNext()) {
+                                        lineNo1++;
+                                        String curLineX = scanX.nextLine();
+                                        String[] splittedX = curLineX.split("\\s");
+                                        String atomX = splittedX[0].trim();
+                                        String x_coordX = splittedX[1].trim();
+                                        String y_coordX = splittedX[2].trim();
+                                        String z_coordX = splittedX[3].trim();
+                                        String radiusX = splittedX[4].trim();
+                                        String atom_colorX = splittedX[5].trim();
+                                        String text_colorX = splittedX[6].trim();
+                                        String atom_numberX = splittedX[7].trim();
+                                        String col_at_borderX = splittedX[8].trim();
+                                        String touch_timeX = splittedX[9].trim();
+                                        int radius_pixX = (int) (Double.valueOf(radiusX)*100);
+                                        // project 3D geometry to z = 0
+                                        double A = 0;
+                                        double B = 0;
+                                        double C = 1;
+                                        double D = 0;
+                                        double x_projX = Double.valueOf(x_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double y_projX = Double.valueOf(y_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double z_projX = Double.valueOf(z_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        // because of canvas - input variables x&y have to be integers, not doubles
+                                        int x_projection = (int) (x_projX*100);
+                                        int y_projection = (int) (y_projX*100);
+                                        int z_projection = (int) (z_projX*100);
+                                        // text in front of circles = with less negative z coord
+//                        double z_text = 100*(Double.valueOf(z_coord)+0.01);
+                                        double z_textX = Double.valueOf(z_coordX)+ForegroundShiftText;
+                                        // write the file
+                                        FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                        OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
+                                        outputWriter_atoms.write(atomX+"\t"+col_at_borderX+"\t"+x_projection+"\t"+y_projection+"\t"+touch_timeX+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                        outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
+                                        outputWriter_atoms.close();
+
+                                        // second loop - to reveal the bonds
+                                        Scanner scan2 = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                                        int lineNo2 = 0;
+                                        while (scan2.hasNext()) {
+                                            lineNo2++;
+                                            String curLine2 = scan2.nextLine();
+                                            String[] splitted2 = curLine2.split("\\s");
+                                            String atom2 = splitted2[0].trim();
+                                            String x_coord2 = splitted2[1].trim();
+                                            String y_coord2 = splitted2[2].trim();
+                                            String z_coord2 = splitted2[3].trim();
+                                            String radius2 = splitted2[4].trim();
+                                            String atom_color2 = splitted2[5].trim();
+                                            String text_color2 = splitted2[6].trim();
+                                            String atom_number2 = splitted2[7].trim();
+                                            String col_at_border2 = splitted2[8].trim();
+                                            String touch_time2 = splitted2[9].trim();
+
+                                            if (lineNo2 >= lineNo1) {
+                                                // investigate all distances
+                                                double dist_scan1_scan2 = Math.sqrt(Math.pow((Double.valueOf(x_coordX) - Double.valueOf(x_coord2)), 2) + Math.pow((Double.valueOf(y_coordX) - Double.valueOf(y_coord2)), 2) + Math.pow((Double.valueOf(z_coordX) - Double.valueOf(z_coord2)), 2));
+                                                double BondingDistance = BondScale * (Double.valueOf(radiusX) + Double.valueOf(radius2));
+                                                if ((dist_scan1_scan2 < BondingDistance) && (dist_scan1_scan2 > 0)) {
+
+                                                    double A2 = 0;
+                                                    double B2 = 0;
+                                                    double C2 = 1;
+                                                    double D2 = 0;
+                                                    double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                    double x_bond1 = 100 * x_proj1;
+                                                    double y_bond1 = 100 * y_proj1;
+                                                    double x_bond2 = 100 * x_proj2;
+                                                    double y_bond2 = 100 * y_proj2;
+
+//                                int bond_color = Color.GRAY;
+                                                    int bond_color1 = Integer.valueOf(atom_colorX);
+                                                    int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                    // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                    double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                    // write the file
+                                                    FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                    OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                    outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "L" + "\n");
+                                                    outputWriter_bonds.close();
+                                                } else if ((dist_scan1_scan2 >= BondingDistance) && (atomX.equals("H") || atom2.equals("H"))) {
+                                                    if (((atomX.equals("H") && atom2.equals("N")) || ((atomX.equals("N") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HN)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("O")) || ((atomX.equals("O") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HO)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("F")) || ((atomX.equals("F") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HF)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("Cl")) || ((atomX.equals("Cl") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HCl)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        scan2.close();
+                                    }
+                                    scanX.close();
+                                    exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                // at the moment, the file Coordinates.tmp has to be sorted by the z_coord value:
+                                try {
+                                    String Z_sort = exec("sort -g -k7 "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                    FileOutputStream fileout_sort = openFileOutput("Coordinates.tmp_", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriter_sort = new OutputStreamWriter(fileout_sort);
+                                    outputWriter_sort.write(Z_sort);
+                                    outputWriter_sort.close();
+                                    exec("mv "+getFilesDir()+"/Coordinates.tmp_ "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+                        }
+                        Intent intent = new Intent(XtbKinetics2.this, Canvas3d_Reactant.class);
+                        startActivity(intent);
+
+//                        molCanvasView.setMoleculeRenderer(Canvas3d_CanvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+
+            }
+        };
+    }
+
+
+    private View.OnClickListener product_ToCanvasClick; {
+
+        product_ToCanvasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+
+                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Exporting the structure...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+
+                new Thread() {
+                    public void run() {
+
+                        try {
+                            FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(XyzR);
+                            outputWriter.close();
+                            FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(XyzP);
+                            outputWriter2.close();
+                            FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(FormulaR);
+                            outputWriter3.close();
+                            FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                            outputWriter8.write(FormulaP);
+                            outputWriter8.close();
+                            FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                            outputWriter6.write(Process);
+                            outputWriter6.close();
+                            FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                            outputWriter10.write(Details);
+                            outputWriter10.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        String XYZfile = exec("cat "+getFilesDir()+"/Xtb_xyzP.txt");
+                        try {
+                            while (XYZfile.contains("\t")){  //2 spaces
+                                XYZfile = XYZfile.replace("\t", " "); //(2 spaces, 1 space)
+                            }
+                            while (XYZfile.contains("  ")){  //2 spaces
+                                XYZfile = XYZfile.replace("  ", " "); //(2 spaces, 1 space)
+                            }
+                            while (XYZfile.contains("\n ")){  //2 spaces
+                                XYZfile = XYZfile.replace("\n ", "\n"); //(2 spaces, 1 space)
+                            }
+
+                            FileOutputStream fileout = openFileOutput("Coordinates.xyz.tmp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(XYZfile);
+                            outputWriter.close();
+
+
+                            exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                            exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                            exec("rm "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+                            exec("touch "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+                            // in Angstroms, in 0;0, without zoom
+                            exec("mv "+getFilesDir()+"/Coordinates.xyz.tmp "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                            exec("sed -i 1,2d "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                            try {
+                                Scanner scan = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp"));
+                                double radius = 0;
+                                int atom_color = 0;
+                                int text_color = 0;
+                                int atom_number = 0;
+                                int atomNumber = 0;
+                                // now in Angstroms
+                                double radius_Ang = 0;
+
+                                while (scan.hasNext()) {
+                                    atomNumber++;
+
+                                    String curLine = scan.nextLine();
+                                    String[] splitted = curLine.split(" ");
+                                    String atom = splitted[0].trim();
+                                    String x_coord = splitted[1].trim();
+                                    String y_coord = splitted[2].trim();
+                                    String z_coord = splitted[3].trim();
+
+                                    atom_number = atomNumber;
+
+//                        Log.println(Log.INFO, "atom = ", atom);
+
+                                    try {
+                                        Scanner scanElmnt = new Scanner(new File(getFilesDir()+"/canvas3d/Elmnts.dat"));
+                                        while (scanElmnt.hasNext()) {
+                                            String curLineElmnt = scanElmnt.nextLine();
+                                            String[] splittedElmnt = curLineElmnt.split(" ");
+                                            String elementElmnt = splittedElmnt[0].trim();
+                                            String radiusElmnt = splittedElmnt[1].trim();
+                                            String atom_colorElmnt = splittedElmnt[2].trim();
+                                            String text_colorElmnt = splittedElmnt[3].trim();
+
+                                            radius = Double.valueOf(radiusElmnt);
+                                            atom_color = Integer.valueOf(atom_colorElmnt);
+                                            text_color = Integer.valueOf(text_colorElmnt);
+                                            radius_Ang = radius/100;
+
+                                            if (atom.equals(elementElmnt)) {
+
+                                                // write in Angstroms, in 0;0, without zoom
+                                                FileOutputStream fileout3 = openFileOutput("Coordinates.x.tmp", MODE_APPEND);
+                                                OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                                                outputWriter3.write(elementElmnt +"\t"+x_coord+"\t"+y_coord+"\t"+z_coord+"\t"+radius_Ang+"\t"+atom_color+"\t"+text_color+"\t"+atom_number+"\t"+ColorAtomBorder+"\t"+"0"+"\n");
+                                                outputWriter3.close();
+                                            }
+                                        }
+                                        scanElmnt.close();
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                // až tady: (za smyčkou)
+                                scan.close();
+                                exec("rm "+getFilesDir()+"/canvas3d/Coordinates_headless.xyz.tmp");
+                                exec("mv "+getFilesDir()+"/Coordinates.x.tmp "+getFilesDir()+"/canvas3d/Coordinates.x.tmp");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                exec("rm "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                exec("touch "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                double BondScale = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/BondScale.tmp"));
+                                double ForegroundShiftBonds = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftBonds.tmp"));
+                                double ForegroundShiftText = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ForegroundShiftText.tmp"));
+                                int ColorAtomBorder = Integer.valueOf(exec("cat "+getFilesDir()+"/canvas3d/ColorAtomBorder.tmp"));
+                                double h_bond_limit_HN = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHN.tmp"));
+                                double h_bond_limit_HO = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHO.tmp"));
+                                double h_bond_limit_HF = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHF.tmp"));
+                                double h_bond_limit_HCl = Double.valueOf(exec("cat "+getFilesDir()+"/canvas3d/HBondHCl.tmp"));
+                                try {
+                                    Scanner scanX = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                                    int lineNo1 = 0;
+                                    while (scanX.hasNext()) {
+                                        lineNo1++;
+                                        String curLineX = scanX.nextLine();
+                                        String[] splittedX = curLineX.split("\\s");
+                                        String atomX = splittedX[0].trim();
+                                        String x_coordX = splittedX[1].trim();
+                                        String y_coordX = splittedX[2].trim();
+                                        String z_coordX = splittedX[3].trim();
+                                        String radiusX = splittedX[4].trim();
+                                        String atom_colorX = splittedX[5].trim();
+                                        String text_colorX = splittedX[6].trim();
+                                        String atom_numberX = splittedX[7].trim();
+                                        String col_at_borderX = splittedX[8].trim();
+                                        String touch_timeX = splittedX[9].trim();
+                                        int radius_pixX = (int) (Double.valueOf(radiusX)*100);
+                                        // project 3D geometry to z = 0
+                                        double A = 0;
+                                        double B = 0;
+                                        double C = 1;
+                                        double D = 0;
+                                        double x_projX = Double.valueOf(x_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double y_projX = Double.valueOf(y_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        double z_projX = Double.valueOf(z_coordX) - A*(Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C)/(Math.pow(A, 2)+Math.pow(B, 2)+Math.pow(C, 2));
+                                        // because of canvas - input variables x&y have to be integers, not doubles
+                                        int x_projection = (int) (x_projX*100);
+                                        int y_projection = (int) (y_projX*100);
+                                        int z_projection = (int) (z_projX*100);
+                                        // text in front of circles = with less negative z coord
+//                        double z_text = 100*(Double.valueOf(z_coord)+0.01);
+                                        double z_textX = Double.valueOf(z_coordX)+ForegroundShiftText;
+                                        // write the file
+                                        FileOutputStream fileout_atoms = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                        OutputStreamWriter outputWriter_atoms = new OutputStreamWriter(fileout_atoms);
+                                        outputWriter_atoms.write(atomX+"\t"+col_at_borderX+"\t"+x_projection+"\t"+y_projection+"\t"+touch_timeX+"\t"+"0"+"\t"+z_coordX+"\t"+radius_pixX+"\t"+atom_colorX+"\t"+atom_numberX+"\t"+"C"+"\n");
+                                        outputWriter_atoms.write(atomX+"\t"+"0"+"\t"+x_projection+"\t"+y_projection+"\t"+"0"+"\t"+"0"+"\t"+z_textX+"\t"+"0"+"\t"+text_colorX+"\t"+atom_numberX+"\t"+"T"+"\n");
+                                        outputWriter_atoms.close();
+
+                                        // second loop - to reveal the bonds
+                                        Scanner scan2 = new Scanner(new File(getFilesDir()+"/canvas3d/Coordinates.x.tmp"));
+                                        int lineNo2 = 0;
+                                        while (scan2.hasNext()) {
+                                            lineNo2++;
+                                            String curLine2 = scan2.nextLine();
+                                            String[] splitted2 = curLine2.split("\\s");
+                                            String atom2 = splitted2[0].trim();
+                                            String x_coord2 = splitted2[1].trim();
+                                            String y_coord2 = splitted2[2].trim();
+                                            String z_coord2 = splitted2[3].trim();
+                                            String radius2 = splitted2[4].trim();
+                                            String atom_color2 = splitted2[5].trim();
+                                            String text_color2 = splitted2[6].trim();
+                                            String atom_number2 = splitted2[7].trim();
+                                            String col_at_border2 = splitted2[8].trim();
+                                            String touch_time2 = splitted2[9].trim();
+
+                                            if (lineNo2 >= lineNo1) {
+                                                // investigate all distances
+                                                double dist_scan1_scan2 = Math.sqrt(Math.pow((Double.valueOf(x_coordX) - Double.valueOf(x_coord2)), 2) + Math.pow((Double.valueOf(y_coordX) - Double.valueOf(y_coord2)), 2) + Math.pow((Double.valueOf(z_coordX) - Double.valueOf(z_coord2)), 2));
+                                                double BondingDistance = BondScale * (Double.valueOf(radiusX) + Double.valueOf(radius2));
+                                                if ((dist_scan1_scan2 < BondingDistance) && (dist_scan1_scan2 > 0)) {
+
+                                                    double A2 = 0;
+                                                    double B2 = 0;
+                                                    double C2 = 1;
+                                                    double D2 = 0;
+                                                    double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                    double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                    double x_bond1 = 100 * x_proj1;
+                                                    double y_bond1 = 100 * y_proj1;
+                                                    double x_bond2 = 100 * x_proj2;
+                                                    double y_bond2 = 100 * y_proj2;
+
+//                                int bond_color = Color.GRAY;
+                                                    int bond_color1 = Integer.valueOf(atom_colorX);
+                                                    int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                    // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                    double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                    // write the file
+                                                    FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                    OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                    outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "L" + "\n");
+                                                    outputWriter_bonds.close();
+                                                } else if ((dist_scan1_scan2 >= BondingDistance) && (atomX.equals("H") || atom2.equals("H"))) {
+                                                    if (((atomX.equals("H") && atom2.equals("N")) || ((atomX.equals("N") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HN)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("O")) || ((atomX.equals("O") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HO)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("F")) || ((atomX.equals("F") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HF)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    } else if (((atomX.equals("H") && atom2.equals("Cl")) || ((atomX.equals("Cl") && atom2.equals("H")))) && (dist_scan1_scan2 <= h_bond_limit_HCl)) {
+                                                        double A2 = 0;
+                                                        double B2 = 0;
+                                                        double C2 = 1;
+                                                        double D2 = 0;
+                                                        double x_proj1 = Double.valueOf(x_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj1 = Double.valueOf(y_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj1 = Double.valueOf(z_coordX) - A * (Double.valueOf(x_coordX) * A + Double.valueOf(y_coordX) * B + Double.valueOf(z_coordX) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double x_proj2 = Double.valueOf(x_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double y_proj2 = Double.valueOf(y_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+                                                        double z_proj2 = Double.valueOf(z_coord2) - A * (Double.valueOf(x_coord2) * A + Double.valueOf(y_coord2) * B + Double.valueOf(z_coord2) * C) / (Math.pow(A, 2) + Math.pow(B, 2) + Math.pow(C, 2));
+
+                                                        double x_bond1 = 100 * x_proj1;
+                                                        double y_bond1 = 100 * y_proj1;
+                                                        double x_bond2 = 100 * x_proj2;
+                                                        double y_bond2 = 100 * y_proj2;
+
+                                                        int bond_color1 = Integer.valueOf(atom_color);
+                                                        int bond_color2 = Integer.valueOf(atom_color2);
+
+                                                        // find out the "middle" z-coordinate for the bond, elucidate the case when all atoms are in plane (bonds are hidden)
+
+                                                        double z_bond_average = 0.5 * (Double.valueOf(z_coordX) + Double.valueOf(z_coord2)) + ForegroundShiftBonds;
+
+                                                        // write the file
+                                                        FileOutputStream fileout_bonds = openFileOutput("Coordinates.tmp", MODE_APPEND);
+                                                        OutputStreamWriter outputWriter_bonds = new OutputStreamWriter(fileout_bonds);
+                                                        outputWriter_bonds.write(atomX + "\t" + atom2 + "\t" + x_bond1 + "\t" + y_bond1 + "\t" + x_bond2 + "\t" + y_bond2 + "\t" + z_bond_average + "\t" + bond_color1 + "\t" + bond_color2 + "\t" + "0" + "\t" + "H" + "\n");
+                                                        outputWriter_bonds.close();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        scan2.close();
+                                    }
+                                    scanX.close();
+                                    exec("mv "+getFilesDir()+"/Coordinates.tmp "+getFilesDir()+"/canvas3d/");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                // at the moment, the file Coordinates.tmp has to be sorted by the z_coord value:
+                                try {
+                                    String Z_sort = exec("sort -g -k7 "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                    FileOutputStream fileout_sort = openFileOutput("Coordinates.tmp_", MODE_PRIVATE);
+                                    OutputStreamWriter outputWriter_sort = new OutputStreamWriter(fileout_sort);
+                                    outputWriter_sort.write(Z_sort);
+                                    outputWriter_sort.close();
+                                    exec("mv "+getFilesDir()+"/Coordinates.tmp_ "+getFilesDir()+"/canvas3d/Coordinates.tmp");
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "File not read", Toast.LENGTH_SHORT).show();
+                        }
+                        Intent intent = new Intent(XtbKinetics2.this, Canvas3d_Product.class);
+                        startActivity(intent);
+
+//                        molCanvasView.setMoleculeRenderer(Canvas3d_CanvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+
+            }
+        };
+    }
+
+    private View.OnClickListener reactant_generateXYZClick; {
+
+        reactant_generateXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XyzR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(XyzP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                reactant_alertGenerateXYZ();
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void reactant_alertGenerateXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(XtbKinetics2.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_numbers(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics2.this)
+                .setMessage("Please write the SMILES string to be converted to XYZ. ")
+                .setTitle("OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(SmilesString);
+                            outputWriter.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener reactant_opsinXYZClick; {
+
+        reactant_opsinXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XyzR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(XyzP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                reactant_alertOpsinXYZ();
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void reactant_alertOpsinXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(XtbKinetics2.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_numbers(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics2.this)
+                .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be displayed as the updated reactant XYZ file.")
+                .setTitle("OPSIN+OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener product_generateXYZClick; {
+
+        product_generateXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XyzR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(XyzP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                product_alertGenerateXYZ();
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void product_alertGenerateXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(XtbKinetics2.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_numbers(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics2.this)
+                .setMessage("Please write the SMILES string to be converted to XYZ. ")
+                .setTitle("OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            FileOutputStream fileout = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(SmilesString);
+                            outputWriter.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener product_opsinXYZClick; {
+
+        product_opsinXYZClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XyzR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(XyzP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                product_alertOpsinXYZ();
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+
+    public void product_alertOpsinXYZ(){
+        // creating the EditText widget programatically
+        EditText editText100 = new EditText(XtbKinetics2.this);
+        editText100.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText100.setTypeface(Typeface.MONOSPACE);
+        editText100.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText100.removeTextChangedListener(this);
+                String text = editText100.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText100.getText().clear();
+                editText100.append(colorized_numbers(text));
+                // place the cursor at the original position
+                editText100.setSelection(startChanged+countChanged);
+                editText100.addTextChangedListener(this);
+            }
+        });
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(XtbKinetics2.this)
+                .setMessage("Please write the chemical name according to IUPAC to XYZ conversion. The result will be displayed as the updated product XYZ file.")
+                .setTitle("OPSIN+OpenBABEL conversion")
+                .setView(editText100)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SmilesString = editText100.getText().toString();
+//                        String InputFile = MopacInput.getText().toString();
+                        try {
+                            ////////////////////////////////////
+                            NameToStructure nts = NameToStructure.getInstance();
+                            NameToStructureConfig ntsconfig = new NameToStructureConfig();
+//a new NameToStructureConfig starts as a copy of OPSIN's default configuration
+                            ntsconfig.setAllowRadicals(true);
+//                OpsinResult result = nts.parseChemicalName("acetamide", ntsconfig);
+                            OpsinResult result = nts.parseChemicalName(SmilesString+"", ntsconfig);
+                            String smiles = result.getSmiles();
+                            /////////////////////////////////////
+                            FileOutputStream fileout2 = openFileOutput("temp.smi", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(smiles);
+                            outputWriter2.close();
+
+                            // String ObabelOutput = exec(getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi "+getFilesDir()+"/temp.smi -oxyz --gen3d");
+                            com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -ismi temp.smi -oxyz --gen3d > ObabelOutput.txt");
+                            String ObabelOutput = exec("cat "+getFilesDir()+"/ObabelOutput.txt");
+
+                            FileOutputStream fileout3 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(ObabelOutput);
+                            outputWriter3.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+//                        exec("rm "+getFilesDir()+"/temp.xyz");
+                        exec("rm "+getFilesDir()+"/temp.smi");
+                        // here it should be:
+                        XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText100.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
 
     }
 
@@ -898,7 +2312,7 @@ public class XtbKinetics2 extends MainActivity {
                 String text = editText10.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText10.getText().clear();
-                editText10.append(colorized_dftb(text));
+                editText10.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText10.setSelection(startChanged+countChanged);
                 editText10.addTextChangedListener(this);
@@ -1027,7 +2441,7 @@ public class XtbKinetics2 extends MainActivity {
                 String text = editText10.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 editText10.getText().clear();
-                editText10.append(colorized_dftb(text));
+                editText10.append(colorized_numbers(text));
                 // place the cursor at the original position
                 editText10.setSelection(startChanged+countChanged);
                 editText10.addTextChangedListener(this);
@@ -1279,6 +2693,118 @@ public class XtbKinetics2 extends MainActivity {
 //not here:
 //                Intent intent = new Intent(KineticsUniUni.this, ResumeActivityKin.class);
 //                startActivity(intent);
+            }
+        };
+    }
+
+    private View.OnClickListener execbuttonClick; {
+
+        execbuttonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+
+                progressDialog = new ProgressDialog(XtbKinetics2.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Executing custom command.");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
+                new Thread() {
+                    public void run() {
+                        // update: resolved!, progressdialog is already working - see the comment at the end of new thread block
+                        /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                        String XyzR = reactant_xyz.getText().toString();
+                        String XyzP = product_xyz.getText().toString();
+                        String FormulaR = reactant_formulas.getText().toString();
+                        String FormulaP = product_formulas.getText().toString();
+                        String Process = process.getText().toString();
+                        String Details = details.getText().toString();
+
+                        try {
+
+                            FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                            outputWriter.write(XyzR);
+                            outputWriter.close();
+                            FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                            outputWriter2.write(XyzP);
+                            outputWriter2.close();
+                            FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                            outputWriter3.write(FormulaR);
+                            outputWriter3.close();
+                            FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                            outputWriter8.write(FormulaP);
+                            outputWriter8.close();
+                            FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                            outputWriter6.write(Process);
+                            outputWriter6.close();
+                            FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                            outputWriter10.write(Details);
+                            outputWriter10.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        /////////////////////////// THEN CONTINUE ////////////////////////////////
+                        Process = Process.replace(" cpx ", " "+getApplicationInfo().nativeLibraryDir+"/libcpx.so ");
+                        Process = Process.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
+                        Process = Process.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
+                        Process = Process.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
+                        Process = Process.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
+                        Process = Process.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
+                        Process = Process.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
+                        Process = Process.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
+                        Process = Process.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
+                        Process = Process.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
+                        Process = Process.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
+                        Process = Process.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
+                        Process = Process.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
+                        Process = Process.replace(" stda ", " "+getApplicationInfo().nativeLibraryDir+"/libstda.so ");
+                        Process = Process.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
+                        Process = Process.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
+                        Process = Process.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
+                        Process = Process.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
+//                        Process = Process.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+//                        Process = Process.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
+//                        Process = Process.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
+//                        Process = Process.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
+//                        Process = Process.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
+                        Process = Process.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                        Process = Process.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
+                        Process = Process.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");
+                        Process = Process.replace(" mopac-makpol ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-makpol.so ");
+                        Process = Process.replace(" mopac-param ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-param.so ");
+                        Process = Process.replace(" phreeqc ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so ");
+                        Process = Process.replace(" transpose ", " "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so ");
+                        try {
+                            com.jrummyapps.android.shell.Shell.SH.run(Process);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                            XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                            FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                            FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                            ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                            DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+                        } catch (Exception e) {
+                        }
+
+                        onFinish();
+                    }
+                    public void onFinish(){
+                        progressDialog.dismiss();
+                    }
+                }.start();
             }
         };
     }

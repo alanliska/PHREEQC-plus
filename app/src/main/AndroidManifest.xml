@@ -253,6 +253,8 @@
         <activity android:name="cz.p.ModifyZdown" />
         <activity android:name="cz.p.XtbKinWork1" />
         <activity android:name="cz.p.XtbKinCommand" />
+        <activity android:name="cz.p.XtbKin2Work1" />
+        <activity android:name="cz.p.XtbKin2Command" />
         <activity android:name="cz.p.PhreeqcDebug" />
         <activity android:name="cz.p.Spannables" />
         <activity android:name="cz.p.Canvas3d_main" />
@@ -261,5 +263,13 @@
         <activity android:name="cz.p.Canvas3d_ColorTest" />
         <activity android:name="cz.p.Canvas3d_PerTable" />
         <activity android:name="cz.p.Canvas3d_Preferences" />
+        <activity android:name="cz.p.Canvas3d_Reactant" />
+        <activity android:name="cz.p.Canvas3d_Reactant_ColorTest" />
+        <activity android:name="cz.p.Canvas3d_Reactant_PerTable" />
+        <activity android:name="cz.p.Canvas3d_Reactant_Preferences" />
+        <activity android:name="cz.p.Canvas3d_Product" />
+        <activity android:name="cz.p.Canvas3d_Product_ColorTest" />
+        <activity android:name="cz.p.Canvas3d_Product_PerTable" />
+        <activity android:name="cz.p.Canvas3d_Product_Preferences" />
     </application>
 </manifest>
