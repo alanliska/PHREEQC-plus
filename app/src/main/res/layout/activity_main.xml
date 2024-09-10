@@ -38,14 +38,34 @@
             android:layout_height="wrap_content"
             android:text="\n(a) MOPAC calculation = geometry optimization in vacuum + solvent (model COSMO)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
-
+<!---
+    <LinearLayout
+        android:layout-width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content">
+-->
         <Button
             android:id="@+id/start_openbabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
-            android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
+            android:text="PREPARE DATASHEETS FROM NAME OR SMILES"/>
+            <!---
+            android:layout_gravity="left"
+            -->
 
+<!---
+        <Button
+            android:id="@+id/openbabel_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CORR"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+-->
         <Button
             android:id="@+id/start_bulk"
             android:layout_width="match_parent"
@@ -60,26 +80,60 @@
             android:text="\n(b) MOPAC calculation = geometry optimization in solvent + CHEMSOL calculation based on Mulliken charges = single point in water (Langevin model)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
+<!---
+    <LinearLayout
+        android:layout-width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content">
+        -->
         <Button
             android:id="@+id/start_mopac_chemsol_mulliken"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
+        <!--
+        <Button
+            android:id="@+id/mopac_chemsol_mulliken_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CORR"
+            android:layout_gravity="right"/>
 
+    </LinearLayout>
+-->
         <TextView
             android:id="@+id/label2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="\n(c) MOPAC calculation (AM1 only) = geometry optimization in solvent + CHEMSOL calculation based on ESP charges = single point in water (Langevin model)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
-
+<!---
+    <LinearLayout
+        android:layout-width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content">
+        -->
         <Button
             android:id="@+id/start_mopac_chemsol_esp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FFEB3B"
             android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
+        <!---
+        <Button
+            android:id="@+id/mopac_chemsol_esp_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CORR"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+    -->
 <!---
         <TextView
             android:id="@+id/label_dftb_all"
@@ -116,14 +170,30 @@
             android:layout_height="wrap_content"
             android:text="\n(d) XTB calculation = geometry optimization in vacuum + solvent (GBSA, ALPB, COSMO, CPCM-X)"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
-
+ <!---
+    <LinearLayout
+        android:layout-width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content">
+        -->
         <Button
             android:id="@+id/start_xtb_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#CDE0FF"
             android:text="PREPARE DATASHEETS FROM NAME OR SMILES" />
+        <!---
+        <Button
+            android:id="@+id/xtb_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CORR"
+            android:layout_gravity="right"/>
 
+    </LinearLayout>
+-->
         <TextView
             android:id="@+id/label100"
             android:layout_width="fill_parent"

@@ -1335,7 +1335,322 @@ public class BulkConversion extends MainActivity {
             public void onClick(View v) {
                 try {
                     exec("rm -rf "+getFilesDir()+File.separator+"openbabel");
-                    exec("mkdir "+getFilesDir()+File.separator+"openbabel");
+                    // attempt to fix the error which is unrecoverable after quitting this process
+//                    exec("mkdir "+getFilesDir()+File.separator+"openbabel");
+
+                    File Path000 = new File(getFilesDir()+"/output");
+                    File Path00 = new File(getFilesDir()+"/bulk_conversion");
+                    File Path01 = new File(getFilesDir()+"/chemsol");
+                    File Path02 = new File(getFilesDir()+"/database");
+                    File Path03 = new File(getFilesDir()+"/mopac");
+                    File Path04 = new File(getFilesDir()+"/obabel");
+                    File Path05 = new File(getFilesDir()+"/phreeqc_work");
+                    File Path06 = new File(getFilesDir()+"/LIQUIDS");
+                    File Path07 = new File(getFilesDir()+"/PHASES");
+                    File Path08 = new File(getFilesDir()+"/SOLIDS");
+                    File Path09 = new File(getFilesDir()+"/SOLUTION_SPECIES");
+                    File Path10 = new File(getFilesDir()+"/output/atmospheric-profiles");
+                    File Path11 = new File(getFilesDir()+"/output/damping_factor");
+                    File Path12 = new File(getFilesDir()+"/output/element-abundances");
+                    File Path13 = new File(getFilesDir()+"/output/fastchem_datasets");
+                    File Path14 = new File(getFilesDir()+"/output/formula");
+                    File Path15 = new File(getFilesDir()+"/output/iupac");
+                    File Path16 = new File(getFilesDir()+"/output/kinetics");
+                    File Path17 = new File(getFilesDir()+"/output/phreeqc_datasets");
+                    File Path18 = new File(getFilesDir()+"/output/smiles");
+//            File Path19 = new File(getFilesDir()+"/output/chemsol");
+                    File Path20 = new File(getFilesDir()+"/output/xyz");
+                    File Path21 = new File(getFilesDir()+"/output/gas");
+                    File Path22 = new File(getFilesDir()+"/output/gas/opt");
+                    File Path23 = new File(getFilesDir()+"/output/gas/opt/results");
+                    File Path24 = new File(getFilesDir()+"/output/gas/thermo");
+                    File Path25 = new File(getFilesDir()+"/output/gas/thermo/results");
+                    File Path26 = new File(getFilesDir()+"/output/solv");
+                    File Path27 = new File(getFilesDir()+"/output/solv/opt");
+                    File Path28 = new File(getFilesDir()+"/output/solv/opt/results");
+                    File Path29 = new File(getFilesDir()+"/output/solv/thermo");
+                    File Path30 = new File(getFilesDir()+"/output/solv/thermo/results");
+                    File Path31 = new File(getFilesDir()+"/openbabel");
+                    File Path32 = new File(getFilesDir()+"/openbabel/formula");
+                    File Path33 = new File(getFilesDir()+"/openbabel/damping_factor");
+                    File Path34 = new File(getFilesDir()+"/openbabel/iupac");
+                    File Path35 = new File(getFilesDir()+"/openbabel/kinetics");
+                    File Path36 = new File(getFilesDir()+"/openbabel/smiles");
+                    File Path37 = new File(getFilesDir()+"/openbabel/xyz");
+                    File Path38 = new File(getFilesDir()+"/openbabel/gas");
+                    File Path39 = new File(getFilesDir()+"/openbabel/gas/opt");
+                    File Path40 = new File(getFilesDir()+"/openbabel/gas/opt/results");
+                    File Path41 = new File(getFilesDir()+"/openbabel/gas/thermo");
+                    File Path42 = new File(getFilesDir()+"/openbabel/gas/thermo/results");
+                    File Path43 = new File(getFilesDir()+"/openbabel/solv");
+                    File Path44 = new File(getFilesDir()+"/openbabel/solv/opt");
+                    File Path45 = new File(getFilesDir()+"/openbabel/solv/opt/results");
+                    File Path46 = new File(getFilesDir()+"/openbabel/solv/thermo");
+                    File Path47 = new File(getFilesDir()+"/openbabel/solv/thermo/results");
+                    File Path48 = new File(getFilesDir()+"/openbabel/tautomers");
+                    File Path49 = new File(getFilesDir()+"/output/tautomers");
+                    // due to phreeqc-prepare
+                    File Path50 = new File(getFilesDir()+"/work");
+                    File Path51 = new File(getFilesDir()+"/PSEUDOPHASES");
+                    File Path52 = new File(getFilesDir()+"/docs");
+                    File Path53 = new File(getFilesDir()+"/GCM1");
+                    File Path54 = new File(getFilesDir()+"/GCM2");
+                    File Path55 = new File(getFilesDir()+"/GCM3");
+                    File Path56 = new File(getFilesDir()+"/GCM4");
+                    File Path57 = new File(getFilesDir()+"/openbabel/liq");
+                    File Path58 = new File(getFilesDir()+"/openbabel/cryst");
+//            File Path59 = new File(getFilesDir()+"/openbabel/solv");
+                    File Path60 = new File(getFilesDir()+"/output/cryst");
+                    File Path61 = new File(getFilesDir()+"/output/liq");
+//            File Path62 = new File(getFilesDir()+"/cp2k");
+//            File Path63 = new File(getFilesDir()+"/basis");
+//            File Path64 = new File(getFilesDir()+"/basis/DFTB");
+//            File Path65 = new File(getFilesDir()+"/basis/DFTB/nonscc");
+//            File Path66 = new File(getFilesDir()+"/basis/DFTB/scc");
+//            File Path67 = new File(getFilesDir()+"/basis/xc_section");
+                    File Path68 = new File(getFilesDir()+"/dftb");
+                    File Path69 = new File(getFilesDir()+"/sk_files");
+                    File Path70 = new File(getFilesDir()+"/reference");
+                    File Path71 = new File(getFilesDir()+"/openbabel/xtb_comm");
+                    File Path72 = new File(getFilesDir()+"/openbabel/xtb_solv");
+                    File Path73 = new File(getFilesDir()+"/output/xtb_comm");
+                    File Path74 = new File(getFilesDir()+"/output/xtb_solv");
+                    File Path75 = new File(getFilesDir()+"/debug");
+//                    try {
+                        if (!Path00.exists()) {
+                            Path00.mkdirs();
+                        }
+                        if (!Path000.exists()) {
+                            Path000.mkdirs();
+                        }
+                        if (!Path01.exists()) {
+                            Path01.mkdirs();
+                        }
+                        if (!Path02.exists()) {
+                            Path02.mkdirs();
+                        }
+                        if (!Path03.exists()) {
+                            Path03.mkdirs();
+                        }
+                        if (!Path04.exists()) {
+                            Path04.mkdirs();
+                        }
+                        if (!Path05.exists()) {
+                            Path05.mkdirs();
+                        }
+                        if (!Path06.exists()) {
+                            Path06.mkdirs();
+                        }
+                        if (!Path07.exists()) {
+                            Path07.mkdirs();
+                        }
+                        if (!Path08.exists()) {
+                            Path08.mkdirs();
+                        }
+                        if (!Path09.exists()) {
+                            Path09.mkdirs();
+                        }
+                        if (!Path10.exists()) {
+                            Path10.mkdirs();
+                        }
+                        if (!Path11.exists()) {
+                            Path11.mkdirs();
+                        }
+                        if (!Path12.exists()) {
+                            Path12.mkdirs();
+                        }
+                        if (!Path13.exists()) {
+                            Path13.mkdirs();
+                        }
+                        if (!Path14.exists()) {
+                            Path14.mkdirs();
+                        }
+                        if (!Path15.exists()) {
+                            Path15.mkdirs();
+                        }
+                        if (!Path16.exists()) {
+                            Path16.mkdirs();
+                        }
+                        if (!Path17.exists()) {
+                            Path17.mkdirs();
+                        }
+                        if (!Path18.exists()) {
+                            Path18.mkdirs();
+                        }
+//                if (!Path19.exists()) {
+//                    Path19.mkdirs();
+//                }
+                        if (!Path20.exists()) {
+                            Path20.mkdirs();
+                        }
+                        if (!Path21.exists()) {
+                            Path21.mkdirs();
+                        }
+                        if (!Path22.exists()) {
+                            Path22.mkdirs();
+                        }
+                        if (!Path23.exists()) {
+                            Path23.mkdirs();
+                        }
+                        if (!Path24.exists()) {
+                            Path24.mkdirs();
+                        }
+                        if (!Path25.exists()) {
+                            Path25.mkdirs();
+                        }
+                        if (!Path26.exists()) {
+                            Path26.mkdirs();
+                        }
+                        if (!Path27.exists()) {
+                            Path27.mkdirs();
+                        }
+                        if (!Path28.exists()) {
+                            Path28.mkdirs();
+                        }
+                        if (!Path29.exists()) {
+                            Path29.mkdirs();
+                        }
+                        if (!Path30.exists()) {
+                            Path30.mkdirs();
+                        }
+                        if (!Path31.exists()) {
+                            Path31.mkdirs();
+                        }
+                        if (!Path32.exists()) {
+                            Path32.mkdirs();
+                        }
+                        if (!Path33.exists()) {
+                            Path33.mkdirs();
+                        }
+                        if (!Path34.exists()) {
+                            Path34.mkdirs();
+                        }
+                        if (!Path35.exists()) {
+                            Path35.mkdirs();
+                        }
+                        if (!Path36.exists()) {
+                            Path36.mkdirs();
+                        }
+                        if (!Path37.exists()) {
+                            Path37.mkdirs();
+                        }
+                        if (!Path38.exists()) {
+                            Path38.mkdirs();
+                        }
+                        if (!Path39.exists()) {
+                            Path39.mkdirs();
+                        }
+                        if (!Path40.exists()) {
+                            Path40.mkdirs();
+                        }
+                        if (!Path41.exists()) {
+                            Path41.mkdirs();
+                        }
+                        if (!Path42.exists()) {
+                            Path42.mkdirs();
+                        }
+                        if (!Path43.exists()) {
+                            Path43.mkdirs();
+                        }
+                        if (!Path44.exists()) {
+                            Path44.mkdirs();
+                        }
+                        if (!Path45.exists()) {
+                            Path45.mkdirs();
+                        }
+                        if (!Path46.exists()) {
+                            Path46.mkdirs();
+                        }
+                        if (!Path47.exists()) {
+                            Path47.mkdirs();
+                        }
+                        if (!Path48.exists()) {
+                            Path48.mkdirs();
+                        }
+                        if (!Path49.exists()) {
+                            Path49.mkdirs();
+                        }
+                        if (!Path50.exists()) {
+                            Path50.mkdirs();
+                        }
+                        if (!Path51.exists()) {
+                            Path51.mkdirs();
+                        }
+                        if (!Path52.exists()) {
+                            Path52.mkdirs();
+                        }
+                        if (!Path53.exists()) {
+                            Path53.mkdirs();
+                        }
+                        if (!Path54.exists()) {
+                            Path54.mkdirs();
+                        }
+                        if (!Path55.exists()) {
+                            Path55.mkdirs();
+                        }
+                        if (!Path56.exists()) {
+                            Path56.mkdirs();
+                        }
+                        if (!Path57.exists()) {
+                            Path57.mkdirs();
+                        }
+                        if (!Path58.exists()) {
+                            Path58.mkdirs();
+                        }
+//                if (!Path59.exists()) {
+//                    Path59.mkdirs();
+//                }
+                        if (!Path60.exists()) {
+                            Path60.mkdirs();
+                        }
+                        if (!Path61.exists()) {
+                            Path61.mkdirs();
+                        }
+//                if (!Path62.exists()) {
+//                    Path62.mkdirs();
+//                }
+//                if (!Path63.exists()) {
+//                    Path63.mkdirs();
+//                }
+//                if (!Path64.exists()) {
+//                    Path64.mkdirs();
+//                }
+//                if (!Path65.exists()) {
+//                    Path65.mkdirs();
+//                }
+//                if (!Path66.exists()) {
+//                    Path66.mkdirs();
+//                }
+//                if (!Path67.exists()) {
+//                    Path67.mkdirs();
+//                }
+                        if (!Path68.exists()) {
+                            Path68.mkdirs();
+                        }
+                        if (!Path69.exists()) {
+                            Path69.mkdirs();
+                        }
+                        if (!Path70.exists()) {
+                            Path70.mkdirs();
+                        }
+                        if (!Path71.exists()) {
+                            Path71.mkdirs();
+                        }
+                        if (!Path72.exists()) {
+                            Path72.mkdirs();
+                        }
+                        if (!Path73.exists()) {
+                            Path73.mkdirs();
+                        }
+                        if (!Path74.exists()) {
+                            Path74.mkdirs();
+                        }
+                        if (!Path75.exists()) {
+                            Path75.mkdirs();
+                        }
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

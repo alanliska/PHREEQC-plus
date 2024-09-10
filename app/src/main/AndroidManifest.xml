@@ -271,5 +271,7 @@
         <activity android:name="cz.p.Canvas3d_Product_ColorTest" />
         <activity android:name="cz.p.Canvas3d_Product_PerTable" />
         <activity android:name="cz.p.Canvas3d_Product_Preferences" />
+        <activity android:name="cz.p.SolventCorr" />
+        <activity android:name="cz.p.SolventCorrWork" />
     </application>
 </manifest>

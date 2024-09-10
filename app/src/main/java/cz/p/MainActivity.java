@@ -63,6 +63,7 @@ import org.w3c.dom.Text;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 
 import static android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION;
@@ -158,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
     Button start_xtbkin;
     Button start_canvas3d;
     TextView labelCanvas;
+//    Button openbabel_corr;
+//    Button mopac_chemsol_mulliken_corr;
+//    Button mopac_chemsol_esp_corr;
+//    Button xtb_corr;
 
     /**
      * Called when the activity is first created.
@@ -274,6 +279,94 @@ public class MainActivity extends AppCompatActivity {
 //        label_dftb_all = (TextView) findViewById(R.id.label_dftb_all);
         label_xtb_all = (TextView) findViewById(R.id.label_xtb_all);
         labelCanvas = (TextView) findViewById(R.id.labelCanvas);
+
+//        openbabel_corr = (Button) findViewById(R.id.openbabel_corr);
+//        openbabel_corr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String DatasetName0 = dataset.getText().toString();
+//                String DatasetName1 = DatasetName0.replace(" ","_");
+//                String DatasetName = DatasetName1.replace(",",".");
+//                try {
+//                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(DatasetName);
+//                    outputWriter.close();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Intent intent = new Intent(MainActivity.this, SolventCorr.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        mopac_chemsol_mulliken_corr = (Button) findViewById(R.id.mopac_chemsol_mulliken_corr);
+//        mopac_chemsol_mulliken_corr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String DatasetName0 = dataset.getText().toString();
+//                String DatasetName1 = DatasetName0.replace(" ","_");
+//                String DatasetName = DatasetName1.replace(",",".");
+//                try {
+//                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(DatasetName);
+//                    outputWriter.close();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Intent intent = new Intent(MainActivity.this, SolventCorr.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        mopac_chemsol_esp_corr = (Button) findViewById(R.id.mopac_chemsol_esp_corr);
+//        mopac_chemsol_esp_corr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String DatasetName0 = dataset.getText().toString();
+//                String DatasetName1 = DatasetName0.replace(" ","_");
+//                String DatasetName = DatasetName1.replace(",",".");
+//                try {
+//                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(DatasetName);
+//                    outputWriter.close();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Intent intent = new Intent(MainActivity.this, SolventCorr.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        xtb_corr = (Button) findViewById(R.id.xtb_corr);
+//        xtb_corr.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String DatasetName0 = dataset.getText().toString();
+//                String DatasetName1 = DatasetName0.replace(" ","_");
+//                String DatasetName = DatasetName1.replace(",",".");
+//                try {
+//                    FileOutputStream fileout = openFileOutput("dataset-name.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+//                    outputWriter.write(DatasetName);
+//                    outputWriter.close();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Intent intent = new Intent(MainActivity.this, SolventCorr.class);
+//                startActivity(intent);
+//            }
+//        });
 
         PrivacyPolicy = (Button) findViewById(R.id.PrivacyPolicy);
         PrivacyPolicy.setOnClickListener(new View.OnClickListener() {
@@ -1327,14 +1420,15 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     copyFromAssetsToInternalStorage("assets.zip");
-                    String zipFilePath = getFilesDir()+"/assets.zip";
-                    String destDir = getFilesDir()+"/" ;
+                    String zipFilePath = getFilesDir()+File.separator+"assets.zip";
+//                    String destDir = getFilesDir()+"/" ;
                     try {
-                        unzip(new File(zipFilePath),destDir);
+                        unzip(new File(zipFilePath));
+//                        unzip(new File(zipFilePath),destDir);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    exec("rm "+getFilesDir()+"/assets.zip");
+                    exec("rm "+getFilesDir()+File.separator+"assets.zip");
                     exec("chmod -R 755 "+getFilesDir()+"/");
 
             onFinish();
@@ -1617,15 +1711,52 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static void unzip(File source, String out) throws IOException {
+//    public static void unzip(File source, String out) throws IOException {
+//        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(source))) {
+//
+//            ZipEntry entry = zis.getNextEntry();
+//
+//            while (entry != null) {
+//
+//                File file = new File(out, entry.getName());
+//
+//                if (entry.isDirectory()) {
+//                    file.mkdirs();
+//                } else {
+//                    File parent = file.getParentFile();
+//
+//                    if (!parent.exists()) {
+//                        parent.mkdirs();
+//                    }
+//
+//                    try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+//
+//                        int bufferSize = Math.toIntExact(entry.getSize());
+//                        byte[] buffer = new byte[bufferSize > 0 ? bufferSize : 1];
+//                        int location;
+//
+//                        while ((location = zis.read(buffer)) != -1) {
+//                            bos.write(buffer, 0, location);
+//                        }
+//                    }
+//                }
+//                entry = zis.getNextEntry();
+//            }
+//        }
+//    }
+
+    public void unzip(File source) throws IOException {
         try (ZipInputStream zis = new ZipInputStream(new FileInputStream(source))) {
 
             ZipEntry entry = zis.getNextEntry();
+            File outPath = new File(getFilesDir()+"");
 
             while (entry != null) {
-
-                File file = new File(out, entry.getName());
-
+                File file = new File(outPath, entry.getName());
+                String canonicalPath = file.getCanonicalPath();
+                if (canonicalPath.startsWith(outPath.getCanonicalPath() + File.separator)) {
+//                    File verifiedFile = new File(canonicalPath,entry.getName());
+//                    continue;
                 if (entry.isDirectory()) {
                     file.mkdirs();
                 } else {
@@ -1647,10 +1778,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 entry = zis.getNextEntry();
+            } else {
+                    throw new IllegalStateException("Unreachable location");
+                }
             }
         }
     }
-
-
 
 }

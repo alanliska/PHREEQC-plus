@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Description"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="This panel is devoted to solvent corrections."
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+        <TextView
+            android:id="@+id/Description2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\n\nSome semiempirical computations on solvated species provide better results when a hybrid solvation model is used (implicit solvation model + few explicit solvent molecules around the analyte). Then, however, it is necessary to subtract the additional energy terms (originating from the extra solvent) from the thermodynamic quantities (Gibbs energy, enthalpy) of fusion in order to obtain the equilibrium formulation compatible with the other equilibria present in the desired dataset. Moreover, due to the thermodynamic definition of the solvent (activity = 1), it is necessary to correct the resulting equilibrium by the logarithmic concentration term (molar concentration of the pure solvent).\n\nThe solvent specifications defined here will be used for corrections during the next batch semiempirical calculations executed for the purpose of acquiring a custom PHREEQC thermodynamic database.\n\nPlease, select here the previously calculated solvent molecule in form of a single-lined PHREEQC database fragment valid for aqueous solution (denoted by 'water_s').\n\nIn the following automated PHREEQC dataset generation, do not forget to include the additional solvent molecules to the formulas as well as to the SMILES strings.\n\nPlease note that this kind of corrections is not available for bulk input files conversions, empirical methods, and organized thermodynamic data conversions."
+            />
+
+        <TextView
+            android:id="@+id/FormulaLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nSolvent formula (do not use square brackets [], or brackets inside of brackets):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Formula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <TextView
+            android:id="@+id/DensityLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nSolvent density (g.cm-3):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Density"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:typeface="monospace"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:fastScrollAlwaysVisible="true"
+            android:scrollbarSize="5dp"
+            android:fastScrollEnabled="true"/>
+
+        <TextView
+            android:id="@+id/Solvent_corr_label"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="\nNumber of explicit solvent molecules (for the subsequent run):"
+            android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <EditText
+            android:id="@+id/Solvent_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="50000"
+            android:scrollbarSize="5dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/openSolv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN EXTERNAL SOLVENT PHREEQC FRAGMENT" />
+        <Button
+            android:id="@+id/openIntSolv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN INTERNAL SOLVENT PHREEQC FRAGMENT" />
+        <Button
+            android:id="@+id/CalcCorr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#E91E63"
+            android:text="CALCULATE CORRECTION FILES" />
+        <Button
+            android:id="@+id/Quit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="QUIT" />
+
+        <TextView
+            android:id="@+id/textViewX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\nCorrections: \n "
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorLink="#F5F5F5"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/outputView"
+            android:textIsSelectable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollHorizontally="false"
+            android:textColor="@android:color/holo_red_dark"></TextView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10px" >
+
+            <EditText
+                android:id="@+id/outputView2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars = "horizontal"
+                android:textColor="@android:color/black"
+                android:textIsSelectable="true"
+                android:textSize="12sp"
+                android:typeface="monospace"></EditText>
+        </HorizontalScrollView>
+    </LinearLayout>
+</ScrollView>

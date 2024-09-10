@@ -1,6 +1,7 @@
 package cz.p;
 
 import static cz.p.Spannables.colorized_mopac;
+import static cz.p.Spannables.colorized_numbers;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -54,6 +55,8 @@ public class Chemsol2 extends MainActivity {
     public EditText tautomers;
     public TextView damp_label;
     public EditText damping_factor;
+//    private TextView solvent_corr_label;
+//    private EditText solvent_corr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,6 +283,32 @@ public class Chemsol2 extends MainActivity {
         mopac_input = (TextView) findViewById(R.id.mopac_input);
         mopac_filelist_label = (TextView) findViewById(R.id.mopac_filelist_label);
         mopac_filelist = (TextView) findViewById(R.id.mopac_filelist);
+//        solvent_corr_label = (TextView) findViewById(R.id.solvent_corr_label);
+//        solvent_corr = (EditText) findViewById(R.id.solvent_corr);
+//        solvent_corr.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+//        solvent_corr.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                solvent_corr.removeTextChangedListener(this);
+//                String text = solvent_corr.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                solvent_corr.getText().clear();
+//                solvent_corr.append(colorized_numbers(text));
+//                // place the cursor at the original position
+//                solvent_corr.setSelection(startChanged+countChanged);
+//                solvent_corr.addTextChangedListener(this);
+//            }
+//        });
 
     }
 
@@ -295,6 +324,7 @@ public class Chemsol2 extends MainActivity {
         formula_view(exec("cat "+getFilesDir()+"/formula.txt"));
         smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
         mopac_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+//        solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
     }
 
     private View.OnClickListener openbabel_opsin_click; {
@@ -309,6 +339,7 @@ public class Chemsol2 extends MainActivity {
                 String Tautomers = tautomers.getText().toString();
                 String Formulafile = formula.getText().toString();
                 String DampingFactor = damping_factor.getText().toString();
+//                String SolventCorr = solvent_corr.getText().toString();
 
                 File filePath = new File(getFilesDir()+File.separator+"openbabel");
                 try {
@@ -347,6 +378,10 @@ public class Chemsol2 extends MainActivity {
                     OutputStreamWriter outputWriter11 = new OutputStreamWriter(fileout11);
                     outputWriter11.write(DampingFactor);
                     outputWriter11.close();
+//                    FileOutputStream fileout7 = openFileOutput("solvent-moles.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+//                    outputWriter7.write(SolventCorr);
+//                    outputWriter7.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -397,6 +432,7 @@ public class Chemsol2 extends MainActivity {
                             smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
                             mopac_view(exec("cat "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName));
                             mopac_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+//                            solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
 
                         } catch (Exception e) {
                         }
@@ -423,6 +459,7 @@ public class Chemsol2 extends MainActivity {
                 String Tautomers = tautomers.getText().toString();
                 String Formulafile = formula.getText().toString();
                 String DampingFactor = damping_factor.getText().toString();
+//                String SolventCorr = solvent_corr.getText().toString();
 
                 File filePath = new File(getFilesDir()+File.separator+"openbabel");
                 try {
@@ -461,6 +498,10 @@ public class Chemsol2 extends MainActivity {
                     OutputStreamWriter outputWriter11 = new OutputStreamWriter(fileout11);
                     outputWriter11.write(DampingFactor);
                     outputWriter11.close();
+//                    FileOutputStream fileout7 = openFileOutput("solvent-moles.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+//                    outputWriter7.write(SolventCorr);
+//                    outputWriter7.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -470,6 +511,7 @@ public class Chemsol2 extends MainActivity {
 
                     String InputfileName1 = InputfileName0.replace(" ","_");
                     String InputfileName = InputfileName1.replace(",",".");
+//                    exec("cp "+getFilesDir()+"/solvent-moles.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".smoles");
                     exec("cp "+getFilesDir()+"/smiles.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".smi");
                     exec("cp "+getFilesDir()+"/iupac.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".iupac");
                     exec("cp "+getFilesDir()+"/formula.txt "+getFilesDir()+File.separator+"openbabel/"+InputfileName+".formula");
@@ -604,6 +646,7 @@ public class Chemsol2 extends MainActivity {
                     smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
                     mopac_view(exec("cat "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName));
                     mopac_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+//                    solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
 
                 } catch (Exception e) {
                 }
@@ -682,6 +725,15 @@ public class Chemsol2 extends MainActivity {
         };
         handler.post(mopac_filelist_proc);
     }
+
+//    public void solvent_corr_view(final String solvent_corr_str) {
+//        Runnable solvent_corr_proc = new Runnable() {
+//            public void run() {
+//                solvent_corr.setText(colorized_numbers(solvent_corr_str), EditText.BufferType.SPANNABLE);
+//            }
+//        };
+//        handler.post(solvent_corr_proc);
+//    }
 
     public void tautomers_view(final String tautomers_str) {
         Runnable tautomers_proc = new Runnable() {

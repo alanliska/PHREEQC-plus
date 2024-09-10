@@ -1,5 +1,6 @@
 package cz.p;
 
+import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_xtb;
 
 import android.app.ProgressDialog;
@@ -73,6 +74,8 @@ public class Xtb1 extends MainActivity {
     public Button reference;
     //    public EditText reference_level;
     public TextView referenceView;
+//    private TextView solvent_corr_label;
+//    private EditText solvent_corr;
 
 
     @Override
@@ -236,6 +239,7 @@ public class Xtb1 extends MainActivity {
                 String Comm = xtb_cmd_begin.getText().toString();
                 String Solv = xtb_solvation.getText().toString();
                 String Formulafile = formula.getText().toString();
+//                String SolventCorr = solvent_corr.getText().toString();
                 try {
                     if (!filePath.exists()) {
                         filePath.mkdirs();
@@ -260,6 +264,10 @@ public class Xtb1 extends MainActivity {
                     OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
                     outputWriter8.write(Formulafile);
                     outputWriter8.close();
+//                    FileOutputStream fileout7 = openFileOutput("solvent-moles.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+//                    outputWriter7.write(SolventCorr);
+//                    outputWriter7.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -269,6 +277,33 @@ public class Xtb1 extends MainActivity {
 
             }
         });
+
+//        solvent_corr_label = (TextView) findViewById(R.id.solvent_corr_label);
+//        solvent_corr = (EditText) findViewById(R.id.solvent_corr);
+//        solvent_corr.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+//        solvent_corr.addTextChangedListener(new TextWatcher() {
+//            int startChanged,beforeChanged,countChanged;
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                startChanged = start;
+//                beforeChanged = before;
+//                countChanged = count;
+//            }
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                solvent_corr.removeTextChangedListener(this);
+//                String text = solvent_corr.getText().toString();
+//                // important - not setText() - otherwise the keyboard would be reset after each type
+//                solvent_corr.getText().clear();
+//                solvent_corr.append(colorized_numbers(text));
+//                // place the cursor at the original position
+//                solvent_corr.setSelection(startChanged+countChanged);
+//                solvent_corr.addTextChangedListener(this);
+//            }
+//        });
     }
 
     public void onStart()
@@ -293,6 +328,7 @@ public class Xtb1 extends MainActivity {
         formula_view(exec("cat "+getFilesDir()+"/formula.txt"));
         smiles_view(exec("cat "+getFilesDir()+"/smiles.txt"));
         reference_view(exec("cat "+getFilesDir()+"/ref-level.txt"));
+//        solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
     }
 
     private View.OnClickListener xtb_opsin_click; {
@@ -304,6 +340,7 @@ public class Xtb1 extends MainActivity {
                 String Comm = xtb_cmd_begin.getText().toString();
                 String Solv = xtb_solvation.getText().toString();
                 String Formulafile = formula.getText().toString();
+//                String SolventCorr = solvent_corr.getText().toString();
 
                 File filePath = new File(getFilesDir()+File.separator+"openbabel");
                 try {
@@ -330,6 +367,10 @@ public class Xtb1 extends MainActivity {
                     OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
                     outputWriter8.write(Formulafile);
                     outputWriter8.close();
+//                    FileOutputStream fileout7 = openFileOutput("solvent-moles.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+//                    outputWriter7.write(SolventCorr);
+//                    outputWriter7.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -378,6 +419,7 @@ public class Xtb1 extends MainActivity {
                             reference_view(exec("cat "+getFilesDir()+"/ref-level.txt"));
                             xtb_view(exec("cat "+getFilesDir()+File.separator+"openbabel/gas/opt/"+InputfileName));
                             xtb_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+//                            solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
 
                         } catch (Exception e) {
                         }
@@ -401,6 +443,7 @@ public class Xtb1 extends MainActivity {
                 String Comm = xtb_cmd_begin.getText().toString();
                 String Solv = xtb_solvation.getText().toString();
                 String Formulafile = formula.getText().toString();
+//                String SolventCorr = solvent_corr.getText().toString();
 
                 String Formula = Formulafile;
 
@@ -625,6 +668,10 @@ public class Xtb1 extends MainActivity {
                     OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
                     outputWriter8.write(Formulafile);
                     outputWriter8.close();
+//                    FileOutputStream fileout7 = openFileOutput("solvent-moles.txt", MODE_PRIVATE);
+//                    OutputStreamWriter outputWriter7 = new OutputStreamWriter(fileout7);
+//                    outputWriter7.write(SolventCorr);
+//                    outputWriter7.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -724,6 +771,7 @@ public class Xtb1 extends MainActivity {
                     reference_view(exec("cat "+getFilesDir()+"/ref-level.txt"));
                     xtb_view(exec("cat "+getFilesDir()+File.separator+"openbabel/xyz/"+InputfileName+".xyz"));
                     xtb_filelist_view(exec("ls -l "+getFilesDir()+"/openbabel/xyz"));
+//                    solvent_corr_view(exec("cat "+getFilesDir()+"/solvent_moles.txt"));
 
                 } catch (Exception e) {
                 }
@@ -793,6 +841,15 @@ public class Xtb1 extends MainActivity {
         };
         handler.post(xtb_filelist_proc);
     }
+
+//    public void solvent_corr_view(final String solvent_corr_str) {
+//        Runnable solvent_corr_proc = new Runnable() {
+//            public void run() {
+//                solvent_corr.setText(colorized_numbers(solvent_corr_str), EditText.BufferType.SPANNABLE);
+//            }
+//        };
+//        handler.post(solvent_corr_proc);
+//    }
 
     public void reference_view(final String reference_str) {
         Runnable reference_proc = new Runnable() {

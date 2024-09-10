@@ -35,6 +35,12 @@
             android:text="VIEW XYZ AS PROJECTED 2D GRAPH" />
 
         <Button
+            android:id="@+id/SolvCorr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APPLY A BATCH SOLVENT CORRECTION" />
+
+        <Button
             android:id="@+id/start_xbasic01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
