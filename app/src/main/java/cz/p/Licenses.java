@@ -89,6 +89,10 @@ public class Licenses extends MainActivity {
     Button license_chimescalc;
     Button license_mbd;
     Button quit;
+    Button license1_crest;
+    Button license2_crest;
+    Button license1_lwoniom;
+    Button license2_lwoniom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,6 +224,14 @@ public class Licenses extends MainActivity {
         license_chimescalc.setOnClickListener(license_chimescalcClick);
         license_mbd = (Button) findViewById(R.id.license_mbd);
         license_mbd.setOnClickListener(license_mbdClick);
+        license1_crest = (Button) findViewById(R.id.license1_crest);
+        license1_crest.setOnClickListener(license1_crestClick);
+        license2_crest = (Button) findViewById(R.id.license2_crest);
+        license2_crest.setOnClickListener(license2_crestClick);
+        license1_lwoniom = (Button) findViewById(R.id.license1_lwoniom);
+        license1_lwoniom.setOnClickListener(license1_lwoniomClick);
+        license2_lwoniom = (Button) findViewById(R.id.license2_lwoniom);
+        license2_lwoniom.setOnClickListener(license2_lwoniomClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -291,6 +303,87 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener license1_crestClick; {
+        license1_crestClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1crest();
+            }
+        };
+    }
+
+    public void alert1crest() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE1-CREST")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-CREST.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license2_crestClick; {
+        license2_crestClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert2crest();
+            }
+        };
+    }
+
+    public void alert2crest() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE2-CREST")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-CREST.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license1_lwoniomClick; {
+        license1_lwoniomClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1lw();
+            }
+        };
+    }
+
+    public void alert1lw() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE1-LWONIOM")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-LWONIOM.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license2_lwoniomClick; {
+        license2_lwoniomClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert2lw();
+            }
+        };
+    }
+
+    public void alert2lw() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE2-LWONIOM")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-LWONIOM.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
 
     private View.OnClickListener license_chimescalcClick; {
         license_chimescalcClick = new View.OnClickListener() {

@@ -38,7 +38,7 @@
             android:id="@+id/CommandLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Available programs are chemsol, chimescalc, cpx, dftd4, dftb, fastchem, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phreeqc, plotms, qcxms, s-dftd3, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda (with at least one blank space behind).\n\nFull command to be executed:"
+            android:text="Available programs are chemsol, chimescalc, cpx, crest, dftd4, dftb, fastchem, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phreeqc, plotms, qcxms, s-dftd3, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda (with at least one blank space behind).\n\nFull command to be executed:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -213,6 +213,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00AABB"
             android:text="OFFICIAL XTB / QCxMS MANUAL PAGES COLLECTION" />
+        <Button
+            android:id="@+id/manual_crest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00AABB"
+            android:text="OFFICIAL CREST MANUAL PAGES COLLECTION" />
         <Button
             android:id="@+id/manual_stda"
             android:layout_width="match_parent"

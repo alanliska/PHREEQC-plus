@@ -2572,7 +2572,7 @@ public class XtbKinetics2 extends MainActivity {
                         Process = Process.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
                         Process = Process.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
                         Process = Process.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
-//                        Process = Process.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+                        Process = Process.replace(" crest ", " "+getApplicationInfo().nativeLibraryDir+"/libcrest.so ");
 //                        Process = Process.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
 //                        Process = Process.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
 //                        Process = Process.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
@@ -2772,7 +2772,7 @@ public class XtbKinetics2 extends MainActivity {
                         Process = Process.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
                         Process = Process.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
                         Process = Process.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
-//                        Process = Process.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+                        Process = Process.replace(" crest ", " "+getApplicationInfo().nativeLibraryDir+"/libcrest.so ");
 //                        Process = Process.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
 //                        Process = Process.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
 //                        Process = Process.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");

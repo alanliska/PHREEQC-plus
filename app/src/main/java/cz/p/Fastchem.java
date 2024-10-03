@@ -1120,7 +1120,7 @@ public class Fastchem extends MainActivity {
                 FastChemCommand = FastChemCommand.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
                 FastChemCommand = FastChemCommand.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
                 FastChemCommand = FastChemCommand.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
-//                FastChemCommand = FastChemCommand.replace(" buildwire ", " "+getApplicationInfo().nativeLibraryDir+"/libbuildwire.so ");
+                FastChemCommand = FastChemCommand.replace(" crest ", " "+getApplicationInfo().nativeLibraryDir+"/libcrest.so ");
 //                FastChemCommand = FastChemCommand.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
 //                FastChemCommand = FastChemCommand.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
 //                FastChemCommand = FastChemCommand.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");

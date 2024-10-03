@@ -1757,32 +1757,72 @@ public class MainActivity extends AppCompatActivity {
                 if (canonicalPath.startsWith(outPath.getCanonicalPath() + File.separator)) {
 //                    File verifiedFile = new File(canonicalPath,entry.getName());
 //                    continue;
-                if (entry.isDirectory()) {
-                    file.mkdirs();
-                } else {
-                    File parent = file.getParentFile();
+                    if (entry.isDirectory()) {
+                        file.mkdirs();
+                    } else {
+                        File parent = file.getParentFile();
 
-                    if (!parent.exists()) {
-                        parent.mkdirs();
-                    }
+                        if (!parent.exists()) {
+                            parent.mkdirs();
+                        }
 
-                    try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+                        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
 
-                        int bufferSize = Math.toIntExact(entry.getSize());
-                        byte[] buffer = new byte[bufferSize > 0 ? bufferSize : 1];
-                        int location;
+                            int bufferSize = Math.toIntExact(entry.getSize());
+                            byte[] buffer = new byte[bufferSize > 0 ? bufferSize : 1];
+                            int location;
 
-                        while ((location = zis.read(buffer)) != -1) {
-                            bos.write(buffer, 0, location);
+                            while ((location = zis.read(buffer)) != -1) {
+                                bos.write(buffer, 0, location);
+                            }
                         }
                     }
-                }
-                entry = zis.getNextEntry();
-            } else {
+                    entry = zis.getNextEntry();
+                } else {
                     throw new IllegalStateException("Unreachable location");
                 }
             }
         }
     }
+
+//    public void unzip(File source) throws IOException {
+//        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(source))) {
+//
+//            ZipEntry entry = zis.getNextEntry();
+//            File outPath = new File(getFilesDir()+"");
+//
+//            while (entry != null) {
+//                File file = new File(outPath, entry.getName());
+//                String canonicalPath = file.getCanonicalPath();
+//                if (canonicalPath.startsWith(outPath.getCanonicalPath() + File.separator)) {
+////                    File verifiedFile = new File(canonicalPath,entry.getName());
+////                    continue;
+//                    if (entry.isDirectory()) {
+//                        file.mkdirs();
+//                    } else {
+//                        File parent = file.getParentFile();
+//
+//                        if (!parent.exists()) {
+//                            parent.mkdirs();
+//                        }
+//
+//                        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file))) {
+//
+//                            int bufferSize = Math.toIntExact(entry.getSize());
+//                            byte[] buffer = new byte[bufferSize > 0 ? bufferSize : 1];
+//                            int location;
+//
+//                            while ((location = zis.read(buffer)) != -1) {
+//                                bos.write(buffer, 0, location);
+//                            }
+//                        }
+//                    }
+//                    entry = zis.getNextEntry();
+//                } else {
+//                    throw new IllegalStateException("Unreachable location");
+//                }
+//            }
+//        }
+//    }
 
 }

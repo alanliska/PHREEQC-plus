@@ -273,5 +273,6 @@
         <activity android:name="cz.p.Canvas3d_Product_Preferences" />
         <activity android:name="cz.p.SolventCorr" />
         <activity android:name="cz.p.SolventCorrWork" />
+        <activity android:name="cz.p.ManualCrest" />
     </application>
 </manifest>

@@ -77,7 +77,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-CPCM-X" />
-
+        <Button
+            android:id="@+id/license1_crest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-CREST" />
+        <Button
+            android:id="@+id/license2_crest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-CREST" />
         <Button
             android:id="@+id/lt_dftb"
             android:layout_width="match_parent"
@@ -154,6 +163,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LICENSE-LAPACK" />
+        <Button
+            android:id="@+id/license1_lwoniom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE1-LWONIOM" />
+        <Button
+            android:id="@+id/license2_lwoniom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE2-LWONIOM" />
         <Button
             android:id="@+id/license_mbd"
             android:layout_width="match_parent"
