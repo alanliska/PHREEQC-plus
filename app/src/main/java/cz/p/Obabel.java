@@ -80,6 +80,7 @@ public class Obabel extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.obabel);
 
         ObabelLabel = (TextView) findViewById(R.id.ObabelLabel);

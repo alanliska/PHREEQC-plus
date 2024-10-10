@@ -29,6 +29,7 @@ public class XtbCommand extends Xtb {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/xtb_commands";
         final File dir = new File(rootPath);

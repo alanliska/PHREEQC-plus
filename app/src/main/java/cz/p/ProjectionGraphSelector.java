@@ -38,6 +38,7 @@ public class ProjectionGraphSelector extends ProjectionGraph {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/output/xyz";
         final File dir = new File(rootPath);

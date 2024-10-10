@@ -30,6 +30,7 @@ public class ManualXtb extends Xtb {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualxtb);
 
         PdfView pdfView = findViewById(R.id.pdfView);

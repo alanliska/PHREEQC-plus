@@ -116,6 +116,7 @@ public class Fastchem extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.fastchem);
 
         config_label = (TextView) findViewById(R.id.config_label);

@@ -36,6 +36,7 @@ public class ChemsolWork extends Chemsol {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/chemsol";
         final File dir = new File(rootPath);

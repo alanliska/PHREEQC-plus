@@ -29,6 +29,7 @@ public class ManualX11Basic extends ShellTools {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualx11basic);
 
         PdfView pdfView = findViewById(R.id.pdfView);

@@ -274,5 +274,9 @@
         <activity android:name="cz.p.SolventCorr" />
         <activity android:name="cz.p.SolventCorrWork" />
         <activity android:name="cz.p.ManualCrest" />
+        <activity android:name="cz.p.Canvas3d_Multi" />
+        <activity android:name="cz.p.Canvas3d_Multi_ColorTest" />
+        <activity android:name="cz.p.Canvas3d_Multi_PerTable" />
+        <activity android:name="cz.p.Canvas3d_Multi_Preferences" />
     </application>
 </manifest>

@@ -120,6 +120,7 @@ public class KineticsBiBi extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.kineticsbibi);
 
         methodA_label = (TextView) findViewById(R.id.methodA_label);

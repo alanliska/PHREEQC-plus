@@ -36,6 +36,7 @@ public class AddPhases extends Phreeqc {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.database);
         final String rootPath = getFilesDir()+"/output/phreeqc_datasets";
         final File dir = new File(rootPath);

@@ -34,6 +34,7 @@ private Handler handler = new Handler();
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.exportdialog);
 
         export_label = (TextView) findViewById(R.id.export_label);

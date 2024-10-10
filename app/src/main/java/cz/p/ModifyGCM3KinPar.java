@@ -36,6 +36,7 @@ public class ModifyGCM3KinPar extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.modifygcm3kinpar);
 
         Quit = (Button) findViewById(R.id.Quit);

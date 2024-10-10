@@ -63,6 +63,7 @@ public class GeneralTS extends KineticsQuery {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generalts);
 
         methodTS = (EditText) findViewById(R.id.methodTS);

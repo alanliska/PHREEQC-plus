@@ -81,6 +81,7 @@ public class Xtb1 extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.xtb1);
 //        cp2k = (TextView) findViewById(R.id.cp2k);
         xtb_ref_label = (TextView) findViewById(R.id.xtb_ref_label);

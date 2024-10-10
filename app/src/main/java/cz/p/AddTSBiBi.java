@@ -27,6 +27,7 @@ public class AddTSBiBi extends KineticsBiBi {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/output/xyz";
         final File dir = new File(rootPath);

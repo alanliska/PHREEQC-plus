@@ -61,6 +61,7 @@ public class ConvertL extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.convertl);
 
         TabDataLabel = (TextView) findViewById(R.id.TabDataLabel);

@@ -29,6 +29,7 @@ public class ManualPHREEQCplus extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualphreeqcplus);
 
         PdfView pdfView = findViewById(R.id.pdfView);

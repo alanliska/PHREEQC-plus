@@ -130,6 +130,7 @@ public class CustomImport extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.customimport);
 
         name_label = (TextView) findViewById(R.id.name_label);

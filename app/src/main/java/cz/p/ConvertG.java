@@ -61,6 +61,7 @@ public class ConvertG extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.convertg);
 
         TabDataLabel = (TextView) findViewById(R.id.TabDataLabel);

@@ -86,6 +86,7 @@ public class Mopac extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.mopac);
 
         MopacLabel = (TextView) findViewById(R.id.MopacLabel);

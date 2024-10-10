@@ -29,6 +29,7 @@ public class ManualModes extends Dftb {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualmodes);
 
         PdfView pdfView = findViewById(R.id.pdfView);

@@ -75,6 +75,7 @@ public class SolventCorr extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.solventcorr);
 
         Description = (TextView) findViewById(R.id.Description);

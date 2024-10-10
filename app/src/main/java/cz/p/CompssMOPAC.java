@@ -34,6 +34,7 @@ public class CompssMOPAC extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.compssmopac);
 
         Quit = (Button) findViewById(R.id.Quit);

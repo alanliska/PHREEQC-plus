@@ -55,6 +55,7 @@ public class SpectrumDftb extends Dftb {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.graph);
 
         GraphView graph = (GraphView) findViewById(R.id.graph);

@@ -34,6 +34,7 @@ public class Mulliken extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.mulliken);
 
         Quit = (Button) findViewById(R.id.Quit);

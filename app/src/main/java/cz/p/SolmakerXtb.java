@@ -34,6 +34,7 @@ public class SolmakerXtb extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.solmakerxtb);
 
         Quit = (Button) findViewById(R.id.Quit);

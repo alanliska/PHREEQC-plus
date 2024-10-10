@@ -119,6 +119,7 @@ public class GCM2 extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.gcm2);
 
         iupac_label = (TextView) findViewById(R.id.iupac_label);

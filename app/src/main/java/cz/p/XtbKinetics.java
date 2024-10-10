@@ -84,6 +84,7 @@ public class XtbKinetics extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.xtbkinetics);
 
         desc_label = (TextView) findViewById(R.id.desc_label);

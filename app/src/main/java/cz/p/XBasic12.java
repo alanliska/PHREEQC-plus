@@ -34,6 +34,7 @@ public class XBasic12 extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.xbasic12);
 
         Quit = (Button) findViewById(R.id.Quit);

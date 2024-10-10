@@ -34,6 +34,7 @@ public class ProcessFastchem extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.processfastchem);
 
         Quit = (Button) findViewById(R.id.Quit);

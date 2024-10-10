@@ -37,6 +37,7 @@ public class BackupRestoreDialog extends BackupRestore {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.backuprestoredialog);
 
         export_label = (TextView) findViewById(R.id.export_label);

@@ -34,6 +34,7 @@ public class ModifyZup extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.modifyzup);
 
         Quit = (Button) findViewById(R.id.Quit);

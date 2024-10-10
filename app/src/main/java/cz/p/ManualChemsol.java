@@ -29,6 +29,7 @@ public class ManualChemsol extends Chemsol {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualchemsol);
 
         PdfView pdfView = findViewById(R.id.pdfView);

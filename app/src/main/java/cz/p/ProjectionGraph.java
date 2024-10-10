@@ -107,6 +107,7 @@ public class ProjectionGraph extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.projectiongraph);
 
         contentXyzLabel = (TextView) findViewById(R.id.contentXyzLabel);

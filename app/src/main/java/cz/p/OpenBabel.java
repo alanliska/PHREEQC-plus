@@ -74,6 +74,7 @@ public class OpenBabel extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.openbabel);
 
         method_label = (TextView) findViewById(R.id.method_label);

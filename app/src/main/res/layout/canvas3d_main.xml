@@ -2,19 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <cz.p.Canvas3d_CanvasView
         android:id="@+id/molCanvasView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:layout_gravity="top" />
 
     <HorizontalScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:fitsSystemWindows="true"
         android:background="@android:color/white"
         >
 
@@ -22,12 +24,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
+                android:fitsSystemWindows="true"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/perTable"
@@ -176,6 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
+                android:fitsSystemWindows="true"
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/zoom"
@@ -327,16 +332,18 @@
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="Undo" />
+
                 <Button
                     android:id="@+id/deleteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill_vertical"
-                    android:textAllCaps="false"
                     android:layout_weight="1"
-                    android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="Delete" />
+                    android:minHeight="0dp"
+                    android:text="Delete"
+                    android:textAllCaps="false" />
+
                 <Button
                     android:id="@+id/replaceButton"
                     android:layout_width="wrap_content"

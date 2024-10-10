@@ -89,6 +89,7 @@ public class ShellTools extends DevMode {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.shelltools);
 
         RunX11Label = (TextView) findViewById(R.id.RunX11Label);

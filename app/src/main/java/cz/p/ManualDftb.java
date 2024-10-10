@@ -29,6 +29,7 @@ public class ManualDftb extends Dftb {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualdftb);
 
         PdfView pdfView = findViewById(R.id.pdfView);

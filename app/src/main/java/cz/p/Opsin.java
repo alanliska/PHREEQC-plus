@@ -66,6 +66,7 @@ public class Opsin extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.opsin);
 
         OpsinLabel = (TextView) findViewById(R.id.OpsinLabel);

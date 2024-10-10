@@ -35,6 +35,7 @@ public class PrivacyPolicy extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.privacypolicy);
 
         hypertext = (TextView) findViewById(R.id.hypertext);

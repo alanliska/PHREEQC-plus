@@ -136,6 +136,7 @@ public class DeleteFile extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.deletefile);
 
         label00 = (TextView) findViewById(R.id.label00);

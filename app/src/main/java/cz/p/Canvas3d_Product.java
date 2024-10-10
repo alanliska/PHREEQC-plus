@@ -107,6 +107,7 @@ public class Canvas3d_Product extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.canvas3d_product);
         molCanvasView = (Canvas3d_CanvasView) findViewById(R.id.molCanvasView);
         perTable = (Button) findViewById(R.id.perTable);

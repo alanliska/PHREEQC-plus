@@ -39,6 +39,7 @@ public class ChangeSize extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.changesize);
 
         Quit = (Button) findViewById(R.id.Quit);

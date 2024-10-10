@@ -28,6 +28,7 @@ public class ModifyGeneralInit extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.modifygeneralinit);
 
         Quit = (Button) findViewById(R.id.Quit);

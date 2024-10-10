@@ -67,6 +67,7 @@ public class ConvertDialog extends MainActivity {
         protected void onCreate(Bundle savedInstanceState) {
 
             super.onCreate(savedInstanceState);
+            getSupportActionBar().hide();
             setContentView(R.layout.convertdialog);
 
             Quit = (Button) findViewById(R.id.Quit);

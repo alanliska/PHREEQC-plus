@@ -34,6 +34,7 @@ public class CompGCM1 extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.compgcm1);
 
         Quit = (Button) findViewById(R.id.Quit);

@@ -29,6 +29,7 @@ public class SelectDataFile extends Fastchem {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/output/fastchem_datasets";
         final File dir = new File(rootPath);

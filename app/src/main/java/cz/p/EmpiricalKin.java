@@ -63,6 +63,7 @@ public class EmpiricalKin extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.empiricalkin);
 
         dataset_label = (TextView) findViewById(R.id.dataset_label);

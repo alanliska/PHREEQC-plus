@@ -53,6 +53,7 @@ public class GeneralData extends KineticsQuery {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generaldata);
 
         selectdatabase = (Button) findViewById(R.id.selectdatabase);

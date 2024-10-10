@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <com.jjoe64.graphview.GraphView
@@ -20,10 +22,12 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/rightX"
@@ -45,6 +49,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/rightY"
@@ -66,6 +71,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/upZ"

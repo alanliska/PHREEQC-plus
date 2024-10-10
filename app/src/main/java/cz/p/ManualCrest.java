@@ -30,6 +30,7 @@ public class ManualCrest extends Xtb {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualcrest);
 
         PdfView pdfView = findViewById(R.id.pdfView);

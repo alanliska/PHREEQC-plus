@@ -29,6 +29,7 @@ public class ResumeActivityKin extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.resumeactivity);
 
     }

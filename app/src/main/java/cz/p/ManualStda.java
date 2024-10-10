@@ -30,6 +30,7 @@ public class ManualStda extends Xtb {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualstda);
 
         PdfView pdfView = findViewById(R.id.pdfView);

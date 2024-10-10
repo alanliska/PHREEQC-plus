@@ -36,6 +36,7 @@ public class MopacWork extends Mopac {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/mopac";
         final File dir = new File(rootPath);

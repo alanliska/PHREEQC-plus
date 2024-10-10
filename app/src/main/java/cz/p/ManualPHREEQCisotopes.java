@@ -29,6 +29,7 @@ public class ManualPHREEQCisotopes extends Phreeqc {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualphreeqcisotopes);
 
         PdfView pdfView = findViewById(R.id.pdfView);

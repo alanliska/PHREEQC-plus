@@ -60,6 +60,7 @@ public class EditExternalFile extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.editexternalfile);
 
         fileLabel = (TextView) findViewById(R.id.fileLabel);

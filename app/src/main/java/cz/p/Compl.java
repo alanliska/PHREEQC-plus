@@ -34,6 +34,7 @@ public class Compl extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.compl);
 
         Quit = (Button) findViewById(R.id.Quit);

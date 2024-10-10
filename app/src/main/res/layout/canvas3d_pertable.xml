@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:fitsSystemWindows="true"
     android:background="@android:color/white"
     >
     <!---
@@ -14,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <TextView
@@ -27,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntH"
@@ -194,6 +197,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntLi"
@@ -355,6 +359,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntNa"
@@ -516,6 +521,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntK"
@@ -667,6 +673,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntRb"
@@ -818,6 +825,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntCs"
@@ -970,6 +978,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/elmntFr"
@@ -1122,6 +1131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/dummy801"
@@ -1267,6 +1277,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fitsSystemWindows="true"
             android:orientation="horizontal">
             <Button
                 android:id="@+id/dummy901"

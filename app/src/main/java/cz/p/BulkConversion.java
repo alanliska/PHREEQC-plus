@@ -66,6 +66,7 @@ public class BulkConversion extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.bulkconversion);
 
         method_label = (TextView) findViewById(R.id.method_label);

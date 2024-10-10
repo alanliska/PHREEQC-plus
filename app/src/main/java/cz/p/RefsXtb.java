@@ -34,6 +34,7 @@ public class RefsXtb extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.refsxtb);
 
         Quit = (Button) findViewById(R.id.Quit);

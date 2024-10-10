@@ -34,6 +34,7 @@ public class RefGCM2 extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.refgcm2);
 
         Quit = (Button) findViewById(R.id.Quit);

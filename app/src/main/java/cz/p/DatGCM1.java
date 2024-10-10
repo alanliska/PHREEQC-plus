@@ -34,6 +34,7 @@ public class DatGCM1 extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.datgcm1);
 
         Quit = (Button) findViewById(R.id.Quit);

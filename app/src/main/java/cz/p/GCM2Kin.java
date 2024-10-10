@@ -60,6 +60,7 @@ public class GCM2Kin extends EmpiricalKin {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.gcm2kin);
 
         Reactant1Label = (TextView) findViewById(R.id.Reactant1Label);

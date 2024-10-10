@@ -35,6 +35,7 @@ public class Xtb1SelectRef extends Xtb1 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.xtb1selectref);
 
         Refg = (Button) findViewById(R.id.Refg);

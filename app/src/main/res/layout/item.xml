@@ -5,4 +5,5 @@
     android:textColor="@color/colorPrimaryDark"
     android:padding="6dp"
     android:layout_height="50dp"
+    android:fitsSystemWindows="true"
     android:background="@android:color/white"/>

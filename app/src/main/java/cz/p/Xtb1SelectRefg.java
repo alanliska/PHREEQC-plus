@@ -36,6 +36,7 @@ public class Xtb1SelectRefg extends Xtb1SelectRef {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/reference";
         final File dir = new File(rootPath);

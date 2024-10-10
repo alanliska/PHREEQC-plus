@@ -30,6 +30,7 @@ public class XtbKin2Work1 extends XtbKinetics2 {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/xtb_kin_work";
         final File dir = new File(rootPath);

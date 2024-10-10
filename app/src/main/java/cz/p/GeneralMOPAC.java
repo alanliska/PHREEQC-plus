@@ -58,6 +58,7 @@ public class GeneralMOPAC extends KineticsQuery {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generalmopac);
 
         methodA_label = (TextView) findViewById(R.id.methodA_label);

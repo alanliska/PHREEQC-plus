@@ -136,6 +136,7 @@ public class CustomExport extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.customexport);
 
         label00 = (TextView) findViewById(R.id.label00);

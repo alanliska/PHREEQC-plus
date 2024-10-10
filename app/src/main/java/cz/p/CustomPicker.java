@@ -36,6 +36,7 @@ public class CustomPicker extends CustomExport {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = exec("cat "+getFilesDir()+"/CustomExportPath.txt");
         final File dir = new File(rootPath);

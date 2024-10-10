@@ -29,6 +29,7 @@ public class ManualMOPAC extends Mopac {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.manualmopac);
 
         PdfView pdfView = findViewById(R.id.pdfView);

@@ -36,6 +36,7 @@ public class AddSolutionSpecies extends Phreeqc {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/output/phreeqc_datasets";
         final File dir = new File(rootPath);

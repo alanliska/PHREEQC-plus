@@ -98,6 +98,7 @@ public class Licenses extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.licenses);
 
         license_label = (TextView) findViewById(R.id.license_label);

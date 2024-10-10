@@ -54,6 +54,7 @@ public class InternalEditor extends EditInternalFile {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.editinternalfile);
 
         fileLabel = (TextView) findViewById(R.id.fileLabel);

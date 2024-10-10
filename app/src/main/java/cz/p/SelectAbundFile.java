@@ -27,6 +27,7 @@ public class SelectAbundFile extends Fastchem {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.input);
         final String rootPath = getFilesDir()+"/output/element-abundances";
         final File dir = new File(rootPath);

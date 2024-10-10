@@ -61,6 +61,7 @@ public class Chemsol1 extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.chemsol1);
 
         method_label = (TextView) findViewById(R.id.method_label);

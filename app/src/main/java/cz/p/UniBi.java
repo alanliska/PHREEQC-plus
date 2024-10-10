@@ -34,6 +34,7 @@ public class UniBi extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.unibi);
 
         Quit = (Button) findViewById(R.id.Quit);

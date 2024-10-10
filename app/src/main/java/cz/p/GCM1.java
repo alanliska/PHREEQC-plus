@@ -173,6 +173,7 @@ public class GCM1 extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.gcm1);
 
         charge = 0;

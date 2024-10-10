@@ -34,6 +34,7 @@ public class GCM3Sum extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.gcm3sum);
 
         Quit = (Button) findViewById(R.id.Quit);

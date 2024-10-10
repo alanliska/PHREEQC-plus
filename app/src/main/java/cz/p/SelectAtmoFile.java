@@ -27,6 +27,7 @@ public class SelectAtmoFile extends Fastchem {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.input);
         final String rootPath = getFilesDir()+"/output/atmospheric-profiles";
         final File dir = new File(rootPath);

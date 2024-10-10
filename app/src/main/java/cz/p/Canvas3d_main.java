@@ -12,6 +12,9 @@ import static cz.p.Spannables.colorized_numbers;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -38,6 +41,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,8 +114,37 @@ public class Canvas3d_main extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.canvas3d_main);
         molCanvasView = (Canvas3d_CanvasView) findViewById(R.id.molCanvasView);
+
+//        ViewCompat.setOnApplyWindowInsetsListener(molCanvasView, (v, windowInsets) -> {
+//            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            // Apply the insets as a margin to the view. This solution sets only the
+//            // bottom, left, and right dimensions, but you can apply whichever insets are
+//            // appropriate to your layout. You can also update the view padding if that's
+//            // more appropriate.
+//            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+//            mlp.leftMargin = insets.left;
+//            mlp.bottomMargin = insets.bottom;
+//            mlp.rightMargin = insets.right;
+//            mlp.topMargin = insets.top;
+//            v.setLayoutParams(mlp);
+//
+//            // Return CONSUMED if you don't want want the window insets to keep passing
+//            // down to descendant views.
+//            return WindowInsetsCompat.CONSUMED;
+//        });
+
+//        ViewCompat.setOnApplyWindowInsetsListener(molCanvasView, (v, insets) -> {
+//            Insets bars = insets.getInsets(
+//                    WindowInsetsCompat.Type.systemBars()
+//                            | WindowInsetsCompat.Type.displayCutout()
+//            );
+//            v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+//            return WindowInsetsCompat.CONSUMED;
+//        });
+
         perTable = (Button) findViewById(R.id.perTable);
         perTable.setOnClickListener(new View.OnClickListener() {
             @Override

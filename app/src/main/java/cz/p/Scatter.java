@@ -55,6 +55,7 @@ public class Scatter extends Phreeqc {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.scatter);
 
         GraphView scatter = (GraphView) findViewById(R.id.scatter);

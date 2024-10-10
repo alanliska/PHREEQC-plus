@@ -43,6 +43,7 @@ public class PhreeqcDebug extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.phreeqcdebug);
 
         InputFileLabel = (TextView) findViewById(R.id.InputFileLabel);

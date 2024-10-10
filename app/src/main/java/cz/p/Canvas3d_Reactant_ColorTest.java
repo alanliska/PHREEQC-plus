@@ -38,6 +38,7 @@ public class Canvas3d_Reactant_ColorTest extends Canvas3d_Reactant {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.canvas3d_colortest);
 
         quitButton = (Button) findViewById(R.id.quitButton);

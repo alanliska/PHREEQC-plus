@@ -163,6 +163,7 @@ public class Phreeqc extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.phreeqc);
 
         AddSS = (Button) findViewById(R.id.AddSS);

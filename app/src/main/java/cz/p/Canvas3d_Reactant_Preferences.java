@@ -116,6 +116,7 @@ public class Canvas3d_Reactant_Preferences extends Canvas3d_Reactant {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.canvas3d_preferences);
 
         Quit = (Button) findViewById(R.id.Quit);

@@ -29,6 +29,7 @@ public class DftbCommand extends Dftb {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.generallayout);
         final String rootPath = getFilesDir()+"/dftb_commands";
         final File dir = new File(rootPath);

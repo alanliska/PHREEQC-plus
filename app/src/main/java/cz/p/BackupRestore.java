@@ -39,6 +39,7 @@ public class BackupRestore extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.backuprestore);
 
         export_label = (TextView) findViewById(R.id.export_label);

@@ -34,6 +34,7 @@ public class ModifyGCM1Kin extends DevMode {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.modifygcm1kin);
 
         Quit = (Button) findViewById(R.id.Quit);
