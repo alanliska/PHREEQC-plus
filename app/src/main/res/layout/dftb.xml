@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
-            android:text="VIEW/EDIT/CREATE THE INPUT IN CANVAS3D (SLOW)" />
+            android:text="VIEW/EDIT/CREATE THE INPUT" />
         <Button
             android:id="@+id/RunProgram"
             android:layout_width="match_parent"
@@ -231,7 +231,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
-            android:text="VIEW/EDIT THE OUTPUT IN CANVAS3D (SLOW)" />
+            android:text="VIEW/EDIT THE OUTPUT" />
 
         <TextView
             android:id="@+id/textViewX"

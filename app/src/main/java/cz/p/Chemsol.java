@@ -1,6 +1,7 @@
 package cz.p;
 
 import static cz.p.Spannables.colorized_dftb;
+import static cz.p.Spannables.colorized_elements;
 import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_phreeqc;
 
@@ -98,7 +99,7 @@ public class Chemsol extends MainActivity {
                 String text = ChemsolInput.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 ChemsolInput.getText().clear();
-                ChemsolInput.append(colorized_numbers(text));
+                ChemsolInput.append(colorized_elements(text));
                 // place the cursor at the original position
                 ChemsolInput.setSelection(startChanged+countChanged);
                 ChemsolInput.addTextChangedListener(this);
@@ -754,7 +755,7 @@ public class Chemsol extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                ChemsolInput.setText(colorized_numbers(str3), EditText.BufferType.SPANNABLE);
+                ChemsolInput.setText(colorized_elements(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);

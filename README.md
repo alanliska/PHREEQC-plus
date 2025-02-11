@@ -22,7 +22,7 @@ Compilation of the source code for Android as well as the Android app developmen
 Website: http://www.jh-inst.cas.cz/~liska/MobileChemistry.htm
 
 List of used third-party software:
-ACPDFVIEW, ANDROID SHELL, ARPACK, BLAS, CHEMSOL, CHIMESCALC, CPCM-X, CREST, DFTB+, DFTD4, EIGEN3, FASTCHEM Cond, GMP, GRAPHVIEW, LAPACK, LWONIOM, MBD, MCTC-LIB, MOPAC, MSTORE, MULTICHARGE, NUMSA, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STDA, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB, XTB4STDA.  
+ACPDFVIEW, ANDROID SHELL, ARPACK, BLAS, CHEMSOL, CHIMESCALC, CPCM-X, CREST, DFTB+, DFTD4, EIGEN3, FASTCHEM Cond, GMP, GRAPHVIEW, LAPACK, LWONIOM, MBD, MCTC-LIB, MOLCANVAS, MOPAC, MSTORE, MULTICHARGE, NUMSA, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STDA, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB, XTB4STDA.  
 
 More info on licenses & references - please refer to the licensing information inside of the app.
 
@@ -197,6 +197,11 @@ Licenses and references to used third-party software:
  Authors/contributors: Sebastian Ehlert, Eisuke Kawashima, Marcel Stahn, Kjell Jorner and others (please see the source code page)
  Source code: https://github.com/grimme-lab/mctc-lib
  License: Apache v2
+ 
+ * MOLCANVAS
+ Authors: Alan Liska, Veronika Ruzickova (J. Heyrovsky Institute of Physical Chemistry of the CAS)
+ Source code: https://github.com/alanliska/MolCanvas
+ License: MIT
 
  * MOPAC
  Author: James JP Stewart

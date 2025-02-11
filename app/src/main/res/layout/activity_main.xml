@@ -408,7 +408,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
-            android:text="CREATE/VIEW/EDIT XYZ IN CANVAS3D (SLOW)" />
+            android:text="CREATE/VIEW/EDIT XYZ" />
 
         <TextView
             android:id="@+id/label5"

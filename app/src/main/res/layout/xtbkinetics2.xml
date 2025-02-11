@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
-            android:text="VIEW/EDIT/CREATE THE REACTANT STRUCTURE IN CANVAS3D (SLOW)" />
+            android:text="VIEW/EDIT/CREATE THE REACTANT STRUCTURE" />
 
         <TextView
             android:id="@+id/reactant_formulas_label"
@@ -124,7 +124,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
-            android:text="VIEW/EDIT/CREATE THE PRODUCT STRUCTURE IN CANVAS3D (SLOW)" />
+            android:text="VIEW/EDIT/CREATE THE PRODUCT STRUCTURE" />
         <TextView
             android:id="@+id/product_formulas_label"
             android:layout_width="fill_parent"

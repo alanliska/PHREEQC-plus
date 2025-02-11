@@ -30,13 +30,6 @@
             android:text="SHELL TOOLS" />
 
         <Button
-            android:id="@+id/start_projectiongraph"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00FF50"
-            android:text="VIEW XYZ AS PROJECTED 2D GRAPH" />
-
-        <Button
             android:id="@+id/SolvCorr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -597,42 +590,6 @@
             android:text="MODIFY XTB SOLID INPUT GENERATOR" />
 
         <Button
-            android:id="@+id/modify_x_right"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY X RIGHT MOTION" />
-
-        <Button
-            android:id="@+id/modify_x_left"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY X LEFT MOTION" />
-
-        <Button
-            android:id="@+id/modify_y_right"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY Y RIGHT MOTION" />
-
-        <Button
-            android:id="@+id/modify_y_left"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY Y LEFT MOTION" />
-
-        <Button
-            android:id="@+id/modify_z_up"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY Z UP MOTION" />
-
-        <Button
-            android:id="@+id/modify_z_down"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MODIFY Z DOWN MOTION" />
-
-        <Button
             android:id="@+id/XtbKin1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -649,7 +606,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#EE1EEE"
-            android:text="TEXT AND POINT PREFERENCES" />
+            android:text="TEXT PREFERENCES" />
 
         <Button
             android:id="@+id/backup_restore"

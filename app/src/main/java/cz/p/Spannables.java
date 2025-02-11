@@ -345,6 +345,24 @@ public class Spannables extends MainActivity {
         SpannableString spannable = new SpannableString(text);
         Integer argb_back = Color.WHITE;
 
+        String[] words_blue = {"CHARGE", "SPIN", "DOUBLET", "SINGLET", "TRIPLET", "QUARTET", "QUINTET", "SEXTET", "SEPTET", "OCTET", "NONET", "BIRADICAL", "H ", "Li ", "Na ", "K ", "Rb ", "Cs ", "Fr ", "Be ", "Mg ", "Ca ", "Sr ", "Ba ", "Ra ", "Sc ", "Y ", "La ", "Ac ", "Ti ", "Zr ", "Hf ", "Rf ", "V ", "Nb ", "Ta ", "Db ", "Cr ", "Mo ", "W ", "Sg ", "Mn ", "Tc ", "Re ", "Bh ", "Fe ", "Ru ", "Os ", "Hs ", "Co ", "Rh ", "Ir ", "Mt ", "Ni ", "Pd ", "Pt ", "Ds ", "Cu ", "Ag ", "Au ", "Rg ", "Zn ", "Cd ", "Hg ", "Cn ", "B ", "Al ", "Ga ", "In ", "Tl ", "Nh ", "C ", "Si ", "Ge ", "Sn ", "Pb ", "Fl ", "N ", "P ", "As ", "Sb ", "Bi ", "Mc ", "O ", "S ", "Se ", "Te ", "Po ", "Lv ", "F ", "Cl ", "Br ", "I ", "At ", "Ts ", "He ", "Ne ", "Ar ", "Kr ", "Xe ", "Rn ", "Og ", "Ce ", "Pr ", "Nd ", "Pm ", "Sm ", "Eu ", "Gd ", "Tb ", "Dy ", "Ho ", "Er ", "Tm ", "Yb ", "Lu ", "Th ", "Pa ", "U ", "Np ", "Pu ", "Am ", "Cm ", "Bk ", "Cf ", "Es ", "Fm ", "Md ", "No ", "Lr "};
+        Integer argb_blue = Color.BLUE;
+        for (String word : words_blue) {
+            int substringStart=0;
+            int start;
+            while((start=text.indexOf(word,substringStart))>=0){
+                spannable.setSpan(
+                        new ForegroundColorSpan(argb_blue),start,start+word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
+//                spannable.setSpan(
+//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                );
+                substringStart = start+word.length();
+            }
+        }
+
         String[] words_brown = {"++", "0SCF", "1ELECTRON", "1SCF", "A0", "ADD-H", "AIGIN", "AIGOUT", "ALLBONDS", "ALLVEC", "ALT_A", "ANGSTROMS", "AUTOSYM", "AUX", "BANANA", "BAR", "BCC", "BIGCYCLES", "BONDS", "BZ", "C.A.S.", "C.I.", "C.I.D.", "CAMP", "CARTAB", "CHAINS", "CHARGE", "CHARGES", "CHARST", "CHECK", "CIS", "CISD", "CISDT", "COMPARE", "COMPFG", "COSCCH", "COSWRT", "CUTOFF", "CUTOFP", "CUTOFS", "CVB", "CYCLES", "DAMP", "DATA", "DCART", "DDMAX", "DDMIN", "DEBUG", "DEBUGPULAY", "DENOUT", "DENOUTF", "DENSITY", "DERI1", "DERI2", "DERITR", "DERIV", "DERNVO", "DFORCE", "DFP", "DIPOLE", "DISEX", "DISP", "DMAX", "DRC", "DUMP", "ECHO", "EIGEN", "EIGS", "ENPART", "EPS", "ESP", "ESPGRID", "ESR", "EXCITED", "EXTERNAL", "FIELD", "FILL", "FLEPO", "FMAT", "FOCK", "FORCE", "FORCETS", "FREQCY", "GEO-OK", "GEO_DAT", "GEO_REF", "GNORM", "GRADIENTS", "GRAPH", "GRAPHF", "H-PRIORITY", "HCORE", "HESS", "HESSIAN", "HTML", "HYPERFINE", "INT", "INVERT", "IONIZE", "IRC", "ISOTOPE", "ITER", "ITRY", "IUPD", "KINETIC", "KING", "LARGE", "LET", "LEWIS", "LINMIN", "LOCAL", "LOCATE-TS", "LOG", "MAXCI", "MECI", "MERS", "METAL", "MICROS", "MINI", "MINMEP", "MMOK", "MODE", "MOLDAT", "MOLSYM", "MOPAC", "MOZYME", "MRCI", "MS", "MULLIK", "N**2", "NLLSQ", "NOANCI", "NOCOMMENTS", "NOLOG", "NOMM", "NONR", "NOOPT", "NOREOR", "NORESEQ", "NOSWAP", "NOSYM", "NOTHIEL", "NOTXT", "NOXYZ", "NSPA", "NSURF", "OLDCAV", "OLDENS", "OLDFPC", "OLDGEO", "OMIN", "OPEN", "OPT", "OPT-X", "OUTPUT", "P", "PDB=", "PDBOUT", "PECI", "PI", "PKA", "PL", "PMEP", "PMEPR", "POINT", "POINT1", "POINT2", "POLAR", "POTWRT", "POWSQ", "PRECISE", "P=", "PRNT", "PRTCHAR", "PRTINT", "PRTMEP", "PRTXYZ", "PULAY", "QMMM", "QPMEP", "RABBIT", "RAMA", "RAPID", "RE-LOCAL", "RECALC", "RELSCF", "REORTH", "RESEQ", "RESIDUES", "RESTART", "RHF", "RMAX", "RMIN", "ROOT", "RSCAL", "RSOLV", "SADDLE", "SCALE", "SCFCRT", "SCINCR", "SETPI", "SETUP", "SHIFT", "SIGMA", "SITE", "SLOG", "SLOPE", "SMOOTH", "SNAP", "SPARKLE", "START_RES", "STATIC", "STEP", "STEP1", "STEP2", "STO3G", "SUPER", "SYBYL", "SYMAVG", "SYMMETRY", "SYMOIR", "SYMTRZ", "T", "T-PRIORITY", "TDIP", "THERMO", "TIMES", "TRANS", "TS", "UHF", "VDW", "VDWM", "VECTORS", "VELOCITY", "WILLIAMS", "WRTCI", "WRTCONF", "X-PRIORITY", "XENO", "XYZ", "Z", "THREADS"};
         Integer argb_brown = Color.parseColor("#A52A2A");
         for (String word : words_brown) {
@@ -375,24 +393,6 @@ public class Spannables extends MainActivity {
                 );
                 spannable.setSpan(
                         new android.text.style.StyleSpan(Typeface.BOLD),start,start+word.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                );
-//                spannable.setSpan(
-//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
-//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-//                );
-                substringStart = start+word.length();
-            }
-        }
-
-        String[] words_blue = {"CHARGE", "SPIN", "DOUBLET", "SINGLET", "TRIPLET", "QUARTET", "QUINTET", "SEXTET", "SEPTET", "OCTET", "NONET", "BIRADICAL"};
-        Integer argb_blue = Color.BLUE;
-        for (String word : words_blue) {
-            int substringStart=0;
-            int start;
-            while((start=text.indexOf(word,substringStart))>=0){
-                spannable.setSpan(
-                        new ForegroundColorSpan(argb_blue),start,start+word.length(),
                         Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                 );
 //                spannable.setSpan(
@@ -1018,6 +1018,92 @@ public class Spannables extends MainActivity {
 //                    );
                     substringStart = start+word.length();
                 }
+            }
+        }
+
+        return spannable;
+    }
+
+    public static Spannable colorized_elements(final String text) {
+        SpannableString spannable = new SpannableString(text);
+        Integer argb_back = Color.WHITE;
+
+        String[] words_blue = {"H ", "Li ", "Na ", "K ", "Rb ", "Cs ", "Fr ", "Be ", "Mg ", "Ca ", "Sr ", "Ba ", "Ra ", "Sc ", "Y ", "La ", "Ac ", "Ti ", "Zr ", "Hf ", "Rf ", "V ", "Nb ", "Ta ", "Db ", "Cr ", "Mo ", "W ", "Sg ", "Mn ", "Tc ", "Re ", "Bh ", "Fe ", "Ru ", "Os ", "Hs ", "Co ", "Rh ", "Ir ", "Mt ", "Ni ", "Pd ", "Pt ", "Ds ", "Cu ", "Ag ", "Au ", "Rg ", "Zn ", "Cd ", "Hg ", "Cn ", "B ", "Al ", "Ga ", "In ", "Tl ", "Nh ", "C ", "Si ", "Ge ", "Sn ", "Pb ", "Fl ", "N ", "P ", "As ", "Sb ", "Bi ", "Mc ", "O ", "S ", "Se ", "Te ", "Po ", "Lv ", "F ", "Cl ", "Br ", "I ", "At ", "Ts ", "He ", "Ne ", "Ar ", "Kr ", "Xe ", "Rn ", "Og ", "Ce ", "Pr ", "Nd ", "Pm ", "Sm ", "Eu ", "Gd ", "Tb ", "Dy ", "Ho ", "Er ", "Tm ", "Yb ", "Lu ", "Th ", "Pa ", "U ", "Np ", "Pu ", "Am ", "Cm ", "Bk ", "Cf ", "Es ", "Fm ", "Md ", "No ", "Lr "};
+        Integer argb_blue = Color.BLUE;
+        for (String word : words_blue) {
+            int substringStart=0;
+            int start;
+            while((start=text.indexOf(word,substringStart))>=0){
+                spannable.setSpan(
+                        new ForegroundColorSpan(argb_blue),start,start+word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
+//                spannable.setSpan(
+//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                );
+                substringStart = start+word.length();
+            }
+        }
+
+        String[] words_red = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-"};
+        Integer argb_red = Color.RED;
+        for (String word : words_red) {
+            int substringStart=0;
+            int start;
+            while((start=text.indexOf(word,substringStart))>=0){
+                spannable.setSpan(
+                        new ForegroundColorSpan(argb_red),start,start+word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
+//                spannable.setSpan(
+//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                );
+                substringStart = start+word.length();
+            }
+        }
+
+        return spannable;
+    }
+
+    public static Spannable colorized_zmat_elements(final String text) {
+        SpannableString spannable = new SpannableString(text);
+        Integer argb_back = Color.WHITE;
+
+        String[] words_blue = {"H","Li","Na","K","Rb","Cs","Fr","Be","Mg","Ca","Sr","Ba","Ra","Sc","Y","La","Ac","Ti","Zr","Hf","Rf","V","Nb","Ta","Db","Cr","Mo","W","Sg","Mn","Tc","Re","Bh","Fe","Ru","Os","Hs","Co","Rh","Ir","Mt","Ni","Pd","Pt","Ds","Cu","Ag","Au","Rg","Zn","Cd","Hg","Cn","B","Al","Ga","In","Tl","Nh","C","Si","Ge","Sn","Pb","Fl","N","P","As","Sb","Bi","Mc","O","S","Se","Te","Po","Lv","F","Cl","Br","I","At","Ts","He","Ne","Ar","Kr","Xe","Rn","Og","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr"};
+        Integer argb_blue = Color.BLUE;
+        for (String word : words_blue) {
+            int substringStart=0;
+            int start;
+            while((start=text.indexOf(word,substringStart))>=0){
+                spannable.setSpan(
+                        new ForegroundColorSpan(argb_blue),start,start+word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
+//                spannable.setSpan(
+//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                );
+                substringStart = start+word.length();
+            }
+        }
+
+        String[] words_red = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-"};
+        Integer argb_red = Color.RED;
+        for (String word : words_red) {
+            int substringStart=0;
+            int start;
+            while((start=text.indexOf(word,substringStart))>=0){
+                spannable.setSpan(
+                        new ForegroundColorSpan(argb_red),start,start+word.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
+//                spannable.setSpan(
+//                        new BackgroundColorSpan(argb_back),start,start+word.length(),
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                );
+                substringStart = start+word.length();
             }
         }
 

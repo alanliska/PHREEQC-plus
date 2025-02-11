@@ -1,6 +1,7 @@
 package cz.p;
 
 import static cz.p.Spannables.colorized_dftb;
+import static cz.p.Spannables.colorized_elements;
 import static cz.p.Spannables.colorized_numbers;
 import static cz.p.Spannables.colorized_openbabel;
 import static cz.p.Spannables.colorized_phreeqc;
@@ -103,7 +104,7 @@ public class Obabel extends MainActivity {
                 String text = ObabelInput.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 ObabelInput.getText().clear();
-                ObabelInput.append(colorized_openbabel(text));
+                ObabelInput.append(colorized_elements(text));
                 // place the cursor at the original position
                 ObabelInput.setSelection(startChanged+countChanged);
                 ObabelInput.addTextChangedListener(this);
@@ -902,7 +903,7 @@ public class Obabel extends MainActivity {
     public void output3(final String str3) {
         Runnable proc3 = new Runnable() {
             public void run() {
-                ObabelInput.setText(colorized_openbabel(str3), EditText.BufferType.SPANNABLE);
+                ObabelInput.setText(colorized_elements(str3), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(proc3);

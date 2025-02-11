@@ -93,6 +93,7 @@ public class Licenses extends MainActivity {
     Button license2_crest;
     Button license1_lwoniom;
     Button license2_lwoniom;
+    Button licenseMolCanv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -233,6 +234,8 @@ public class Licenses extends MainActivity {
         license1_lwoniom.setOnClickListener(license1_lwoniomClick);
         license2_lwoniom = (Button) findViewById(R.id.license2_lwoniom);
         license2_lwoniom.setOnClickListener(license2_lwoniomClick);
+        licenseMolCanv = (Button) findViewById(R.id.licenseMolCanv);
+        licenseMolCanv.setOnClickListener(licenseMolCanvClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -304,6 +307,26 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener licenseMolCanvClick; {
+        licenseMolCanvClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alertM();
+            }
+        };
+    }
+
+    public void alertM() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-MOLCANVAS")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-MOLCANVAS.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private View.OnClickListener license1_crestClick; {
         license1_crestClick = new View.OnClickListener() {

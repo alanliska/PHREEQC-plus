@@ -43,28 +43,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             />
-        <TextView
-            android:id="@+id/ChangePointSize"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Change point size in molecular viewer:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        <Spinner
-            android:id="@+id/PointSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
-        <TextView
-            android:id="@+id/ChangePointColour"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Change point colour in molecular viewer:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        <Spinner
-            android:id="@+id/ColourSpinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            />
         <Button
             android:id="@+id/Quit"
             android:layout_width="match_parent"

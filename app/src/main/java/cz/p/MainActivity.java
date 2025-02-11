@@ -1,7 +1,6 @@
 package cz.p;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -9,21 +8,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,12 +22,9 @@ import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -51,22 +39,11 @@ import android.os.ParcelFileDescriptor;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-/*import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;*/
-
-import org.w3c.dom.Text;
 
 import java.io.FileInputStream;
-import java.io.PrintWriter;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
 import java.util.zip.ZipInputStream;
 
-import static android.provider.Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION;
 import static cz.p.Spannables.colorized_numbers;
 
 
@@ -164,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
 //    Button mopac_chemsol_esp_corr;
 //    Button xtb_corr;
 
+    // MolCanvas
+    private static MainActivity sharedInstance;
+
     /**
      * Called when the activity is first created.
      */
@@ -172,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // MolCanvas
+        sharedInstance = this;
 
         dataset_label = (TextView) findViewById(R.id.dataset_label);
         dataset = (EditText) findViewById(R.id.dataset);
@@ -618,7 +601,7 @@ public class MainActivity extends AppCompatActivity {
         start_canvas3d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Canvas3d_main.class);
+                Intent intent = new Intent(MainActivity.this, MolCanvas_main.class);
                 startActivity(intent);
             }
         });
@@ -1066,9 +1049,14 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+        SharedPreferences.Editor editor1 = wmbPreference.edit();
+        // MolCanvas
         SharedPreferences.Editor editor = wmbPreference.edit();
 
         if (isFirstRun){
+
+            // MolCanvas
+            MolCanvas_main.setDefaultValues();
 
             // just already here - otherwise it will not appear during the first run
             copyFromAssetsToInternalStorage("dataset-name.txt");
@@ -1438,8 +1426,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }.start();
 
-            editor.putBoolean("FIRSTRUN", false);
-            editor.apply();
+            editor1.putBoolean("FIRSTRUN", false);
+            editor1.apply();
         }
         // here it must not be!!! otherwise ShellTools crashes
 //        onStart();
@@ -1448,7 +1436,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    public static MainActivity get() {
+        return sharedInstance;
+    }
 
     @Override
     public void onStart()

@@ -516,21 +516,21 @@ public class Phreeqc extends MainActivity {
                                            public void onClick(View v) {
 
                                                // TODO Auto-generated method stub //
-                    exec("rm "+getFilesDir()+"/graph-series1.csv");
-                    exec("rm "+getFilesDir()+"/graph-series2.csv");
-                    exec("rm "+getFilesDir()+"/graph-series3.csv");
-                    exec("rm "+getFilesDir()+"/graph-series4.csv");
-                    exec("rm "+getFilesDir()+"/graph-series5.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series1.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series2.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series3.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series4.csv");
+                                               exec("rm "+getFilesDir()+"/graph-series5.csv");
                                                exec("rm "+getFilesDir()+"/graph-series6.csv");
                                                exec("rm "+getFilesDir()+"/graph-series7.csv");
                                                exec("rm "+getFilesDir()+"/graph-series8.csv");
                                                exec("rm "+getFilesDir()+"/graph-series9.csv");
                                                exec("rm "+getFilesDir()+"/graph-series10.csv");
-                    exec("touch "+getFilesDir()+"/graph-series1.csv");
-                    exec("touch "+getFilesDir()+"/graph-series2.csv");
-                    exec("touch "+getFilesDir()+"/graph-series3.csv");
-                    exec("touch "+getFilesDir()+"/graph-series4.csv");
-                    exec("touch "+getFilesDir()+"/graph-series5.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series1.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series2.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series3.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series4.csv");
+                                               exec("touch "+getFilesDir()+"/graph-series5.csv");
                                                exec("touch "+getFilesDir()+"/graph-series6.csv");
                                                exec("touch "+getFilesDir()+"/graph-series7.csv");
                                                exec("touch "+getFilesDir()+"/graph-series8.csv");

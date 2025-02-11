@@ -198,6 +198,11 @@
             android:text="LICENSE-LIBXC" />
             -->
         <Button
+            android:id="@+id/licenseMolCanv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LICENSE-MOLCANVAS" />
+        <Button
             android:id="@+id/license6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

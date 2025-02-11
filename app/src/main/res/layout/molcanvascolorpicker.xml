@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:id="@+id/labelAlpha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="alpha"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="1" />
+        <SeekBar
+            android:id="@+id/seekBarAlpha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="255"
+            android:layout_weight="5" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:id="@+id/labelRed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="red"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="1" />
+        <SeekBar
+            android:id="@+id/seekBarRed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="255"
+            android:layout_weight="5" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:id="@+id/labelGreen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="green"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="1" />
+        <SeekBar
+            android:id="@+id/seekBarGreen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="255"
+            android:layout_weight="5" />
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+        <TextView
+            android:id="@+id/labelBlue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="blue"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_weight="1" />
+        <SeekBar
+            android:id="@+id/seekBarBlue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="255"
+            android:progress="255"
+            android:layout_weight="5" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/colorArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+    <Button
+        android:id="@+id/confirmColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:text="Select color"
+        android:textAllCaps="false" />
+</LinearLayout>

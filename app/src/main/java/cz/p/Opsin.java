@@ -1,44 +1,25 @@
 package cz.p;
 
 import static cz.p.Spannables.colorized_numbers;
+import static cz.p.Spannables.colorized_zmat_elements;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.ParcelFileDescriptor;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.text.method.ScrollingMovementMethod;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 
 //import uk.ac.cam.ch.wwmm.opsin.NameToInchi;
 import uk.ac.cam.ch.wwmm.opsin.NameToStructure;
@@ -122,7 +103,7 @@ public class Opsin extends MainActivity {
                 String text = outputView2.getText().toString();
                 // important - not setText() - otherwise the keyboard would be reset after each type
                 outputView2.getText().clear();
-                outputView2.append(colorized_numbers(text));
+                outputView2.append(colorized_zmat_elements(text));
                 // place the cursor at the original position
                 outputView2.setSelection(startChanged+countChanged);
                 outputView2.addTextChangedListener(this);
@@ -222,7 +203,7 @@ public class Opsin extends MainActivity {
     public void outputX(final String strX) {
         Runnable procX = new Runnable() {
             public void run() {
-                outputView2.setText(colorized_numbers(strX), EditText.BufferType.SPANNABLE);
+                outputView2.setText(colorized_zmat_elements(strX), EditText.BufferType.SPANNABLE);
             }
         };
         handler.post(procX);
