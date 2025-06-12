@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MolCanvas_product extends AppCompatActivity {
-    static MolCanvas_canvasView molCanvasView;
+    static MolCanvas_product_canvasView molCanvasView;
     private Button elmnt;
     private Button clear;
     private Button labels;
@@ -74,25 +74,25 @@ public class MolCanvas_product extends AppCompatActivity {
         zoom_scale = MolCanvas_preferences.get().getValue("zoom");
         setContentView(R.layout.molcanvasproduct);
 
-        if (MolCanvas_periodicTable.Element == null) {
-            MolCanvas_periodicTable.Element = "C";
-            MolCanvas_periodicTable.ElementRadius = MolCanvas_preferences.get().getValue("r_C");
-            MolCanvas_periodicTable.ElementColor = MolCanvas_preferences.get().getIntValue("color_C");
-            MolCanvas_periodicTable.ElementBorderColor = MolCanvas_preferences.get().getIntValue("unselectedColor");
-            MolCanvas_periodicTable.ElementTextColor = MolCanvas_preferences.get().getIntValue("text_color_C");
-            MolCanvas_canvasView.labelSwitch = 1;
+        if (MolCanvas_product_periodicTable.Element == null) {
+            MolCanvas_product_periodicTable.Element = "C";
+            MolCanvas_product_periodicTable.ElementRadius = MolCanvas_preferences.get().getValue("r_C");
+            MolCanvas_product_periodicTable.ElementColor = MolCanvas_preferences.get().getIntValue("color_C");
+            MolCanvas_product_periodicTable.ElementBorderColor = MolCanvas_preferences.get().getIntValue("unselectedColor");
+            MolCanvas_product_periodicTable.ElementTextColor = MolCanvas_preferences.get().getIntValue("text_color_C");
+            MolCanvas_product_canvasView.labelSwitch = 1;
             MolCanvas_preferences.get().setValue("conv", 100.0f);
         }
 
-        molCanvasView = (MolCanvas_canvasView) findViewById(R.id.molCanvasView);
+        molCanvasView = (MolCanvas_product_canvasView) findViewById(R.id.molCanvasView);
         elmnt = (Button) findViewById(R.id.elmnt);
         elmnt.setOnClickListener(elmntButton);
-        elmnt.setText(MolCanvas_periodicTable.Element);
+        elmnt.setText(MolCanvas_product_periodicTable.Element);
         clear = (Button) findViewById(R.id.clear);
         clear.setOnClickListener(clearButton);
         labels = (Button) findViewById(R.id.labels);
         labels.setOnClickListener(labelsButton);
-        if (MolCanvas_canvasView.labelSwitch == 1) {
+        if (MolCanvas_product_canvasView.labelSwitch == 1) {
             labels.setText("Labels on");
         } else {
             labels.setText("Labels off");
@@ -260,98 +260,98 @@ public class MolCanvas_product extends AppCompatActivity {
                         }
                         // convert back to XYZ
                         com.jrummyapps.android.shell.Shell.SH.run("export HOME=/data/data/cz.p/files ; cd $HOME ; export BABEL_DATADIR=$HOME/database/openbabel ; cat Coordinates_.gjf.tmp >> Coordinates.gjf.tmp ; rm Coordinates_.gjf.tmp ; "+getApplicationInfo().nativeLibraryDir+"/libobabel.so -igzmat Coordinates.gjf.tmp -oxyz > Coordinates.xyz.tmp");
-                            ProgressDialog progressDialog2 = new ProgressDialog(MolCanvas_product.this);
-                            progressDialog2.setTitle("Please wait...");
-                            progressDialog2.setMessage("Regenerating the cartesian files...");
-                            progressDialog2.setCancelable(false);
-                            progressDialog2.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            progressDialog2.show();
+                        ProgressDialog progressDialog2 = new ProgressDialog(MolCanvas_product.this);
+                        progressDialog2.setTitle("Please wait...");
+                        progressDialog2.setMessage("Regenerating the cartesian files...");
+                        progressDialog2.setCancelable(false);
+                        progressDialog2.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        progressDialog2.show();
 
-                            new Thread() {
-                                public void run() {
-                                    String XYZfile = exec("cat "+getFilesDir()+"/Coordinates.xyz.tmp");
-                                    try {
-                                        // content of the XYZ file may contain spaces, tabs in any number and combination
-                                        while (XYZfile.contains("\t")) {
-                                            XYZfile = XYZfile.replace("\t", " ");
-                                        }
-                                        while (XYZfile.contains("  ")) {
-                                            XYZfile = XYZfile.replace("  ", " ");
-                                        }
-                                        while (XYZfile.contains("\n ")) {
-                                            XYZfile = XYZfile.replace("\n ", "\n");
-                                        }
-                                        // remove first two lines
-                                        // XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator")) + 2);
-                                        // the above solution does not work when there is more than exactly two characters in the beginning of file
-                                        // remove first lilne
-                                        XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
-                                        // remove second line
-                                        XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
-                                        MolCanvas_canvasView.zmat.clear();
-                                        int lineNum = 0;
-                                        String[] curLine = XYZfile.split("\\n");
-                                        for (String s : curLine) {
-                                            lineNum++;
-                                            String[] splitted = s.split("\\s");
-                                            String atom = splitted[0].trim();
-                                            String x_coord_str = splitted[1].trim();
-                                            String y_coord_str = splitted[2].trim();
-                                            String z_coord_str = splitted[3].trim();
-                                            float x_coord = Float.valueOf(x_coord_str);
-                                            float y_coord = Float.valueOf(y_coord_str);
-                                            float z_coord = Float.valueOf(z_coord_str);
-                                            MolCanvas_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
-                                                    MolCanvas_periodicTable.ElementBorderColor, MolCanvas_methods.getElementRadius(atom),
-                                                    MolCanvas_methods.Radius_pix(MolCanvas_methods.getElementRadius(atom),
-                                                            MolCanvas_preferences.get().getValue("conv"),
-                                                            MolCanvas_preferences.get().getValue("radius_scale"), zoom_scale, z_coord),
-                                                    0, x_coord, y_coord, z_coord,
-                                                    MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
-                                                            zoom_scale),
-                                                    MolCanvas_methods.AtomY_pix(y_coord, MolCanvas_preferences.get().getValue("conv"),
-                                                            MolCanvas_canvasView.height_pix, zoom_scale),
-                                                    0, "", MolCanvas_methods.getElementTextColor(atom), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                                                    z_coord, 0.0f, 0.0f, 0.0f, 1));
-                                        }
-                                        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
-                                            if (object.getObjectType() == 1) {
-                                                generatedLabels.add(new MolCanvas_object(object.getAtomNumber1(), object.getAtomSymbol1(),
-                                                        MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()),
-                                                        object.getAtomBorderColor1(), 0,
-                                                        MolCanvas_methods.Text_pix(MolCanvas_preferences.get().getValue("text_size"), zoom_scale,
-                                                                object.getAtom1Z_Ang()),
-                                                        object.getTouchTime(), object.getAtom1X_Ang(), object.getAtom1Y_Ang(),
-                                                        object.getAtom1Z_Ang(),
-                                                        object.getAtom1X_pix() + MolCanvas_preferences.get().getValue("text_shift_x_pix"),
-                                                        object.getAtom1Y_pix() + MolCanvas_preferences.get().getValue("text_shift_y_pix"), 0, "",
-                                                        0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                                                        object.getAtom12Z_Ang() + MolCanvas_preferences.get().getValue("text_shift_z_Ang"), 0.0f,
-                                                        0.0f, object.getDist2D_pix(), 4));
-                                            }
-                                        }
-                                        MolCanvas_canvasView.zmat.addAll(generatedLabels);
-                                        generatedLabels.clear();
-                                        generateAllBonds();
-                                        MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
+                        new Thread() {
+                            public void run() {
+                                String XYZfile = exec("cat "+getFilesDir()+"/Coordinates.xyz.tmp");
+                                try {
+                                    // content of the XYZ file may contain spaces, tabs in any number and combination
+                                    while (XYZfile.contains("\t")) {
+                                        XYZfile = XYZfile.replace("\t", " ");
                                     }
-                                    molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
-                                    exec("rm "+getFilesDir()+"/Coordinates.gjf.tmp");
-                                    exec("rm "+getFilesDir()+"/Coordinates.xyz");
-                                    exec("rm "+getFilesDir()+"/Coordinates.xyz.tmp");
-                                    onFinish();
+                                    while (XYZfile.contains("  ")) {
+                                        XYZfile = XYZfile.replace("  ", " ");
+                                    }
+                                    while (XYZfile.contains("\n ")) {
+                                        XYZfile = XYZfile.replace("\n ", "\n");
+                                    }
+                                    // remove first two lines
+                                    // XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator")) + 2);
+                                    // the above solution does not work when there is more than exactly two characters in the beginning of file
+                                    // remove first lilne
+                                    XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
+                                    // remove second line
+                                    XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
+                                    MolCanvas_product_canvasView.zmat.clear();
+                                    int lineNum = 0;
+                                    String[] curLine = XYZfile.split("\\n");
+                                    for (String s : curLine) {
+                                        lineNum++;
+                                        String[] splitted = s.split("\\s");
+                                        String atom = splitted[0].trim();
+                                        String x_coord_str = splitted[1].trim();
+                                        String y_coord_str = splitted[2].trim();
+                                        String z_coord_str = splitted[3].trim();
+                                        float x_coord = Float.valueOf(x_coord_str);
+                                        float y_coord = Float.valueOf(y_coord_str);
+                                        float z_coord = Float.valueOf(z_coord_str);
+                                        MolCanvas_product_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
+                                                MolCanvas_product_periodicTable.ElementBorderColor, MolCanvas_methods.getElementRadius(atom),
+                                                MolCanvas_methods.Radius_pix(MolCanvas_methods.getElementRadius(atom),
+                                                        MolCanvas_preferences.get().getValue("conv"),
+                                                        MolCanvas_preferences.get().getValue("radius_scale"), zoom_scale, z_coord),
+                                                0, x_coord, y_coord, z_coord,
+                                                MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
+                                                        zoom_scale),
+                                                MolCanvas_methods.AtomY_pix(y_coord, MolCanvas_preferences.get().getValue("conv"),
+                                                        MolCanvas_product_canvasView.height_pix, zoom_scale),
+                                                0, "", MolCanvas_methods.getElementTextColor(atom), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                                                z_coord, 0.0f, 0.0f, 0.0f, 1));
+                                    }
+                                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
+                                        if (object.getObjectType() == 1) {
+                                            generatedLabels.add(new MolCanvas_object(object.getAtomNumber1(), object.getAtomSymbol1(),
+                                                    MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()),
+                                                    object.getAtomBorderColor1(), 0,
+                                                    MolCanvas_methods.Text_pix(MolCanvas_preferences.get().getValue("text_size"), zoom_scale,
+                                                            object.getAtom1Z_Ang()),
+                                                    object.getTouchTime(), object.getAtom1X_Ang(), object.getAtom1Y_Ang(),
+                                                    object.getAtom1Z_Ang(),
+                                                    object.getAtom1X_pix() + MolCanvas_preferences.get().getValue("text_shift_x_pix"),
+                                                    object.getAtom1Y_pix() + MolCanvas_preferences.get().getValue("text_shift_y_pix"), 0, "",
+                                                    0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                                                    object.getAtom12Z_Ang() + MolCanvas_preferences.get().getValue("text_shift_z_Ang"), 0.0f,
+                                                    0.0f, object.getDist2D_pix(), 4));
+                                        }
+                                    }
+                                    MolCanvas_product_canvasView.zmat.addAll(generatedLabels);
+                                    generatedLabels.clear();
+                                    generateAllBonds();
+                                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                                public void onFinish() {
-                                    progressDialog2.dismiss();
-                                }
-                            }.start();
+                                molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
+                                exec("rm "+getFilesDir()+"/Coordinates.gjf.tmp");
+                                exec("rm "+getFilesDir()+"/Coordinates.xyz");
+                                exec("rm "+getFilesDir()+"/Coordinates.xyz.tmp");
+                                onFinish();
+                            }
+                            public void onFinish() {
+                                progressDialog2.dismiss();
+                            }
+                        }.start();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -378,39 +378,39 @@ public class MolCanvas_product extends AppCompatActivity {
     private View.OnClickListener toXtbClick; {
         toXtbClick = new View.OnClickListener() {
             public void onClick(View v) {
-                    ProgressDialog progressDialog = new ProgressDialog(MolCanvas_product.this);
-                    progressDialog.setTitle("Please wait...");
-                    progressDialog.setMessage("Generating the XYZ file...");
-                    progressDialog.setCancelable(false);
-                    progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    progressDialog.show();
+                ProgressDialog progressDialog = new ProgressDialog(MolCanvas_product.this);
+                progressDialog.setTitle("Please wait...");
+                progressDialog.setMessage("Generating the XYZ file...");
+                progressDialog.setCancelable(false);
+                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                progressDialog.show();
 
-                    new Thread() {
-                        public void run() {
-                            String fileContents = getStructureXYZ();
-                            try {
+                new Thread() {
+                    public void run() {
+                        String fileContents = getStructureXYZ();
+                        try {
                             FileOutputStream fileout = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                             outputWriter.write(fileContents);
                             outputWriter.close();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            Intent intent = new Intent(MolCanvas_product.this, XtbKinetics2.class);
-                            startActivity(intent);
-                            molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
-                            onFinish();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        public void onFinish() {
-                            progressDialog.dismiss();
-                        }
-                    }.start();
-                }
+                        Intent intent = new Intent(MolCanvas_product.this, XtbKinetics2.class);
+                        startActivity(intent);
+                        molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
+                        onFinish();
+                    }
+                    public void onFinish() {
+                        progressDialog.dismiss();
+                    }
+                }.start();
+            }
         };
     }
 
@@ -433,8 +433,8 @@ public class MolCanvas_product extends AppCompatActivity {
         clearButton = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                MolCanvas_canvasView.zmat.clear();
-                MolCanvas_canvasView.ElementNumber = 0;
+                MolCanvas_product_canvasView.zmat.clear();
+                MolCanvas_product_canvasView.ElementNumber = 0;
                 molCanvasView.invalidate();
             }
         };
@@ -446,14 +446,14 @@ public class MolCanvas_product extends AppCompatActivity {
         labelsButton = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                switch (MolCanvas_canvasView.labelSwitch) {
+                switch (MolCanvas_product_canvasView.labelSwitch) {
                     case 0:
-                        MolCanvas_canvasView.labelSwitch = 1;
+                        MolCanvas_product_canvasView.labelSwitch = 1;
                         labels.setText("Labels on");
                         molCanvasView.invalidate();
                         break;
                     case 1:
-                        MolCanvas_canvasView.labelSwitch = 0;
+                        MolCanvas_product_canvasView.labelSwitch = 0;
                         labels.setText("Labels off");
                         molCanvasView.invalidate();
                         break;
@@ -480,7 +480,7 @@ public class MolCanvas_product extends AppCompatActivity {
         centerButton = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                MolCanvas_canvasView.centerMolecule();
+                MolCanvas_product_canvasView.centerMolecule();
                 molCanvasView.invalidate();
             };
         };
@@ -516,8 +516,8 @@ public class MolCanvas_product extends AppCompatActivity {
                 List<MolCanvas_object> replacedAtoms = new ArrayList<>();
                 List<MolCanvas_object> newBonds = new ArrayList<>();
                 List<Integer> bondsColor = new ArrayList<>();
-                int replacedAtomsCount = MolCanvas_canvasView.getSelectedAtomsCount();
-                for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                int replacedAtomsCount = MolCanvas_product_canvasView.getSelectedAtomsCount();
+                for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                     atomBorderCol = object.getAtomBorderColor1();
                     if (atomBorderCol == selectedBorderCol) {
                         if (object.getObjectType() == 1) {
@@ -536,7 +536,7 @@ public class MolCanvas_product extends AppCompatActivity {
                     }
                 }
                 bondsColor.sort(Comparator.comparing(a -> a.intValue()));
-                for (MolCanvas_object object1 : MolCanvas_canvasView.zmat) {
+                for (MolCanvas_object object1 : MolCanvas_product_canvasView.zmat) {
                     if (object1.getObjectType() == 2 || object1.getObjectType() == 3) {
                         for (int atN : bondsColor) {
                             if (object1.getAtomNumber1() == atN || object1.getAtomNumber2() == atN) {
@@ -547,7 +547,7 @@ public class MolCanvas_product extends AppCompatActivity {
                 }
                 bondsColor.clear();
                 // collect the indices to be deleted
-                for (MolCanvas_object object2 : MolCanvas_canvasView.zmat) {
+                for (MolCanvas_object object2 : MolCanvas_product_canvasView.zmat) {
                     atomBorderCol = object2.getAtomBorderColor1();
                     if (atomBorderCol == selectedBorderCol) {
                         deleteAtoms.add(ind);
@@ -562,19 +562,19 @@ public class MolCanvas_product extends AppCompatActivity {
                 Collections.reverse(deleteAtoms);
                 // the selected entries are removed from zmat from the end to beginning
                 for (int a : deleteAtoms) {
-                    MolCanvas_canvasView.zmat.remove(a);
+                    MolCanvas_product_canvasView.zmat.remove(a);
                 }
                 for (MolCanvas_object repl : replacedAtoms) {
-                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_periodicTable.Element, MolCanvas_periodicTable.ElementColor,
-                            MolCanvas_periodicTable.ElementBorderColor, MolCanvas_periodicTable.ElementRadius,
-                            MolCanvas_methods.Radius_pix(MolCanvas_periodicTable.ElementRadius, MolCanvas_preferences.get().getValue("conv"),
+                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_product_periodicTable.Element, MolCanvas_product_periodicTable.ElementColor,
+                            MolCanvas_product_periodicTable.ElementBorderColor, MolCanvas_product_periodicTable.ElementRadius,
+                            MolCanvas_methods.Radius_pix(MolCanvas_product_periodicTable.ElementRadius, MolCanvas_preferences.get().getValue("conv"),
                                     MolCanvas_preferences.get().getValue("radius_scale"), zoom_scale, repl.getAtom12Z_Ang()),
                             repl.getTouchTime(), repl.getAtom1X_Ang(), repl.getAtom1Y_Ang(), repl.getAtom1Z_Ang(),
                             repl.getAtom1X_pix(), repl.getAtom1Y_pix(), 0, "", 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
                             0.0f, repl.getAtom1Z_Ang(), 0.0f, 0.0f, 0.0f, 1));
 
-                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_periodicTable.Element,
-                            MolCanvas_methods.getElementTextColor(MolCanvas_periodicTable.Element), MolCanvas_periodicTable.ElementBorderColor, 0,
+                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_product_periodicTable.Element,
+                            MolCanvas_methods.getElementTextColor(MolCanvas_product_periodicTable.Element), MolCanvas_product_periodicTable.ElementBorderColor, 0,
                             MolCanvas_methods.Text_pix(MolCanvas_preferences.get().getValue("text_size"), zoom_scale,
                                     repl.getAtom1Z_Ang()),
                             repl.getTouchTime(), repl.getAtom1X_Ang(), repl.getAtom1Y_Ang(), repl.getAtom1Z_Ang(),
@@ -585,17 +585,17 @@ public class MolCanvas_product extends AppCompatActivity {
                             4));
                     // this less power demanding routine works only if there is one atom being replaced
                     if (replacedAtomsCount == 1){
-                        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                        for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                             if (object.getObjectType() == 1) {
                                 float distanceFromAtoms = MolCanvas_methods.dist3D(repl.getAtom1X_Ang(), repl.getAtom1Y_Ang(),
                                         repl.getAtom1Z_Ang(), object.getAtom1X_Ang(), object.getAtom1Y_Ang(),
                                         object.getAtom1Z_Ang());
                                 if (distanceFromAtoms <= (MolCanvas_preferences.get().getValue("bond_scale")
-                                        * (MolCanvas_periodicTable.ElementRadius + object.getAtomRadius1_Ang()))
+                                        * (MolCanvas_product_periodicTable.ElementRadius + object.getAtomRadius1_Ang()))
                                         && distanceFromAtoms != 0.0f) {
                                     // exclude the self distance, at the moment the next atom already is in zmat
-                                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_periodicTable.Element,
-                                            MolCanvas_periodicTable.ElementColor, MolCanvas_periodicTable.ElementBorderColor, 0,
+                                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_product_periodicTable.Element,
+                                            MolCanvas_product_periodicTable.ElementColor, MolCanvas_product_periodicTable.ElementBorderColor, 0,
                                             MolCanvas_methods.Bond_pix(MolCanvas_preferences.get().getValue("bondsStrokeWidth"), zoom_scale,
                                                     0.5f * (repl.getAtom1Z_Ang() + object.getAtom1Z_Ang())),
                                             object.getTouchTime(), repl.getAtom1X_Ang(), repl.getAtom1Y_Ang(),
@@ -609,20 +609,20 @@ public class MolCanvas_product extends AppCompatActivity {
                                             0.5f * (repl.getAtom1X_pix() + object.getAtom1X_pix()),
                                             0.5f * (repl.getAtom1Y_pix() + object.getAtom1Y_pix()), 0.0f, 3));
                                 } else if (distanceFromAtoms <= (MolCanvas_preferences.get().getValue("hydr_bond_scale")
-                                        * (MolCanvas_periodicTable.ElementRadius + object.getAtomRadius1_Ang()))
+                                        * (MolCanvas_product_periodicTable.ElementRadius + object.getAtomRadius1_Ang()))
                                         && distanceFromAtoms != 0.0f
-                                        && ((MolCanvas_periodicTable.Element.equals("H") && (object.getAtomSymbol1().equals("F")
+                                        && ((MolCanvas_product_periodicTable.Element.equals("H") && (object.getAtomSymbol1().equals("F")
                                         || object.getAtomSymbol1().equals("O")
                                         || object.getAtomSymbol1().equals("Cl")
                                         || object.getAtomSymbol1().equals("N")))
                                         || (object.getAtomSymbol1().equals("H")
-                                        && (MolCanvas_periodicTable.Element.equals("F")
-                                        || MolCanvas_periodicTable.Element.equals("O")
-                                        || MolCanvas_periodicTable.Element.equals("Cl")
-                                        || MolCanvas_periodicTable.Element.equals("N"))))) {
+                                        && (MolCanvas_product_periodicTable.Element.equals("F")
+                                        || MolCanvas_product_periodicTable.Element.equals("O")
+                                        || MolCanvas_product_periodicTable.Element.equals("Cl")
+                                        || MolCanvas_product_periodicTable.Element.equals("N"))))) {
                                     // exclude the self distance, at the moment the next atom already is in zmat
-                                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_periodicTable.Element,
-                                            MolCanvas_periodicTable.ElementColor, MolCanvas_periodicTable.ElementBorderColor, 0,
+                                    newBonds.add(new MolCanvas_object(repl.getAtomNumber1(), MolCanvas_product_periodicTable.Element,
+                                            MolCanvas_product_periodicTable.ElementColor, MolCanvas_product_periodicTable.ElementBorderColor, 0,
                                             MolCanvas_methods.Bond_pix(MolCanvas_preferences.get().getValue("bondsStrokeWidth"), zoom_scale,
                                                     0.5f * (repl.getAtom1Z_Ang() + object.getAtom1Z_Ang())),
                                             object.getTouchTime(), repl.getAtom1X_Ang(), repl.getAtom1Y_Ang(),
@@ -641,17 +641,17 @@ public class MolCanvas_product extends AppCompatActivity {
                     }
                 }
                 replacedAtoms.clear();
-                MolCanvas_canvasView.zmat.addAll(newBonds);
+                MolCanvas_product_canvasView.zmat.addAll(newBonds);
                 newBonds.clear();
                 // the case when there is more atoms being replaced
                 if (replacedAtomsCount > 1){
                     generateAllBonds();
                 }
-                MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtomNumber1()));
+                MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtomNumber1()));
                 // prevent the button to do sth when no atom is selected
                 deleteAtoms.clear();
                 // for correct displaying, the more distant objects are drawn first
-                MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
 
                 molCanvasView.invalidate();
             }
@@ -695,11 +695,11 @@ public class MolCanvas_product extends AppCompatActivity {
                 float x2 = 0.0f;
                 float y2 = 0.0f;
                 float z2 = 0.0f;
-                int selectedAtomsCount = MolCanvas_canvasView.getSelectedAtomsCount();
+                int selectedAtomsCount = MolCanvas_product_canvasView.getSelectedAtomsCount();
                 if (selectedAtomsCount == 2) {
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
-                    Collections.reverse(MolCanvas_canvasView.zmat);
-                    for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
+                    Collections.reverse(MolCanvas_product_canvasView.zmat);
+                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                         if (object.getObjectType() == 1 && object.getAtomBorderColor1() == Color.RED) {
                             if (counter == 1) {
                                 x1 = object.getAtom1X_Ang();
@@ -722,7 +722,7 @@ public class MolCanvas_product extends AppCompatActivity {
                                 }
                             }).create();
                     dialog.show();
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                 } else {
                     final AlertDialog dialog = new AlertDialog.Builder(MolCanvas_product.this)
                             .setMessage("Error: select 2 atoms.").setTitle("Distance measurement")
@@ -733,8 +733,8 @@ public class MolCanvas_product extends AppCompatActivity {
                             }).create();
                     dialog.show();
                 }
-                MolCanvas_canvasView.unselectMolCanvas_objects();
-                molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                MolCanvas_product_canvasView.unselectMolCanvas_objects();
+                molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
             }
         };
     }
@@ -757,11 +757,11 @@ public class MolCanvas_product extends AppCompatActivity {
                 float x3 = 0.0f;
                 float y3 = 0.0f;
                 float z3 = 0.0f;
-                int selectedAtomsCount = MolCanvas_canvasView.getSelectedAtomsCount();
+                int selectedAtomsCount = MolCanvas_product_canvasView.getSelectedAtomsCount();
                 if (selectedAtomsCount == 3) {
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
-                    Collections.reverse(MolCanvas_canvasView.zmat);
-                    for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
+                    Collections.reverse(MolCanvas_product_canvasView.zmat);
+                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                         if (object.getObjectType() == 1 && object.getAtomBorderColor1() == Color.RED) {
                             if (counter == 1) {
                                 x1 = object.getAtom1X_Ang();
@@ -788,7 +788,7 @@ public class MolCanvas_product extends AppCompatActivity {
                                 }
                             }).create();
                     dialog.show();
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                 } else {
                     final AlertDialog dialog = new AlertDialog.Builder(MolCanvas_product.this)
                             .setMessage("Error: select 3 atoms.").setTitle("Angle measurement")
@@ -799,8 +799,8 @@ public class MolCanvas_product extends AppCompatActivity {
                             }).create();
                     dialog.show();
                 }
-                MolCanvas_canvasView.unselectMolCanvas_objects();
-                molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                MolCanvas_product_canvasView.unselectMolCanvas_objects();
+                molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
             }
         };
     }
@@ -826,11 +826,11 @@ public class MolCanvas_product extends AppCompatActivity {
                 float x4 = 0.0f;
                 float y4 = 0.0f;
                 float z4 = 0.0f;
-                int selectedAtomsCount = MolCanvas_canvasView.getSelectedAtomsCount();
+                int selectedAtomsCount = MolCanvas_product_canvasView.getSelectedAtomsCount();
                 if (selectedAtomsCount == 4) {
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
-                    Collections.reverse(MolCanvas_canvasView.zmat);
-                    for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
+                    Collections.reverse(MolCanvas_product_canvasView.zmat);
+                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                         if (object.getObjectType() == 1 && object.getAtomBorderColor1() == Color.RED) {
                             if (counter == 1) {
                                 x1 = object.getAtom1X_Ang();
@@ -861,7 +861,7 @@ public class MolCanvas_product extends AppCompatActivity {
                                 }
                             }).create();
                     dialog.show();
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                 } else {
                     final AlertDialog dialog = new AlertDialog.Builder(MolCanvas_product.this)
                             .setMessage("Error: select 4 atoms.").setTitle("Dihedral angle measurement")
@@ -872,8 +872,8 @@ public class MolCanvas_product extends AppCompatActivity {
                             }).create();
                     dialog.show();
                 }
-                MolCanvas_canvasView.unselectMolCanvas_objects();
-                molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                MolCanvas_product_canvasView.unselectMolCanvas_objects();
+                molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
             }
         };
     }
@@ -886,17 +886,17 @@ public class MolCanvas_product extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
                 int counter = 1;
-                int selectedAtomsCount = MolCanvas_canvasView.getSelectedAtomsCount();
-                int atomsCount = MolCanvas_canvasView.getElementNumber();
+                int selectedAtomsCount = MolCanvas_product_canvasView.getSelectedAtomsCount();
+                int atomsCount = MolCanvas_product_canvasView.getElementNumber();
                 if (selectedAtomsCount == atomsCount) {
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
-                    for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getTouchTime()));
+                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                         if (object.getObjectType() == 1) {
                             renumberList.add(new MolCanvas_renumber(object.getAtomNumber1(), counter));
                             counter++;
                         }
                     }
-                    for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                    for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                         int at1_old = object.getAtomNumber1();
                         int at2_old = object.getAtomNumber2();
                         for (MolCanvas_renumber renumber : renumberList) {
@@ -909,7 +909,7 @@ public class MolCanvas_product extends AppCompatActivity {
                         }
                     }
                     renumberList.clear();
-                    MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                    MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                 } else if (selectedAtomsCount != atomsCount) {
                     final AlertDialog dialog = new AlertDialog.Builder(MolCanvas_product.this)
                             .setMessage("Error: select all atoms.").setTitle("Reorder Z-matrix")
@@ -920,8 +920,8 @@ public class MolCanvas_product extends AppCompatActivity {
                             }).create();
                     dialog.show();
                 }
-                MolCanvas_canvasView.unselectMolCanvas_objects();
-                molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                MolCanvas_product_canvasView.unselectMolCanvas_objects();
+                molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
             }
         };
     }
@@ -1008,7 +1008,7 @@ public class MolCanvas_product extends AppCompatActivity {
         List<Integer> deleteAtoms = new ArrayList<>();
         List<MolCanvas_renumber> renumberAtoms = new ArrayList<>();
         List<Integer> bondsColor = new ArrayList<>();
-        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
             atomBorderCol = object.getAtomBorderColor1();
             if (atomBorderCol == selectedBorderCol) {
                 if (object.getObjectType() == 1) {
@@ -1017,7 +1017,7 @@ public class MolCanvas_product extends AppCompatActivity {
             }
         }
         bondsColor.sort(Comparator.comparing(a -> a.intValue()));
-        for (MolCanvas_object object1 : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object1 : MolCanvas_product_canvasView.zmat) {
             if (object1.getObjectType() == 2 || object1.getObjectType() == 3) {
                 for (int atN : bondsColor) {
                     if (object1.getAtomNumber1() == atN || object1.getAtomNumber2() == atN) {
@@ -1028,7 +1028,7 @@ public class MolCanvas_product extends AppCompatActivity {
         }
         bondsColor.clear();
         // collect the indices to be deleted
-        for (MolCanvas_object object2 : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object2 : MolCanvas_product_canvasView.zmat) {
             atomBorderCol = object2.getAtomBorderColor1();
             if (atomBorderCol == selectedBorderCol) {
                 deleteAtoms.add(ind);
@@ -1047,12 +1047,12 @@ public class MolCanvas_product extends AppCompatActivity {
         Collections.reverse(deleteAtoms);
         // the selected entries are removed from zmat from the end to beginning
         for (int a : deleteAtoms) {
-            MolCanvas_canvasView.zmat.remove(a);
+            MolCanvas_product_canvasView.zmat.remove(a);
         }
-        MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtomNumber1()));
+        MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtomNumber1()));
         // prevent the button to do sth when no atom is selected
         if (deleteAtoms.size() > 0) {
-            for (MolCanvas_object object3 : MolCanvas_canvasView.zmat) {
+            for (MolCanvas_object object3 : MolCanvas_product_canvasView.zmat) {
                 int atom1_old = object3.getAtomNumber1();
                 int atom2_old = object3.getAtomNumber2();
                 for (MolCanvas_renumber renumberAt : renumberAtoms) {
@@ -1068,7 +1068,7 @@ public class MolCanvas_product extends AppCompatActivity {
         }
         deleteAtoms.clear();
         // for correct displaying, the more distant objects are drawn first
-        MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+        MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
     }
 
     private void read(Context context) {
@@ -1134,7 +1134,7 @@ public class MolCanvas_product extends AppCompatActivity {
                         myData = myData.substring(myData.indexOf(System.getProperty("line.separator"))+1);
                         // remove second line
                         myData = myData.substring(myData.indexOf(System.getProperty("line.separator"))+1);
-                        MolCanvas_canvasView.zmat.clear();
+                        MolCanvas_product_canvasView.zmat.clear();
                         int lineNum = 0;
                         String[] curLine = myData.split("\\n");
                         for (String s : curLine) {
@@ -1147,20 +1147,20 @@ public class MolCanvas_product extends AppCompatActivity {
                             float x_coord = Float.valueOf(x_coord_str);
                             float y_coord = Float.valueOf(y_coord_str);
                             float z_coord = Float.valueOf(z_coord_str);
-                            MolCanvas_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
-                                    MolCanvas_periodicTable.ElementBorderColor, MolCanvas_methods.getElementRadius(atom),
+                            MolCanvas_product_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
+                                    MolCanvas_product_periodicTable.ElementBorderColor, MolCanvas_methods.getElementRadius(atom),
                                     MolCanvas_methods.Radius_pix(MolCanvas_methods.getElementRadius(atom),
                                             MolCanvas_preferences.get().getValue("conv"),
                                             MolCanvas_preferences.get().getValue("radius_scale"), zoom_scale, z_coord),
                                     0, x_coord, y_coord, z_coord,
-                                    MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+                                    MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
                                             zoom_scale),
                                     MolCanvas_methods.AtomY_pix(y_coord, MolCanvas_preferences.get().getValue("conv"),
-                                            MolCanvas_canvasView.height_pix, zoom_scale),
+                                            MolCanvas_product_canvasView.height_pix, zoom_scale),
                                     0, "", MolCanvas_methods.getElementTextColor(atom), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
                                     z_coord, 0.0f, 0.0f, 0.0f, 1));
                         }
-                        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                        for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                             if (object.getObjectType() == 1) {
                                 generatedLabels.add(new MolCanvas_object(object.getAtomNumber1(), object.getAtomSymbol1(),
                                         MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()),
@@ -1176,14 +1176,14 @@ public class MolCanvas_product extends AppCompatActivity {
                                         0.0f, object.getDist2D_pix(), 4));
                             }
                         }
-                        MolCanvas_canvasView.zmat.addAll(generatedLabels);
+                        MolCanvas_product_canvasView.zmat.addAll(generatedLabels);
                         generatedLabels.clear();
                         generateAllBonds();
-                        MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                        MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                    molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
                     onFinish();
                 }
 
@@ -1225,7 +1225,7 @@ public class MolCanvas_product extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "File not written", Toast.LENGTH_SHORT).show();
                     }
 
-                    molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+                    molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
                     onFinish();
                 }
 
@@ -1237,13 +1237,13 @@ public class MolCanvas_product extends AppCompatActivity {
     }
 
     public String getStructureXYZ() {
-        int atomCount = MolCanvas_canvasView.getElementNumber();
+        int atomCount = MolCanvas_product_canvasView.getElementNumber();
         String XYZ_content = String.valueOf(atomCount) + "\n\n";
         float x_coord = 0;
         float y_coord = 0;
         float z_coord = 0;
 
-        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
             if (object.getObjectType() == 1) {
                 String objSymbol = object.getAtomSymbol1();
                 x_coord = object.getAtom1X_Ang();
@@ -1281,7 +1281,7 @@ public class MolCanvas_product extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         zoom_scale = MolCanvas_preferences.get().getValue("zoom");
-        for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
             float x1_Ang = object.getAtom1X_Ang();
             float y1_Ang = object.getAtom1Y_Ang();
             float z1_Ang = object.getAtom1Z_Ang();
@@ -1290,17 +1290,17 @@ public class MolCanvas_product extends AppCompatActivity {
             float z2_Ang = object.getAtom2Z_Ang();
             float x12_Ang = object.getAtom12X_Ang();
             float y12_Ang = object.getAtom12Y_Ang();
-            float x1_proj = MolCanvas_methods.AtomX_pix(x1_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+            float x1_proj = MolCanvas_methods.AtomX_pix(x1_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
                     zoom_scale);
-            float y1_proj = MolCanvas_methods.AtomY_pix(y1_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.height_pix,
+            float y1_proj = MolCanvas_methods.AtomY_pix(y1_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.height_pix,
                     zoom_scale);
-            float x2_proj = MolCanvas_methods.AtomX_pix(x2_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+            float x2_proj = MolCanvas_methods.AtomX_pix(x2_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
                     zoom_scale);
-            float y2_proj = MolCanvas_methods.AtomY_pix(y2_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.height_pix,
+            float y2_proj = MolCanvas_methods.AtomY_pix(y2_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.height_pix,
                     zoom_scale);
-            float x12_proj = MolCanvas_methods.AtomX_pix(x12_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+            float x12_proj = MolCanvas_methods.AtomX_pix(x12_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
                     zoom_scale);
-            float y12_proj = MolCanvas_methods.AtomY_pix(y12_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.height_pix,
+            float y12_proj = MolCanvas_methods.AtomY_pix(y12_Ang, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.height_pix,
                     zoom_scale);
             if (object.getObjectType() == 4) {
                 object.setAtomColor1(MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()));
@@ -1333,16 +1333,16 @@ public class MolCanvas_product extends AppCompatActivity {
                 object.setAtomColor2(MolCanvas_methods.getElementColor(object.getAtomSymbol2()));
             }
         }
-        molCanvasView.setMoleculeRenderer(MolCanvas_canvasView.TRUE);
+        molCanvasView.setMoleculeRenderer(MolCanvas_product_canvasView.TRUE);
     }
 
     public static void generateAllBonds() {
         int ind1 = 1;
         float distanceFromAtoms;
-        for (MolCanvas_object object1 : MolCanvas_canvasView.zmat) {
+        for (MolCanvas_object object1 : MolCanvas_product_canvasView.zmat) {
             if (object1.getObjectType() == 1) {
                 int ind2 = 1;
-                for (MolCanvas_object object2 : MolCanvas_canvasView.zmat) {
+                for (MolCanvas_object object2 : MolCanvas_product_canvasView.zmat) {
                     if (ind2 < ind1) {
                         if (object2.getObjectType() == 1) {
                             distanceFromAtoms = MolCanvas_methods.dist3D(object1.getAtom1X_Ang(), object1.getAtom1Y_Ang(),
@@ -1399,7 +1399,7 @@ public class MolCanvas_product extends AppCompatActivity {
             }
             ind1++;
         }
-        MolCanvas_canvasView.zmat.addAll(generatedBonds);
+        MolCanvas_product_canvasView.zmat.addAll(generatedBonds);
         generatedBonds.clear();
     }
 

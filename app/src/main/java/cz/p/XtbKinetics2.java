@@ -409,7 +409,7 @@ public class XtbKinetics2 extends MainActivity {
                             XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
                             // remove second line
                             XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
-                            MolCanvas_canvasView.zmat.clear();
+                            MolCanvas_reactant_canvasView.zmat.clear();
                             int lineNum = 0;
                             String[] curLine = XYZfile.split("\\n");
                             for (String s : curLine) {
@@ -423,20 +423,20 @@ public class XtbKinetics2 extends MainActivity {
                                 float y_coord = Float.valueOf(y_coord_str);
                                 float z_coord = Float.valueOf(z_coord_str);
                                 // important: border color is at first run black, there is no other set yet (in MolCanvas_main nor MolCanvas_periodicTable)
-                                MolCanvas_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
+                                MolCanvas_reactant_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
                                         Color.BLACK, MolCanvas_methods.getElementRadius(atom),
                                         MolCanvas_methods.Radius_pix(MolCanvas_methods.getElementRadius(atom),
                                                 MolCanvas_preferences.get().getValue("conv"),
                                                 MolCanvas_preferences.get().getValue("radius_scale"), MolCanvas_reactant.zoom_scale, z_coord),
                                         0, x_coord, y_coord, z_coord,
-                                        MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+                                        MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_reactant_canvasView.width_pix,
                                                 MolCanvas_reactant.zoom_scale),
                                         MolCanvas_methods.AtomY_pix(y_coord, MolCanvas_preferences.get().getValue("conv"),
-                                                MolCanvas_canvasView.height_pix, MolCanvas_reactant.zoom_scale),
+                                                MolCanvas_reactant_canvasView.height_pix, MolCanvas_reactant.zoom_scale),
                                         0, "", MolCanvas_methods.getElementTextColor(atom), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
                                         z_coord, 0.0f, 0.0f, 0.0f, 1));
                             }
-                            for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                            for (MolCanvas_object object : MolCanvas_reactant_canvasView.zmat) {
                                 if (object.getObjectType() == 1) {
                                     MolCanvas_reactant.generatedLabels.add(new MolCanvas_object(object.getAtomNumber1(), object.getAtomSymbol1(),
                                             MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()),
@@ -452,10 +452,10 @@ public class XtbKinetics2 extends MainActivity {
                                             0.0f, object.getDist2D_pix(), 4));
                                 }
                             }
-                            MolCanvas_canvasView.zmat.addAll(MolCanvas_reactant.generatedLabels);
+                            MolCanvas_reactant_canvasView.zmat.addAll(MolCanvas_reactant.generatedLabels);
                             MolCanvas_reactant.generatedLabels.clear();
                             MolCanvas_reactant.generateAllBonds();
-                            MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                            MolCanvas_reactant_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -548,7 +548,7 @@ public class XtbKinetics2 extends MainActivity {
                             XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
                             // remove second line
                             XYZfile = XYZfile.substring(XYZfile.indexOf(System.getProperty("line.separator"))+1);
-                            MolCanvas_canvasView.zmat.clear();
+                            MolCanvas_product_canvasView.zmat.clear();
                             int lineNum = 0;
                             String[] curLine = XYZfile.split("\\n");
                             for (String s : curLine) {
@@ -562,20 +562,20 @@ public class XtbKinetics2 extends MainActivity {
                                 float y_coord = Float.valueOf(y_coord_str);
                                 float z_coord = Float.valueOf(z_coord_str);
                                 // important: border color is at first run black, there is no other set yet (in MolCanvas_main nor MolCanvas_periodicTable)
-                                MolCanvas_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
+                                MolCanvas_product_canvasView.zmat.add(new MolCanvas_object(lineNum, atom, MolCanvas_methods.getElementColor(atom),
                                         Color.BLACK, MolCanvas_methods.getElementRadius(atom),
                                         MolCanvas_methods.Radius_pix(MolCanvas_methods.getElementRadius(atom),
                                                 MolCanvas_preferences.get().getValue("conv"),
                                                 MolCanvas_preferences.get().getValue("radius_scale"), MolCanvas_product.zoom_scale, z_coord),
                                         0, x_coord, y_coord, z_coord,
-                                        MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_canvasView.width_pix,
+                                        MolCanvas_methods.AtomX_pix(x_coord, MolCanvas_preferences.get().getValue("conv"), MolCanvas_product_canvasView.width_pix,
                                                 MolCanvas_product.zoom_scale),
                                         MolCanvas_methods.AtomY_pix(y_coord, MolCanvas_preferences.get().getValue("conv"),
-                                                MolCanvas_canvasView.height_pix, MolCanvas_product.zoom_scale),
+                                                MolCanvas_product_canvasView.height_pix, MolCanvas_product.zoom_scale),
                                         0, "", MolCanvas_methods.getElementTextColor(atom), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
                                         z_coord, 0.0f, 0.0f, 0.0f, 1));
                             }
-                            for (MolCanvas_object object : MolCanvas_canvasView.zmat) {
+                            for (MolCanvas_object object : MolCanvas_product_canvasView.zmat) {
                                 if (object.getObjectType() == 1) {
                                     MolCanvas_product.generatedLabels.add(new MolCanvas_object(object.getAtomNumber1(), object.getAtomSymbol1(),
                                             MolCanvas_methods.getElementTextColor(object.getAtomSymbol1()),
@@ -591,10 +591,10 @@ public class XtbKinetics2 extends MainActivity {
                                             0.0f, object.getDist2D_pix(), 4));
                                 }
                             }
-                            MolCanvas_canvasView.zmat.addAll(MolCanvas_product.generatedLabels);
+                            MolCanvas_product_canvasView.zmat.addAll(MolCanvas_product.generatedLabels);
                             MolCanvas_product.generatedLabels.clear();
                             MolCanvas_product.generateAllBonds();
-                            MolCanvas_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
+                            MolCanvas_product_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtom12Z_Ang()));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

@@ -421,7 +421,7 @@
             android:id="@+id/custom_export"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EXPORT CUSTOM FILE \nTO DOCUMENTS/PHREEQC_PLUS"
+            android:text="EXPORT CUSTOM FILE \nTO EXTERNAL STORAGE"
             />
         <Button
             android:id="@+id/custom_import"

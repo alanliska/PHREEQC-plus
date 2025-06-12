@@ -406,6 +406,16 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
             android:text="SELECT DATABASE" />
+        <Button
+            android:id="@+id/viewDatabase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW THE SELECTED DATABASE (SLOW)" />
+        <Button
+            android:id="@+id/searchDatabase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SEARCH IN THE DATABASE" />
 
         <TextView
             android:id="@+id/DataLabel"

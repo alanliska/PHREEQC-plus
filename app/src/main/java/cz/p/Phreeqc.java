@@ -156,6 +156,9 @@ public class Phreeqc extends MainActivity {
     private EditText delete;
     private Button delete_button;
 
+    private Button viewDatabase;
+    private Button searchDatabase;
+
     /**
      * Called when the activity is first created.
      */
@@ -165,6 +168,12 @@ public class Phreeqc extends MainActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.phreeqc);
+
+        viewDatabase = (Button) findViewById(R.id.viewDatabase);
+        viewDatabase.setOnClickListener(viewDatabaseClick);
+
+        searchDatabase = (Button) findViewById(R.id.searchDatabase);
+        searchDatabase.setOnClickListener(searchDatabaseClick);
 
         AddSS = (Button) findViewById(R.id.AddSS);
         AddSS.setOnClickListener(AddSSClick);
@@ -1537,6 +1546,143 @@ public class Phreeqc extends MainActivity {
         delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
     }
 
+    private View.OnClickListener searchDatabaseClick; {
+
+        searchDatabaseClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = PhreeqcInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                alertSearchDatabase();
+            }
+        };
+    }
+
+
+    public void alertSearchDatabase(){
+        // creating the EditText widget programatically
+        EditText editText10 = new EditText(Phreeqc.this);
+        editText10.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        editText10.setTypeface(Typeface.MONOSPACE);
+        editText10.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                editText10.removeTextChangedListener(this);
+                String text = editText10.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                editText10.getText().clear();
+                editText10.append(colorized_phreeqc(text));
+                // place the cursor at the original position
+                editText10.setSelection(startChanged+countChanged);
+                editText10.addTextChangedListener(this);
+            }
+        });
+        // create the AlertDialog as final
+        final AlertDialog dialog = new AlertDialog.Builder(Phreeqc.this)
+                .setMessage("The result search will be displayed in the output text view.")
+                .setTitle("Word search in the selected database")
+                .setView(editText10)
+
+                // Set the action buttons
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        String SearchedString = editText10.getText().toString();
+                        com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -a -C 3 '"+SearchedString+"' Database.dat > Input.phr.out ; cp Input.phr.out DisplayCurrentFile.txt");
+                        output2(exec("cat "+getFilesDir()+"/Input.phr.out"));
+                        output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                        output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                        output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                        pView(exec("cat "+getFilesDir()+"/P.txt"));
+                        ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                        dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                        sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                        ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                        r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                        k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                        sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                        ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                        r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                        k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                        delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
+                    }
+                })
+
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // removes the AlertDialog in the screen
+                    }
+                })
+                .create();
+
+        // set the focus change listener of the EditText10
+        // this part will make the soft keyboard automatically visible
+        editText10.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    private View.OnClickListener viewDatabaseClick; {
+
+        viewDatabaseClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Inputfile = PhreeqcInput.getText().toString();
+                try {
+                    FileOutputStream fileout = openFileOutput("Input-phreeqc.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(Inputfile);
+                    outputWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; cat Database.dat > Input.phr.out");
+                output2(exec("cat "+getFilesDir()+"/Input.phr.out"));
+                output3(exec("cat "+getFilesDir()+"/Input-phreeqc.txt"));
+                output4(exec("cat "+getFilesDir()+"/Keywords.phr"));
+                output42(exec("cat "+getFilesDir()+"/Keywords2.phr"));
+                pView(exec("cat "+getFilesDir()+"/P.txt"));
+                ssView(exec("cat "+getFilesDir()+"/SS.txt"));
+                dataView(exec("cat "+getFilesDir()+"/Database.txt"));
+                sms_kin_View(exec("cat "+getFilesDir()+"/SMS_kin_status.txt"));
+                ss_kin_View(exec("cat "+getFilesDir()+"/SS_kin_status.txt"));
+                r_kin_View(exec("cat "+getFilesDir()+"/R_kin_status.txt"));
+                k_kin_View(exec("cat "+getFilesDir()+"/K_kin_status.txt"));
+                sms_filter_View(exec("cat "+getFilesDir()+"/KeywordsSMS.phr"));
+                ss_filter_View(exec("cat "+getFilesDir()+"/KeywordsSS.phr"));
+                r_filter_View(exec("cat "+getFilesDir()+"/KeywordsR.phr"));
+                k_filter_View(exec("cat "+getFilesDir()+"/KeywordsK.phr"));
+                delete_View(exec("cat "+getFilesDir()+"/Delete.txt"));
+            }
+        };
+    }
+
     private View.OnClickListener AddSSClick; {
 
         AddSSClick = new View.OnClickListener() {
@@ -2436,7 +2582,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/Solution0.dat");
 
@@ -2754,7 +2900,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/Solution0.dat");
                     // (from the PHREEQC database - tnow it is needed to add it to Solution.dat from MOPAC calculation:
@@ -2893,7 +3039,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SMS_kin.txt");
 
@@ -3024,7 +3170,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/SS_kin.txt");
 
@@ -3154,7 +3300,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/R_kin.txt");
 
@@ -3284,7 +3430,7 @@ public class Phreeqc extends MainActivity {
 //                    exec("mv "+getFilesDir()+"/Solution_species.dat "+getFilesDir()+"/work");
                     exec("chmod 755 -R "+getFilesDir()+"/work");
 //                    exec(getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so");
-                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
+                    com.jrummyapps.android.shell.Shell.SH.run("cd "+getFilesDir()+"/ ; grep --text -f Solution_species.dat Selected.dat > DatabaseFragment.dat");
                     exec("chmod 755 "+getFilesDir()+"/DatabaseFragment.dat");
                     exec("mv "+getFilesDir()+"/DatabaseFragment.dat "+getFilesDir()+"/K_kin.txt");
 
