@@ -348,20 +348,20 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
 
-                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
-                progressDialog.setTitle("Please wait...");
-                progressDialog.setMessage("Exporting the structure...");
-                progressDialog.setCancelable(false);
-                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                progressDialog.show();
-
-                new Thread() {
-                    public void run() {
+//                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
+//                progressDialog.setTitle("Please wait...");
+//                progressDialog.setMessage("Exporting the structure...");
+//                progressDialog.setCancelable(false);
+//                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                progressDialog.show();
+//
+//                new Thread() {
+//                    public void run() {
 
                         try {
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
@@ -463,12 +463,12 @@ public class XtbKinetics2 extends MainActivity {
                         Intent intent = new Intent(XtbKinetics2.this, MolCanvas_reactant.class);
                         startActivity(intent);
 
-                        onFinish();
-                    }
-                    public void onFinish() {
-                        progressDialog.dismiss();
-                    }
-                }.start();
+//                        onFinish();
+//                    }
+//                    public void onFinish() {
+//                        progressDialog.dismiss();
+//                    }
+//                }.start();
 
             }
         };
@@ -487,20 +487,20 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
 
-                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
-                progressDialog.setTitle("Please wait...");
-                progressDialog.setMessage("Exporting the structure...");
-                progressDialog.setCancelable(false);
-                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                progressDialog.show();
-
-                new Thread() {
-                    public void run() {
+//                ProgressDialog progressDialog = new ProgressDialog(XtbKinetics2.this);
+//                progressDialog.setTitle("Please wait...");
+//                progressDialog.setMessage("Exporting the structure...");
+//                progressDialog.setCancelable(false);
+//                progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//                progressDialog.show();
+//
+//                new Thread() {
+//                    public void run() {
 
                         try {
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
@@ -602,12 +602,12 @@ public class XtbKinetics2 extends MainActivity {
                         Intent intent = new Intent(XtbKinetics2.this, MolCanvas_product.class);
                         startActivity(intent);
 
-                        onFinish();
-                    }
-                    public void onFinish() {
-                        progressDialog.dismiss();
-                    }
-                }.start();
+//                        onFinish();
+//                    }
+//                    public void onFinish() {
+//                        progressDialog.dismiss();
+//                    }
+//                }.start();
 
             }
         };
