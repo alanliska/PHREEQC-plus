@@ -41,7 +41,7 @@
             android:id="@+id/CommandLabel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Available programs are chemsol, chimescalc, cpx, crest, dftd4, dftb, fastchem, modes, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phreeqc, plotms, qcxms, s-dftd3, stda, tblite, transpose, waveplot, xbbc, xbvm, xtb, xtb4stda (with at least one blank space behind).\n\nFull command to be executed:"
+            android:text="Available programs are cpx, crest, dftb, dftd4, fastchem, g_spec, g2molden, chemsol, chimescalc, modes, molalign, mopac, mopac-makpol, mopac-param, multicharge, numsa-exe, obabel, phreeqc, plotms, qcxms, std2, s-dftd3, tblite, transpose, waveplot, xbbc, xbvm, xtb (with at least one blank space behind).\n\nFull command to be executed:"
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
 
         <EditText
@@ -208,12 +208,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#00AABB"
             android:text="OFFICIAL DFTB+ RECIPES" />
-        <Button
-            android:id="@+id/manual_modes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00AABB"
-            android:text="OFFICIAL MODES MANUAL" />
+<!--        <Button-->
+<!--            android:id="@+id/manual_modes"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#00AABB"-->
+<!--            android:text="OFFICIAL MODES MANUAL" />-->
         <Button
             android:id="@+id/Graph"
             android:layout_width="match_parent"

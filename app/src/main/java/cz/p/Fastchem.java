@@ -1104,36 +1104,35 @@ public class Fastchem extends MainActivity {
                 String FastChemCommand = exec("cat "+getFilesDir()+"/ProcessFastchem.txt");
 
                 FastChemCommand = FastChemCommand.replace(" cpx ", " "+getApplicationInfo().nativeLibraryDir+"/libcpx.so ");
-                FastChemCommand = FastChemCommand.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
-                FastChemCommand = FastChemCommand.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
-                FastChemCommand = FastChemCommand.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
-                FastChemCommand = FastChemCommand.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
-                FastChemCommand = FastChemCommand.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
-                FastChemCommand = FastChemCommand.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
-                FastChemCommand = FastChemCommand.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
-                FastChemCommand = FastChemCommand.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
-                FastChemCommand = FastChemCommand.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
-                FastChemCommand = FastChemCommand.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
-                FastChemCommand = FastChemCommand.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
-                FastChemCommand = FastChemCommand.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
-                FastChemCommand = FastChemCommand.replace(" stda ", " "+getApplicationInfo().nativeLibraryDir+"/libstda.so ");
-                FastChemCommand = FastChemCommand.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
-                FastChemCommand = FastChemCommand.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
-                FastChemCommand = FastChemCommand.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
-                FastChemCommand = FastChemCommand.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
                 FastChemCommand = FastChemCommand.replace(" crest ", " "+getApplicationInfo().nativeLibraryDir+"/libcrest.so ");
-//                FastChemCommand = FastChemCommand.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
-//                FastChemCommand = FastChemCommand.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
-//                FastChemCommand = FastChemCommand.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
-//                FastChemCommand = FastChemCommand.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
-                FastChemCommand = FastChemCommand.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                FastChemCommand = FastChemCommand.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
+                FastChemCommand = FastChemCommand.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
                 FastChemCommand = FastChemCommand.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
+                FastChemCommand = FastChemCommand.replace(" g_spec ", " "+getApplicationInfo().nativeLibraryDir+"/libg_spec.so ");
+                FastChemCommand = FastChemCommand.replace(" g2molden ", " "+getApplicationInfo().nativeLibraryDir+"/libg2molden.so ");
+                FastChemCommand = FastChemCommand.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                FastChemCommand = FastChemCommand.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
+                FastChemCommand = FastChemCommand.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
+                FastChemCommand = FastChemCommand.replace(" molalign ", " "+getApplicationInfo().nativeLibraryDir+"/libmolalign.so ");
                 FastChemCommand = FastChemCommand.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");
                 FastChemCommand = FastChemCommand.replace(" mopac-makpol ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-makpol.so ");
                 FastChemCommand = FastChemCommand.replace(" mopac-param ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-param.so ");
+                FastChemCommand = FastChemCommand.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
+                FastChemCommand = FastChemCommand.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
+                FastChemCommand = FastChemCommand.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
                 FastChemCommand = FastChemCommand.replace(" phreeqc ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so ");
-//                FastChemCommand = FastChemCommand.replace(" phreeqc-prepare ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc-prepare.so ");
+                FastChemCommand = FastChemCommand.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
+                FastChemCommand = FastChemCommand.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
+                FastChemCommand = FastChemCommand.replace(" std2 ", " "+getApplicationInfo().nativeLibraryDir+"/libstd2.so ");
+                FastChemCommand = FastChemCommand.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
+                FastChemCommand = FastChemCommand.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
                 FastChemCommand = FastChemCommand.replace(" transpose ", " "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so ");
+                FastChemCommand = FastChemCommand.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
+                FastChemCommand = FastChemCommand.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
+                FastChemCommand = FastChemCommand.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
+                FastChemCommand = FastChemCommand.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
+
+                FastChemCommand = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"+getApplicationInfo().nativeLibraryDir+" ; "+FastChemCommand;
 
                 new RunCommandTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, FastChemCommand);
             }

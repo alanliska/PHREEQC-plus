@@ -22,7 +22,7 @@ Compilation of the source code for Android as well as the Android app developmen
 Website: http://www.jh-inst.cas.cz/~liska/MobileChemistry.htm
 
 List of used third-party software:
-ACPDFVIEW, ANDROID SHELL, ARPACK, BLAS, CHEMSOL, CHIMESCALC, CPCM-X, CREST, DFTB+, DFTD4, EIGEN3, FASTCHEM Cond, GMP, GRAPHVIEW, LAPACK, LWONIOM, MBD, MCTC-LIB, MOLCANVAS, MOPAC, MSTORE, MULTICHARGE, NUMSA, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STDA, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB, XTB4STDA.  
+ACPDFVIEW, ANDROID SHELL, ARPACK, BLAS, CHEMSOL, CHIMESCALC, CPCM-X, CREST, DFTB+, DFTD4, EIGEN3, FASTCHEM Cond, GMP, GRAPHVIEW, LAPACK, LIBCINT, LIBPVOL, LWONIOM, MBD, MCTC-LIB, MOLALIGNLIB, MOLCANVAS, MOPAC, MSTORE, MULTICHARGE, NUMSA, OPENBABEL, OPENBLAS, OPENMOPAC, OPSIN, PHREEQC, PLOTMS, PYTHON, QCXMS, S-DFTD3, STD2, TBLITE, TEST-DRIVE, TOML-F, TRANSPOSE, X11-BASIC, XTB.  
 
 More info on licenses & references - please refer to the licensing information inside of the app.
 
@@ -68,20 +68,27 @@ Licenses and references to used third-party software:
  -DNTF-DFTB: R.K. Lindsey*, S. Bastea*, N. Goldman, L. Fried, J. Chem. Phys. 154 164115 (2021).
  -TiH-DFTB: Goldman*, K. Kweon, R.K. Lindsey, L.E. Fried, T.W. Heo, B. Sadigh, P. Soderlind, A. Landa, A. Perron, J. Jeffries, B. Wood, J. Chem. Theory Comput. 17 4435 (2021).
  -QMD-DFTB: C.H. Pham*, R.K. Lindsey, L.E. Fried, N. Goldman, J. Phys. Chem. Lett. 13 2934 (2022).
+ -Carbon-2.0: R.K. Lindsey* S. Bastea, S. Hamel, Y. Lyu, N. Goldman, V. Lordi, npj Comput. Mater. 11 26 (2025).
+ -CN-hierarch: R.K. Lindsey*, A.D. Oladipupo, S. Bastea, B.A. Steele, F.W. Kuo, N. Goldman, Under Review: npj Comput. Mater. (2025).
  Source code: https://github.com/rk-lindsey/chimes_calculator
  License: LGPL-3.0
 
  * CPCM-X
  Authors/contributors: Marcel Stahn, Sebastian Ehlert, "Albkat" (GitHub)
- Ref.: M. Stahn, S. Ehlert, S. Grimme, J. Phys. Chem. A, 2023, XX, XXXX-XXXX. DOI: 10.1021/acs.jpca.3c04382
+ Ref.: M. Stahn, S. Ehlert, S. Grimme, J. Phys. Chem. A, 2023, 127(33), 7036-7043. DOI: 10.1021/acs.jpca.3c04382
  Source code: https://github.com/grimme-lab/CPCM-X
  License: GNU GPL-3.0
 
  * CREST
- Authors: Philipp Pracht, Fabian Bohle, Stefan Grimme, C.A. Bauer, S. Spicher, C. Plett, A. Hansen, C. Bannwarth, S. Ehlert, G. Feldmann, J. Gorges
+ Authors: Philipp Pracht, Fabian Bohle, Stefan Grimme, C.A. Bauer, S. Spicher, C. Plett, A. Hansen, C. Bannwarth, S. Ehlert, G. Feldmann, J. Gorges, M. Müller, T. Neudecker, P. Steinbach, P. Wesołowski, F. Zeller
  Ref.: 
- -CREST: Pracht, P.; Bohle, F.; Grimme, S.; Automated exploration of the low-energy chemical space with fast quantum chemical methods, Phys. Chem. Chem. Phys., 2020, 22, 7169-7192. DOI: 10.1039/C9CP06869D
- -CREST 3.0: Pracht, P.; Grimme, S.; Bannwarth, C.; Bohle, F.; Ehlert, S.; Feldmann, G.; Gorges, J.; Müller, M.; Neudecker, T.; Plett, C.; Spicher, S.; Steinbach, P.; Wesołowski, P.A.; Zeller, F.; CREST — A program for the exploration of low-energy molecular chemical space, J. Chem. Phys., 2024, 160, 114110. DOI: 10.1063/5.0197592
+ -CREST: P. Pracht, F. Bohle, S. Grimme, Phys. Chem. Chem. Phys., 2020, 22, 7169-7192. DOI: 10.1039/C9CP06869D
+         S. Grimme, J. Chem. Theory Comput., 2019, 155, 2847-2862. DOI: 10.1021/acs.jctc.9b00143
+         P. Pracht, S. Grimme, Chem. Sci., 2021, 12, 6551-6568. DOI: 10.1039/d1sc00621e
+         P. Pracht, C.A. Bauer, S. Grimme, J. Comput. Chem., 2017, 38, 2618-2631. DOI: 10.1002/jcc.24922
+         S. Spicher, C. Plett, P. Pracht, A. Hansen, S. Grimme, J. Chem. Theory Comput., 2022, 18, 3174-3189. DOI: 10.1021/acs.jctc.2c00239
+         P. Pracht, C. Bannwarth, J. Chem. Theory Comput., 2022, 18 (10), 6370-6385. DOI: 10.1021/acs.jctc.2c00578
+         P. Pracht, S. Grimme, C. Bannwarth, F. Bohle, S. Ehlert, G. Feldmann, J. Gorges, M. Müller, T. Neudecker, C. Plett, S. Spicher, P. Steinbach, P. Wesołowski, F. Zeller, J. Chem. Phys., 2024, 160, 114110. DOI: 10.1063/5.0197592
  -Conformational Entropy: Pracht, P.; Grimme, S.; Calculation of absolute molecular entropies and heat capacities made simple, Chem. Sci., 2021, 12, 6551-6568. DOI: 10.1039/D1SC00621E
  -Meta-Dynamics Simulations: Grimme, S.; Exploration of Chemical Compound, Conformer, and Reaction Space with Meta-Dynamics Simulations Based on Tight-Binding Quantum Chemical Calculations, J. Chem. Theory Comput., 2019, 15 (5), 2847-2862. DOI: 10.1021/acs.jctc.9b00143
  -Protonation Site Determination: Pracht, P.; Bauer, C.; Grimme, S. Automated and efficient quantum chemical determination and energetic ranking of molecular protonation sites, J. Comput. Chem. 2017, 38 (30), 2618-2631. DOI: 10.1002/jcc.24922
@@ -113,7 +120,7 @@ Licenses and references to used third-party software:
 
  * DFTB+
  Authors: B. Hourahine, B. Aradi, V. Blum, F. Bonafé, A. Buccheri, C. Camacho, C. Cevallos, M. Y. Deshaye, T. Dumitrică, A. Dominguez, S. Ehlert, M. Elstner, T. van der Heide, J. Hermann, S. Irle, J. J. Kranz, C. Köhler, T. Kowalczyk, T. Kubař, I. S. Lee, V. Lutsker, R. J. Maurer, S. K. Min, I. Mitchell, C. Negre, T. A. Niehaus, A. M. N. Niklasson, A. J. Page, A. Pecchia, G. Penazzi, M. P. Persson, J. Řezáč, C. G. Sánchez, M. Sternberg, M. Stöhr, F. Stuckenberg, A. Tkatchenko, V. W.-z. Yu, T. Frauenheim
- Ref.: DFTB+, a software package for efficient approximate density functional theory based atomistic simulations; J. Chem. Phys. 152, 124101 (2020).
+ Ref.: B. Hourahine, B. Aradi, V. Blum, F. Bonafé, A. Buccheri, C. Camacho, C. Cevallos, M. Y. Deshaye, T. Dumitrică, A. Dominguez, S. Ehlert, M. Elstner, T. van der Heide, J. Hermann, S. Irle, J. J. Kranz, C. Köhler, T. Kowalczyk, T. Kubař, I. S. Lee, V. Lutsker, R. J. Maurer, S. K. Min, I. Mitchell, C. Negre, T. A. Niehaus, A. M. N. Niklasson, A. J. Page, A. Pecchia, G. Penazzi, M. P. Persson, J. Řezáč, C. G. Sánchez, M. Sternberg, M. Stöhr, F. Stuckenberg, A. Tkatchenko, V. W.-z. Yu, T. Frauenheim: DFTB+, a software package for efficient approximate density functional theory based atomistic simulations; J. Chem. Phys. 152, 124101 (2020).
  -DFTB+ code: B. Aradi, B. Hourahine, and Th. Frauenheim. DFTB+, a sparse matrix-based implementation of the DFTB method. J. Phys. Chem. A, 111(26):5678, 2007. 65, 131. 
  -non-SCC DFTB: D. Porezag, T. Frauenheim, T. Köhler, G. Seifert, and R. Kaschner. Construction of tightbinding-like potentials on the basis of density-functional theory: Application to carbon. Phys. Rev. B, 51:12947, 1995. 131.
                 G. Seifert, D. Porezag, and T. Frauenheim. Calculations of molecules, clusters, and solids with a simplified LCAO-DFT-LDA scheme. Int. J. Quant. Chem., 58:185, 1996. 131. 
@@ -127,8 +134,8 @@ Licenses and references to used third-party software:
  -3rd order corrections: Y. Yang, H. Yu, D. York, Q. Cui, and M. Elstner. Extension of the self-consistent-charge density-functional tight-binding method: Third-order expansion of the density functional theory total energy and introduction of a modified effective coulomb interaction. J. Phys. Chem. A, 111:10861, 2007. 49, 50, 131. 
  -Linear response TD-DFTB: T. A. Niehaus, S. Suhai, F. Della Sala, P Lugli, M. Elstner, G. Seifert, and Th. Frauenheim. Tight-binding approach to time-dependent density-functional response theory. Phys. Rev. B, 63:085108, 2001. 59, 131. 
  Source code: https://github.com/dftbplus/dftbplus
- License: GNU Lesser General Public License v3
- Slater-Koster files: Creative Commons Attribution-ShareAlike 4.0 International license (for authors and references to individual sets, please see the License/LICENSING TERMS-SLATER-KOSTER-FILES, or check their homepage https://dftb.org/parameters/download/all-sk-files). For easier work in the mobile devices, all the Slater-Koster files are merged in one folder 'sk_files' and their type is distinguished in the name of the middle-separator, e.g. '-3ob-', '-mio-' etc. Please be aware that in any case of using the results for publication purposes, the authors and their works specified in the corresponding Slater-Koster file set have to be cited properly. The license permits use of their work only under the condition that their proper citing is enforced. 
+ License: LGPL-3.0, GPL-3.0
+ Slater-Koster files: Creative Commons Attribution-ShareAlike 4.0 International license (for authors and references to individual sets, please see the License/LICENSING TERMS-SLATER-KOSTER-FILES, or check their homepage https://github.com/orgs/dftbparams/repositories). For easier work in the mobile devices, all the Slater-Koster files are merged in one folder 'sk_files' and their type is distinguished in the name of the middle-separator, e.g. '-3ob-', '-mio-' etc. Please be aware that in any case of using the results for publication purposes, the authors and their works specified in the corresponding Slater-Koster file set have to be cited properly. The license permits use of their work only under the condition that their proper citing is enforced. 
  Recipes: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
  * DFTD4
@@ -136,6 +143,8 @@ Licenses and references to used third-party software:
  Ref.: Eike Caldeweyher, Christoph Bannwarth and Stefan Grimme, J. Chem. Phys., 2017, 147, 034112. DOI: 10.1063/1.4993215
        Eike Caldeweyher, Sebastian Ehlert, Andreas Hansen, Hagen Neugebauer, Sebastian Spicher, Christoph Bannwarth and Stefan Grimme, J. Chem Phys, 2019, 150, 154122. DOI: 10.1063/1.5090222 chemrxiv: 10.26434/chemrxiv.7430216
        Eike Caldeweyher, Jan-Michael Mewes, Sebastian Ehlert and Stefan Grimme, Phys. Chem. Chem. Phys., 2020, 22, 8499-8512. DOI: 10.1039/D0CP00502A chemrxiv: 10.26434/chemrxiv.10299428
+       Marvin Friede, Sebastian Ehlert, Stefan Grimme and Jan-Michael Mewes, J. Chem. Theory Comput., 2023, 19 (22), 8097-8107. DOI: 10.1021/acs.jctc.3c00717
+       Lukas Wittmann, Igor Gordiy, Marvin Friede, Benjamin Helmich-Paris, Stefan Grimme, Andreas Hansen and Markus Bursch, Phys. Chem. Chem. Phys., 2024, 26, 21379-21394. DOI: 10.1039/D4CP01514B
  Source code: https://github.com/dftd4/dftd4
  License: GNU GPL v3 and GNU LGPL v3
 
@@ -145,20 +154,20 @@ Licenses and references to used third-party software:
  License: Copyright © 2022-2024 Philipp Pracht. CREST is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 
  * DOCS (XTB)
- Taken from: https://xtb-docs.readthedocs.io/en/latest/contents.html
+ Taken from: https://xtb-docs.readthedocs.io/en/latest/
  Source code: https://github.com/grimme-lab/xtb_docs
  License: This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0). To view a copy of this license, visit creative commons or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
  * EIGEN3
  Authors: Benoît Jacob, Gaël Guennebaud and many others (please check the homepage https://eigen.tuxfamily.org/index.php?title=Main_Page)
- Source code: https://eigen.tuxfamily.org/index.php?title=Main_Page
+ Source code: https://gitlab.com/libeigen/eigen.git
  License: MPL2, earlier versions LGPL3+
 
  * FASTCHEM
  Authors: Daniel Kitzmann, Joachim Stock
  References: Stock, J. W., Kitzmann, D., Patzer, A. B. C., Sedlmayr, E.: FastChem: A computer program for efficient complex chemical equilibrium calculations in the neutral/ionized gas phase with applications to stellar and planetary atmospheres. Monthly Notices of the Royal Astronomical Society, 479(1) (2018) 865-874.
              Stock, J. W., Kitzmann, D., & Patzer, A. B. C.: FastChem 2: An improved computer program to determine the gas-phase chemical equilibrium composition for arbitrary element distributions. Monthly Notices of the Royal Astronomical Society, 517(3) (2022) 4070-4080.
-             Kitzmann, D., Stock, J.W., Patzer, A.B.: FastChem Cond: Equilibrium chemistry with condensation and rainout for cool planetary and stellar environments. arXiv preprint arXiv:2309.02337. 2023 Sep 5.
+             Kitzmann, D., Stock, J.W. and Patzer, A.B.C., 2024. FASTCHEM COND: equilibrium chemistry with condensation and rainout for cool planetary and stellar environments. Monthly Notices of the Royal Astronomical Society, 527(3), pp.7263-7283.
  Source code: https://github.com/NewStrangeWorlds/FastChem
  License: This project is Copyright (c) Daniel Kitzmann and Joachim Stock. FastChem is released under the GNU Public Licence (GPL) 3.0. That means, it can be freely copied, edited, and re-distributed. If the code is re-distributed it has to be released under at least a GPL 3.0 licence as well. The full licence of FastChem can be found in the repository *licence.md* file or under https://www.gnu.org/licenses/gpl-3.0.html. The user guide is released under the Creative Commons Licence (CC BY SA). Licensees may copy and distribute the work and make derivative works based on it only if they give the authors (Daniel Kitzmann & Joachim Stock) the credits by providing a reference to the original guide and this GitHub repository. Licensees may also distribute derivative works only under a license identical to ("not more restrictive than") the license that governs the original work.
 
@@ -181,6 +190,18 @@ Licenses and references to used third-party software:
  Source code: https://netlib.org/lapack/
  License: freely-available software package, modified BSD license
 
+ * LIBCINT
+ Author: Pierre Beaujean
+ Source code: https://github.com/pierre-24/libcint-meson
+ License: MIT
+
+ * LIBPVOL
+ Authors/contributors: Philipp Pracht, Felix Zeller
+ Ref.: Zeller, F., Pracht, P. and Neudecker, T., 2025. Using Conformational Sampling to Model Spectral and Structural Changes of Molecules at Elevated Pressures. The Journal of Physical Chemistry A, 129(8), pp.2108-2116.
+       Zeller, F., Pracht, P. and Neudecker, T., 2024. High Pressure Conformational Sampling.
+ Source code: https://github.com/neudecker-group/libpvol
+ License: GNU GPL v3 and GNU LGPL v3
+
  * LWONIOM
  Authors: P. Wesołowski, D. J. Wales, P. Pracht
  Ref.: P. Wesołowski, D. J. Wales, and P. Pracht, “A multilevel framework for analysis of protein folding involving disulphide bond formation,” The Journal of Physical Chemistry B 128.13 (2024): 3145-3156. https://doi.org/10.1021/acs.jpcb.4c00104
@@ -197,7 +218,13 @@ Licenses and references to used third-party software:
  Authors/contributors: Sebastian Ehlert, Eisuke Kawashima, Marcel Stahn, Kjell Jorner and others (please see the source code page)
  Source code: https://github.com/grimme-lab/mctc-lib
  License: Apache v2
- 
+
+ * MOLALIGNLIB
+ Authors: J. M. Vasquez-Perez, L. A. Zarate-Hernandez, C. Z. Gomez-Castro, U. A. Nolasco-Hernandez
+ Ref.: J. M. Vasquez-Perez, L. A. Zarate-Hernandez, C. Z. Gomez-Castro, U. A. Nolasco-Hernandez. A Practical Algorithm to Solve the Near-Congruence Problem for Rigid Molecules and Clusters, Journal of Chemical Information and Modeling (2023), DOI: https://doi.org/10.1021/acs.jcim.2c01187
+ Source code: https://github.com/qcuaeh/molalignlib
+ License: GNU GPL v3
+
  * MOLCANVAS
  Authors: Alan Liska, Veronika Ruzickova (J. Heyrovsky Institute of Physical Chemistry of the CAS)
  Source code: https://github.com/alanliska/MolCanvas
@@ -206,6 +233,7 @@ Licenses and references to used third-party software:
  * MOPAC
  Author: James JP Stewart
  Ref.: Stewart, James J.P., Journal of computer-aided molecular design 4(1) (1990) 1-103.
+       Moussa, J. E., & Stewart, J. J. P. (2025). MOPAC (v23.2.2). Zenodo. https://doi.org/10.5281/zenodo.17470335
  Source code: http://openmopac.net/
  License: LGPL3 license, GPL3 license
 
@@ -216,6 +244,10 @@ Licenses and references to used third-party software:
 
  * MULTICHARGE
  Authors/contributors: Sebastian Ehlert, Eisuke Kawashima, Daniel Mejia-Rodriguez, Kjell Jorner
+ Ref.: Eike Caldeweyher, Sebastian Ehlert, Andreas Hansen, Hagen Neugebauer, Sebastian Spicher, Christoph Bannwarth and Stefan Grimme, J. Chem Phys, 2019, 150, 154122. DOI: 10.1063/1.5090222 chemrxiv: 10.26434/chemrxiv.7430216
+       Lukas Wittmann, Igor Gordiy, Marvin Friede, Benjamin Helmich-Paris, Stefan Grimme, Andreas Hansen and Markus Bursch, Phys. Chem. Chem. Phys., 2024, 26, 21379-21394. DOI: 10.1039/D4CP01514B
+       Eike Caldeweyher, Jan-Michael Mewes, Sebastian Ehlert and Stefan Grimme, Phys. Chem. Chem. Phys., 2020, 22, 8499-8512. DOI: 10.1039/D0CP00502A chemrxiv: 10.26434/chemrxiv.10299428
+       Thomas Froitzheim, Marcel Müller, Andreas Hansen, and Stefan Grimme, J. Chem. Phys., 2025, 162, 214109. DOI: 10.1039/10.1063/5.0268978 chemrxiv: 10.26434/chemrxiv-2025-1nxwg
  Source code: https://github.com/grimme-lab/multicharge
  License: Apache v2
 
@@ -230,7 +262,7 @@ Licenses and references to used third-party software:
 
  * OPENBABEL
  Ref.: N M O'Boyle, M Banck, C A James, C Morley, T Vandermeersch, and G R Hutchison. "Open Babel: An open chemical toolbox." J. Cheminf. (2011), 3, 33. DOI:10.1186/1758-2946-3-33
- Source code: http://openbabel.org/wiki/Main_Page, https://github.com/openbabel/openbabel
+ Source code: https://openbabel.org/, https://github.com/openbabel/openbabel
  License: GPL-2.0
 
  * OPENBLAS
@@ -246,13 +278,14 @@ Licenses and references to used third-party software:
 
  * OPSIN
  Authors/developers: Rich Apodaca, Albina Asadulina, Peter Corbett, Daniel Lowe (Current maintainer), John Mayfield, Peter Murray-Rust, Noel O'Boyle, Mark Williamson
- Ref.: Lowe, Daniel M., Peter T. Corbett, Peter Murray-Rust, and Robert C. Glen. "Chemical name to structure: OPSIN, an open source solution." (2011): 739-753.
- Source code: https://github.com/dan2097/opsin
+ Ref.: Lowe, D. M., Corbett, P. T., Murray-Rust, P., & Glen, R. C. Chemical Name to Structure: OPSIN, an Open Source Solution [Computer software]. https://doi.org/10.1021/CI100384D 
+Source code: https://github.com/dan2097/opsin
  License: MIT License
 
  * PHREEQC
  Authors: David L. Parkhurst, C.A.J. Appelo
  Ref.: Parkhurst, D.L., and Appelo, C.A.J., 2013, Description of input and examples for PHREEQC version 3—A computer program for speciation, batch-reaction, one-dimensional transport, and inverse geochemical calculations: U.S. Geological Survey Techniques and Methods, book 6, chap. A43, 497 p.
+       PHREEQC Version 3, Software Release, 2025. 
  Source code: https://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/
  Usage: Public Domain
 
@@ -268,6 +301,16 @@ Licenses and references to used third-party software:
  * QCXMS
  Authors/contributors: Jeroen Koopman, Sebastian Ehlert, Johannes Gorges
  Ref.: S. Grimme, Towards First Principles Calculation of Electron Impact Mass Spectra of Molecules. Angew. Chem. Int. Ed., 52, 6306-6312 DOI:10.1002/anie.201300158
+       Bauer, C. A.; Grimme, S. First principles calculation of electron ionization mass spectra for selected organic drug molecules. Org. Biomol. Chem., 2014, 12, 8737-8744. DOI: 10.1039/C4OB01668H
+       Bauer, C. A.; Grimme, S. Elucidation of Electron Ionization Induced Fragmentations of Adenine by Semiempirical and Density Functional Molecular Dynamics. J. Phys. Chem. A, 2014, 118, 11479-11484. DOI: 10.1021/jp5096618
+       Bauer, C. A.; Grimme, S. Automated Quantum Chemistry Based Molecular Dynamics Simulations of Electron Ionization Induced Fragmentations of the Nucleobases Uracil, Thymine, Cytosine, and Guanine. Eur. J. Mass Spectrom., 2015, 21, 125−140. DOI: 10.1255/ejms.1313
+       Bauer, C. A.; Grimme, S. How to Compute Electron Ionization Mass Spectra from First Principles. J. Phys. Chem. A, 2016, 120, 3755-3766. DOI: 10.1021/acs.jpca.6b02907
+       Asgeirsson, V.; Bauer, C. A.; Grimme, S. Quantum chemical calculation of electron ionization mass spectra for general organic and inorganic molecules. Chem. Sci., 2017, 8, 4879−4895. DOI: 10.1039/C7SC00601B
+       Koopman, J.; Grimme, S. Calculation of Electron Ionization Mass Spectra with Semiempirical GFNn-xTB Methods. ACS Omega, 2019, 4, 15120−15133. DOI: 10.1021/acsomega.9b02011
+       Asgeirsson, V.; Bauer, C.A.; Grimme, S. Unimolecular decomposition pathways of negatively charged nitriles by ab initio molecular dynamics. Phys. Chem. Chem. Phys., 2016, 18, 31017-31026. DOI: 10.1039/C6CP06180J
+       Koopman, J.; Grimme, S. From QCEIMS to QCxMS: A Tool to Routinely Calculate CID Mass Spectra Using Molecular Dynamics. J. Am. Soc. Mass Spectrom, 2021. DOI: 10.1021/jasms.1c00098
+       Schreckenbach, S.A; Anderson, J.S.M; Koopman, J.; Jobst, K. Predicting the Mass Spectra of Environmental Pollutants Using Computational Chemistry: A Case Study and Critical Evaluation. J. Am. Soc. Mass Spectrom, 2021. DOI: 10.1021/jasms.1c00078
+       Schnegotzki, R.; Koopman, J., Grimme, S.; Süssmuth, R.D. Quantum Chemistry‐based Molecular Dynamics Simulations as a Tool for the Assignment of ESI‐MS/MS Spectra of Drug Molecules. Eur. J. Chem., 2022 DOI: 10.1002/chem.202200318
  Source code: https://github.com/qcxms/QCxMS
  License: GNU GPL v3 and GNU LGPL v3
 
@@ -275,21 +318,29 @@ Licenses and references to used third-party software:
  Authors/contributors: Sebastian Ehlert, Robert Cohn, Eisuke Kawashima, Shirong Wang, Kjell Jorner and others (please see the source code page)
  Ref.: S. Grimme, J. Antony, S. Ehrlich and H. Krieg J. Chem. Phys, 132 (2010), 154104.
        S. Grimme, S. Ehrlich and L. Goerigk J. Comput. Chem, 32 (2011), 1456-1465.
+       H. Kruse, S. Grimme, J. Chem. Phys, 136(15) (2012), 154101. 
  Source code: https://github.com/dftd3/simple-dftd3
  License: GNU GPL v3 and GNU LGPL v3
 
- * STDA
- Authors/contributors: Marc de Wergifosse, Shoubhik Maiti, Pierre Beaujean, Sebastian Ehlert and others (please see the source code page)
+ * STD2
+ Authors/contributors:
  Ref: S. Grimme, A simplified Tamm–Dancoff density functional approach for the electronic excitation spectra of very large molecules, J. Chem. Phys., 2013, 138, 244104. DOI: 10.1063/1.4811331
       C. Bannwarth, S. Grimme, A simplified time-dependent density functional theory approach for electronic ultraviolet and circular dichroism spectra of very large molecules, Comput. Theor. Chem., 2014, 1040 – 1041, 45 – 53. DOI: 10.1016/j.comptc.2014.02.023
       S. Grimme and C. Bannwarth, Ultra-fast computation of electronic spectra for large systems by tight-binding based simplified Tamm-Dancoff approximation (sTDA-xTB) J. Chem. Phys., 2016, 145, 054103. DOI: 10.1063/1.4959605
-      M. de Wergifosse, C. Bannwarth, S. Grimme, A simplified spin-flip time-dependent density functional theory (SF-sTD-DFT) approach for the electronic excitation spectra of very large diradicals, J. Phys. Chem. A, 2019, 123 (27), 815–5825. DOI: 10.1021/acs.jpca.9b03176
       M. de Wergifosse, S. Grimme, Nonlinear-response properties in a simplified time-dependent density functional theory (sTD-DFT) framework: Evaluation of the first hyperpolarizability, J. Chem. Phys., 2018, 149 (2), 024108. DOI: 10.1063/1.5037665
       M. de Wergifosse, S. Grimme, Nonlinear-response properties in a simplified time-dependent density functional theory (sTD-DFT) framework: Evaluation of excited-state absorption spectra, J. Chem. Phys., 2019, 150, 094112. DOI: 10.1063/1.5080199
+      M. de Wergifosse, C. Bannwarth, S. Grimme, A simplified spin-flip time-dependent density functional theory (SF-sTD-DFT) approach for the electronic excitation spectra of very large diradicals, J. Phys. Chem. A, 2019, 123 (27), 815–5825. DOI: 10.1021/acs.jpca.9b03176
+      M. de Wergifosse, J. Seibert, B. Champagne, and S. Grimme, Are fully conjugated expanded indenofluorenes analogues and diindeno[n]thiophene derivatives diradicals? A simplified (spin-flip) time-dependent density functional theory [(SF-)sTD-DFT] study, J. Phys. Chem. A, 2019, 123 (45), 9828-9839. DOI: DOI: 10.1021/acs.jpca.9b08474
       M. de Wergifosse, J. Seibert, S. Grimme, Simplified time-dependent density functional theory (sTD-DFT) for molecular optical rotation, J. Chem. Phys., 2020, 153, 084116. DOI: 10.1063/5.0020543
       M. de Wergifosse, S. Grimme, A unified strategy for the chemically intuitive interpretation of molecular optical response properties, J. Chem. Theory Comput., 2020, 16 (12), 7709–7720. DOI: 10.1021/acs.jctc.0c00990
-      M. de Wergifosse, P. Beaujean, S. Grimme, Ultrafast evaluation of two-photon absorption with simplified time-dependent density functional theory, J. Phys. Chem. A, 2022, XX, XXXX. DOI: 10.1021/acs.jpca.2c02395
- Source code: https://github.com/grimme-lab/stda
+      M. de Wergifosse, S. Grimme, Perspective on simplified quantum chemistry methods for excited states and response properties, J. Phys. Chem. A, 2021, J. Phys. Chem. A, 2021, 125 (18) 3841–3851. DOI: 10.1021/acs.jpca.1c02362
+      P. Beaujean, B. Champagne, S. Grimme, and M. de Wergifosse, All-atom quantum mechanical calculation of the second-harmonic generation of fluorescent proteins, J. Phys. Chem. Lett., 2021, 12 (39), 9684-9690. DOI: 10.1021/acs.jpclett.1c02911
+      M. de Wergifosse, P. Beaujean, S. Grimme, Ultrafast evaluation of two-photon absorption with simplified time-dependent density functional theory, J. Phys. Chem. A, 2022, 126 (41) 7534–7547. DOI: 10.1021/acs.jpca.2c02395
+      S. Löffelsender, P. Beaujean, M. de Wergifosse. Simplified quantum chemistry methods to evaluate non-linear optical properties of large systems, WIREs Comput Mol Sci. 2024, 14 (1) e1695. DOI: 10.1002/wcms.1695
+      M. de Wergifosse, S. Grimme, The eXact integral simplified time-dependent density functional theory (XsTD-DFT), J. Chem. Phys., 2024, 160, 204110. DOI: 10.1063/5.0206380
+      M. de Wergifosse, Computing excited states of very large systems with range-separated hybrid functionals and the eXact integral simplified time-dependent density functional theory (XsTD-DFT), J. Phys. Chem. Lett., 2024, 15, (51) 12628–12635. DOI: 10.1021/acs.jpclett.4c03193
+      M. G. Maraldi, M. de Wergifosse, Evaluating the performance of the eXact integral simplified time-dependent density functional theory (XsTD-DFT) to compute one- and two-photon absorption, J. Phys. Chem. A, 2025, 129, (35) 8178–8203. DOI: 10.1021/acs.jpca.5c03189
+ Source code: https://github.com/grimme-lab/std2
  License: GNU GPL v3 and GNU LGPL v3
 
  * TBLITE
@@ -318,7 +369,7 @@ Licenses and references to used third-party software:
  License: GPL-2.0
 
  * XTB
- Authors: C. Bannwarth, E. Caldeweyher, S. Ehlert, A. Hansen, P. Pracht, J. Seibert, S. Spicher, S. Grimme, P. Shushkov, M. Stahn, H. Neugebauer, J.-M. Mewes, V. Asgeirsson, C. Bauer, J. Koopman
+ Authors/contributors: P. Atkinson, C. Bannwarth, F. Bohle, G. Brandenburg, E. Caldeweyher, M. Checinski, S. Dohm, S. Ehlert, S. Ehrlich, I. Gerasimov, S. Grimme, C. Hölzer, A. Katbashev, J. Koopman, C. Lavinge, S. Lehtola, F. März, M. Müller, F. Musil, H. Neugebauer, J. Pisarek, C. Plett, P. Pracht, F. Pultar, J. Seibert, P. Shushkov, S. Spicher, M. Stahn, M. Steiner, T. Strunk, J. Stückrath, T. Rose, J. Unsleber
  Ref.: 
    -General References to xtb and the implemented GFN methods:
     C. Bannwarth, E. Caldeweyher, S. Ehlert, A. Hansen, P. Pracht, J. Seibert, S. Spicher, S. Grimme WIREs Comput. Mol. Sci., 2020, 11, e01493. DOI: 10.1002/wcms.1493
@@ -363,13 +414,21 @@ Licenses and references to used third-party software:
  Source code: https://github.com/grimme-lab/xtb
  License: GNU GPL v3 and GNU LGPL v3
 
- * XTB4STDA
- Authors/contributors: Sebastian Ehlert, Pierre Beaujean, Shoubhik Maiti, Jonathon Vandezande
- Ref.: S. Grimme and C. Bannwarth, J. Chem. Phys., 2016, 145, 054103. DOI: 10.1063/1.4959605
- Source code: https://github.com/grimme-lab/xtb4stda
- License: GNU GPL v3 and GNU LGPL v3
-
 Manuals:
+
+ * Chemsol: https://github.com/jborden/ChemSol/blob/master/documentation/cs21_manual.pdf (public domain)
+
+ * CREST: https://crest-lab.github.io/crest-docs/ (public domain)
+
+ * DFTB+: https://github.com/dftbplus/dftbplus/releases/latest/download/manual.pdf (public domain)
+
+ * DFTB+ recipes: http://dftbplus-recipes.readthedocs.io/ (CC BY-SA 4.0)
+
+ * FastChem: https://newstrangeworlds.github.io/FastChem/sections/overview.html (CC BY SA)
+
+ * MOPAC: https://github.com/openmopac/openmopac.github.io/tree/main (Apache 2.0)
+
+ * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (CC0)
 
  * PHREEQC 3 reference manual: https://github.com/usgs-coupled/phreeqc3/blob/master/doc/Phreeqc_3_2013_manual.pdf (public domain)
 
@@ -377,45 +436,35 @@ Manuals:
 
  * PHREEQC isotopes: https://github.com/usgs-coupled/phreeqc3/blob/master/doc/wrir02-4172.pdf (public domain)
 
- * FastChem: https://github.com/exoclime/FastChem/blob/master/manual/fastchem_manual.pdf (GPL v3)
-
- * MOPAC: https://github.com/openmopac/openmopac.github.io/tree/main (BSD 3-Clause)
-
- * DFTB+: https://github.com/dftbplus/dftbplus/releases/download/23.1/manual.pdf (public domain)
-
- * DFTB+ recipes: https://dftbplus-recipes.readthedocs.io/en/latest/ (CC BY-SA 4.0)
-
- * MODES: https://dftbplus.org/fileadmin/DFTB-Plus/public/dftb/current/manual-modes.pdf (public domain)
-
- * XTB: https://xtb-docs.readthedocs.io/en/latest/ (CC BY-SA 4.0)
-
- * CREST: https://crest-lab.github.io/crest-docs/ (public domain)
-
- * STDA: https://www.chemiebn.uni-bonn.de/pctc/mulliken-center/software/stda/stda_manual.pdf (public domain)
-
- * OpenBABEL: https://buildmedia.readthedocs.org/media/pdf/open-babel/latest/open-babel.pdf (CC0)
-
- * Chemsol: https://github.com/jborden/ChemSol/blob/master/documentation/cs21_manual.pdf (public domain)
+ * STD2: https://github.com/grimme-lab/std2/blob/master/std2_manual.pdf (LGPL v3, GPL v3)
 
  * X11-BASIC: https://x11-basic.sourceforge.net/X11-Basic-manual.pdf (GNU Free Documentation License)
 
+ * XTB: https://xtb-docs.readthedocs.io/en/latest/ (CC BY-SA 4.0)
+
 Sources of the pre-compiled binaries:
 
- * buildwire: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+ * chemsol: https://github.com/alanliska/CHEMSOL-for-phreeqc-plus
+
+ * cpx: https://github.com/alanliska/xtb-for-phreeqc-plus
 
  * crest: https://github.com/alanliska/crest-for-phreeqc-plus
 
  * dftb: https://github.com/alanliska/dftbplus-for-phreeqc-plus
 
+ * dftd4: https://github.com/alanliska/xtb-for-phreeqc-plus
+
  * fastchem: https://github.com/alanliska/FastChem-Cond-for-PHREEQC-plus
 
- * flux: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+ * g_spec: https://github.com/alanliska/std2-for-phreeqc-plus
 
- * chemsol: https://github.com/alanliska/CHEMSOL-for-phreeqc-plus
+ * g2molden: https://github.com/alanliska/std2-for-phreeqc-plus
 
- * makecube: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+ * chimescalc: https://github.com/alanliska/dftbplus-for-phreeqc-plus
 
  * modes: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+
+ * molalign: https://github.com/alanliska/molalign-for-phreeqc-plus
 
  * mopac: https://github.com/alanliska/mopac-for-phreeqc-plus
 
@@ -423,9 +472,11 @@ Sources of the pre-compiled binaries:
 
  * mopac-param: https://github.com/alanliska/mopac-for-phreeqc-plus
 
- * obabel: https://github.com/alanliska/openbabel-for-phreeqc-plus
+ * multicharge: https://github.com/alanliska/xtb-for-phreeqc-plus
 
- * phonons: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+ * numsa-exe: https://github.com/alanliska/xtb-for-phreeqc-plus
+
+ * obabel: https://github.com/alanliska/openbabel-for-phreeqc-plus
 
  * phreeqc: https://github.com/alanliska/phreeqc3-for-phreeqc-plus
 
@@ -433,9 +484,11 @@ Sources of the pre-compiled binaries:
 
  * qcxms: https://github.com/alanliska/QCxMS-for-phreeqc-plus
 
- * setupgeom: https://github.com/alanliska/dftbplus-for-phreeqc-plus
+ * s-dftd3: https://github.com/alanliska/xtb-for-phreeqc-plus
 
- * stda: https://github.com/alanliska/stda-for-phreeqc-plus
+ * std2: https://github.com/alanliska/std2-for-phreeqc-plus
+
+ * tblite: https://github.com/alanliska/xtb-for-phreeqc-plus
 
  * transpose: https://sourceforge.net/projects/transpose/
 
@@ -447,7 +500,9 @@ Sources of the pre-compiled binaries:
 
  * xtb: https://github.com/alanliska/xtb-for-phreeqc-plus
 
- * xtb4stda: https://github.com/alanliska/xtb4stda-for-phreeqc-plus
+Packed shared libraries:
+
+ * libomp.so: from the official Google Android NDK (r25b)
 
 Other references:
 

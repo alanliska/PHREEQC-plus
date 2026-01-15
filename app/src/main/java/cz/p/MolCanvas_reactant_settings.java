@@ -21,7 +21,7 @@ public class MolCanvas_reactant_settings extends MolCanvas_reactant {
     private TextView colorBanner1;
     private TextView colorBanner2;
     private TextView colorBanner3;
-    MolCanvas_canvasView molCanvasView;
+    MolCanvas_reactant_canvasView molCanvasView;
 
     private TextView zoomLabel;
     private TextView convLabel;

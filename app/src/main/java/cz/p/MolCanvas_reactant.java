@@ -1243,6 +1243,9 @@ public class MolCanvas_reactant extends AppCompatActivity {
         float y_coord = 0;
         float z_coord = 0;
 
+        // important - before exporting the structure, it is necessary to keep the updated atom numberings (e.g. after their manual reorder)
+        MolCanvas_reactant_canvasView.zmat.sort(Comparator.comparing(a -> a.getAtomNumber1()));
+        
         for (MolCanvas_object object : MolCanvas_reactant_canvasView.zmat) {
             if (object.getObjectType() == 1) {
                 String objSymbol = object.getAtomSymbol1();

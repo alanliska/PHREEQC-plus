@@ -19,8 +19,32 @@
             android:id="@+id/desc_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="This panel is devoted to XTB reaction path calculation with PHREEQC compatible output.\n\nWhen creating the XYZ structures, please pay attention to atom numberings - the same atoms has to correspond to each other in both reactant and product structures. To ensure this, please use the function Reorder in the Canvas 3D editor/viewer.\n\nEach entered formula must neither contain square brackets [] nor brackets inside of brackets."
+            android:text="This panel is devoted to XTB reaction path calculation with PHREEQC compatible output.\n\nWhen creating the XYZ structures, please pay attention to atom numberings - the same atoms has to correspond to each other in both reactant and product structures. To ensure this, please use the function Reorder in the MolCanvas 3D editor/viewer.\n\nEach entered formula must neither contain square brackets [] nor brackets inside of brackets."
             android:textAppearance="@android:style/TextAppearance.StatusBar.Title" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <TextView
+                android:id="@+id/tolLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="tolerance for aligning molecules (Ang)"/>
+
+            <EditText
+                android:id="@+id/tolEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:typeface="monospace"
+                android:inputType="numberDecimal|numberSigned"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/reactant_label"
@@ -63,6 +87,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
             android:text="VIEW/EDIT/CREATE THE REACTANT STRUCTURE" />
+        <Button
+            android:id="@+id/copyDownButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COPY XYZ TO PRODUCT STRUCTURE" />
 
         <TextView
             android:id="@+id/reactant_formulas_label"
@@ -125,6 +154,11 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5695"
             android:text="VIEW/EDIT/CREATE THE PRODUCT STRUCTURE" />
+        <Button
+            android:id="@+id/copyUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COPY XYZ TO REACTANT STRUCTURE" />
         <TextView
             android:id="@+id/product_formulas_label"
             android:layout_width="fill_parent"

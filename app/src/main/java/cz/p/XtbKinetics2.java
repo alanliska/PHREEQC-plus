@@ -84,6 +84,9 @@ public class XtbKinetics2 extends MainActivity {
     Button product_opsinXYZ;
     Button product_ToCanvas;
 
+    Button copyDownButton;
+    Button copyUpButton;
+
     private Handler handler = new Handler();
 
     private static final int READ_FILE26 = 3526;
@@ -100,12 +103,41 @@ public class XtbKinetics2 extends MainActivity {
     private static final int READ_FILE999 = 35999;
     private Uri documentUri999;
 
+    private TextView tolLabel;
+    private EditText tolEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.xtbkinetics2);
 
+        tolLabel = (TextView) findViewById(R.id.tolLabel);
+        tolEdit = (EditText) findViewById(R.id.tolEdit);
+        tolEdit.setTextSize(Integer.valueOf(exec("cat "+getFilesDir()+"/InputTextSize.txt")).intValue());
+        tolEdit.addTextChangedListener(new TextWatcher() {
+            int startChanged,beforeChanged,countChanged;
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                startChanged = start;
+                beforeChanged = before;
+                countChanged = count;
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                tolEdit.removeTextChangedListener(this);
+                String text = tolEdit.getText().toString();
+                // important - not setText() - otherwise the keyboard would be reset after each type
+                tolEdit.getText().clear();
+                tolEdit.append(colorized_xtb(text));
+                // place the cursor at the original position
+                tolEdit.setSelection(startChanged+countChanged);
+                tolEdit.addTextChangedListener(this);
+            }
+        });
         desc_label = (TextView) findViewById(R.id.desc_label);
         reactant_label = (TextView) findViewById(R.id.reactant_label);
         reactant_formulas_label = (TextView) findViewById(R.id.reactant_formulas_label);
@@ -322,11 +354,16 @@ public class XtbKinetics2 extends MainActivity {
         product_opsinXYZ.setOnClickListener(product_opsinXYZClick);
         product_ToCanvas = (Button) findViewById(R.id.product_ToCanvas);
         product_ToCanvas.setOnClickListener(product_ToCanvasClick);
+        copyDownButton = (Button) findViewById(R.id.copyDownButton);
+        copyDownButton.setOnClickListener(copyDownButtonClick);
+        copyUpButton = (Button) findViewById(R.id.copyUpButton);
+        copyUpButton.setOnClickListener(copyUpButtonClick);
     }
 
     public void onStart()
     {
         super.onStart();
+        TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
         XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
         XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
         FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -336,11 +373,136 @@ public class XtbKinetics2 extends MainActivity {
 
     }
 
+    private View.OnClickListener copyDownButtonClick; {
+
+        copyDownButtonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME="+getFilesDir()+" ; cd $HOME ; cp Xtb_xyzR.txt Xtb_xyzR.xyz ; cp Xtb_xyzP.txt Xtb_xyzP.xyz ; "+getApplicationInfo().nativeLibraryDir+"/libmolalign.so -fast -remap -tol "+Tolerance+" Xtb_xyzR.xyz Xtb_xyzP.xyz");
+                String processedXYZ = secondPart(exec("cat "+getFilesDir()+File.separator+"aligned.xyz"));
+                exec("rm "+getFilesDir()+File.separator+"aligned.xyz");
+                exec("rm "+getFilesDir()+File.separator+"Xtb_xyzR.xyz");
+                exec("rm "+getFilesDir()+File.separator+"Xtb_xyzP.xyz");
+
+                try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(XyzR);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(processedXYZ);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
+    private View.OnClickListener copyUpButtonClick; {
+
+        copyUpButtonClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
+                String XyzR = reactant_xyz.getText().toString();
+                String XyzP = product_xyz.getText().toString();
+                String FormulaR = reactant_formulas.getText().toString();
+                String FormulaP = product_formulas.getText().toString();
+                String Process = process.getText().toString();
+                String Details = details.getText().toString();
+
+                com.jrummyapps.android.shell.Shell.SH.run("export HOME="+getFilesDir()+" ; cd $HOME ; cp Xtb_xyzR.txt Xtb_xyzR.xyz ; cp Xtb_xyzP.txt Xtb_xyzP.xyz ; "+getApplicationInfo().nativeLibraryDir+"/libmolalign.so -fast -remap -tol "+Tolerance+" Xtb_xyzP.xyz Xtb_xyzR.xyz");
+                String processedXYZ = secondPart(exec("cat "+getFilesDir()+File.separator+"aligned.xyz"));
+                exec("rm "+getFilesDir()+File.separator+"aligned.xyz");
+                exec("rm "+getFilesDir()+File.separator+"Xtb_xyzR.xyz");
+                exec("rm "+getFilesDir()+File.separator+"Xtb_xyzP.xyz");
+
+                try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
+                    FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
+                    outputWriter.write(processedXYZ);
+                    outputWriter.close();
+                    FileOutputStream fileout2 = openFileOutput("Xtb_xyzP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter2 = new OutputStreamWriter(fileout2);
+                    outputWriter2.write(XyzP);
+                    outputWriter2.close();
+                    FileOutputStream fileout3 = openFileOutput("Xtb_formulaR.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter3 = new OutputStreamWriter(fileout3);
+                    outputWriter3.write(FormulaR);
+                    outputWriter3.close();
+                    FileOutputStream fileout8 = openFileOutput("Xtb_formulaP.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter8 = new OutputStreamWriter(fileout8);
+                    outputWriter8.write(FormulaP);
+                    outputWriter8.close();
+                    FileOutputStream fileout6 = openFileOutput("XtbKineticsCommand.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter6 = new OutputStreamWriter(fileout6);
+                    outputWriter6.write(Process);
+                    outputWriter6.close();
+                    FileOutputStream fileout10 = openFileOutput("XtbKin.inp", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter10 = new OutputStreamWriter(fileout10);
+                    outputWriter10.write(Details);
+                    outputWriter10.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
+                XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
+                XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
+                FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
+                FormulasPDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaP.txt"));
+                ProcessDisplay(exec("cat "+getFilesDir()+"/XtbKineticsCommand.txt"));
+                DetailsDisplay(exec("cat "+getFilesDir()+"/XtbKin.inp"));
+            }
+        };
+    }
+
     private View.OnClickListener reactant_ToCanvasClick; {
 
         reactant_ToCanvasClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -364,6 +526,10 @@ public class XtbKinetics2 extends MainActivity {
 //                    public void run() {
 
                         try {
+                            FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                            outputWriter1.write(Tolerance);
+                            outputWriter1.close();
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                             outputWriter.write(XyzR);
@@ -480,6 +646,7 @@ public class XtbKinetics2 extends MainActivity {
         product_ToCanvasClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -503,6 +670,10 @@ public class XtbKinetics2 extends MainActivity {
 //                    public void run() {
 
                         try {
+                            FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                            outputWriter1.write(Tolerance);
+                            outputWriter1.close();
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                             outputWriter.write(XyzR);
@@ -618,6 +789,7 @@ public class XtbKinetics2 extends MainActivity {
         reactant_generateXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -625,6 +797,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
                 try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -653,6 +829,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 reactant_alertGenerateXYZ();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -757,6 +934,7 @@ public class XtbKinetics2 extends MainActivity {
         reactant_opsinXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -764,6 +942,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
                 try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -792,6 +974,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 reactant_alertOpsinXYZ();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -904,6 +1087,7 @@ public class XtbKinetics2 extends MainActivity {
         product_generateXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -911,6 +1095,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
                 try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -939,6 +1127,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 product_alertGenerateXYZ();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1043,6 +1232,7 @@ public class XtbKinetics2 extends MainActivity {
         product_opsinXYZClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1050,6 +1240,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Process = process.getText().toString();
                 String Details = details.getText().toString();
                 try {
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1078,6 +1272,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 product_alertOpsinXYZ();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1190,6 +1385,7 @@ public class XtbKinetics2 extends MainActivity {
         reactant_ButtonClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1198,7 +1394,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1227,6 +1426,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 read888(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1242,6 +1442,7 @@ public class XtbKinetics2 extends MainActivity {
         product_ButtonClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1250,7 +1451,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1279,6 +1483,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 read999(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1294,6 +1499,7 @@ public class XtbKinetics2 extends MainActivity {
         openInfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1302,7 +1508,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1331,6 +1540,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 read26(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1346,6 +1556,7 @@ public class XtbKinetics2 extends MainActivity {
         openCommandfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1354,7 +1565,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1383,6 +1597,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 read60(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1398,6 +1613,7 @@ public class XtbKinetics2 extends MainActivity {
         saveExtInfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1406,7 +1622,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1435,6 +1654,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 write0(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1450,6 +1670,7 @@ public class XtbKinetics2 extends MainActivity {
         saveExtCommandfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1458,7 +1679,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1487,6 +1711,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 write10(getApplicationContext());
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1706,6 +1931,7 @@ public class XtbKinetics2 extends MainActivity {
         saveInfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1714,7 +1940,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1743,6 +1972,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 alertSaveIn();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1835,6 +2065,7 @@ public class XtbKinetics2 extends MainActivity {
         saveCommandfileClick = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
+                String Tolerance = tolEdit.getText().toString();
                 String XyzR = reactant_xyz.getText().toString();
                 String XyzP = product_xyz.getText().toString();
                 String FormulaR = reactant_formulas.getText().toString();
@@ -1843,7 +2074,10 @@ public class XtbKinetics2 extends MainActivity {
                 String Details = details.getText().toString();
 
                 try {
-
+                    FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                    OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                    outputWriter1.write(Tolerance);
+                    outputWriter1.close();
                     FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                     OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                     outputWriter.write(XyzR);
@@ -1872,6 +2106,7 @@ public class XtbKinetics2 extends MainActivity {
                     e.printStackTrace();
                 }
                 alertSaveCommand();
+                TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                 XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                 XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                 FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -1981,6 +2216,7 @@ public class XtbKinetics2 extends MainActivity {
                     public void run() {
                         // update: resolved!, progressdialog is already working - see the comment at the end of new thread block
                         /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                        String Tolerance = tolEdit.getText().toString();
                         String XyzR = reactant_xyz.getText().toString();
                         String XyzP = product_xyz.getText().toString();
                         String FormulaR = reactant_formulas.getText().toString();
@@ -1989,7 +2225,10 @@ public class XtbKinetics2 extends MainActivity {
                         String Details = details.getText().toString();
 
                         try {
-
+                            FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                            outputWriter1.write(Tolerance);
+                            outputWriter1.close();
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                             outputWriter.write(XyzR);
@@ -2019,35 +2258,36 @@ public class XtbKinetics2 extends MainActivity {
                         }
                         /////////////////////////// THEN CONTINUE ////////////////////////////////
                         Process = Process.replace(" cpx ", " "+getApplicationInfo().nativeLibraryDir+"/libcpx.so ");
-                        Process = Process.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
-                        Process = Process.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
-                        Process = Process.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
-                        Process = Process.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
-                        Process = Process.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
-                        Process = Process.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
-                        Process = Process.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
-                        Process = Process.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
-                        Process = Process.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
-                        Process = Process.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
-                        Process = Process.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
-                        Process = Process.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
-                        Process = Process.replace(" stda ", " "+getApplicationInfo().nativeLibraryDir+"/libstda.so ");
-                        Process = Process.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
-                        Process = Process.replace(" xtb4stda ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb4stda.so ");
-                        Process = Process.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
-                        Process = Process.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
                         Process = Process.replace(" crest ", " "+getApplicationInfo().nativeLibraryDir+"/libcrest.so ");
-//                        Process = Process.replace(" flux ", " "+getApplicationInfo().nativeLibraryDir+"/libflux.so ");
-//                        Process = Process.replace(" makecube ", " "+getApplicationInfo().nativeLibraryDir+"/libmakecube.so ");
-//                        Process = Process.replace(" phonons ", " "+getApplicationInfo().nativeLibraryDir+"/libphonons.so ");
-//                        Process = Process.replace(" setupgeom ", " "+getApplicationInfo().nativeLibraryDir+"/libsetupgeom.so ");
-                        Process = Process.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                        Process = Process.replace(" dftb ", " "+getApplicationInfo().nativeLibraryDir+"/libdftb.so ");
+                        Process = Process.replace(" dftd4 ", " "+getApplicationInfo().nativeLibraryDir+"/libdftd4.so ");
                         Process = Process.replace(" fastchem ", " "+getApplicationInfo().nativeLibraryDir+"/libfastchem.so ");
+                        Process = Process.replace(" g_spec ", " "+getApplicationInfo().nativeLibraryDir+"/libg_spec.so ");
+                        Process = Process.replace(" g2molden ", " "+getApplicationInfo().nativeLibraryDir+"/libg2molden.so ");
+                        Process = Process.replace(" chemsol ", " "+getApplicationInfo().nativeLibraryDir+"/libchemsol.so ");
+                        Process = Process.replace(" chimescalc ", " "+getApplicationInfo().nativeLibraryDir+"/libchimescalc.so ");
+                        Process = Process.replace(" modes ", " "+getApplicationInfo().nativeLibraryDir+"/libmodes.so ");
+                        Process = Process.replace(" molalign ", " "+getApplicationInfo().nativeLibraryDir+"/libmolalign.so ");
                         Process = Process.replace(" mopac ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac.so ");
                         Process = Process.replace(" mopac-makpol ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-makpol.so ");
                         Process = Process.replace(" mopac-param ", " "+getApplicationInfo().nativeLibraryDir+"/libmopac-param.so ");
+                        Process = Process.replace(" multicharge ", " "+getApplicationInfo().nativeLibraryDir+"/libmulticharge.so ");
+                        Process = Process.replace(" numsa-exe ", " "+getApplicationInfo().nativeLibraryDir+"/libnumsa-exe.so ");
+                        Process = Process.replace(" obabel ", " "+getApplicationInfo().nativeLibraryDir+"/libobabel.so ");
                         Process = Process.replace(" phreeqc ", " "+getApplicationInfo().nativeLibraryDir+"/libphreeqc.so ");
+                        Process = Process.replace(" plotms ", " "+getApplicationInfo().nativeLibraryDir+"/libplotms.so ");
+                        Process = Process.replace(" qcxms ", " "+getApplicationInfo().nativeLibraryDir+"/libqcxms.so ");
+                        Process = Process.replace(" std2 ", " "+getApplicationInfo().nativeLibraryDir+"/libstd2.so ");
+                        Process = Process.replace(" s-dftd3 ", " "+getApplicationInfo().nativeLibraryDir+"/libs-dftd3.so ");
+                        Process = Process.replace(" tblite ", " "+getApplicationInfo().nativeLibraryDir+"/libtblite.so ");
                         Process = Process.replace(" transpose ", " "+getApplicationInfo().nativeLibraryDir+"/libtranspose.so ");
+                        Process = Process.replace(" waveplot ", " "+getApplicationInfo().nativeLibraryDir+"/libwaveplot.so ");
+                        Process = Process.replace(" xbbc ", " "+getApplicationInfo().nativeLibraryDir+"/libxbbc.so ");
+                        Process = Process.replace(" xbvm ", " "+getApplicationInfo().nativeLibraryDir+"/libxbvm.so ");
+                        Process = Process.replace(" xtb ", " "+getApplicationInfo().nativeLibraryDir+"/libxtb.so ");
+
+                        Process = "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"+getApplicationInfo().nativeLibraryDir+" ; "+Process;
+
                         try {
                             com.jrummyapps.android.shell.Shell.SH.run(Process);
                         } catch (Exception e) {
@@ -2134,6 +2374,7 @@ public class XtbKinetics2 extends MainActivity {
 
                             /////////////////////////////////// Display fields ///////////////////////////////////////////////
 
+                            TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                             XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                             XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                             FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -2181,6 +2422,7 @@ public class XtbKinetics2 extends MainActivity {
                     public void run() {
                         // update: resolved!, progressdialog is already working - see the comment at the end of new thread block
                         /////////////////////////// SAVE EVERYTHING PRE-SET ////////////////////////////////
+                        String Tolerance = tolEdit.getText().toString();
                         String XyzR = reactant_xyz.getText().toString();
                         String XyzP = product_xyz.getText().toString();
                         String FormulaR = reactant_formulas.getText().toString();
@@ -2189,7 +2431,10 @@ public class XtbKinetics2 extends MainActivity {
                         String Details = details.getText().toString();
 
                         try {
-
+                            FileOutputStream fileout1 = openFileOutput("tolerance.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter1 = new OutputStreamWriter(fileout1);
+                            outputWriter1.write(Tolerance);
+                            outputWriter1.close();
                             FileOutputStream fileout = openFileOutput("Xtb_xyzR.txt", MODE_PRIVATE);
                             OutputStreamWriter outputWriter = new OutputStreamWriter(fileout);
                             outputWriter.write(XyzR);
@@ -2254,6 +2499,7 @@ public class XtbKinetics2 extends MainActivity {
                             e.printStackTrace();
                         }
                         try {
+                            TolDisplay(exec("cat "+getFilesDir()+"/tolerance.txt"));
                             XyzRDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzR.txt"));
                             XyzPDisplay(exec("cat "+getFilesDir()+"/Xtb_xyzP.txt"));
                             FormulasRDisplay(exec("cat "+getFilesDir()+"/Xtb_formulaR.txt"));
@@ -2305,7 +2551,14 @@ public class XtbKinetics2 extends MainActivity {
         }
     }
 
-
+    private void TolDisplay(final String tol) {
+        Runnable proctol = new Runnable() {
+            public void run() {
+                tolEdit.setText(colorized_elements(tol), EditText.BufferType.SPANNABLE);
+            }
+        };
+        handler.post(proctol);
+    }
     private void XyzRDisplay(final String strSR) {
         Runnable procSR = new Runnable() {
             public void run() {
@@ -2354,5 +2607,23 @@ public class XtbKinetics2 extends MainActivity {
         };
         handler.post(procD);
     }
-
+    public static String secondPart(String text) {
+        // split input text
+        int lineNum = 0;
+        String[] curLine = text.split("\\n");
+        for (String s : curLine) {
+            lineNum++;
+        }
+        int lineNumDivTwo = lineNum/2;
+        String secPart = "";
+        int lineNum2 = 0;
+        String[] curLine2 = text.split("\\n");
+        for (String s : curLine2) {
+            lineNum2++;
+            if(lineNum2 > lineNumDivTwo){
+                secPart += s+"\n";
+            }
+        }
+        return secPart;
+    }
 }

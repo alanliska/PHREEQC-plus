@@ -69,8 +69,8 @@ public class Licenses extends MainActivity {
     Button license2_qcxms;
     Button license1_sdftd3;
     Button license2_sdftd3;
-    Button license1_stda;
-    Button license2_stda;
+    Button license1_std2;
+    Button license2_std2;
     Button license1_tblite;
     Button license2_tblite;
     Button license1_testdrive;
@@ -79,8 +79,8 @@ public class Licenses extends MainActivity {
     Button license2_tomlf;
     Button license1_xtb;
     Button license2_xtb;
-    Button license1_xtb4stda;
-    Button license2_xtb4stda;
+//    Button license1_xtb4stda;
+//    Button license2_xtb4stda;
     Button eigen3;
     Button eigen3_lt;
     Button license_cpcmx;
@@ -94,6 +94,12 @@ public class Licenses extends MainActivity {
     Button license1_lwoniom;
     Button license2_lwoniom;
     Button licenseMolCanv;
+    Button license_molalign;
+    Button license_blas;
+    Button license_libcint;
+    Button license1_libpvol;
+    Button license2_libpvol;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +110,8 @@ public class Licenses extends MainActivity {
 
         license_label = (TextView) findViewById(R.id.license_label);
 
+        license_molalign = (Button) findViewById(R.id.license_molalign);
+        license_molalign.setOnClickListener(license_molalignClick);
         license0 = (Button) findViewById(R.id.license0);
         license0.setOnClickListener(license0Click);
         license1 = (Button) findViewById(R.id.license1);
@@ -188,10 +196,10 @@ public class Licenses extends MainActivity {
         license1_sdftd3.setOnClickListener(license1_sdftd3Click);
         license2_sdftd3 = (Button) findViewById(R.id.license2_sdftd3);
         license2_sdftd3.setOnClickListener(license2_sdftd3Click);
-        license1_stda = (Button) findViewById(R.id.license1_stda);
-        license1_stda.setOnClickListener(license1_stdaClick);
-        license2_stda = (Button) findViewById(R.id.license2_stda);
-        license2_stda.setOnClickListener(license2_stdaClick);
+        license1_std2 = (Button) findViewById(R.id.license1_std2);
+        license1_std2.setOnClickListener(license1_std2Click);
+        license2_std2 = (Button) findViewById(R.id.license2_std2);
+        license2_std2.setOnClickListener(license2_std2Click);
         license1_tblite = (Button) findViewById(R.id.license1_tblite);
         license1_tblite.setOnClickListener(license1_tbliteClick);
         license2_tblite = (Button) findViewById(R.id.license2_tblite);
@@ -208,10 +216,10 @@ public class Licenses extends MainActivity {
         license1_xtb.setOnClickListener(license1_xtbClick);
         license2_xtb = (Button) findViewById(R.id.license2_xtb);
         license2_xtb.setOnClickListener(license2_xtbClick);
-        license1_xtb4stda = (Button) findViewById(R.id.license1_xtb4stda);
-        license1_xtb4stda.setOnClickListener(license1_xtb4stdaClick);
-        license2_xtb4stda = (Button) findViewById(R.id.license2_xtb4stda);
-        license2_xtb4stda.setOnClickListener(license2_xtb4stdaClick);
+//        license1_xtb4stda = (Button) findViewById(R.id.license1_xtb4stda);
+//        license1_xtb4stda.setOnClickListener(license1_xtb4stdaClick);
+//        license2_xtb4stda = (Button) findViewById(R.id.license2_xtb4stda);
+//        license2_xtb4stda.setOnClickListener(license2_xtb4stdaClick);
         eigen3 = (Button) findViewById(R.id.eigen3);
         eigen3.setOnClickListener(eigen3Click);
         eigen3_lt = (Button) findViewById(R.id.eigen3_lt);
@@ -236,6 +244,14 @@ public class Licenses extends MainActivity {
         license2_lwoniom.setOnClickListener(license2_lwoniomClick);
         licenseMolCanv = (Button) findViewById(R.id.licenseMolCanv);
         licenseMolCanv.setOnClickListener(licenseMolCanvClick);
+        license_blas = (Button) findViewById(R.id.license_blas);
+        license_blas.setOnClickListener(license_blasClick);
+        license_libcint = (Button) findViewById(R.id.license_libcint);
+        license_libcint.setOnClickListener(license_libcintClick);
+        license1_libpvol = (Button) findViewById(R.id.license1_libpvol);
+        license1_libpvol.setOnClickListener(license1_libpvolClick);
+        license2_libpvol = (Button) findViewById(R.id.license2_libpvol);
+        license2_libpvol.setOnClickListener(license2_libpvolClick);
 
         quit = (Button) findViewById(R.id.quit);
         quit.setOnClickListener(new View.OnClickListener() {
@@ -246,6 +262,46 @@ public class Licenses extends MainActivity {
             }
         });
 
+    }
+
+    private View.OnClickListener license1_libpvolClick; {
+        license1_libpvolClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert1pvol();
+            }
+        };
+    }
+
+    public void alert1pvol() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE1-LIBPVOL")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-LIBPVOL.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license2_libpvolClick; {
+        license2_libpvolClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alert2pvol();
+            }
+        };
+    }
+
+    public void alert2pvol() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE2-LIBPVOL")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-LIBPVOL.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
     }
 
 //    private View.OnClickListener license_busybox1Click; {
@@ -307,6 +363,66 @@ public class Licenses extends MainActivity {
 //                    }
 //                }).show();
 //    }
+
+    private View.OnClickListener license_libcintClick; {
+        license_libcintClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alertlibcint();
+            }
+        };
+    }
+
+    public void alertlibcint() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-LIBCINT")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-LIBCINT.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license_blasClick; {
+        license_blasClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alertblas();
+            }
+        };
+    }
+
+    public void alertblas() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSING TERMS-BLAS")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSING_TERMS-BLAS.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    private View.OnClickListener license_molalignClick; {
+        license_molalignClick = new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub //
+                alertMA();
+            }
+        };
+    }
+
+    public void alertMA() {
+        new AlertDialog.Builder(Licenses.this)
+                .setTitle("LICENSE-MOLALIGN")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE-MOLALIGNLIB.txt"))
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
 
     private View.OnClickListener licenseMolCanvClick; {
         licenseMolCanvClick = new View.OnClickListener() {
@@ -541,7 +657,7 @@ public class Licenses extends MainActivity {
     public void alert2eigen3() {
         new AlertDialog.Builder(Licenses.this)
                 .setTitle("LICENSING-TERMS-EIGEN3")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSING-TERMS-EIGEN3.txt"))
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSING_TERMS-EIGEN3.txt"))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -809,19 +925,19 @@ public class Licenses extends MainActivity {
                 }).show();
     }
 
-    private View.OnClickListener license1_stdaClick; {
-        license1_stdaClick = new View.OnClickListener() {
+    private View.OnClickListener license1_std2Click; {
+        license1_std2Click = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                alert1stda();
+                alert1std2();
             }
         };
     }
 
-    public void alert1stda() {
+    public void alert1std2() {
         new AlertDialog.Builder(Licenses.this)
-                .setTitle("LICENSE1-STDA")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-STDA.txt"))
+                .setTitle("LICENSE1-STD2")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-STD2.txt"))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -829,19 +945,19 @@ public class Licenses extends MainActivity {
                 }).show();
     }
 
-    private View.OnClickListener license2_stdaClick; {
-        license2_stdaClick = new View.OnClickListener() {
+    private View.OnClickListener license2_std2Click; {
+        license2_std2Click = new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub //
-                alert2stda();
+                alert2std2();
             }
         };
     }
 
-    public void alert2stda() {
+    public void alert2std2() {
         new AlertDialog.Builder(Licenses.this)
-                .setTitle("LICENSE2-STDA")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-STDA.txt"))
+                .setTitle("LICENSE2-STD2")
+                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-STD2.txt"))
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -1009,45 +1125,45 @@ public class Licenses extends MainActivity {
                 }).show();
     }
 
-    private View.OnClickListener license1_xtb4stdaClick; {
-        license1_xtb4stdaClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                alert1xtb4stda();
-            }
-        };
-    }
-
-    public void alert1xtb4stda() {
-        new AlertDialog.Builder(Licenses.this)
-                .setTitle("LICENSE1-XTB4STDA")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-XTB4STDA.txt"))
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }).show();
-    }
-
-    private View.OnClickListener license2_xtb4stdaClick; {
-        license2_xtb4stdaClick = new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub //
-                alert2xtb4stda();
-            }
-        };
-    }
-
-    public void alert2xtb4stda() {
-        new AlertDialog.Builder(Licenses.this)
-                .setTitle("LICENSE2-XTB4STDA")
-                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-XTB4STDA.txt"))
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }).show();
-    }
+//    private View.OnClickListener license1_xtb4stdaClick; {
+//        license1_xtb4stdaClick = new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub //
+//                alert1xtb4stda();
+//            }
+//        };
+//    }
+//
+//    public void alert1xtb4stda() {
+//        new AlertDialog.Builder(Licenses.this)
+//                .setTitle("LICENSE1-XTB4STDA")
+//                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE1-XTB4STDA.txt"))
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                }).show();
+//    }
+//
+//    private View.OnClickListener license2_xtb4stdaClick; {
+//        license2_xtb4stdaClick = new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub //
+//                alert2xtb4stda();
+//            }
+//        };
+//    }
+//
+//    public void alert2xtb4stda() {
+//        new AlertDialog.Builder(Licenses.this)
+//                .setTitle("LICENSE2-XTB4STDA")
+//                .setMessage(exec("cat "+getFilesDir()+"/licenses/LICENSE2-XTB4STDA.txt"))
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                }).show();
+//    }
 
 
 

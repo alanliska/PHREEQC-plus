@@ -185,10 +185,10 @@
         <activity android:name="cz.p.DftbWork1" />
         <activity android:name="cz.p.ManualDftb" />
         <activity android:name="cz.p.ManualDftbRecipes" />
-        <activity android:name="cz.p.ManualModes" />
         <activity android:name="cz.p.DftbCommand" />
         <activity android:name="cz.p.SpectrumDftb" />
         <!---
+        <activity android:name="cz.p.ManualModes" />
         <activity android:name="cz.p.Dftb1" />
         <activity android:name="cz.p.CompgDftb" />
         <activity android:name="cz.p.CompsDftb" />
@@ -220,7 +220,7 @@
         <activity android:name="cz.p.XtbWork1" />
         <activity android:name="cz.p.XtbCommand" />
         <activity android:name="cz.p.ManualXtb" />
-        <activity android:name="cz.p.ManualStda" />
+        <activity android:name="cz.p.ManualStd2" />
         <activity android:name="cz.p.SolmakerXtb" />
         <activity android:name="cz.p.GasmakerXtb" />
         <activity android:name="cz.p.SSolmakerXtb" />
